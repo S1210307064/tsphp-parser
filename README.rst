@@ -1,7 +1,7 @@
-Type safe PHP: A compile time approach
+TSPHP Grammar
 =====
-| Project has just started do not expect to find here the compiler (not yet).
-| Visit the `wiki <http://tsphp.tutteli.ch/>`_ for more information on the project.
+| This repository contains the ANTLR v3 based grammar as well as the tree grammar for TSPHP.
+| Visit the `wiki <http://tsphp.tutteli.ch/>`_ for more information on the project and it's `repository <http://bitbucket.org/rstoll/tsphp>`_.
 
 
 
