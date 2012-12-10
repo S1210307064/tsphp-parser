@@ -4,7 +4,7 @@ TSPHP Grammar
 | Visit the `wiki <http://tsphp.tutteli.ch/>`_ for more information on the project and it's `repository <http://bitbucket.org/rstoll/tsphp>`_.
 
 
-
+| 
 | Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
 | 
 | Licensed under the Apache License, Version 2.0 (the "License");
