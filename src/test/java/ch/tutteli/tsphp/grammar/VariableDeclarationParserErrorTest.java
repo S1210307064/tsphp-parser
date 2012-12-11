@@ -21,6 +21,7 @@ import java.util.List;
 import org.antlr.runtime.EarlyExitException;
 import org.antlr.runtime.MismatchedTokenException;
 import org.antlr.runtime.MissingTokenException;
+import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -40,19 +41,20 @@ public class VariableDeclarationParserErrorTest extends AParserTest
         check(EarlyExitException.class, TSPHPParser.VARID, 0);
     }
 
-     @Test
+    @Test
     public void testMissingSemicolon() throws RecognitionException {
         noErrorsOnOutput();
         testString = "int $a int $b;";
         super.parseExpectingException();
-        check(MissingTokenException.class, TSPHPParser.INT, 7);
+        check(NoViableAltException.class, TSPHPParser.T_INT, 0);
     }
+
     @Test
     public void testMissingSemicolonEndOfFile() throws RecognitionException {
         noErrorsOnOutput();
         testString = "int $a";
         super.parseExpectingException();
-        check(MismatchedTokenException.class, -1, 6);
+        check(NoViableAltException.class, TSPHPParser.T_INT, 0);
     }
 
     private void check(Class<? extends RecognitionException> type, int token, int position) throws RecognitionException {
@@ -63,8 +65,8 @@ public class VariableDeclarationParserErrorTest extends AParserTest
         Assert.assertFalse(exceptions.isEmpty());
         RecognitionException ex = exceptions.get(0);
         Assert.assertEquals(type, ex.getClass());
-        Assert.assertEquals("position wrong",position, ex.charPositionInLine);
-        Assert.assertEquals("token wrong",token, ex.c);
+        Assert.assertEquals("position wrong", position, ex.charPositionInLine);
+        Assert.assertEquals("token wrong", token, ex.c);
 
     }
 }

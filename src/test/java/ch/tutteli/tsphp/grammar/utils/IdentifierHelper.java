@@ -27,22 +27,22 @@ public class IdentifierHelper
     }
 
     public static String getAllLowerCaseCharacters() {
-        return getCharacterFromToAsString(97, 122);
+        return getCharacterFromStartToEndAsString(97, 122);
     }
 
     public static String getAllUpperCaseCharacters() {
-        return getCharacterFromToAsString(65, 90);
+        return getCharacterFromStartToEndAsString(65, 90);
     }
 
     public static String getAllDigits() {
-        return getCharacterFromToAsString(48, 57);
+        return getCharacterFromStartToEndAsString(48, 57);
     }
 
     public static String getAllSpecialCharacters() {
-        return getCharacterFromToAsString(127, 255);
+        return getCharacterFromStartToEndAsString(127, 255);
     }
 
-    public static String getCharacterFromToAsString(int start, int end) {
+    public static String getCharacterFromStartToEndAsString(int start, int end) {
         StringBuilder buffer = new StringBuilder();
         for (int i = 127; i <= 255; ++i) {
             buffer.append((char) i);

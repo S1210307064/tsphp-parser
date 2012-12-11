@@ -17,14 +17,19 @@
 grammar TSPHP;
 
 tokens{
+
+	Equal = '=';	
 	Semicolon =';';
-	INT = 'int';
-	BOOL = 'bool';
-	BOOLEAN = 'boolean';
-	FLOAT = 'float';
-	STRING = 'string';
-	RESOURCE = 'resource';
-	ARRAY = 'array';
+	T_INT = 'int';
+	T_BOOL = 'bool';
+	T_BOOLEAN = 'boolean';
+	T_FLOAT = 'float';
+	T_STRING = 'string';
+	T_RESOURCE = 'resource';
+	T_ARRAY = 'array';
+	TRUE = 'true';
+	FALSE = 'false';
+
 }
 
 @header{
@@ -33,12 +38,13 @@ package ch.tutteli.tsphp.grammar;
 @lexer::header{
 package ch.tutteli.tsphp.grammar;
 }
-prog	:	statement+;
+prog	:	stat+;
 
-statement	:	var;
+stat	:	varDecl
+	|	varAssign;
 
 
-var	: type VARID  ';';
+varDecl	: type VARID  ';';
 
 type 	:	primitiveTypes;
 
@@ -58,83 +64,118 @@ VARID	:	'$' ID;
 fragment
 ID	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*;
 
+
+
+varAssign
+	:	boolAssign	
+	|	intAssign 
+	|	floatAssign
+	|	stringAssign
+	;
+
+
+	
+boolAssign
+	:	(T_BOOL|T_BOOLEAN) VARID '=' (TRUE|FALSE) ';';
 	
 
+intAssign
+	:	T_INT VARID '=' INT ';';
 
 
-/*
-integer     : PLMN? DECIMAL
-            | PLMN? HEXADECIMAL
-            | PLMN? OCTAL
-            | PLMN? BINARY;
-           
-
-
-
-
-fragment
-PLMN	:	('+'|'-');
-
-fragment
-DECIMAL     : ('1'..'9') ('0'..'9')*
-            | '0'
-            ;
-fragment
-HEXADECIMAL : '0'('x'|'X') ('0'..'9'|'a'..'f'|'A'..'F')+;
+INT     : 	PLUSMINUS? DECIMAL
+        | 	PLUSMINUS? HEXADECIMAL
+        | 	PLUSMINUS? OCTAL
+        | 	PLUSMINUS? BINARY
+        ;
+        
+fragment           
+PLUSMINUS	
+	:	('+'|'-');
 
 fragment
-OCTAL       : '0'('0'..'7')+;
+DECIMAL     
+	:	('1'..'9') ('0'..'9')*
+        |	 '0'
+        ;
+        
+fragment          
+HEXADECIMAL 
+	:	'0' HEX_BEGIN HEX_DIGIT+;
 
 fragment
-BINARY      : '0b'('0'|'1')+;
-/*
+HEX_BEGIN
+	:	('x'|'X');
+fragment
+HEX_DIGIT
+	:	('0'..'9'|'a'..'f'|'A'..'F');
+fragment
+OCTAL	:	'0' OCTAL_DIGIT+;
+
+fragment
+OCTAL_DIGIT
+	:	('0'..'7');
+
+fragment
+BINARY	:	'0b'('0'|'1')+;
+
+
+floatAssign
+	:	T_FLOAT VARID '=' FLOAT ';';
+
+
 FLOAT
-    :   ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
-    |   '.' ('0'..'9')+ EXPONENT?
-    |   ('0'..'9')+ EXPONENT
-    ;
-    */
+    	:	PLUSMINUS? ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
+    	|	PLUSMINUS? '.' ('0'..'9')+ EXPONENT?
+    	|	PLUSMINUS? ('0'..'9')+ EXPONENT
+    	;
+    
+fragment
+EXPONENT : ('e'|'E') PLUSMINUS? ('0'..'9')+ ;
+
+stringAssign
+	:	T_STRING VARID '=' (STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED) ';';
+
+
+STRING_SINGLE_QUOTED
+	:	'\'' ( 
+			('\\' ESC_SEQ_STRING_SINGLE_QUOTED) => '\\' ESC_SEQ_STRING_SINGLE_QUOTED
+			| ('\u0000'..'\u0026') 
+			| ('\u0028'..'\u005B') 
+			| ('\u005D'..'\u00FF')
+		)* '\'';
+fragment
+ESC_SEQ_STRING_SINGLE_QUOTED
+	:	'\\' | '\'';
+	
+	
+STRING_DOUBLE_QUOTED
+    	:	'"' (
+			( '\\' ESC_SEQ_STRING_SINGLE_QUOTED) => '\\' ESC_SEQ_STRING_SINGLE_QUOTED		
+    		 	| ('\u0000'..'\u0021') 
+    		 	| ('\u0023'..'\u005B') 
+    		 	| ('\u005D'..'\u00FF')
+  		)* '"';
+
+fragment
+ESC_SEQ_STRING_DOUBLE_QUOTED
+	:	'n' | 'r' | 't' | 'v' | 'e' | 'f' | '\\' | '"'
+    		| (HEX_BEGIN HEX_DIGIT HEX_DIGIT? )
+    		| (OCTAL_DIGIT (OCTAL_DIGIT OCTAL_DIGIT?)? )
+    		;
+
 
 //COMMENT
 //    :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
 //    |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
 //    ;
 
-WS  :   ( ' '
-        | '\t'
-        | '\r'
-        | '\n'
-        ) {$channel=HIDDEN;}
-    ;
-/*
-STRING
-    :  '"' ( ESC_SEQ | ~('\\'|'"') )* '"'
-    ;
+WS	:	( ' '
+        	| '\t'
+	        | '\r'
+        	| '\n'
+	        ) {$channel=HIDDEN;}
+	;
 
 
-
-fragment
-EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
-
-fragment
-HEX_DIGIT : ('0'..'9'|'a'..'f'|'A'..'F') ;
-
-fragment
-ESC_SEQ
-    :   '\\' ('b'|'t'|'n'|'f'|'r'|'\"'|'\''|'\\')
-    |   UNICODE_ESC
-    |   OCTAL_ESC
-    ;
-
-fragment
-OCTAL_ESC
-    :   '\\' ('0'..'3') ('0'..'7') ('0'..'7')
-    |   '\\' ('0'..'7') ('0'..'7')
-    |   '\\' ('0'..'7')
-    ;
-
-fragment
-UNICODE_ESC
-    :   '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
-    ;
-*/
+	

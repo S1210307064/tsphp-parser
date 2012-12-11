@@ -33,6 +33,7 @@ public class VariantionHelper
 
     public static Collection<Object[]> getUpperCaseVariations(String[] texts, String prefix, String appendix) {
         Collection<Object[]> collection = new ArrayList<>();
+        int prefixLenght = prefix.length();
         for (String text : texts) {
             int length = text.length();
             String tmp = text.toLowerCase();
@@ -43,13 +44,13 @@ public class VariantionHelper
 
                 String after = i + 1 != length ? tmp.substring(i + 1, length) : "";
                 collection.add(new Object[]{
-                    prefix + before + upper + after + appendix,
-                    upper.charAt(0),
-                    i,
-                    i!=0 ? MismatchedTokenException.class : NoViableAltException.class
-                });
+                            prefix + before + upper + after + appendix,
+                            upper.charAt(0),
+                            prefixLenght+i
+                        });
             }
         }
         return collection;
     }
+
 }

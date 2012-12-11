@@ -17,18 +17,12 @@
 package ch.tutteli.tsphp.grammar;
 
 import ch.tutteli.tsphp.grammar.utils.AParserTest;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.MismatchedSetException;
-import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
-import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

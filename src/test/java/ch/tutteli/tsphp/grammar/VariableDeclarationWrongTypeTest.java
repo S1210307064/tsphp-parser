@@ -18,11 +18,8 @@ package ch.tutteli.tsphp.grammar;
 
 import ch.tutteli.tsphp.grammar.utils.AParserTest;
 import ch.tutteli.tsphp.grammar.utils.VariantionHelper;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import org.antlr.runtime.EarlyExitException;
-import org.antlr.runtime.EarlyExitException;
 import org.antlr.runtime.MismatchedTokenException;
 import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
@@ -30,7 +27,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import sun.util.calendar.Era;
 
 /**
  *
@@ -42,14 +38,11 @@ public class VariableDeclarationWrongTypeTest extends AParserTest
 
     private int position;
     private char character;
-    private Class<? extends RecognitionException> type;
-
-    public VariableDeclarationWrongTypeTest(String testString, char aCharacter, int aPosition, Class<? extends RecognitionException> aType) {
+    public VariableDeclarationWrongTypeTest(String testString, char aCharacter, int aPosition) {
         super(testString);
         noErrorsOnOutput();
         position = aPosition;
         character = aCharacter;
-        type = aType;
 
     }
 
@@ -60,7 +53,7 @@ public class VariableDeclarationWrongTypeTest extends AParserTest
         List<RecognitionException> exceptions = lexer.getExceptions();;
         Assert.assertFalse(testString + " - ", exceptions.isEmpty());
         RecognitionException ex = exceptions.get(0);
-        Assert.assertEquals(testString + " - wrong type", type, ex.getClass());
+        Assert.assertTrue(testString + " - wrong type", ex instanceof RecognitionException);
         Assert.assertEquals(testString + " - wrong character", character, ex.c);
         Assert.assertEquals(testString + " - wrong position", position, ex.charPositionInLine);
     }
@@ -68,21 +61,15 @@ public class VariableDeclarationWrongTypeTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> variables() {
         Collection<Object[]> collection = VariantionHelper.getUpperCaseVariations(new String[]{
+                    "bool",
+                    "boolean",
                     "int",
                     "float",
                     "string",
                     "array",
                     "resource"
                 }, "", " $a;");
-        collection.add(new Object[]{"Boolean",'B',0,NoViableAltException.class});
-        collection.add(new Object[]{"bOolean",'b',0,NoViableAltException.class});
-        collection.add(new Object[]{"boOlean",'b',0,NoViableAltException.class});
-        collection.add(new Object[]{"booLean",'b',0,NoViableAltException.class});
-        collection.add(new Object[]{"boolEan",'E',4,NoViableAltException.class});
-        collection.add(new Object[]{"booleAn",'A',5,MismatchedTokenException.class});
-        collection.add(new Object[]{"booleaN",'N',6,MismatchedTokenException.class});
-        collection.add(new Object[]{"qwert",'q',0,NoViableAltException.class});
-        collection.add(new Object[]{"1234",'1',0,NoViableAltException.class});
+        collection.add(new Object[]{"qwert",'q',0});
         return collection;
     }
 }

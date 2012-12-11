@@ -16,8 +16,6 @@
  */
 package ch.tutteli.tsphp.grammar.utils;
 
-import ch.tutteli.tsphp.grammar.TSPHPParser;
-import java.util.List;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -35,7 +33,7 @@ public abstract class AParserTest
 {
 
     protected TestTSPHPParser parser;
-    protected TestTSPHPLexer lexer = new TestTSPHPLexer();
+    protected TestTSPHPLexer lexer ;
     protected String testString;
     private boolean isErrorReportingOn = true;
 
@@ -66,8 +64,8 @@ public abstract class AParserTest
 
     private void parse(String testString) throws RecognitionException {
         CharStream stream = new ANTLRStringStream(testString);
+        lexer = new TestTSPHPLexer(stream);
         lexer.setErrorReporting(isErrorReportingOn);
-        lexer.setCharStream(stream);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 
         parser = new TestTSPHPParser(tokens);
