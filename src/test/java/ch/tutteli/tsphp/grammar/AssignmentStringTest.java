@@ -48,17 +48,17 @@ public class AssignmentStringTest extends AParserTest
                     //testStringSingleQuotedAssignment
                     {"string $a = 'test';"},
                     {"string $a = '"
-                        + IdentifierHelper.getCharacterFromStartToEndAsString(0, 38)
-                        + IdentifierHelper.getCharacterFromStartToEndAsString(40, 91)
-                        + IdentifierHelper.getCharacterFromStartToEndAsString(93, 255)
+                        + IdentifierHelper.getCharacterFromStartToEndAsString(0, 35)
+                        + IdentifierHelper.getCharacterFromStartToEndAsString(37, 38)
+                        + IdentifierHelper.getCharacterFromStartToEndAsString(40, 10055)
                         + "';"},
                     {"string $a = '\\\\ \\\' ';"},
                     //testStringDoubleQuotedAssignment
                     {"string $a = \"123\";"},
                     {"string $a = \""
                         + IdentifierHelper.getCharacterFromStartToEndAsString(0, 33)
-                        + IdentifierHelper.getCharacterFromStartToEndAsString(35, 91)
-                        + IdentifierHelper.getCharacterFromStartToEndAsString(93, 255)
+                        + IdentifierHelper.asciiToString(35)
+                        + IdentifierHelper.getCharacterFromStartToEndAsString(37, 12255)
                         + "\";"},
                     {"string $a = \" \\\\ \";"},
                     {"string $a = \" \\\\n \";"},
@@ -67,10 +67,10 @@ public class AssignmentStringTest extends AParserTest
                     {"string $a = \" \\\\v \";"},
                     {"string $a = \" \\\\e \";"},
                     {"string $a = \" \\\\f \";"},
-//                    {"string $a = \" \\\" \";"},
-                
-        });
-
-        //
+                    {"string $a = \" \\\" \";"},
+                    {"string $a = \" \\$ \";"},
+                    {"string $a = \" \\00 \\01 \\02 \\03 \\04 \\05 \\06 \\07 \\01234567 \";"},
+                    {"string $a = \" \\x0 \\x1 \\x2 \\x3 \\x4 \\x5 \\x6 \\x7 \\x8 \\x9 \\XA \\XB \\XC \\XD \\xE \\xF \\Xa \\Xb \\xc \\xd \\xe \\xf \";"},
+                    {"string $a = \" a \\\\ b \\\\n c \\\\r d \\\\t e \\\\v f \\\\e g \\\\f h \\\"\";"},});
     }
 }

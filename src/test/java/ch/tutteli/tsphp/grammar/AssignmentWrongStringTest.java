@@ -18,10 +18,10 @@ package ch.tutteli.tsphp.grammar;
 
 import ch.tutteli.tsphp.grammar.utils.ALexerExceptionTest;
 import ch.tutteli.tsphp.grammar.utils.AParserTest;
+import ch.tutteli.tsphp.grammar.utils.IdentifierHelper;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import org.antlr.runtime.MismatchedSetException;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -33,11 +33,12 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableDeclarationLexerErrorTest extends ALexerExceptionTest
+public class AssignmentWrongStringTest extends ALexerExceptionTest
 {
 
-    public VariableDeclarationLexerErrorTest(String testString, char evilCharacter, int atPosition) {
-        super(testString, (int) evilCharacter,  atPosition);
+    public AssignmentWrongStringTest(String testString, int character, int position) {
+        super(testString, character, position);
+
     }
 
     @Test
@@ -46,21 +47,16 @@ public class VariableDeclarationLexerErrorTest extends ALexerExceptionTest
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> variables() {
+    public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"int $1;", '1', 5},
-                    {"bool $2a;", '2', 6},
-                    {"boolean $3_;", '3', 9},
-                    {"float $4£;", '4', 7},
-                    {"string $5ééé;", '5', 8},
-                    {"resource $6AAAA;", '6', 10},
-                    {"array $7aA;", '7', 7},
-                    {"int $8_A;", '8', 5},
-                    {"bool $9££;", '9', 6},
-                    {"boolean $0a;", '0', 9},
-                    {"float $%;", '%', 7},
-                    {"string $(;", '(', 8},
-                    {"int $);", ')', 5}
+                    //testStringSingleQuotedAssignment
+                    {"string $a = ''';", -1, 16},
+                    //testStringDoubleQuotedAssignment
+                    {"string $a = \" \" \";", -1, 18},
+                    // single $ are allowed in PHP but not in TSPHP as well
+                    {"string $a = \" $ \";", '$', 14},
+                    // $0 cannot be a variable and is therefore allowed in PHP, but not in TSPHP (so far)
+                    {"string $a = \" $0123456789 \";", '$', 14}
                 });
     }
 }

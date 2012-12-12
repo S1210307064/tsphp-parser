@@ -16,12 +16,11 @@
  */
 package ch.tutteli.tsphp.grammar;
 
+import ch.tutteli.tsphp.grammar.utils.ALexerExceptionTest;
 import ch.tutteli.tsphp.grammar.utils.AParserTest;
 import ch.tutteli.tsphp.grammar.utils.VariantionHelper;
 import java.util.Collection;
 import java.util.List;
-import org.antlr.runtime.MismatchedTokenException;
-import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Assert;
 import org.junit.Test;
@@ -33,29 +32,17 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableDeclarationWrongTypeTest extends AParserTest
+public class VariableDeclarationWrongTypeTest extends ALexerExceptionTest
 {
 
-    private int position;
-    private char character;
-    public VariableDeclarationWrongTypeTest(String testString, char aCharacter, int aPosition) {
-        super(testString);
-        noErrorsOnOutput();
-        position = aPosition;
-        character = aCharacter;
+    public VariableDeclarationWrongTypeTest(String testString, char character, int position) {
+        super(testString, (int) character, position);
 
     }
 
     @Test
     public void test() throws RecognitionException {
         super.parseExpectingException();
-
-        List<RecognitionException> exceptions = lexer.getExceptions();;
-        Assert.assertFalse(testString + " - ", exceptions.isEmpty());
-        RecognitionException ex = exceptions.get(0);
-        Assert.assertTrue(testString + " - wrong type", ex instanceof RecognitionException);
-        Assert.assertEquals(testString + " - wrong character", character, ex.c);
-        Assert.assertEquals(testString + " - wrong position", position, ex.charPositionInLine);
     }
 
     @Parameterized.Parameters
@@ -69,7 +56,7 @@ public class VariableDeclarationWrongTypeTest extends AParserTest
                     "array",
                     "resource"
                 }, "", " $a;");
-        collection.add(new Object[]{"qwert",'q',0});
+        collection.add(new Object[]{"qwert $a;", 'q', 0});
         return collection;
     }
 }

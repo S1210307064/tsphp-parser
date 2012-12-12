@@ -138,32 +138,18 @@ stringAssign
 
 
 STRING_SINGLE_QUOTED
-	:	'\'' ( 
-			('\\' ESC_SEQ_STRING_SINGLE_QUOTED) => '\\' ESC_SEQ_STRING_SINGLE_QUOTED
-			| ('\u0000'..'\u0026') 
-			| ('\u0028'..'\u005B') 
-			| ('\u005D'..'\u00FF')
+	:	'\'' (
+			  ('\\' '\'')=>'\\\'' 
+			| ~ ('\'' )
 		)* '\'';
-fragment
-ESC_SEQ_STRING_SINGLE_QUOTED
-	:	'\\' | '\'';
 	
 	
 STRING_DOUBLE_QUOTED
     	:	'"' (
-			( '\\' ESC_SEQ_STRING_SINGLE_QUOTED) => '\\' ESC_SEQ_STRING_SINGLE_QUOTED		
-    		 	| ('\u0000'..'\u0021') 
-    		 	| ('\u0023'..'\u005B') 
-    		 	| ('\u005D'..'\u00FF')
+			  ('\\' '"') => '\\"'
+			| ('\\' '$') => '\\$'
+			| ~ ('"' | '$')
   		)* '"';
-
-fragment
-ESC_SEQ_STRING_DOUBLE_QUOTED
-	:	'n' | 'r' | 't' | 'v' | 'e' | 'f' | '\\' | '"'
-    		| (HEX_BEGIN HEX_DIGIT HEX_DIGIT? )
-    		| (OCTAL_DIGIT (OCTAL_DIGIT OCTAL_DIGIT?)? )
-    		;
-
 
 //COMMENT
 //    :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}

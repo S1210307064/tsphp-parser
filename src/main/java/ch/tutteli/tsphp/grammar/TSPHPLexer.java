@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2012-12-11 21:48:26
+// $ANTLR 3.4 D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2012-12-12 14:44:38
 
 package ch.tutteli.tsphp.grammar;
 
@@ -15,33 +15,31 @@ public class TSPHPLexer extends Lexer {
     public static final int EOF=-1;
     public static final int BINARY=4;
     public static final int DECIMAL=5;
-    public static final int ESC_SEQ_STRING_DOUBLE_QUOTED=6;
-    public static final int ESC_SEQ_STRING_SINGLE_QUOTED=7;
-    public static final int EXPONENT=8;
-    public static final int Equal=9;
-    public static final int FALSE=10;
-    public static final int FLOAT=11;
-    public static final int HEXADECIMAL=12;
-    public static final int HEX_BEGIN=13;
-    public static final int HEX_DIGIT=14;
-    public static final int ID=15;
-    public static final int INT=16;
-    public static final int OCTAL=17;
-    public static final int OCTAL_DIGIT=18;
-    public static final int PLUSMINUS=19;
-    public static final int STRING_DOUBLE_QUOTED=20;
-    public static final int STRING_SINGLE_QUOTED=21;
-    public static final int Semicolon=22;
-    public static final int TRUE=23;
-    public static final int T_ARRAY=24;
-    public static final int T_BOOL=25;
-    public static final int T_BOOLEAN=26;
-    public static final int T_FLOAT=27;
-    public static final int T_INT=28;
-    public static final int T_RESOURCE=29;
-    public static final int T_STRING=30;
-    public static final int VARID=31;
-    public static final int WS=32;
+    public static final int EXPONENT=6;
+    public static final int Equal=7;
+    public static final int FALSE=8;
+    public static final int FLOAT=9;
+    public static final int HEXADECIMAL=10;
+    public static final int HEX_BEGIN=11;
+    public static final int HEX_DIGIT=12;
+    public static final int ID=13;
+    public static final int INT=14;
+    public static final int OCTAL=15;
+    public static final int OCTAL_DIGIT=16;
+    public static final int PLUSMINUS=17;
+    public static final int STRING_DOUBLE_QUOTED=18;
+    public static final int STRING_SINGLE_QUOTED=19;
+    public static final int Semicolon=20;
+    public static final int TRUE=21;
+    public static final int T_ARRAY=22;
+    public static final int T_BOOL=23;
+    public static final int T_BOOLEAN=24;
+    public static final int T_FLOAT=25;
+    public static final int T_INT=26;
+    public static final int T_RESOURCE=27;
+    public static final int T_STRING=28;
+    public static final int VARID=29;
+    public static final int WS=30;
 
     // delegates
     // delegators
@@ -1489,80 +1487,64 @@ public class TSPHPLexer extends Lexer {
         try {
             int _type = STRING_SINGLE_QUOTED;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:141:2: ( '\\'' ( ( '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED )=> '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED | ( '\\u0000' .. '\\u0026' ) | ( '\\u0028' .. '\\u005B' ) | ( '\\u005D' .. '\\u00FF' ) )* '\\'' )
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:141:4: '\\'' ( ( '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED )=> '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED | ( '\\u0000' .. '\\u0026' ) | ( '\\u0028' .. '\\u005B' ) | ( '\\u005D' .. '\\u00FF' ) )* '\\''
+            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:141:2: ( '\\'' ( ( '\\\\' '\\'' )=> '\\\\\\'' |~ ( '\\'' ) )* '\\'' )
+            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:141:4: '\\'' ( ( '\\\\' '\\'' )=> '\\\\\\'' |~ ( '\\'' ) )* '\\''
             {
             match('\''); if (state.failed) return ;
 
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:141:9: ( ( '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED )=> '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED | ( '\\u0000' .. '\\u0026' ) | ( '\\u0028' .. '\\u005B' ) | ( '\\u005D' .. '\\u00FF' ) )*
+            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:141:9: ( ( '\\\\' '\\'' )=> '\\\\\\'' |~ ( '\\'' ) )*
             loop24:
             do {
-                int alt24=5;
+                int alt24=3;
                 int LA24_0 = input.LA(1);
 
-                if ( (LA24_0=='\\') && (synpred1_TSPHP())) {
-                    alt24=1;
+                if ( (LA24_0=='\\') ) {
+                    int LA24_2 = input.LA(2);
+
+                    if ( (LA24_2=='\'') ) {
+                        int LA24_4 = input.LA(3);
+
+                        if ( (LA24_4=='\'') && (synpred1_TSPHP())) {
+                            alt24=1;
+                        }
+                        else if ( (LA24_4=='\\') && (synpred1_TSPHP())) {
+                            alt24=1;
+                        }
+                        else if ( ((LA24_4 >= '\u0000' && LA24_4 <= '&')||(LA24_4 >= '(' && LA24_4 <= '[')||(LA24_4 >= ']' && LA24_4 <= '\uFFFF')) && (synpred1_TSPHP())) {
+                            alt24=1;
+                        }
+
+                        else {
+                            alt24=2;
+                        }
+
+
+                    }
+                    else if ( ((LA24_2 >= '\u0000' && LA24_2 <= '&')||(LA24_2 >= '(' && LA24_2 <= '\uFFFF')) ) {
+                        alt24=2;
+                    }
+
+
                 }
-                else if ( ((LA24_0 >= '\u0000' && LA24_0 <= '&')) ) {
+                else if ( ((LA24_0 >= '\u0000' && LA24_0 <= '&')||(LA24_0 >= '(' && LA24_0 <= '[')||(LA24_0 >= ']' && LA24_0 <= '\uFFFF')) ) {
                     alt24=2;
-                }
-                else if ( ((LA24_0 >= '(' && LA24_0 <= '[')) ) {
-                    alt24=3;
-                }
-                else if ( ((LA24_0 >= ']' && LA24_0 <= '\u00FF')) ) {
-                    alt24=4;
                 }
 
 
                 switch (alt24) {
             	case 1 :
-            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:142:4: ( '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED )=> '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED
+            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:142:6: ( '\\\\' '\\'' )=> '\\\\\\''
             	    {
-            	    match('\\'); if (state.failed) return ;
+            	    match("\\'"); if (state.failed) return ;
 
-            	    mESC_SEQ_STRING_SINGLE_QUOTED(); if (state.failed) return ;
 
 
             	    }
             	    break;
             	case 2 :
-            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:143:6: ( '\\u0000' .. '\\u0026' )
+            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:143:6: ~ ( '\\'' )
             	    {
-            	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&') ) {
-            	        input.consume();
-            	        state.failed=false;
-            	    }
-            	    else {
-            	        if (state.backtracking>0) {state.failed=true; return ;}
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;
-            	    }
-
-
-            	    }
-            	    break;
-            	case 3 :
-            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:144:6: ( '\\u0028' .. '\\u005B' )
-            	    {
-            	    if ( (input.LA(1) >= '(' && input.LA(1) <= '[') ) {
-            	        input.consume();
-            	        state.failed=false;
-            	    }
-            	    else {
-            	        if (state.backtracking>0) {state.failed=true; return ;}
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;
-            	    }
-
-
-            	    }
-            	    break;
-            	case 4 :
-            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:145:6: ( '\\u005D' .. '\\u00FF' )
-            	    {
-            	    if ( (input.LA(1) >= ']' && input.LA(1) <= '\u00FF') ) {
+            	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
             	        state.failed=false;
             	    }
@@ -1596,113 +1578,81 @@ public class TSPHPLexer extends Lexer {
     }
     // $ANTLR end "STRING_SINGLE_QUOTED"
 
-    // $ANTLR start "ESC_SEQ_STRING_SINGLE_QUOTED"
-    public final void mESC_SEQ_STRING_SINGLE_QUOTED() throws RecognitionException {
-        try {
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:150:2: ( '\\\\' | '\\'' )
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
-            {
-            if ( input.LA(1)=='\''||input.LA(1)=='\\' ) {
-                input.consume();
-                state.failed=false;
-            }
-            else {
-                if (state.backtracking>0) {state.failed=true; return ;}
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;
-            }
-
-
-            }
-
-
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "ESC_SEQ_STRING_SINGLE_QUOTED"
-
     // $ANTLR start "STRING_DOUBLE_QUOTED"
     public final void mSTRING_DOUBLE_QUOTED() throws RecognitionException {
         try {
             int _type = STRING_DOUBLE_QUOTED;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:153:6: ( '\"' ( ( '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED )=> '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED | ( '\\u0000' .. '\\u0021' ) | ( '\\u0023' .. '\\u005B' ) | ( '\\u005D' .. '\\u00FF' ) )* '\"' )
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:153:8: '\"' ( ( '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED )=> '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED | ( '\\u0000' .. '\\u0021' ) | ( '\\u0023' .. '\\u005B' ) | ( '\\u005D' .. '\\u00FF' ) )* '\"'
+            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:148:6: ( '\"' ( ( '\\\\' '\"' )=> '\\\\\"' | ( '\\\\' '$' )=> '\\\\$' |~ ( '\"' | '$' ) )* '\"' )
+            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:148:8: '\"' ( ( '\\\\' '\"' )=> '\\\\\"' | ( '\\\\' '$' )=> '\\\\$' |~ ( '\"' | '$' ) )* '\"'
             {
             match('\"'); if (state.failed) return ;
 
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:153:12: ( ( '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED )=> '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED | ( '\\u0000' .. '\\u0021' ) | ( '\\u0023' .. '\\u005B' ) | ( '\\u005D' .. '\\u00FF' ) )*
+            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:148:12: ( ( '\\\\' '\"' )=> '\\\\\"' | ( '\\\\' '$' )=> '\\\\$' |~ ( '\"' | '$' ) )*
             loop25:
             do {
-                int alt25=5;
+                int alt25=4;
                 int LA25_0 = input.LA(1);
 
-                if ( (LA25_0=='\\') && (synpred2_TSPHP())) {
-                    alt25=1;
+                if ( (LA25_0=='\\') ) {
+                    int LA25_2 = input.LA(2);
+
+                    if ( (LA25_2=='\"') ) {
+                        int LA25_4 = input.LA(3);
+
+                        if ( (LA25_4=='\"') && (synpred2_TSPHP())) {
+                            alt25=1;
+                        }
+                        else if ( (LA25_4=='\\') && (synpred2_TSPHP())) {
+                            alt25=1;
+                        }
+                        else if ( ((LA25_4 >= '\u0000' && LA25_4 <= '!')||LA25_4=='#'||(LA25_4 >= '%' && LA25_4 <= '[')||(LA25_4 >= ']' && LA25_4 <= '\uFFFF')) && (synpred2_TSPHP())) {
+                            alt25=1;
+                        }
+
+                        else {
+                            alt25=3;
+                        }
+
+
+                    }
+                    else if ( (LA25_2=='$') && (synpred3_TSPHP())) {
+                        alt25=2;
+                    }
+                    else if ( ((LA25_2 >= '\u0000' && LA25_2 <= '!')||LA25_2=='#'||(LA25_2 >= '%' && LA25_2 <= '\uFFFF')) ) {
+                        alt25=3;
+                    }
+
+
                 }
-                else if ( ((LA25_0 >= '\u0000' && LA25_0 <= '!')) ) {
-                    alt25=2;
-                }
-                else if ( ((LA25_0 >= '#' && LA25_0 <= '[')) ) {
+                else if ( ((LA25_0 >= '\u0000' && LA25_0 <= '!')||LA25_0=='#'||(LA25_0 >= '%' && LA25_0 <= '[')||(LA25_0 >= ']' && LA25_0 <= '\uFFFF')) ) {
                     alt25=3;
-                }
-                else if ( ((LA25_0 >= ']' && LA25_0 <= '\u00FF')) ) {
-                    alt25=4;
                 }
 
 
                 switch (alt25) {
             	case 1 :
-            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:154:4: ( '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED )=> '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED
+            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:149:6: ( '\\\\' '\"' )=> '\\\\\"'
             	    {
-            	    match('\\'); if (state.failed) return ;
+            	    match("\\\""); if (state.failed) return ;
 
-            	    mESC_SEQ_STRING_SINGLE_QUOTED(); if (state.failed) return ;
 
 
             	    }
             	    break;
             	case 2 :
-            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:155:11: ( '\\u0000' .. '\\u0021' )
+            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:150:6: ( '\\\\' '$' )=> '\\\\$'
             	    {
-            	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!') ) {
-            	        input.consume();
-            	        state.failed=false;
-            	    }
-            	    else {
-            	        if (state.backtracking>0) {state.failed=true; return ;}
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;
-            	    }
+            	    match("\\$"); if (state.failed) return ;
+
 
 
             	    }
             	    break;
             	case 3 :
-            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:156:11: ( '\\u0023' .. '\\u005B' )
+            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:151:6: ~ ( '\"' | '$' )
             	    {
-            	    if ( (input.LA(1) >= '#' && input.LA(1) <= '[') ) {
-            	        input.consume();
-            	        state.failed=false;
-            	    }
-            	    else {
-            	        if (state.backtracking>0) {state.failed=true; return ;}
-            	        MismatchedSetException mse = new MismatchedSetException(null,input);
-            	        recover(mse);
-            	        throw mse;
-            	    }
-
-
-            	    }
-            	    break;
-            	case 4 :
-            	    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:157:11: ( '\\u005D' .. '\\u00FF' )
-            	    {
-            	    if ( (input.LA(1) >= ']' && input.LA(1) <= '\u00FF') ) {
+            	    if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||input.LA(1)=='#'||(input.LA(1) >= '%' && input.LA(1) <= '\uFFFF') ) {
             	        input.consume();
             	        state.failed=false;
             	    }
@@ -1736,262 +1686,13 @@ public class TSPHPLexer extends Lexer {
     }
     // $ANTLR end "STRING_DOUBLE_QUOTED"
 
-    // $ANTLR start "ESC_SEQ_STRING_DOUBLE_QUOTED"
-    public final void mESC_SEQ_STRING_DOUBLE_QUOTED() throws RecognitionException {
-        try {
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:163:2: ( 'n' | 'r' | 't' | 'v' | 'e' | 'f' | '\\\\' | '\"' | ( HEX_BEGIN HEX_DIGIT ( HEX_DIGIT )? ) | ( OCTAL_DIGIT ( OCTAL_DIGIT ( OCTAL_DIGIT )? )? ) )
-            int alt29=10;
-            switch ( input.LA(1) ) {
-            case 'n':
-                {
-                alt29=1;
-                }
-                break;
-            case 'r':
-                {
-                alt29=2;
-                }
-                break;
-            case 't':
-                {
-                alt29=3;
-                }
-                break;
-            case 'v':
-                {
-                alt29=4;
-                }
-                break;
-            case 'e':
-                {
-                alt29=5;
-                }
-                break;
-            case 'f':
-                {
-                alt29=6;
-                }
-                break;
-            case '\\':
-                {
-                alt29=7;
-                }
-                break;
-            case '\"':
-                {
-                alt29=8;
-                }
-                break;
-            case 'X':
-            case 'x':
-                {
-                alt29=9;
-                }
-                break;
-            case '0':
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-                {
-                alt29=10;
-                }
-                break;
-            default:
-                if (state.backtracking>0) {state.failed=true; return ;}
-                NoViableAltException nvae =
-                    new NoViableAltException("", 29, 0, input);
-
-                throw nvae;
-
-            }
-
-            switch (alt29) {
-                case 1 :
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:163:4: 'n'
-                    {
-                    match('n'); if (state.failed) return ;
-
-                    }
-                    break;
-                case 2 :
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:163:10: 'r'
-                    {
-                    match('r'); if (state.failed) return ;
-
-                    }
-                    break;
-                case 3 :
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:163:16: 't'
-                    {
-                    match('t'); if (state.failed) return ;
-
-                    }
-                    break;
-                case 4 :
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:163:22: 'v'
-                    {
-                    match('v'); if (state.failed) return ;
-
-                    }
-                    break;
-                case 5 :
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:163:28: 'e'
-                    {
-                    match('e'); if (state.failed) return ;
-
-                    }
-                    break;
-                case 6 :
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:163:34: 'f'
-                    {
-                    match('f'); if (state.failed) return ;
-
-                    }
-                    break;
-                case 7 :
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:163:40: '\\\\'
-                    {
-                    match('\\'); if (state.failed) return ;
-
-                    }
-                    break;
-                case 8 :
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:163:47: '\"'
-                    {
-                    match('\"'); if (state.failed) return ;
-
-                    }
-                    break;
-                case 9 :
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:164:9: ( HEX_BEGIN HEX_DIGIT ( HEX_DIGIT )? )
-                    {
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:164:9: ( HEX_BEGIN HEX_DIGIT ( HEX_DIGIT )? )
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:164:10: HEX_BEGIN HEX_DIGIT ( HEX_DIGIT )?
-                    {
-                    mHEX_BEGIN(); if (state.failed) return ;
-
-
-                    mHEX_DIGIT(); if (state.failed) return ;
-
-
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:164:30: ( HEX_DIGIT )?
-                    int alt26=2;
-                    int LA26_0 = input.LA(1);
-
-                    if ( ((LA26_0 >= '0' && LA26_0 <= '9')||(LA26_0 >= 'A' && LA26_0 <= 'F')||(LA26_0 >= 'a' && LA26_0 <= 'f')) ) {
-                        alt26=1;
-                    }
-                    switch (alt26) {
-                        case 1 :
-                            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
-                            {
-                            if ( (input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'F')||(input.LA(1) >= 'a' && input.LA(1) <= 'f') ) {
-                                input.consume();
-                                state.failed=false;
-                            }
-                            else {
-                                if (state.backtracking>0) {state.failed=true; return ;}
-                                MismatchedSetException mse = new MismatchedSetException(null,input);
-                                recover(mse);
-                                throw mse;
-                            }
-
-
-                            }
-                            break;
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-                case 10 :
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:9: ( OCTAL_DIGIT ( OCTAL_DIGIT ( OCTAL_DIGIT )? )? )
-                    {
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:9: ( OCTAL_DIGIT ( OCTAL_DIGIT ( OCTAL_DIGIT )? )? )
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:10: OCTAL_DIGIT ( OCTAL_DIGIT ( OCTAL_DIGIT )? )?
-                    {
-                    mOCTAL_DIGIT(); if (state.failed) return ;
-
-
-                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:22: ( OCTAL_DIGIT ( OCTAL_DIGIT )? )?
-                    int alt28=2;
-                    int LA28_0 = input.LA(1);
-
-                    if ( ((LA28_0 >= '0' && LA28_0 <= '7')) ) {
-                        alt28=1;
-                    }
-                    switch (alt28) {
-                        case 1 :
-                            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:23: OCTAL_DIGIT ( OCTAL_DIGIT )?
-                            {
-                            mOCTAL_DIGIT(); if (state.failed) return ;
-
-
-                            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:35: ( OCTAL_DIGIT )?
-                            int alt27=2;
-                            int LA27_0 = input.LA(1);
-
-                            if ( ((LA27_0 >= '0' && LA27_0 <= '7')) ) {
-                                alt27=1;
-                            }
-                            switch (alt27) {
-                                case 1 :
-                                    // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
-                                    {
-                                    if ( (input.LA(1) >= '0' && input.LA(1) <= '7') ) {
-                                        input.consume();
-                                        state.failed=false;
-                                    }
-                                    else {
-                                        if (state.backtracking>0) {state.failed=true; return ;}
-                                        MismatchedSetException mse = new MismatchedSetException(null,input);
-                                        recover(mse);
-                                        throw mse;
-                                    }
-
-
-                                    }
-                                    break;
-
-                            }
-
-
-                            }
-                            break;
-
-                    }
-
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "ESC_SEQ_STRING_DOUBLE_QUOTED"
-
     // $ANTLR start "WS"
     public final void mWS() throws RecognitionException {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:173:4: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:173:6: ( ' ' | '\\t' | '\\r' | '\\n' )
+            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:159:4: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:159:6: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
             if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
@@ -2020,9 +1721,9 @@ public class TSPHPLexer extends Lexer {
 
     public void mTokens() throws RecognitionException {
         // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:1:8: ( Equal | FALSE | Semicolon | TRUE | T_ARRAY | T_BOOL | T_BOOLEAN | T_FLOAT | T_INT | T_RESOURCE | T_STRING | VARID | INT | FLOAT | STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED | WS )
-        int alt30=17;
-        alt30 = dfa30.predict(input);
-        switch (alt30) {
+        int alt26=17;
+        alt26 = dfa26.predict(input);
+        switch (alt26) {
             case 1 :
                 // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:1:10: Equal
                 {
@@ -2166,13 +1867,12 @@ public class TSPHPLexer extends Lexer {
 
     // $ANTLR start synpred1_TSPHP
     public final void synpred1_TSPHP_fragment() throws RecognitionException {
-        // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:142:4: ( '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED )
-        // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:142:5: '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED
+        // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:142:6: ( '\\\\' '\\'' )
+        // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:142:7: '\\\\' '\\''
         {
         match('\\'); if (state.failed) return ;
 
-        mESC_SEQ_STRING_SINGLE_QUOTED(); if (state.failed) return ;
-
+        match('\''); if (state.failed) return ;
 
         }
 
@@ -2181,18 +1881,31 @@ public class TSPHPLexer extends Lexer {
 
     // $ANTLR start synpred2_TSPHP
     public final void synpred2_TSPHP_fragment() throws RecognitionException {
-        // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:154:4: ( '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED )
-        // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:154:6: '\\\\' ESC_SEQ_STRING_SINGLE_QUOTED
+        // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:149:6: ( '\\\\' '\"' )
+        // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:149:7: '\\\\' '\"'
         {
         match('\\'); if (state.failed) return ;
 
-        mESC_SEQ_STRING_SINGLE_QUOTED(); if (state.failed) return ;
-
+        match('\"'); if (state.failed) return ;
 
         }
 
     }
     // $ANTLR end synpred2_TSPHP
+
+    // $ANTLR start synpred3_TSPHP
+    public final void synpred3_TSPHP_fragment() throws RecognitionException {
+        // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:150:6: ( '\\\\' '$' )
+        // D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:150:7: '\\\\' '$'
+        {
+        match('\\'); if (state.failed) return ;
+
+        match('$'); if (state.failed) return ;
+
+        }
+
+    }
+    // $ANTLR end synpred3_TSPHP
 
     public final boolean synpred1_TSPHP() {
         state.backtracking++;
@@ -2222,10 +1935,24 @@ public class TSPHPLexer extends Lexer {
         state.failed=false;
         return success;
     }
+    public final boolean synpred3_TSPHP() {
+        state.backtracking++;
+        int start = input.mark();
+        try {
+            synpred3_TSPHP_fragment(); // can never throw exception
+        } catch (RecognitionException re) {
+            System.err.println("impossible: "+re);
+        }
+        boolean success = !state.failed;
+        input.rewind(start);
+        state.backtracking--;
+        state.failed=false;
+        return success;
+    }
 
 
     protected DFA21 dfa21 = new DFA21(this);
-    protected DFA30 dfa30 = new DFA30(this);
+    protected DFA26 dfa26 = new DFA26(this);
     static final String DFA21_eotS =
         "\6\uffff";
     static final String DFA21_eofS =
@@ -2280,22 +2007,22 @@ public class TSPHPLexer extends Lexer {
             return "127:1: FLOAT : ( ( PLUSMINUS )? ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | ( PLUSMINUS )? '.' ( '0' .. '9' )+ ( EXPONENT )? | ( PLUSMINUS )? ( '0' .. '9' )+ EXPONENT );";
         }
     }
-    static final String DFA30_eotS =
+    static final String DFA26_eotS =
         "\14\uffff\2\26\7\uffff\1\26\1\uffff\1\26\1\uffff\1\33\2\uffff";
-    static final String DFA30_eofS =
+    static final String DFA26_eofS =
         "\34\uffff";
-    static final String DFA30_minS =
+    static final String DFA26_minS =
         "\1\11\1\uffff\1\141\3\uffff\1\157\4\uffff\3\56\6\uffff\1\157\1\56"+
         "\1\uffff\1\56\1\154\1\145\2\uffff";
-    static final String DFA30_maxS =
+    static final String DFA26_maxS =
         "\1\164\1\uffff\1\154\3\uffff\1\157\4\uffff\1\71\2\145\6\uffff\1"+
         "\157\1\145\1\uffff\1\145\1\154\1\145\2\uffff";
-    static final String DFA30_acceptS =
+    static final String DFA26_acceptS =
         "\1\uffff\1\1\1\uffff\1\3\1\4\1\5\1\uffff\1\11\1\12\1\13\1\14\3\uffff"+
         "\1\16\1\17\1\20\1\21\1\2\1\10\2\uffff\1\15\3\uffff\1\7\1\6";
-    static final String DFA30_specialS =
+    static final String DFA26_specialS =
         "\34\uffff}>";
-    static final String[] DFA30_transitionS = {
+    static final String[] DFA26_transitionS = {
             "\2\21\2\uffff\1\21\22\uffff\1\21\1\uffff\1\20\1\uffff\1\12\2"+
             "\uffff\1\17\3\uffff\1\13\1\uffff\1\13\1\16\1\uffff\1\15\11\14"+
             "\1\uffff\1\3\1\uffff\1\1\43\uffff\1\5\1\6\3\uffff\1\2\2\uffff"+
@@ -2329,34 +2056,34 @@ public class TSPHPLexer extends Lexer {
             ""
     };
 
-    static final short[] DFA30_eot = DFA.unpackEncodedString(DFA30_eotS);
-    static final short[] DFA30_eof = DFA.unpackEncodedString(DFA30_eofS);
-    static final char[] DFA30_min = DFA.unpackEncodedStringToUnsignedChars(DFA30_minS);
-    static final char[] DFA30_max = DFA.unpackEncodedStringToUnsignedChars(DFA30_maxS);
-    static final short[] DFA30_accept = DFA.unpackEncodedString(DFA30_acceptS);
-    static final short[] DFA30_special = DFA.unpackEncodedString(DFA30_specialS);
-    static final short[][] DFA30_transition;
+    static final short[] DFA26_eot = DFA.unpackEncodedString(DFA26_eotS);
+    static final short[] DFA26_eof = DFA.unpackEncodedString(DFA26_eofS);
+    static final char[] DFA26_min = DFA.unpackEncodedStringToUnsignedChars(DFA26_minS);
+    static final char[] DFA26_max = DFA.unpackEncodedStringToUnsignedChars(DFA26_maxS);
+    static final short[] DFA26_accept = DFA.unpackEncodedString(DFA26_acceptS);
+    static final short[] DFA26_special = DFA.unpackEncodedString(DFA26_specialS);
+    static final short[][] DFA26_transition;
 
     static {
-        int numStates = DFA30_transitionS.length;
-        DFA30_transition = new short[numStates][];
+        int numStates = DFA26_transitionS.length;
+        DFA26_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA30_transition[i] = DFA.unpackEncodedString(DFA30_transitionS[i]);
+            DFA26_transition[i] = DFA.unpackEncodedString(DFA26_transitionS[i]);
         }
     }
 
-    class DFA30 extends DFA {
+    class DFA26 extends DFA {
 
-        public DFA30(BaseRecognizer recognizer) {
+        public DFA26(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 30;
-            this.eot = DFA30_eot;
-            this.eof = DFA30_eof;
-            this.min = DFA30_min;
-            this.max = DFA30_max;
-            this.accept = DFA30_accept;
-            this.special = DFA30_special;
-            this.transition = DFA30_transition;
+            this.decisionNumber = 26;
+            this.eot = DFA26_eot;
+            this.eof = DFA26_eof;
+            this.min = DFA26_min;
+            this.max = DFA26_max;
+            this.accept = DFA26_accept;
+            this.special = DFA26_special;
+            this.transition = DFA26_transition;
         }
         public String getDescription() {
             return "1:1: Tokens : ( Equal | FALSE | Semicolon | TRUE | T_ARRAY | T_BOOL | T_BOOLEAN | T_FLOAT | T_INT | T_RESOURCE | T_STRING | VARID | INT | FLOAT | STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED | WS );";

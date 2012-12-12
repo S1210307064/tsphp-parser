@@ -50,10 +50,6 @@ public abstract class AParserTest
         Assert.assertTrue(testString + " failed, parser threw exception(s) - see output", parser.getExceptions().isEmpty());
     }
 
-    public void parseExpectingException() throws RecognitionException {
-        parse(testString);
-    }
-
     public void noErrorsOnOutput() {
         isErrorReportingOn = false;
     }
@@ -62,7 +58,7 @@ public abstract class AParserTest
         isErrorReportingOn = true;
     }
 
-    private void parse(String testString) throws RecognitionException {
+    protected void parse(String testString) throws RecognitionException {
         CharStream stream = new ANTLRStringStream(testString);
         lexer = new TestTSPHPLexer(stream);
         lexer.setErrorReporting(isErrorReportingOn);

@@ -16,11 +16,10 @@
  */
 package ch.tutteli.tsphp.grammar;
 
+import ch.tutteli.tsphp.grammar.utils.AParserExceptionTest;
 import ch.tutteli.tsphp.grammar.utils.AParserTest;
 import java.util.List;
 import org.antlr.runtime.EarlyExitException;
-import org.antlr.runtime.MismatchedTokenException;
-import org.antlr.runtime.MissingTokenException;
 import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Assert;
@@ -30,43 +29,33 @@ import org.junit.Test;
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-public class VariableDeclarationParserErrorTest extends AParserTest
+public class VariableDeclarationParserErrorTest extends AParserExceptionTest
 {
 
     @Test
     public void testTypeMissing() throws RecognitionException {
-        noErrorsOnOutput();
         testString = "$a;";
+        token = TSPHPParser.VARID;
+        position = 0;
+        exceptionType = EarlyExitException.class;
         super.parseExpectingException();
-        check(EarlyExitException.class, TSPHPParser.VARID, 0);
     }
 
     @Test
     public void testMissingSemicolon() throws RecognitionException {
-        noErrorsOnOutput();
         testString = "int $a int $b;";
+        token = TSPHPParser.T_INT;
+        position = 0;
+        exceptionType = NoViableAltException.class;
         super.parseExpectingException();
-        check(NoViableAltException.class, TSPHPParser.T_INT, 0);
     }
 
     @Test
     public void testMissingSemicolonEndOfFile() throws RecognitionException {
-        noErrorsOnOutput();
         testString = "int $a";
+        token = TSPHPParser.T_INT;
+        position = 0;
+        exceptionType = NoViableAltException.class;
         super.parseExpectingException();
-        check(NoViableAltException.class, TSPHPParser.T_INT, 0);
-    }
-
-    private void check(Class<? extends RecognitionException> type, int token, int position) throws RecognitionException {
-
-        Assert.assertTrue(lexer.getExceptions().isEmpty());
-
-        List<RecognitionException> exceptions = parser.getExceptions();;
-        Assert.assertFalse(exceptions.isEmpty());
-        RecognitionException ex = exceptions.get(0);
-        Assert.assertEquals(type, ex.getClass());
-        Assert.assertEquals("position wrong", position, ex.charPositionInLine);
-        Assert.assertEquals("token wrong", token, ex.c);
-
     }
 }

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2012-12-11 21:48:26
+// $ANTLR 3.4 D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2012-12-12 14:44:38
 
 package ch.tutteli.tsphp.grammar;
 
@@ -11,39 +11,37 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class TSPHPParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "BINARY", "DECIMAL", "ESC_SEQ_STRING_DOUBLE_QUOTED", "ESC_SEQ_STRING_SINGLE_QUOTED", "EXPONENT", "Equal", "FALSE", "FLOAT", "HEXADECIMAL", "HEX_BEGIN", "HEX_DIGIT", "ID", "INT", "OCTAL", "OCTAL_DIGIT", "PLUSMINUS", "STRING_DOUBLE_QUOTED", "STRING_SINGLE_QUOTED", "Semicolon", "TRUE", "T_ARRAY", "T_BOOL", "T_BOOLEAN", "T_FLOAT", "T_INT", "T_RESOURCE", "T_STRING", "VARID", "WS"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "BINARY", "DECIMAL", "EXPONENT", "Equal", "FALSE", "FLOAT", "HEXADECIMAL", "HEX_BEGIN", "HEX_DIGIT", "ID", "INT", "OCTAL", "OCTAL_DIGIT", "PLUSMINUS", "STRING_DOUBLE_QUOTED", "STRING_SINGLE_QUOTED", "Semicolon", "TRUE", "T_ARRAY", "T_BOOL", "T_BOOLEAN", "T_FLOAT", "T_INT", "T_RESOURCE", "T_STRING", "VARID", "WS"
     };
 
     public static final int EOF=-1;
     public static final int BINARY=4;
     public static final int DECIMAL=5;
-    public static final int ESC_SEQ_STRING_DOUBLE_QUOTED=6;
-    public static final int ESC_SEQ_STRING_SINGLE_QUOTED=7;
-    public static final int EXPONENT=8;
-    public static final int Equal=9;
-    public static final int FALSE=10;
-    public static final int FLOAT=11;
-    public static final int HEXADECIMAL=12;
-    public static final int HEX_BEGIN=13;
-    public static final int HEX_DIGIT=14;
-    public static final int ID=15;
-    public static final int INT=16;
-    public static final int OCTAL=17;
-    public static final int OCTAL_DIGIT=18;
-    public static final int PLUSMINUS=19;
-    public static final int STRING_DOUBLE_QUOTED=20;
-    public static final int STRING_SINGLE_QUOTED=21;
-    public static final int Semicolon=22;
-    public static final int TRUE=23;
-    public static final int T_ARRAY=24;
-    public static final int T_BOOL=25;
-    public static final int T_BOOLEAN=26;
-    public static final int T_FLOAT=27;
-    public static final int T_INT=28;
-    public static final int T_RESOURCE=29;
-    public static final int T_STRING=30;
-    public static final int VARID=31;
-    public static final int WS=32;
+    public static final int EXPONENT=6;
+    public static final int Equal=7;
+    public static final int FALSE=8;
+    public static final int FLOAT=9;
+    public static final int HEXADECIMAL=10;
+    public static final int HEX_BEGIN=11;
+    public static final int HEX_DIGIT=12;
+    public static final int ID=13;
+    public static final int INT=14;
+    public static final int OCTAL=15;
+    public static final int OCTAL_DIGIT=16;
+    public static final int PLUSMINUS=17;
+    public static final int STRING_DOUBLE_QUOTED=18;
+    public static final int STRING_SINGLE_QUOTED=19;
+    public static final int Semicolon=20;
+    public static final int TRUE=21;
+    public static final int T_ARRAY=22;
+    public static final int T_BOOL=23;
+    public static final int T_BOOLEAN=24;
+    public static final int T_FLOAT=25;
+    public static final int T_INT=26;
+    public static final int T_RESOURCE=27;
+    public static final int T_STRING=28;
+    public static final int VARID=29;
+    public static final int WS=30;
 
     // delegates
     public Parser[] getDelegates() {
@@ -665,36 +663,36 @@ public class TSPHPParser extends Parser {
 
  
 
-    public static final BitSet FOLLOW_stat_in_prog118 = new BitSet(new long[]{0x000000007F000002L});
+    public static final BitSet FOLLOW_stat_in_prog118 = new BitSet(new long[]{0x000000001FC00002L});
     public static final BitSet FOLLOW_varDecl_in_stat127 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_varAssign_in_stat132 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_type_in_varDecl141 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_VARID_in_varDecl143 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_type_in_varDecl141 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_VARID_in_varDecl143 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_Semicolon_in_varDecl146 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_primitiveTypes_in_type155 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_boolAssign_in_varAssign262 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_intAssign_in_varAssign268 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_floatAssign_in_varAssign274 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_stringAssign_in_varAssign279 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_boolAssign293 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_VARID_in_boolAssign299 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_Equal_in_boolAssign301 = new BitSet(new long[]{0x0000000000800400L});
-    public static final BitSet FOLLOW_set_in_boolAssign303 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_set_in_boolAssign293 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_VARID_in_boolAssign299 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_Equal_in_boolAssign301 = new BitSet(new long[]{0x0000000000200100L});
+    public static final BitSet FOLLOW_set_in_boolAssign303 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_Semicolon_in_boolAssign309 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_T_INT_in_intAssign320 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_VARID_in_intAssign322 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_Equal_in_intAssign324 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_INT_in_intAssign326 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_T_INT_in_intAssign320 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_VARID_in_intAssign322 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_Equal_in_intAssign324 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_INT_in_intAssign326 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_Semicolon_in_intAssign328 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_T_FLOAT_in_floatAssign611 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_VARID_in_floatAssign613 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_Equal_in_floatAssign615 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_FLOAT_in_floatAssign617 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_T_FLOAT_in_floatAssign611 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_VARID_in_floatAssign613 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_Equal_in_floatAssign615 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_FLOAT_in_floatAssign617 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_Semicolon_in_floatAssign619 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_T_STRING_in_stringAssign738 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_VARID_in_stringAssign740 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_Equal_in_stringAssign742 = new BitSet(new long[]{0x0000000000300000L});
-    public static final BitSet FOLLOW_set_in_stringAssign744 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_T_STRING_in_stringAssign738 = new BitSet(new long[]{0x0000000020000000L});
+    public static final BitSet FOLLOW_VARID_in_stringAssign740 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_Equal_in_stringAssign742 = new BitSet(new long[]{0x00000000000C0000L});
+    public static final BitSet FOLLOW_set_in_stringAssign744 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_Semicolon_in_stringAssign752 = new BitSet(new long[]{0x0000000000000002L});
 
 }
