@@ -17,13 +17,9 @@
 package ch.tutteli.tsphp.grammar;
 
 import ch.tutteli.tsphp.grammar.utils.ALexerExceptionTest;
-import ch.tutteli.tsphp.grammar.utils.AParserTest;
-import ch.tutteli.tsphp.grammar.utils.IdentifierHelper;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -33,11 +29,11 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentWrongStringTest extends ALexerExceptionTest
+public class AssignmentWrongIntLexerTest extends ALexerExceptionTest
 {
 
-    public AssignmentWrongStringTest(String testString, int character, int position) {
-        super(testString, character, position);
+    public AssignmentWrongIntLexerTest(String testString, int character, int position) {
+        super(testString, RecognitionException.class, character, position);
 
     }
 
@@ -49,14 +45,21 @@ public class AssignmentWrongStringTest extends ALexerExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    //testStringSingleQuotedAssignment
-                    {"string $a = ''';", -1, 16},
-                    //testStringDoubleQuotedAssignment
-                    {"string $a = \" \" \";", -1, 18},
-                    // single $ are allowed in PHP but not in TSPHP as well
-                    {"string $a = \" $ \";", '$', 14},
-                    // $0 cannot be a variable and is therefore allowed in PHP, but not in TSPHP (so far)
-                    {"string $a = \" $0123456789 \";", '$', 14}
+                    //wrong octal
+                    {"int $a = 08;", ';', 11},
+                    {"int $a = 0o1;", (int)'o', 10},
+                    {"int $a = 0O1;", (int)'O', 10},
+                    {"int $a = o1;", (int)'o', 9},
+                    {"int $a = O1;", (int)'O', 9},
+                    //wrong hex
+                    {"int $a = 0xG;", (int) 'G', 11},
+                    {"int $a = 0XH;", (int) 'H', 11},
+                    {"int $a = xA;", (int) 'x', 9},
+                    {"int $a = XF;", (int) 'X', 9},
+                    //wrong binary
+                    {"int $b = 0b2;", (int) '2', 11},
+                    {"int $b = b1;", (int) '1', 10},
+                    {"int $b = b0;", (int) '0', 10}
                 });
     }
 }

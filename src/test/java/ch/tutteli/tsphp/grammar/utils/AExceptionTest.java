@@ -14,18 +14,30 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar;
+package ch.tutteli.tsphp.grammar.utils;
 
-import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
+import org.junit.Ignore;
 
 /**
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-public class Debug {
-    public static void main(String[] args) throws RecognitionException {
-        
-        
+@Ignore
+public class AExceptionTest extends ATest
+{
+    protected int position;
+    protected int token;
+    protected Class<? extends RecognitionException> exceptionType;
+
+    public AExceptionTest() {
+    }
+
+    public AExceptionTest(String testString, Class<? extends RecognitionException> type, int aToken, int aPosition) {
+        super(testString);
+        noErrorsOnOutput();
+        position = aPosition;
+        token = aToken;
+        exceptionType = type;
     }
 }

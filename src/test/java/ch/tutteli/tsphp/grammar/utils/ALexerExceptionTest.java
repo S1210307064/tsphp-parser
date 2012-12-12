@@ -27,26 +27,21 @@ import org.junit.Test;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @Ignore
-public abstract class ALexerExceptionTest extends AParserTest
+public abstract class ALexerExceptionTest extends AExceptionTest
 {
 
-    protected int position;
-    protected int character;
-
-    public ALexerExceptionTest(String testString, int aCharacter, int aPosition) {
-        super(testString);
-        noErrorsOnOutput();
-        position = aPosition;
-        character = aCharacter;
+    public ALexerExceptionTest(String testString, Class<? extends RecognitionException> type, int character, int position) {
+        super(testString, type, character, position);
     }
+
     public void parseExpectingException() throws RecognitionException {
         super.parse(testString);
-        
+
         List<RecognitionException> exceptions = lexer.getExceptions();;
         Assert.assertFalse(testString + " - exceptions is empty ", exceptions.isEmpty());
         RecognitionException ex = exceptions.get(0);
-        Assert.assertTrue(testString + " - wrong type", ex instanceof RecognitionException);
-        Assert.assertEquals(testString + " - wrong character", character, ex.c);
+        Assert.assertTrue(testString + " - wrong type", exceptionType.isInstance(ex));
+        Assert.assertEquals(testString + " - wrong character", token, ex.c);
         Assert.assertEquals(testString + " - wrong position", position, ex.charPositionInLine);
     }
 }

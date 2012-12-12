@@ -33,9 +33,41 @@ tokens{
 }
 
 @header{
+/*
+ * Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
 package ch.tutteli.tsphp.grammar;
 }
 @lexer::header{
+/*
+ * Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ */
 package ch.tutteli.tsphp.grammar;
 }
 prog	:	stat+;
@@ -83,15 +115,12 @@ intAssign
 	:	T_INT VARID '=' INT ';';
 
 
-INT     : 	PLUSMINUS? DECIMAL
-        | 	PLUSMINUS? HEXADECIMAL
-        | 	PLUSMINUS? OCTAL
-        | 	PLUSMINUS? BINARY
+INT     : 	('+'|'-')? DECIMAL
+        | 	('+'|'-')? HEXADECIMAL
+        | 	('+'|'-')? OCTAL
+        | 	('+'|'-')? BINARY
         ;
-        
-fragment           
-PLUSMINUS	
-	:	('+'|'-');
+
 
 fragment
 DECIMAL     
@@ -101,20 +130,11 @@ DECIMAL
         
 fragment          
 HEXADECIMAL 
-	:	'0' HEX_BEGIN HEX_DIGIT+;
+	:	'0' ('x'|'X') ('0'..'9'|'a'..'f'|'A'..'F')+;
 
 fragment
-HEX_BEGIN
-	:	('x'|'X');
-fragment
-HEX_DIGIT
-	:	('0'..'9'|'a'..'f'|'A'..'F');
-fragment
-OCTAL	:	'0' OCTAL_DIGIT+;
+OCTAL	:	'0' ('0'..'7')+;
 
-fragment
-OCTAL_DIGIT
-	:	('0'..'7');
 
 fragment
 BINARY	:	'0b'('0'|'1')+;
@@ -125,13 +145,13 @@ floatAssign
 
 
 FLOAT
-    	:	PLUSMINUS? ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
-    	|	PLUSMINUS? '.' ('0'..'9')+ EXPONENT?
-    	|	PLUSMINUS? ('0'..'9')+ EXPONENT
+    	:	('+'|'-')? ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
+    	|	('+'|'-')? '.' ('0'..'9')+ EXPONENT?
+    	|	('+'|'-')? ('0'..'9')+ EXPONENT
     	;
     
 fragment
-EXPONENT : ('e'|'E') PLUSMINUS? ('0'..'9')+ ;
+EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
 
 stringAssign
 	:	T_STRING VARID '=' (STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED) ';';
@@ -139,14 +159,16 @@ stringAssign
 
 STRING_SINGLE_QUOTED
 	:	'\'' (
-			  ('\\' '\'')=>'\\\'' 
+			  ('\\' '\\')=>'\\' '\\' 
+			|  ('\\' '\'')=>'\\' '\'' 
 			| ~ ('\'' )
 		)* '\'';
 	
 	
 STRING_DOUBLE_QUOTED
     	:	'"' (
-			  ('\\' '"') => '\\"'
+			  ('\\' '\\') => '\\\\'
+			|  ('\\' '"') => '\\"'
 			| ('\\' '$') => '\\$'
 			| ~ ('"' | '$')
   		)* '"';

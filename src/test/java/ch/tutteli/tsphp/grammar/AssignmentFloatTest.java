@@ -16,7 +16,7 @@
  */
 package ch.tutteli.tsphp.grammar;
 
-import ch.tutteli.tsphp.grammar.utils.AParserTest;
+import ch.tutteli.tsphp.grammar.utils.ATest;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
@@ -29,7 +29,7 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentFloatTest extends AParserTest
+public class AssignmentFloatTest extends ATest
 {
 
     public AssignmentFloatTest(String testString) {

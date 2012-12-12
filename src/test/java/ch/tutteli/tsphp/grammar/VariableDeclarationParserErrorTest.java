@@ -17,12 +17,9 @@
 package ch.tutteli.tsphp.grammar;
 
 import ch.tutteli.tsphp.grammar.utils.AParserExceptionTest;
-import ch.tutteli.tsphp.grammar.utils.AParserTest;
-import java.util.List;
 import org.antlr.runtime.EarlyExitException;
 import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
-import org.junit.Assert;
 import org.junit.Test;
 
 /**
@@ -44,6 +41,15 @@ public class VariableDeclarationParserErrorTest extends AParserExceptionTest
     @Test
     public void testMissingSemicolon() throws RecognitionException {
         testString = "int $a int $b;";
+        token = TSPHPParser.T_INT;
+        position = 0;
+        exceptionType = NoViableAltException.class;
+        super.parseExpectingException();
+    }
+
+    @Test
+    public void testWrongSemicolon() throws RecognitionException {
+        testString = "int $a 1";
         token = TSPHPParser.T_INT;
         position = 0;
         exceptionType = NoViableAltException.class;

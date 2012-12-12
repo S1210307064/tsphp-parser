@@ -17,12 +17,9 @@
 package ch.tutteli.tsphp.grammar;
 
 import ch.tutteli.tsphp.grammar.utils.ALexerExceptionTest;
-import ch.tutteli.tsphp.grammar.utils.AParserTest;
 import ch.tutteli.tsphp.grammar.utils.VariantionHelper;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -32,11 +29,11 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableDeclarationWrongTypeTest extends ALexerExceptionTest
+public class VariableDeclarationWrongTypeLexerTest extends ALexerExceptionTest
 {
 
-    public VariableDeclarationWrongTypeTest(String testString, char character, int position) {
-        super(testString, (int) character, position);
+    public VariableDeclarationWrongTypeLexerTest(String testString, char character, int position) {
+        super(testString, RecognitionException.class,(int) character, position);
 
     }
 

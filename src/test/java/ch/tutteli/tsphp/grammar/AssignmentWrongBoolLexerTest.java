@@ -16,8 +16,8 @@
  */
 package ch.tutteli.tsphp.grammar;
 
-import ch.tutteli.tsphp.grammar.utils.ATest;
-import java.util.Arrays;
+import ch.tutteli.tsphp.grammar.utils.ALexerExceptionTest;
+import ch.tutteli.tsphp.grammar.utils.VariantionHelper;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
@@ -29,28 +29,21 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentBoolTest extends ATest
+public class AssignmentWrongBoolLexerTest extends ALexerExceptionTest
 {
 
-    public AssignmentBoolTest(String testString) {
-        super(testString);
+    public AssignmentWrongBoolLexerTest(String testString, int character, int position) {
+        super(testString, RecognitionException.class, character, position);
+
     }
 
     @Test
     public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+        super.parseExpectingException();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                    //testIntDecAssignment
-                    {"bool $a = true;"},
-                    {"bool $b = false;"},
-                    {"boolean $a = true;"},
-                    {"boolean $b = false;"}
-                });
-
-        //
+        return VariantionHelper.getUpperCaseVariations(new String[]{"true","false"}, "bool $a =",";");
     }
 }

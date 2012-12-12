@@ -16,12 +16,9 @@
  */
 package ch.tutteli.tsphp.grammar;
 
-import ch.tutteli.tsphp.grammar.utils.AParserTest;
-import ch.tutteli.tsphp.grammar.utils.VariantionHelper;
+import ch.tutteli.tsphp.grammar.utils.ATest;
 import java.util.Arrays;
 import java.util.Collection;
-import org.antlr.runtime.MismatchedTokenException;
-import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +29,7 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableDeclarationAssignmentWhitespaceTest extends AParserTest
+public class VariableDeclarationAssignmentWhitespaceTest extends ATest
 {
 
     public VariableDeclarationAssignmentWhitespaceTest(String testString) {

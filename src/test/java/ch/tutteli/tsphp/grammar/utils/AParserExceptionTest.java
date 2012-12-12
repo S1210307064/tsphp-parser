@@ -27,35 +27,26 @@ import org.junit.Test;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @Ignore
-public abstract class AParserExceptionTest extends AParserTest
+public abstract class AParserExceptionTest extends AExceptionTest
 {
-
-    protected int position;
-    protected int token;
-    protected Class<? extends RecognitionException> exceptionType;
 
     public AParserExceptionTest() {
     }
 
-    public AParserExceptionTest(String testString, Class<? extends RecognitionException> type, int aToken, int aPosition) {
-        super(testString);
-        noErrorsOnOutput();
-        position = aPosition;
-        token = aToken;
-        exceptionType = type;
+    public AParserExceptionTest(String testString, Class<? extends RecognitionException> type, int character, int position) {
+        super(testString, type, character, position);
     }
 
     public void parseExpectingException() throws RecognitionException {
         super.parse(testString);
 
-        Assert.assertTrue(testString + " - lexer.exceptions is not empty ",lexer.getExceptions().isEmpty());
+        Assert.assertTrue(testString + " - lexer.exceptions is not empty ", lexer.getExceptions().isEmpty());
 
         List<RecognitionException> exceptions = parser.getExceptions();;
-        Assert.assertFalse(testString + " - exceptions is empty ",exceptions.isEmpty());
+        Assert.assertFalse(testString + " - exceptions is empty ", exceptions.isEmpty());
         RecognitionException ex = exceptions.get(0);
-        Assert.assertEquals(testString + " - wrong type", exceptionType, ex.getClass());
+        Assert.assertTrue(testString + " - wrong type", exceptionType.isInstance(ex));
         Assert.assertEquals("position wrong", position, ex.charPositionInLine);
         Assert.assertEquals("token wrong", token, ex.c);
-
     }
 }

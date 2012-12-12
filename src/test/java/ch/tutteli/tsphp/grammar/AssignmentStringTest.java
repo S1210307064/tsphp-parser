@@ -16,7 +16,7 @@
  */
 package ch.tutteli.tsphp.grammar;
 
-import ch.tutteli.tsphp.grammar.utils.AParserTest;
+import ch.tutteli.tsphp.grammar.utils.ATest;
 import ch.tutteli.tsphp.grammar.utils.IdentifierHelper;
 import java.util.Arrays;
 import java.util.Collection;
@@ -30,7 +30,7 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentStringTest extends AParserTest
+public class AssignmentStringTest extends ATest
 {
 
     public AssignmentStringTest(String testString) {
@@ -52,7 +52,11 @@ public class AssignmentStringTest extends AParserTest
                         + IdentifierHelper.getCharacterFromStartToEndAsString(37, 38)
                         + IdentifierHelper.getCharacterFromStartToEndAsString(40, 10055)
                         + "';"},
-                    {"string $a = '\\\\ \\\' ';"},
+                    {"string $a = '\\\\ \\\' \\\\\\\' \\\'\\\\ ';"},
+                    {"string $a = '\\n \\r \\t \\e \\f \\\" \\$';"},
+                    {"string $a = '\\'& \\'[ \\'] ';"},
+                    {"string $a = ' \\& \\[  \\] ';"},
+                    {"string $a = ' & [  ] \\ ';"},
                     //testStringDoubleQuotedAssignment
                     {"string $a = \"123\";"},
                     {"string $a = \""
@@ -60,13 +64,18 @@ public class AssignmentStringTest extends AParserTest
                         + IdentifierHelper.asciiToString(35)
                         + IdentifierHelper.getCharacterFromStartToEndAsString(37, 12255)
                         + "\";"},
-                    {"string $a = \" \\\\ \";"},
-                    {"string $a = \" \\\\n \";"},
-                    {"string $a = \" \\\\r \";"},
-                    {"string $a = \" \\\\t  \";"},
-                    {"string $a = \" \\\\v \";"},
-                    {"string $a = \" \\\\e \";"},
-                    {"string $a = \" \\\\f \";"},
+                    {"string $a = \" \\\\ \\\" \\\\\\\" \\\"\\\\ \";"},
+                    {"string $a = \"\\n \\r \\t \\e \\f \\\" \\$ \\' \";"},
+                    {"string $a = \"\\\"! \\\"# \\\"[ \\\"] \";"},
+                    {"string $a = \"\\$! \\$# \\$[ \\$] \";"},
+                    {"string $a = \"\\! \\# \\[ \\] \\ \";"},
+                    {"string $a = \"! # [ ] \";"},
+                    {"string $a = \" \\n \";"},
+                    {"string $a = \" \\r \";"},
+                    {"string $a = \" \\t  \";"},
+                    {"string $a = \" \\v \";"},
+                    {"string $a = \" \\e \";"},
+                    {"string $a = \" \\f \";"},
                     {"string $a = \" \\\" \";"},
                     {"string $a = \" \\$ \";"},
                     {"string $a = \" \\00 \\01 \\02 \\03 \\04 \\05 \\06 \\07 \\01234567 \";"},

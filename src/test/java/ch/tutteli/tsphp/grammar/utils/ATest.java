@@ -29,7 +29,7 @@ import org.junit.Ignore;
  *
  */
 @Ignore
-public abstract class AParserTest
+public abstract class ATest
 {
 
     protected TestTSPHPParser parser;
@@ -37,10 +37,10 @@ public abstract class AParserTest
     protected String testString;
     private boolean isErrorReportingOn = true;
 
-    public AParserTest() {
+    public ATest() {
     }
 
-    public AParserTest(String aTestString) {
+    public ATest(String aTestString) {
         testString = aTestString;
     }
 
