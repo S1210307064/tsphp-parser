@@ -14,10 +14,12 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.utils;
+package ch.tutteli.tsphp.grammar.test.utils;
 
+import ch.tutteli.tsphp.grammar.TSPHPParser;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import org.antlr.runtime.MismatchedTokenException;
 import org.antlr.runtime.NoViableAltException;
 
@@ -31,8 +33,8 @@ public class VariantionHelper
     private VariantionHelper() {
     }
 
-    public static Collection<Object[]> getUpperCaseVariations(String[] texts, String prefix, String appendix) {
-        Collection<Object[]> collection = new ArrayList<>();
+    public static List<Object[]> getUpperCaseVariations(String[] texts, String prefix, String appendix) {
+        List<Object[]> collection = new ArrayList<>();
         int prefixLenght = prefix.length();
         for (String text : texts) {
             int length = text.length();
@@ -43,14 +45,14 @@ public class VariantionHelper
                 String upper = tmp.substring(i, i + 1).toUpperCase();
 
                 String after = i + 1 != length ? tmp.substring(i + 1, length) : "";
+
                 collection.add(new Object[]{
                             prefix + before + upper + after + appendix,
-                            upper.charAt(0),
-                            prefixLenght+i
+                            TSPHPParser.NamespaceId,
+                            prefixLenght
                         });
             }
         }
         return collection;
     }
-
 }

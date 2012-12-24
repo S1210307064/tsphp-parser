@@ -14,34 +14,39 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.utils;
+package ch.tutteli.tsphp.grammar.test.utils;
 
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Assert;
 import org.junit.Ignore;
-import org.junit.Test;
 
 /**
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @Ignore
-public abstract class ALexerExceptionTest extends AExceptionTest
+public abstract class AParserParserExceptionTest extends AParserExceptionTest
 {
 
-    public ALexerExceptionTest(String testString, Class<? extends RecognitionException> type, int character, int position) {
+    public AParserParserExceptionTest() {
+    }
+
+    public AParserParserExceptionTest(String testString, Class<? extends RecognitionException> type, int character, int position) {
         super(testString, type, character, position);
     }
 
     public void parseExpectingException() throws RecognitionException {
-        super.parse(testString);
+        super.parse();
 
-        List<RecognitionException> exceptions = lexer.getExceptions();;
+        Assert.assertTrue(testString + " - lexer.exceptions is not empty ", lexer.getExceptions().isEmpty());
+
+        List<RecognitionException> exceptions = parser.getExceptions();;
         Assert.assertFalse(testString + " - exceptions is empty ", exceptions.isEmpty());
         RecognitionException ex = exceptions.get(0);
         Assert.assertTrue(testString + " - wrong type", exceptionType.isInstance(ex));
-        Assert.assertEquals(testString + " - wrong character", token, ex.c);
-        Assert.assertEquals(testString + " - wrong position", position, ex.charPositionInLine);
+        Assert.assertEquals("token wrong", token, ex.c);
+        Assert.assertEquals("position wrong", position, ex.charPositionInLine);
+                
     }
 }

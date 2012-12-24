@@ -14,10 +14,10 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar;
+package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.utils.ALexerExceptionTest;
-import ch.tutteli.tsphp.grammar.utils.VariantionHelper;
+import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
+import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
@@ -29,31 +29,25 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableDeclarationWrongTypeLexerTest extends ALexerExceptionTest
+public class AssignmentBoolTest extends AParserTest
 {
 
-    public VariableDeclarationWrongTypeLexerTest(String testString, char character, int position) {
-        super(testString, RecognitionException.class,(int) character, position);
-
+    public AssignmentBoolTest(String testString) {
+        super(testString);
     }
 
     @Test
     public void test() throws RecognitionException {
-        super.parseExpectingException();
+        super.parseAndCheckForException();
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> variables() {
-        Collection<Object[]> collection = VariantionHelper.getUpperCaseVariations(new String[]{
-                    "bool",
-                    "boolean",
-                    "int",
-                    "float",
-                    "string",
-                    "array",
-                    "resource"
-                }, "", " $a;");
-        collection.add(new Object[]{"qwert $a;", 'q', 0});
-        return collection;
+    public static Collection<Object[]> testStrings() {
+        return Arrays.asList(new Object[][]{
+                    {"bool $a = true;"},
+                    {"bool $b = false;"},
+                    {"boolean $a = true;"},
+                    {"boolean $b = false;"}
+                });
     }
 }

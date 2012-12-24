@@ -14,9 +14,8 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.utils;
+package ch.tutteli.tsphp.grammar.test.utils;
 
-import org.antlr.runtime.RecognitionException;
 import org.junit.Ignore;
 
 /**
@@ -24,20 +23,24 @@ import org.junit.Ignore;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @Ignore
-public class AExceptionTest extends ATest
+public abstract class ATest
 {
-    protected int position;
-    protected int token;
-    protected Class<? extends RecognitionException> exceptionType;
 
-    public AExceptionTest() {
+    protected String testString;
+    protected boolean isErrorReportingOn = true;
+
+    public ATest() {
     }
 
-    public AExceptionTest(String testString, Class<? extends RecognitionException> type, int aToken, int aPosition) {
-        super(testString);
-        noErrorsOnOutput();
-        position = aPosition;
-        token = aToken;
-        exceptionType = type;
+    public ATest(String aTestString) {
+        testString = aTestString;
+    }
+
+    public void noErrorsOnOutput() {
+        isErrorReportingOn = false;
+    }
+
+    public void showErrorsOnOutput() {
+        isErrorReportingOn = true;
     }
 }

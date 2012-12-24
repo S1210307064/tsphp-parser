@@ -14,7 +14,7 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.utils;
+package ch.tutteli.tsphp.grammar.test.utils;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
@@ -29,36 +29,26 @@ import org.junit.Ignore;
  *
  */
 @Ignore
-public abstract class ATest
+public abstract class AParserTest extends ATest
 {
 
     protected TestTSPHPParser parser;
     protected TestTSPHPLexer lexer ;
-    protected String testString;
-    private boolean isErrorReportingOn = true;
-
-    public ATest() {
+    
+    public AParserTest() {
     }
 
-    public ATest(String aTestString) {
-        testString = aTestString;
+    public AParserTest(String testString) {
+        super(testString);
     }
 
     public void parseAndCheckForException() throws RecognitionException {
-        parse(testString);
+        parse();
         Assert.assertTrue(testString + " failed, lexer threw exception(s) - see output", lexer.getExceptions().isEmpty());
         Assert.assertTrue(testString + " failed, parser threw exception(s) - see output", parser.getExceptions().isEmpty());
     }
 
-    public void noErrorsOnOutput() {
-        isErrorReportingOn = false;
-    }
-
-    public void showErrorsOnOutput() {
-        isErrorReportingOn = true;
-    }
-
-    protected void parse(String testString) throws RecognitionException {
+    protected void parse() throws RecognitionException {
         CharStream stream = new ANTLRStringStream(testString);
         lexer = new TestTSPHPLexer(stream);
         lexer.setErrorReporting(isErrorReportingOn);

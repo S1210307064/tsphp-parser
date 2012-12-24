@@ -14,33 +14,34 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.utils;
+package ch.tutteli.tsphp.grammar.test.utils;
 
 import ch.tutteli.tsphp.grammar.TSPHPLexer;
-import ch.tutteli.tsphp.grammar.TSPHPParser;
 import java.util.ArrayList;
 import java.util.List;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
-import org.antlr.runtime.TokenStream;
 
 /**
- * Overwrite reportError methods in order that unit tests with parser errors fails at the end
+ * Overwrite reportError methods in order that unit tests with lexer errors fails at the end
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-public class TestTSPHPParser extends TSPHPParser
+public class TestTSPHPLexer extends TSPHPLexer
 {
 
-    List<RecognitionException> exceptions = new ArrayList<>();
+    private List<RecognitionException> exceptions = new ArrayList<>();
     private boolean isErrorReportingOn = true;
 
-    public TestTSPHPParser(TokenStream input) {
+    public TestTSPHPLexer() {
+    }
+
+    public TestTSPHPLexer(CharStream input) {
         this(input, new RecognizerSharedState());
     }
 
-    public TestTSPHPParser(TokenStream input, RecognizerSharedState state) {
+    public TestTSPHPLexer(CharStream input, RecognizerSharedState state) {
         super(input, state);
     }
 
@@ -58,5 +59,9 @@ public class TestTSPHPParser extends TSPHPParser
             super.reportError(e);
         }
         exceptions.add(e);
+    }
+    
+    public RecognizerSharedState getState(){
+        return state;
     }
 }

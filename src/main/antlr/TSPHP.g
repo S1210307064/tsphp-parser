@@ -16,21 +16,35 @@
  */
 grammar TSPHP;
 
-tokens{
-
-	Equal = '=';	
-	Semicolon =';';
-	T_INT = 'int';
-	T_BOOL = 'bool';
-	T_BOOLEAN = 'boolean';
-	T_FLOAT = 'float';
-	T_STRING = 'string';
-	T_RESOURCE = 'resource';
-	T_ARRAY = 'array';
-	TRUE = 'true';
-	FALSE = 'false';
-
+options {
+    backtrack = true; 
 }
+
+tokens{
+	Arrow = '=>';
+	Comma = ',';
+	Equal = '=';	
+	Else = 'else';
+	Dolar = '$';
+	Function = 'function';
+	If = 'if';
+	LeftCurlyBrace ='{';
+	LeftParanthesis ='(';
+	LeftSquareBrace = '[';
+	Namespace ='namespace';
+	RightCurlyBrace = '}';
+	RightParanthesis =')';
+	RightSquareBrace = ']';
+	TypeInt = 'int';
+	TypeBool = 'bool';
+	TypeBoolean = 'boolean';
+	TypeFloat = 'float';
+	TypeString = 'string';
+	TypeResource = 'resource';
+	TypeArray = 'array';
+	Semicolon =';';
+}
+
 
 @header{
 /*
@@ -70,60 +84,126 @@ package ch.tutteli.tsphp.grammar;
  */
 package ch.tutteli.tsphp.grammar;
 }
-prog	:	stat+;
 
-stat	:	varDecl
-	|	varAssign;
-
-
-varDecl	: type VARID  ';';
-
-type 	:	primitiveTypes;
-
-primitiveTypes
-	:	'bool'|'boolean'
-	|	'int'
-	|	'float'
-	|	'string'
-	|	'resource'
-	|	'array'
-	//TODO calable
+	
+prog	:	namespaceSemicolon+
+	|	namespaceBracket+
+	|	withoutNamespace
 	;
+	
+namespaceSemicolon
+	:	('namespace' NamespaceId ';' command+ );
 
+namespaceBracket
+	:	('namespace' NamespaceId? '{' command+ '}');
 
-VARID	:	'$' ID;
+//Must before NamespaceId otherwise NamespaceId match true and false
+Bool	:	'true'|'false';
+
+NamespaceId
+	:	ID ('\\' ID)*;
+
 
 fragment
 ID	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*;
 
+withoutNamespace 
+	:	command+;
 
-
-varAssign
-	:	boolAssign	
-	|	intAssign 
-	|	floatAssign
-	|	stringAssign
+command	:	//definition
+	//|	
+	instruction
 	;
 
+/*definition
+	:	functionDeclaration	
+	;
+	
+functionDeclaration	
+	:	'function' returnType ID '(' paramList ')' '{' '}';
+	
+returnType
+	:	PRIMITIVE_TYPES | 'void';
+	
+paramList
+	:	varDecl (',' varDecl)*;*/
+
+instruction	
+	:	condition
+	//|	forLoop
+	|	varDeclaration
+	;
+	
+condition
+	:	'if' '(' (boolExpression | VariableId) ')'
+		(
+			blockOrSingleCommand	
+		)
+		( 'else' blockOrSingleCommand )?
+	;
+	
+//forLoop	:	'for' '(' intAssign? boolExpression? ';' incrDecr? ')' blockOrSingleCommand;
+
+/*incrDecr:	VariableId IncrementOperator
+	|	IncrementOperator VariableId
+	;
+
+IncrementOperator
+    : '--'|'++'
+    ;
+*/
+blockOrSingleCommand
+	:	('{' command*  '}')
+	| 	command
+	;
+
+varDeclaration	
+	:	arrayDeclaration
+	|	boolDeclaration	
+	|	intDeclaration 
+	|	floatDeclaration
+	|	stringDeclaration
+	|	TypeResource VariableId ';'
+	;
+
+fragment
+PRIMITIVE_TYPES
+	:	TypeBool|TypeBoolean
+	|	TypeInt
+	|	TypeFloat
+	|	TypeString
+	|	TypeResource
+	|	TypeArray
+	//TODO  TypeCallable
+	;
 
 	
-boolAssign
-	:	(T_BOOL|T_BOOLEAN) VARID '=' (TRUE|FALSE) ';';
+boolDeclaration
+	:	(TypeBool|TypeBoolean) VariableId ( '=' (boolExpression|VariableId) )? ';';
+
+VariableId	:	'$' ID;
+
+boolExpression
+	:	Bool;
+	//TODO boolean arithmetic
 	
 
-intAssign
-	:	T_INT VARID '=' INT ';';
 
+intDeclaration
+	:	TypeInt VariableId ( '=' (intExpression|VariableId) )? ';';
 
-INT     : 	('+'|'-')? DECIMAL
+intExpression
+	:	Int;
+	//TODO int arithmetic
+
+Int     : 	('+'|'-')? DECIMAL
         | 	('+'|'-')? HEXADECIMAL
         | 	('+'|'-')? OCTAL
         | 	('+'|'-')? BINARY
         ;
 
-
 fragment
-DECIMAL     
+DECIMAL
 	:	('1'..'9') ('0'..'9')*
         |	 '0'
         ;
@@ -140,11 +220,15 @@ fragment
 BINARY	:	'0b'('0'|'1')+;
 
 
-floatAssign
-	:	T_FLOAT VARID '=' FLOAT ';';
 
+floatDeclaration
+	:	TypeFloat VariableId ( '=' (floatExpression|VariableId) )? ';';
 
-FLOAT
+floatExpression
+	:	Float;
+	//TODO float expression
+
+Float
     	:	('+'|'-')? ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
     	|	('+'|'-')? '.' ('0'..'9')+ EXPONENT?
     	|	('+'|'-')? ('0'..'9')+ EXPONENT
@@ -153,10 +237,18 @@ FLOAT
 fragment
 EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
 
-stringAssign
-	:	T_STRING VARID '=' (STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED) ';';
+stringDeclaration
+	:	TypeString VariableId ('=' (stringExpression | VariableId) )? ';';
+
+stringExpression
+	:	String;
+	//TODO string arithmetic
+	
+String	:	STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED ;
 
 
+
+fragment
 STRING_SINGLE_QUOTED
 	:	'\'' (
 			  ('\\' '\\')=>'\\' '\\' 
@@ -164,7 +256,7 @@ STRING_SINGLE_QUOTED
 			| ~ ('\'' )
 		)* '\'';
 	
-	
+fragment
 STRING_DOUBLE_QUOTED
     	:	'"' (
 			  ('\\' '\\') => '\\\\'
@@ -173,12 +265,41 @@ STRING_DOUBLE_QUOTED
 			| ~ ('"' | '$')
   		)* '"';
 
-//COMMENT
-//    :   '//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
-//    |   '/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
-//    ;
+arrayDeclaration
+	:	TypeArray VariableId ( '=' (array|VariableId) )? ';' ;
 
-WS	:	( ' '
+array	:	'[' array_content? ']' 
+	|	TypeArray '(' array_content? ')'
+	;
+	
+array_content
+	:	(array_key '=>')? array_value  (',' (array_key '=>')? array_value)*;
+
+array_key
+	:	expressions|VariableId;
+
+expressions
+	:	intExpression
+	|	stringExpression
+	|	boolExpression
+	|	floatExpression
+	;
+
+array_value
+options {
+backtrack=true;
+}
+	:	expressions|array;
+
+
+Comment
+	:	'//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
+	//comment could be at the end of the file and thus no \n needed
+	|  	'//' ~('\n'|'\r')* {$channel=HIDDEN;}
+    	|	'/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
+    	;
+
+Whitespace	:	( ' '
         	| '\t'
 	        | '\r'
         	| '\n'

@@ -14,12 +14,14 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar;
+package ch.tutteli.tsphp.grammar.test.lexer;
 
-import ch.tutteli.tsphp.grammar.utils.ATest;
-import java.util.Arrays;
+import ch.tutteli.tsphp.grammar.TSPHPLexer;
+import ch.tutteli.tsphp.grammar.test.utils.ALexerTest;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collection;
-import org.antlr.runtime.RecognitionException;
+import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -29,28 +31,29 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentBoolTest extends ATest
+public class LexerSimpleTokensExceptionTest extends ALexerTest
 {
-
-    public AssignmentBoolTest(String testString) {
-        super(testString);
+    
+    public LexerSimpleTokensExceptionTest(String methodName) {
+        //# is not valid for any token as first letter;
+        super(methodName,"#", 0);
     }
 
     @Test
-    public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+    public void testTokens() throws Exception {
+        super.checkForMismatch();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                    //testIntDecAssignment
-                    {"bool $a = true;"},
-                    {"bool $b = false;"},
-                    {"boolean $a = true;"},
-                    {"boolean $b = false;"}
-                });
-
-        //
+        List<Object[]> collection = new ArrayList<>();
+        Method[] methods = TSPHPLexer.class.getMethods();
+        for(Method method : methods){
+            String methodName = method.getName();
+            if(methodName.charAt(0)=='m' && methodName.charAt(1) >= 'A' && methodName.charAt(1) <= 'Z'){
+                collection.add(new Object[]{methodName});
+            }
+        }
+        return collection;
     }
 }

@@ -14,10 +14,10 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar;
+package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.utils.ATest;
-import ch.tutteli.tsphp.grammar.utils.IdentifierHelper;
+import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
+import ch.tutteli.tsphp.grammar.test.utils.IdentifierHelper;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
@@ -31,7 +31,7 @@ import org.junit.runners.Parameterized.Parameters;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableDeclarationTest extends ATest
+public class VariableDeclarationTest extends AParserTest
 {
 
     public VariableDeclarationTest(String testString) {

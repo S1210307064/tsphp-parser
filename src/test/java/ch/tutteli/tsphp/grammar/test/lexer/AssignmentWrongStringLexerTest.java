@@ -14,10 +14,9 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar;
+package ch.tutteli.tsphp.grammar.test.lexer;
 
-import ch.tutteli.tsphp.grammar.utils.ALexerExceptionTest;
-import ch.tutteli.tsphp.grammar.utils.IdentifierHelper;
+import ch.tutteli.tsphp.grammar.test.utils.AParserLexerExceptionTest;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
@@ -30,7 +29,7 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentWrongStringLexerTest extends ALexerExceptionTest
+public class AssignmentWrongStringLexerTest extends AParserLexerExceptionTest
 {
 
     public AssignmentWrongStringLexerTest(String testString, int character, int position) {

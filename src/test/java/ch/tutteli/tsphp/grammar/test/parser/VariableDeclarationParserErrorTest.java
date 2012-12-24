@@ -14,9 +14,10 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar;
+package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.utils.ALexerExceptionTest;
+import ch.tutteli.tsphp.grammar.TSPHPParser;
+import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
@@ -29,12 +30,11 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentWrongIntLexerTest extends ALexerExceptionTest
+public class VariableDeclarationParserErrorTest extends AParserParserExceptionTest
 {
 
-    public AssignmentWrongIntLexerTest(String testString, int character, int position) {
-        super(testString, RecognitionException.class, character, position);
-
+    public VariableDeclarationParserErrorTest(String testString, int evilCharacter, int atPosition) {
+        super(testString, RecognitionException.class, evilCharacter, atPosition);
     }
 
     @Test
@@ -45,21 +45,11 @@ public class AssignmentWrongIntLexerTest extends ALexerExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    //wrong octal
-                    {"int $a = 08;", ';', 11},
-                    {"int $a = 0o1;", (int)'o', 10},
-                    {"int $a = 0O1;", (int)'O', 10},
-                    {"int $a = o1;", (int)'o', 9},
-                    {"int $a = O1;", (int)'O', 9},
-                    //wrong hex
-                    {"int $a = 0xG;", (int) 'G', 11},
-                    {"int $a = 0XH;", (int) 'H', 11},
-                    {"int $a = xA;", (int) 'x', 9},
-                    {"int $a = XF;", (int) 'X', 9},
-                    //wrong binary
-                    {"int $b = 0b2;", (int) '2', 11},
-                    {"int $b = b1;", (int) '1', 10},
-                    {"int $b = b0;", (int) '0', 10}
+                    {"$a;", TSPHPParser.VariableId, 0},
+                    {"int $a int $b;", TSPHPParser.TypeInt, 7},
+                    {"int $a 1", TSPHPParser.Int, 7},
+                    {"int a;", TSPHPParser.NamespaceId, 4},
+                    {"int $a", -1, 6}
                 });
     }
 }

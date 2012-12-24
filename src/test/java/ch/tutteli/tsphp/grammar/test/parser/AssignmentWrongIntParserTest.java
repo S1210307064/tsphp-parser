@@ -14,10 +14,10 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar;
+package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.utils.ALexerExceptionTest;
-import ch.tutteli.tsphp.grammar.utils.AParserExceptionTest;
+import ch.tutteli.tsphp.grammar.TSPHPParser;
+import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
@@ -30,7 +30,7 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentWrongIntParserTest extends AParserExceptionTest
+public class AssignmentWrongIntParserTest extends AParserParserExceptionTest
 {
 
     public AssignmentWrongIntParserTest(String testString, int character, int position) {
@@ -46,20 +46,28 @@ public class AssignmentWrongIntParserTest extends AParserExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    //wrong octal - FIXME - shouldn't raise an lexer error
-                    //{"int $a = 0118;", ';', 12},     
+                    //wrong octal
+                    {"int $a = 0o1;", TSPHPParser.NamespaceId, 10},
+                    {"int $a = 0O1;", TSPHPParser.NamespaceId, 10},
+                    {"int $a = o1;", TSPHPParser.NamespaceId, 9},
+                    {"int $a = O1;", TSPHPParser.NamespaceId, 9},
+                    //wrong hex
+                    {"int $a = xA;", TSPHPParser.NamespaceId, 9},
+                    {"int $a = XF;", TSPHPParser.NamespaceId, 9},
                     //wrong binary
-                    {"int $b = 0b012;", TSPHPParser.INT, 13},
-                    {"int $b = 0b100014;", TSPHPParser.INT, 16},
+                    {"int $b = b1;", TSPHPParser.NamespaceId, 9},
+                    {"int $b = b0;", TSPHPParser.NamespaceId, 9},
+                    {"int $b = 0b012;", TSPHPParser.Int, 13},
+                    {"int $b = 0b100014;", TSPHPParser.Int, 16},
                     //string
-                    {"int $b = \"123\";", TSPHPParser.STRING_DOUBLE_QUOTED, 9},
-                    {"int $b = '789123';", TSPHPParser.STRING_SINGLE_QUOTED, 9},
+                    {"int $b = \"123\";", TSPHPParser.String, 9},
+                    {"int $b = '789123';", TSPHPParser.String, 9},
                     //float
-                    {"int $b = '0.43';", TSPHPParser.STRING_SINGLE_QUOTED,9},
-                    {"int $b = \".78\";", TSPHPParser.STRING_DOUBLE_QUOTED, 9},
-                    {"int $b = \"1.43e8\";", TSPHPParser.STRING_DOUBLE_QUOTED, 9},
-                    {"int $b = \"2.43e-3\";", TSPHPParser.STRING_DOUBLE_QUOTED, 9},
-                    {"int $b = '.43e+5';", TSPHPParser.STRING_SINGLE_QUOTED, 9},
+                    {"int $b = '0.43';", TSPHPParser.String,9},
+                    {"int $b = \".78\";", TSPHPParser.String, 9},
+                    {"int $b = \"1.43e8\";", TSPHPParser.String, 9},
+                    {"int $b = \"2.43e-3\";", TSPHPParser.String, 9},
+                    {"int $b = '.43e+5';", TSPHPParser.String, 9},
                 });
     }
 }
