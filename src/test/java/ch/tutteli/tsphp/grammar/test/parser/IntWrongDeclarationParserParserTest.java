@@ -30,10 +30,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentWrongIntParserTest extends AParserParserExceptionTest
+public class IntWrongDeclarationParserParserTest extends AParserParserExceptionTest
 {
 
-    public AssignmentWrongIntParserTest(String testString, int character, int position) {
+    public IntWrongDeclarationParserParserTest(String testString, int character, int position) {
         super(testString, RecognitionException.class, character, position);
 
     }

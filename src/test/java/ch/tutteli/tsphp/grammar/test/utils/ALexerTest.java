@@ -69,6 +69,7 @@ public abstract class ALexerTest extends ATest
         Assert.assertFalse(methodName + " - " + testString + " failed, state.failed was true - see output", state.failed);
         Assert.assertEquals(methodName + " - " + testString + " failed, state.type was wrong - see output", type, state.type);
         Assert.assertEquals(methodName + " - " + testString + " failed, state.channel was wrong - see output", channel, state.channel);
+        Assert.assertEquals(methodName + " - " + testString + " failed, testString was more than one token",TSPHPLexer.EOF, lexer.nextToken().getType());
     }
 
     public void checkForMismatch() throws Exception {
@@ -77,7 +78,7 @@ public abstract class ALexerTest extends ATest
             analyseToken();
             Assert.fail(methodName + " - " + testString + " failed, no exception occured");
         } catch (InvocationTargetException ex) {
-            if (! (ex.getTargetException() instanceof RecognitionException) ) {
+            if (!(ex.getTargetException() instanceof RecognitionException)) {
                 System.err.printf(methodName + " - " + testString + " failed");
                 ex.printStackTrace();
                 Assert.fail(methodName + " - " + testString + " failed, an unexpected exception occured - see output");
@@ -85,10 +86,15 @@ public abstract class ALexerTest extends ATest
         }
     }
 
+    protected void modifyLexer() {
+    }
+
     protected void analyseToken() throws Exception {
         CharStream stream = new ANTLRStringStream(testString);
         lexer = new TestTSPHPLexer(stream);
         lexer.setErrorReporting(isErrorReportingOn);
+
+        modifyLexer();
 
         Method method = lexer.getClass().getMethod(methodName);
         method.invoke(lexer);

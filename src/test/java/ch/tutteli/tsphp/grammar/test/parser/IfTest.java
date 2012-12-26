@@ -16,11 +16,9 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.test.lexer.LexerFragmentsTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,10 +29,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentStringTest extends AParserTest
+public class IfTest extends AParserTest
 {
 
-    public AssignmentStringTest(String testString) {
+    public IfTest(String testString) {
         super(testString);
     }
 
@@ -45,11 +43,18 @@ public class AssignmentStringTest extends AParserTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-        Collection<Object[]> strings = LexerFragmentsTest.getStringFragments();
-        for(Object[] obj: strings){
-            collection.add(new Object[]{"string $a = "+obj[1]+";"});
-        }
-        return collection;
+        return Arrays.asList(new Object[][]{
+                    {"if($a) int $b=1; else int $b=2;"},
+                    {"if($a){ int $b=1;} else int $b=2;"},
+                    {"if($a) int $b=1; else{ int $b=2;}"},
+                    {"if($a){ int $b=1;} else{ int $b=2;}"},
+                    {"if($a){ int $b=1; $b=1;} else{ int $b=2; $b=1;}"},
+                    {"if($a){ $b=1; $b=2;} else{ int $b=2; $b=1;}"},
+                    {"if($a){ $b=1; $b=2;} else if ($a) int $b=1;"},
+                    {"if($a){ $b=1; $b=2;} else if ($a){int $b=1;}"},
+                    {"if($a) $b=1; else if ($a){int $b=1;} else $b=2;"},
+                    {"if($a){ if($b){ $b=2;}} else if ($a){int $b=1;} else $b=2;"},
+                    {"if($a){ $c=2;} else { if($a) $c=3; else if($a){ $b=2;}else $d=0;}"},
+                });
     }
 }

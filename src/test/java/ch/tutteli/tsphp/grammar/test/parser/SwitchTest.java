@@ -29,10 +29,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentBoolTest extends AParserTest
+public class SwitchTest extends AParserTest
 {
 
-    public AssignmentBoolTest(String testString) {
+    public SwitchTest(String testString) {
         super(testString);
     }
 
@@ -44,10 +44,10 @@ public class AssignmentBoolTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"bool $a = true;"},
-                    {"bool $b = false;"},
-                    {"boolean $a = true;"},
-                    {"boolean $b = false;"}
+                    {"switch($a){ case 1: int $a=1; case 2: case 3: $a=1; }"},
+                    {"switch($a){ case 1: int $a=1; case 2: case 3: $a=2; default: $c=2; }"},
+                    {"switch($a){ case 1: {int $a=1; } case 2: case 3: $a=1; }"},
+                    {"switch($a){ case 1: int $a=1; case 2: $a=1; default: $c=2; case 3: $a=2; }"},
                 });
     }
 }

@@ -18,8 +18,10 @@ package ch.tutteli.tsphp.grammar.test.lexer;
 
 import ch.tutteli.tsphp.grammar.TSPHPLexer;
 import ch.tutteli.tsphp.grammar.test.utils.ALexerTest;
-import java.util.Arrays;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -29,30 +31,29 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class LexerHiddenTokensTest extends ALexerTest
+public class SimpleTokenExceptionTest extends ALexerTest
 {
 
-    public LexerHiddenTokensTest(String methodName, String testString, int type) {
-        super(methodName, testString, type,TSPHPLexer.HIDDEN);
+    public SimpleTokenExceptionTest(String methodName) {
+        //# is not valid for any token as first letter;
+        super(methodName, "#", 0);
     }
 
     @Test
     public void testTokens() throws Exception {
-        super.analyseAndCheckForError();
+        super.checkForMismatch();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                    {"mComment", "//bla", TSPHPLexer.Comment},
-                    {"mComment", "// bla", TSPHPLexer.Comment},
-                    {"mComment", "/* \n a \n bla bla */", TSPHPLexer.Comment},
-                    {"mComment", "/** \n* a \n* bla bla \t **/", TSPHPLexer.Comment},
-                    {"mWhitespace", "  ", TSPHPLexer.Whitespace},
-                    {"mWhitespace", "\n", TSPHPLexer.Whitespace},
-                    {"mWhitespace", "\t", TSPHPLexer.Whitespace},
-                    {"mWhitespace", "\r", TSPHPLexer.Whitespace},
-                    {"mWhitespace", "  \r  \n  \t", TSPHPLexer.Whitespace},
-                });
+        List<Object[]> collection = new ArrayList<>();
+        Method[] methods = TSPHPLexer.class.getMethods();
+        for (Method method : methods) {
+            String methodName = method.getName();
+            if (methodName.charAt(0) == 'm' && methodName.charAt(1) >= 'A' && methodName.charAt(1) <= 'Z') {
+                collection.add(new Object[]{methodName});
+            }
+        }
+        return collection;
     }
 }

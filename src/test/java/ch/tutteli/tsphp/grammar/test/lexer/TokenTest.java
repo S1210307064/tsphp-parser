@@ -31,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class LexerTokensTest extends ALexerTest
+public class TokenTest extends ALexerTest
 {
 
-    public LexerTokensTest(String methodName, String testString, int type) {
+    public TokenTest(String methodName, String testString, int type) {
         super(methodName, testString, type);
     }
 
@@ -48,21 +48,43 @@ public class LexerTokensTest extends ALexerTest
         List<Object[]> collection = new ArrayList();
         collection.addAll(Arrays.asList(new Object[][]{
                     {"mArrow", "=>", TSPHPLexer.Arrow},
+                    {"mAs","as",TSPHPLexer.As},
                     {"mBool", "true", TSPHPLexer.Bool},
                     {"mBool", "false", TSPHPLexer.Bool},
+                    {"mBreak", "break",TSPHPLexer.Break},
+                    {"mCase","case",TSPHPLexer.Case},
+                    {"mColon",":",TSPHPLexer.Colon},
                     {"mComma", ",", TSPHPLexer.Comma},
+                    {"mContinue","continue",TSPHPLexer.Continue},
                     {"mElse", "else", TSPHPLexer.Else},
                     {"mEqual", "=", TSPHPLexer.Equal},
+                    {"mDefault","default",TSPHPLexer.Default},
+                    {"mDivideEqual","/=",TSPHPLexer.DivideEqual},
+                    {"mDo","do",TSPHPLexer.Do},
                     {"mDolar", "$", TSPHPLexer.Dolar},
+                    {"mDotEqual",".=",TSPHPLexer.DotEqual},
                     {"mFunction", "function", TSPHPLexer.Function},
+                    {"mFor","for",TSPHPLexer.For},
+                    {"mForeach","foreach",TSPHPLexer.Foreach},
                     {"mIf", "if", TSPHPLexer.If},
+                    {"mMinusEqual","-=",TSPHPLexer.MinusEqual},
+                    {"mMinusMinus","--",TSPHPLexer.MinusMinus},
+                    {"mModuloEqual","%=",TSPHPLexer.ModuloEqual},
+                    {"mMultiplyEqual","*=",TSPHPLexer.MultiplyEqual},
                     {"mLeftCurlyBrace", "{", TSPHPLexer.LeftCurlyBrace},
                     {"mLeftParanthesis", "(", TSPHPLexer.LeftParanthesis},
                     {"mLeftSquareBrace", "[", TSPHPLexer.LeftSquareBrace},
+                    {"mLogicAndEqual", "&=", TSPHPLexer.LogicAndEqual},
+                    {"mLogicOrEqual", "|=", TSPHPLexer.LogicOrEqual},
+                    {"mLogicXorEqual", "^=", TSPHPLexer.LogicXorEqual},
                     {"mNamespace", "namespace", TSPHPLexer.Namespace},
+                    {"mPlusEqual","+=",TSPHPLexer.PlusEqual},
+                    {"mPlusPlus","++",TSPHPLexer.PlusPlus},
                     {"mRightCurlyBrace", "}", TSPHPLexer.RightCurlyBrace},
                     {"mRightParanthesis", ")", TSPHPLexer.RightParanthesis},
                     {"mRightSquareBrace", "]", TSPHPLexer.RightSquareBrace},
+                    {"mShiftLeftEqual", "<<=", TSPHPLexer.ShiftLeftEqual},
+                    {"mShiftRightEqual", ">>=", TSPHPLexer.ShiftRightEqual},
                     {"mTypeArray", "array", TSPHPLexer.TypeArray},
                     {"mTypeBool", "bool", TSPHPLexer.TypeBool},
                     {"mTypeBoolean", "boolean", TSPHPLexer.TypeBoolean},
@@ -70,31 +92,32 @@ public class LexerTokensTest extends ALexerTest
                     {"mTypeInt", "int", TSPHPLexer.TypeInt},
                     {"mTypeResource", "resource", TSPHPLexer.TypeResource},
                     {"mTypeString", "string", TSPHPLexer.TypeString},
-                    {"mSemicolon", ";", TSPHPLexer.Semicolon}
+                    {"mSemicolon", ";", TSPHPLexer.Semicolon},
+                    {"mSwitch","switch",TSPHPLexer.Switch},
+                    {"mWhile","while",TSPHPLexer.While}
                 }));
 
         String[] floatStrings = getFloatTestStrings();
         for (String floatString : floatStrings) {
             collection.add(new Object[]{"mFloat", floatString, TSPHPLexer.Float});
-        }
-        for (String floatString : floatStrings) {
             collection.add(new Object[]{"mFloat", "+" + floatString, TSPHPLexer.Float});
-        }
-        for (String floatString : floatStrings) {
             collection.add(new Object[]{"mFloat", "-" + floatString, TSPHPLexer.Float});
         }
 
-        Collection<Object[]> intCollection = LexerFragmentsTest.getIntFragments();
+        Collection<Object[]> intCollection = FragmentsTest.getIntFragments();
         for (Object[] obj : intCollection) {
             collection.add(new Object[]{"mInt", obj[1], TSPHPLexer.Int});
+            collection.add(new Object[]{"mInt", "+" + obj[1], TSPHPLexer.Int});
+            collection.add(new Object[]{"mInt", "-" + obj[1], TSPHPLexer.Int});
         }
 
-        Collection<Object[]> idCollection = LexerFragmentsTest.getIDTestStrings();
+        Collection<Object[]> idCollection = FragmentsTest.getIDTestStrings();
         for (Object[] obj : idCollection) {
             collection.add(new Object[]{"mNamespaceId", obj[1], TSPHPLexer.NamespaceId});
+            collection.add(new Object[]{"mNamespaceId", obj[1]+"\\"+obj[1], TSPHPLexer.NamespaceId});
         }
 
-        Collection<Object[]> stringCollection = LexerFragmentsTest.getStringFragments();
+        Collection<Object[]> stringCollection = FragmentsTest.getStringFragments();
         for (Object[] obj : stringCollection) {
             collection.add(new Object[]{"mString", obj[1], TSPHPLexer.String});
         }
@@ -102,7 +125,7 @@ public class LexerTokensTest extends ALexerTest
         return collection;
     }
 
-    private static String[] getFloatTestStrings() {
+    public static String[] getFloatTestStrings() {
         return new String[]{"1234567890.19876543201",
                     "1234567890.19876543201e7845120963",
                     "1234567890.19876543201e+7538964120",

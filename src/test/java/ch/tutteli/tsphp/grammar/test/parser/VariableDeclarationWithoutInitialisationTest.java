@@ -31,10 +31,10 @@ import org.junit.runners.Parameterized.Parameters;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableDeclarationTest extends AParserTest
+public class VariableDeclarationWithoutInitialisationTest extends AParserTest
 {
 
-    public VariableDeclarationTest(String testString) {
+    public VariableDeclarationWithoutInitialisationTest(String testString) {
         super(testString);
     }
 
@@ -54,9 +54,9 @@ public class VariableDeclarationTest extends AParserTest
                     {"array \t $" + IdentifierHelper.getAllUpperCaseCharacters() + ";"},
                     {"resource                 $a" + IdentifierHelper.getAllDigits() + ";        "},
                     {"bool $" + IdentifierHelper.getAllSpecialCharacters() + ";"},
-                    {"boolean $_; \n $_; \t $_____________________________;"},
+                    {"boolean $_; bool \n $_; int \t $_____________________________;"},
                     {"int \n $" + IdentifierHelper.asciiToString(128) + IdentifierHelper.asciiToString(165) + ";"},
-                    {"float $aA_; \n $_a; \t $_A;"},
+                    {"float $aA_; \n float $_a; float \t $_A;"},
                     {"string $a11238281102A;"},
                     {"int $a1123ääöä82£81102A;"},
                     {"array $bool;"},

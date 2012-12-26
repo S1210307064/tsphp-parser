@@ -14,7 +14,7 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.test.parser;
+package ch.tutteli.tsphp.grammar.test.lexer;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserLexerExceptionTest;
 import java.util.Arrays;
@@ -29,11 +29,11 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentWrongIntLexerParser extends AParserLexerExceptionTest
+public class AssignmentWrongStringTest extends AParserLexerExceptionTest
 {
 
-    public AssignmentWrongIntLexerParser(String testString, int character, int position) {
-        super(testString, RecognitionException.class, character, position);
+    public AssignmentWrongStringTest(String testString, int character, int position) {
+        super(testString,RecognitionException.class, character, position);
 
     }
 
@@ -45,16 +45,20 @@ public class AssignmentWrongIntLexerParser extends AParserLexerExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    //wrong octal
-                    {"int $a = 08;", ';', 11},
-                    {"int $a = 0118;", (int) '8', 12},     
-                    {"int $a = 0o1;", (int) 'o', 10},
-                    {"int $a = 0O1;", (int) 'O', 10},
-                    //wrong hex
-                    {"int $a = 0xG;", (int) 'G', 11},
-                    {"int $a = 0XH;", (int) 'H', 11},
-                    //wrong binary
-                    {"int $b = 0b2;", (int) '2', 11},
+                    //testStringSingleQuotedAssignment
+                    {"string $a = ''';", -1, 16},
+                    {"string $a = '\\''';", -1, 18},
+                    {"string $a = '\\\\'';", -1, 18},
+                    //testStringDoubleQuotedAssignment
+                    {"string $a = \" \" \";", -1, 18},
+                    {"string $a = \" \\\"\" \";", -1, 20},
+                    {"string $a = \" \\\\\" \";", -1, 20},
+                    // single $ are allowed in PHP but not in TSPHP (so far)
+                    {"string $a = \" $ \";", '$', 14},
+                    {"string $a = \" \\$$ \";", '$', 16},
+                    {"string $a = \" \\\\$$ \";", '$', 16},
+                    // $0 cannot be a variable and is therefore allowed in PHP, but not in TSPHP (so far)
+                    {"string $a = \" $0123456789 \";", '$', 14},
                 });
     }
 }

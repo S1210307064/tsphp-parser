@@ -29,10 +29,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentIntTest extends AParserTest
+public class WhileTest extends AParserTest
 {
 
-    public AssignmentIntTest(String testString) {
+    public WhileTest(String testString) {
         super(testString);
     }
 
@@ -44,28 +44,12 @@ public class AssignmentIntTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    //testIntDecAssignment
-                    {"int $a = 1;"},
-                    {"int $b = 1234567890;"},
-                    {"int $c = +123;"},
-                    {"int $d = -87495;"},
-                    //testIntHexAssignment
-                    {"int $a = 0x1; "},
-                    {"int $b = 0xabcdefABCDEF1234567890;"},
-                    {"int $c = -0xA12f;"},
-                    {"int $d = +0x1abc;"},
-                    //testIntOctAssignment
-                    {"int $a = 01; "},
-                    {"int $b = 01234567;"},
-                    {"int $c = +074;"},
-                    {"int $d = -01723;"},
-                    //testIntBinAssignment
-                    {"int $a = 0b1; "},
-                    {"int $b = 0b0101010111100001;"},
-                    {"int $c = +0b111;"},
-                    {"int $d = -0b00000001;"},
+                    {"while( true  ) $a=1;"},
+                    {"while( true  ){$a=1;}"},
+                    {"while( true  ){$a=1;int $b=2;}"},
+                    {"do $a=1; while( true  );"},
+                    {"do {$a=1;} while( true  );"},
+                    {"do {$a=1;$b=2;}while( true  );"}
                 });
-
-        //
     }
 }

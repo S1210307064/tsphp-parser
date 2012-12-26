@@ -22,19 +22,41 @@ options {
 
 tokens{
 	Arrow = '=>';
+	As = 'as';
+	Break = 'break';
+	Case = 'case';
+	Colon = ':';
 	Comma = ',';
+	Continue = 'continue';
 	Equal = '=';	
 	Else = 'else';
+	Default = 'default';
+	DivideEqual = '/=';
+	Do = 'do';
 	Dolar = '$';
+	DotEqual = '.=';
 	Function = 'function';
+	For = 'for';
+	Foreach = 'foreach';
 	If = 'if';
-	LeftCurlyBrace ='{';
-	LeftParanthesis ='(';
+	MinusEqual = '-=';
+	MinusMinus = '--';
+	ModuloEqual = '%=';
+	MultiplyEqual = '*=';
+	LeftCurlyBrace = '{';
+	LeftParanthesis = '(';
 	LeftSquareBrace = '[';
-	Namespace ='namespace';
+	LogicAndEqual = '&=';
+	LogicOrEqual = '|=';
+	LogicXorEqual = '^=';
+	Namespace = 'namespace';
+	PlusEqual = '+=';
+	PlusPlus = '++';
 	RightCurlyBrace = '}';
 	RightParanthesis =')';
 	RightSquareBrace = ']';
+	ShiftLeftEqual = '<<=';
+	ShiftRightEqual = '>>=';
 	TypeInt = 'int';
 	TypeBool = 'bool';
 	TypeBoolean = 'boolean';
@@ -42,7 +64,9 @@ tokens{
 	TypeString = 'string';
 	TypeResource = 'resource';
 	TypeArray = 'array';
-	Semicolon =';';
+	Semicolon = ';';
+	Switch = 'switch';
+	While = 'while';
 }
 
 
@@ -86,9 +110,9 @@ package ch.tutteli.tsphp.grammar;
 }
 
 	
-prog	:	namespaceSemicolon+
-	|	namespaceBracket+
-	|	withoutNamespace
+prog	:	namespaceSemicolon+ EOF
+	|	namespaceBracket+ EOF
+	|	withoutNamespace EOF
 	;
 	
 namespaceSemicolon
@@ -110,10 +134,13 @@ ID	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|
 withoutNamespace 
 	:	command+;
 
-command	:	//definition
-	//|	
-	instruction
+command	:	block
+	//|	definition
+	|	instruction
 	;
+	
+
+block	:	'{' command+  '}';
 
 /*definition
 	:	functionDeclaration	
@@ -129,33 +156,60 @@ paramList
 	:	varDecl (',' varDecl)*;*/
 
 instruction	
-	:	condition
-	//|	forLoop
+	:	varAssignment
 	|	varDeclaration
+	|	ifCondition
+	|	forLoop
+	|	foreachLoop
+	|	whileLoop
+	|	switchCondition
+	|	doWhileLoop
 	;
 	
-condition
-	:	'if' '(' (boolExpression | VariableId) ')'
-		(
-			blockOrSingleCommand	
-		)
-		( 'else' blockOrSingleCommand )?
+varAssignment
+	:	varAssignmentWithoutSemicolon ';'
+	;
+
+varAssignmentWithoutSemicolon
+	:	VariableId assignmentOperator (expressionOrArray | VariableId) 
+	|	incrementDecrement VariableId
+	|	VariableId incrementDecrement
+	;
+
+assignmentOperator
+	:	'='
+	|	'+='
+	|	'-='
+	|	'*='
+	|	'/='
+	|	'&='
+	|	'|='
+	|	'^='
+	|	'%='
+	|	'.='
+	|	'<<='
+	|	'>>='
 	;
 	
-//forLoop	:	'for' '(' intAssign? boolExpression? ';' incrDecr? ')' blockOrSingleCommand;
 
-/*incrDecr:	VariableId IncrementOperator
-	|	IncrementOperator VariableId
+incrementDecrement
+	:	'++'
+	| 	'--'
 	;
 
-IncrementOperator
-    : '--'|'++'
-    ;
-*/
-blockOrSingleCommand
-	:	('{' command*  '}')
-	| 	command
-	;
+
+
+
+expressionOrArray
+	:	expression|array;
+	
+expression
+	:	intExpression
+	|	stringExpression
+	|	boolExpression
+	|	floatExpression
+	;	
+
 
 varDeclaration	
 	:	arrayDeclaration
@@ -164,17 +218,6 @@ varDeclaration
 	|	floatDeclaration
 	|	stringDeclaration
 	|	TypeResource VariableId ';'
-	;
-
-fragment
-PRIMITIVE_TYPES
-	:	TypeBool|TypeBoolean
-	|	TypeInt
-	|	TypeFloat
-	|	TypeString
-	|	TypeResource
-	|	TypeArray
-	//TODO  TypeCallable
 	;
 
 	
@@ -276,21 +319,66 @@ array_content
 	:	(array_key '=>')? array_value  (',' (array_key '=>')? array_value)*;
 
 array_key
-	:	expressions|VariableId;
+	:	expression|VariableId;
 
-expressions
-	:	intExpression
-	|	stringExpression
-	|	boolExpression
-	|	floatExpression
-	;
+
 
 array_value
 options {
 backtrack=true;
 }
-	:	expressions|array;
+	:	expressionOrArray;
+	
+ifCondition
+	:	'if' '(' (boolExpression | VariableId) ')' blockOrSingleCommand	
+		( 'else' blockOrSingleCommand )?
+	;
 
+blockOrSingleCommand
+	:	block
+	| 	command
+	;
+	
+forLoop	:	'for' '(' ((varDeclaration|varAssignment)?|';')  boolExpression? ';' varAssignmentWithoutSemicolon? ')' loopBlockOrSingleCommand;
+
+loopBlockOrSingleCommand
+	:	blockOrSingleCommand
+	|	'break' BREAK_CONTINUE_NUMBER? ';'
+	|	'continue' BREAK_CONTINUE_NUMBER? ';'
+	;
+	
+fragment
+BREAK_CONTINUE_NUMBER
+	:	('1'..'9');
+
+foreachLoop
+	:	'foreach' '(' (VariableId|array) 'as' VariableId ('=>' VariableId)? ')' loopBlockOrSingleCommand;
+
+whileLoop
+	:	'while' '(' boolExpression ')' loopBlockOrSingleCommand;
+	
+doWhileLoop
+	:	'do' loopBlockOrSingleCommand 'while' '(' boolExpression ')' ';';
+
+switchCondition	
+	:	'switch' '(' VariableId ')' '{' 
+		(
+			(caseLabel+ switchCommand)+ defaultLabel switchCommand (caseLabel+ switchCommand)+
+		|	(caseLabel+ switchCommand)+ (defaultLabel switchCommand)?
+		)
+		'}'
+	;
+
+caseLabel	:	'case' expressionOrArray ':';
+
+switchCommand
+	:	block
+	|	command+
+	|	'break' BREAK_CONTINUE_NUMBER? ';'
+	|	'continue' BREAK_CONTINUE_NUMBER? ';'
+	;
+defaultLabel
+	:	'default' ':';
 
 Comment
 	:	'//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}

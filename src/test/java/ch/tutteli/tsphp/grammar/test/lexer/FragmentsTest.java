@@ -31,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class LexerFragmentsTest extends ALexerTest
+public class FragmentsTest extends ALexerTest
 {
 
-    public LexerFragmentsTest(String methodName, String testString) {
+    public FragmentsTest(String methodName, String testString) {
         super(methodName, testString, 0);
     }
 
@@ -52,7 +52,17 @@ public class LexerFragmentsTest extends ALexerTest
                     {"mEXPONENT", "e+0"},
                     {"mEXPONENT", "e+1234075896"},
                     {"mEXPONENT", "e-0"},
-                    {"mEXPONENT", "e-1234075896"},}));
+                    {"mEXPONENT", "e-1234075896"},
+                    {"mBREAK_CONTINUE_NUMBER", "1"},
+                    {"mBREAK_CONTINUE_NUMBER", "2"},
+                    {"mBREAK_CONTINUE_NUMBER", "3"},
+                    {"mBREAK_CONTINUE_NUMBER", "4"},
+                    {"mBREAK_CONTINUE_NUMBER", "5"},
+                    {"mBREAK_CONTINUE_NUMBER", "6"},
+                    {"mBREAK_CONTINUE_NUMBER", "7"},
+                    {"mBREAK_CONTINUE_NUMBER", "8"},
+                    {"mBREAK_CONTINUE_NUMBER", "9"},
+        }));
         collection.addAll(getIDTestStrings());
         collection.addAll(getIntFragments());
         collection.addAll(getStringFragments());
@@ -109,7 +119,7 @@ public class LexerFragmentsTest extends ALexerTest
                     {"mOCTAL", "00"},
                     {"mOCTAL", "01"},
                     {"mOCTAL", "01234567"},
-                    {"mOCTAL", "01247085963"}
+                    {"mOCTAL", "01247056311"}
                 });
     }
 
@@ -122,6 +132,7 @@ public class LexerFragmentsTest extends ALexerTest
                     {"mSTRING_DOUBLE_QUOTED", "\"1.3e10\""},
                     {"mSTRING_DOUBLE_QUOTED", "\"true\""},
                     {"mSTRING_DOUBLE_QUOTED", "\"false\""},
+                    {"mSTRING_DOUBLE_QUOTED", "\"10 \\$\""},
                     {"mSTRING_DOUBLE_QUOTED", "\"" + IdentifierHelper.getAllDigits() + "\""},
                     {"mSTRING_DOUBLE_QUOTED", "\"" + IdentifierHelper.getAllLowerCaseCharacters() + "\""},
                     {"mSTRING_DOUBLE_QUOTED", "\"" + IdentifierHelper.getAllUpperCaseCharacters() + "\""},
@@ -154,6 +165,7 @@ public class LexerFragmentsTest extends ALexerTest
                     {"mSTRING_SINGLE_QUOTED", "'1578e10'"},
                     {"mSTRING_SINGLE_QUOTED", "'true'"},
                     {"mSTRING_SINGLE_QUOTED", "'false'"},
+                    {"mSTRING_SINGLE_QUOTED", "'10 $'"},
                     {"mSTRING_SINGLE_QUOTED", "'" + IdentifierHelper.getAllDigits() + "'"},
                     {"mSTRING_SINGLE_QUOTED", "'" + IdentifierHelper.getAllLowerCaseCharacters() + "'"},
                     {"mSTRING_SINGLE_QUOTED", "'" + IdentifierHelper.getAllUpperCaseCharacters() + "'"},

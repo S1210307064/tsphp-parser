@@ -29,10 +29,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableDeclarationAssignmentWhitespaceTest extends AParserTest
+public class VariableDeclarationWhitespaceTest extends AParserTest
 {
 
-    public VariableDeclarationAssignmentWhitespaceTest(String testString) {
+    public VariableDeclarationWhitespaceTest(String testString) {
         super(testString);
     }
 
