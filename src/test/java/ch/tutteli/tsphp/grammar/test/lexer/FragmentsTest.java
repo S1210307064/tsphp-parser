@@ -53,45 +53,10 @@ public class FragmentsTest extends ALexerTest
                     {"mEXPONENT", "e+1234075896"},
                     {"mEXPONENT", "e-0"},
                     {"mEXPONENT", "e-1234075896"},
-                    {"mBREAK_CONTINUE_NUMBER", "1"},
-                    {"mBREAK_CONTINUE_NUMBER", "2"},
-                    {"mBREAK_CONTINUE_NUMBER", "3"},
-                    {"mBREAK_CONTINUE_NUMBER", "4"},
-                    {"mBREAK_CONTINUE_NUMBER", "5"},
-                    {"mBREAK_CONTINUE_NUMBER", "6"},
-                    {"mBREAK_CONTINUE_NUMBER", "7"},
-                    {"mBREAK_CONTINUE_NUMBER", "8"},
-                    {"mBREAK_CONTINUE_NUMBER", "9"},
         }));
-        collection.addAll(getIDTestStrings());
         collection.addAll(getIntFragments());
         collection.addAll(getStringFragments());
 
-        return collection;
-    }
-
-    public static Collection<Object[]> getIDTestStrings() {
-        List<Object[]> collection = new ArrayList<>();
-        //first digit lower case a-z
-        for (int i = 'a'; i < 'z'; ++i) {
-            collection.add(new Object[]{"mID", IdentifierHelper.asciiToString(i)});
-        }
-        //first digit uper case a-z
-        for (int i = 'A'; i < 'Z'; ++i) {
-            collection.add(new Object[]{"mID", IdentifierHelper.asciiToString(i)});
-        }
-        //first digit special character
-        for (int i = 127; i <= 255; ++i) {
-            collection.add(new Object[]{"mID", IdentifierHelper.asciiToString(i)});
-        }
-        //first digit underscore
-        collection.add(new Object[]{"mID", "_"});
-
-        collection.addAll(Arrays.asList(new Object[][]{
-                    {"mID", IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllDigits() + IdentifierHelper.getAllSpecialCharacters() + "_"},
-                    {"mID", IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits() + IdentifierHelper.getAllSpecialCharacters() + "_"},
-                    {"mID", IdentifierHelper.getAllSpecialCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits() + "_"},
-                    {"mID", "_" + IdentifierHelper.getAllSpecialCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits()},}));
         return collection;
     }
 

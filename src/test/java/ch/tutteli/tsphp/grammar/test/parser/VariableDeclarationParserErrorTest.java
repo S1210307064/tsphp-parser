@@ -48,7 +48,7 @@ public class VariableDeclarationParserErrorTest extends AParserParserExceptionTe
                     {"$a;", TSPHPParser.VariableId, 0},
                     {"int $a int $b;", TSPHPParser.TypeInt, 7},
                     {"int $a 1", TSPHPParser.Int, 7},
-                    {"int a;", TSPHPParser.NamespaceId, 4},
+                    {"int a;", TSPHPParser.Identifier, 4},
                     {"int $a", -1, 6}
                 });
     }

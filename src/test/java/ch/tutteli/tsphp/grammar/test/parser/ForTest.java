@@ -43,9 +43,6 @@ public class ForTest extends AParserTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        int c;
-        for (c = 0; c < 10; ++c) {
-        }
         return Arrays.asList(new Object[][]{
                     {"for(int $a=1 ; true ; ++$i  ) $a=1;"},
                     {"for(         ; true ; ++$i  ) $a=1;"},

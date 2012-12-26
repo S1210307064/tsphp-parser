@@ -14,7 +14,7 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.test.lexer;
+package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserLexerExceptionTest;
 import java.util.Arrays;
@@ -53,12 +53,6 @@ public class AssignmentWrongStringTest extends AParserLexerExceptionTest
                     {"string $a = \" \" \";", -1, 18},
                     {"string $a = \" \\\"\" \";", -1, 20},
                     {"string $a = \" \\\\\" \";", -1, 20},
-                    // single $ are allowed in PHP but not in TSPHP (so far)
-                    {"string $a = \" $ \";", '$', 14},
-                    {"string $a = \" \\$$ \";", '$', 16},
-                    {"string $a = \" \\\\$$ \";", '$', 16},
-                    // $0 cannot be a variable and is therefore allowed in PHP, but not in TSPHP (so far)
-                    {"string $a = \" $0123456789 \";", '$', 14},
                 });
     }
 }

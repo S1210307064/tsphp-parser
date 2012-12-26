@@ -48,7 +48,7 @@ public class VariantionHelper
 
                 collection.add(new Object[]{
                             prefix + before + upper + after + appendix,
-                            TSPHPParser.NamespaceId,
+                            TSPHPParser.Identifier,
                             prefixLenght
                         });
             }

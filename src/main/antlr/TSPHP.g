@@ -52,18 +52,19 @@ tokens{
 	Namespace = 'namespace';
 	PlusEqual = '+=';
 	PlusPlus = '++';
+	Return = 'return';
 	RightCurlyBrace = '}';
 	RightParanthesis =')';
 	RightSquareBrace = ']';
 	ShiftLeftEqual = '<<=';
 	ShiftRightEqual = '>>=';
-	TypeInt = 'int';
 	TypeBool = 'bool';
 	TypeBoolean = 'boolean';
+	TypeInt = 'int';
 	TypeFloat = 'float';
 	TypeString = 'string';
-	TypeResource = 'resource';
 	TypeArray = 'array';
+	TypeResource = 'resource';
 	Semicolon = ';';
 	Switch = 'switch';
 	While = 'while';
@@ -116,62 +117,84 @@ prog	:	namespaceSemicolon+ EOF
 	;
 	
 namespaceSemicolon
-	:	('namespace' NamespaceId ';' command+ );
+	:	('namespace' NamespaceId ';' statement+ );
 
 namespaceBracket
-	:	('namespace' NamespaceId? '{' command+ '}');
+	:	('namespace' NamespaceId? '{' statement+ '}');
 
-//Must before NamespaceId otherwise NamespaceId match true and false
+//Must before Id otherwise Id match true and false
 Bool	:	'true'|'false';
 
+Identifier	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*;
+
 NamespaceId
-	:	ID ('\\' ID)*;
+	:	Identifier ('\\' Identifier)*;
 
-
-fragment
-ID	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*;
 
 withoutNamespace 
-	:	command+;
+	:	statement+;
 
-command	:	block
-	//|	definition
-	|	instruction
+statement	
+	:	definition
+	|	instructionWithoutBreakContinue
 	;
-	
 
-block	:	'{' command+  '}';
-
-/*definition
+definition
 	:	functionDeclaration	
 	;
 	
 functionDeclaration	
-	:	'function' returnType ID '(' paramList ')' '{' '}';
+	:	'function' returnType Identifier '(' paramList? ')' '{' instructionWithoutBreakContinue* '}';
 	
 returnType
-	:	PRIMITIVE_TYPES | 'void';
+	:	primitiveTypes | 'void';
+
+primitiveTypes
+	:	TypeBool
+	|	TypeBoolean
+	|	TypeInt
+	|	TypeFloat
+	|	TypeString
+	|	TypeArray
+	|	TypeResource
+	;
 	
 paramList
-	:	varDecl (',' varDecl)*;*/
+	:	 paramDeclaration (',' paramDeclaration)*;
+	
+paramDeclaration
+	:	primitiveTypes VariableId ('=' expressionInclArrayExpression)?;
 
-instruction	
-	:	varAssignment
-	|	varDeclaration
+
+instructionWithoutBreakContinue	
+	:	'{' instructionWithoutBreakContinue+  '}'
+	|	instruction
+	;
+
+instructionInclBreakContinue
+	:	'{' instructionInclBreakContinue+  '}'
+	|	instruction
+	|	('break'|'continue') Int? ';'
+	;	
+
+instruction
+	:	variableAssignment
+	|	variableDeclaration
 	|	ifCondition
+	|	switchCondition
 	|	forLoop
 	|	foreachLoop
 	|	whileLoop
-	|	switchCondition
 	|	doWhileLoop
+	|	'return' expressionInclArrayExpression? ';'
 	;
-	
-varAssignment
+
+variableAssignment
 	:	varAssignmentWithoutSemicolon ';'
 	;
 
 varAssignmentWithoutSemicolon
-	:	VariableId assignmentOperator (expressionOrArray | VariableId) 
+	:	VariableId assignmentOperator (expressionInclArrayExpression | VariableId) 
 	|	incrementDecrement VariableId
 	|	VariableId incrementDecrement
 	;
@@ -190,20 +213,16 @@ assignmentOperator
 	|	'<<='
 	|	'>>='
 	;
-	
 
 incrementDecrement
 	:	'++'
 	| 	'--'
 	;
 
-
-
-
-expressionOrArray
-	:	expression|array;
+expressionInclArrayExpression
+	:	expressionWithoutArrayExpression|arrayExpression;
 	
-expression
+expressionWithoutArrayExpression
 	:	intExpression
 	|	stringExpression
 	|	boolExpression
@@ -211,7 +230,7 @@ expression
 	;	
 
 
-varDeclaration	
+variableDeclaration	
 	:	arrayDeclaration
 	|	boolDeclaration	
 	|	intDeclaration 
@@ -224,7 +243,7 @@ varDeclaration
 boolDeclaration
 	:	(TypeBool|TypeBoolean) VariableId ( '=' (boolExpression|VariableId) )? ';';
 
-VariableId	:	'$' ID;
+VariableId	:	'$' Identifier;
 
 boolExpression
 	:	Bool;
@@ -244,6 +263,7 @@ Int     : 	('+'|'-')? DECIMAL
         | 	('+'|'-')? OCTAL
         | 	('+'|'-')? BINARY
         ;
+
 
 fragment
 DECIMAL
@@ -294,23 +314,28 @@ String	:	STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED ;
 fragment
 STRING_SINGLE_QUOTED
 	:	'\'' (
-			  ('\\' '\\')=>'\\' '\\' 
-			|  ('\\' '\'')=>'\\' '\'' 
+			  ('\\\\')=>'\\\\' 
+			|  ('\\\'')=>'\\\'' 
 			| ~ ('\'' )
 		)* '\'';
 	
 fragment
 STRING_DOUBLE_QUOTED
     	:	'"' (
-			  ('\\' '\\') => '\\\\'
-			|  ('\\' '"') => '\\"'
-			| ('\\' '$') => '\\$'
+			  ('\\\\') => '\\\\'
+			|  ('\\"') => '\\"'
+			| ('\\$') => '\\$'
 			| ~ ('"' | '$')
   		)* '"';
 
 arrayDeclaration
-	:	TypeArray VariableId ( '=' (array|VariableId) )? ';' ;
+	:	TypeArray VariableId ( '=' (arrayExpression|VariableId) )? ';' ;
 
+arrayExpression
+	:	array
+	;
+	//TODO array arithmetic
+	
 array	:	'[' array_content? ']' 
 	|	TypeArray '(' array_content? ')'
 	;
@@ -319,7 +344,7 @@ array_content
 	:	(array_key '=>')? array_value  (',' (array_key '=>')? array_value)*;
 
 array_key
-	:	expression|VariableId;
+	:	expressionWithoutArrayExpression|VariableId;
 
 
 
@@ -327,56 +352,36 @@ array_value
 options {
 backtrack=true;
 }
-	:	expressionOrArray;
+	:	expressionInclArrayExpression;
 	
 ifCondition
-	:	'if' '(' (boolExpression | VariableId) ')' blockOrSingleCommand	
-		( 'else' blockOrSingleCommand )?
+	:	'if' '(' (boolExpression | VariableId) ')' instructionWithoutBreakContinue	
+		( 'else' instructionWithoutBreakContinue )?
 	;
 
-blockOrSingleCommand
-	:	block
-	| 	command
-	;
 	
-forLoop	:	'for' '(' ((varDeclaration|varAssignment)?|';')  boolExpression? ';' varAssignmentWithoutSemicolon? ')' loopBlockOrSingleCommand;
-
-loopBlockOrSingleCommand
-	:	blockOrSingleCommand
-	|	'break' BREAK_CONTINUE_NUMBER? ';'
-	|	'continue' BREAK_CONTINUE_NUMBER? ';'
-	;
-	
-fragment
-BREAK_CONTINUE_NUMBER
-	:	('1'..'9');
+forLoop	:	'for' '(' ((variableDeclaration|variableAssignment)|';')  boolExpression? ';' varAssignmentWithoutSemicolon? ')' instructionInclBreakContinue;
 
 foreachLoop
-	:	'foreach' '(' (VariableId|array) 'as' VariableId ('=>' VariableId)? ')' loopBlockOrSingleCommand;
+	:	'foreach' '(' (VariableId|array) 'as' VariableId ('=>' VariableId)? ')' instructionInclBreakContinue;
 
 whileLoop
-	:	'while' '(' boolExpression ')' loopBlockOrSingleCommand;
+	:	'while' '(' boolExpression ')' instructionInclBreakContinue;
 	
 doWhileLoop
-	:	'do' loopBlockOrSingleCommand 'while' '(' boolExpression ')' ';';
+	:	'do' instructionInclBreakContinue 'while' '(' boolExpression ')' ';';
 
 switchCondition	
 	:	'switch' '(' VariableId ')' '{' 
 		(
-			(caseLabel+ switchCommand)+ defaultLabel switchCommand (caseLabel+ switchCommand)+
-		|	(caseLabel+ switchCommand)+ (defaultLabel switchCommand)?
+			(caseLabel+ instructionInclBreakContinue+)+ defaultLabel instructionInclBreakContinue+ (caseLabel+ instructionInclBreakContinue+)+
+		|	(caseLabel+ instructionInclBreakContinue+)+ (defaultLabel instructionInclBreakContinue+)?
 		)
 		'}'
 	;
 
-caseLabel	:	'case' expressionOrArray ':';
+caseLabel	:	'case' expressionInclArrayExpression ':';
 
-switchCommand
-	:	block
-	|	command+
-	|	'break' BREAK_CONTINUE_NUMBER? ';'
-	|	'continue' BREAK_CONTINUE_NUMBER? ';'
-	;
 defaultLabel
 	:	'default' ':';
 

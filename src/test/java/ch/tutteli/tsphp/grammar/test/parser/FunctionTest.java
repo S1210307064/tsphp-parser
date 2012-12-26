@@ -14,11 +14,12 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.test.lexer;
+package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.test.utils.ALexerTest;
+import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.Arrays;
 import java.util.Collection;
+import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -28,29 +29,25 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class PHPValidButNotInTSPHPTest extends ALexerTest
+public class FunctionTest extends AParserTest
 {
 
-    public PHPValidButNotInTSPHPTest(String methodName, String testString) {
-        super(methodName, testString, 0);
+    public FunctionTest(String testString) {
+        super(testString);
     }
 
     @Test
-    public void testTokens() throws Exception {
-        super.checkForMismatch();
+    public void test() throws RecognitionException {
+        super.parseAndCheckForException();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    // variables in quoted strings are not allowed in TSPHP - use ".$a." instead
-                    {"mSTRING_DOUBLE_QUOTED", "\"$a\""},
-                    // single $ are allowed in PHP but not in TSPHP
-                    {"mSTRING_DOUBLE_QUOTED", "\"10 $\""},
-                    {"mSTRING_DOUBLE_QUOTED", "\" $ \""},
-                    {"mSTRING_DOUBLE_QUOTED", "\" \\$$ \""},
-                    {"mSTRING_DOUBLE_QUOTED", "\" \\\\$$ \""},
-                    // $0 cannot be a variable and is therefore allowed in PHP, but not in TSPHP
-                    {"mSTRING_DOUBLE_QUOTED", "\" $0123456789 \""},});
+                    {"function void setName(string $name){}"},
+                    {"function void setName(string $name){int $a=1;}"},
+                    {"function string getName(){return \"Robert\";}"},
+                    {"function void foo(string $a, string $b='hallo'){$a=$b;}"},
+        });
     }
 }

@@ -16,8 +16,6 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.test.lexer.FragmentsTest;
-import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class BoolDeclarationTest extends AParserTest
+public class BreakContinueTest extends AParserTest
 {
 
-    public BoolDeclarationTest(String testString) {
+    public BreakContinueTest(String testString) {
         super(testString);
     }
 
@@ -48,18 +46,26 @@ public class BoolDeclarationTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(Arrays.asList(new Object[][]{
-                    {"bool $a = true;"},
-                    {"bool $b = false;"},
-                    {"boolean $a = true;"},
-                    {"boolean $b = false;"}
-                }));
-        
-        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
-        for (Object[] obj : idTestStrings) {
-            collection.add(new Object[]{"bool $b = $" + obj[1] + ";"});
-        }
-        
+        collection.addAll(testStrings("break"));
+        collection.addAll(testStrings("continue"));
+        collection.addAll(testStrings("break 3"));
+        collection.addAll(testStrings("continue 2"));
         return collection;
+
+    }
+
+    public static Collection<Object[]> testStrings(String breakOrContinue) {
+        return Arrays.asList(new Object[][]{
+                    {"for(;;)" + breakOrContinue + ";"},
+                    {"for(;;){" + breakOrContinue + ";}"},
+                    {"foreach([] as $k)" + breakOrContinue + ";"},
+                    {"foreach([] as $k){" + breakOrContinue + ";}"},
+                    {"while(true)" + breakOrContinue + ";"},
+                    {"while(true){" + breakOrContinue + ";}"},
+                    {"do break; while(true);"},
+                    {"do{ break;}while(true);"},
+                    {"switch($a){case 1: " + breakOrContinue + ";}"},
+                    {"switch($a){case 1: $a=1; " + breakOrContinue + "; default: $a=2; " + breakOrContinue + ";}"}
+                });
     }
 }

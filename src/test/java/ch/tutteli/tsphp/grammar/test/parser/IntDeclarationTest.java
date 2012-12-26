@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.lexer.FragmentsTest;
+import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,7 +55,7 @@ public class IntDeclarationTest extends AParserTest
             collection.add(new Object[]{"int $a = -" + obj[1] + ";"});
         }
         
-        Collection<Object[]> idTestStrings = FragmentsTest.getIDTestStrings();
+        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
         for (Object[] obj : idTestStrings) {
             collection.add(new Object[]{"int $d = $" + obj[1] + ";"});
         }

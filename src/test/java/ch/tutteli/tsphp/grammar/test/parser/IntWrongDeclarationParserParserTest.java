@@ -47,16 +47,16 @@ public class IntWrongDeclarationParserParserTest extends AParserParserExceptionT
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
                     //wrong octal
-                    {"int $a = 0o1;", TSPHPParser.NamespaceId, 10},
-                    {"int $a = 0O1;", TSPHPParser.NamespaceId, 10},
-                    {"int $a = o1;", TSPHPParser.NamespaceId, 9},
-                    {"int $a = O1;", TSPHPParser.NamespaceId, 9},
+                    {"int $a = 0o1;", TSPHPParser.Identifier, 10},
+                    {"int $a = 0O1;", TSPHPParser.Identifier, 10},
+                    {"int $a = o1;", TSPHPParser.Identifier, 9},
+                    {"int $a = O1;", TSPHPParser.Identifier, 9},
                     //wrong hex
-                    {"int $a = xA;", TSPHPParser.NamespaceId, 9},
-                    {"int $a = XF;", TSPHPParser.NamespaceId, 9},
+                    {"int $a = xA;", TSPHPParser.Identifier, 9},
+                    {"int $a = XF;", TSPHPParser.Identifier, 9},
                     //wrong binary
-                    {"int $b = b1;", TSPHPParser.NamespaceId, 9},
-                    {"int $b = b0;", TSPHPParser.NamespaceId, 9},
+                    {"int $b = b1;", TSPHPParser.Identifier, 9},
+                    {"int $b = b0;", TSPHPParser.Identifier, 9},
                     {"int $b = 0b012;", TSPHPParser.Int, 13},
                     {"int $b = 0b100014;", TSPHPParser.Int, 16},
                     //string

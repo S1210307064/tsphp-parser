@@ -56,7 +56,7 @@ public class VariableDeclarationWrongTypeParserTest extends AParserParserExcepti
                     "array",
                     "resource"
                 }, "", " $a;");
-        collection.add(new Object[]{"qwert $a;", TSPHPParser.NamespaceId, 0});
+        collection.add(new Object[]{"qwert $a;", TSPHPParser.Identifier, 0});
         collection.addAll(Arrays.asList(new Object[][]{
                     {"int $1;", TSPHPParser.Dolar, 4},
                     {"bool $2a;", TSPHPParser.Dolar, 5},
