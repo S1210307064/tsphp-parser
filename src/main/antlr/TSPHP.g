@@ -23,40 +23,70 @@ options {
 tokens{
 	Arrow = '=>';
 	As = 'as';
+	At = '@';
+	Assign = '=';
+	Backslash = '\\';
+	BitwiseAnd = '&';
+	BitwiseAndEqual = '&=';
+	BitwiseNot = '~';
+	BitwiseOr = '|';
+	BitwiseOrEqual = '|=';
+	BitwiseXor = '^';
+	BitwiseXorEqual = '^=';
 	Break = 'break';
 	Case = 'case';
 	Colon = ':';
 	Comma = ',';
 	Continue = 'continue';
-	Equal = '=';	
+	Equal = '==';	
 	Else = 'else';
 	Default = 'default';
+	Divide = '/';
 	DivideEqual = '/=';
 	Do = 'do';
 	Dolar = '$';
+	Dot = '.';
 	DotEqual = '.=';
+	GreaterThan = '>';
+	GreaterEqualThan = '>=';
 	Function = 'function';
 	For = 'for';
 	Foreach = 'foreach';
+	Identical = '===';
 	If = 'if';
-	MinusEqual = '-=';
-	MinusMinus = '--';
-	ModuloEqual = '%=';
-	MultiplyEqual = '*=';
 	LeftCurlyBrace = '{';
 	LeftParanthesis = '(';
 	LeftSquareBrace = '[';
-	LogicAndEqual = '&=';
-	LogicOrEqual = '|=';
-	LogicXorEqual = '^=';
+	LessThan = '<';
+	LessEqualThan = '<=';
+	LogicAnd = '&&';
+	LogicAndWeak = 'and';
+	LogicNot = '!';
+	LogicOr = '||';
+	LogicOrWeak = 'or';
+	LogicXorWeak = 'xor';
+	Minus = '-';
+	MinusEqual = '-=';
+	MinusMinus = '--';
+	Modulo = '%';
+	ModuloEqual = '%=';
+	Multiply = '*';
+	MultiplyEqual = '*=';
 	Namespace = 'namespace';
+	NotEqual = '!=';
+	NotEqualAlternative = '<>';
+	NotIdentical = '!==';
+	QuestionMark = '?';
+	Plus = '+';
 	PlusEqual = '+=';
 	PlusPlus = '++';
 	Return = 'return';
 	RightCurlyBrace = '}';
 	RightParanthesis =')';
 	RightSquareBrace = ']';
+	ShiftLeft = '<<';
 	ShiftLeftEqual = '<<=';
+	ShiftRight = '>>';
 	ShiftRightEqual = '>>=';
 	TypeBool = 'bool';
 	TypeBoolean = 'boolean';
@@ -65,8 +95,10 @@ tokens{
 	TypeString = 'string';
 	TypeArray = 'array';
 	TypeResource = 'resource';
+	TypeObject = 'object';
 	Semicolon = ';';
 	Switch = 'switch';
+	Void = 'void';
 	While = 'while';
 }
 
@@ -117,17 +149,18 @@ prog	:	namespaceSemicolon+ EOF
 	;
 	
 namespaceSemicolon
-	:	('namespace' NamespaceId ';' statement+ );
+	:	('namespace' namespaceId ';' statement+ );
 
 namespaceBracket
-	:	('namespace' NamespaceId? '{' statement+ '}');
+	:	('namespace' namespaceId? '{' statement+ '}');
 
 //Must before Id otherwise Id match true and false
 Bool	:	'true'|'false';
 
-Identifier	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*;
+Identifier	
+	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*;
 
-NamespaceId
+namespaceId
 	:	Identifier ('\\' Identifier)*;
 
 
@@ -149,13 +182,18 @@ functionDeclaration
 returnType
 	:	primitiveTypes | 'void';
 
-primitiveTypes
+primitiveTypesWithoutResource
 	:	TypeBool
 	|	TypeBoolean
 	|	TypeInt
 	|	TypeFloat
 	|	TypeString
 	|	TypeArray
+	|	TypeObject
+	;
+	
+primitiveTypes
+	:	primitiveTypesWithoutResource
 	|	TypeResource
 	;
 	
@@ -163,8 +201,10 @@ paramList
 	:	 paramDeclaration (',' paramDeclaration)*;
 	
 paramDeclaration
-	:	primitiveTypes VariableId ('=' expressionInclArrayExpression)?;
+	:	primitiveTypes VariableId ('=' expression)?;
 
+VariableId	
+	:	'$' Identifier;
 
 instructionWithoutBreakContinue	
 	:	'{' instructionWithoutBreakContinue+  '}'
@@ -186,17 +226,17 @@ instruction
 	|	foreachLoop
 	|	whileLoop
 	|	doWhileLoop
-	|	'return' expressionInclArrayExpression? ';'
+	|	'return' expression? ';'
 	;
 
 variableAssignment
-	:	varAssignmentWithoutSemicolon ';'
+	:	variableAssignmentWithoutSemicolon ';'
 	;
 
-varAssignmentWithoutSemicolon
-	:	VariableId assignmentOperator (expressionInclArrayExpression | VariableId) 
-	|	incrementDecrement VariableId
-	|	VariableId incrementDecrement
+variableAssignmentWithoutSemicolon
+	:	VariableId assignmentOperator expression
+	|	postIncrementDecrement
+	|	preIncrementDecrement
 	;
 
 assignmentOperator
@@ -213,57 +253,118 @@ assignmentOperator
 	|	'<<='
 	|	'>>='
 	;
-
-incrementDecrement
-	:	'++'
-	| 	'--'
-	;
-
-expressionInclArrayExpression
-	:	expressionWithoutArrayExpression|arrayExpression;
 	
-expressionWithoutArrayExpression
-	:	intExpression
-	|	stringExpression
-	|	boolExpression
-	|	floatExpression
-	;	
-
-
+postIncrementDecrement
+	:	VariableId ('++'|'--');
+	
+preIncrementDecrement
+	:	('++'|'--') VariableId;
+	
+	
+variableDeclarationWithoutSemicolon
+	:	primitiveTypes VariableId ('=' expression)? ;
+	
 variableDeclaration	
-	:	arrayDeclaration
-	|	boolDeclaration	
-	|	intDeclaration 
-	|	floatDeclaration
-	|	stringDeclaration
-	|	TypeResource VariableId ';'
+	:	variableDeclarationWithoutSemicolon ';' ;
+
+expression
+	:	logicOrWeak;
+
+logicOrWeak
+	:	logicXorWeak ('or' logicXorWeak)*; 
+	
+logicXorWeak
+	:	logicAndWeak ('xor' logicAndWeak)*; 
+	
+logicAndWeak
+	:	assignment ('and' assignment)*;
+
+assignment
+	:	ternary (assignmentOperator ternary)*;
+
+ternary	:	logicOr ('?' expression ':' logicOr)?;
+
+logicOr	:	logicAnd ('||' logicAnd)*;
+
+logicAnd:	bitwiseOr ('&&' bitwiseOr)*;
+
+bitwiseOr
+	:	bitwiseXor ('|' bitwiseXor)*;
+
+bitwiseXor
+	:	bitwiseAnd ('^' bitwiseAnd)*;
+
+bitwiseAnd
+	:	equality ('&' equality)*;
+
+equality:	comparison (equalityOperator comparison)*;
+
+equalityOperator
+	:	'=='
+	|	'==='
+	|	'!='
+	|	'!=='
+	|	'<>'
 	;
 
+comparison
+	:	bitwiseShift (comparisonOperator bitwiseShift)*;
+
+comparisonOperator
+	:	'<'
+	|	'<='
+	|	'>'
+	|	'>='
+	;
+
+bitwiseShift	:	termOrStringConcatenation (('<<'|'>>') termOrStringConcatenation)*;
+
+termOrStringConcatenation	:	factor (('+'|'-'|'.') factor)*;
+
+factor	:	logicNot (('*'|'/'|'%') logicNot)*;
+
+logicNot:	'!' logicNot
+	|	castOrBitwiseNotOrAt
+	;
+
+/*
+instanceOf
+	:	castOrBitwiseNotOrAt ('instanceof' castOrBitwiseNotOrAt)?;
+*/
+castOrBitwiseNotOrAt
+	:	('(' primitiveTypesWithoutResource ')') castOrBitwiseNotOrAt
+	|	'~' castOrBitwiseNotOrAt
+	|	'@' castOrBitwiseNotOrAt
+	|	incrementDecrement
+	;
 	
-boolDeclaration
-	:	(TypeBool|TypeBoolean) VariableId ( '=' (boolExpression|VariableId) )? ';';
+incrementDecrement
+	:	postIncrementDecrement
+	|	preIncrementDecrement
+	|	unaryAtom
+	;
 
-VariableId	:	'$' Identifier;
-
-boolExpression
-	:	Bool;
-	//TODO boolean arithmetic
+unaryAtom
+	:	'+' atom
+	|	'-' atom
+	|	atom
+	;
 	
 
-
-intDeclaration
-	:	TypeInt VariableId ( '=' (intExpression|VariableId) )? ';';
-
-intExpression
-	:	Int;
-	//TODO int arithmetic
-
-Int     : 	('+'|'-')? DECIMAL
-        | 	('+'|'-')? HEXADECIMAL
-        | 	('+'|'-')? OCTAL
-        | 	('+'|'-')? BINARY
+atom	:	'(' expression ')'
+	|	Bool
+	|	Int
+	|	Float
+	|	String
+	|	array
+	|	VariableId
+	;
+	
+Int     : 	DECIMAL
+        | 	HEXADECIMAL
+        | 	OCTAL
+        | 	BINARY
         ;
-
 
 fragment
 DECIMAL
@@ -283,29 +384,14 @@ fragment
 BINARY	:	'0b'('0'|'1')+;
 
 
-
-floatDeclaration
-	:	TypeFloat VariableId ( '=' (floatExpression|VariableId) )? ';';
-
-floatExpression
-	:	Float;
-	//TODO float expression
-
 Float
-    	:	('+'|'-')? ('0'..'9')+ '.' ('0'..'9')* EXPONENT?
-    	|	('+'|'-')? '.' ('0'..'9')+ EXPONENT?
-    	|	('+'|'-')? ('0'..'9')+ EXPONENT
+    	:	('0'..'9')+ '.' ('0'..'9')* EXPONENT?
+    	|	'.' ('0'..'9')+ EXPONENT?
+    	|	('0'..'9')+ EXPONENT
     	;
     
 fragment
 EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
-
-stringDeclaration
-	:	TypeString VariableId ('=' (stringExpression | VariableId) )? ';';
-
-stringExpression
-	:	String;
-	//TODO string arithmetic
 	
 String	:	STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED ;
 
@@ -327,49 +413,31 @@ STRING_DOUBLE_QUOTED
 			| ('\\$') => '\\$'
 			| ~ ('"' | '$')
   		)* '"';
-
-arrayDeclaration
-	:	TypeArray VariableId ( '=' (arrayExpression|VariableId) )? ';' ;
-
-arrayExpression
-	:	array
-	;
-	//TODO array arithmetic
 	
 array	:	'[' array_content? ']' 
 	|	TypeArray '(' array_content? ')'
 	;
 	
 array_content
-	:	(array_key '=>')? array_value  (',' (array_key '=>')? array_value)*;
-
-array_key
-	:	expressionWithoutArrayExpression|VariableId;
+	:	(expression '=>')? expression  (',' (expression '=>')? expression)*;
 
 
-
-array_value
-options {
-backtrack=true;
-}
-	:	expressionInclArrayExpression;
-	
 ifCondition
-	:	'if' '(' (boolExpression | VariableId) ')' instructionWithoutBreakContinue	
+	:	'if' '(' expression ')' instructionWithoutBreakContinue	
 		( 'else' instructionWithoutBreakContinue )?
 	;
 
 	
-forLoop	:	'for' '(' ((variableDeclaration|variableAssignment)|';')  boolExpression? ';' varAssignmentWithoutSemicolon? ')' instructionInclBreakContinue;
+forLoop	:	'for' '(' (variableDeclarationWithoutSemicolon|variableAssignmentWithoutSemicolon)? ';'  expression? ';' variableAssignmentWithoutSemicolon? ')' instructionInclBreakContinue;
 
 foreachLoop
 	:	'foreach' '(' (VariableId|array) 'as' VariableId ('=>' VariableId)? ')' instructionInclBreakContinue;
 
 whileLoop
-	:	'while' '(' boolExpression ')' instructionInclBreakContinue;
+	:	'while' '(' expression ')' instructionInclBreakContinue;
 	
 doWhileLoop
-	:	'do' instructionInclBreakContinue 'while' '(' boolExpression ')' ';';
+	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';';
 
 switchCondition	
 	:	'switch' '(' VariableId ')' '{' 
@@ -380,7 +448,8 @@ switchCondition
 		'}'
 	;
 
-caseLabel	:	'case' expressionInclArrayExpression ':';
+caseLabel	
+	:	'case' expression ':';
 
 defaultLabel
 	:	'default' ':';
@@ -392,7 +461,8 @@ Comment
     	|	'/*' ( options {greedy=false;} : . )* '*/' {$channel=HIDDEN;}
     	;
 
-Whitespace	:	( ' '
+Whitespace	
+	:	( ' '
         	| '\t'
 	        | '\r'
         	| '\n'

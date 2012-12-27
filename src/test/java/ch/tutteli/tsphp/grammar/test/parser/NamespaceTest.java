@@ -16,7 +16,7 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.test.utils.AParserLexerExceptionTest;
+import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
@@ -29,30 +29,28 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class AssignmentWrongStringTest extends AParserLexerExceptionTest
+public class NamespaceTest extends AParserTest
 {
 
-    public AssignmentWrongStringTest(String testString, int character, int position) {
-        super(testString,RecognitionException.class, character, position);
-
+    public NamespaceTest(String testString) {
+        super(testString);
     }
 
     @Test
     public void test() throws RecognitionException {
-        super.parseExpectingException();
+        super.parseAndCheckForException();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    //testStringSingleQuotedAssignment
-                    {"string $a = ''';", -1, 16},
-                    {"string $a = '\\''';", -1, 18},
-                    {"string $a = '\\\\'';", -1, 18},
-                    //testStringDoubleQuotedAssignment
-                    {"string $a = \" \" \";", -1, 18},
-                    {"string $a = \" \\\"\" \";", -1, 20},
-                    {"string $a = \" \\\\\" \";", -1, 20},
-                });
+                    {"namespace a; \n $a=1; $b=1;"},
+                    {"namespace a; $a=1; namespace b; $b=1;"},
+                    {"namespace a { \n $a=1; $b=1;}"},
+                    {"namespace a { $a=1;} namespace b{ $b=1;}"},
+                    //without namespace
+                    {"$a=1;"},
+                    
+        });
     }
 }

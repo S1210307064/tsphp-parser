@@ -17,12 +17,13 @@
 package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.TSPHPParser;
-import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
+import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -32,31 +33,31 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class IfExceptionTest extends AParserParserExceptionTest
+public class ExpressionWithoutAssignmentTest extends AParserTest
 {
 
-    public IfExceptionTest(String testString, int token, int position) {
-        super(testString, RecognitionException.class, token, position);
-
+    public ExpressionWithoutAssignmentTest(String testString) {
+        super(testString);
     }
 
     @Test
     public void test() throws RecognitionException {
-        super.parseExpectingException();
+        isErrorReportingOn=false;
+        super.parse();
+        
+        Assert.assertTrue(testString + " failed, lexer threw exception(s) - see output", lexer.getExceptions().isEmpty());
+        Assert.assertFalse(testString + " failed, parser threw exception(s) - see output", parser.getExceptions().isEmpty());
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        Collection<Object[]> wrongBooleans = BoolWrongDeclarationTest.getWrongBoolean("");
-        for(Object[] obj:wrongBooleans){
-            collection.add(new Object[]{"if("+obj[0]+"){$a=1;}",obj[1],3});
+
+        String[] expressions = ExpressionTest.getExpressionsWithoutAssignment();
+        for (String expression : expressions) {
+            collection.add(new Object[]{expression + ";"});
         }
-        collection.addAll(Arrays.asList(new Object[][]{
-            {"if{true}$a=1;", TSPHPParser.LeftCurlyBrace,2 },
-            {"if true then $a=1;", TSPHPParser.Bool,3}
-        }));
+        
         return collection;
-       
     }
 }

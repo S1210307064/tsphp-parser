@@ -16,7 +16,8 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.test.utils.AParserLexerExceptionTest;
+import ch.tutteli.tsphp.grammar.TSPHPParser;
+import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
@@ -29,11 +30,11 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class IntWrongDeclarationParserLexerTest extends AParserLexerExceptionTest
+public class NamespaceErrorTest extends AParserParserExceptionTest
 {
 
-    public IntWrongDeclarationParserLexerTest(String testString, int character, int position) {
-        super(testString, RecognitionException.class, character, position);
+    public NamespaceErrorTest(String testString, int token, int position) {
+        super(testString, RecognitionException.class, token, position);
 
     }
 
@@ -43,16 +44,16 @@ public class IntWrongDeclarationParserLexerTest extends AParserLexerExceptionTes
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> testStrings() {
+    public static Collection<Object[]> variables() {
         return Arrays.asList(new Object[][]{
-                    //wrong octal
-                    {"int $a = 08;", ';', 11},
-                    {"int $a = 0118;", ';', 13},
+                    //namespace afterwards
+                    {"int $a; namespace a;", TSPHPParser.Namespace, 8},
+                    //namespace semicolon mixed with curly brace namespace
+                    {"namespace a; $a=1; namespace b{$a=1;}", TSPHPParser.LeftCurlyBrace, 30},
+                    {"namespace a{ $a=1;} namespace b; $a=1;", TSPHPParser.Semicolon, 31},
+                    //statements outside of curly brace namespace
+                    {"namespace a{ $a=1;} $a=1; namespace b{ $a=1;}", TSPHPParser.VariableId, 20},
                     
-                    //wrong hex
-                    {"int $a = 0xG;", 'G', 11},
-                    {"int $a = 0XH;", 'H', 11},
-                    //wrong binary
-                    {"int $b = 0b2;", '2', 11},});
+                });
     }
 }

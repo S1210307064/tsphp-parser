@@ -50,6 +50,16 @@ public class TokenTest extends ALexerTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {"mArrow", "=>", TSPHPLexer.Arrow},
                     {"mAs", "as", TSPHPLexer.As},
+                    {"mAt","@",TSPHPLexer.At},
+                    {"mAssign", "=", TSPHPLexer.Assign},
+                    {"mBackslash","\\",TSPHPLexer.Backslash},
+                    {"mBitwiseAnd","&",TSPHPLexer.BitwiseAnd},
+                    {"mBitwiseAndEqual", "&=", TSPHPLexer.BitwiseAndEqual},
+                    {"mBitwiseNot", "~", TSPHPLexer.BitwiseNot},
+                    {"mBitwiseOr", "|", TSPHPLexer.BitwiseOr},
+                    {"mBitwiseOrEqual", "|=", TSPHPLexer.BitwiseOrEqual},
+                    {"mBitwiseXor", "^", TSPHPLexer.BitwiseXor},
+                    {"mBitwiseXorEqual", "^=", TSPHPLexer.BitwiseXorEqual},
                     {"mBool", "true", TSPHPLexer.Bool},
                     {"mBool", "false", TSPHPLexer.Bool},
                     {"mBreak", "break", TSPHPLexer.Break},
@@ -58,70 +68,86 @@ public class TokenTest extends ALexerTest
                     {"mComma", ",", TSPHPLexer.Comma},
                     {"mContinue", "continue", TSPHPLexer.Continue},
                     {"mElse", "else", TSPHPLexer.Else},
-                    {"mEqual", "=", TSPHPLexer.Equal},
+                    {"mEqual", "==", TSPHPLexer.Equal},
                     {"mDefault", "default", TSPHPLexer.Default},
+                    {"mDivide", "/", TSPHPLexer.Divide},
                     {"mDivideEqual", "/=", TSPHPLexer.DivideEqual},
                     {"mDo", "do", TSPHPLexer.Do},
                     {"mDolar", "$", TSPHPLexer.Dolar},
                     {"mDotEqual", ".=", TSPHPLexer.DotEqual},
+                    {"mGreaterThan",">",TSPHPLexer.GreaterThan},
+                    {"mGreaterEqualThan",">=",TSPHPLexer.GreaterEqualThan},
                     {"mFunction", "function", TSPHPLexer.Function},
                     {"mFor", "for", TSPHPLexer.For},
                     {"mForeach", "foreach", TSPHPLexer.Foreach},
+                    {"mIdentical", "===", TSPHPLexer.Identical},
                     {"mIf", "if", TSPHPLexer.If},
-                    {"mMinusEqual", "-=", TSPHPLexer.MinusEqual},
-                    {"mMinusMinus", "--", TSPHPLexer.MinusMinus},
-                    {"mModuloEqual", "%=", TSPHPLexer.ModuloEqual},
-                    {"mMultiplyEqual", "*=", TSPHPLexer.MultiplyEqual},
                     {"mLeftCurlyBrace", "{", TSPHPLexer.LeftCurlyBrace},
                     {"mLeftParanthesis", "(", TSPHPLexer.LeftParanthesis},
                     {"mLeftSquareBrace", "[", TSPHPLexer.LeftSquareBrace},
-                    {"mLogicAndEqual", "&=", TSPHPLexer.LogicAndEqual},
-                    {"mLogicOrEqual", "|=", TSPHPLexer.LogicOrEqual},
-                    {"mLogicXorEqual", "^=", TSPHPLexer.LogicXorEqual},
+                    {"mLessThan","<",TSPHPLexer.LessThan},
+                    {"mLessEqualThan","<=",TSPHPLexer.LessEqualThan},
+                    {"mLogicAnd", "&&", TSPHPLexer.LogicAnd},
+                    {"mLogicAndWeak", "and", TSPHPLexer.LogicAndWeak},
+                    {"mLogicNot", "!", TSPHPLexer.LogicNot},
+                    {"mLogicOr", "||", TSPHPLexer.LogicOr},
+                    {"mLogicOrWeak", "or", TSPHPLexer.LogicOrWeak},
+                    {"mLogicXorWeak", "xor", TSPHPLexer.LogicXorWeak},
+                    {"mMinus", "-", TSPHPLexer.Minus},
+                    {"mMinusEqual", "-=", TSPHPLexer.MinusEqual},
+                    {"mMinusMinus", "--", TSPHPLexer.MinusMinus},
+                    {"mModulo", "%", TSPHPLexer.Modulo},
+                    {"mModuloEqual", "%=", TSPHPLexer.ModuloEqual},
+                    {"mMultiply", "*", TSPHPLexer.Multiply},
+                    {"mMultiplyEqual", "*=", TSPHPLexer.MultiplyEqual},
                     {"mNamespace", "namespace", TSPHPLexer.Namespace},
+                    {"mNotEqual","!=",TSPHPLexer.NotEqual},
+                    {"mNotEqualAlternative","<>",TSPHPLexer.NotEqualAlternative},
+                    {"mNotIdentical","!==",TSPHPLexer.NotIdentical},
+                    {"mQuestionMark", "?", TSPHPLexer.QuestionMark},
+                    {"mPlus", "+", TSPHPLexer.Plus},
                     {"mPlusEqual", "+=", TSPHPLexer.PlusEqual},
                     {"mPlusPlus", "++", TSPHPLexer.PlusPlus},
                     {"mReturn", "return", TSPHPLexer.Return},
                     {"mRightCurlyBrace", "}", TSPHPLexer.RightCurlyBrace},
                     {"mRightParanthesis", ")", TSPHPLexer.RightParanthesis},
                     {"mRightSquareBrace", "]", TSPHPLexer.RightSquareBrace},
+                    {"mShiftLeft","<<",TSPHPLexer.ShiftLeft},
                     {"mShiftLeftEqual", "<<=", TSPHPLexer.ShiftLeftEqual},
+                    {"mShiftRight",">>",TSPHPLexer.ShiftRight},
                     {"mShiftRightEqual", ">>=", TSPHPLexer.ShiftRightEqual},
                     {"mTypeArray", "array", TSPHPLexer.TypeArray},
                     {"mTypeBool", "bool", TSPHPLexer.TypeBool},
                     {"mTypeBoolean", "boolean", TSPHPLexer.TypeBoolean},
                     {"mTypeFloat", "float", TSPHPLexer.TypeFloat},
                     {"mTypeInt", "int", TSPHPLexer.TypeInt},
+                    {"mTypeObject", "object", TSPHPLexer.TypeObject},
                     {"mTypeResource", "resource", TSPHPLexer.TypeResource},
                     {"mTypeString", "string", TSPHPLexer.TypeString},
                     {"mSemicolon", ";", TSPHPLexer.Semicolon},
                     {"mSwitch", "switch", TSPHPLexer.Switch},
+                    {"mVoid","void",TSPHPLexer.Void},
                     {"mWhile", "while", TSPHPLexer.While}
                 }));
 
         String[] floatStrings = getFloatTestStrings();
         for (String floatString : floatStrings) {
             collection.add(new Object[]{"mFloat", floatString, TSPHPLexer.Float});
-            collection.add(new Object[]{"mFloat", "+" + floatString, TSPHPLexer.Float});
-            collection.add(new Object[]{"mFloat", "-" + floatString, TSPHPLexer.Float});
         }
 
         Collection<Object[]> intCollection = FragmentsTest.getIntFragments();
         for (Object[] obj : intCollection) {
             collection.add(new Object[]{"mInt", obj[1], TSPHPLexer.Int});
-            collection.add(new Object[]{"mInt", "+" + obj[1], TSPHPLexer.Int});
-            collection.add(new Object[]{"mInt", "-" + obj[1], TSPHPLexer.Int});
-        }
-
-        Collection<Object[]> idCollection = getIDTestStrings();
-        for (Object[] obj : idCollection) {
-            collection.add(new Object[]{"mNamespaceId", obj[1], TSPHPLexer.NamespaceId});
-            collection.add(new Object[]{"mNamespaceId", obj[1] + "\\" + obj[1], TSPHPLexer.NamespaceId});
         }
 
         Collection<Object[]> stringCollection = FragmentsTest.getStringFragments();
         for (Object[] obj : stringCollection) {
             collection.add(new Object[]{"mString", obj[1], TSPHPLexer.String});
+        }
+        
+        Collection<Object[]> ids = getIDTestStrings();
+        for (Object[] obj : ids) {
+            collection.add(new Object[]{"mVariableId","$"+ obj[1], TSPHPLexer.VariableId});
         }
 
         return collection;
