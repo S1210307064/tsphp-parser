@@ -16,11 +16,11 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.TSPHPLexer;
 import ch.tutteli.tsphp.grammar.TSPHPParser;
 import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -46,24 +46,59 @@ public class NewErrorTest extends AParserParserExceptionTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> variables() {
+        return getKeywords("$a = new ", "()");
+    }
+
+    public static List<Object[]> getKeywords(String prefix) {
+        return getKeywords(prefix, "");
+    }
+
+    public static List<Object[]> getKeywords(String prefix, String appendix) {
+        int prefixLength = prefix.length();
         return Arrays.asList(new Object[][]{
-                    {"$a = new bool();", TSPHPParser.TypeBool, 9},
-                    {"$a = new boolean();", TSPHPParser.TypeBoolean, 9},
-                    {"$a = new int();", TSPHPParser.TypeInt, 9},
-                    {"$a = new float();", TSPHPParser.TypeFloat, 9},
-                    {"$a = new array();", TSPHPParser.TypeArray, 9},
-                    {"$a = new resource();", TSPHPParser.TypeResource, 9},
-                    {"$a = new object();", TSPHPParser.TypeObject, 9},
-                    {"$a = new if();", TSPHPParser.If, 9},
-                    {"$a = new else();", TSPHPParser.Else, 9},
-                    {"$a = new switch();", TSPHPParser.Switch, 9},
-                    {"$a = new case();", TSPHPParser.Case, 9},
-                    {"$a = new for();", TSPHPParser.For, 9},
-                    {"$a = new foreach();", TSPHPParser.Foreach, 9},
-                    {"$a = new while();", TSPHPParser.While, 9},
-                    {"$a = new do();", TSPHPParser.Do, 9},
-                    {"$a = new try();", TSPHPParser.Try, 9},
-                    {"$a = new catch();", TSPHPParser.Catch, 9},
+                    {prefix + "abstract" + appendix + ";", TSPHPParser.Abstract, prefixLength},
+                    {prefix + "array" + appendix + ";", TSPHPParser.TypeArray, prefixLength},
+                    {prefix + "as" + appendix + ";", TSPHPParser.As, prefixLength},
+                    {prefix + "bool" + appendix + ";", TSPHPParser.TypeBool, prefixLength},
+                    {prefix + "boolean" + appendix + ";", TSPHPParser.TypeBoolean, prefixLength},
+                    {prefix + "break" + appendix + ";", TSPHPParser.Break, prefixLength},
+                    {prefix + "case" + appendix + ";", TSPHPParser.Case, prefixLength},
+                    {prefix + "catch" + appendix + ";", TSPHPParser.Catch, prefixLength},
+                    {prefix + "class" + appendix + ";", TSPHPParser.Class, prefixLength},
+                    {prefix + "clone" + appendix + ";", TSPHPParser.Clone, prefixLength},
+                    {prefix + "const" + appendix + ";", TSPHPParser.Const, prefixLength},
+                    {prefix + "continue" + appendix + ";", TSPHPParser.Continue, prefixLength},
+                    {prefix + "default" + appendix + ";", TSPHPParser.Default, prefixLength},
+                    {prefix + "do" + appendix + ";", TSPHPParser.Do, prefixLength},
+                    {prefix + "echo" + appendix + ";", TSPHPParser.Echo, prefixLength},
+                    {prefix + "else" + appendix + ";", TSPHPParser.Else, prefixLength},
+                    {prefix + "exit" + appendix + ";", TSPHPParser.Exit, prefixLength},
+                    {prefix + "extends" + appendix + ";", TSPHPParser.Extends, prefixLength},
+                    {prefix + "final" + appendix + ";", TSPHPParser.Final, prefixLength},
+                    {prefix + "float" + appendix + ";", TSPHPParser.TypeFloat, prefixLength},
+                    {prefix + "for" + appendix + ";", TSPHPParser.For, prefixLength},
+                    {prefix + "foreach" + appendix + ";", TSPHPParser.Foreach, prefixLength},
+                    {prefix + "function" + appendix + ";", TSPHPParser.Function, prefixLength},
+                    {prefix + "if" + appendix + ";", TSPHPParser.If, prefixLength},
+                    {prefix + "implements" + appendix + ";", TSPHPParser.Implements, prefixLength},
+                    {prefix + "int" + appendix + ";", TSPHPParser.TypeInt, prefixLength},
+                    {prefix + "interface" + appendix + ";", TSPHPParser.Interface, prefixLength},
+                    {prefix + "namespace" + appendix + ";", TSPHPParser.Namespace, prefixLength},
+                    {prefix + "new" + appendix + ";", TSPHPParser.New, prefixLength},
+                    {prefix + "object" + appendix + ";", TSPHPParser.TypeObject, prefixLength},
+                    {prefix + "private" + appendix + ";", TSPHPParser.Private, prefixLength},
+                    {prefix + "protected" + appendix + ";", TSPHPParser.Protected, prefixLength},
+                    {prefix + "public" + appendix + ";", TSPHPParser.Public, prefixLength},
+                    {prefix + "resource" + appendix + ";", TSPHPParser.TypeResource, prefixLength},
+                    {prefix + "return" + appendix + ";", TSPHPParser.Return, prefixLength},
+                    {prefix + "static" + appendix + ";", TSPHPParser.Static, prefixLength},
+                    {prefix + "switch" + appendix + ";", TSPHPParser.Switch, prefixLength},
+                    {prefix + "throw" + appendix + ";", TSPHPParser.Throw, prefixLength},
+                    {prefix + "try" + appendix + ";", TSPHPParser.Try, prefixLength},
+                    {prefix + "use" + appendix + ";", TSPHPParser.Use, prefixLength},
+                    {prefix + "void" + appendix + ";", TSPHPParser.Void, prefixLength},
+                    {prefix + "while" + appendix + ";", TSPHPParser.While, prefixLength}
                 });
     }
 }
+

@@ -115,7 +115,13 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     //empty try block
                     {"try{}catch(\\Exception){}",TSPHPParser.RightCurlyBrace,4},
                     //empty class    
-                    {"class a{}", TSPHPParser.RightCurlyBrace, 8}
+                    {"class a{}", TSPHPParser.RightCurlyBrace, 8},
+                    //empty namespace
+                    {"namespace a;",-1, 12},
+                    {"namespace a{}",TSPHPParser.RightCurlyBrace, 12},
+                    {"namespace {}",TSPHPParser.RightCurlyBrace, 11},
+                    //use outside of semicolon namespace
+                    {"use a\\a; namespace a;",TSPHPParser.Namespace, 9},
                 }));
         //expressions without assignments - see ExpressionWithoutAssignmentTest
         return collection;

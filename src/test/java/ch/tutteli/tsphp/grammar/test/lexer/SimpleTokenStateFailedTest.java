@@ -17,7 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.lexer;
 
 import ch.tutteli.tsphp.grammar.TSPHPLexer;
-import ch.tutteli.tsphp.grammar.test.utils.ALexerTest;
+import ch.tutteli.tsphp.grammar.test.utils.ALexerStateFailedTest;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,29 +31,21 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class SimpleTokenExceptionTest extends ALexerTest
+public class SimpleTokenStateFailedTest extends ALexerStateFailedTest
 {
 
-    public SimpleTokenExceptionTest(String methodName) {
+    public SimpleTokenStateFailedTest(String methodName) {
         //# is not valid for any token as first letter;
-        super(methodName, "#", 0);
+        super(methodName, "#");
     }
 
     @Test
     public void testTokens() throws Exception {
-        super.checkForMismatch();
+        super.checkForStateFailed();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-        Method[] methods = TSPHPLexer.class.getMethods();
-        for (Method method : methods) {
-            String methodName = method.getName();
-            if (methodName.charAt(0) == 'm' && methodName.charAt(1) >= 'A' && methodName.charAt(1) <= 'Z') {
-                collection.add(new Object[]{methodName});
-            }
-        }
-        return collection;
+        return SimpleTokenErrorTest.testStrings();
     }
 }

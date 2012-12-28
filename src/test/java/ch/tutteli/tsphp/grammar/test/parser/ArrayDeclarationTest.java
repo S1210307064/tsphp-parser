@@ -56,6 +56,18 @@ public class ArrayDeclarationTest extends AParserTest
             collection.add(new Object[]{"array $d = $" + obj[1] + ";"});
         }
 
+        List<String> expressions = ExpressionTest.getAllExpressions();
+        for(String expression:expressions){
+            collection.add(new Object[]{"array $d = ["+expression+"];"});
+            collection.add(new Object[]{"array $d = ["+expression+","+expression+"];"});
+            collection.add(new Object[]{"array $d = ["+expression+" => "+expression+"];"});
+            collection.add(new Object[]{"array $d = ["+expression+" => "+expression+","+expression+" => "+expression+"];"});
+            collection.add(new Object[]{"array $d = array("+expression+");"});
+            collection.add(new Object[]{"array $d = array("+expression+","+expression+");"});
+            collection.add(new Object[]{"array $d = array("+expression+" => "+expression+");"});
+            collection.add(new Object[]{"array $d = array("+expression+" => "+expression+","+expression+" => "+expression+");"});
+        }
+        
         return collection;
     }
 

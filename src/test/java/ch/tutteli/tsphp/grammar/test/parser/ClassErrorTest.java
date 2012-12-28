@@ -16,10 +16,8 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
-import java.util.ArrayList;
+import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,25 +28,23 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class NewTest extends AParserTest
+public class ClassErrorTest extends AParserParserExceptionTest
 {
 
-    public NewTest(String testString) {
-        super(testString);
+    public ClassErrorTest(String testString, int token, int position) {
+        super(testString, RecognitionException.class, token, position);
+
     }
 
     @Test
     public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+        super.parseExpectingException();
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-        List<String> types = VariableDeclarationTest.getClassInterfaceTypes();
-        for(String type: types){
-            collection.add(new Object[]{"$a = new "+type+"();"});
-        }
-        return collection;
+    public static Collection<Object[]> variables() {
+        return NewErrorTest.getKeywords("class ", "{private int $a=1;}");
     }
+
+   
 }

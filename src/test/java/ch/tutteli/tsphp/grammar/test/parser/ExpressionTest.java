@@ -18,6 +18,7 @@ package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -46,13 +47,7 @@ public class ExpressionTest extends AParserTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
 
-        addToCollection(collection, getAssignmentExpressions());
-        addToCollection(collection, getExpressionsWithoutAssignment());
-        
-        return collection;
-    }
-
-    private static void addToCollection(Collection<Object[]> collection, String[] expressions) {
+        Collection<String> expressions = getAllExpressions();
         for (String expression : expressions) {
             collection.add(new Object[]{"bool $a = " + expression + ";"});
             collection.add(new Object[]{"boolean $a = " + expression + ";"});
@@ -61,11 +56,22 @@ public class ExpressionTest extends AParserTest
             collection.add(new Object[]{"string $a = " + expression + ";"});
             collection.add(new Object[]{"array $a = " + expression + ";"});
             collection.add(new Object[]{"resource $a = " + expression + ";"});
+            collection.add(new Object[]{"object $a = " + expression + ";"});
         }
+
+        return collection;
+    }
+
+    public static List<String> getAllExpressions() {
+        List<String> expressions = new ArrayList<>();
+        expressions.addAll(Arrays.asList(getExpressionsWithoutAssignment()));
+        expressions.addAll(Arrays.asList(getAssignmentExpressions()));
+        return expressions;
     }
 
     public static String[] getAssignmentExpressions() {
-        return new String[]{"$b = 1",
+        return new String[]{
+                    "$b = 1",
                     "$b += 1",
                     "$b -= 1",
                     "$b *= 1",
@@ -123,7 +129,13 @@ public class ExpressionTest extends AParserTest
                     "(string) $a",
                     "(array) $a",
                     "@$a",
-                    "(1+1)",
+                    "+1",
+                    "-1",
+                    "new a",
+                    "new a()",
+                    "clone $a",
+                    "$a",
+                    "(1+1)"
                 };
     }
 }

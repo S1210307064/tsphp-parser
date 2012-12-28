@@ -67,6 +67,7 @@ public class TokenTest extends ALexerTest
                     {"mCase", "case", TSPHPLexer.Case},
                     {"mCatch", "catch", TSPHPLexer.Catch},
                     {"mClass", "class", TSPHPLexer.Class},
+                    {"mClone", "clone", TSPHPLexer.Clone},
                     {"mColon", ":", TSPHPLexer.Colon},
                     {"mComma", ",", TSPHPLexer.Comma},
                     {"mConst", "const", TSPHPLexer.Const},
@@ -144,6 +145,7 @@ public class TokenTest extends ALexerTest
                     {"mTypeString", "string", TSPHPLexer.TypeString},
                     {"mSemicolon", ";", TSPHPLexer.Semicolon},
                     {"mSwitch", "switch", TSPHPLexer.Switch},
+                    {"mUse", "use", TSPHPLexer.Use},
                     {"mVoid", "void", TSPHPLexer.Void},
                     {"mWhile", "while", TSPHPLexer.While}
                 }));

@@ -22,8 +22,6 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import junit.framework.Assert;
-import org.antlr.runtime.RecognizerSharedState;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -33,30 +31,17 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class StateFailedTest extends ALexerTest
+public class SimpleTokenErrorTest extends ALexerTest
 {
 
-    public StateFailedTest(String methodName) {
+    public SimpleTokenErrorTest(String methodName) {
         //# is not valid for any token as first letter;
-        super(methodName, "#");
+        super(methodName, "#", 0);
     }
 
     @Test
     public void testTokens() throws Exception {
-        try {
-            super.analyseToken();
-            RecognizerSharedState state = lexer.getState();
-            Assert.assertTrue(methodName + " - " + testString + " failed, state.failed was not true and it should be true - see output", state.failed);
-        } catch (Exception ex) {
-            System.err.printf(methodName + " - " + testString + " failed");
-            ex.printStackTrace();
-            Assert.fail(methodName + " - " + testString + " failed, an unexpected exception occured - see output");
-        }
-    }
-
-    @Override
-    protected void modifyLexer() {
-        lexer.setBacktrackingLevel(1);
+        super.checkForMismatch();
     }
 
     @Parameterized.Parameters

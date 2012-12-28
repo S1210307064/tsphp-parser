@@ -16,14 +16,12 @@
  */
 package ch.tutteli.tsphp.grammar.test.utils;
 
-import antlr.MismatchedCharException;
 import ch.tutteli.tsphp.grammar.TSPHPLexer;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import junit.framework.Assert;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
-import org.antlr.runtime.MismatchedTokenException;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 import org.junit.Ignore;
@@ -66,10 +64,14 @@ public abstract class ALexerTest extends ATest
             Assert.fail(methodName + " - " + testString + " failed, an exception occured - see output");
         }
         RecognizerSharedState state = lexer.getState();
-        Assert.assertFalse(methodName + " - " + testString + " failed, state.failed was true - see output", state.failed);
-        Assert.assertEquals(methodName + " - " + testString + " failed, state.type was wrong - see output", type, state.type);
-        Assert.assertEquals(methodName + " - " + testString + " failed, state.channel was wrong - see output", channel, state.channel);
-        Assert.assertEquals(methodName + " - " + testString + " failed, testString was more than one token",TSPHPLexer.EOF, lexer.nextToken().getType());
+        Assert.assertFalse(methodName + " - " + testString + " failed, state.failed was true - see output",
+                state.failed);
+        Assert.assertEquals(methodName + " - " + testString + " failed, state.type was wrong - see output",
+                type, state.type);
+        Assert.assertEquals(methodName + " - " + testString + " failed, state.channel was wrong - see output",
+                channel, state.channel);
+        Assert.assertEquals(methodName + " - " + testString + " failed, testString was more than one token",
+                TSPHPLexer.EOF, lexer.nextToken().getType());
     }
 
     public void checkForMismatch() throws Exception {
@@ -77,7 +79,11 @@ public abstract class ALexerTest extends ATest
             isErrorReportingOn = false;
             analyseToken();
             Assert.fail(methodName + " - " + testString + " failed, no exception occured");
+        } catch (RecognitionException ex) {
+            //that's fine, we expect a RecognitionException
         } catch (InvocationTargetException ex) {
+            //should contain a RecognitionException - the IncovatinoTargetException occurs due to the method call using 
+            //reflection
             if (!(ex.getTargetException() instanceof RecognitionException)) {
                 System.err.printf(methodName + " - " + testString + " failed");
                 ex.printStackTrace();

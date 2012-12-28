@@ -19,7 +19,6 @@ package ch.tutteli.tsphp.grammar.test.parser;
 import ch.tutteli.tsphp.grammar.TSPHPParser;
 import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -51,8 +50,10 @@ public class FunctionErrorTest extends AParserParserExceptionTest
         
         String[] expressions = ExpressionTest.getExpressionsWithoutAssignment();
         for(String expression : expressions){
-            collection.add(new Object[]{"function a ($a,$b="+expression+"){$a=1;}",TSPHPParser.LeftParanthesis,11});
+            collection.add(new Object[]{"function void a ($a,$b="+expression+"){$a=1;}",TSPHPParser.VariableId,17});
         }
+        
+        collection.addAll(NewErrorTest.getKeywords("function void ", "(){}"));
         
         return collection;
     }

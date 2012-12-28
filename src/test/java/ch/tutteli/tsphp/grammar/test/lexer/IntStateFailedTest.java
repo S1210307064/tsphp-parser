@@ -14,13 +14,15 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.test.parser;
+package ch.tutteli.tsphp.grammar.test.lexer;
 
-import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
+import ch.tutteli.tsphp.grammar.TSPHPLexer;
+import ch.tutteli.tsphp.grammar.test.utils.ALexerStateFailedTest;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -30,25 +32,21 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class NewTest extends AParserTest
+public class IntStateFailedTest extends ALexerStateFailedTest
 {
 
-    public NewTest(String testString) {
-        super(testString);
+    public IntStateFailedTest(String methodName,String testString) {
+        //# is not valid for any token as first letter;
+        super(methodName, testString, 0);
     }
 
     @Test
-    public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+    public void testTokens() throws Exception {
+        super.checkForStateFailed();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-        List<String> types = VariableDeclarationTest.getClassInterfaceTypes();
-        for(String type: types){
-            collection.add(new Object[]{"$a = new "+type+"();"});
-        }
-        return collection;
+        return IntErrorTest.testStrings();
     }
 }

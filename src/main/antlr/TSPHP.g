@@ -38,6 +38,7 @@ tokens{
 	Case = 'case';
 	Catch = 'catch';
 	Class = 'class';
+	Clone = 'clone';
 	Colon = ':';
 	Comma = ',';
 	Const = 'const';
@@ -118,6 +119,7 @@ tokens{
 	TypeObject = 'object';
 	Semicolon = ';';
 	Switch = 'switch';
+	Use = 'use';
 	Void = 'void';
 	While = 'while';
 }
@@ -188,10 +190,20 @@ withoutNamespace
 	:	statement+;
 
 statement	
-	:	definition
+	:	useDeclarationList
+	|	definition
 	|	instructionWithoutBreakContinue
 	;
-
+	
+useDeclarationList
+	:	'use' useDeclaration (',' useDeclaration)* ';';
+	
+useDeclaration
+	:	( (Identifier '\\' Identifier ('\\' Identifier)*)
+			| ('\\' Identifier ('\\' Identifier)*)
+			) 
+		('as' Identifier)? 
+	;
 definition
 	:	classDeclaration
 	|	interfaceDeclaration
