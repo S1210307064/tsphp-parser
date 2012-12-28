@@ -17,8 +17,9 @@
 package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,10 +30,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class FunctionTest extends AParserTest
+public class MethodCallTest extends AParserTest
 {
 
-    public FunctionTest(String testString) {
+    public MethodCallTest(String testString) {
         super(testString);
     }
 
@@ -43,12 +44,15 @@ public class FunctionTest extends AParserTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                    {"function void setName(string $name){}"},
-                    {"function void setName(string $name){int $a=1;}"},
-                    {"function void setName(string $firstname,string $lastname){int $a=1;}"},
-                    {"function string getName(){return \"Robert\";}"},
-                    {"function void foo(string $a, string $b='hallo'){$a=$b;}"}
-                });
+        List<Object[]> collection = new ArrayList<>();
+        collection.add(new Object[]{"$a->foo();"});
+        collection.add(new Object[]{"$a->foo(1,1);"});
+        collection.add(new Object[]{"$a->foo(true || false,1,1+1,'hello'.'world');"});
+
+        String[] expressions = ExpressionTest.getExpressionsWithoutAssignment();
+        for(String expression:expressions){
+            collection.add(new Object[]{"$a->foo("+expression+");"});
+        }
+        return collection;
     }
 }

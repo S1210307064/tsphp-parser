@@ -54,10 +54,10 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     //statment without assignment
                     {"$a;", TSPHPParser.Semicolon, 2},
                     //null is no long case insensitive. The developer can use null or NULL
-                    {"$a=Null;",TSPHPParser.Identifier,3},
-                    {"$a=nUll;",TSPHPParser.Identifier,3},
-                    {"$a=nuLl;",TSPHPParser.Identifier,3},
-                    {"$a=nulL;",TSPHPParser.Identifier,3},
+                    {"$a=Null;",TSPHPParser.Semicolon,7},
+                    {"$a=nUll;",TSPHPParser.Semicolon,7},
+                    {"$a=nuLl;",TSPHPParser.Semicolon,7},
+                    {"$a=nulL;",TSPHPParser.Semicolon,7},
                     //empty block
                     {"{}", TSPHPParser.RightCurlyBrace, 1},
                     {"{{}}", TSPHPParser.RightCurlyBrace, 2},

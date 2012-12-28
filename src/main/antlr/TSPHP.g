@@ -52,8 +52,8 @@ tokens{
 	Echo = 'echo';
 	Else = 'else';
 	Equal = '==';	
-	Extends = 'extends';
 	Exit = 'exit';
+	Extends = 'extends';
 	Final = 'final';
 	For = 'for';
 	Foreach = 'foreach';
@@ -83,11 +83,13 @@ tokens{
 	Multiply = '*';
 	MultiplyEqual = '*=';
 	Namespace = 'namespace';
+	New = 'new';
 	NotEqual = '!=';
 	NotEqualAlternative = '<>';
 	NotIdentical = '!==';
 	Null = 'null';
 	NULL = 'NULL';
+	ObjectOperator = '->';
 	Plus = '+';
 	PlusEqual = '+=';
 	PlusPlus = '++';
@@ -104,6 +106,7 @@ tokens{
 	ShiftRight = '>>';
 	ShiftRightEqual = '>>=';
 	Static = 'static';
+	Throw = 'throw';
 	Try = 'try';
 	TypeBool = 'bool';
 	TypeBoolean = 'boolean';
@@ -193,6 +196,7 @@ definition
 	:	classDeclaration
 	|	interfaceDeclaration
 	|	functionDeclaration
+	|	constantDeclaration
 	;
 
 /************* OOP related  - many definitions rely on procedural definitions *********************/
@@ -273,7 +277,7 @@ functionDeclarationWithoutBody
 returnType
 	:	allTypes | 'void';
 
-allTypes:	primitiveTypesExtended | classInterfaceType;
+allTypes:	primitiveTypesExtended | classInterfaceTypeInclObject;
 
 primitiveTypes
 	:	TypeBool
@@ -292,11 +296,15 @@ primitiveTypesExtended
 	:	primitiveTypesInclArray
 	|	TypeResource
 	;
-	
-classInterfaceType
-	:	TypeObject	
+
+classInterfaceTypeWithoutObject
 		//namespaceId already contains Identifier at the end
-	|	'\\'? namespaceId 
+	:	'\\'? namespaceId 
+	;
+	
+classInterfaceTypeInclObject
+	:	TypeObject	
+	|	classInterfaceTypeWithoutObject
 	;
 	
 paramList
@@ -335,6 +343,9 @@ instruction
 	|	whileLoop
 	|	doWhileLoop
 	|	tryCatch
+	|	throwException
+	|	functionCall
+	|	methodCall
 	|	'return' expression? ';'
 	|	'echo' expressionList ';'
 	|	'exit' ';'
@@ -448,21 +459,42 @@ castOrBitwiseNotOrAt
 incrementDecrement
 	:	postIncrementDecrement
 	|	preIncrementDecrement
+	|	newOrClone
+	;
+
+newOrClone
+	:	newObject
+	|	'clone' VariableId
 	|	unaryAtom
 	;
 
+newObject
+	:	'new' classInterfaceTypeWithoutObject
+	|	'new' classInterfaceTypeWithoutObject '(' expressionList? ')';
+
 unaryAtom
-	:	'+' atom
-	|	'-' atom
-	|	atom
+	:	'+' atomOrCall
+	|	'-' atomOrCall
+	|	atomOrCall
 	;
-	
+atomOrCall
+	:	atom
+	|	methodCall
+	|	functionCall
+	;	
+
+functionCall
+	:	namespaceId '(' expressionList? ')' ';';
+
+methodCall
+	:	VariableId'->'Identifier '(' expressionList?')' ';';
+	//TODO this
 
 atom	:	'(' expression ')'
 	|	primitiveAtom
 	|	array
 	|	VariableId
-	//|	functionCall
+	//TODO class constants, static access, class attribute access
 	;
 	
 unaryPrimitiveAtom
@@ -578,8 +610,10 @@ whileLoop
 doWhileLoop
 	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';';
 
-tryCatch:	'try' '{' instructionInclBreakContinue+ '}' 'catch' '(' classInterfaceType VariableId ')''{' instructionInclBreakContinue* '}';
+tryCatch:	'try' '{' instructionInclBreakContinue+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')''{' instructionInclBreakContinue* '}';¨
 
+throwException
+	:	'throw' newObject ';';
 
 Comment
 	:	'//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}

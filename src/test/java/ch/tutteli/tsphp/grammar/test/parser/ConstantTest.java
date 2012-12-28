@@ -49,31 +49,38 @@ public class ConstantTest extends AParserTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
+                    {"const string a='a';"},
+                    {"const string a='a',b=1;"},
+                    {"const string a='a',b=1,c='hallo';"},
                     {"class a{ const string a='a';}"},
                     {"class a{ const string a='a',b=1;}"},
                     {"class a{ const string a='a',b=1,c='hallo';}"},
                     {"interface a{ const string a='a';}"},
                     {"interface a{ const string a='a',b=1;}"},
-                    {"interface a{ const string a='a',b=1,c='hallo';}"},}));
+                    {"interface a{ const string a='a',b=1,c='hallo';}"}
+                }));
 
         Collection<Object[]> intFragments = FragmentsTest.getIntFragments();
         for (Object[] obj : intFragments) {
+            collection.add(new Object[]{"const int i=" + obj[1] + ";"});
             collection.add(new Object[]{"class a{const int i=" + obj[1] + ";}"});
             collection.add(new Object[]{"interface a{const int i=" + obj[1] + ";}"});
         }
 
         Collection<Object[]> stringFragments = FragmentsTest.getStringFragments();
         for (Object[] obj : stringFragments) {
+            collection.add(new Object[]{"const string i=" + obj[1] + ";"});
             collection.add(new Object[]{"class a{const string i=" + obj[1] + ";}"});
             collection.add(new Object[]{"interface a{const string i=" + obj[1] + ";}"});
         }
 
         String[] floatTestStrings = TokenTest.getFloatTestStrings();
         for (String string : floatTestStrings) {
+            collection.add(new Object[]{"const string i=" + string + ";"});
             collection.add(new Object[]{"class a{const string i=" + string + ";}"});
             collection.add(new Object[]{"interface a{const string i=" + string + ";}"});
         }
-        
+
         return collection;
     }
 }
