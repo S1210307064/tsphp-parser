@@ -45,8 +45,8 @@ public abstract class AParserParserExceptionTest extends AParserExceptionTest
         Assert.assertFalse(testString + " - exceptions is empty ", exceptions.isEmpty());
         RecognitionException ex = exceptions.get(0);
         Assert.assertTrue(testString + " - wrong type", exceptionType.isInstance(ex));
-        Assert.assertEquals("token wrong", token, ex.c);
-        Assert.assertEquals("position wrong", position, ex.charPositionInLine);
-                
+        Assert.assertEquals(testString + " - token wrong", token, ex.c);
+        Assert.assertEquals(testString + " - position wrong", position, ex.charPositionInLine);
+
     }
 }

@@ -18,10 +18,8 @@ package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import org.antlr.runtime.DFA;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -124,6 +122,7 @@ public class ExpressionTest extends AParserTest
                     "(float) $a",
                     "(string) $a",
                     "(array) $a",
+                    "@$a",
                 };
     }
 }

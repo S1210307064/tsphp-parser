@@ -29,10 +29,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class FunctionTest extends AParserTest
+public class ClassConstantTest extends AParserTest
 {
 
-    public FunctionTest(String testString) {
+    public ClassConstantTest(String testString) {
         super(testString);
     }
 
@@ -44,11 +44,9 @@ public class FunctionTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"function void setName(string $name){}"},
-                    {"function void setName(string $name){int $a=1;}"},
-                    {"function void setName(string $firstname,string $lastname){int $a=1;}"},
-                    {"function string getName(){return \"Robert\";}"},
-                    {"function void foo(string $a, string $b='hallo'){$a=$b;}"},
-        });
+                    {"class a{ const string a='a';}"},
+                    {"class a{ const string a='a',b=1;}"},
+                    {"class a{ const string a='a',b=1,c='hallo';}"},
+                });
     }
 }

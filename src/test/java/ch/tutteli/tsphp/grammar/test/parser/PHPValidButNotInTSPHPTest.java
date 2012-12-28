@@ -50,7 +50,9 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
                     //empty statement
-                    {";", TSPHPParser.Semicolon,0},
+                    {";", TSPHPParser.Semicolon, 0},
+                    //statment without assignment
+                    {"$a;", TSPHPParser.Semicolon, 2},
                     //empty block
                     {"{}", TSPHPParser.RightCurlyBrace, 1},
                     {"{{}}", TSPHPParser.RightCurlyBrace, 2},
@@ -68,6 +70,12 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     //empty for block
                     {"for(;;){}", TSPHPParser.RightCurlyBrace, 8},
                     {"for(;;);", TSPHPParser.Semicolon, 7},
+                    //for with declaration without assignment
+                    {"for($a;;){}",TSPHPParser.Semicolon,6},
+                    {"for($a=1,$b;;){}",TSPHPParser.Semicolon,11},
+                    //for with unusfull expressions
+                    {"for($a=1,1+1-2;;){}",TSPHPParser.Int,9},
+                    
                     //empty foreach block
                     {"foreach($a as $k);", TSPHPParser.Semicolon, 17},
                     {"foreach($a as $k){}", TSPHPParser.RightCurlyBrace, 18},
@@ -96,10 +104,13 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     //switch with case labels do nothing more than default
                     {"switch($a){ case 1: case 2: default: $a=1;}", TSPHPParser.Default, 28},
                     //switch with multiple default blocks
-                    {"switch($a){case 1: default: $a=1; break; case 2: default: $a=2; break;}", TSPHPParser.Default, 19},}));
-
+                    {"switch($a){case 1: default: $a=1; break; case 2: default: $a=2; break;}", TSPHPParser.Default, 19},
+                    //function with pseudo optional parameter
+                    {"function a ($a,$b=1,$c){$a=1;}",TSPHPParser.Identifier,9},
+                    //empty class    
+                    {"class a{}", TSPHPParser.RightCurlyBrace, 8}
+                }));
         //expressions without assignments - see ExpressionWithoutAssignmentTest
-
         return collection;
     }
 }

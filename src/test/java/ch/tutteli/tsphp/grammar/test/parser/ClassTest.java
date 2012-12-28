@@ -29,10 +29,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class FunctionTest extends AParserTest
+public class ClassTest extends AParserTest
 {
 
-    public FunctionTest(String testString) {
+    public ClassTest(String testString) {
         super(testString);
     }
 
@@ -44,11 +44,21 @@ public class FunctionTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"function void setName(string $name){}"},
-                    {"function void setName(string $name){int $a=1;}"},
-                    {"function void setName(string $firstname,string $lastname){int $a=1;}"},
-                    {"function string getName(){return \"Robert\";}"},
-                    {"function void foo(string $a, string $b='hallo'){$a=$b;}"},
-        });
+                    {"class a{ private int $a;}"},        
+                    {"final class a{ private int $a;}"},        
+                    {"abstract class a{ private int $a;}"},        
+                    //extends
+                    {"class a extends b{ private int $a;}"},        
+                    {"final class a extends b{ private int $a;}"},        
+                    {"abstract class a extends b{ private int $a;}"},  
+                    //implements
+                    {"class a implements b{ private int $a;}"},        
+                    {"final class a implements b{ private int $a;}"},        
+                    {"abstract class a implements b{ private int $a;}"},    
+                    //extends implements
+                    {"class a extends b implements c{ private int $a;}"},        
+                    {"final class a extends b implements c{ private int $a;}"},        
+                    {"abstract class a extends b implements c{ private int $a;}"},  
+                });
     }
 }

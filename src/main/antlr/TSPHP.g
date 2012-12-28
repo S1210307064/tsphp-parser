@@ -21,10 +21,11 @@ options {
 }
 
 tokens{
+	Abstract = 'abstract';
 	Arrow = '=>';
 	As = 'as';
-	At = '@';
 	Assign = '=';
+	At = '@';
 	Backslash = '\\';
 	BitwiseAnd = '&';
 	BitwiseAndEqual = '&=';
@@ -35,11 +36,11 @@ tokens{
 	BitwiseXorEqual = '^=';
 	Break = 'break';
 	Case = 'case';
+	Class = 'class';
 	Colon = ':';
 	Comma = ',';
+	Const = 'const';
 	Continue = 'continue';
-	Equal = '==';	
-	Else = 'else';
 	Default = 'default';
 	Divide = '/';
 	DivideEqual = '/=';
@@ -47,13 +48,18 @@ tokens{
 	Dolar = '$';
 	Dot = '.';
 	DotEqual = '.=';
-	GreaterThan = '>';
-	GreaterEqualThan = '>=';
-	Function = 'function';
+	Equal = '==';	
+	Else = 'else';
+	Extends = 'extends';
+	Final = 'final';
 	For = 'for';
 	Foreach = 'foreach';
+	Function = 'function';
+	GreaterThan = '>';
+	GreaterEqualThan = '>=';
 	Identical = '===';
 	If = 'if';
+	Implements = 'implements';
 	LeftCurlyBrace = '{';
 	LeftParanthesis = '(';
 	LeftSquareBrace = '[';
@@ -80,6 +86,9 @@ tokens{
 	Plus = '+';
 	PlusEqual = '+=';
 	PlusPlus = '++';
+	Private = 'private';
+	Protected = 'protected';
+	Public = 'public';
 	Return = 'return';
 	RightCurlyBrace = '}';
 	RightParanthesis =')';
@@ -88,6 +97,7 @@ tokens{
 	ShiftLeftEqual = '<<=';
 	ShiftRight = '>>';
 	ShiftRightEqual = '>>=';
+	Static = 'static';
 	TypeBool = 'bool';
 	TypeBoolean = 'boolean';
 	TypeInt = 'int';
@@ -173,9 +183,61 @@ statement
 	;
 
 definition
-	:	functionDeclaration	
+	:	classDeclaration
+	|	functionDeclaration
 	;
 	
+classDeclaration
+	:	('abstract'|'final')? 'class' Identifier extendsDeclaration? implementsDeclaration? '{' classBody+ '}'	
+	;
+	
+extendsDeclaration	
+	:	'extends' identifierList;
+
+identifierList
+	:	Identifier (',' Identifier)*;
+
+implementsDeclaration
+	:	'implements' identifierList;
+	
+classBody
+	:	constantDeclaration
+	|	attributeDeclaration	
+	|	methodDeclaration
+	;
+
+constantDeclaration:	'const' primitiveTypes constDeclarationList ';';
+
+constDeclarationList
+	:	 constantAssignment (',' constantAssignment)*;
+constantAssignment
+	:	Identifier  '=' unaryAtom;
+
+variableDeclarationListWithoutVariableId
+	:	variableDeclaration (',' variableAssignment)*;
+
+attributeDeclaration	
+	:	'static'? accessor variableDeclarationListInclVariableId ';';
+	
+accessor:	accessorWithoutPrivate
+	|	'private'
+	;
+	
+accessorWithoutPrivate
+	:	'protected'|'public';
+
+variableDeclarationListInclVariableId
+	:	variableDeclaration (',' (variableAssignment|VariableId) )*;
+
+
+methodDeclaration	:	(	'abstract' accessorWithoutPrivate?
+		| 	
+			(	'static' 'final'?
+			|	'final' 'static'?
+			|	//empty
+			) accessor?
+		) functionDeclaration;	
+
 functionDeclaration	
 	:	'function' returnType Identifier '(' paramList? ')' '{' instructionWithoutBreakContinue* '}';
 	
@@ -198,10 +260,16 @@ primitiveTypes
 	;
 	
 paramList
-	:	 paramDeclaration (',' paramDeclaration)*;
+	:	paramDeclarationOptional (',' paramDeclarationOptional)*
+	|	paramDeclaration (',' paramDeclaration)*
+	|	paramDeclaration (paramDeclaration ',')* (',' paramDeclarationOptional)+
+	;
 	
 paramDeclaration
-	:	primitiveTypes VariableId ('=' expression)?;
+	:	primitiveTypes VariableId;
+	
+paramDeclarationOptional
+	:	paramDeclaration  '=' unaryAtom;
 
 VariableId	
 	:	'$' Identifier;
@@ -218,8 +286,8 @@ instructionInclBreakContinue
 	;	
 
 instruction
-	:	variableAssignment
-	|	variableDeclaration
+	:	variableAssignment ';'
+	|	variableDeclaration ';'
 	|	ifCondition
 	|	switchCondition
 	|	forLoop
@@ -227,13 +295,13 @@ instruction
 	|	whileLoop
 	|	doWhileLoop
 	|	'return' expression? ';'
+	|	'echo' expressionList ';'
 	;
+	
+expressionList
+	:	expression (',' expression)?;
 
 variableAssignment
-	:	variableAssignmentWithoutSemicolon ';'
-	;
-
-variableAssignmentWithoutSemicolon
 	:	VariableId assignmentOperator expression
 	|	postIncrementDecrement
 	|	preIncrementDecrement
@@ -261,11 +329,8 @@ preIncrementDecrement
 	:	('++'|'--') VariableId;
 	
 	
-variableDeclarationWithoutSemicolon
+variableDeclaration
 	:	primitiveTypes VariableId ('=' expression)? ;
-	
-variableDeclaration	
-	:	variableDeclarationWithoutSemicolon ';' ;
 
 expression
 	:	logicOrWeak;
@@ -352,12 +417,23 @@ unaryAtom
 	
 
 atom	:	'(' expression ')'
-	|	Bool
+	|	primitiveAtom
+	|	VariableId
+	//|	functionCall
+	;
+	
+unaryPrimitiveAtom
+	:	'+' primitiveAtom
+	|	'-' primitiveAtom
+	|	primitiveAtom
+	;
+
+primitiveAtom
+	:	Bool
 	|	Int
 	|	Float
 	|	String
 	|	array
-	|	VariableId
 	;
 	
 Int     : 	DECIMAL
@@ -428,7 +504,11 @@ ifCondition
 	;
 
 	
-forLoop	:	'for' '(' (variableDeclarationWithoutSemicolon|variableAssignmentWithoutSemicolon)? ';'  expression? ';' variableAssignmentWithoutSemicolon? ')' instructionInclBreakContinue;
+forLoop	:	'for' '(' forInit? ';' expressionList?  ';' forUpdate? ')' instructionInclBreakContinue;
+
+forInit	:	(variableDeclaration|variableAssignment) (',' variableAssignment)*;
+forUpdate
+	:	variableAssignment (',' variableAssignment)?;
 
 foreachLoop
 	:	'foreach' '(' (VariableId|array) 'as' VariableId ('=>' VariableId)? ')' instructionInclBreakContinue;

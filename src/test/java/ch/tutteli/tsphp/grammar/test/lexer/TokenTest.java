@@ -48,12 +48,13 @@ public class TokenTest extends ALexerTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList();
         collection.addAll(Arrays.asList(new Object[][]{
+                    {"mAbstract", "abstract", TSPHPLexer.Abstract},
                     {"mArrow", "=>", TSPHPLexer.Arrow},
                     {"mAs", "as", TSPHPLexer.As},
-                    {"mAt","@",TSPHPLexer.At},
                     {"mAssign", "=", TSPHPLexer.Assign},
-                    {"mBackslash","\\",TSPHPLexer.Backslash},
-                    {"mBitwiseAnd","&",TSPHPLexer.BitwiseAnd},
+                    {"mAt", "@", TSPHPLexer.At},
+                    {"mBackslash", "\\", TSPHPLexer.Backslash},
+                    {"mBitwiseAnd", "&", TSPHPLexer.BitwiseAnd},
                     {"mBitwiseAndEqual", "&=", TSPHPLexer.BitwiseAndEqual},
                     {"mBitwiseNot", "~", TSPHPLexer.BitwiseNot},
                     {"mBitwiseOr", "|", TSPHPLexer.BitwiseOr},
@@ -64,29 +65,34 @@ public class TokenTest extends ALexerTest
                     {"mBool", "false", TSPHPLexer.Bool},
                     {"mBreak", "break", TSPHPLexer.Break},
                     {"mCase", "case", TSPHPLexer.Case},
+                    {"mClass", "class", TSPHPLexer.Class},
                     {"mColon", ":", TSPHPLexer.Colon},
                     {"mComma", ",", TSPHPLexer.Comma},
+                    {"mConst", "const", TSPHPLexer.Const},
                     {"mContinue", "continue", TSPHPLexer.Continue},
-                    {"mElse", "else", TSPHPLexer.Else},
-                    {"mEqual", "==", TSPHPLexer.Equal},
                     {"mDefault", "default", TSPHPLexer.Default},
                     {"mDivide", "/", TSPHPLexer.Divide},
                     {"mDivideEqual", "/=", TSPHPLexer.DivideEqual},
                     {"mDo", "do", TSPHPLexer.Do},
                     {"mDolar", "$", TSPHPLexer.Dolar},
                     {"mDotEqual", ".=", TSPHPLexer.DotEqual},
-                    {"mGreaterThan",">",TSPHPLexer.GreaterThan},
-                    {"mGreaterEqualThan",">=",TSPHPLexer.GreaterEqualThan},
+                    {"mElse", "else", TSPHPLexer.Else},
+                    {"mEqual", "==", TSPHPLexer.Equal},
+                    {"mExtends", "extends", TSPHPLexer.Extends},
+                    {"mFinal","final",TSPHPLexer.Final},
                     {"mFunction", "function", TSPHPLexer.Function},
                     {"mFor", "for", TSPHPLexer.For},
                     {"mForeach", "foreach", TSPHPLexer.Foreach},
+                    {"mGreaterThan", ">", TSPHPLexer.GreaterThan},
+                    {"mGreaterEqualThan", ">=", TSPHPLexer.GreaterEqualThan},
                     {"mIdentical", "===", TSPHPLexer.Identical},
                     {"mIf", "if", TSPHPLexer.If},
+                    {"mImplements", "implements", TSPHPLexer.Implements},
                     {"mLeftCurlyBrace", "{", TSPHPLexer.LeftCurlyBrace},
                     {"mLeftParanthesis", "(", TSPHPLexer.LeftParanthesis},
                     {"mLeftSquareBrace", "[", TSPHPLexer.LeftSquareBrace},
-                    {"mLessThan","<",TSPHPLexer.LessThan},
-                    {"mLessEqualThan","<=",TSPHPLexer.LessEqualThan},
+                    {"mLessThan", "<", TSPHPLexer.LessThan},
+                    {"mLessEqualThan", "<=", TSPHPLexer.LessEqualThan},
                     {"mLogicAnd", "&&", TSPHPLexer.LogicAnd},
                     {"mLogicAndWeak", "and", TSPHPLexer.LogicAndWeak},
                     {"mLogicNot", "!", TSPHPLexer.LogicNot},
@@ -101,21 +107,25 @@ public class TokenTest extends ALexerTest
                     {"mMultiply", "*", TSPHPLexer.Multiply},
                     {"mMultiplyEqual", "*=", TSPHPLexer.MultiplyEqual},
                     {"mNamespace", "namespace", TSPHPLexer.Namespace},
-                    {"mNotEqual","!=",TSPHPLexer.NotEqual},
-                    {"mNotEqualAlternative","<>",TSPHPLexer.NotEqualAlternative},
-                    {"mNotIdentical","!==",TSPHPLexer.NotIdentical},
+                    {"mNotEqual", "!=", TSPHPLexer.NotEqual},
+                    {"mNotEqualAlternative", "<>", TSPHPLexer.NotEqualAlternative},
+                    {"mNotIdentical", "!==", TSPHPLexer.NotIdentical},
                     {"mQuestionMark", "?", TSPHPLexer.QuestionMark},
                     {"mPlus", "+", TSPHPLexer.Plus},
                     {"mPlusEqual", "+=", TSPHPLexer.PlusEqual},
                     {"mPlusPlus", "++", TSPHPLexer.PlusPlus},
+                    {"mPrivate", "private", TSPHPLexer.Private},
+                    {"mProtected", "protected", TSPHPLexer.Protected},
+                    {"mPublic", "public", TSPHPLexer.Public},
                     {"mReturn", "return", TSPHPLexer.Return},
                     {"mRightCurlyBrace", "}", TSPHPLexer.RightCurlyBrace},
                     {"mRightParanthesis", ")", TSPHPLexer.RightParanthesis},
                     {"mRightSquareBrace", "]", TSPHPLexer.RightSquareBrace},
-                    {"mShiftLeft","<<",TSPHPLexer.ShiftLeft},
+                    {"mShiftLeft", "<<", TSPHPLexer.ShiftLeft},
                     {"mShiftLeftEqual", "<<=", TSPHPLexer.ShiftLeftEqual},
-                    {"mShiftRight",">>",TSPHPLexer.ShiftRight},
+                    {"mShiftRight", ">>", TSPHPLexer.ShiftRight},
                     {"mShiftRightEqual", ">>=", TSPHPLexer.ShiftRightEqual},
+                    {"mStatic", "static", TSPHPLexer.Static},
                     {"mTypeArray", "array", TSPHPLexer.TypeArray},
                     {"mTypeBool", "bool", TSPHPLexer.TypeBool},
                     {"mTypeBoolean", "boolean", TSPHPLexer.TypeBoolean},
@@ -126,7 +136,7 @@ public class TokenTest extends ALexerTest
                     {"mTypeString", "string", TSPHPLexer.TypeString},
                     {"mSemicolon", ";", TSPHPLexer.Semicolon},
                     {"mSwitch", "switch", TSPHPLexer.Switch},
-                    {"mVoid","void",TSPHPLexer.Void},
+                    {"mVoid", "void", TSPHPLexer.Void},
                     {"mWhile", "while", TSPHPLexer.While}
                 }));
 
@@ -144,10 +154,10 @@ public class TokenTest extends ALexerTest
         for (Object[] obj : stringCollection) {
             collection.add(new Object[]{"mString", obj[1], TSPHPLexer.String});
         }
-        
+
         Collection<Object[]> ids = getIDTestStrings();
         for (Object[] obj : ids) {
-            collection.add(new Object[]{"mVariableId","$"+ obj[1], TSPHPLexer.VariableId});
+            collection.add(new Object[]{"mVariableId", "$" + obj[1], TSPHPLexer.VariableId});
         }
 
         return collection;
