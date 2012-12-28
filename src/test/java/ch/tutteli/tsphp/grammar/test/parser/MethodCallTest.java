@@ -16,8 +16,10 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
+import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -50,8 +52,28 @@ public class MethodCallTest extends AParserTest
         collection.add(new Object[]{"$a->foo(true || false,1,1+1,'hello'.'world');"});
 
         String[] expressions = ExpressionTest.getExpressionsWithoutAssignment();
-        for(String expression:expressions){
-            collection.add(new Object[]{"$a->foo("+expression+");"});
+        for (String expression : expressions) {
+            collection.add(new Object[]{"$a->foo(" + expression + ");"});
+        }
+
+        collection.addAll(getCalls("$this->"));
+        collection.addAll(getCalls("$a->"));
+        collection.addAll(getCalls("self::"));
+        collection.addAll(getCalls("parent::"));
+        collection.addAll(getCalls("Foo::"));
+        collection.addAll(getCalls("$this->a->"));
+        collection.addAll(getCalls("self::$a->"));
+        collection.addAll(getCalls("parent::$a->"));
+        collection.addAll(getCalls("Bar::$a->"));
+
+        return collection;
+    }
+
+    public static Collection<Object[]> getCalls(String prefix) {
+        List<Object[]> collection = new ArrayList<>();
+        Collection<Object[]> ids = TokenTest.getIDTestStrings();
+        for (Object[] obj : ids) {
+            collection.addAll(Arrays.asList(new Object[][]{{prefix + obj[1] + "();"}, {prefix + obj[1] + "()->" + obj[1] + "();"}, {prefix + obj[1] + "()->" + obj[1] + "()->" + obj[1] + "();"}}));
         }
         return collection;
     }

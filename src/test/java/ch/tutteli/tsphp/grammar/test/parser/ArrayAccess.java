@@ -47,13 +47,16 @@ public class ArrayAccess extends AParserTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList();
         List<String> expressions = ExpressionTest.getAllExpressions();
-        
-        for(String expression:expressions){
-            collection.add(new Object[]{"array $d = $a["+expression+"];"});
-            collection.add(new Object[]{"array $d = $a["+expression+"]["+expression+"];"});
-            collection.add(new Object[]{"array $d = $a["+expression+"]["+expression+"];"});
-            collection.add(new Object[]{"array $d = foo()["+expression+"]["+expression+"];"});
-            collection.add(new Object[]{"array $d = $a->foo()["+expression+"]["+expression+"];"});
+
+        for (String expression : expressions) {
+            collection.add(new Object[]{"array $d = $a[" + expression + "];"});
+            collection.add(new Object[]{"array $d = $a[" + expression + "][" + expression + "];"});
+            collection.add(new Object[]{"array $d = $a[" + expression + "][" + expression + "];"});
+            collection.add(new Object[]{"array $d = foo()[" + expression + "][" + expression + "];"});
+            collection.add(new Object[]{"array $d = $a->foo()[" + expression + "][" + expression + "];"});
+            collection.add(new Object[]{"array $d = self::foo()[" + expression + "][" + expression + "];"});
+            collection.add(new Object[]{"array $d = parent::foo()[" + expression + "][" + expression + "];"});
+            collection.add(new Object[]{"array $d = Foo::foo()[" + expression + "][" + expression + "];"});
         }
         collection.add(new Object[]{"int $d = $a->foo()[0]->foo('hallo')->bar()[2][3];"});
         collection.add(new Object[]{"int $d = foo()[0]->foo('hallo')->bar()[2][3];"});

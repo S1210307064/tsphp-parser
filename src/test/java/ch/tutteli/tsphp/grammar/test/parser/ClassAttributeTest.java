@@ -68,7 +68,7 @@ public class ClassAttributeTest extends AParserTest
                     {"class a{ static protected int $a=1,$b=2,$c;}"},
                     {"class a{ static public int $a=1,$b=2,$c;}"},
                 }));
-        List<String> types = VariableDeclarationTest.getTypes();
+        List<String> types = VariableDeclarationTest.getAllTypes();
         for(String type : types){
             collection.add(new Object[]{"class a{ private "+type+" $a=1;}"});
         }

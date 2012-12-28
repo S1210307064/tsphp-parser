@@ -17,8 +17,10 @@
 package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ClassMethodCallTest extends AParserTest
+public class ClassStaticAccessTest extends AParserTest
 {
 
-    public ClassMethodCallTest(String testString) {
+    public ClassStaticAccessTest(String testString) {
         super(testString);
     }
 
@@ -43,10 +45,13 @@ public class ClassMethodCallTest extends AParserTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                    {"$a->foo();"},
-                    {"$a->foo()->bar();"},
-                    {"$a->foo()->bar()->foo();"},
-        });
+        List<Object[]> collection = new ArrayList<>();
+        List<String> types = VariableDeclarationTest.getClassInterfaceTypes();
+        for(String type : types){
+            collection.add(new Object[]{type+"::foo();"});
+            collection.add(new Object[]{type+"::$a->foo();"});
+            collection.add(new Object[]{"$a = "+type+"::$a;"});
+        }
+        return collection;
     }
 }

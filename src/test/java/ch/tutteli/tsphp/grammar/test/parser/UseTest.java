@@ -76,6 +76,5 @@ public class UseTest extends AParserTest
                     "use a\\a as b, a\\b;",
                     "use a\\a\\b as c, a\\a, \\Exception;"
                 };
-
     }
 }

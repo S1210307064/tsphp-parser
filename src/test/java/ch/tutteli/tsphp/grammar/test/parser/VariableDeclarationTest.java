@@ -47,7 +47,7 @@ public class VariableDeclarationTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList();
-        List<String> types = getTypes();
+        List<String> types = getAllTypes();
         for (String type : types) {
             collection.add(new Object[]{type + " $d = 1;"});
         }
@@ -55,7 +55,7 @@ public class VariableDeclarationTest extends AParserTest
 
     }
 
-    public static List<String> getTypes() {
+    public static List<String> getAllTypes() {
         List<String> types = new ArrayList<>();
         String[] primitiveTypes = getPrimitiveTypes();
         types.addAll(Arrays.asList(primitiveTypes));

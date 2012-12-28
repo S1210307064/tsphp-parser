@@ -91,11 +91,15 @@ tokens{
 	Null = 'null';
 	NULL = 'NULL';
 	ObjectOperator = '->';
+	Parent = 'parent::';
 	Plus = '+';
 	PlusEqual = '+=';
 	PlusPlus = '++';
 	Private = 'private';
 	Protected = 'protected';
+	ProtectParent = 'parent';
+	ProtectSelf = 'self';
+	ProtectThis = 'this';
 	Public = 'public';
 	QuestionMark = '?';
 	Return = 'return';
@@ -107,6 +111,7 @@ tokens{
 	ShiftRight = '>>';
 	ShiftRightEqual = '>>=';
 	Static = 'static';
+	This = '$this';
 	Throw = 'throw';
 	Try = 'try';
 	TypeBool = 'bool';
@@ -117,6 +122,7 @@ tokens{
 	TypeArray = 'array';
 	TypeResource = 'resource';
 	TypeObject = 'object';
+	Self = 'self::';
 	Semicolon = ';';
 	Switch = 'switch';
 	Use = 'use';
@@ -208,7 +214,7 @@ definition
 	:	classDeclaration
 	|	interfaceDeclaration
 	|	functionDeclaration
-	|	constantDeclaration
+	|	constDeclarationList
 	;
 
 /************* OOP related  - many definitions rely on procedural definitions *********************/
@@ -228,15 +234,14 @@ implementsDeclaration
 	:	'implements' identifierList;
 	
 classBody
-	:	constantDeclaration
+	:	constDeclarationList
 	|	attributeDeclaration	
 	|	methodDeclaration
 	;
 
-constantDeclaration:	'const' primitiveTypes constDeclarationList ';';
-
 constDeclarationList
-	:	 constantAssignment (',' constantAssignment)*;
+	:	 'const' primitiveTypes constantAssignment (',' constantAssignment)* ';';
+	
 constantAssignment
 	:	Identifier  '=' unaryPrimitiveAtom;
 
@@ -269,7 +274,7 @@ interfaceDeclaration
 	:	'interface' Identifier implementsDeclaration? '{' interfaceBody* '}';
 
 interfaceBody
-	:	constantDeclaration
+	:	constDeclarationList
 	|	interfaceMethodDeclaration
 	;
 
@@ -483,7 +488,19 @@ arrayAccess
 fluentObject
 	:	functionCall
 	|	methodCall
+	|	varAccess
+	;
+	
+varAccess
+	:	'$this' ('->' Identifier)*
+	|	staticAccess VariableId
 	|	VariableId
+	;
+	
+staticAccess
+	:	'self::'
+	|	'parent::'
+	|	classInterfaceTypeWithoutObject'::'
 	;
 
 newOrClone
@@ -511,17 +528,16 @@ functionCall
 	:	namespaceId '(' expressionList? ')' ('->' Identifier '(' expressionList?')')* arrayAccessCall?;
 
 methodCall
-	:	VariableId ('->' Identifier '(' expressionList?')')+ arrayAccessCall?
+	:	( (varAccess '->') | staticAccess) Identifier '(' expressionList?')' ('->' Identifier '(' expressionList?')')* arrayAccessCall?
 	;
 
 arrayAccessCall
-	:	 (('[' expression ']') ('->'Identifier '(' expressionList?')')?)*;
+	:	 (('[' expression ']') ('->'Identifier '(' expressionList?')')?)+;
 
 atom	:	'(' expression ')'
 	|	primitiveAtom
 	|	array
-	|	VariableId
-	//TODO class constants, static access, class attribute access
+	|	varAccess
 	;
 	
 unaryPrimitiveAtom

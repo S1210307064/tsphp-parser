@@ -86,13 +86,16 @@ public class NewErrorTest extends AParserParserExceptionTest
                     {prefix + "namespace" + appendix + ";", TSPHPParser.Namespace, prefixLength},
                     {prefix + "new" + appendix + ";", TSPHPParser.New, prefixLength},
                     {prefix + "object" + appendix + ";", TSPHPParser.TypeObject, prefixLength},
+                    {prefix + "parent" + appendix + ";", TSPHPParser.ProtectParent, prefixLength},
                     {prefix + "private" + appendix + ";", TSPHPParser.Private, prefixLength},
                     {prefix + "protected" + appendix + ";", TSPHPParser.Protected, prefixLength},
                     {prefix + "public" + appendix + ";", TSPHPParser.Public, prefixLength},
                     {prefix + "resource" + appendix + ";", TSPHPParser.TypeResource, prefixLength},
                     {prefix + "return" + appendix + ";", TSPHPParser.Return, prefixLength},
                     {prefix + "static" + appendix + ";", TSPHPParser.Static, prefixLength},
+                    {prefix + "self" + appendix + ";", TSPHPParser.ProtectSelf, prefixLength},
                     {prefix + "switch" + appendix + ";", TSPHPParser.Switch, prefixLength},
+                    {prefix + "this" + appendix + ";", TSPHPParser.ProtectThis, prefixLength},
                     {prefix + "throw" + appendix + ";", TSPHPParser.Throw, prefixLength},
                     {prefix + "try" + appendix + ";", TSPHPParser.Try, prefixLength},
                     {prefix + "use" + appendix + ";", TSPHPParser.Use, prefixLength},
@@ -101,4 +104,3 @@ public class NewErrorTest extends AParserParserExceptionTest
                 });
     }
 }
-
