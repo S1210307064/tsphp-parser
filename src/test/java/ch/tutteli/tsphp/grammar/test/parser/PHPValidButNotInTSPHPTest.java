@@ -112,6 +112,8 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     {"switch($a){case 1: default: $a=1; break; case 2: default: $a=2; break;}", TSPHPParser.Default, 19},
                     //function with pseudo optional parameter
                     {"function a ($a,$b=1,$c){$a=1;}",TSPHPParser.LeftParanthesis,11},
+                    //empty try block
+                    {"try{}catch(\\Exception){}",TSPHPParser.RightCurlyBrace,4},
                     //empty class    
                     {"class a{}", TSPHPParser.RightCurlyBrace, 8}
                 }));

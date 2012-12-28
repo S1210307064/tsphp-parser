@@ -18,7 +18,6 @@ package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -31,10 +30,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class BreakContinueTest extends AParserTest
+public class Exit extends AParserTest
 {
 
-    public BreakContinueTest(String testString) {
+    public Exit(String testString) {
         super(testString);
     }
 
@@ -46,10 +45,7 @@ public class BreakContinueTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("break"));
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("continue"));
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("break 3"));
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("continue 2"));
+        collection.addAll(ReturnTest.getPossiblePlacesForInstructionsWithInstruction("exit"));
         return collection;
     }
 }

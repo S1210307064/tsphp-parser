@@ -65,6 +65,7 @@ public class TokenTest extends ALexerTest
                     {"mBool", "false", TSPHPLexer.Bool},
                     {"mBreak", "break", TSPHPLexer.Break},
                     {"mCase", "case", TSPHPLexer.Case},
+                    {"mCatch", "catch", TSPHPLexer.Catch},
                     {"mClass", "class", TSPHPLexer.Class},
                     {"mColon", ":", TSPHPLexer.Colon},
                     {"mComma", ",", TSPHPLexer.Comma},
@@ -76,11 +77,12 @@ public class TokenTest extends ALexerTest
                     {"mDo", "do", TSPHPLexer.Do},
                     {"mDolar", "$", TSPHPLexer.Dolar},
                     {"mDotEqual", ".=", TSPHPLexer.DotEqual},
-                    {"mEcho","echo",TSPHPLexer.Echo},
+                    {"mEcho", "echo", TSPHPLexer.Echo},
                     {"mElse", "else", TSPHPLexer.Else},
                     {"mEqual", "==", TSPHPLexer.Equal},
                     {"mExtends", "extends", TSPHPLexer.Extends},
-                    {"mFinal","final",TSPHPLexer.Final},
+                    {"mExit", "exit", TSPHPLexer.Exit},
+                    {"mFinal", "final", TSPHPLexer.Final},
                     {"mFunction", "function", TSPHPLexer.Function},
                     {"mFor", "for", TSPHPLexer.For},
                     {"mForeach", "foreach", TSPHPLexer.Foreach},
@@ -128,6 +130,7 @@ public class TokenTest extends ALexerTest
                     {"mShiftRight", ">>", TSPHPLexer.ShiftRight},
                     {"mShiftRightEqual", ">>=", TSPHPLexer.ShiftRightEqual},
                     {"mStatic", "static", TSPHPLexer.Static},
+                    {"mTry", "try", TSPHPLexer.Try},
                     {"mTypeArray", "array", TSPHPLexer.TypeArray},
                     {"mTypeBool", "bool", TSPHPLexer.TypeBool},
                     {"mTypeBoolean", "boolean", TSPHPLexer.TypeBoolean},
@@ -166,7 +169,11 @@ public class TokenTest extends ALexerTest
     }
 
     public static String[] getFloatTestStrings() {
-        return new String[]{"1234567890.19876543201",
+        return new String[]{
+                    "5867491023e7845120963",
+                    "5867491023e+7538964120",
+                    "5867491023e-9510236478",
+                    "1234567890.19876543201",
                     "1234567890.19876543201e7845120963",
                     "1234567890.19876543201e+7538964120",
                     "1234567890.19876543201e-9510236478",
@@ -178,7 +185,8 @@ public class TokenTest extends ALexerTest
                     "0.0",
                     "0.0e0",
                     "0.0e+0",
-                    "0.0e-0"};
+                    "0.0e-0"
+                };
     }
 
     public static Collection<Object[]> getIDTestStrings() {

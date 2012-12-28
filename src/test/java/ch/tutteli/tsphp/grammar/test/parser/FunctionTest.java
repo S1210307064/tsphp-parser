@@ -56,17 +56,4 @@ public class FunctionTest extends AParserTest
         
         return collection;
     }
-    
-    public static String[] getPrimitiveTypes(){
-        return new String[]{
-            "bool",
-            "boolean",
-            "int",
-            "float",
-            "string",
-            "array",
-            "ressource",
-            "object"
-        };
-    }
 }

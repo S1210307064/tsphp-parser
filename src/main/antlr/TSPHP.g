@@ -36,6 +36,7 @@ tokens{
 	BitwiseXorEqual = '^=';
 	Break = 'break';
 	Case = 'case';
+	Catch = 'catch';
 	Class = 'class';
 	Colon = ':';
 	Comma = ',';
@@ -52,6 +53,7 @@ tokens{
 	Else = 'else';
 	Equal = '==';	
 	Extends = 'extends';
+	Exit = 'exit';
 	Final = 'final';
 	For = 'for';
 	Foreach = 'foreach';
@@ -102,6 +104,7 @@ tokens{
 	ShiftRight = '>>';
 	ShiftRightEqual = '>>=';
 	Static = 'static';
+	Try = 'try';
 	TypeBool = 'bool';
 	TypeBoolean = 'boolean';
 	TypeInt = 'int';
@@ -191,7 +194,10 @@ definition
 	|	interfaceDeclaration
 	|	functionDeclaration
 	;
-	
+
+/************* OOP related  - many definitions rely on procedural definitions *********************/
+//************************************************************************************************/
+
 classDeclaration
 	:	('abstract'|'final')? 'class' Identifier extendsDeclaration? implementsDeclaration? '{' classBody+ '}'	
 	;
@@ -254,6 +260,10 @@ interfaceBody
 interfaceMethodDeclaration
 	:	'public'? functionDeclarationWithoutBody ';';
 
+
+
+/******* Procedural related - is also be used by OOP ************/
+//***************************************************************/
 functionDeclaration	
 	:	 functionDeclarationWithoutBody '{' instructionWithoutBreakContinue* '}';
 	
@@ -285,7 +295,8 @@ primitiveTypesExtended
 	
 classInterfaceType
 	:	TypeObject	
-	|	Identifier
+		//namespaceId already contains Identifier at the end
+	|	'\\'? namespaceId 
 	;
 	
 paramList
@@ -323,8 +334,10 @@ instruction
 	|	foreachLoop
 	|	whileLoop
 	|	doWhileLoop
+	|	tryCatch
 	|	'return' expression? ';'
 	|	'echo' expressionList ';'
+	|	'exit' ';'
 	;
 	
 expressionList
@@ -530,10 +543,25 @@ array_content
 
 
 ifCondition
-	:	'if' '(' expression ')' instructionWithoutBreakContinue	
-		( 'else' instructionWithoutBreakContinue )?
+	:	'if' '(' expression ')' instructionInclBreakContinue	
+		( 'else' instructionInclBreakContinue )?
 	;
 
+
+switchCondition	
+	:	'switch' '(' VariableId ')' '{' 
+		(
+			(caseLabel+ instructionInclBreakContinue+)+ defaultLabel instructionInclBreakContinue+ (caseLabel+ instructionInclBreakContinue+)+
+		|	(caseLabel+ instructionInclBreakContinue+)+ (defaultLabel instructionInclBreakContinue+)?
+		)
+		'}'
+	;
+
+caseLabel	
+	:	'case' expression ':';
+
+defaultLabel
+	:	'default' ':';
 	
 forLoop	:	'for' '(' forInit? ';' expressionList?  ';' forUpdate? ')' instructionInclBreakContinue;
 
@@ -550,20 +578,8 @@ whileLoop
 doWhileLoop
 	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';';
 
-switchCondition	
-	:	'switch' '(' VariableId ')' '{' 
-		(
-			(caseLabel+ instructionInclBreakContinue+)+ defaultLabel instructionInclBreakContinue+ (caseLabel+ instructionInclBreakContinue+)+
-		|	(caseLabel+ instructionInclBreakContinue+)+ (defaultLabel instructionInclBreakContinue+)?
-		)
-		'}'
-	;
+tryCatch:	'try' '{' instructionInclBreakContinue+ '}' 'catch' '(' classInterfaceType VariableId ')''{' instructionInclBreakContinue* '}';
 
-caseLabel	
-	:	'case' expression ':';
-
-defaultLabel
-	:	'default' ':';
 
 Comment
 	:	'//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}

@@ -48,6 +48,11 @@ public class NamespaceTest extends AParserTest
                     {"namespace a; $a=1; namespace b; $b=1;"},
                     {"namespace a { \n $a=1; $b=1;}"},
                     {"namespace a { $a=1;} namespace b{ $b=1;}"},
+                    {"namespace a\\b; \n $a=1; $b=1;"},
+                    {"namespace a\\b\\c; $a=1; namespace d\\e; $b=1;"},
+                    {"namespace a\\b\\c { \n $a=1; $b=1;}"},
+                    {"namespace a\\b { $a=1;} namespace c\\d\\e{ $b=1;}"},
+                    
                     //without namespace
                     {"$a=1;"},
                     

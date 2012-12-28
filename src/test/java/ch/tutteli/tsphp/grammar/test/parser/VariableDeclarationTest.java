@@ -16,9 +16,12 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
+import ch.tutteli.tsphp.grammar.TSPHPParser;
 import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
+import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -31,10 +34,11 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ArrayDeclarationTest extends AParserTest
+public class VariableDeclarationTest extends AParserTest
 {
 
-    public ArrayDeclarationTest(String testString) {
+   
+    public VariableDeclarationTest(String testString) {
         super(testString);
     }
 
@@ -46,33 +50,35 @@ public class ArrayDeclarationTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList();
-        String[] strings = getArrayTestStrings();
-        for (String string : strings) {
-            collection.add(new Object[]{"array $a = " + string + ";"});
+        List<String> types = getTypes();
+        for (String type : types) {
+            collection.add(new Object[]{type + " $d = 1;"});
         }
-
-        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
-        for (Object[] obj : idTestStrings) {
-            collection.add(new Object[]{"array $d = $" + obj[1] + ";"});
-        }
-
         return collection;
+
     }
 
-    public static String[] getArrayTestStrings() {
-        return new String[]{
-                    "[]",
-                    "array()",
-                    "[1,2.0,'single quoted string', \"double quoted string\",true,false]",
-                    "array(1,2.0,'single quoted string', \"double quoted string\",true,false)",
-                    "[[],array()]",
-                    "array([],array())",
-                    "[1 => 1, 2.0=>1, 'single quoted key'=>\"hello\", \"double quoted key\"=> 'velo']",
-                    "array(1 => 1, 2.0=>1, 'single quoted key'=>\"hello\", \"double quoted key\"=> 'velo')",
-                    "[1=>[],2.0=>array()]",
-                    "array(1=>[],2.0=>array())",
-                    "[1 => 1, 2.0=>1, 'single quoted key'=>\"hello\", \"double quoted key\"=> 'velo',1 => array(), 2=>[],1,2.0,'single quoted string', \"double quoted string\",true,false,[],array()]",
-                    "array(1 => 1, 2.0=>1, 'single quoted key'=>\"hello\", \"double quoted key\"=> 'velo',1 => array(), 2=>[],1,2.0,'single quoted string', \"double quoted string\",true,false,[],array())"
-                };
+    public static List<String> getTypes() {
+        List<String> types = new ArrayList<>();
+        String[] primitiveTypes = getPrimitiveTypes();
+        types.addAll(Arrays.asList(primitiveTypes));
+        types.addAll(getClassInterfaceTypes());
+        return types;
+    }
+
+    public static List<String> getClassInterfaceTypes() {
+        List<String> types = new ArrayList<>();
+        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
+        for (Object[] obj : idTestStrings) {
+            types.add(obj[1] + "");
+            types.add(obj[1] + "\\" + obj[1]);
+            types.add("\\" + obj[1]);
+            types.add("\\" + obj[1] + "\\" + obj[1] + "\\" + obj[1]);
+        }
+        return types;
+    }
+
+    public static String[] getPrimitiveTypes() {
+        return new String[]{"bool", "boolean", "int", "float", "string", "array", "ressource", "object"};
     }
 }
