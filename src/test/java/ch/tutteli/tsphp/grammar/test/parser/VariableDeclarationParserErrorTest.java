@@ -45,7 +45,6 @@ public class VariableDeclarationParserErrorTest extends AParserParserExceptionTe
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"$a;", TSPHPParser.Semicolon, 2},
                     {"int $a int $b;", TSPHPParser.TypeInt, 7},
                     {"int $a 1", TSPHPParser.Int, 7},
                     {"int a;", TSPHPParser.Identifier, 4},

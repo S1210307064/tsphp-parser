@@ -16,9 +16,7 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.TSPHPParser;
 import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
-import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +35,6 @@ import org.junit.runners.Parameterized;
 public class VariableDeclarationTest extends AParserTest
 {
 
-   
     public VariableDeclarationTest(String testString) {
         super(testString);
     }
@@ -72,13 +69,15 @@ public class VariableDeclarationTest extends AParserTest
         for (Object[] obj : idTestStrings) {
             types.add(obj[1] + "");
             types.add(obj[1] + "\\" + obj[1]);
+            types.add(obj[1] + "\\" + obj[1] + "\\" + obj[1]);
             types.add("\\" + obj[1]);
+            types.add("\\" + obj[1] + "\\" + obj[1] );
             types.add("\\" + obj[1] + "\\" + obj[1] + "\\" + obj[1]);
         }
         return types;
     }
 
     public static String[] getPrimitiveTypes() {
-        return new String[]{"bool", "boolean", "int", "float", "string", "array", "ressource", "object"};
+        return new String[]{"bool", "boolean", "int", "float", "string", "array", "resource", "object"};
     }
 }

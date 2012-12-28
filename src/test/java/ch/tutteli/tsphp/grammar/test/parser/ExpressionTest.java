@@ -57,6 +57,7 @@ public class ExpressionTest extends AParserTest
             collection.add(new Object[]{"array $a = " + expression + ";"});
             collection.add(new Object[]{"resource $a = " + expression + ";"});
             collection.add(new Object[]{"object $a = " + expression + ";"});
+            collection.add(new Object[]{"Foo $a = " + expression + ";"});
         }
 
         return collection;
@@ -65,11 +66,11 @@ public class ExpressionTest extends AParserTest
     public static List<String> getAllExpressions() {
         List<String> expressions = new ArrayList<>();
         expressions.addAll(Arrays.asList(getExpressionsWithoutAssignment()));
-        expressions.addAll(Arrays.asList(getAssignmentExpressions()));
+        expressions.addAll(Arrays.asList(getInstructionExpressions()));
         return expressions;
     }
 
-    public static String[] getAssignmentExpressions() {
+    public static String[] getInstructionExpressions() {
         return new String[]{
                     "$b = 1",
                     "$b += 1",
@@ -87,7 +88,11 @@ public class ExpressionTest extends AParserTest
                     "$a++",
                     "++$a",
                     "--$a",
-                    "$a--",};
+                    "$a--",
+                    "foo()",
+                    "$a->foo()",
+                    
+        };
     }
 
     public static String[] getExpressionsWithoutAssignment() {
@@ -95,23 +100,31 @@ public class ExpressionTest extends AParserTest
                     "true or false",
                     "true xor false",
                     "true and false",
+                    "true or false xor true and false",
                     "true ? 1:2",
+                    "true ? $a<$b ? 1:2:2",
+                    "true ? $a<$b ? 1:2:2+3-4",
                     "true || false",
                     "true && false",
+                    "true || false && true ? true:false",
                     "14 | 2",
                     "14 ^ 2",
                     "14 & 2",
+                    "9 | 9 ^ 12 & 3",
                     "$b==$c",
                     "$b!=$c",
                     "$b===$c",
                     "$b!==$c",
                     "$b<>$c",
+                    "$a == $b != $c === $d !== $e <> $f",
                     "$a < $b",
                     "$a <= $b",
                     "$a > $b",
                     "$a >= $b",
+                    "$a < 4 <= 7 > 10 >= $d",
                     "1 << 4",
                     "16 >> 4",
+                    "$a << 2 >> 5",
                     "1+1",
                     "2-3",
                     "4*5",
@@ -120,14 +133,21 @@ public class ExpressionTest extends AParserTest
                     "6+7-5*5/(2+1)",
                     "6 % 3 + 7-5*5/(2+1)",
                     "'hallo'.'welt'",
+                    "'hallo'.'welt'.\"blabla bla\".$a",
                     "!$a",
+                    "!!$a",
+                    "$a instanceof Foo",
+                    "$a instanceof $a",
                     "~$a",
+                    "~~$a",
                     "(bool) $a",
                     "(boolean) $a",
                     "(int) $a",
                     "(float) $a",
                     "(string) $a",
                     "(array) $a",
+                    "(Foo) $a",
+                    "(int) ((bool) $a && $b) + 1",
                     "@$a",
                     "+1",
                     "-1",
@@ -135,7 +155,10 @@ public class ExpressionTest extends AParserTest
                     "new a()",
                     "clone $a",
                     "$a",
-                    "(1+1)"
+                    "$a[0]",
+                    "(1+1)",
+                    //constant
+                    "a",
                 };
     }
 }

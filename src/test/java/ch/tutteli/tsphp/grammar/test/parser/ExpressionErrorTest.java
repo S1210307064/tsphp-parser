@@ -16,10 +16,10 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
-import java.util.ArrayList;
+import ch.tutteli.tsphp.grammar.TSPHPParser;
+import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -30,25 +30,23 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class BreakContinueTest extends AParserTest
+public class ExpressionErrorTest extends AParserParserExceptionTest
 {
 
-    public BreakContinueTest(String testString) {
-        super(testString);
+    public ExpressionErrorTest(String testString, int character, int position) {
+        super(testString, RecognitionException.class, character, position);
+
     }
 
     @Test
     public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+        super.parseExpectingException();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("break"));
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("continue"));
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("break 3"));
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("continue 2"));
-        return collection;
+        return Arrays.asList(new Object[][]{
+                    {"$a = $a ! instanceof $b;",TSPHPParser.LogicNot,8},
+                });
     }
 }

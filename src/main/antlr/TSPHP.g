@@ -356,8 +356,8 @@ instruction
 	|	doWhileLoop
 	|	tryCatch
 	|	throwException
-	|	functionCall
-	|	methodCall
+	|	functionCall ';'
+	|	methodCall ';'
 	|	'return' expression? ';'
 	|	'echo' expressionList ';'
 	|	'exit' ';'
@@ -412,7 +412,7 @@ logicAndWeak
 assignment
 	:	ternary (assignmentOperator ternary)*;
 
-ternary	:	logicOr ('?' expression ':' logicOr)?;
+ternary	:	logicOr ('?' expression ':' expression)?;
 
 logicOr	:	logicAnd ('||' logicAnd)*;
 
@@ -454,15 +454,15 @@ termOrStringConcatenation	:	factor (('+'|'-'|'.') factor)*;
 factor	:	logicNot (('*'|'/'|'%') logicNot)*;
 
 logicNot:	'!' logicNot
-	|	castOrBitwiseNotOrAt
+	|	instanceOf
 	;
 
-/*
+
 instanceOf
-	:	castOrBitwiseNotOrAt ('instanceof' castOrBitwiseNotOrAt)?;
-*/
+	:	castOrBitwiseNotOrAt ('instanceof' (classInterfaceTypeWithoutObject|VariableId))?;
+
 castOrBitwiseNotOrAt
-	:	('(' primitiveTypesInclArray ')') castOrBitwiseNotOrAt
+	:	('(' (primitiveTypesInclArray|classInterfaceTypeInclObject) ')') castOrBitwiseNotOrAt
 	|	'~' castOrBitwiseNotOrAt
 	|	'@' castOrBitwiseNotOrAt
 	|	incrementDecrement
@@ -471,7 +471,19 @@ castOrBitwiseNotOrAt
 incrementDecrement
 	:	postIncrementDecrement
 	|	preIncrementDecrement
+	|	arrayAccess
+	;
+	
+arrayAccess
+	:	fluentObject ('[' expression ']')+
 	|	newOrClone
+	;
+
+
+fluentObject
+	:	functionCall
+	|	methodCall
+	|	VariableId
 	;
 
 newOrClone
@@ -490,17 +502,20 @@ unaryAtom
 	|	atomOrCall
 	;
 atomOrCall
-	:	atom
+	:	functionCall
 	|	methodCall
-	|	functionCall
+	|	atom
 	;	
 
 functionCall
-	:	namespaceId '(' expressionList? ')' ';';
+	:	namespaceId '(' expressionList? ')' ('->' Identifier '(' expressionList?')')* arrayAccessCall?;
 
 methodCall
-	:	VariableId'->'Identifier '(' expressionList?')' ';';
-	//TODO this
+	:	VariableId ('->' Identifier '(' expressionList?')')+ arrayAccessCall?
+	;
+
+arrayAccessCall
+	:	 (('[' expression ']') ('->'Identifier '(' expressionList?')')?)*;
 
 atom	:	'(' expression ')'
 	|	primitiveAtom
@@ -522,6 +537,7 @@ primitiveAtom
 	|	String
 	|	Null
 	|	NULL
+	|	Identifier
 	;
 	
 Int     : 	DECIMAL
