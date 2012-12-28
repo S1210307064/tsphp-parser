@@ -17,11 +17,9 @@
 package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -31,31 +29,25 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ExpressionWithoutAssignmentTest extends AParserTest
+public class InterfaceMethodTest extends AParserTest
 {
 
-    public ExpressionWithoutAssignmentTest(String testString) {
+    public InterfaceMethodTest(String testString) {
         super(testString);
     }
 
     @Test
     public void test() throws RecognitionException {
-        isErrorReportingOn=false;
-        super.parse();
-        
-        Assert.assertTrue(testString + " failed, lexer threw exception(s) - see output", lexer.getExceptions().isEmpty());
-        Assert.assertFalse(testString + " failed, parser threw exception(s) - see output", parser.getExceptions().isEmpty());
+        super.parseAndCheckForException();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-
-        String[] expressions = ExpressionTest.getExpressionsWithoutAssignment();
-        for (String expression : expressions) {
-            collection.add(new Object[]{expression + ";"});
-        }
-        
-        return collection;
+        return Arrays.asList(new Object[][]{
+                    //single modifier
+                    {"interface a{ function string getName();}"},
+                    {"interface a{ public function string getName(); public function string getName();}"},
+                    {"interface a{ const bool a=true; public function string getName(); const bool b=true; public function string getName(); const bool c=true;}"},
+        });
     }
 }

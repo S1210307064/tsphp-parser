@@ -18,7 +18,6 @@ package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.TSPHPParser;
 import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
-import ch.tutteli.tsphp.grammar.test.utils.VariantionHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -33,11 +32,11 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableDeclarationWrongTypeParserTest extends AParserParserExceptionTest
+public class ConstantErrorTest extends AParserParserExceptionTest
 {
 
-    public VariableDeclarationWrongTypeParserTest(String testString, int token, int position) {
-        super(testString, RecognitionException.class, token, position);
+    public ConstantErrorTest(String testString, int character, int position) {
+        super(testString, RecognitionException.class, character, position);
 
     }
 
@@ -47,20 +46,18 @@ public class VariableDeclarationWrongTypeParserTest extends AParserParserExcepti
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> variables() {
+    public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"int $1;", TSPHPParser.Dolar, 4},
-                    {"bool $2a;", TSPHPParser.Dolar, 5},
-                    {"boolean $3_;", TSPHPParser.Dolar, 8},
-                    {"float $4£;", TSPHPParser.Dolar, 6},
-                    {"string $5ééé;", TSPHPParser.Dolar, 7},
-                    {"resource $6AAAA;", TSPHPParser.Dolar, 9},
-                    {"array $7aA;", TSPHPParser.Dolar, 6},
-                    {"int $8_A;", TSPHPParser.Dolar, 4},
-                    {"bool $9££;", TSPHPParser.Dolar, 5},
-                    {"boolean $0a;", TSPHPParser.Dolar, 8},
-                    {"string $(;", TSPHPParser.Dolar, 7},
-                    {"int $);", TSPHPParser.Dolar, 4}
+                    {"class a{ const float $a=1.0;}", TSPHPParser.VariableId, 21},
+                    {"class a{ const float a;}", TSPHPParser.Semicolon, 22},
+                    {"class a{ const float a=1.0+1.0;}", TSPHPParser.Plus, 26},
+                    {"class a{ const float a=[1,2];}", TSPHPParser.LeftSquareBrace, 23},
+                    {"class a{ const array a=1;}", TSPHPParser.TypeArray, 15},
+                    {"interface a{ const float $a=1.0;}", TSPHPParser.VariableId, 25},
+                    {"interface a{ const float a;}", TSPHPParser.Semicolon, 26},
+                    {"interface a{ const float a=1.0+1.0;}", TSPHPParser.Plus, 30},
+                    {"interface a{ const float a=[1,2];}", TSPHPParser.LeftSquareBrace, 27},
+                    {"interface a{ const array a=1;}", TSPHPParser.TypeArray,19},
                 });
     }
 }

@@ -51,14 +51,25 @@ public class ClassTest extends AParserTest
                     {"class a extends b{ private int $a;}"},        
                     {"final class a extends b{ private int $a;}"},        
                     {"abstract class a extends b{ private int $a;}"},  
+                    {"class a extends b,c{ private int $a;}"},        
+                    {"final class a extends b,c,d{ private int $a;}"},        
+                    {"abstract class a extends b,c,d,e{ private int $a;}"},  
                     //implements
                     {"class a implements b{ private int $a;}"},        
                     {"final class a implements b{ private int $a;}"},        
-                    {"abstract class a implements b{ private int $a;}"},    
+                    {"abstract class a implements b{ private int $a;}"},   
+                     {"class a implements b,c{ private int $a;}"},        
+                    {"final class a implements b,c,d{ private int $a;}"},        
+                    {"abstract class a implements b,c,d,e{ private int $a;}"},  
                     //extends implements
                     {"class a extends b implements c{ private int $a;}"},        
                     {"final class a extends b implements c{ private int $a;}"},        
                     {"abstract class a extends b implements c{ private int $a;}"},  
+                    {"class a extends b,c implements f,g,h,i{ private int $a;}"},        
+                    {"final class a extends b,c,d implements f,g,h{ private int $a;}"},        
+                    {"abstract class a extends b,c,d,e implements f,g{ private int $a;}"},  
+                    //
+                    {"class a { private int $a; function void getName(){ $a=1; } private int $a;}  function void getName(){ $a=1; }"},
                 });
     }
 }

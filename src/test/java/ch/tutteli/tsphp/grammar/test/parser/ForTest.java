@@ -63,9 +63,9 @@ public class ForTest extends AParserTest
                     {"for(int $a=1 ;      ;       ) {$a=1;}"},
                     //comma 
                     {"for(int $a=1,$b=1 ; $a < 1 ; ++$a ) {$a=1;}"},
-                    {"for(int $a=1,$b=1 ; $a=1,$a < 1 ; ++$a ) {$a=1;}"},
-                    {"for(int $a=1,$b=1 ; ++$a,$a < 1 ; ++$a,$b-- ) {$a=1;}"},
-                    {"for(int $a=1 ; ++$a,$a < 1 ; $a++) {$a=1;}"},
+                    {"for(int $a=1,$b=1,$c=3 ; $a=1,$a < 1 ; ++$a ) {$a=1;}"},
+                    {"for(int $a=1,$b=1 ; ++$a,$a,$a < 1 ; ++$a,$b-- ) {$a=1;}"},
+                    {"for(int $a=1 ; ++$a,$a < 1 ; $a++,$b+=1,$c/=3) {$a=1;}"},
                     {"for(int $a=1 ; ++$a,$a < 1 ; ++$a,$b-- ) {$a=1;}"},
                     {"for(int $a=1 ; ++$a,$a < 1 ; ++$a,$b-- ) {$a=1;}"},
                     {"for($a=1,$b=1; $a < 1 ; ++$a ) {$a=1;}"}

@@ -123,6 +123,7 @@ public class ExpressionTest extends AParserTest
                     "(string) $a",
                     "(array) $a",
                     "@$a",
+                    "(1+1)",
                 };
     }
 }

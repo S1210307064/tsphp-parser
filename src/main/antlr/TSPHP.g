@@ -48,8 +48,9 @@ tokens{
 	Dolar = '$';
 	Dot = '.';
 	DotEqual = '.=';
-	Equal = '==';	
+	Echo = 'echo';
 	Else = 'else';
+	Equal = '==';	
 	Extends = 'extends';
 	Final = 'final';
 	For = 'for';
@@ -60,6 +61,7 @@ tokens{
 	Identical = '===';
 	If = 'if';
 	Implements = 'implements';
+	Interface = 'interface';
 	LeftCurlyBrace = '{';
 	LeftParanthesis = '(';
 	LeftSquareBrace = '[';
@@ -82,13 +84,15 @@ tokens{
 	NotEqual = '!=';
 	NotEqualAlternative = '<>';
 	NotIdentical = '!==';
-	QuestionMark = '?';
+	Null = 'null';
+	NULL = 'NULL';
 	Plus = '+';
 	PlusEqual = '+=';
 	PlusPlus = '++';
 	Private = 'private';
 	Protected = 'protected';
 	Public = 'public';
+	QuestionMark = '?';
 	Return = 'return';
 	RightCurlyBrace = '}';
 	RightParanthesis =')';
@@ -184,6 +188,7 @@ statement
 
 definition
 	:	classDeclaration
+	|	interfaceDeclaration
 	|	functionDeclaration
 	;
 	
@@ -211,14 +216,14 @@ constantDeclaration:	'const' primitiveTypes constDeclarationList ';';
 constDeclarationList
 	:	 constantAssignment (',' constantAssignment)*;
 constantAssignment
-	:	Identifier  '=' unaryAtom;
+	:	Identifier  '=' unaryPrimitiveAtom;
 
 variableDeclarationListWithoutVariableId
 	:	variableDeclaration (',' variableAssignment)*;
 
 attributeDeclaration	
 	:	'static'? accessor variableDeclarationListInclVariableId ';';
-	
+
 accessor:	accessorWithoutPrivate
 	|	'private'
 	;
@@ -238,25 +243,49 @@ methodDeclaration	:	(	'abstract' accessorWithoutPrivate?
 			) accessor?
 		) functionDeclaration;	
 
+interfaceDeclaration
+	:	'interface' Identifier implementsDeclaration? '{' interfaceBody* '}';
+
+interfaceBody
+	:	constantDeclaration
+	|	interfaceMethodDeclaration
+	;
+
+interfaceMethodDeclaration
+	:	'public'? functionDeclarationWithoutBody ';';
+
 functionDeclaration	
-	:	'function' returnType Identifier '(' paramList? ')' '{' instructionWithoutBreakContinue* '}';
+	:	 functionDeclarationWithoutBody '{' instructionWithoutBreakContinue* '}';
+	
+functionDeclarationWithoutBody
+	:	'function' returnType Identifier '(' paramList? ')';
 	
 returnType
-	:	primitiveTypes | 'void';
+	:	allTypes | 'void';
 
-primitiveTypesWithoutResource
+allTypes:	primitiveTypesExtended | classInterfaceType;
+
+primitiveTypes
 	:	TypeBool
 	|	TypeBoolean
 	|	TypeInt
 	|	TypeFloat
 	|	TypeString
-	|	TypeArray
-	|	TypeObject
 	;
 	
-primitiveTypes
-	:	primitiveTypesWithoutResource
+primitiveTypesInclArray
+	:	primitiveTypes
+	|	TypeArray
+	;
+	
+primitiveTypesExtended
+	:	primitiveTypesInclArray
 	|	TypeResource
+	;
+	
+classInterfaceType
+	:	TypeObject	
+	|	Identifier
 	;
 	
 paramList
@@ -266,7 +295,7 @@ paramList
 	;
 	
 paramDeclaration
-	:	primitiveTypes VariableId;
+	:	allTypes VariableId;
 	
 paramDeclarationOptional
 	:	paramDeclaration  '=' unaryAtom;
@@ -299,7 +328,7 @@ instruction
 	;
 	
 expressionList
-	:	expression (',' expression)?;
+	:	expression (',' expression)*;
 
 variableAssignment
 	:	VariableId assignmentOperator expression
@@ -330,7 +359,7 @@ preIncrementDecrement
 	
 	
 variableDeclaration
-	:	primitiveTypes VariableId ('=' expression)? ;
+	:	allTypes VariableId ('=' expression)? ;
 
 expression
 	:	logicOrWeak;
@@ -397,7 +426,7 @@ instanceOf
 	:	castOrBitwiseNotOrAt ('instanceof' castOrBitwiseNotOrAt)?;
 */
 castOrBitwiseNotOrAt
-	:	('(' primitiveTypesWithoutResource ')') castOrBitwiseNotOrAt
+	:	('(' primitiveTypesInclArray ')') castOrBitwiseNotOrAt
 	|	'~' castOrBitwiseNotOrAt
 	|	'@' castOrBitwiseNotOrAt
 	|	incrementDecrement
@@ -418,6 +447,7 @@ unaryAtom
 
 atom	:	'(' expression ')'
 	|	primitiveAtom
+	|	array
 	|	VariableId
 	//|	functionCall
 	;
@@ -433,7 +463,8 @@ primitiveAtom
 	|	Int
 	|	Float
 	|	String
-	|	array
+	|	Null
+	|	NULL
 	;
 	
 Int     : 	DECIMAL
@@ -508,7 +539,7 @@ forLoop	:	'for' '(' forInit? ';' expressionList?  ';' forUpdate? ')' instruction
 
 forInit	:	(variableDeclaration|variableAssignment) (',' variableAssignment)*;
 forUpdate
-	:	variableAssignment (',' variableAssignment)?;
+	:	variableAssignment (',' variableAssignment)*;
 
 foreachLoop
 	:	'foreach' '(' (VariableId|array) 'as' VariableId ('=>' VariableId)? ')' instructionInclBreakContinue;

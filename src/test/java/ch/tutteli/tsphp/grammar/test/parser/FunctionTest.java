@@ -17,8 +17,10 @@
 package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,12 +45,28 @@ public class FunctionTest extends AParserTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
+        List<Object[]> collection = new ArrayList<>();
+        collection.addAll(Arrays.asList(new Object[][]{
                     {"function void setName(string $name){}"},
                     {"function void setName(string $name){int $a=1;}"},
                     {"function void setName(string $firstname,string $lastname){int $a=1;}"},
                     {"function string getName(){return \"Robert\";}"},
-                    {"function void foo(string $a, string $b='hallo'){$a=$b;}"},
-        });
+                    {"function void foo(string $a, string $b='hallo'){$a=$b;}"}
+                }));
+        
+        return collection;
+    }
+    
+    public static String[] getPrimitiveTypes(){
+        return new String[]{
+            "bool",
+            "boolean",
+            "int",
+            "float",
+            "string",
+            "array",
+            "ressource",
+            "object"
+        };
     }
 }

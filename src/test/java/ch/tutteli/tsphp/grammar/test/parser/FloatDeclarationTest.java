@@ -16,7 +16,6 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.test.lexer.FragmentsTest;
 import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;

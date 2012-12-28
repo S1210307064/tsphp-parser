@@ -48,10 +48,12 @@ public class FunctionErrorTest extends AParserParserExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(Arrays.asList(new Object[][]{
-                    {"function a ($a,$b=1+1){$a=1;}",TSPHPParser.Identifier,9},
-                }));
-        //expressions without assignments - see ExpressionWithoutAssignmentTest
+        
+        String[] expressions = ExpressionTest.getExpressionsWithoutAssignment();
+        for(String expression : expressions){
+            collection.add(new Object[]{"function a ($a,$b="+expression+"){$a=1;}",TSPHPParser.LeftParanthesis,11});
+        }
+        
         return collection;
     }
 }

@@ -20,6 +20,7 @@ import ch.tutteli.tsphp.grammar.test.lexer.FragmentsTest;
 import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -32,10 +33,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableAssignmentTest extends AParserTest
+public class ConstantTest extends AParserTest
 {
 
-    public VariableAssignmentTest(String testString) {
+    public ConstantTest(String testString) {
         super(testString);
     }
 
@@ -47,35 +48,31 @@ public class VariableAssignmentTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        
-        collection.add(new Object[]{"$bool = true;"});
-        collection.add(new Object[]{"$bool = false;"});
-        collection.add(new Object[]{"$object = null;"});
-        
-        String[] arrayTestStrings = ArrayDeclarationTest.getArrayTestStrings();
-        for (String string : arrayTestStrings) {
-            collection.add(new Object[]{"$array = " + string + ";"});
+        collection.addAll(Arrays.asList(new Object[][]{
+                    {"class a{ const string a='a';}"},
+                    {"class a{ const string a='a',b=1;}"},
+                    {"class a{ const string a='a',b=1,c='hallo';}"},
+                    {"interface a{ const string a='a';}"},
+                    {"interface a{ const string a='a',b=1;}"},
+                    {"interface a{ const string a='a',b=1,c='hallo';}"},}));
+
+        Collection<Object[]> intFragments = FragmentsTest.getIntFragments();
+        for (Object[] obj : intFragments) {
+            collection.add(new Object[]{"class a{const int i=" + obj[1] + ";}"});
+            collection.add(new Object[]{"interface a{const int i=" + obj[1] + ";}"});
         }
 
-        Collection<Object[]> intTestStrings = FragmentsTest.getIntFragments();
-        for (Object[] obj : intTestStrings) {
-            collection.add(new Object[]{"$int = " + obj[1] + ";"});
-            collection.add(new Object[]{"$int = +" + obj[1] + ";"});
-            collection.add(new Object[]{"$int = -" + obj[1] + ";"});
+        Collection<Object[]> stringFragments = FragmentsTest.getStringFragments();
+        for (Object[] obj : stringFragments) {
+            collection.add(new Object[]{"class a{const string i=" + obj[1] + ";}"});
+            collection.add(new Object[]{"interface a{const string i=" + obj[1] + ";}"});
         }
 
-        String[] floatStrings = TokenTest.getFloatTestStrings();
-        for (String floatString : floatStrings) {
-            collection.add(new Object[]{"$float = " + floatString + ";"});
-            collection.add(new Object[]{"$float = +" + floatString + ";"});
-            collection.add(new Object[]{"$float = -" + floatString + ";"});
+        String[] floatTestStrings = TokenTest.getFloatTestStrings();
+        for (String string : floatTestStrings) {
+            collection.add(new Object[]{"class a{const string i=" + string + ";}"});
+            collection.add(new Object[]{"interface a{const string i=" + string + ";}"});
         }
-
-        Collection<Object[]> stringTestStrings = FragmentsTest.getStringFragments();
-        for(Object[] obj: stringTestStrings){
-            collection.add(new Object[]{"$string = "+obj[1]+";"});
-        }
-               
         
         return collection;
     }

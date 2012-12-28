@@ -1,4 +1,4 @@
-// $ANTLR 3.x D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2012-12-28 00:04:02
+// $ANTLR 3.x D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2012-12-28 01:01:31
 
 /*
  * Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
@@ -29,11 +29,10 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class TSPHPParser extends Parser {
 	public static final String[] tokenNames = new String[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "Abstract", "Arrow", "As", "Assign", "At", "BINARY", "Backslash", "BitwiseAnd", "BitwiseAndEqual", "BitwiseNot", "BitwiseOr", "BitwiseOrEqual", "BitwiseXor", "BitwiseXorEqual", "Bool", "Break", "Case", "Class", "Colon", "Comma", "Comment", "Const", "Continue", "DECIMAL", "Default", "Divide", "DivideEqual", "Do", "Dolar", "Dot", "DotEqual", "EXPONENT", "Else", "Equal", "Extends", "Final", "Float", "For", "Foreach", "Function", "GreaterEqualThan", "GreaterThan", "HEXADECIMAL", "Identical", "Identifier", "If", "Implements", "Int", "LeftCurlyBrace", "LeftParanthesis", "LeftSquareBrace", "LessEqualThan", "LessThan", "LogicAnd", "LogicAndWeak", "LogicNot", "LogicOr", "LogicOrWeak", "LogicXorWeak", "Minus", "MinusEqual", "MinusMinus", "Modulo", "ModuloEqual", "Multiply", "MultiplyEqual", "Namespace", "NotEqual", "NotEqualAlternative", "NotIdentical", "OCTAL", "Plus", "PlusEqual", "PlusPlus", "Private", "Protected", "Public", "QuestionMark", "Return", "RightCurlyBrace", "RightParanthesis", "RightSquareBrace", "STRING_DOUBLE_QUOTED", "STRING_SINGLE_QUOTED", "Semicolon", "ShiftLeft", "ShiftLeftEqual", "ShiftRight", "ShiftRightEqual", "Static", "String", "Switch", "TypeArray", "TypeBool", "TypeBoolean", "TypeFloat", "TypeInt", "TypeObject", "TypeResource", "TypeString", "VariableId", "Void", "While", "Whitespace", "'echo'"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "Abstract", "Arrow", "As", "Assign", "At", "BINARY", "Backslash", "BitwiseAnd", "BitwiseAndEqual", "BitwiseNot", "BitwiseOr", "BitwiseOrEqual", "BitwiseXor", "BitwiseXorEqual", "Bool", "Break", "Case", "Class", "Colon", "Comma", "Comment", "Const", "Continue", "DECIMAL", "Default", "Divide", "DivideEqual", "Do", "Dolar", "Dot", "DotEqual", "EXPONENT", "Echo", "Else", "Equal", "Extends", "Final", "Float", "For", "Foreach", "Function", "GreaterEqualThan", "GreaterThan", "HEXADECIMAL", "Identical", "Identifier", "If", "Implements", "Int", "Interface", "LeftCurlyBrace", "LeftParanthesis", "LeftSquareBrace", "LessEqualThan", "LessThan", "LogicAnd", "LogicAndWeak", "LogicNot", "LogicOr", "LogicOrWeak", "LogicXorWeak", "Minus", "MinusEqual", "MinusMinus", "Modulo", "ModuloEqual", "Multiply", "MultiplyEqual", "Namespace", "NotEqual", "NotEqualAlternative", "NotIdentical", "Null", "OCTAL", "Plus", "PlusEqual", "PlusPlus", "Private", "Protected", "Public", "QuestionMark", "Return", "RightCurlyBrace", "RightParanthesis", "RightSquareBrace", "STRING_DOUBLE_QUOTED", "STRING_SINGLE_QUOTED", "Semicolon", "ShiftLeft", "ShiftLeftEqual", "ShiftRight", "ShiftRightEqual", "Static", "String", "Switch", "TypeArray", "TypeBool", "TypeBoolean", "TypeFloat", "TypeInt", "TypeObject", "TypeResource", "TypeString", "VariableId", "Void", "While", "Whitespace"
 	};
 
 	public static final int EOF=-1;
-	public static final int T__108=108;
 	public static final int Abstract=4;
 	public static final int Arrow=5;
 	public static final int As=6;
@@ -66,78 +65,81 @@ public class TSPHPParser extends Parser {
 	public static final int Dot=33;
 	public static final int DotEqual=34;
 	public static final int EXPONENT=35;
-	public static final int Else=36;
-	public static final int Equal=37;
-	public static final int Extends=38;
-	public static final int Final=39;
-	public static final int Float=40;
-	public static final int For=41;
-	public static final int Foreach=42;
-	public static final int Function=43;
-	public static final int GreaterEqualThan=44;
-	public static final int GreaterThan=45;
-	public static final int HEXADECIMAL=46;
-	public static final int Identical=47;
-	public static final int Identifier=48;
-	public static final int If=49;
-	public static final int Implements=50;
-	public static final int Int=51;
-	public static final int LeftCurlyBrace=52;
-	public static final int LeftParanthesis=53;
-	public static final int LeftSquareBrace=54;
-	public static final int LessEqualThan=55;
-	public static final int LessThan=56;
-	public static final int LogicAnd=57;
-	public static final int LogicAndWeak=58;
-	public static final int LogicNot=59;
-	public static final int LogicOr=60;
-	public static final int LogicOrWeak=61;
-	public static final int LogicXorWeak=62;
-	public static final int Minus=63;
-	public static final int MinusEqual=64;
-	public static final int MinusMinus=65;
-	public static final int Modulo=66;
-	public static final int ModuloEqual=67;
-	public static final int Multiply=68;
-	public static final int MultiplyEqual=69;
-	public static final int Namespace=70;
-	public static final int NotEqual=71;
-	public static final int NotEqualAlternative=72;
-	public static final int NotIdentical=73;
-	public static final int OCTAL=74;
-	public static final int Plus=75;
-	public static final int PlusEqual=76;
-	public static final int PlusPlus=77;
-	public static final int Private=78;
-	public static final int Protected=79;
-	public static final int Public=80;
-	public static final int QuestionMark=81;
-	public static final int Return=82;
-	public static final int RightCurlyBrace=83;
-	public static final int RightParanthesis=84;
-	public static final int RightSquareBrace=85;
-	public static final int STRING_DOUBLE_QUOTED=86;
-	public static final int STRING_SINGLE_QUOTED=87;
-	public static final int Semicolon=88;
-	public static final int ShiftLeft=89;
-	public static final int ShiftLeftEqual=90;
-	public static final int ShiftRight=91;
-	public static final int ShiftRightEqual=92;
-	public static final int Static=93;
-	public static final int String=94;
-	public static final int Switch=95;
-	public static final int TypeArray=96;
-	public static final int TypeBool=97;
-	public static final int TypeBoolean=98;
-	public static final int TypeFloat=99;
-	public static final int TypeInt=100;
-	public static final int TypeObject=101;
-	public static final int TypeResource=102;
-	public static final int TypeString=103;
-	public static final int VariableId=104;
-	public static final int Void=105;
-	public static final int While=106;
-	public static final int Whitespace=107;
+	public static final int Echo=36;
+	public static final int Else=37;
+	public static final int Equal=38;
+	public static final int Extends=39;
+	public static final int Final=40;
+	public static final int Float=41;
+	public static final int For=42;
+	public static final int Foreach=43;
+	public static final int Function=44;
+	public static final int GreaterEqualThan=45;
+	public static final int GreaterThan=46;
+	public static final int HEXADECIMAL=47;
+	public static final int Identical=48;
+	public static final int Identifier=49;
+	public static final int If=50;
+	public static final int Implements=51;
+	public static final int Int=52;
+	public static final int Interface=53;
+	public static final int LeftCurlyBrace=54;
+	public static final int LeftParanthesis=55;
+	public static final int LeftSquareBrace=56;
+	public static final int LessEqualThan=57;
+	public static final int LessThan=58;
+	public static final int LogicAnd=59;
+	public static final int LogicAndWeak=60;
+	public static final int LogicNot=61;
+	public static final int LogicOr=62;
+	public static final int LogicOrWeak=63;
+	public static final int LogicXorWeak=64;
+	public static final int Minus=65;
+	public static final int MinusEqual=66;
+	public static final int MinusMinus=67;
+	public static final int Modulo=68;
+	public static final int ModuloEqual=69;
+	public static final int Multiply=70;
+	public static final int MultiplyEqual=71;
+	public static final int Namespace=72;
+	public static final int NotEqual=73;
+	public static final int NotEqualAlternative=74;
+	public static final int NotIdentical=75;
+	public static final int Null=76;
+	public static final int OCTAL=77;
+	public static final int Plus=78;
+	public static final int PlusEqual=79;
+	public static final int PlusPlus=80;
+	public static final int Private=81;
+	public static final int Protected=82;
+	public static final int Public=83;
+	public static final int QuestionMark=84;
+	public static final int Return=85;
+	public static final int RightCurlyBrace=86;
+	public static final int RightParanthesis=87;
+	public static final int RightSquareBrace=88;
+	public static final int STRING_DOUBLE_QUOTED=89;
+	public static final int STRING_SINGLE_QUOTED=90;
+	public static final int Semicolon=91;
+	public static final int ShiftLeft=92;
+	public static final int ShiftLeftEqual=93;
+	public static final int ShiftRight=94;
+	public static final int ShiftRightEqual=95;
+	public static final int Static=96;
+	public static final int String=97;
+	public static final int Switch=98;
+	public static final int TypeArray=99;
+	public static final int TypeBool=100;
+	public static final int TypeBoolean=101;
+	public static final int TypeFloat=102;
+	public static final int TypeInt=103;
+	public static final int TypeObject=104;
+	public static final int TypeResource=105;
+	public static final int TypeString=106;
+	public static final int VariableId=107;
+	public static final int Void=108;
+	public static final int While=109;
+	public static final int Whitespace=110;
 
 	// delegates
 	public Parser[] getDelegates() {
@@ -160,17 +162,17 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "prog"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:156:1: prog : ( ( namespaceSemicolon )+ EOF | ( namespaceBracket )+ EOF | withoutNamespace EOF );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:159:1: prog : ( ( namespaceSemicolon )+ EOF | ( namespaceBracket )+ EOF | withoutNamespace EOF );
 	public final void prog() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:156:6: ( ( namespaceSemicolon )+ EOF | ( namespaceBracket )+ EOF | withoutNamespace EOF )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:159:6: ( ( namespaceSemicolon )+ EOF | ( namespaceBracket )+ EOF | withoutNamespace EOF )
 			int alt3=3;
 			alt3 = dfa3.predict(input);
 			switch (alt3) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:156:8: ( namespaceSemicolon )+ EOF
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:159:8: ( namespaceSemicolon )+ EOF
 					{
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:156:8: ( namespaceSemicolon )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:159:8: ( namespaceSemicolon )+
 					int cnt1=0;
 					loop1:
 					do {
@@ -182,9 +184,9 @@ public class TSPHPParser extends Parser {
 
 						switch (alt1) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:156:8: namespaceSemicolon
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:159:8: namespaceSemicolon
 							{
-							pushFollow(FOLLOW_namespaceSemicolon_in_prog761);
+							pushFollow(FOLLOW_namespaceSemicolon_in_prog785);
 							namespaceSemicolon();
 							state._fsp--;
 							if (state.failed) return ;
@@ -201,13 +203,13 @@ public class TSPHPParser extends Parser {
 						cnt1++;
 					} while (true);
 
-					match(input,EOF,FOLLOW_EOF_in_prog764); if (state.failed) return ;
+					match(input,EOF,FOLLOW_EOF_in_prog788); if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:157:4: ( namespaceBracket )+ EOF
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:160:4: ( namespaceBracket )+ EOF
 					{
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:157:4: ( namespaceBracket )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:160:4: ( namespaceBracket )+
 					int cnt2=0;
 					loop2:
 					do {
@@ -219,9 +221,9 @@ public class TSPHPParser extends Parser {
 
 						switch (alt2) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:157:4: namespaceBracket
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:160:4: namespaceBracket
 							{
-							pushFollow(FOLLOW_namespaceBracket_in_prog769);
+							pushFollow(FOLLOW_namespaceBracket_in_prog793);
 							namespaceBracket();
 							state._fsp--;
 							if (state.failed) return ;
@@ -238,17 +240,17 @@ public class TSPHPParser extends Parser {
 						cnt2++;
 					} while (true);
 
-					match(input,EOF,FOLLOW_EOF_in_prog772); if (state.failed) return ;
+					match(input,EOF,FOLLOW_EOF_in_prog796); if (state.failed) return ;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:158:4: withoutNamespace EOF
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:161:4: withoutNamespace EOF
 					{
-					pushFollow(FOLLOW_withoutNamespace_in_prog777);
+					pushFollow(FOLLOW_withoutNamespace_in_prog801);
 					withoutNamespace();
 					state._fsp--;
 					if (state.failed) return ;
-					match(input,EOF,FOLLOW_EOF_in_prog779); if (state.failed) return ;
+					match(input,EOF,FOLLOW_EOF_in_prog803); if (state.failed) return ;
 					}
 					break;
 
@@ -268,36 +270,36 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "namespaceSemicolon"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:161:1: namespaceSemicolon : ( 'namespace' namespaceId ';' ( statement )+ ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:164:1: namespaceSemicolon : ( 'namespace' namespaceId ';' ( statement )+ ) ;
 	public final void namespaceSemicolon() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:162:2: ( ( 'namespace' namespaceId ';' ( statement )+ ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:162:4: ( 'namespace' namespaceId ';' ( statement )+ )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:2: ( ( 'namespace' namespaceId ';' ( statement )+ ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:4: ( 'namespace' namespaceId ';' ( statement )+ )
 			{
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:162:4: ( 'namespace' namespaceId ';' ( statement )+ )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:162:5: 'namespace' namespaceId ';' ( statement )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:4: ( 'namespace' namespaceId ';' ( statement )+ )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:5: 'namespace' namespaceId ';' ( statement )+
 			{
-			match(input,Namespace,FOLLOW_Namespace_in_namespaceSemicolon792); if (state.failed) return ;
-			pushFollow(FOLLOW_namespaceId_in_namespaceSemicolon794);
+			match(input,Namespace,FOLLOW_Namespace_in_namespaceSemicolon816); if (state.failed) return ;
+			pushFollow(FOLLOW_namespaceId_in_namespaceSemicolon818);
 			namespaceId();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,Semicolon,FOLLOW_Semicolon_in_namespaceSemicolon796); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:162:33: ( statement )+
+			match(input,Semicolon,FOLLOW_Semicolon_in_namespaceSemicolon820); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:33: ( statement )+
 			int cnt4=0;
 			loop4:
 			do {
 				int alt4=2;
 				int LA4_0 = input.LA(1);
-				if ( (LA4_0==Abstract||LA4_0==Class||LA4_0==Do||LA4_0==Final||(LA4_0 >= For && LA4_0 <= Function)||LA4_0==If||LA4_0==LeftCurlyBrace||LA4_0==MinusMinus||LA4_0==PlusPlus||LA4_0==Return||(LA4_0 >= Switch && LA4_0 <= VariableId)||LA4_0==While||LA4_0==108) ) {
+				if ( (LA4_0==Abstract||LA4_0==Class||LA4_0==Do||LA4_0==Echo||LA4_0==Final||(LA4_0 >= For && LA4_0 <= Function)||(LA4_0 >= Identifier && LA4_0 <= If)||(LA4_0 >= Interface && LA4_0 <= LeftCurlyBrace)||LA4_0==MinusMinus||LA4_0==PlusPlus||LA4_0==Return||(LA4_0 >= Switch && LA4_0 <= VariableId)||LA4_0==While) ) {
 					alt4=1;
 				}
 
 				switch (alt4) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:162:33: statement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:33: statement
 					{
-					pushFollow(FOLLOW_statement_in_namespaceSemicolon798);
+					pushFollow(FOLLOW_statement_in_namespaceSemicolon822);
 					statement();
 					state._fsp--;
 					if (state.failed) return ;
@@ -333,17 +335,17 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "namespaceBracket"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:164:1: namespaceBracket : ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:167:1: namespaceBracket : ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' ) ;
 	public final void namespaceBracket() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:2: ( ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:4: ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:168:2: ( ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:168:4: ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' )
 			{
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:4: ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:5: 'namespace' ( namespaceId )? '{' ( statement )+ '}'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:168:4: ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:168:5: 'namespace' ( namespaceId )? '{' ( statement )+ '}'
 			{
-			match(input,Namespace,FOLLOW_Namespace_in_namespaceBracket811); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:17: ( namespaceId )?
+			match(input,Namespace,FOLLOW_Namespace_in_namespaceBracket835); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:168:17: ( namespaceId )?
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0==Identifier) ) {
@@ -351,9 +353,9 @@ public class TSPHPParser extends Parser {
 			}
 			switch (alt5) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:17: namespaceId
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:168:17: namespaceId
 					{
-					pushFollow(FOLLOW_namespaceId_in_namespaceBracket813);
+					pushFollow(FOLLOW_namespaceId_in_namespaceBracket837);
 					namespaceId();
 					state._fsp--;
 					if (state.failed) return ;
@@ -362,22 +364,22 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_namespaceBracket816); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:34: ( statement )+
+			match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_namespaceBracket840); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:168:34: ( statement )+
 			int cnt6=0;
 			loop6:
 			do {
 				int alt6=2;
 				int LA6_0 = input.LA(1);
-				if ( (LA6_0==Abstract||LA6_0==Class||LA6_0==Do||LA6_0==Final||(LA6_0 >= For && LA6_0 <= Function)||LA6_0==If||LA6_0==LeftCurlyBrace||LA6_0==MinusMinus||LA6_0==PlusPlus||LA6_0==Return||(LA6_0 >= Switch && LA6_0 <= VariableId)||LA6_0==While||LA6_0==108) ) {
+				if ( (LA6_0==Abstract||LA6_0==Class||LA6_0==Do||LA6_0==Echo||LA6_0==Final||(LA6_0 >= For && LA6_0 <= Function)||(LA6_0 >= Identifier && LA6_0 <= If)||(LA6_0 >= Interface && LA6_0 <= LeftCurlyBrace)||LA6_0==MinusMinus||LA6_0==PlusPlus||LA6_0==Return||(LA6_0 >= Switch && LA6_0 <= VariableId)||LA6_0==While) ) {
 					alt6=1;
 				}
 
 				switch (alt6) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:165:34: statement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:168:34: statement
 					{
-					pushFollow(FOLLOW_statement_in_namespaceBracket818);
+					pushFollow(FOLLOW_statement_in_namespaceBracket842);
 					statement();
 					state._fsp--;
 					if (state.failed) return ;
@@ -394,7 +396,7 @@ public class TSPHPParser extends Parser {
 				cnt6++;
 			} while (true);
 
-			match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_namespaceBracket821); if (state.failed) return ;
+			match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_namespaceBracket845); if (state.failed) return ;
 			}
 
 			}
@@ -414,14 +416,14 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "namespaceId"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:173:1: namespaceId : Identifier ( '\\\\' Identifier )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:176:1: namespaceId : Identifier ( '\\\\' Identifier )* ;
 	public final void namespaceId() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:174:2: ( Identifier ( '\\\\' Identifier )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:174:4: Identifier ( '\\\\' Identifier )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:177:2: ( Identifier ( '\\\\' Identifier )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:177:4: Identifier ( '\\\\' Identifier )*
 			{
-			match(input,Identifier,FOLLOW_Identifier_in_namespaceId887); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:174:15: ( '\\\\' Identifier )*
+			match(input,Identifier,FOLLOW_Identifier_in_namespaceId911); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:177:15: ( '\\\\' Identifier )*
 			loop7:
 			do {
 				int alt7=2;
@@ -432,10 +434,10 @@ public class TSPHPParser extends Parser {
 
 				switch (alt7) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:174:16: '\\\\' Identifier
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:177:16: '\\\\' Identifier
 					{
-					match(input,Backslash,FOLLOW_Backslash_in_namespaceId890); if (state.failed) return ;
-					match(input,Identifier,FOLLOW_Identifier_in_namespaceId892); if (state.failed) return ;
+					match(input,Backslash,FOLLOW_Backslash_in_namespaceId914); if (state.failed) return ;
+					match(input,Identifier,FOLLOW_Identifier_in_namespaceId916); if (state.failed) return ;
 					}
 					break;
 
@@ -461,27 +463,27 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "withoutNamespace"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:177:1: withoutNamespace : ( statement )+ ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:180:1: withoutNamespace : ( statement )+ ;
 	public final void withoutNamespace() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:178:2: ( ( statement )+ )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:178:4: ( statement )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:181:2: ( ( statement )+ )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:181:4: ( statement )+
 			{
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:178:4: ( statement )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:181:4: ( statement )+
 			int cnt8=0;
 			loop8:
 			do {
 				int alt8=2;
 				int LA8_0 = input.LA(1);
-				if ( (LA8_0==Abstract||LA8_0==Class||LA8_0==Do||LA8_0==Final||(LA8_0 >= For && LA8_0 <= Function)||LA8_0==If||LA8_0==LeftCurlyBrace||LA8_0==MinusMinus||LA8_0==PlusPlus||LA8_0==Return||(LA8_0 >= Switch && LA8_0 <= VariableId)||LA8_0==While||LA8_0==108) ) {
+				if ( (LA8_0==Abstract||LA8_0==Class||LA8_0==Do||LA8_0==Echo||LA8_0==Final||(LA8_0 >= For && LA8_0 <= Function)||(LA8_0 >= Identifier && LA8_0 <= If)||(LA8_0 >= Interface && LA8_0 <= LeftCurlyBrace)||LA8_0==MinusMinus||LA8_0==PlusPlus||LA8_0==Return||(LA8_0 >= Switch && LA8_0 <= VariableId)||LA8_0==While) ) {
 					alt8=1;
 				}
 
 				switch (alt8) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:178:4: statement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:181:4: statement
 					{
-					pushFollow(FOLLOW_statement_in_withoutNamespace905);
+					pushFollow(FOLLOW_statement_in_withoutNamespace929);
 					statement();
 					state._fsp--;
 					if (state.failed) return ;
@@ -515,16 +517,16 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "statement"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:180:1: statement : ( definition | instructionWithoutBreakContinue );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:183:1: statement : ( definition | instructionWithoutBreakContinue );
 	public final void statement() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:181:2: ( definition | instructionWithoutBreakContinue )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:184:2: ( definition | instructionWithoutBreakContinue )
 			int alt9=2;
 			int LA9_0 = input.LA(1);
-			if ( (LA9_0==Abstract||LA9_0==Class||LA9_0==Final||LA9_0==Function) ) {
+			if ( (LA9_0==Abstract||LA9_0==Class||LA9_0==Final||LA9_0==Function||LA9_0==Interface) ) {
 				alt9=1;
 			}
-			else if ( (LA9_0==Do||(LA9_0 >= For && LA9_0 <= Foreach)||LA9_0==If||LA9_0==LeftCurlyBrace||LA9_0==MinusMinus||LA9_0==PlusPlus||LA9_0==Return||(LA9_0 >= Switch && LA9_0 <= VariableId)||LA9_0==While||LA9_0==108) ) {
+			else if ( (LA9_0==Do||LA9_0==Echo||(LA9_0 >= For && LA9_0 <= Foreach)||(LA9_0 >= Identifier && LA9_0 <= If)||LA9_0==LeftCurlyBrace||LA9_0==MinusMinus||LA9_0==PlusPlus||LA9_0==Return||(LA9_0 >= Switch && LA9_0 <= VariableId)||LA9_0==While) ) {
 				alt9=2;
 			}
 			else {
@@ -535,18 +537,18 @@ public class TSPHPParser extends Parser {
 			}
 			switch (alt9) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:181:4: definition
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:184:4: definition
 					{
-					pushFollow(FOLLOW_definition_in_statement916);
+					pushFollow(FOLLOW_definition_in_statement940);
 					definition();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:182:4: instructionWithoutBreakContinue
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:185:4: instructionWithoutBreakContinue
 					{
-					pushFollow(FOLLOW_instructionWithoutBreakContinue_in_statement921);
+					pushFollow(FOLLOW_instructionWithoutBreakContinue_in_statement945);
 					instructionWithoutBreakContinue();
 					state._fsp--;
 					if (state.failed) return ;
@@ -569,19 +571,30 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "definition"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:185:1: definition : ( classDeclaration | functionDeclaration );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:188:1: definition : ( classDeclaration | interfaceDeclaration | functionDeclaration );
 	public final void definition() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:186:2: ( classDeclaration | functionDeclaration )
-			int alt10=2;
-			int LA10_0 = input.LA(1);
-			if ( (LA10_0==Abstract||LA10_0==Class||LA10_0==Final) ) {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:189:2: ( classDeclaration | interfaceDeclaration | functionDeclaration )
+			int alt10=3;
+			switch ( input.LA(1) ) {
+			case Abstract:
+			case Class:
+			case Final:
+				{
 				alt10=1;
-			}
-			else if ( (LA10_0==Function) ) {
+				}
+				break;
+			case Interface:
+				{
 				alt10=2;
-			}
-			else {
+				}
+				break;
+			case Function:
+				{
+				alt10=3;
+				}
+				break;
+			default:
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
 					new NoViableAltException("", 10, 0, input);
@@ -589,18 +602,27 @@ public class TSPHPParser extends Parser {
 			}
 			switch (alt10) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:186:4: classDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:189:4: classDeclaration
 					{
-					pushFollow(FOLLOW_classDeclaration_in_definition932);
+					pushFollow(FOLLOW_classDeclaration_in_definition956);
 					classDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:187:4: functionDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:190:4: interfaceDeclaration
 					{
-					pushFollow(FOLLOW_functionDeclaration_in_definition937);
+					pushFollow(FOLLOW_interfaceDeclaration_in_definition961);
+					interfaceDeclaration();
+					state._fsp--;
+					if (state.failed) return ;
+					}
+					break;
+				case 3 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:4: functionDeclaration
+					{
+					pushFollow(FOLLOW_functionDeclaration_in_definition966);
 					functionDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
@@ -623,13 +645,13 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "classDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:190:1: classDeclaration : ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:194:1: classDeclaration : ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}' ;
 	public final void classDeclaration() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:2: ( ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:4: ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:2: ( ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:4: ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}'
 			{
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:4: ( 'abstract' | 'final' )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:4: ( 'abstract' | 'final' )?
 			int alt11=2;
 			int LA11_0 = input.LA(1);
 			if ( (LA11_0==Abstract||LA11_0==Final) ) {
@@ -654,9 +676,9 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			match(input,Class,FOLLOW_Class_in_classDeclaration956); if (state.failed) return ;
-			match(input,Identifier,FOLLOW_Identifier_in_classDeclaration958); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:45: ( extendsDeclaration )?
+			match(input,Class,FOLLOW_Class_in_classDeclaration985); if (state.failed) return ;
+			match(input,Identifier,FOLLOW_Identifier_in_classDeclaration987); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:45: ( extendsDeclaration )?
 			int alt12=2;
 			int LA12_0 = input.LA(1);
 			if ( (LA12_0==Extends) ) {
@@ -664,9 +686,9 @@ public class TSPHPParser extends Parser {
 			}
 			switch (alt12) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:45: extendsDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:45: extendsDeclaration
 					{
-					pushFollow(FOLLOW_extendsDeclaration_in_classDeclaration960);
+					pushFollow(FOLLOW_extendsDeclaration_in_classDeclaration989);
 					extendsDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
@@ -675,7 +697,7 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:65: ( implementsDeclaration )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:65: ( implementsDeclaration )?
 			int alt13=2;
 			int LA13_0 = input.LA(1);
 			if ( (LA13_0==Implements) ) {
@@ -683,9 +705,9 @@ public class TSPHPParser extends Parser {
 			}
 			switch (alt13) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:65: implementsDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:65: implementsDeclaration
 					{
-					pushFollow(FOLLOW_implementsDeclaration_in_classDeclaration963);
+					pushFollow(FOLLOW_implementsDeclaration_in_classDeclaration992);
 					implementsDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
@@ -694,8 +716,8 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_classDeclaration966); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:92: ( classBody )+
+			match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_classDeclaration995); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:92: ( classBody )+
 			int cnt14=0;
 			loop14:
 			do {
@@ -707,9 +729,9 @@ public class TSPHPParser extends Parser {
 
 				switch (alt14) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:92: classBody
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:92: classBody
 					{
-					pushFollow(FOLLOW_classBody_in_classDeclaration968);
+					pushFollow(FOLLOW_classBody_in_classDeclaration997);
 					classBody();
 					state._fsp--;
 					if (state.failed) return ;
@@ -726,7 +748,7 @@ public class TSPHPParser extends Parser {
 				cnt14++;
 			} while (true);
 
-			match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_classDeclaration971); if (state.failed) return ;
+			match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_classDeclaration1000); if (state.failed) return ;
 			}
 
 		}
@@ -744,14 +766,14 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "extendsDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:194:1: extendsDeclaration : 'extends' identifierList ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:198:1: extendsDeclaration : 'extends' identifierList ;
 	public final void extendsDeclaration() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:2: ( 'extends' identifierList )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:4: 'extends' identifierList
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:199:2: ( 'extends' identifierList )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:199:4: 'extends' identifierList
 			{
-			match(input,Extends,FOLLOW_Extends_in_extendsDeclaration985); if (state.failed) return ;
-			pushFollow(FOLLOW_identifierList_in_extendsDeclaration987);
+			match(input,Extends,FOLLOW_Extends_in_extendsDeclaration1014); if (state.failed) return ;
+			pushFollow(FOLLOW_identifierList_in_extendsDeclaration1016);
 			identifierList();
 			state._fsp--;
 			if (state.failed) return ;
@@ -772,14 +794,14 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "identifierList"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:197:1: identifierList : Identifier ( ',' Identifier )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:201:1: identifierList : Identifier ( ',' Identifier )* ;
 	public final void identifierList() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:198:2: ( Identifier ( ',' Identifier )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:198:4: Identifier ( ',' Identifier )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:202:2: ( Identifier ( ',' Identifier )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:202:4: Identifier ( ',' Identifier )*
 			{
-			match(input,Identifier,FOLLOW_Identifier_in_identifierList996); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:198:15: ( ',' Identifier )*
+			match(input,Identifier,FOLLOW_Identifier_in_identifierList1025); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:202:15: ( ',' Identifier )*
 			loop15:
 			do {
 				int alt15=2;
@@ -790,10 +812,10 @@ public class TSPHPParser extends Parser {
 
 				switch (alt15) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:198:16: ',' Identifier
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:202:16: ',' Identifier
 					{
-					match(input,Comma,FOLLOW_Comma_in_identifierList999); if (state.failed) return ;
-					match(input,Identifier,FOLLOW_Identifier_in_identifierList1001); if (state.failed) return ;
+					match(input,Comma,FOLLOW_Comma_in_identifierList1028); if (state.failed) return ;
+					match(input,Identifier,FOLLOW_Identifier_in_identifierList1030); if (state.failed) return ;
 					}
 					break;
 
@@ -819,14 +841,14 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "implementsDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:200:1: implementsDeclaration : 'implements' identifierList ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:204:1: implementsDeclaration : 'implements' identifierList ;
 	public final void implementsDeclaration() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:201:2: ( 'implements' identifierList )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:201:4: 'implements' identifierList
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:205:2: ( 'implements' identifierList )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:205:4: 'implements' identifierList
 			{
-			match(input,Implements,FOLLOW_Implements_in_implementsDeclaration1012); if (state.failed) return ;
-			pushFollow(FOLLOW_identifierList_in_implementsDeclaration1014);
+			match(input,Implements,FOLLOW_Implements_in_implementsDeclaration1041); if (state.failed) return ;
+			pushFollow(FOLLOW_identifierList_in_implementsDeclaration1043);
 			identifierList();
 			state._fsp--;
 			if (state.failed) return ;
@@ -847,10 +869,10 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "classBody"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:203:1: classBody : ( constantDeclaration | attributeDeclaration | methodDeclaration );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:207:1: classBody : ( constantDeclaration | attributeDeclaration | methodDeclaration );
 	public final void classBody() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:204:2: ( constantDeclaration | attributeDeclaration | methodDeclaration )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:208:2: ( constantDeclaration | attributeDeclaration | methodDeclaration )
 			int alt16=3;
 			switch ( input.LA(1) ) {
 			case Const:
@@ -865,7 +887,7 @@ public class TSPHPParser extends Parser {
 				case Public:
 					{
 					int LA16_3 = input.LA(3);
-					if ( ((LA16_3 >= TypeArray && LA16_3 <= TypeString)) ) {
+					if ( (LA16_3==Identifier||(LA16_3 >= TypeArray && LA16_3 <= TypeString)) ) {
 						alt16=2;
 					}
 					else if ( (LA16_3==Function) ) {
@@ -889,7 +911,7 @@ public class TSPHPParser extends Parser {
 				case Private:
 					{
 					int LA16_4 = input.LA(3);
-					if ( ((LA16_4 >= TypeArray && LA16_4 <= TypeString)) ) {
+					if ( (LA16_4==Identifier||(LA16_4 >= TypeArray && LA16_4 <= TypeString)) ) {
 						alt16=2;
 					}
 					else if ( (LA16_4==Function) ) {
@@ -934,7 +956,7 @@ public class TSPHPParser extends Parser {
 			case Public:
 				{
 				int LA16_3 = input.LA(2);
-				if ( ((LA16_3 >= TypeArray && LA16_3 <= TypeString)) ) {
+				if ( (LA16_3==Identifier||(LA16_3 >= TypeArray && LA16_3 <= TypeString)) ) {
 					alt16=2;
 				}
 				else if ( (LA16_3==Function) ) {
@@ -957,7 +979,7 @@ public class TSPHPParser extends Parser {
 			case Private:
 				{
 				int LA16_4 = input.LA(2);
-				if ( ((LA16_4 >= TypeArray && LA16_4 <= TypeString)) ) {
+				if ( (LA16_4==Identifier||(LA16_4 >= TypeArray && LA16_4 <= TypeString)) ) {
 					alt16=2;
 				}
 				else if ( (LA16_4==Function) ) {
@@ -992,27 +1014,27 @@ public class TSPHPParser extends Parser {
 			}
 			switch (alt16) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:204:4: constantDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:208:4: constantDeclaration
 					{
-					pushFollow(FOLLOW_constantDeclaration_in_classBody1024);
+					pushFollow(FOLLOW_constantDeclaration_in_classBody1053);
 					constantDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:205:4: attributeDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:209:4: attributeDeclaration
 					{
-					pushFollow(FOLLOW_attributeDeclaration_in_classBody1029);
+					pushFollow(FOLLOW_attributeDeclaration_in_classBody1058);
 					attributeDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:206:4: methodDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:210:4: methodDeclaration
 					{
-					pushFollow(FOLLOW_methodDeclaration_in_classBody1035);
+					pushFollow(FOLLOW_methodDeclaration_in_classBody1064);
 					methodDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
@@ -1035,22 +1057,22 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "constantDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:209:1: constantDeclaration : 'const' primitiveTypes constDeclarationList ';' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:213:1: constantDeclaration : 'const' primitiveTypes constDeclarationList ';' ;
 	public final void constantDeclaration() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:209:20: ( 'const' primitiveTypes constDeclarationList ';' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:209:22: 'const' primitiveTypes constDeclarationList ';'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:213:20: ( 'const' primitiveTypes constDeclarationList ';' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:213:22: 'const' primitiveTypes constDeclarationList ';'
 			{
-			match(input,Const,FOLLOW_Const_in_constantDeclaration1044); if (state.failed) return ;
-			pushFollow(FOLLOW_primitiveTypes_in_constantDeclaration1046);
+			match(input,Const,FOLLOW_Const_in_constantDeclaration1073); if (state.failed) return ;
+			pushFollow(FOLLOW_primitiveTypes_in_constantDeclaration1075);
 			primitiveTypes();
 			state._fsp--;
 			if (state.failed) return ;
-			pushFollow(FOLLOW_constDeclarationList_in_constantDeclaration1048);
+			pushFollow(FOLLOW_constDeclarationList_in_constantDeclaration1077);
 			constDeclarationList();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,Semicolon,FOLLOW_Semicolon_in_constantDeclaration1050); if (state.failed) return ;
+			match(input,Semicolon,FOLLOW_Semicolon_in_constantDeclaration1079); if (state.failed) return ;
 			}
 
 		}
@@ -1068,17 +1090,17 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "constDeclarationList"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:211:1: constDeclarationList : constantAssignment ( ',' constantAssignment )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:215:1: constDeclarationList : constantAssignment ( ',' constantAssignment )* ;
 	public final void constDeclarationList() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:212:2: ( constantAssignment ( ',' constantAssignment )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:212:5: constantAssignment ( ',' constantAssignment )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:216:2: ( constantAssignment ( ',' constantAssignment )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:216:5: constantAssignment ( ',' constantAssignment )*
 			{
-			pushFollow(FOLLOW_constantAssignment_in_constDeclarationList1060);
+			pushFollow(FOLLOW_constantAssignment_in_constDeclarationList1089);
 			constantAssignment();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:212:24: ( ',' constantAssignment )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:216:24: ( ',' constantAssignment )*
 			loop17:
 			do {
 				int alt17=2;
@@ -1089,10 +1111,10 @@ public class TSPHPParser extends Parser {
 
 				switch (alt17) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:212:25: ',' constantAssignment
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:216:25: ',' constantAssignment
 					{
-					match(input,Comma,FOLLOW_Comma_in_constDeclarationList1063); if (state.failed) return ;
-					pushFollow(FOLLOW_constantAssignment_in_constDeclarationList1065);
+					match(input,Comma,FOLLOW_Comma_in_constDeclarationList1092); if (state.failed) return ;
+					pushFollow(FOLLOW_constantAssignment_in_constDeclarationList1094);
 					constantAssignment();
 					state._fsp--;
 					if (state.failed) return ;
@@ -1121,16 +1143,16 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "constantAssignment"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:213:1: constantAssignment : Identifier '=' unaryAtom ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:217:1: constantAssignment : Identifier '=' unaryPrimitiveAtom ;
 	public final void constantAssignment() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:214:2: ( Identifier '=' unaryAtom )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:214:4: Identifier '=' unaryAtom
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:218:2: ( Identifier '=' unaryPrimitiveAtom )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:218:4: Identifier '=' unaryPrimitiveAtom
 			{
-			match(input,Identifier,FOLLOW_Identifier_in_constantAssignment1075); if (state.failed) return ;
-			match(input,Assign,FOLLOW_Assign_in_constantAssignment1078); if (state.failed) return ;
-			pushFollow(FOLLOW_unaryAtom_in_constantAssignment1080);
-			unaryAtom();
+			match(input,Identifier,FOLLOW_Identifier_in_constantAssignment1104); if (state.failed) return ;
+			match(input,Assign,FOLLOW_Assign_in_constantAssignment1107); if (state.failed) return ;
+			pushFollow(FOLLOW_unaryPrimitiveAtom_in_constantAssignment1109);
+			unaryPrimitiveAtom();
 			state._fsp--;
 			if (state.failed) return ;
 			}
@@ -1150,17 +1172,17 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "variableDeclarationListWithoutVariableId"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:216:1: variableDeclarationListWithoutVariableId : variableDeclaration ( ',' variableAssignment )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:220:1: variableDeclarationListWithoutVariableId : variableDeclaration ( ',' variableAssignment )* ;
 	public final void variableDeclarationListWithoutVariableId() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:217:2: ( variableDeclaration ( ',' variableAssignment )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:217:4: variableDeclaration ( ',' variableAssignment )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:221:2: ( variableDeclaration ( ',' variableAssignment )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:221:4: variableDeclaration ( ',' variableAssignment )*
 			{
-			pushFollow(FOLLOW_variableDeclaration_in_variableDeclarationListWithoutVariableId1089);
+			pushFollow(FOLLOW_variableDeclaration_in_variableDeclarationListWithoutVariableId1118);
 			variableDeclaration();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:217:24: ( ',' variableAssignment )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:221:24: ( ',' variableAssignment )*
 			loop18:
 			do {
 				int alt18=2;
@@ -1171,10 +1193,10 @@ public class TSPHPParser extends Parser {
 
 				switch (alt18) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:217:25: ',' variableAssignment
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:221:25: ',' variableAssignment
 					{
-					match(input,Comma,FOLLOW_Comma_in_variableDeclarationListWithoutVariableId1092); if (state.failed) return ;
-					pushFollow(FOLLOW_variableAssignment_in_variableDeclarationListWithoutVariableId1094);
+					match(input,Comma,FOLLOW_Comma_in_variableDeclarationListWithoutVariableId1121); if (state.failed) return ;
+					pushFollow(FOLLOW_variableAssignment_in_variableDeclarationListWithoutVariableId1123);
 					variableAssignment();
 					state._fsp--;
 					if (state.failed) return ;
@@ -1203,13 +1225,13 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "attributeDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:219:1: attributeDeclaration : ( 'static' )? accessor variableDeclarationListInclVariableId ';' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:223:1: attributeDeclaration : ( 'static' )? accessor variableDeclarationListInclVariableId ';' ;
 	public final void attributeDeclaration() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:220:2: ( ( 'static' )? accessor variableDeclarationListInclVariableId ';' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:220:4: ( 'static' )? accessor variableDeclarationListInclVariableId ';'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:224:2: ( ( 'static' )? accessor variableDeclarationListInclVariableId ';' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:224:4: ( 'static' )? accessor variableDeclarationListInclVariableId ';'
 			{
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:220:4: ( 'static' )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:224:4: ( 'static' )?
 			int alt19=2;
 			int LA19_0 = input.LA(1);
 			if ( (LA19_0==Static) ) {
@@ -1217,23 +1239,23 @@ public class TSPHPParser extends Parser {
 			}
 			switch (alt19) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:220:4: 'static'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:224:4: 'static'
 					{
-					match(input,Static,FOLLOW_Static_in_attributeDeclaration1106); if (state.failed) return ;
+					match(input,Static,FOLLOW_Static_in_attributeDeclaration1135); if (state.failed) return ;
 					}
 					break;
 
 			}
 
-			pushFollow(FOLLOW_accessor_in_attributeDeclaration1109);
+			pushFollow(FOLLOW_accessor_in_attributeDeclaration1138);
 			accessor();
 			state._fsp--;
 			if (state.failed) return ;
-			pushFollow(FOLLOW_variableDeclarationListInclVariableId_in_attributeDeclaration1111);
+			pushFollow(FOLLOW_variableDeclarationListInclVariableId_in_attributeDeclaration1140);
 			variableDeclarationListInclVariableId();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,Semicolon,FOLLOW_Semicolon_in_attributeDeclaration1113); if (state.failed) return ;
+			match(input,Semicolon,FOLLOW_Semicolon_in_attributeDeclaration1142); if (state.failed) return ;
 			}
 
 		}
@@ -1251,10 +1273,10 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "accessor"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:222:1: accessor : ( accessorWithoutPrivate | 'private' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:226:1: accessor : ( accessorWithoutPrivate | 'private' );
 	public final void accessor() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:222:9: ( accessorWithoutPrivate | 'private' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:226:9: ( accessorWithoutPrivate | 'private' )
 			int alt20=2;
 			int LA20_0 = input.LA(1);
 			if ( ((LA20_0 >= Protected && LA20_0 <= Public)) ) {
@@ -1271,18 +1293,18 @@ public class TSPHPParser extends Parser {
 			}
 			switch (alt20) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:222:11: accessorWithoutPrivate
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:226:11: accessorWithoutPrivate
 					{
-					pushFollow(FOLLOW_accessorWithoutPrivate_in_accessor1121);
+					pushFollow(FOLLOW_accessorWithoutPrivate_in_accessor1149);
 					accessorWithoutPrivate();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:223:4: 'private'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:227:4: 'private'
 					{
-					match(input,Private,FOLLOW_Private_in_accessor1126); if (state.failed) return ;
+					match(input,Private,FOLLOW_Private_in_accessor1154); if (state.failed) return ;
 					}
 					break;
 
@@ -1302,10 +1324,10 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "accessorWithoutPrivate"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:226:1: accessorWithoutPrivate : ( 'protected' | 'public' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:230:1: accessorWithoutPrivate : ( 'protected' | 'public' );
 	public final void accessorWithoutPrivate() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:227:2: ( 'protected' | 'public' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:231:2: ( 'protected' | 'public' )
 			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
 			{
 			if ( (input.LA(1) >= Protected && input.LA(1) <= Public) ) {
@@ -1335,17 +1357,17 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "variableDeclarationListInclVariableId"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:229:1: variableDeclarationListInclVariableId : variableDeclaration ( ',' ( variableAssignment | VariableId ) )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:233:1: variableDeclarationListInclVariableId : variableDeclaration ( ',' ( variableAssignment | VariableId ) )* ;
 	public final void variableDeclarationListInclVariableId() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:230:2: ( variableDeclaration ( ',' ( variableAssignment | VariableId ) )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:230:4: variableDeclaration ( ',' ( variableAssignment | VariableId ) )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:234:2: ( variableDeclaration ( ',' ( variableAssignment | VariableId ) )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:234:4: variableDeclaration ( ',' ( variableAssignment | VariableId ) )*
 			{
-			pushFollow(FOLLOW_variableDeclaration_in_variableDeclarationListInclVariableId1149);
+			pushFollow(FOLLOW_variableDeclaration_in_variableDeclarationListInclVariableId1177);
 			variableDeclaration();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:230:24: ( ',' ( variableAssignment | VariableId ) )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:234:24: ( ',' ( variableAssignment | VariableId ) )*
 			loop22:
 			do {
 				int alt22=2;
@@ -1356,10 +1378,10 @@ public class TSPHPParser extends Parser {
 
 				switch (alt22) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:230:25: ',' ( variableAssignment | VariableId )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:234:25: ',' ( variableAssignment | VariableId )
 					{
-					match(input,Comma,FOLLOW_Comma_in_variableDeclarationListInclVariableId1152); if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:230:29: ( variableAssignment | VariableId )
+					match(input,Comma,FOLLOW_Comma_in_variableDeclarationListInclVariableId1180); if (state.failed) return ;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:234:29: ( variableAssignment | VariableId )
 					int alt21=2;
 					int LA21_0 = input.LA(1);
 					if ( (LA21_0==VariableId) ) {
@@ -1394,18 +1416,18 @@ public class TSPHPParser extends Parser {
 					}
 					switch (alt21) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:230:30: variableAssignment
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:234:30: variableAssignment
 							{
-							pushFollow(FOLLOW_variableAssignment_in_variableDeclarationListInclVariableId1155);
+							pushFollow(FOLLOW_variableAssignment_in_variableDeclarationListInclVariableId1183);
 							variableAssignment();
 							state._fsp--;
 							if (state.failed) return ;
 							}
 							break;
 						case 2 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:230:49: VariableId
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:234:49: VariableId
 							{
-							match(input,VariableId,FOLLOW_VariableId_in_variableDeclarationListInclVariableId1157); if (state.failed) return ;
+							match(input,VariableId,FOLLOW_VariableId_in_variableDeclarationListInclVariableId1185); if (state.failed) return ;
 							}
 							break;
 
@@ -1436,13 +1458,13 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "methodDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:233:1: methodDeclaration : ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:237:1: methodDeclaration : ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration ;
 	public final void methodDeclaration() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:233:19: ( ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:233:21: ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:237:19: ( ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:237:21: ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration
 			{
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:233:21: ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:237:21: ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? )
 			int alt28=2;
 			int LA28_0 = input.LA(1);
 			if ( (LA28_0==Abstract) ) {
@@ -1459,10 +1481,10 @@ public class TSPHPParser extends Parser {
 			}
 			switch (alt28) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:233:23: 'abstract' ( accessorWithoutPrivate )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:237:23: 'abstract' ( accessorWithoutPrivate )?
 					{
-					match(input,Abstract,FOLLOW_Abstract_in_methodDeclaration1172); if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:233:34: ( accessorWithoutPrivate )?
+					match(input,Abstract,FOLLOW_Abstract_in_methodDeclaration1200); if (state.failed) return ;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:237:34: ( accessorWithoutPrivate )?
 					int alt23=2;
 					int LA23_0 = input.LA(1);
 					if ( ((LA23_0 >= Protected && LA23_0 <= Public)) ) {
@@ -1470,9 +1492,9 @@ public class TSPHPParser extends Parser {
 					}
 					switch (alt23) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:233:34: accessorWithoutPrivate
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:237:34: accessorWithoutPrivate
 							{
-							pushFollow(FOLLOW_accessorWithoutPrivate_in_methodDeclaration1174);
+							pushFollow(FOLLOW_accessorWithoutPrivate_in_methodDeclaration1202);
 							accessorWithoutPrivate();
 							state._fsp--;
 							if (state.failed) return ;
@@ -1484,9 +1506,9 @@ public class TSPHPParser extends Parser {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:235:4: ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:239:4: ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )?
 					{
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:235:4: ( 'static' ( 'final' )? | 'final' ( 'static' )? |)
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:239:4: ( 'static' ( 'final' )? | 'final' ( 'static' )? |)
 					int alt26=3;
 					switch ( input.LA(1) ) {
 					case Static:
@@ -1515,10 +1537,10 @@ public class TSPHPParser extends Parser {
 					}
 					switch (alt26) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:235:6: 'static' ( 'final' )?
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:239:6: 'static' ( 'final' )?
 							{
-							match(input,Static,FOLLOW_Static_in_methodDeclaration1188); if (state.failed) return ;
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:235:15: ( 'final' )?
+							match(input,Static,FOLLOW_Static_in_methodDeclaration1216); if (state.failed) return ;
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:239:15: ( 'final' )?
 							int alt24=2;
 							int LA24_0 = input.LA(1);
 							if ( (LA24_0==Final) ) {
@@ -1526,9 +1548,9 @@ public class TSPHPParser extends Parser {
 							}
 							switch (alt24) {
 								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:235:15: 'final'
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:239:15: 'final'
 									{
-									match(input,Final,FOLLOW_Final_in_methodDeclaration1190); if (state.failed) return ;
+									match(input,Final,FOLLOW_Final_in_methodDeclaration1218); if (state.failed) return ;
 									}
 									break;
 
@@ -1537,10 +1559,10 @@ public class TSPHPParser extends Parser {
 							}
 							break;
 						case 2 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:236:6: 'final' ( 'static' )?
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:6: 'final' ( 'static' )?
 							{
-							match(input,Final,FOLLOW_Final_in_methodDeclaration1198); if (state.failed) return ;
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:236:14: ( 'static' )?
+							match(input,Final,FOLLOW_Final_in_methodDeclaration1226); if (state.failed) return ;
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:14: ( 'static' )?
 							int alt25=2;
 							int LA25_0 = input.LA(1);
 							if ( (LA25_0==Static) ) {
@@ -1548,9 +1570,9 @@ public class TSPHPParser extends Parser {
 							}
 							switch (alt25) {
 								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:236:14: 'static'
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:14: 'static'
 									{
-									match(input,Static,FOLLOW_Static_in_methodDeclaration1200); if (state.failed) return ;
+									match(input,Static,FOLLOW_Static_in_methodDeclaration1228); if (state.failed) return ;
 									}
 									break;
 
@@ -1559,14 +1581,14 @@ public class TSPHPParser extends Parser {
 							}
 							break;
 						case 3 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:238:4: 
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:4: 
 							{
 							}
 							break;
 
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:238:6: ( accessor )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:6: ( accessor )?
 					int alt27=2;
 					int LA27_0 = input.LA(1);
 					if ( ((LA27_0 >= Private && LA27_0 <= Public)) ) {
@@ -1574,9 +1596,9 @@ public class TSPHPParser extends Parser {
 					}
 					switch (alt27) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:238:6: accessor
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:6: accessor
 							{
-							pushFollow(FOLLOW_accessor_in_methodDeclaration1214);
+							pushFollow(FOLLOW_accessor_in_methodDeclaration1242);
 							accessor();
 							state._fsp--;
 							if (state.failed) return ;
@@ -1590,7 +1612,7 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			pushFollow(FOLLOW_functionDeclaration_in_methodDeclaration1221);
+			pushFollow(FOLLOW_functionDeclaration_in_methodDeclaration1249);
 			functionDeclaration();
 			state._fsp--;
 			if (state.failed) return ;
@@ -1610,32 +1632,27 @@ public class TSPHPParser extends Parser {
 
 
 
-	// $ANTLR start "functionDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:241:1: functionDeclaration : 'function' returnType Identifier '(' ( paramList )? ')' '{' ( instructionWithoutBreakContinue )* '}' ;
-	public final void functionDeclaration() throws RecognitionException {
+	// $ANTLR start "interfaceDeclaration"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:245:1: interfaceDeclaration : 'interface' Identifier ( implementsDeclaration )? '{' ( interfaceBody )* '}' ;
+	public final void interfaceDeclaration() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:2: ( 'function' returnType Identifier '(' ( paramList )? ')' '{' ( instructionWithoutBreakContinue )* '}' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:4: 'function' returnType Identifier '(' ( paramList )? ')' '{' ( instructionWithoutBreakContinue )* '}'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:246:2: ( 'interface' Identifier ( implementsDeclaration )? '{' ( interfaceBody )* '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:246:4: 'interface' Identifier ( implementsDeclaration )? '{' ( interfaceBody )* '}'
 			{
-			match(input,Function,FOLLOW_Function_in_functionDeclaration1232); if (state.failed) return ;
-			pushFollow(FOLLOW_returnType_in_functionDeclaration1234);
-			returnType();
-			state._fsp--;
-			if (state.failed) return ;
-			match(input,Identifier,FOLLOW_Identifier_in_functionDeclaration1236); if (state.failed) return ;
-			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_functionDeclaration1238); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:41: ( paramList )?
+			match(input,Interface,FOLLOW_Interface_in_interfaceDeclaration1259); if (state.failed) return ;
+			match(input,Identifier,FOLLOW_Identifier_in_interfaceDeclaration1261); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:246:27: ( implementsDeclaration )?
 			int alt29=2;
 			int LA29_0 = input.LA(1);
-			if ( ((LA29_0 >= TypeArray && LA29_0 <= TypeString)) ) {
+			if ( (LA29_0==Implements) ) {
 				alt29=1;
 			}
 			switch (alt29) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:41: paramList
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:246:27: implementsDeclaration
 					{
-					pushFollow(FOLLOW_paramList_in_functionDeclaration1240);
-					paramList();
+					pushFollow(FOLLOW_implementsDeclaration_in_interfaceDeclaration1263);
+					implementsDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
 					}
@@ -1643,23 +1660,22 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_functionDeclaration1243); if (state.failed) return ;
-			match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_functionDeclaration1245); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:60: ( instructionWithoutBreakContinue )*
+			match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_interfaceDeclaration1266); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:246:54: ( interfaceBody )*
 			loop30:
 			do {
 				int alt30=2;
 				int LA30_0 = input.LA(1);
-				if ( (LA30_0==Do||(LA30_0 >= For && LA30_0 <= Foreach)||LA30_0==If||LA30_0==LeftCurlyBrace||LA30_0==MinusMinus||LA30_0==PlusPlus||LA30_0==Return||(LA30_0 >= Switch && LA30_0 <= VariableId)||LA30_0==While||LA30_0==108) ) {
+				if ( (LA30_0==Const||LA30_0==Function||LA30_0==Public) ) {
 					alt30=1;
 				}
 
 				switch (alt30) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:60: instructionWithoutBreakContinue
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:246:54: interfaceBody
 					{
-					pushFollow(FOLLOW_instructionWithoutBreakContinue_in_functionDeclaration1247);
-					instructionWithoutBreakContinue();
+					pushFollow(FOLLOW_interfaceBody_in_interfaceDeclaration1268);
+					interfaceBody();
 					state._fsp--;
 					if (state.failed) return ;
 					}
@@ -1670,7 +1686,159 @@ public class TSPHPParser extends Parser {
 				}
 			} while (true);
 
-			match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_functionDeclaration1250); if (state.failed) return ;
+			match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_interfaceDeclaration1271); if (state.failed) return ;
+			}
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return ;
+	}
+	// $ANTLR end "interfaceDeclaration"
+
+
+
+	// $ANTLR start "interfaceBody"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:248:1: interfaceBody : ( constantDeclaration | interfaceMethodDeclaration );
+	public final void interfaceBody() throws RecognitionException {
+		try {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:249:2: ( constantDeclaration | interfaceMethodDeclaration )
+			int alt31=2;
+			int LA31_0 = input.LA(1);
+			if ( (LA31_0==Const) ) {
+				alt31=1;
+			}
+			else if ( (LA31_0==Function||LA31_0==Public) ) {
+				alt31=2;
+			}
+			else {
+				if (state.backtracking>0) {state.failed=true; return ;}
+				NoViableAltException nvae =
+					new NoViableAltException("", 31, 0, input);
+				throw nvae;
+			}
+			switch (alt31) {
+				case 1 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:249:4: constantDeclaration
+					{
+					pushFollow(FOLLOW_constantDeclaration_in_interfaceBody1280);
+					constantDeclaration();
+					state._fsp--;
+					if (state.failed) return ;
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:250:4: interfaceMethodDeclaration
+					{
+					pushFollow(FOLLOW_interfaceMethodDeclaration_in_interfaceBody1285);
+					interfaceMethodDeclaration();
+					state._fsp--;
+					if (state.failed) return ;
+					}
+					break;
+
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return ;
+	}
+	// $ANTLR end "interfaceBody"
+
+
+
+	// $ANTLR start "interfaceMethodDeclaration"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:253:1: interfaceMethodDeclaration : ( 'public' )? functionDeclarationWithoutBody ';' ;
+	public final void interfaceMethodDeclaration() throws RecognitionException {
+		try {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:254:2: ( ( 'public' )? functionDeclarationWithoutBody ';' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:254:4: ( 'public' )? functionDeclarationWithoutBody ';'
+			{
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:254:4: ( 'public' )?
+			int alt32=2;
+			int LA32_0 = input.LA(1);
+			if ( (LA32_0==Public) ) {
+				alt32=1;
+			}
+			switch (alt32) {
+				case 1 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:254:4: 'public'
+					{
+					match(input,Public,FOLLOW_Public_in_interfaceMethodDeclaration1296); if (state.failed) return ;
+					}
+					break;
+
+			}
+
+			pushFollow(FOLLOW_functionDeclarationWithoutBody_in_interfaceMethodDeclaration1299);
+			functionDeclarationWithoutBody();
+			state._fsp--;
+			if (state.failed) return ;
+			match(input,Semicolon,FOLLOW_Semicolon_in_interfaceMethodDeclaration1301); if (state.failed) return ;
+			}
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return ;
+	}
+	// $ANTLR end "interfaceMethodDeclaration"
+
+
+
+	// $ANTLR start "functionDeclaration"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:256:1: functionDeclaration : functionDeclarationWithoutBody '{' ( instructionWithoutBreakContinue )* '}' ;
+	public final void functionDeclaration() throws RecognitionException {
+		try {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:257:2: ( functionDeclarationWithoutBody '{' ( instructionWithoutBreakContinue )* '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:257:5: functionDeclarationWithoutBody '{' ( instructionWithoutBreakContinue )* '}'
+			{
+			pushFollow(FOLLOW_functionDeclarationWithoutBody_in_functionDeclaration1312);
+			functionDeclarationWithoutBody();
+			state._fsp--;
+			if (state.failed) return ;
+			match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_functionDeclaration1314); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:257:40: ( instructionWithoutBreakContinue )*
+			loop33:
+			do {
+				int alt33=2;
+				int LA33_0 = input.LA(1);
+				if ( (LA33_0==Do||LA33_0==Echo||(LA33_0 >= For && LA33_0 <= Foreach)||(LA33_0 >= Identifier && LA33_0 <= If)||LA33_0==LeftCurlyBrace||LA33_0==MinusMinus||LA33_0==PlusPlus||LA33_0==Return||(LA33_0 >= Switch && LA33_0 <= VariableId)||LA33_0==While) ) {
+					alt33=1;
+				}
+
+				switch (alt33) {
+				case 1 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:257:40: instructionWithoutBreakContinue
+					{
+					pushFollow(FOLLOW_instructionWithoutBreakContinue_in_functionDeclaration1316);
+					instructionWithoutBreakContinue();
+					state._fsp--;
+					if (state.failed) return ;
+					}
+					break;
+
+				default :
+					break loop33;
+				}
+			} while (true);
+
+			match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_functionDeclaration1319); if (state.failed) return ;
 			}
 
 		}
@@ -1687,39 +1855,89 @@ public class TSPHPParser extends Parser {
 
 
 
+	// $ANTLR start "functionDeclarationWithoutBody"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:259:1: functionDeclarationWithoutBody : 'function' returnType Identifier '(' ( paramList )? ')' ;
+	public final void functionDeclarationWithoutBody() throws RecognitionException {
+		try {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:260:2: ( 'function' returnType Identifier '(' ( paramList )? ')' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:260:4: 'function' returnType Identifier '(' ( paramList )? ')'
+			{
+			match(input,Function,FOLLOW_Function_in_functionDeclarationWithoutBody1329); if (state.failed) return ;
+			pushFollow(FOLLOW_returnType_in_functionDeclarationWithoutBody1331);
+			returnType();
+			state._fsp--;
+			if (state.failed) return ;
+			match(input,Identifier,FOLLOW_Identifier_in_functionDeclarationWithoutBody1333); if (state.failed) return ;
+			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_functionDeclarationWithoutBody1335); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:260:41: ( paramList )?
+			int alt34=2;
+			int LA34_0 = input.LA(1);
+			if ( (LA34_0==Identifier||(LA34_0 >= TypeArray && LA34_0 <= TypeString)) ) {
+				alt34=1;
+			}
+			switch (alt34) {
+				case 1 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:260:41: paramList
+					{
+					pushFollow(FOLLOW_paramList_in_functionDeclarationWithoutBody1337);
+					paramList();
+					state._fsp--;
+					if (state.failed) return ;
+					}
+					break;
+
+			}
+
+			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_functionDeclarationWithoutBody1340); if (state.failed) return ;
+			}
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return ;
+	}
+	// $ANTLR end "functionDeclarationWithoutBody"
+
+
+
 	// $ANTLR start "returnType"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:244:1: returnType : ( primitiveTypes | 'void' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:262:1: returnType : ( allTypes | 'void' );
 	public final void returnType() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:245:2: ( primitiveTypes | 'void' )
-			int alt31=2;
-			int LA31_0 = input.LA(1);
-			if ( ((LA31_0 >= TypeArray && LA31_0 <= TypeString)) ) {
-				alt31=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:263:2: ( allTypes | 'void' )
+			int alt35=2;
+			int LA35_0 = input.LA(1);
+			if ( (LA35_0==Identifier||(LA35_0 >= TypeArray && LA35_0 <= TypeString)) ) {
+				alt35=1;
 			}
-			else if ( (LA31_0==Void) ) {
-				alt31=2;
+			else if ( (LA35_0==Void) ) {
+				alt35=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 31, 0, input);
+					new NoViableAltException("", 35, 0, input);
 				throw nvae;
 			}
-			switch (alt31) {
+			switch (alt35) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:245:4: primitiveTypes
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:263:4: allTypes
 					{
-					pushFollow(FOLLOW_primitiveTypes_in_returnType1260);
-					primitiveTypes();
+					pushFollow(FOLLOW_allTypes_in_returnType1350);
+					allTypes();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:245:21: 'void'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:263:15: 'void'
 					{
-					match(input,Void,FOLLOW_Void_in_returnType1264); if (state.failed) return ;
+					match(input,Void,FOLLOW_Void_in_returnType1354); if (state.failed) return ;
 					}
 					break;
 
@@ -1738,14 +1956,68 @@ public class TSPHPParser extends Parser {
 
 
 
-	// $ANTLR start "primitiveTypesWithoutResource"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:247:1: primitiveTypesWithoutResource : ( TypeBool | TypeBoolean | TypeInt | TypeFloat | TypeString | TypeArray | TypeObject );
-	public final void primitiveTypesWithoutResource() throws RecognitionException {
+	// $ANTLR start "allTypes"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:1: allTypes : ( primitiveTypesExtended | classInterfaceType );
+	public final void allTypes() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:248:2: ( TypeBool | TypeBoolean | TypeInt | TypeFloat | TypeString | TypeArray | TypeObject )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:9: ( primitiveTypesExtended | classInterfaceType )
+			int alt36=2;
+			int LA36_0 = input.LA(1);
+			if ( ((LA36_0 >= TypeArray && LA36_0 <= TypeInt)||(LA36_0 >= TypeResource && LA36_0 <= TypeString)) ) {
+				alt36=1;
+			}
+			else if ( (LA36_0==Identifier||LA36_0==TypeObject) ) {
+				alt36=2;
+			}
+			else {
+				if (state.backtracking>0) {state.failed=true; return ;}
+				NoViableAltException nvae =
+					new NoViableAltException("", 36, 0, input);
+				throw nvae;
+			}
+			switch (alt36) {
+				case 1 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:11: primitiveTypesExtended
+					{
+					pushFollow(FOLLOW_primitiveTypesExtended_in_allTypes1361);
+					primitiveTypesExtended();
+					state._fsp--;
+					if (state.failed) return ;
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:36: classInterfaceType
+					{
+					pushFollow(FOLLOW_classInterfaceType_in_allTypes1365);
+					classInterfaceType();
+					state._fsp--;
+					if (state.failed) return ;
+					}
+					break;
+
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return ;
+	}
+	// $ANTLR end "allTypes"
+
+
+
+	// $ANTLR start "primitiveTypes"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:267:1: primitiveTypes : ( TypeBool | TypeBoolean | TypeInt | TypeFloat | TypeString );
+	public final void primitiveTypes() throws RecognitionException {
+		try {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:268:2: ( TypeBool | TypeBoolean | TypeInt | TypeFloat | TypeString )
 			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
 			{
-			if ( (input.LA(1) >= TypeArray && input.LA(1) <= TypeObject)||input.LA(1)==TypeString ) {
+			if ( (input.LA(1) >= TypeBool && input.LA(1) <= TypeInt)||input.LA(1)==TypeString ) {
 				input.consume();
 				state.errorRecovery=false;
 				state.failed=false;
@@ -1767,43 +2039,43 @@ public class TSPHPParser extends Parser {
 		}
 		return ;
 	}
-	// $ANTLR end "primitiveTypesWithoutResource"
+	// $ANTLR end "primitiveTypes"
 
 
 
-	// $ANTLR start "primitiveTypes"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:257:1: primitiveTypes : ( primitiveTypesWithoutResource | TypeResource );
-	public final void primitiveTypes() throws RecognitionException {
+	// $ANTLR start "primitiveTypesInclArray"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:275:1: primitiveTypesInclArray : ( primitiveTypes | TypeArray );
+	public final void primitiveTypesInclArray() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:258:2: ( primitiveTypesWithoutResource | TypeResource )
-			int alt32=2;
-			int LA32_0 = input.LA(1);
-			if ( ((LA32_0 >= TypeArray && LA32_0 <= TypeObject)||LA32_0==TypeString) ) {
-				alt32=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:276:2: ( primitiveTypes | TypeArray )
+			int alt37=2;
+			int LA37_0 = input.LA(1);
+			if ( ((LA37_0 >= TypeBool && LA37_0 <= TypeInt)||LA37_0==TypeString) ) {
+				alt37=1;
 			}
-			else if ( (LA32_0==TypeResource) ) {
-				alt32=2;
+			else if ( (LA37_0==TypeArray) ) {
+				alt37=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 32, 0, input);
+					new NoViableAltException("", 37, 0, input);
 				throw nvae;
 			}
-			switch (alt32) {
+			switch (alt37) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:258:4: primitiveTypesWithoutResource
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:276:4: primitiveTypes
 					{
-					pushFollow(FOLLOW_primitiveTypesWithoutResource_in_primitiveTypes1315);
-					primitiveTypesWithoutResource();
+					pushFollow(FOLLOW_primitiveTypes_in_primitiveTypesInclArray1406);
+					primitiveTypes();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:259:4: TypeResource
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:277:4: TypeArray
 					{
-					match(input,TypeResource,FOLLOW_TypeResource_in_primitiveTypes1320); if (state.failed) return ;
+					match(input,TypeArray,FOLLOW_TypeArray_in_primitiveTypesInclArray1411); if (state.failed) return ;
 					}
 					break;
 
@@ -1818,342 +2090,1095 @@ public class TSPHPParser extends Parser {
 		}
 		return ;
 	}
-	// $ANTLR end "primitiveTypes"
+	// $ANTLR end "primitiveTypesInclArray"
 
 
 
-	// $ANTLR start "paramList"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:262:1: paramList : ( paramDeclarationOptional ( ',' paramDeclarationOptional )* | paramDeclaration ( ',' paramDeclaration )* | paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+ );
-	public final void paramList() throws RecognitionException {
+	// $ANTLR start "primitiveTypesExtended"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:280:1: primitiveTypesExtended : ( primitiveTypesInclArray | TypeResource );
+	public final void primitiveTypesExtended() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:263:2: ( paramDeclarationOptional ( ',' paramDeclarationOptional )* | paramDeclaration ( ',' paramDeclaration )* | paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+ )
-			int alt37=3;
-			int LA37_0 = input.LA(1);
-			if ( ((LA37_0 >= TypeArray && LA37_0 <= TypeObject)||LA37_0==TypeString) ) {
-				int LA37_1 = input.LA(2);
-				if ( (LA37_1==VariableId) ) {
-					switch ( input.LA(3) ) {
-					case Assign:
-						{
-						alt37=1;
-						}
-						break;
-					case Comma:
-						{
-						int LA37_5 = input.LA(4);
-						if ( ((LA37_5 >= TypeArray && LA37_5 <= TypeObject)||LA37_5==TypeString) ) {
-							int LA37_8 = input.LA(5);
-							if ( (LA37_8==VariableId) ) {
-								int LA37_10 = input.LA(6);
-								if ( (LA37_10==EOF||LA37_10==Comma||LA37_10==RightParanthesis) ) {
-									alt37=2;
-								}
-								else if ( (LA37_10==Assign) ) {
-									alt37=3;
-								}
-								else {
-									if (state.backtracking>0) {state.failed=true; return ;}
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
-											input.consume();
-										NoViableAltException nvae =
-											new NoViableAltException("", 37, 10, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-							}
-							else {
-								if (state.backtracking>0) {state.failed=true; return ;}
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
-										input.consume();
-									NoViableAltException nvae =
-										new NoViableAltException("", 37, 8, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-						}
-						else if ( (LA37_5==TypeResource) ) {
-							int LA37_9 = input.LA(5);
-							if ( (LA37_9==VariableId) ) {
-								int LA37_10 = input.LA(6);
-								if ( (LA37_10==EOF||LA37_10==Comma||LA37_10==RightParanthesis) ) {
-									alt37=2;
-								}
-								else if ( (LA37_10==Assign) ) {
-									alt37=3;
-								}
-								else {
-									if (state.backtracking>0) {state.failed=true; return ;}
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
-											input.consume();
-										NoViableAltException nvae =
-											new NoViableAltException("", 37, 10, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-							}
-							else {
-								if (state.backtracking>0) {state.failed=true; return ;}
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
-										input.consume();
-									NoViableAltException nvae =
-										new NoViableAltException("", 37, 9, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-						}
-						else {
-							if (state.backtracking>0) {state.failed=true; return ;}
-							int nvaeMark = input.mark();
-							try {
-								for (int nvaeConsume = 0; nvaeConsume < 4 - 1; nvaeConsume++)
-									input.consume();
-								NoViableAltException nvae =
-									new NoViableAltException("", 37, 5, input);
-								throw nvae;
-							} finally {
-								input.rewind(nvaeMark);
-							}
-						}
-						}
-						break;
-					case EOF:
-					case RightParanthesis:
-						{
-						alt37=2;
-						}
-						break;
-					case TypeArray:
-					case TypeBool:
-					case TypeBoolean:
-					case TypeFloat:
-					case TypeInt:
-					case TypeObject:
-					case TypeResource:
-					case TypeString:
-						{
-						alt37=3;
-						}
-						break;
-					default:
-						if (state.backtracking>0) {state.failed=true; return ;}
-						int nvaeMark = input.mark();
-						try {
-							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++)
-								input.consume();
-							NoViableAltException nvae =
-								new NoViableAltException("", 37, 3, input);
-							throw nvae;
-						} finally {
-							input.rewind(nvaeMark);
-						}
-					}
-				}
-				else {
-					if (state.backtracking>0) {state.failed=true; return ;}
-					int nvaeMark = input.mark();
-					try {
-						input.consume();
-						NoViableAltException nvae =
-							new NoViableAltException("", 37, 1, input);
-						throw nvae;
-					} finally {
-						input.rewind(nvaeMark);
-					}
-				}
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:2: ( primitiveTypesInclArray | TypeResource )
+			int alt38=2;
+			int LA38_0 = input.LA(1);
+			if ( ((LA38_0 >= TypeArray && LA38_0 <= TypeInt)||LA38_0==TypeString) ) {
+				alt38=1;
 			}
-			else if ( (LA37_0==TypeResource) ) {
-				int LA37_2 = input.LA(2);
-				if ( (LA37_2==VariableId) ) {
-					switch ( input.LA(3) ) {
-					case Assign:
-						{
-						alt37=1;
-						}
-						break;
-					case Comma:
-						{
-						int LA37_5 = input.LA(4);
-						if ( ((LA37_5 >= TypeArray && LA37_5 <= TypeObject)||LA37_5==TypeString) ) {
-							int LA37_8 = input.LA(5);
-							if ( (LA37_8==VariableId) ) {
-								int LA37_10 = input.LA(6);
-								if ( (LA37_10==EOF||LA37_10==Comma||LA37_10==RightParanthesis) ) {
-									alt37=2;
-								}
-								else if ( (LA37_10==Assign) ) {
-									alt37=3;
-								}
-								else {
-									if (state.backtracking>0) {state.failed=true; return ;}
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
-											input.consume();
-										NoViableAltException nvae =
-											new NoViableAltException("", 37, 10, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-							}
-							else {
-								if (state.backtracking>0) {state.failed=true; return ;}
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
-										input.consume();
-									NoViableAltException nvae =
-										new NoViableAltException("", 37, 8, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-						}
-						else if ( (LA37_5==TypeResource) ) {
-							int LA37_9 = input.LA(5);
-							if ( (LA37_9==VariableId) ) {
-								int LA37_10 = input.LA(6);
-								if ( (LA37_10==EOF||LA37_10==Comma||LA37_10==RightParanthesis) ) {
-									alt37=2;
-								}
-								else if ( (LA37_10==Assign) ) {
-									alt37=3;
-								}
-								else {
-									if (state.backtracking>0) {state.failed=true; return ;}
-									int nvaeMark = input.mark();
-									try {
-										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
-											input.consume();
-										NoViableAltException nvae =
-											new NoViableAltException("", 37, 10, input);
-										throw nvae;
-									} finally {
-										input.rewind(nvaeMark);
-									}
-								}
-							}
-							else {
-								if (state.backtracking>0) {state.failed=true; return ;}
-								int nvaeMark = input.mark();
-								try {
-									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
-										input.consume();
-									NoViableAltException nvae =
-										new NoViableAltException("", 37, 9, input);
-									throw nvae;
-								} finally {
-									input.rewind(nvaeMark);
-								}
-							}
-						}
-						else {
-							if (state.backtracking>0) {state.failed=true; return ;}
-							int nvaeMark = input.mark();
-							try {
-								for (int nvaeConsume = 0; nvaeConsume < 4 - 1; nvaeConsume++)
-									input.consume();
-								NoViableAltException nvae =
-									new NoViableAltException("", 37, 5, input);
-								throw nvae;
-							} finally {
-								input.rewind(nvaeMark);
-							}
-						}
-						}
-						break;
-					case EOF:
-					case RightParanthesis:
-						{
-						alt37=2;
-						}
-						break;
-					case TypeArray:
-					case TypeBool:
-					case TypeBoolean:
-					case TypeFloat:
-					case TypeInt:
-					case TypeObject:
-					case TypeResource:
-					case TypeString:
-						{
-						alt37=3;
-						}
-						break;
-					default:
-						if (state.backtracking>0) {state.failed=true; return ;}
-						int nvaeMark = input.mark();
-						try {
-							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++)
-								input.consume();
-							NoViableAltException nvae =
-								new NoViableAltException("", 37, 3, input);
-							throw nvae;
-						} finally {
-							input.rewind(nvaeMark);
-						}
-					}
-				}
-				else {
-					if (state.backtracking>0) {state.failed=true; return ;}
-					int nvaeMark = input.mark();
-					try {
-						input.consume();
-						NoViableAltException nvae =
-							new NoViableAltException("", 37, 2, input);
-						throw nvae;
-					} finally {
-						input.rewind(nvaeMark);
-					}
-				}
+			else if ( (LA38_0==TypeResource) ) {
+				alt38=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 37, 0, input);
+					new NoViableAltException("", 38, 0, input);
 				throw nvae;
 			}
-			switch (alt37) {
+			switch (alt38) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:263:4: paramDeclarationOptional ( ',' paramDeclarationOptional )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:4: primitiveTypesInclArray
 					{
-					pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1332);
+					pushFollow(FOLLOW_primitiveTypesInclArray_in_primitiveTypesExtended1423);
+					primitiveTypesInclArray();
+					state._fsp--;
+					if (state.failed) return ;
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:282:4: TypeResource
+					{
+					match(input,TypeResource,FOLLOW_TypeResource_in_primitiveTypesExtended1428); if (state.failed) return ;
+					}
+					break;
+
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return ;
+	}
+	// $ANTLR end "primitiveTypesExtended"
+
+
+
+	// $ANTLR start "classInterfaceType"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:285:1: classInterfaceType : ( TypeObject | Identifier );
+	public final void classInterfaceType() throws RecognitionException {
+		try {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:286:2: ( TypeObject | Identifier )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
+			{
+			if ( input.LA(1)==Identifier||input.LA(1)==TypeObject ) {
+				input.consume();
+				state.errorRecovery=false;
+				state.failed=false;
+			}
+			else {
+				if (state.backtracking>0) {state.failed=true; return ;}
+				MismatchedSetException mse = new MismatchedSetException(null,input);
+				throw mse;
+			}
+			}
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return ;
+	}
+	// $ANTLR end "classInterfaceType"
+
+
+
+	// $ANTLR start "paramList"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:290:1: paramList : ( paramDeclarationOptional ( ',' paramDeclarationOptional )* | paramDeclaration ( ',' paramDeclaration )* | paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+ );
+	public final void paramList() throws RecognitionException {
+		try {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:291:2: ( paramDeclarationOptional ( ',' paramDeclarationOptional )* | paramDeclaration ( ',' paramDeclaration )* | paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+ )
+			int alt43=3;
+			switch ( input.LA(1) ) {
+			case TypeBool:
+			case TypeBoolean:
+			case TypeFloat:
+			case TypeInt:
+			case TypeString:
+				{
+				int LA43_1 = input.LA(2);
+				if ( (LA43_1==VariableId) ) {
+					switch ( input.LA(3) ) {
+					case Assign:
+						{
+						alt43=1;
+						}
+						break;
+					case Comma:
+						{
+						switch ( input.LA(4) ) {
+						case TypeBool:
+						case TypeBoolean:
+						case TypeFloat:
+						case TypeInt:
+						case TypeString:
+							{
+							int LA43_10 = input.LA(5);
+							if ( (LA43_10==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 10, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case TypeArray:
+							{
+							int LA43_11 = input.LA(5);
+							if ( (LA43_11==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 11, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case TypeResource:
+							{
+							int LA43_12 = input.LA(5);
+							if ( (LA43_12==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 12, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case Identifier:
+						case TypeObject:
+							{
+							int LA43_13 = input.LA(5);
+							if ( (LA43_13==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 13, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						default:
+							if (state.backtracking>0) {state.failed=true; return ;}
+							int nvaeMark = input.mark();
+							try {
+								for (int nvaeConsume = 0; nvaeConsume < 4 - 1; nvaeConsume++)
+									input.consume();
+								NoViableAltException nvae =
+									new NoViableAltException("", 43, 7, input);
+								throw nvae;
+							} finally {
+								input.rewind(nvaeMark);
+							}
+						}
+						}
+						break;
+					case EOF:
+					case RightParanthesis:
+						{
+						alt43=2;
+						}
+						break;
+					case Identifier:
+					case TypeArray:
+					case TypeBool:
+					case TypeBoolean:
+					case TypeFloat:
+					case TypeInt:
+					case TypeObject:
+					case TypeResource:
+					case TypeString:
+						{
+						alt43=3;
+						}
+						break;
+					default:
+						if (state.backtracking>0) {state.failed=true; return ;}
+						int nvaeMark = input.mark();
+						try {
+							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++)
+								input.consume();
+							NoViableAltException nvae =
+								new NoViableAltException("", 43, 5, input);
+							throw nvae;
+						} finally {
+							input.rewind(nvaeMark);
+						}
+					}
+				}
+				else {
+					if (state.backtracking>0) {state.failed=true; return ;}
+					int nvaeMark = input.mark();
+					try {
+						input.consume();
+						NoViableAltException nvae =
+							new NoViableAltException("", 43, 1, input);
+						throw nvae;
+					} finally {
+						input.rewind(nvaeMark);
+					}
+				}
+				}
+				break;
+			case TypeArray:
+				{
+				int LA43_2 = input.LA(2);
+				if ( (LA43_2==VariableId) ) {
+					switch ( input.LA(3) ) {
+					case Assign:
+						{
+						alt43=1;
+						}
+						break;
+					case Comma:
+						{
+						switch ( input.LA(4) ) {
+						case TypeBool:
+						case TypeBoolean:
+						case TypeFloat:
+						case TypeInt:
+						case TypeString:
+							{
+							int LA43_10 = input.LA(5);
+							if ( (LA43_10==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 10, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case TypeArray:
+							{
+							int LA43_11 = input.LA(5);
+							if ( (LA43_11==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 11, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case TypeResource:
+							{
+							int LA43_12 = input.LA(5);
+							if ( (LA43_12==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 12, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case Identifier:
+						case TypeObject:
+							{
+							int LA43_13 = input.LA(5);
+							if ( (LA43_13==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 13, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						default:
+							if (state.backtracking>0) {state.failed=true; return ;}
+							int nvaeMark = input.mark();
+							try {
+								for (int nvaeConsume = 0; nvaeConsume < 4 - 1; nvaeConsume++)
+									input.consume();
+								NoViableAltException nvae =
+									new NoViableAltException("", 43, 7, input);
+								throw nvae;
+							} finally {
+								input.rewind(nvaeMark);
+							}
+						}
+						}
+						break;
+					case EOF:
+					case RightParanthesis:
+						{
+						alt43=2;
+						}
+						break;
+					case Identifier:
+					case TypeArray:
+					case TypeBool:
+					case TypeBoolean:
+					case TypeFloat:
+					case TypeInt:
+					case TypeObject:
+					case TypeResource:
+					case TypeString:
+						{
+						alt43=3;
+						}
+						break;
+					default:
+						if (state.backtracking>0) {state.failed=true; return ;}
+						int nvaeMark = input.mark();
+						try {
+							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++)
+								input.consume();
+							NoViableAltException nvae =
+								new NoViableAltException("", 43, 5, input);
+							throw nvae;
+						} finally {
+							input.rewind(nvaeMark);
+						}
+					}
+				}
+				else {
+					if (state.backtracking>0) {state.failed=true; return ;}
+					int nvaeMark = input.mark();
+					try {
+						input.consume();
+						NoViableAltException nvae =
+							new NoViableAltException("", 43, 2, input);
+						throw nvae;
+					} finally {
+						input.rewind(nvaeMark);
+					}
+				}
+				}
+				break;
+			case TypeResource:
+				{
+				int LA43_3 = input.LA(2);
+				if ( (LA43_3==VariableId) ) {
+					switch ( input.LA(3) ) {
+					case Assign:
+						{
+						alt43=1;
+						}
+						break;
+					case Comma:
+						{
+						switch ( input.LA(4) ) {
+						case TypeBool:
+						case TypeBoolean:
+						case TypeFloat:
+						case TypeInt:
+						case TypeString:
+							{
+							int LA43_10 = input.LA(5);
+							if ( (LA43_10==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 10, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case TypeArray:
+							{
+							int LA43_11 = input.LA(5);
+							if ( (LA43_11==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 11, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case TypeResource:
+							{
+							int LA43_12 = input.LA(5);
+							if ( (LA43_12==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 12, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case Identifier:
+						case TypeObject:
+							{
+							int LA43_13 = input.LA(5);
+							if ( (LA43_13==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 13, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						default:
+							if (state.backtracking>0) {state.failed=true; return ;}
+							int nvaeMark = input.mark();
+							try {
+								for (int nvaeConsume = 0; nvaeConsume < 4 - 1; nvaeConsume++)
+									input.consume();
+								NoViableAltException nvae =
+									new NoViableAltException("", 43, 7, input);
+								throw nvae;
+							} finally {
+								input.rewind(nvaeMark);
+							}
+						}
+						}
+						break;
+					case EOF:
+					case RightParanthesis:
+						{
+						alt43=2;
+						}
+						break;
+					case Identifier:
+					case TypeArray:
+					case TypeBool:
+					case TypeBoolean:
+					case TypeFloat:
+					case TypeInt:
+					case TypeObject:
+					case TypeResource:
+					case TypeString:
+						{
+						alt43=3;
+						}
+						break;
+					default:
+						if (state.backtracking>0) {state.failed=true; return ;}
+						int nvaeMark = input.mark();
+						try {
+							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++)
+								input.consume();
+							NoViableAltException nvae =
+								new NoViableAltException("", 43, 5, input);
+							throw nvae;
+						} finally {
+							input.rewind(nvaeMark);
+						}
+					}
+				}
+				else {
+					if (state.backtracking>0) {state.failed=true; return ;}
+					int nvaeMark = input.mark();
+					try {
+						input.consume();
+						NoViableAltException nvae =
+							new NoViableAltException("", 43, 3, input);
+						throw nvae;
+					} finally {
+						input.rewind(nvaeMark);
+					}
+				}
+				}
+				break;
+			case Identifier:
+			case TypeObject:
+				{
+				int LA43_4 = input.LA(2);
+				if ( (LA43_4==VariableId) ) {
+					switch ( input.LA(3) ) {
+					case Assign:
+						{
+						alt43=1;
+						}
+						break;
+					case Comma:
+						{
+						switch ( input.LA(4) ) {
+						case TypeBool:
+						case TypeBoolean:
+						case TypeFloat:
+						case TypeInt:
+						case TypeString:
+							{
+							int LA43_10 = input.LA(5);
+							if ( (LA43_10==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 10, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case TypeArray:
+							{
+							int LA43_11 = input.LA(5);
+							if ( (LA43_11==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 11, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case TypeResource:
+							{
+							int LA43_12 = input.LA(5);
+							if ( (LA43_12==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 12, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						case Identifier:
+						case TypeObject:
+							{
+							int LA43_13 = input.LA(5);
+							if ( (LA43_13==VariableId) ) {
+								int LA43_14 = input.LA(6);
+								if ( (LA43_14==EOF||LA43_14==Comma||LA43_14==RightParanthesis) ) {
+									alt43=2;
+								}
+								else if ( (LA43_14==Assign) ) {
+									alt43=3;
+								}
+								else {
+									if (state.backtracking>0) {state.failed=true; return ;}
+									int nvaeMark = input.mark();
+									try {
+										for (int nvaeConsume = 0; nvaeConsume < 6 - 1; nvaeConsume++)
+											input.consume();
+										NoViableAltException nvae =
+											new NoViableAltException("", 43, 14, input);
+										throw nvae;
+									} finally {
+										input.rewind(nvaeMark);
+									}
+								}
+							}
+							else {
+								if (state.backtracking>0) {state.failed=true; return ;}
+								int nvaeMark = input.mark();
+								try {
+									for (int nvaeConsume = 0; nvaeConsume < 5 - 1; nvaeConsume++)
+										input.consume();
+									NoViableAltException nvae =
+										new NoViableAltException("", 43, 13, input);
+									throw nvae;
+								} finally {
+									input.rewind(nvaeMark);
+								}
+							}
+							}
+							break;
+						default:
+							if (state.backtracking>0) {state.failed=true; return ;}
+							int nvaeMark = input.mark();
+							try {
+								for (int nvaeConsume = 0; nvaeConsume < 4 - 1; nvaeConsume++)
+									input.consume();
+								NoViableAltException nvae =
+									new NoViableAltException("", 43, 7, input);
+								throw nvae;
+							} finally {
+								input.rewind(nvaeMark);
+							}
+						}
+						}
+						break;
+					case EOF:
+					case RightParanthesis:
+						{
+						alt43=2;
+						}
+						break;
+					case Identifier:
+					case TypeArray:
+					case TypeBool:
+					case TypeBoolean:
+					case TypeFloat:
+					case TypeInt:
+					case TypeObject:
+					case TypeResource:
+					case TypeString:
+						{
+						alt43=3;
+						}
+						break;
+					default:
+						if (state.backtracking>0) {state.failed=true; return ;}
+						int nvaeMark = input.mark();
+						try {
+							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++)
+								input.consume();
+							NoViableAltException nvae =
+								new NoViableAltException("", 43, 5, input);
+							throw nvae;
+						} finally {
+							input.rewind(nvaeMark);
+						}
+					}
+				}
+				else {
+					if (state.backtracking>0) {state.failed=true; return ;}
+					int nvaeMark = input.mark();
+					try {
+						input.consume();
+						NoViableAltException nvae =
+							new NoViableAltException("", 43, 4, input);
+						throw nvae;
+					} finally {
+						input.rewind(nvaeMark);
+					}
+				}
+				}
+				break;
+			default:
+				if (state.backtracking>0) {state.failed=true; return ;}
+				NoViableAltException nvae =
+					new NoViableAltException("", 43, 0, input);
+				throw nvae;
+			}
+			switch (alt43) {
+				case 1 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:291:4: paramDeclarationOptional ( ',' paramDeclarationOptional )*
+					{
+					pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1458);
 					paramDeclarationOptional();
 					state._fsp--;
 					if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:263:29: ( ',' paramDeclarationOptional )*
-					loop33:
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:291:29: ( ',' paramDeclarationOptional )*
+					loop39:
 					do {
-						int alt33=2;
-						int LA33_0 = input.LA(1);
-						if ( (LA33_0==Comma) ) {
-							alt33=1;
+						int alt39=2;
+						int LA39_0 = input.LA(1);
+						if ( (LA39_0==Comma) ) {
+							alt39=1;
 						}
 
-						switch (alt33) {
+						switch (alt39) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:263:30: ',' paramDeclarationOptional
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:291:30: ',' paramDeclarationOptional
 							{
-							match(input,Comma,FOLLOW_Comma_in_paramList1335); if (state.failed) return ;
-							pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1337);
+							match(input,Comma,FOLLOW_Comma_in_paramList1461); if (state.failed) return ;
+							pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1463);
 							paramDeclarationOptional();
 							state._fsp--;
 							if (state.failed) return ;
@@ -2161,34 +3186,34 @@ public class TSPHPParser extends Parser {
 							break;
 
 						default :
-							break loop33;
+							break loop39;
 						}
 					} while (true);
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:264:4: paramDeclaration ( ',' paramDeclaration )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:292:4: paramDeclaration ( ',' paramDeclaration )*
 					{
-					pushFollow(FOLLOW_paramDeclaration_in_paramList1344);
+					pushFollow(FOLLOW_paramDeclaration_in_paramList1470);
 					paramDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:264:21: ( ',' paramDeclaration )*
-					loop34:
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:292:21: ( ',' paramDeclaration )*
+					loop40:
 					do {
-						int alt34=2;
-						int LA34_0 = input.LA(1);
-						if ( (LA34_0==Comma) ) {
-							alt34=1;
+						int alt40=2;
+						int LA40_0 = input.LA(1);
+						if ( (LA40_0==Comma) ) {
+							alt40=1;
 						}
 
-						switch (alt34) {
+						switch (alt40) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:264:22: ',' paramDeclaration
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:292:22: ',' paramDeclaration
 							{
-							match(input,Comma,FOLLOW_Comma_in_paramList1347); if (state.failed) return ;
-							pushFollow(FOLLOW_paramDeclaration_in_paramList1349);
+							match(input,Comma,FOLLOW_Comma_in_paramList1473); if (state.failed) return ;
+							pushFollow(FOLLOW_paramDeclaration_in_paramList1475);
 							paramDeclaration();
 							state._fsp--;
 							if (state.failed) return ;
@@ -2196,61 +3221,61 @@ public class TSPHPParser extends Parser {
 							break;
 
 						default :
-							break loop34;
+							break loop40;
 						}
 					} while (true);
 
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:4: paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:293:4: paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+
 					{
-					pushFollow(FOLLOW_paramDeclaration_in_paramList1356);
+					pushFollow(FOLLOW_paramDeclaration_in_paramList1482);
 					paramDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:21: ( paramDeclaration ',' )*
-					loop35:
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:293:21: ( paramDeclaration ',' )*
+					loop41:
 					do {
-						int alt35=2;
-						int LA35_0 = input.LA(1);
-						if ( ((LA35_0 >= TypeArray && LA35_0 <= TypeString)) ) {
-							alt35=1;
+						int alt41=2;
+						int LA41_0 = input.LA(1);
+						if ( (LA41_0==Identifier||(LA41_0 >= TypeArray && LA41_0 <= TypeString)) ) {
+							alt41=1;
 						}
 
-						switch (alt35) {
+						switch (alt41) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:22: paramDeclaration ','
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:293:22: paramDeclaration ','
 							{
-							pushFollow(FOLLOW_paramDeclaration_in_paramList1359);
+							pushFollow(FOLLOW_paramDeclaration_in_paramList1485);
 							paramDeclaration();
 							state._fsp--;
 							if (state.failed) return ;
-							match(input,Comma,FOLLOW_Comma_in_paramList1361); if (state.failed) return ;
+							match(input,Comma,FOLLOW_Comma_in_paramList1487); if (state.failed) return ;
 							}
 							break;
 
 						default :
-							break loop35;
+							break loop41;
 						}
 					} while (true);
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:45: ( ',' paramDeclarationOptional )+
-					int cnt36=0;
-					loop36:
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:293:45: ( ',' paramDeclarationOptional )+
+					int cnt42=0;
+					loop42:
 					do {
-						int alt36=2;
-						int LA36_0 = input.LA(1);
-						if ( (LA36_0==Comma) ) {
-							alt36=1;
+						int alt42=2;
+						int LA42_0 = input.LA(1);
+						if ( (LA42_0==Comma) ) {
+							alt42=1;
 						}
 
-						switch (alt36) {
+						switch (alt42) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:46: ',' paramDeclarationOptional
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:293:46: ',' paramDeclarationOptional
 							{
-							match(input,Comma,FOLLOW_Comma_in_paramList1366); if (state.failed) return ;
-							pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1368);
+							match(input,Comma,FOLLOW_Comma_in_paramList1492); if (state.failed) return ;
+							pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1494);
 							paramDeclarationOptional();
 							state._fsp--;
 							if (state.failed) return ;
@@ -2258,13 +3283,13 @@ public class TSPHPParser extends Parser {
 							break;
 
 						default :
-							if ( cnt36 >= 1 ) break loop36;
+							if ( cnt42 >= 1 ) break loop42;
 							if (state.backtracking>0) {state.failed=true; return ;}
 								EarlyExitException eee =
-									new EarlyExitException(36, input);
+									new EarlyExitException(42, input);
 								throw eee;
 						}
-						cnt36++;
+						cnt42++;
 					} while (true);
 
 					}
@@ -2286,17 +3311,17 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "paramDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:268:1: paramDeclaration : primitiveTypes VariableId ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:296:1: paramDeclaration : allTypes VariableId ;
 	public final void paramDeclaration() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:269:2: ( primitiveTypes VariableId )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:269:4: primitiveTypes VariableId
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:297:2: ( allTypes VariableId )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:297:4: allTypes VariableId
 			{
-			pushFollow(FOLLOW_primitiveTypes_in_paramDeclaration1382);
-			primitiveTypes();
+			pushFollow(FOLLOW_allTypes_in_paramDeclaration1508);
+			allTypes();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,VariableId,FOLLOW_VariableId_in_paramDeclaration1384); if (state.failed) return ;
+			match(input,VariableId,FOLLOW_VariableId_in_paramDeclaration1510); if (state.failed) return ;
 			}
 
 		}
@@ -2314,18 +3339,18 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "paramDeclarationOptional"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:271:1: paramDeclarationOptional : paramDeclaration '=' unaryAtom ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:299:1: paramDeclarationOptional : paramDeclaration '=' unaryAtom ;
 	public final void paramDeclarationOptional() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:272:2: ( paramDeclaration '=' unaryAtom )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:272:4: paramDeclaration '=' unaryAtom
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:300:2: ( paramDeclaration '=' unaryAtom )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:300:4: paramDeclaration '=' unaryAtom
 			{
-			pushFollow(FOLLOW_paramDeclaration_in_paramDeclarationOptional1394);
+			pushFollow(FOLLOW_paramDeclaration_in_paramDeclarationOptional1520);
 			paramDeclaration();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,Assign,FOLLOW_Assign_in_paramDeclarationOptional1397); if (state.failed) return ;
-			pushFollow(FOLLOW_unaryAtom_in_paramDeclarationOptional1399);
+			match(input,Assign,FOLLOW_Assign_in_paramDeclarationOptional1523); if (state.failed) return ;
+			pushFollow(FOLLOW_unaryAtom_in_paramDeclarationOptional1525);
 			unaryAtom();
 			state._fsp--;
 			if (state.failed) return ;
@@ -2346,44 +3371,44 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "instructionWithoutBreakContinue"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:277:1: instructionWithoutBreakContinue : ( '{' ( instructionWithoutBreakContinue )+ '}' | instruction );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:305:1: instructionWithoutBreakContinue : ( '{' ( instructionWithoutBreakContinue )+ '}' | instruction );
 	public final void instructionWithoutBreakContinue() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:278:2: ( '{' ( instructionWithoutBreakContinue )+ '}' | instruction )
-			int alt39=2;
-			int LA39_0 = input.LA(1);
-			if ( (LA39_0==LeftCurlyBrace) ) {
-				alt39=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:306:2: ( '{' ( instructionWithoutBreakContinue )+ '}' | instruction )
+			int alt45=2;
+			int LA45_0 = input.LA(1);
+			if ( (LA45_0==LeftCurlyBrace) ) {
+				alt45=1;
 			}
-			else if ( (LA39_0==Do||(LA39_0 >= For && LA39_0 <= Foreach)||LA39_0==If||LA39_0==MinusMinus||LA39_0==PlusPlus||LA39_0==Return||(LA39_0 >= Switch && LA39_0 <= VariableId)||LA39_0==While||LA39_0==108) ) {
-				alt39=2;
+			else if ( (LA45_0==Do||LA45_0==Echo||(LA45_0 >= For && LA45_0 <= Foreach)||(LA45_0 >= Identifier && LA45_0 <= If)||LA45_0==MinusMinus||LA45_0==PlusPlus||LA45_0==Return||(LA45_0 >= Switch && LA45_0 <= VariableId)||LA45_0==While) ) {
+				alt45=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 39, 0, input);
+					new NoViableAltException("", 45, 0, input);
 				throw nvae;
 			}
-			switch (alt39) {
+			switch (alt45) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:278:4: '{' ( instructionWithoutBreakContinue )+ '}'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:306:4: '{' ( instructionWithoutBreakContinue )+ '}'
 					{
-					match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_instructionWithoutBreakContinue1421); if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:278:8: ( instructionWithoutBreakContinue )+
-					int cnt38=0;
-					loop38:
+					match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_instructionWithoutBreakContinue1547); if (state.failed) return ;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:306:8: ( instructionWithoutBreakContinue )+
+					int cnt44=0;
+					loop44:
 					do {
-						int alt38=2;
-						int LA38_0 = input.LA(1);
-						if ( (LA38_0==Do||(LA38_0 >= For && LA38_0 <= Foreach)||LA38_0==If||LA38_0==LeftCurlyBrace||LA38_0==MinusMinus||LA38_0==PlusPlus||LA38_0==Return||(LA38_0 >= Switch && LA38_0 <= VariableId)||LA38_0==While||LA38_0==108) ) {
-							alt38=1;
+						int alt44=2;
+						int LA44_0 = input.LA(1);
+						if ( (LA44_0==Do||LA44_0==Echo||(LA44_0 >= For && LA44_0 <= Foreach)||(LA44_0 >= Identifier && LA44_0 <= If)||LA44_0==LeftCurlyBrace||LA44_0==MinusMinus||LA44_0==PlusPlus||LA44_0==Return||(LA44_0 >= Switch && LA44_0 <= VariableId)||LA44_0==While) ) {
+							alt44=1;
 						}
 
-						switch (alt38) {
+						switch (alt44) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:278:8: instructionWithoutBreakContinue
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:306:8: instructionWithoutBreakContinue
 							{
-							pushFollow(FOLLOW_instructionWithoutBreakContinue_in_instructionWithoutBreakContinue1423);
+							pushFollow(FOLLOW_instructionWithoutBreakContinue_in_instructionWithoutBreakContinue1549);
 							instructionWithoutBreakContinue();
 							state._fsp--;
 							if (state.failed) return ;
@@ -2391,22 +3416,22 @@ public class TSPHPParser extends Parser {
 							break;
 
 						default :
-							if ( cnt38 >= 1 ) break loop38;
+							if ( cnt44 >= 1 ) break loop44;
 							if (state.backtracking>0) {state.failed=true; return ;}
 								EarlyExitException eee =
-									new EarlyExitException(38, input);
+									new EarlyExitException(44, input);
 								throw eee;
 						}
-						cnt38++;
+						cnt44++;
 					} while (true);
 
-					match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_instructionWithoutBreakContinue1427); if (state.failed) return ;
+					match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_instructionWithoutBreakContinue1553); if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:279:4: instruction
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:307:4: instruction
 					{
-					pushFollow(FOLLOW_instruction_in_instructionWithoutBreakContinue1432);
+					pushFollow(FOLLOW_instruction_in_instructionWithoutBreakContinue1558);
 					instruction();
 					state._fsp--;
 					if (state.failed) return ;
@@ -2429,20 +3454,22 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "instructionInclBreakContinue"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:282:1: instructionInclBreakContinue : ( '{' ( instructionInclBreakContinue )+ '}' | instruction | ( 'break' | 'continue' ) ( Int )? ';' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:310:1: instructionInclBreakContinue : ( '{' ( instructionInclBreakContinue )+ '}' | instruction | ( 'break' | 'continue' ) ( Int )? ';' );
 	public final void instructionInclBreakContinue() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:283:2: ( '{' ( instructionInclBreakContinue )+ '}' | instruction | ( 'break' | 'continue' ) ( Int )? ';' )
-			int alt42=3;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:2: ( '{' ( instructionInclBreakContinue )+ '}' | instruction | ( 'break' | 'continue' ) ( Int )? ';' )
+			int alt48=3;
 			switch ( input.LA(1) ) {
 			case LeftCurlyBrace:
 				{
-				alt42=1;
+				alt48=1;
 				}
 				break;
 			case Do:
+			case Echo:
 			case For:
 			case Foreach:
+			case Identifier:
 			case If:
 			case MinusMinus:
 			case PlusPlus:
@@ -2458,43 +3485,42 @@ public class TSPHPParser extends Parser {
 			case TypeString:
 			case VariableId:
 			case While:
-			case 108:
 				{
-				alt42=2;
+				alt48=2;
 				}
 				break;
 			case Break:
 			case Continue:
 				{
-				alt42=3;
+				alt48=3;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 42, 0, input);
+					new NoViableAltException("", 48, 0, input);
 				throw nvae;
 			}
-			switch (alt42) {
+			switch (alt48) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:283:4: '{' ( instructionInclBreakContinue )+ '}'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:4: '{' ( instructionInclBreakContinue )+ '}'
 					{
-					match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_instructionInclBreakContinue1443); if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:283:8: ( instructionInclBreakContinue )+
-					int cnt40=0;
-					loop40:
+					match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_instructionInclBreakContinue1569); if (state.failed) return ;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:8: ( instructionInclBreakContinue )+
+					int cnt46=0;
+					loop46:
 					do {
-						int alt40=2;
-						int LA40_0 = input.LA(1);
-						if ( (LA40_0==Break||LA40_0==Continue||LA40_0==Do||(LA40_0 >= For && LA40_0 <= Foreach)||LA40_0==If||LA40_0==LeftCurlyBrace||LA40_0==MinusMinus||LA40_0==PlusPlus||LA40_0==Return||(LA40_0 >= Switch && LA40_0 <= VariableId)||LA40_0==While||LA40_0==108) ) {
-							alt40=1;
+						int alt46=2;
+						int LA46_0 = input.LA(1);
+						if ( (LA46_0==Break||LA46_0==Continue||LA46_0==Do||LA46_0==Echo||(LA46_0 >= For && LA46_0 <= Foreach)||(LA46_0 >= Identifier && LA46_0 <= If)||LA46_0==LeftCurlyBrace||LA46_0==MinusMinus||LA46_0==PlusPlus||LA46_0==Return||(LA46_0 >= Switch && LA46_0 <= VariableId)||LA46_0==While) ) {
+							alt46=1;
 						}
 
-						switch (alt40) {
+						switch (alt46) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:283:8: instructionInclBreakContinue
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:8: instructionInclBreakContinue
 							{
-							pushFollow(FOLLOW_instructionInclBreakContinue_in_instructionInclBreakContinue1445);
+							pushFollow(FOLLOW_instructionInclBreakContinue_in_instructionInclBreakContinue1571);
 							instructionInclBreakContinue();
 							state._fsp--;
 							if (state.failed) return ;
@@ -2502,29 +3528,29 @@ public class TSPHPParser extends Parser {
 							break;
 
 						default :
-							if ( cnt40 >= 1 ) break loop40;
+							if ( cnt46 >= 1 ) break loop46;
 							if (state.backtracking>0) {state.failed=true; return ;}
 								EarlyExitException eee =
-									new EarlyExitException(40, input);
+									new EarlyExitException(46, input);
 								throw eee;
 						}
-						cnt40++;
+						cnt46++;
 					} while (true);
 
-					match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_instructionInclBreakContinue1449); if (state.failed) return ;
+					match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_instructionInclBreakContinue1575); if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:284:4: instruction
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:312:4: instruction
 					{
-					pushFollow(FOLLOW_instruction_in_instructionInclBreakContinue1454);
+					pushFollow(FOLLOW_instruction_in_instructionInclBreakContinue1580);
 					instruction();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:285:4: ( 'break' | 'continue' ) ( Int )? ';'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:313:4: ( 'break' | 'continue' ) ( Int )? ';'
 					{
 					if ( input.LA(1)==Break||input.LA(1)==Continue ) {
 						input.consume();
@@ -2536,23 +3562,23 @@ public class TSPHPParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:285:25: ( Int )?
-					int alt41=2;
-					int LA41_0 = input.LA(1);
-					if ( (LA41_0==Int) ) {
-						alt41=1;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:313:25: ( Int )?
+					int alt47=2;
+					int LA47_0 = input.LA(1);
+					if ( (LA47_0==Int) ) {
+						alt47=1;
 					}
-					switch (alt41) {
+					switch (alt47) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:285:25: Int
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:313:25: Int
 							{
-							match(input,Int,FOLLOW_Int_in_instructionInclBreakContinue1465); if (state.failed) return ;
+							match(input,Int,FOLLOW_Int_in_instructionInclBreakContinue1591); if (state.failed) return ;
 							}
 							break;
 
 					}
 
-					match(input,Semicolon,FOLLOW_Semicolon_in_instructionInclBreakContinue1468); if (state.failed) return ;
+					match(input,Semicolon,FOLLOW_Semicolon_in_instructionInclBreakContinue1594); if (state.failed) return ;
 					}
 					break;
 
@@ -2572,19 +3598,20 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "instruction"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:288:1: instruction : ( variableAssignment ';' | variableDeclaration ';' | ifCondition | switchCondition | forLoop | foreachLoop | whileLoop | doWhileLoop | 'return' ( expression )? ';' | 'echo' expressionList ';' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:316:1: instruction : ( variableAssignment ';' | variableDeclaration ';' | ifCondition | switchCondition | forLoop | foreachLoop | whileLoop | doWhileLoop | 'return' ( expression )? ';' | 'echo' expressionList ';' );
 	public final void instruction() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:289:2: ( variableAssignment ';' | variableDeclaration ';' | ifCondition | switchCondition | forLoop | foreachLoop | whileLoop | doWhileLoop | 'return' ( expression )? ';' | 'echo' expressionList ';' )
-			int alt44=10;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:317:2: ( variableAssignment ';' | variableDeclaration ';' | ifCondition | switchCondition | forLoop | foreachLoop | whileLoop | doWhileLoop | 'return' ( expression )? ';' | 'echo' expressionList ';' )
+			int alt50=10;
 			switch ( input.LA(1) ) {
 			case MinusMinus:
 			case PlusPlus:
 			case VariableId:
 				{
-				alt44=1;
+				alt50=1;
 				}
 				break;
+			case Identifier:
 			case TypeArray:
 			case TypeBool:
 			case TypeBoolean:
@@ -2594,145 +3621,145 @@ public class TSPHPParser extends Parser {
 			case TypeResource:
 			case TypeString:
 				{
-				alt44=2;
+				alt50=2;
 				}
 				break;
 			case If:
 				{
-				alt44=3;
+				alt50=3;
 				}
 				break;
 			case Switch:
 				{
-				alt44=4;
+				alt50=4;
 				}
 				break;
 			case For:
 				{
-				alt44=5;
+				alt50=5;
 				}
 				break;
 			case Foreach:
 				{
-				alt44=6;
+				alt50=6;
 				}
 				break;
 			case While:
 				{
-				alt44=7;
+				alt50=7;
 				}
 				break;
 			case Do:
 				{
-				alt44=8;
+				alt50=8;
 				}
 				break;
 			case Return:
 				{
-				alt44=9;
+				alt50=9;
 				}
 				break;
-			case 108:
+			case Echo:
 				{
-				alt44=10;
+				alt50=10;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 44, 0, input);
+					new NoViableAltException("", 50, 0, input);
 				throw nvae;
 			}
-			switch (alt44) {
+			switch (alt50) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:289:4: variableAssignment ';'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:317:4: variableAssignment ';'
 					{
-					pushFollow(FOLLOW_variableAssignment_in_instruction1480);
+					pushFollow(FOLLOW_variableAssignment_in_instruction1606);
 					variableAssignment();
 					state._fsp--;
 					if (state.failed) return ;
-					match(input,Semicolon,FOLLOW_Semicolon_in_instruction1482); if (state.failed) return ;
+					match(input,Semicolon,FOLLOW_Semicolon_in_instruction1608); if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:290:4: variableDeclaration ';'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:318:4: variableDeclaration ';'
 					{
-					pushFollow(FOLLOW_variableDeclaration_in_instruction1487);
+					pushFollow(FOLLOW_variableDeclaration_in_instruction1613);
 					variableDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
-					match(input,Semicolon,FOLLOW_Semicolon_in_instruction1489); if (state.failed) return ;
+					match(input,Semicolon,FOLLOW_Semicolon_in_instruction1615); if (state.failed) return ;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:291:4: ifCondition
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:319:4: ifCondition
 					{
-					pushFollow(FOLLOW_ifCondition_in_instruction1494);
+					pushFollow(FOLLOW_ifCondition_in_instruction1620);
 					ifCondition();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 4 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:292:4: switchCondition
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:320:4: switchCondition
 					{
-					pushFollow(FOLLOW_switchCondition_in_instruction1499);
+					pushFollow(FOLLOW_switchCondition_in_instruction1625);
 					switchCondition();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 5 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:293:4: forLoop
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:321:4: forLoop
 					{
-					pushFollow(FOLLOW_forLoop_in_instruction1504);
+					pushFollow(FOLLOW_forLoop_in_instruction1630);
 					forLoop();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 6 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:294:4: foreachLoop
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:322:4: foreachLoop
 					{
-					pushFollow(FOLLOW_foreachLoop_in_instruction1509);
+					pushFollow(FOLLOW_foreachLoop_in_instruction1635);
 					foreachLoop();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 7 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:295:4: whileLoop
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:323:4: whileLoop
 					{
-					pushFollow(FOLLOW_whileLoop_in_instruction1514);
+					pushFollow(FOLLOW_whileLoop_in_instruction1640);
 					whileLoop();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 8 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:296:4: doWhileLoop
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:324:4: doWhileLoop
 					{
-					pushFollow(FOLLOW_doWhileLoop_in_instruction1519);
+					pushFollow(FOLLOW_doWhileLoop_in_instruction1645);
 					doWhileLoop();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 9 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:297:4: 'return' ( expression )? ';'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:325:4: 'return' ( expression )? ';'
 					{
-					match(input,Return,FOLLOW_Return_in_instruction1524); if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:297:13: ( expression )?
-					int alt43=2;
-					int LA43_0 = input.LA(1);
-					if ( (LA43_0==At||LA43_0==BitwiseNot||LA43_0==Bool||LA43_0==Float||LA43_0==Int||(LA43_0 >= LeftParanthesis && LA43_0 <= LeftSquareBrace)||LA43_0==LogicNot||LA43_0==Minus||LA43_0==MinusMinus||LA43_0==Plus||LA43_0==PlusPlus||LA43_0==String||LA43_0==TypeArray||LA43_0==VariableId) ) {
-						alt43=1;
+					match(input,Return,FOLLOW_Return_in_instruction1650); if (state.failed) return ;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:325:13: ( expression )?
+					int alt49=2;
+					int LA49_0 = input.LA(1);
+					if ( (LA49_0==At||LA49_0==BitwiseNot||LA49_0==Bool||LA49_0==Float||LA49_0==Int||(LA49_0 >= LeftParanthesis && LA49_0 <= LeftSquareBrace)||LA49_0==LogicNot||LA49_0==Minus||LA49_0==MinusMinus||LA49_0==Null||LA49_0==Plus||LA49_0==PlusPlus||LA49_0==String||LA49_0==TypeArray||LA49_0==VariableId) ) {
+						alt49=1;
 					}
-					switch (alt43) {
+					switch (alt49) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:297:13: expression
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:325:13: expression
 							{
-							pushFollow(FOLLOW_expression_in_instruction1526);
+							pushFollow(FOLLOW_expression_in_instruction1652);
 							expression();
 							state._fsp--;
 							if (state.failed) return ;
@@ -2741,18 +3768,18 @@ public class TSPHPParser extends Parser {
 
 					}
 
-					match(input,Semicolon,FOLLOW_Semicolon_in_instruction1529); if (state.failed) return ;
+					match(input,Semicolon,FOLLOW_Semicolon_in_instruction1655); if (state.failed) return ;
 					}
 					break;
 				case 10 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:298:4: 'echo' expressionList ';'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:326:4: 'echo' expressionList ';'
 					{
-					match(input,108,FOLLOW_108_in_instruction1534); if (state.failed) return ;
-					pushFollow(FOLLOW_expressionList_in_instruction1536);
+					match(input,Echo,FOLLOW_Echo_in_instruction1660); if (state.failed) return ;
+					pushFollow(FOLLOW_expressionList_in_instruction1662);
 					expressionList();
 					state._fsp--;
 					if (state.failed) return ;
-					match(input,Semicolon,FOLLOW_Semicolon_in_instruction1538); if (state.failed) return ;
+					match(input,Semicolon,FOLLOW_Semicolon_in_instruction1664); if (state.failed) return ;
 					}
 					break;
 
@@ -2772,35 +3799,41 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "expressionList"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:301:1: expressionList : expression ( ',' expression )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:329:1: expressionList : expression ( ',' expression )* ;
 	public final void expressionList() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:302:2: ( expression ( ',' expression )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:302:4: expression ( ',' expression )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:330:2: ( expression ( ',' expression )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:330:4: expression ( ',' expression )*
 			{
-			pushFollow(FOLLOW_expression_in_expressionList1550);
+			pushFollow(FOLLOW_expression_in_expressionList1676);
 			expression();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:302:15: ( ',' expression )?
-			int alt45=2;
-			int LA45_0 = input.LA(1);
-			if ( (LA45_0==Comma) ) {
-				alt45=1;
-			}
-			switch (alt45) {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:330:15: ( ',' expression )*
+			loop51:
+			do {
+				int alt51=2;
+				int LA51_0 = input.LA(1);
+				if ( (LA51_0==Comma) ) {
+					alt51=1;
+				}
+
+				switch (alt51) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:302:16: ',' expression
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:330:16: ',' expression
 					{
-					match(input,Comma,FOLLOW_Comma_in_expressionList1553); if (state.failed) return ;
-					pushFollow(FOLLOW_expression_in_expressionList1555);
+					match(input,Comma,FOLLOW_Comma_in_expressionList1679); if (state.failed) return ;
+					pushFollow(FOLLOW_expression_in_expressionList1681);
 					expression();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 
-			}
+				default :
+					break loop51;
+				}
+			} while (true);
 
 			}
 
@@ -2819,19 +3852,19 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "variableAssignment"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:304:1: variableAssignment : ( VariableId assignmentOperator expression | postIncrementDecrement | preIncrementDecrement );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:332:1: variableAssignment : ( VariableId assignmentOperator expression | postIncrementDecrement | preIncrementDecrement );
 	public final void variableAssignment() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:305:2: ( VariableId assignmentOperator expression | postIncrementDecrement | preIncrementDecrement )
-			int alt46=3;
-			int LA46_0 = input.LA(1);
-			if ( (LA46_0==VariableId) ) {
-				int LA46_1 = input.LA(2);
-				if ( (LA46_1==MinusMinus||LA46_1==PlusPlus) ) {
-					alt46=2;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:333:2: ( VariableId assignmentOperator expression | postIncrementDecrement | preIncrementDecrement )
+			int alt52=3;
+			int LA52_0 = input.LA(1);
+			if ( (LA52_0==VariableId) ) {
+				int LA52_1 = input.LA(2);
+				if ( (LA52_1==MinusMinus||LA52_1==PlusPlus) ) {
+					alt52=2;
 				}
-				else if ( (LA46_1==Assign||LA46_1==BitwiseAndEqual||LA46_1==BitwiseOrEqual||LA46_1==BitwiseXorEqual||LA46_1==DivideEqual||LA46_1==DotEqual||LA46_1==MinusEqual||LA46_1==ModuloEqual||LA46_1==MultiplyEqual||LA46_1==PlusEqual||LA46_1==ShiftLeftEqual||LA46_1==ShiftRightEqual) ) {
-					alt46=1;
+				else if ( (LA52_1==Assign||LA52_1==BitwiseAndEqual||LA52_1==BitwiseOrEqual||LA52_1==BitwiseXorEqual||LA52_1==DivideEqual||LA52_1==DotEqual||LA52_1==MinusEqual||LA52_1==ModuloEqual||LA52_1==MultiplyEqual||LA52_1==PlusEqual||LA52_1==ShiftLeftEqual||LA52_1==ShiftRightEqual) ) {
+					alt52=1;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return ;}
@@ -2839,50 +3872,50 @@ public class TSPHPParser extends Parser {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 46, 1, input);
+							new NoViableAltException("", 52, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
 					}
 				}
 			}
-			else if ( (LA46_0==MinusMinus||LA46_0==PlusPlus) ) {
-				alt46=3;
+			else if ( (LA52_0==MinusMinus||LA52_0==PlusPlus) ) {
+				alt52=3;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 46, 0, input);
+					new NoViableAltException("", 52, 0, input);
 				throw nvae;
 			}
-			switch (alt46) {
+			switch (alt52) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:305:4: VariableId assignmentOperator expression
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:333:4: VariableId assignmentOperator expression
 					{
-					match(input,VariableId,FOLLOW_VariableId_in_variableAssignment1566); if (state.failed) return ;
-					pushFollow(FOLLOW_assignmentOperator_in_variableAssignment1568);
+					match(input,VariableId,FOLLOW_VariableId_in_variableAssignment1692); if (state.failed) return ;
+					pushFollow(FOLLOW_assignmentOperator_in_variableAssignment1694);
 					assignmentOperator();
 					state._fsp--;
 					if (state.failed) return ;
-					pushFollow(FOLLOW_expression_in_variableAssignment1570);
+					pushFollow(FOLLOW_expression_in_variableAssignment1696);
 					expression();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:306:4: postIncrementDecrement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:334:4: postIncrementDecrement
 					{
-					pushFollow(FOLLOW_postIncrementDecrement_in_variableAssignment1575);
+					pushFollow(FOLLOW_postIncrementDecrement_in_variableAssignment1701);
 					postIncrementDecrement();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:307:4: preIncrementDecrement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:335:4: preIncrementDecrement
 					{
-					pushFollow(FOLLOW_preIncrementDecrement_in_variableAssignment1580);
+					pushFollow(FOLLOW_preIncrementDecrement_in_variableAssignment1706);
 					preIncrementDecrement();
 					state._fsp--;
 					if (state.failed) return ;
@@ -2905,10 +3938,10 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "assignmentOperator"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:310:1: assignmentOperator : ( '=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '%=' | '.=' | '<<=' | '>>=' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:338:1: assignmentOperator : ( '=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '%=' | '.=' | '<<=' | '>>=' );
 	public final void assignmentOperator() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:2: ( '=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '%=' | '.=' | '<<=' | '>>=' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:339:2: ( '=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '%=' | '.=' | '<<=' | '>>=' )
 			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
 			{
 			if ( input.LA(1)==Assign||input.LA(1)==BitwiseAndEqual||input.LA(1)==BitwiseOrEqual||input.LA(1)==BitwiseXorEqual||input.LA(1)==DivideEqual||input.LA(1)==DotEqual||input.LA(1)==MinusEqual||input.LA(1)==ModuloEqual||input.LA(1)==MultiplyEqual||input.LA(1)==PlusEqual||input.LA(1)==ShiftLeftEqual||input.LA(1)==ShiftRightEqual ) {
@@ -2938,13 +3971,13 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "postIncrementDecrement"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:325:1: postIncrementDecrement : VariableId ( '++' | '--' ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:353:1: postIncrementDecrement : VariableId ( '++' | '--' ) ;
 	public final void postIncrementDecrement() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:326:2: ( VariableId ( '++' | '--' ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:326:4: VariableId ( '++' | '--' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:354:2: ( VariableId ( '++' | '--' ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:354:4: VariableId ( '++' | '--' )
 			{
-			match(input,VariableId,FOLLOW_VariableId_in_postIncrementDecrement1658); if (state.failed) return ;
+			match(input,VariableId,FOLLOW_VariableId_in_postIncrementDecrement1784); if (state.failed) return ;
 			if ( input.LA(1)==MinusMinus||input.LA(1)==PlusPlus ) {
 				input.consume();
 				state.errorRecovery=false;
@@ -2972,11 +4005,11 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "preIncrementDecrement"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:328:1: preIncrementDecrement : ( '++' | '--' ) VariableId ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:356:1: preIncrementDecrement : ( '++' | '--' ) VariableId ;
 	public final void preIncrementDecrement() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:329:2: ( ( '++' | '--' ) VariableId )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:329:4: ( '++' | '--' ) VariableId
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:357:2: ( ( '++' | '--' ) VariableId )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:357:4: ( '++' | '--' ) VariableId
 			{
 			if ( input.LA(1)==MinusMinus||input.LA(1)==PlusPlus ) {
 				input.consume();
@@ -2988,7 +4021,7 @@ public class TSPHPParser extends Parser {
 				MismatchedSetException mse = new MismatchedSetException(null,input);
 				throw mse;
 			}
-			match(input,VariableId,FOLLOW_VariableId_in_preIncrementDecrement1680); if (state.failed) return ;
+			match(input,VariableId,FOLLOW_VariableId_in_preIncrementDecrement1806); if (state.failed) return ;
 			}
 
 		}
@@ -3006,29 +4039,29 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "variableDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:332:1: variableDeclaration : primitiveTypes VariableId ( '=' expression )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:360:1: variableDeclaration : allTypes VariableId ( '=' expression )? ;
 	public final void variableDeclaration() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:333:2: ( primitiveTypes VariableId ( '=' expression )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:333:4: primitiveTypes VariableId ( '=' expression )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:361:2: ( allTypes VariableId ( '=' expression )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:361:4: allTypes VariableId ( '=' expression )?
 			{
-			pushFollow(FOLLOW_primitiveTypes_in_variableDeclaration1692);
-			primitiveTypes();
+			pushFollow(FOLLOW_allTypes_in_variableDeclaration1818);
+			allTypes();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,VariableId,FOLLOW_VariableId_in_variableDeclaration1694); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:333:30: ( '=' expression )?
-			int alt47=2;
-			int LA47_0 = input.LA(1);
-			if ( (LA47_0==Assign) ) {
-				alt47=1;
+			match(input,VariableId,FOLLOW_VariableId_in_variableDeclaration1820); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:361:24: ( '=' expression )?
+			int alt53=2;
+			int LA53_0 = input.LA(1);
+			if ( (LA53_0==Assign) ) {
+				alt53=1;
 			}
-			switch (alt47) {
+			switch (alt53) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:333:31: '=' expression
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:361:25: '=' expression
 					{
-					match(input,Assign,FOLLOW_Assign_in_variableDeclaration1697); if (state.failed) return ;
-					pushFollow(FOLLOW_expression_in_variableDeclaration1699);
+					match(input,Assign,FOLLOW_Assign_in_variableDeclaration1823); if (state.failed) return ;
+					pushFollow(FOLLOW_expression_in_variableDeclaration1825);
 					expression();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3054,13 +4087,13 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "expression"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:335:1: expression : logicOrWeak ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:363:1: expression : logicOrWeak ;
 	public final void expression() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:336:2: ( logicOrWeak )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:336:4: logicOrWeak
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:364:2: ( logicOrWeak )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:364:4: logicOrWeak
 			{
-			pushFollow(FOLLOW_logicOrWeak_in_expression1711);
+			pushFollow(FOLLOW_logicOrWeak_in_expression1837);
 			logicOrWeak();
 			state._fsp--;
 			if (state.failed) return ;
@@ -3081,31 +4114,31 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "logicOrWeak"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:338:1: logicOrWeak : logicXorWeak ( 'or' logicXorWeak )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:366:1: logicOrWeak : logicXorWeak ( 'or' logicXorWeak )* ;
 	public final void logicOrWeak() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:339:2: ( logicXorWeak ( 'or' logicXorWeak )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:339:4: logicXorWeak ( 'or' logicXorWeak )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:367:2: ( logicXorWeak ( 'or' logicXorWeak )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:367:4: logicXorWeak ( 'or' logicXorWeak )*
 			{
-			pushFollow(FOLLOW_logicXorWeak_in_logicOrWeak1720);
+			pushFollow(FOLLOW_logicXorWeak_in_logicOrWeak1846);
 			logicXorWeak();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:339:17: ( 'or' logicXorWeak )*
-			loop48:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:367:17: ( 'or' logicXorWeak )*
+			loop54:
 			do {
-				int alt48=2;
-				int LA48_0 = input.LA(1);
-				if ( (LA48_0==LogicOrWeak) ) {
-					alt48=1;
+				int alt54=2;
+				int LA54_0 = input.LA(1);
+				if ( (LA54_0==LogicOrWeak) ) {
+					alt54=1;
 				}
 
-				switch (alt48) {
+				switch (alt54) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:339:18: 'or' logicXorWeak
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:367:18: 'or' logicXorWeak
 					{
-					match(input,LogicOrWeak,FOLLOW_LogicOrWeak_in_logicOrWeak1723); if (state.failed) return ;
-					pushFollow(FOLLOW_logicXorWeak_in_logicOrWeak1725);
+					match(input,LogicOrWeak,FOLLOW_LogicOrWeak_in_logicOrWeak1849); if (state.failed) return ;
+					pushFollow(FOLLOW_logicXorWeak_in_logicOrWeak1851);
 					logicXorWeak();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3113,7 +4146,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop48;
+					break loop54;
 				}
 			} while (true);
 
@@ -3134,31 +4167,31 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "logicXorWeak"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:341:1: logicXorWeak : logicAndWeak ( 'xor' logicAndWeak )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:369:1: logicXorWeak : logicAndWeak ( 'xor' logicAndWeak )* ;
 	public final void logicXorWeak() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:342:2: ( logicAndWeak ( 'xor' logicAndWeak )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:342:4: logicAndWeak ( 'xor' logicAndWeak )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:370:2: ( logicAndWeak ( 'xor' logicAndWeak )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:370:4: logicAndWeak ( 'xor' logicAndWeak )*
 			{
-			pushFollow(FOLLOW_logicAndWeak_in_logicXorWeak1738);
+			pushFollow(FOLLOW_logicAndWeak_in_logicXorWeak1864);
 			logicAndWeak();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:342:17: ( 'xor' logicAndWeak )*
-			loop49:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:370:17: ( 'xor' logicAndWeak )*
+			loop55:
 			do {
-				int alt49=2;
-				int LA49_0 = input.LA(1);
-				if ( (LA49_0==LogicXorWeak) ) {
-					alt49=1;
+				int alt55=2;
+				int LA55_0 = input.LA(1);
+				if ( (LA55_0==LogicXorWeak) ) {
+					alt55=1;
 				}
 
-				switch (alt49) {
+				switch (alt55) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:342:18: 'xor' logicAndWeak
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:370:18: 'xor' logicAndWeak
 					{
-					match(input,LogicXorWeak,FOLLOW_LogicXorWeak_in_logicXorWeak1741); if (state.failed) return ;
-					pushFollow(FOLLOW_logicAndWeak_in_logicXorWeak1743);
+					match(input,LogicXorWeak,FOLLOW_LogicXorWeak_in_logicXorWeak1867); if (state.failed) return ;
+					pushFollow(FOLLOW_logicAndWeak_in_logicXorWeak1869);
 					logicAndWeak();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3166,7 +4199,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop49;
+					break loop55;
 				}
 			} while (true);
 
@@ -3187,31 +4220,31 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "logicAndWeak"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:344:1: logicAndWeak : assignment ( 'and' assignment )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:372:1: logicAndWeak : assignment ( 'and' assignment )* ;
 	public final void logicAndWeak() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:345:2: ( assignment ( 'and' assignment )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:345:4: assignment ( 'and' assignment )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:373:2: ( assignment ( 'and' assignment )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:373:4: assignment ( 'and' assignment )*
 			{
-			pushFollow(FOLLOW_assignment_in_logicAndWeak1756);
+			pushFollow(FOLLOW_assignment_in_logicAndWeak1882);
 			assignment();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:345:15: ( 'and' assignment )*
-			loop50:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:373:15: ( 'and' assignment )*
+			loop56:
 			do {
-				int alt50=2;
-				int LA50_0 = input.LA(1);
-				if ( (LA50_0==LogicAndWeak) ) {
-					alt50=1;
+				int alt56=2;
+				int LA56_0 = input.LA(1);
+				if ( (LA56_0==LogicAndWeak) ) {
+					alt56=1;
 				}
 
-				switch (alt50) {
+				switch (alt56) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:345:16: 'and' assignment
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:373:16: 'and' assignment
 					{
-					match(input,LogicAndWeak,FOLLOW_LogicAndWeak_in_logicAndWeak1759); if (state.failed) return ;
-					pushFollow(FOLLOW_assignment_in_logicAndWeak1761);
+					match(input,LogicAndWeak,FOLLOW_LogicAndWeak_in_logicAndWeak1885); if (state.failed) return ;
+					pushFollow(FOLLOW_assignment_in_logicAndWeak1887);
 					assignment();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3219,7 +4252,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop50;
+					break loop56;
 				}
 			} while (true);
 
@@ -3240,34 +4273,34 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "assignment"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:347:1: assignment : ternary ( assignmentOperator ternary )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:375:1: assignment : ternary ( assignmentOperator ternary )* ;
 	public final void assignment() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:348:2: ( ternary ( assignmentOperator ternary )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:348:4: ternary ( assignmentOperator ternary )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:2: ( ternary ( assignmentOperator ternary )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:4: ternary ( assignmentOperator ternary )*
 			{
-			pushFollow(FOLLOW_ternary_in_assignment1772);
+			pushFollow(FOLLOW_ternary_in_assignment1898);
 			ternary();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:348:12: ( assignmentOperator ternary )*
-			loop51:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:12: ( assignmentOperator ternary )*
+			loop57:
 			do {
-				int alt51=2;
-				int LA51_0 = input.LA(1);
-				if ( (LA51_0==Assign||LA51_0==BitwiseAndEqual||LA51_0==BitwiseOrEqual||LA51_0==BitwiseXorEqual||LA51_0==DivideEqual||LA51_0==DotEqual||LA51_0==MinusEqual||LA51_0==ModuloEqual||LA51_0==MultiplyEqual||LA51_0==PlusEqual||LA51_0==ShiftLeftEqual||LA51_0==ShiftRightEqual) ) {
-					alt51=1;
+				int alt57=2;
+				int LA57_0 = input.LA(1);
+				if ( (LA57_0==Assign||LA57_0==BitwiseAndEqual||LA57_0==BitwiseOrEqual||LA57_0==BitwiseXorEqual||LA57_0==DivideEqual||LA57_0==DotEqual||LA57_0==MinusEqual||LA57_0==ModuloEqual||LA57_0==MultiplyEqual||LA57_0==PlusEqual||LA57_0==ShiftLeftEqual||LA57_0==ShiftRightEqual) ) {
+					alt57=1;
 				}
 
-				switch (alt51) {
+				switch (alt57) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:348:13: assignmentOperator ternary
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:13: assignmentOperator ternary
 					{
-					pushFollow(FOLLOW_assignmentOperator_in_assignment1775);
+					pushFollow(FOLLOW_assignmentOperator_in_assignment1901);
 					assignmentOperator();
 					state._fsp--;
 					if (state.failed) return ;
-					pushFollow(FOLLOW_ternary_in_assignment1777);
+					pushFollow(FOLLOW_ternary_in_assignment1903);
 					ternary();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3275,7 +4308,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop51;
+					break loop57;
 				}
 			} while (true);
 
@@ -3296,33 +4329,33 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "ternary"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:350:1: ternary : logicOr ( '?' expression ':' logicOr )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:378:1: ternary : logicOr ( '?' expression ':' logicOr )? ;
 	public final void ternary() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:350:9: ( logicOr ( '?' expression ':' logicOr )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:350:11: logicOr ( '?' expression ':' logicOr )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:378:9: ( logicOr ( '?' expression ':' logicOr )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:378:11: logicOr ( '?' expression ':' logicOr )?
 			{
-			pushFollow(FOLLOW_logicOr_in_ternary1787);
+			pushFollow(FOLLOW_logicOr_in_ternary1913);
 			logicOr();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:350:19: ( '?' expression ':' logicOr )?
-			int alt52=2;
-			int LA52_0 = input.LA(1);
-			if ( (LA52_0==QuestionMark) ) {
-				alt52=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:378:19: ( '?' expression ':' logicOr )?
+			int alt58=2;
+			int LA58_0 = input.LA(1);
+			if ( (LA58_0==QuestionMark) ) {
+				alt58=1;
 			}
-			switch (alt52) {
+			switch (alt58) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:350:20: '?' expression ':' logicOr
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:378:20: '?' expression ':' logicOr
 					{
-					match(input,QuestionMark,FOLLOW_QuestionMark_in_ternary1790); if (state.failed) return ;
-					pushFollow(FOLLOW_expression_in_ternary1792);
+					match(input,QuestionMark,FOLLOW_QuestionMark_in_ternary1916); if (state.failed) return ;
+					pushFollow(FOLLOW_expression_in_ternary1918);
 					expression();
 					state._fsp--;
 					if (state.failed) return ;
-					match(input,Colon,FOLLOW_Colon_in_ternary1794); if (state.failed) return ;
-					pushFollow(FOLLOW_logicOr_in_ternary1796);
+					match(input,Colon,FOLLOW_Colon_in_ternary1920); if (state.failed) return ;
+					pushFollow(FOLLOW_logicOr_in_ternary1922);
 					logicOr();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3348,31 +4381,31 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "logicOr"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:352:1: logicOr : logicAnd ( '||' logicAnd )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:380:1: logicOr : logicAnd ( '||' logicAnd )* ;
 	public final void logicOr() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:352:9: ( logicAnd ( '||' logicAnd )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:352:11: logicAnd ( '||' logicAnd )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:380:9: ( logicAnd ( '||' logicAnd )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:380:11: logicAnd ( '||' logicAnd )*
 			{
-			pushFollow(FOLLOW_logicAnd_in_logicOr1806);
+			pushFollow(FOLLOW_logicAnd_in_logicOr1932);
 			logicAnd();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:352:20: ( '||' logicAnd )*
-			loop53:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:380:20: ( '||' logicAnd )*
+			loop59:
 			do {
-				int alt53=2;
-				int LA53_0 = input.LA(1);
-				if ( (LA53_0==LogicOr) ) {
-					alt53=1;
+				int alt59=2;
+				int LA59_0 = input.LA(1);
+				if ( (LA59_0==LogicOr) ) {
+					alt59=1;
 				}
 
-				switch (alt53) {
+				switch (alt59) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:352:21: '||' logicAnd
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:380:21: '||' logicAnd
 					{
-					match(input,LogicOr,FOLLOW_LogicOr_in_logicOr1809); if (state.failed) return ;
-					pushFollow(FOLLOW_logicAnd_in_logicOr1811);
+					match(input,LogicOr,FOLLOW_LogicOr_in_logicOr1935); if (state.failed) return ;
+					pushFollow(FOLLOW_logicAnd_in_logicOr1937);
 					logicAnd();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3380,7 +4413,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop53;
+					break loop59;
 				}
 			} while (true);
 
@@ -3401,31 +4434,31 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "logicAnd"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:354:1: logicAnd : bitwiseOr ( '&&' bitwiseOr )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:382:1: logicAnd : bitwiseOr ( '&&' bitwiseOr )* ;
 	public final void logicAnd() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:354:9: ( bitwiseOr ( '&&' bitwiseOr )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:354:11: bitwiseOr ( '&&' bitwiseOr )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:382:9: ( bitwiseOr ( '&&' bitwiseOr )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:382:11: bitwiseOr ( '&&' bitwiseOr )*
 			{
-			pushFollow(FOLLOW_bitwiseOr_in_logicAnd1820);
+			pushFollow(FOLLOW_bitwiseOr_in_logicAnd1946);
 			bitwiseOr();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:354:21: ( '&&' bitwiseOr )*
-			loop54:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:382:21: ( '&&' bitwiseOr )*
+			loop60:
 			do {
-				int alt54=2;
-				int LA54_0 = input.LA(1);
-				if ( (LA54_0==LogicAnd) ) {
-					alt54=1;
+				int alt60=2;
+				int LA60_0 = input.LA(1);
+				if ( (LA60_0==LogicAnd) ) {
+					alt60=1;
 				}
 
-				switch (alt54) {
+				switch (alt60) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:354:22: '&&' bitwiseOr
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:382:22: '&&' bitwiseOr
 					{
-					match(input,LogicAnd,FOLLOW_LogicAnd_in_logicAnd1823); if (state.failed) return ;
-					pushFollow(FOLLOW_bitwiseOr_in_logicAnd1825);
+					match(input,LogicAnd,FOLLOW_LogicAnd_in_logicAnd1949); if (state.failed) return ;
+					pushFollow(FOLLOW_bitwiseOr_in_logicAnd1951);
 					bitwiseOr();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3433,7 +4466,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop54;
+					break loop60;
 				}
 			} while (true);
 
@@ -3454,31 +4487,31 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "bitwiseOr"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:356:1: bitwiseOr : bitwiseXor ( '|' bitwiseXor )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:384:1: bitwiseOr : bitwiseXor ( '|' bitwiseXor )* ;
 	public final void bitwiseOr() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:357:2: ( bitwiseXor ( '|' bitwiseXor )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:357:4: bitwiseXor ( '|' bitwiseXor )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:2: ( bitwiseXor ( '|' bitwiseXor )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:4: bitwiseXor ( '|' bitwiseXor )*
 			{
-			pushFollow(FOLLOW_bitwiseXor_in_bitwiseOr1836);
+			pushFollow(FOLLOW_bitwiseXor_in_bitwiseOr1962);
 			bitwiseXor();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:357:15: ( '|' bitwiseXor )*
-			loop55:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:15: ( '|' bitwiseXor )*
+			loop61:
 			do {
-				int alt55=2;
-				int LA55_0 = input.LA(1);
-				if ( (LA55_0==BitwiseOr) ) {
-					alt55=1;
+				int alt61=2;
+				int LA61_0 = input.LA(1);
+				if ( (LA61_0==BitwiseOr) ) {
+					alt61=1;
 				}
 
-				switch (alt55) {
+				switch (alt61) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:357:16: '|' bitwiseXor
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:16: '|' bitwiseXor
 					{
-					match(input,BitwiseOr,FOLLOW_BitwiseOr_in_bitwiseOr1839); if (state.failed) return ;
-					pushFollow(FOLLOW_bitwiseXor_in_bitwiseOr1841);
+					match(input,BitwiseOr,FOLLOW_BitwiseOr_in_bitwiseOr1965); if (state.failed) return ;
+					pushFollow(FOLLOW_bitwiseXor_in_bitwiseOr1967);
 					bitwiseXor();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3486,7 +4519,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop55;
+					break loop61;
 				}
 			} while (true);
 
@@ -3507,31 +4540,31 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "bitwiseXor"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:359:1: bitwiseXor : bitwiseAnd ( '^' bitwiseAnd )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:387:1: bitwiseXor : bitwiseAnd ( '^' bitwiseAnd )* ;
 	public final void bitwiseXor() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:360:2: ( bitwiseAnd ( '^' bitwiseAnd )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:360:4: bitwiseAnd ( '^' bitwiseAnd )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:388:2: ( bitwiseAnd ( '^' bitwiseAnd )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:388:4: bitwiseAnd ( '^' bitwiseAnd )*
 			{
-			pushFollow(FOLLOW_bitwiseAnd_in_bitwiseXor1852);
+			pushFollow(FOLLOW_bitwiseAnd_in_bitwiseXor1978);
 			bitwiseAnd();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:360:15: ( '^' bitwiseAnd )*
-			loop56:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:388:15: ( '^' bitwiseAnd )*
+			loop62:
 			do {
-				int alt56=2;
-				int LA56_0 = input.LA(1);
-				if ( (LA56_0==BitwiseXor) ) {
-					alt56=1;
+				int alt62=2;
+				int LA62_0 = input.LA(1);
+				if ( (LA62_0==BitwiseXor) ) {
+					alt62=1;
 				}
 
-				switch (alt56) {
+				switch (alt62) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:360:16: '^' bitwiseAnd
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:388:16: '^' bitwiseAnd
 					{
-					match(input,BitwiseXor,FOLLOW_BitwiseXor_in_bitwiseXor1855); if (state.failed) return ;
-					pushFollow(FOLLOW_bitwiseAnd_in_bitwiseXor1857);
+					match(input,BitwiseXor,FOLLOW_BitwiseXor_in_bitwiseXor1981); if (state.failed) return ;
+					pushFollow(FOLLOW_bitwiseAnd_in_bitwiseXor1983);
 					bitwiseAnd();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3539,7 +4572,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop56;
+					break loop62;
 				}
 			} while (true);
 
@@ -3560,31 +4593,31 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "bitwiseAnd"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:362:1: bitwiseAnd : equality ( '&' equality )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:390:1: bitwiseAnd : equality ( '&' equality )* ;
 	public final void bitwiseAnd() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:363:2: ( equality ( '&' equality )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:363:4: equality ( '&' equality )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:2: ( equality ( '&' equality )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:4: equality ( '&' equality )*
 			{
-			pushFollow(FOLLOW_equality_in_bitwiseAnd1868);
+			pushFollow(FOLLOW_equality_in_bitwiseAnd1994);
 			equality();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:363:13: ( '&' equality )*
-			loop57:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:13: ( '&' equality )*
+			loop63:
 			do {
-				int alt57=2;
-				int LA57_0 = input.LA(1);
-				if ( (LA57_0==BitwiseAnd) ) {
-					alt57=1;
+				int alt63=2;
+				int LA63_0 = input.LA(1);
+				if ( (LA63_0==BitwiseAnd) ) {
+					alt63=1;
 				}
 
-				switch (alt57) {
+				switch (alt63) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:363:14: '&' equality
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:14: '&' equality
 					{
-					match(input,BitwiseAnd,FOLLOW_BitwiseAnd_in_bitwiseAnd1871); if (state.failed) return ;
-					pushFollow(FOLLOW_equality_in_bitwiseAnd1873);
+					match(input,BitwiseAnd,FOLLOW_BitwiseAnd_in_bitwiseAnd1997); if (state.failed) return ;
+					pushFollow(FOLLOW_equality_in_bitwiseAnd1999);
 					equality();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3592,7 +4625,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop57;
+					break loop63;
 				}
 			} while (true);
 
@@ -3613,34 +4646,34 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "equality"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:365:1: equality : comparison ( equalityOperator comparison )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:1: equality : comparison ( equalityOperator comparison )* ;
 	public final void equality() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:365:9: ( comparison ( equalityOperator comparison )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:365:11: comparison ( equalityOperator comparison )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:9: ( comparison ( equalityOperator comparison )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:11: comparison ( equalityOperator comparison )*
 			{
-			pushFollow(FOLLOW_comparison_in_equality1882);
+			pushFollow(FOLLOW_comparison_in_equality2008);
 			comparison();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:365:22: ( equalityOperator comparison )*
-			loop58:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:22: ( equalityOperator comparison )*
+			loop64:
 			do {
-				int alt58=2;
-				int LA58_0 = input.LA(1);
-				if ( (LA58_0==Equal||LA58_0==Identical||(LA58_0 >= NotEqual && LA58_0 <= NotIdentical)) ) {
-					alt58=1;
+				int alt64=2;
+				int LA64_0 = input.LA(1);
+				if ( (LA64_0==Equal||LA64_0==Identical||(LA64_0 >= NotEqual && LA64_0 <= NotIdentical)) ) {
+					alt64=1;
 				}
 
-				switch (alt58) {
+				switch (alt64) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:365:23: equalityOperator comparison
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:23: equalityOperator comparison
 					{
-					pushFollow(FOLLOW_equalityOperator_in_equality1885);
+					pushFollow(FOLLOW_equalityOperator_in_equality2011);
 					equalityOperator();
 					state._fsp--;
 					if (state.failed) return ;
-					pushFollow(FOLLOW_comparison_in_equality1887);
+					pushFollow(FOLLOW_comparison_in_equality2013);
 					comparison();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3648,7 +4681,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop58;
+					break loop64;
 				}
 			} while (true);
 
@@ -3669,10 +4702,10 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "equalityOperator"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:367:1: equalityOperator : ( '==' | '===' | '!=' | '!==' | '<>' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:395:1: equalityOperator : ( '==' | '===' | '!=' | '!==' | '<>' );
 	public final void equalityOperator() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:368:2: ( '==' | '===' | '!=' | '!==' | '<>' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:396:2: ( '==' | '===' | '!=' | '!==' | '<>' )
 			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
 			{
 			if ( input.LA(1)==Equal||input.LA(1)==Identical||(input.LA(1) >= NotEqual && input.LA(1) <= NotIdentical) ) {
@@ -3702,34 +4735,34 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "comparison"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:375:1: comparison : bitwiseShift ( comparisonOperator bitwiseShift )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:403:1: comparison : bitwiseShift ( comparisonOperator bitwiseShift )* ;
 	public final void comparison() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:2: ( bitwiseShift ( comparisonOperator bitwiseShift )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:4: bitwiseShift ( comparisonOperator bitwiseShift )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:404:2: ( bitwiseShift ( comparisonOperator bitwiseShift )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:404:4: bitwiseShift ( comparisonOperator bitwiseShift )*
 			{
-			pushFollow(FOLLOW_bitwiseShift_in_comparison1929);
+			pushFollow(FOLLOW_bitwiseShift_in_comparison2055);
 			bitwiseShift();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:17: ( comparisonOperator bitwiseShift )*
-			loop59:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:404:17: ( comparisonOperator bitwiseShift )*
+			loop65:
 			do {
-				int alt59=2;
-				int LA59_0 = input.LA(1);
-				if ( ((LA59_0 >= GreaterEqualThan && LA59_0 <= GreaterThan)||(LA59_0 >= LessEqualThan && LA59_0 <= LessThan)) ) {
-					alt59=1;
+				int alt65=2;
+				int LA65_0 = input.LA(1);
+				if ( ((LA65_0 >= GreaterEqualThan && LA65_0 <= GreaterThan)||(LA65_0 >= LessEqualThan && LA65_0 <= LessThan)) ) {
+					alt65=1;
 				}
 
-				switch (alt59) {
+				switch (alt65) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:18: comparisonOperator bitwiseShift
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:404:18: comparisonOperator bitwiseShift
 					{
-					pushFollow(FOLLOW_comparisonOperator_in_comparison1932);
+					pushFollow(FOLLOW_comparisonOperator_in_comparison2058);
 					comparisonOperator();
 					state._fsp--;
 					if (state.failed) return ;
-					pushFollow(FOLLOW_bitwiseShift_in_comparison1934);
+					pushFollow(FOLLOW_bitwiseShift_in_comparison2060);
 					bitwiseShift();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3737,7 +4770,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop59;
+					break loop65;
 				}
 			} while (true);
 
@@ -3758,10 +4791,10 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "comparisonOperator"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:378:1: comparisonOperator : ( '<' | '<=' | '>' | '>=' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:406:1: comparisonOperator : ( '<' | '<=' | '>' | '>=' );
 	public final void comparisonOperator() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:379:2: ( '<' | '<=' | '>' | '>=' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:407:2: ( '<' | '<=' | '>' | '>=' )
 			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
 			{
 			if ( (input.LA(1) >= GreaterEqualThan && input.LA(1) <= GreaterThan)||(input.LA(1) >= LessEqualThan && input.LA(1) <= LessThan) ) {
@@ -3791,28 +4824,28 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "bitwiseShift"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:1: bitwiseShift : termOrStringConcatenation ( ( '<<' | '>>' ) termOrStringConcatenation )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:413:1: bitwiseShift : termOrStringConcatenation ( ( '<<' | '>>' ) termOrStringConcatenation )* ;
 	public final void bitwiseShift() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:14: ( termOrStringConcatenation ( ( '<<' | '>>' ) termOrStringConcatenation )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:16: termOrStringConcatenation ( ( '<<' | '>>' ) termOrStringConcatenation )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:413:14: ( termOrStringConcatenation ( ( '<<' | '>>' ) termOrStringConcatenation )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:413:16: termOrStringConcatenation ( ( '<<' | '>>' ) termOrStringConcatenation )*
 			{
-			pushFollow(FOLLOW_termOrStringConcatenation_in_bitwiseShift1970);
+			pushFollow(FOLLOW_termOrStringConcatenation_in_bitwiseShift2096);
 			termOrStringConcatenation();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:42: ( ( '<<' | '>>' ) termOrStringConcatenation )*
-			loop60:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:413:42: ( ( '<<' | '>>' ) termOrStringConcatenation )*
+			loop66:
 			do {
-				int alt60=2;
-				int LA60_0 = input.LA(1);
-				if ( (LA60_0==ShiftLeft||LA60_0==ShiftRight) ) {
-					alt60=1;
+				int alt66=2;
+				int LA66_0 = input.LA(1);
+				if ( (LA66_0==ShiftLeft||LA66_0==ShiftRight) ) {
+					alt66=1;
 				}
 
-				switch (alt60) {
+				switch (alt66) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:43: ( '<<' | '>>' ) termOrStringConcatenation
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:413:43: ( '<<' | '>>' ) termOrStringConcatenation
 					{
 					if ( input.LA(1)==ShiftLeft||input.LA(1)==ShiftRight ) {
 						input.consume();
@@ -3824,7 +4857,7 @@ public class TSPHPParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_termOrStringConcatenation_in_bitwiseShift1979);
+					pushFollow(FOLLOW_termOrStringConcatenation_in_bitwiseShift2105);
 					termOrStringConcatenation();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3832,7 +4865,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop60;
+					break loop66;
 				}
 			} while (true);
 
@@ -3853,28 +4886,28 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "termOrStringConcatenation"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:387:1: termOrStringConcatenation : factor ( ( '+' | '-' | '.' ) factor )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:415:1: termOrStringConcatenation : factor ( ( '+' | '-' | '.' ) factor )* ;
 	public final void termOrStringConcatenation() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:387:27: ( factor ( ( '+' | '-' | '.' ) factor )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:387:29: factor ( ( '+' | '-' | '.' ) factor )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:415:27: ( factor ( ( '+' | '-' | '.' ) factor )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:415:29: factor ( ( '+' | '-' | '.' ) factor )*
 			{
-			pushFollow(FOLLOW_factor_in_termOrStringConcatenation1989);
+			pushFollow(FOLLOW_factor_in_termOrStringConcatenation2115);
 			factor();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:387:36: ( ( '+' | '-' | '.' ) factor )*
-			loop61:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:415:36: ( ( '+' | '-' | '.' ) factor )*
+			loop67:
 			do {
-				int alt61=2;
-				int LA61_0 = input.LA(1);
-				if ( (LA61_0==Dot||LA61_0==Minus||LA61_0==Plus) ) {
-					alt61=1;
+				int alt67=2;
+				int LA67_0 = input.LA(1);
+				if ( (LA67_0==Dot||LA67_0==Minus||LA67_0==Plus) ) {
+					alt67=1;
 				}
 
-				switch (alt61) {
+				switch (alt67) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:387:37: ( '+' | '-' | '.' ) factor
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:415:37: ( '+' | '-' | '.' ) factor
 					{
 					if ( input.LA(1)==Dot||input.LA(1)==Minus||input.LA(1)==Plus ) {
 						input.consume();
@@ -3886,7 +4919,7 @@ public class TSPHPParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_factor_in_termOrStringConcatenation2000);
+					pushFollow(FOLLOW_factor_in_termOrStringConcatenation2126);
 					factor();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3894,7 +4927,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop61;
+					break loop67;
 				}
 			} while (true);
 
@@ -3915,28 +4948,28 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "factor"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:389:1: factor : logicNot ( ( '*' | '/' | '%' ) logicNot )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:417:1: factor : logicNot ( ( '*' | '/' | '%' ) logicNot )* ;
 	public final void factor() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:389:8: ( logicNot ( ( '*' | '/' | '%' ) logicNot )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:389:10: logicNot ( ( '*' | '/' | '%' ) logicNot )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:417:8: ( logicNot ( ( '*' | '/' | '%' ) logicNot )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:417:10: logicNot ( ( '*' | '/' | '%' ) logicNot )*
 			{
-			pushFollow(FOLLOW_logicNot_in_factor2010);
+			pushFollow(FOLLOW_logicNot_in_factor2136);
 			logicNot();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:389:19: ( ( '*' | '/' | '%' ) logicNot )*
-			loop62:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:417:19: ( ( '*' | '/' | '%' ) logicNot )*
+			loop68:
 			do {
-				int alt62=2;
-				int LA62_0 = input.LA(1);
-				if ( (LA62_0==Divide||LA62_0==Modulo||LA62_0==Multiply) ) {
-					alt62=1;
+				int alt68=2;
+				int LA68_0 = input.LA(1);
+				if ( (LA68_0==Divide||LA68_0==Modulo||LA68_0==Multiply) ) {
+					alt68=1;
 				}
 
-				switch (alt62) {
+				switch (alt68) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:389:20: ( '*' | '/' | '%' ) logicNot
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:417:20: ( '*' | '/' | '%' ) logicNot
 					{
 					if ( input.LA(1)==Divide||input.LA(1)==Modulo||input.LA(1)==Multiply ) {
 						input.consume();
@@ -3948,7 +4981,7 @@ public class TSPHPParser extends Parser {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_logicNot_in_factor2021);
+					pushFollow(FOLLOW_logicNot_in_factor2147);
 					logicNot();
 					state._fsp--;
 					if (state.failed) return ;
@@ -3956,7 +4989,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop62;
+					break loop68;
 				}
 			} while (true);
 
@@ -3977,39 +5010,39 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "logicNot"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:1: logicNot : ( '!' logicNot | castOrBitwiseNotOrAt );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:1: logicNot : ( '!' logicNot | castOrBitwiseNotOrAt );
 	public final void logicNot() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:9: ( '!' logicNot | castOrBitwiseNotOrAt )
-			int alt63=2;
-			int LA63_0 = input.LA(1);
-			if ( (LA63_0==LogicNot) ) {
-				alt63=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:9: ( '!' logicNot | castOrBitwiseNotOrAt )
+			int alt69=2;
+			int LA69_0 = input.LA(1);
+			if ( (LA69_0==LogicNot) ) {
+				alt69=1;
 			}
-			else if ( (LA63_0==At||LA63_0==BitwiseNot||LA63_0==Bool||LA63_0==Float||LA63_0==Int||(LA63_0 >= LeftParanthesis && LA63_0 <= LeftSquareBrace)||LA63_0==Minus||LA63_0==MinusMinus||LA63_0==Plus||LA63_0==PlusPlus||LA63_0==String||LA63_0==TypeArray||LA63_0==VariableId) ) {
-				alt63=2;
+			else if ( (LA69_0==At||LA69_0==BitwiseNot||LA69_0==Bool||LA69_0==Float||LA69_0==Int||(LA69_0 >= LeftParanthesis && LA69_0 <= LeftSquareBrace)||LA69_0==Minus||LA69_0==MinusMinus||LA69_0==Null||LA69_0==Plus||LA69_0==PlusPlus||LA69_0==String||LA69_0==TypeArray||LA69_0==VariableId) ) {
+				alt69=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 63, 0, input);
+					new NoViableAltException("", 69, 0, input);
 				throw nvae;
 			}
-			switch (alt63) {
+			switch (alt69) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:11: '!' logicNot
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:11: '!' logicNot
 					{
-					match(input,LogicNot,FOLLOW_LogicNot_in_logicNot2030); if (state.failed) return ;
-					pushFollow(FOLLOW_logicNot_in_logicNot2032);
+					match(input,LogicNot,FOLLOW_LogicNot_in_logicNot2156); if (state.failed) return ;
+					pushFollow(FOLLOW_logicNot_in_logicNot2158);
 					logicNot();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:392:4: castOrBitwiseNotOrAt
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:420:4: castOrBitwiseNotOrAt
 					{
-					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_logicNot2037);
+					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_logicNot2163);
 					castOrBitwiseNotOrAt();
 					state._fsp--;
 					if (state.failed) return ;
@@ -4032,23 +5065,32 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "castOrBitwiseNotOrAt"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:399:1: castOrBitwiseNotOrAt : ( ( '(' primitiveTypesWithoutResource ')' ) castOrBitwiseNotOrAt | '~' castOrBitwiseNotOrAt | '@' castOrBitwiseNotOrAt | incrementDecrement );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:427:1: castOrBitwiseNotOrAt : ( ( '(' primitiveTypesInclArray ')' ) castOrBitwiseNotOrAt | '~' castOrBitwiseNotOrAt | '@' castOrBitwiseNotOrAt | incrementDecrement );
 	public final void castOrBitwiseNotOrAt() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:400:2: ( ( '(' primitiveTypesWithoutResource ')' ) castOrBitwiseNotOrAt | '~' castOrBitwiseNotOrAt | '@' castOrBitwiseNotOrAt | incrementDecrement )
-			int alt64=4;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:2: ( ( '(' primitiveTypesInclArray ')' ) castOrBitwiseNotOrAt | '~' castOrBitwiseNotOrAt | '@' castOrBitwiseNotOrAt | incrementDecrement )
+			int alt70=4;
 			switch ( input.LA(1) ) {
 			case LeftParanthesis:
 				{
 				switch ( input.LA(2) ) {
+				case TypeBool:
+				case TypeBoolean:
+				case TypeFloat:
+				case TypeInt:
+				case TypeString:
+					{
+					alt70=1;
+					}
+					break;
 				case TypeArray:
 					{
-					int LA64_5 = input.LA(3);
-					if ( (LA64_5==LeftParanthesis) ) {
-						alt64=4;
+					int LA70_6 = input.LA(3);
+					if ( (LA70_6==LeftParanthesis) ) {
+						alt70=4;
 					}
-					else if ( (LA64_5==RightParanthesis) ) {
-						alt64=1;
+					else if ( (LA70_6==RightParanthesis) ) {
+						alt70=1;
 					}
 					else {
 						if (state.backtracking>0) {state.failed=true; return ;}
@@ -4057,7 +5099,7 @@ public class TSPHPParser extends Parser {
 							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++)
 								input.consume();
 							NoViableAltException nvae =
-								new NoViableAltException("", 64, 5, input);
+								new NoViableAltException("", 70, 6, input);
 							throw nvae;
 						} finally {
 							input.rewind(nvaeMark);
@@ -4075,22 +5117,13 @@ public class TSPHPParser extends Parser {
 				case LogicNot:
 				case Minus:
 				case MinusMinus:
+				case Null:
 				case Plus:
 				case PlusPlus:
 				case String:
 				case VariableId:
 					{
-					alt64=4;
-					}
-					break;
-				case TypeBool:
-				case TypeBoolean:
-				case TypeFloat:
-				case TypeInt:
-				case TypeObject:
-				case TypeString:
-					{
-					alt64=1;
+					alt70=4;
 					}
 					break;
 				default:
@@ -4099,7 +5132,7 @@ public class TSPHPParser extends Parser {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 64, 1, input);
+							new NoViableAltException("", 70, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -4109,12 +5142,12 @@ public class TSPHPParser extends Parser {
 				break;
 			case BitwiseNot:
 				{
-				alt64=2;
+				alt70=2;
 				}
 				break;
 			case At:
 				{
-				alt64=3;
+				alt70=3;
 				}
 				break;
 			case Bool:
@@ -4123,66 +5156,67 @@ public class TSPHPParser extends Parser {
 			case LeftSquareBrace:
 			case Minus:
 			case MinusMinus:
+			case Null:
 			case Plus:
 			case PlusPlus:
 			case String:
 			case TypeArray:
 			case VariableId:
 				{
-				alt64=4;
+				alt70=4;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 64, 0, input);
+					new NoViableAltException("", 70, 0, input);
 				throw nvae;
 			}
-			switch (alt64) {
+			switch (alt70) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:400:4: ( '(' primitiveTypesWithoutResource ')' ) castOrBitwiseNotOrAt
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:4: ( '(' primitiveTypesInclArray ')' ) castOrBitwiseNotOrAt
 					{
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:400:4: ( '(' primitiveTypesWithoutResource ')' )
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:400:5: '(' primitiveTypesWithoutResource ')'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:4: ( '(' primitiveTypesInclArray ')' )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:5: '(' primitiveTypesInclArray ')'
 					{
-					match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_castOrBitwiseNotOrAt2051); if (state.failed) return ;
-					pushFollow(FOLLOW_primitiveTypesWithoutResource_in_castOrBitwiseNotOrAt2053);
-					primitiveTypesWithoutResource();
+					match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_castOrBitwiseNotOrAt2177); if (state.failed) return ;
+					pushFollow(FOLLOW_primitiveTypesInclArray_in_castOrBitwiseNotOrAt2179);
+					primitiveTypesInclArray();
 					state._fsp--;
 					if (state.failed) return ;
-					match(input,RightParanthesis,FOLLOW_RightParanthesis_in_castOrBitwiseNotOrAt2055); if (state.failed) return ;
+					match(input,RightParanthesis,FOLLOW_RightParanthesis_in_castOrBitwiseNotOrAt2181); if (state.failed) return ;
 					}
 
-					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2058);
+					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2184);
 					castOrBitwiseNotOrAt();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:401:4: '~' castOrBitwiseNotOrAt
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:429:4: '~' castOrBitwiseNotOrAt
 					{
-					match(input,BitwiseNot,FOLLOW_BitwiseNot_in_castOrBitwiseNotOrAt2063); if (state.failed) return ;
-					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2065);
+					match(input,BitwiseNot,FOLLOW_BitwiseNot_in_castOrBitwiseNotOrAt2189); if (state.failed) return ;
+					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2191);
 					castOrBitwiseNotOrAt();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:402:4: '@' castOrBitwiseNotOrAt
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:430:4: '@' castOrBitwiseNotOrAt
 					{
-					match(input,At,FOLLOW_At_in_castOrBitwiseNotOrAt2070); if (state.failed) return ;
-					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2072);
+					match(input,At,FOLLOW_At_in_castOrBitwiseNotOrAt2196); if (state.failed) return ;
+					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2198);
 					castOrBitwiseNotOrAt();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 4 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:403:4: incrementDecrement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:431:4: incrementDecrement
 					{
-					pushFollow(FOLLOW_incrementDecrement_in_castOrBitwiseNotOrAt2077);
+					pushFollow(FOLLOW_incrementDecrement_in_castOrBitwiseNotOrAt2203);
 					incrementDecrement();
 					state._fsp--;
 					if (state.failed) return ;
@@ -4205,20 +5239,20 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "incrementDecrement"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:406:1: incrementDecrement : ( postIncrementDecrement | preIncrementDecrement | unaryAtom );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:434:1: incrementDecrement : ( postIncrementDecrement | preIncrementDecrement | unaryAtom );
 	public final void incrementDecrement() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:407:2: ( postIncrementDecrement | preIncrementDecrement | unaryAtom )
-			int alt65=3;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:435:2: ( postIncrementDecrement | preIncrementDecrement | unaryAtom )
+			int alt71=3;
 			switch ( input.LA(1) ) {
 			case VariableId:
 				{
-				int LA65_1 = input.LA(2);
-				if ( (LA65_1==MinusMinus||LA65_1==PlusPlus) ) {
-					alt65=1;
+				int LA71_1 = input.LA(2);
+				if ( (LA71_1==MinusMinus||LA71_1==PlusPlus) ) {
+					alt71=1;
 				}
-				else if ( (LA65_1==EOF||LA65_1==Arrow||LA65_1==Assign||(LA65_1 >= BitwiseAnd && LA65_1 <= BitwiseAndEqual)||(LA65_1 >= BitwiseOr && LA65_1 <= BitwiseXorEqual)||(LA65_1 >= Colon && LA65_1 <= Comma)||(LA65_1 >= Divide && LA65_1 <= DivideEqual)||(LA65_1 >= Dot && LA65_1 <= DotEqual)||LA65_1==Equal||(LA65_1 >= GreaterEqualThan && LA65_1 <= GreaterThan)||LA65_1==Identical||(LA65_1 >= LessEqualThan && LA65_1 <= LogicAndWeak)||(LA65_1 >= LogicOr && LA65_1 <= MinusEqual)||(LA65_1 >= Modulo && LA65_1 <= MultiplyEqual)||(LA65_1 >= NotEqual && LA65_1 <= NotIdentical)||(LA65_1 >= Plus && LA65_1 <= PlusEqual)||LA65_1==QuestionMark||(LA65_1 >= RightParanthesis && LA65_1 <= RightSquareBrace)||(LA65_1 >= Semicolon && LA65_1 <= ShiftRightEqual)) ) {
-					alt65=3;
+				else if ( (LA71_1==EOF||LA71_1==Arrow||LA71_1==Assign||(LA71_1 >= BitwiseAnd && LA71_1 <= BitwiseAndEqual)||(LA71_1 >= BitwiseOr && LA71_1 <= BitwiseXorEqual)||(LA71_1 >= Colon && LA71_1 <= Comma)||(LA71_1 >= Divide && LA71_1 <= DivideEqual)||(LA71_1 >= Dot && LA71_1 <= DotEqual)||LA71_1==Equal||(LA71_1 >= GreaterEqualThan && LA71_1 <= GreaterThan)||LA71_1==Identical||(LA71_1 >= LessEqualThan && LA71_1 <= LogicAndWeak)||(LA71_1 >= LogicOr && LA71_1 <= MinusEqual)||(LA71_1 >= Modulo && LA71_1 <= MultiplyEqual)||(LA71_1 >= NotEqual && LA71_1 <= NotIdentical)||(LA71_1 >= Plus && LA71_1 <= PlusEqual)||LA71_1==QuestionMark||(LA71_1 >= RightParanthesis && LA71_1 <= RightSquareBrace)||(LA71_1 >= Semicolon && LA71_1 <= ShiftRightEqual)) ) {
+					alt71=3;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return ;}
@@ -4226,7 +5260,7 @@ public class TSPHPParser extends Parser {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 65, 1, input);
+							new NoViableAltException("", 71, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -4237,7 +5271,7 @@ public class TSPHPParser extends Parser {
 			case MinusMinus:
 			case PlusPlus:
 				{
-				alt65=2;
+				alt71=2;
 				}
 				break;
 			case Bool:
@@ -4246,42 +5280,43 @@ public class TSPHPParser extends Parser {
 			case LeftParanthesis:
 			case LeftSquareBrace:
 			case Minus:
+			case Null:
 			case Plus:
 			case String:
 			case TypeArray:
 				{
-				alt65=3;
+				alt71=3;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 65, 0, input);
+					new NoViableAltException("", 71, 0, input);
 				throw nvae;
 			}
-			switch (alt65) {
+			switch (alt71) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:407:4: postIncrementDecrement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:435:4: postIncrementDecrement
 					{
-					pushFollow(FOLLOW_postIncrementDecrement_in_incrementDecrement2089);
+					pushFollow(FOLLOW_postIncrementDecrement_in_incrementDecrement2215);
 					postIncrementDecrement();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:408:4: preIncrementDecrement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:436:4: preIncrementDecrement
 					{
-					pushFollow(FOLLOW_preIncrementDecrement_in_incrementDecrement2094);
+					pushFollow(FOLLOW_preIncrementDecrement_in_incrementDecrement2220);
 					preIncrementDecrement();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:409:4: unaryAtom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:4: unaryAtom
 					{
-					pushFollow(FOLLOW_unaryAtom_in_incrementDecrement2099);
+					pushFollow(FOLLOW_unaryAtom_in_incrementDecrement2225);
 					unaryAtom();
 					state._fsp--;
 					if (state.failed) return ;
@@ -4304,20 +5339,20 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "unaryAtom"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:412:1: unaryAtom : ( '+' atom | '-' atom | atom );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:440:1: unaryAtom : ( '+' atom | '-' atom | atom );
 	public final void unaryAtom() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:413:2: ( '+' atom | '-' atom | atom )
-			int alt66=3;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:441:2: ( '+' atom | '-' atom | atom )
+			int alt72=3;
 			switch ( input.LA(1) ) {
 			case Plus:
 				{
-				alt66=1;
+				alt72=1;
 				}
 				break;
 			case Minus:
 				{
-				alt66=2;
+				alt72=2;
 				}
 				break;
 			case Bool:
@@ -4325,44 +5360,45 @@ public class TSPHPParser extends Parser {
 			case Int:
 			case LeftParanthesis:
 			case LeftSquareBrace:
+			case Null:
 			case String:
 			case TypeArray:
 			case VariableId:
 				{
-				alt66=3;
+				alt72=3;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 66, 0, input);
+					new NoViableAltException("", 72, 0, input);
 				throw nvae;
 			}
-			switch (alt66) {
+			switch (alt72) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:413:4: '+' atom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:441:4: '+' atom
 					{
-					match(input,Plus,FOLLOW_Plus_in_unaryAtom2110); if (state.failed) return ;
-					pushFollow(FOLLOW_atom_in_unaryAtom2112);
+					match(input,Plus,FOLLOW_Plus_in_unaryAtom2236); if (state.failed) return ;
+					pushFollow(FOLLOW_atom_in_unaryAtom2238);
 					atom();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:414:4: '-' atom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:442:4: '-' atom
 					{
-					match(input,Minus,FOLLOW_Minus_in_unaryAtom2117); if (state.failed) return ;
-					pushFollow(FOLLOW_atom_in_unaryAtom2119);
+					match(input,Minus,FOLLOW_Minus_in_unaryAtom2243); if (state.failed) return ;
+					pushFollow(FOLLOW_atom_in_unaryAtom2245);
 					atom();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:415:4: atom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:443:4: atom
 					{
-					pushFollow(FOLLOW_atom_in_unaryAtom2124);
+					pushFollow(FOLLOW_atom_in_unaryAtom2250);
 					atom();
 					state._fsp--;
 					if (state.failed) return ;
@@ -4385,63 +5421,77 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "atom"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:1: atom : ( '(' expression ')' | primitiveAtom | VariableId );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:447:1: atom : ( '(' expression ')' | primitiveAtom | array | VariableId );
 	public final void atom() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:6: ( '(' expression ')' | primitiveAtom | VariableId )
-			int alt67=3;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:447:6: ( '(' expression ')' | primitiveAtom | array | VariableId )
+			int alt73=4;
 			switch ( input.LA(1) ) {
 			case LeftParanthesis:
 				{
-				alt67=1;
+				alt73=1;
 				}
 				break;
 			case Bool:
 			case Float:
 			case Int:
-			case LeftSquareBrace:
+			case Null:
 			case String:
+				{
+				alt73=2;
+				}
+				break;
+			case LeftSquareBrace:
 			case TypeArray:
 				{
-				alt67=2;
+				alt73=3;
 				}
 				break;
 			case VariableId:
 				{
-				alt67=3;
+				alt73=4;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 67, 0, input);
+					new NoViableAltException("", 73, 0, input);
 				throw nvae;
 			}
-			switch (alt67) {
+			switch (alt73) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:8: '(' expression ')'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:447:8: '(' expression ')'
 					{
-					match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_atom2136); if (state.failed) return ;
-					pushFollow(FOLLOW_expression_in_atom2138);
+					match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_atom2262); if (state.failed) return ;
+					pushFollow(FOLLOW_expression_in_atom2264);
 					expression();
 					state._fsp--;
 					if (state.failed) return ;
-					match(input,RightParanthesis,FOLLOW_RightParanthesis_in_atom2140); if (state.failed) return ;
+					match(input,RightParanthesis,FOLLOW_RightParanthesis_in_atom2266); if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:420:4: primitiveAtom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:448:4: primitiveAtom
 					{
-					pushFollow(FOLLOW_primitiveAtom_in_atom2145);
+					pushFollow(FOLLOW_primitiveAtom_in_atom2271);
 					primitiveAtom();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:421:4: VariableId
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:449:4: array
 					{
-					match(input,VariableId,FOLLOW_VariableId_in_atom2150); if (state.failed) return ;
+					pushFollow(FOLLOW_array_in_atom2276);
+					array();
+					state._fsp--;
+					if (state.failed) return ;
+					}
+					break;
+				case 4 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:450:4: VariableId
+					{
+					match(input,VariableId,FOLLOW_VariableId_in_atom2281); if (state.failed) return ;
 					}
 					break;
 
@@ -4461,63 +5511,62 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "unaryPrimitiveAtom"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:425:1: unaryPrimitiveAtom : ( '+' primitiveAtom | '-' primitiveAtom | primitiveAtom );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:454:1: unaryPrimitiveAtom : ( '+' primitiveAtom | '-' primitiveAtom | primitiveAtom );
 	public final void unaryPrimitiveAtom() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:426:2: ( '+' primitiveAtom | '-' primitiveAtom | primitiveAtom )
-			int alt68=3;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:2: ( '+' primitiveAtom | '-' primitiveAtom | primitiveAtom )
+			int alt74=3;
 			switch ( input.LA(1) ) {
 			case Plus:
 				{
-				alt68=1;
+				alt74=1;
 				}
 				break;
 			case Minus:
 				{
-				alt68=2;
+				alt74=2;
 				}
 				break;
 			case Bool:
 			case Float:
 			case Int:
-			case LeftSquareBrace:
+			case Null:
 			case String:
-			case TypeArray:
 				{
-				alt68=3;
+				alt74=3;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 68, 0, input);
+					new NoViableAltException("", 74, 0, input);
 				throw nvae;
 			}
-			switch (alt68) {
+			switch (alt74) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:426:4: '+' primitiveAtom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:4: '+' primitiveAtom
 					{
-					match(input,Plus,FOLLOW_Plus_in_unaryPrimitiveAtom2164); if (state.failed) return ;
-					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2166);
+					match(input,Plus,FOLLOW_Plus_in_unaryPrimitiveAtom2295); if (state.failed) return ;
+					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2297);
 					primitiveAtom();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:427:4: '-' primitiveAtom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:456:4: '-' primitiveAtom
 					{
-					match(input,Minus,FOLLOW_Minus_in_unaryPrimitiveAtom2171); if (state.failed) return ;
-					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2173);
+					match(input,Minus,FOLLOW_Minus_in_unaryPrimitiveAtom2302); if (state.failed) return ;
+					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2304);
 					primitiveAtom();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:4: primitiveAtom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:457:4: primitiveAtom
 					{
-					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2178);
+					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2309);
 					primitiveAtom();
 					state._fsp--;
 					if (state.failed) return ;
@@ -4540,80 +5589,24 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "primitiveAtom"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:431:1: primitiveAtom : ( Bool | Int | Float | String | array );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:460:1: primitiveAtom : ( Bool | Int | Float | String | Null );
 	public final void primitiveAtom() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:432:2: ( Bool | Int | Float | String | array )
-			int alt69=5;
-			switch ( input.LA(1) ) {
-			case Bool:
-				{
-				alt69=1;
-				}
-				break;
-			case Int:
-				{
-				alt69=2;
-				}
-				break;
-			case Float:
-				{
-				alt69=3;
-				}
-				break;
-			case String:
-				{
-				alt69=4;
-				}
-				break;
-			case LeftSquareBrace:
-			case TypeArray:
-				{
-				alt69=5;
-				}
-				break;
-			default:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:461:2: ( Bool | Int | Float | String | Null )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
+			{
+			if ( input.LA(1)==Bool||input.LA(1)==Float||input.LA(1)==Int||input.LA(1)==Null||input.LA(1)==String ) {
+				input.consume();
+				state.errorRecovery=false;
+				state.failed=false;
+			}
+			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
-				NoViableAltException nvae =
-					new NoViableAltException("", 69, 0, input);
-				throw nvae;
+				MismatchedSetException mse = new MismatchedSetException(null,input);
+				throw mse;
 			}
-			switch (alt69) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:432:4: Bool
-					{
-					match(input,Bool,FOLLOW_Bool_in_primitiveAtom2189); if (state.failed) return ;
-					}
-					break;
-				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:433:4: Int
-					{
-					match(input,Int,FOLLOW_Int_in_primitiveAtom2194); if (state.failed) return ;
-					}
-					break;
-				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:434:4: Float
-					{
-					match(input,Float,FOLLOW_Float_in_primitiveAtom2199); if (state.failed) return ;
-					}
-					break;
-				case 4 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:435:4: String
-					{
-					match(input,String,FOLLOW_String_in_primitiveAtom2204); if (state.failed) return ;
-					}
-					break;
-				case 5 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:436:4: array
-					{
-					pushFollow(FOLLOW_array_in_primitiveAtom2209);
-					array();
-					state._fsp--;
-					if (state.failed) return ;
-					}
-					break;
+			}
 
-			}
 		}
 		catch (RecognitionException re) {
 			reportError(re);
@@ -4629,40 +5622,40 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "array"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:493:1: array : ( '[' ( array_content )? ']' | TypeArray '(' ( array_content )? ')' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:522:1: array : ( '[' ( array_content )? ']' | TypeArray '(' ( array_content )? ')' );
 	public final void array() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:493:7: ( '[' ( array_content )? ']' | TypeArray '(' ( array_content )? ')' )
-			int alt72=2;
-			int LA72_0 = input.LA(1);
-			if ( (LA72_0==LeftSquareBrace) ) {
-				alt72=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:522:7: ( '[' ( array_content )? ']' | TypeArray '(' ( array_content )? ')' )
+			int alt77=2;
+			int LA77_0 = input.LA(1);
+			if ( (LA77_0==LeftSquareBrace) ) {
+				alt77=1;
 			}
-			else if ( (LA72_0==TypeArray) ) {
-				alt72=2;
+			else if ( (LA77_0==TypeArray) ) {
+				alt77=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 72, 0, input);
+					new NoViableAltException("", 77, 0, input);
 				throw nvae;
 			}
-			switch (alt72) {
+			switch (alt77) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:493:9: '[' ( array_content )? ']'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:522:9: '[' ( array_content )? ']'
 					{
-					match(input,LeftSquareBrace,FOLLOW_LeftSquareBrace_in_array2671); if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:493:13: ( array_content )?
-					int alt70=2;
-					int LA70_0 = input.LA(1);
-					if ( (LA70_0==At||LA70_0==BitwiseNot||LA70_0==Bool||LA70_0==Float||LA70_0==Int||(LA70_0 >= LeftParanthesis && LA70_0 <= LeftSquareBrace)||LA70_0==LogicNot||LA70_0==Minus||LA70_0==MinusMinus||LA70_0==Plus||LA70_0==PlusPlus||LA70_0==String||LA70_0==TypeArray||LA70_0==VariableId) ) {
-						alt70=1;
+					match(input,LeftSquareBrace,FOLLOW_LeftSquareBrace_in_array2802); if (state.failed) return ;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:522:13: ( array_content )?
+					int alt75=2;
+					int LA75_0 = input.LA(1);
+					if ( (LA75_0==At||LA75_0==BitwiseNot||LA75_0==Bool||LA75_0==Float||LA75_0==Int||(LA75_0 >= LeftParanthesis && LA75_0 <= LeftSquareBrace)||LA75_0==LogicNot||LA75_0==Minus||LA75_0==MinusMinus||LA75_0==Null||LA75_0==Plus||LA75_0==PlusPlus||LA75_0==String||LA75_0==TypeArray||LA75_0==VariableId) ) {
+						alt75=1;
 					}
-					switch (alt70) {
+					switch (alt75) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:493:13: array_content
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:522:13: array_content
 							{
-							pushFollow(FOLLOW_array_content_in_array2673);
+							pushFollow(FOLLOW_array_content_in_array2804);
 							array_content();
 							state._fsp--;
 							if (state.failed) return ;
@@ -4671,25 +5664,25 @@ public class TSPHPParser extends Parser {
 
 					}
 
-					match(input,RightSquareBrace,FOLLOW_RightSquareBrace_in_array2676); if (state.failed) return ;
+					match(input,RightSquareBrace,FOLLOW_RightSquareBrace_in_array2807); if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:494:4: TypeArray '(' ( array_content )? ')'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:523:4: TypeArray '(' ( array_content )? ')'
 					{
-					match(input,TypeArray,FOLLOW_TypeArray_in_array2682); if (state.failed) return ;
-					match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_array2684); if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:494:18: ( array_content )?
-					int alt71=2;
-					int LA71_0 = input.LA(1);
-					if ( (LA71_0==At||LA71_0==BitwiseNot||LA71_0==Bool||LA71_0==Float||LA71_0==Int||(LA71_0 >= LeftParanthesis && LA71_0 <= LeftSquareBrace)||LA71_0==LogicNot||LA71_0==Minus||LA71_0==MinusMinus||LA71_0==Plus||LA71_0==PlusPlus||LA71_0==String||LA71_0==TypeArray||LA71_0==VariableId) ) {
-						alt71=1;
+					match(input,TypeArray,FOLLOW_TypeArray_in_array2813); if (state.failed) return ;
+					match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_array2815); if (state.failed) return ;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:523:18: ( array_content )?
+					int alt76=2;
+					int LA76_0 = input.LA(1);
+					if ( (LA76_0==At||LA76_0==BitwiseNot||LA76_0==Bool||LA76_0==Float||LA76_0==Int||(LA76_0 >= LeftParanthesis && LA76_0 <= LeftSquareBrace)||LA76_0==LogicNot||LA76_0==Minus||LA76_0==MinusMinus||LA76_0==Null||LA76_0==Plus||LA76_0==PlusPlus||LA76_0==String||LA76_0==TypeArray||LA76_0==VariableId) ) {
+						alt76=1;
 					}
-					switch (alt71) {
+					switch (alt76) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:494:18: array_content
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:523:18: array_content
 							{
-							pushFollow(FOLLOW_array_content_in_array2686);
+							pushFollow(FOLLOW_array_content_in_array2817);
 							array_content();
 							state._fsp--;
 							if (state.failed) return ;
@@ -4698,7 +5691,7 @@ public class TSPHPParser extends Parser {
 
 					}
 
-					match(input,RightParanthesis,FOLLOW_RightParanthesis_in_array2689); if (state.failed) return ;
+					match(input,RightParanthesis,FOLLOW_RightParanthesis_in_array2820); if (state.failed) return ;
 					}
 					break;
 
@@ -4718,293 +5711,253 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "array_content"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:497:1: array_content : ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:1: array_content : ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )* ;
 	public final void array_content() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:2: ( ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:4: ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:2: ( ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:4: ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )*
 			{
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:4: ( expression '=>' )?
-			int alt73=2;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:4: ( expression '=>' )?
+			int alt78=2;
 			switch ( input.LA(1) ) {
 				case LogicNot:
 					{
-					int LA73_1 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_1 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 				case LeftParanthesis:
 					{
-					int LA73_2 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_2 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 				case BitwiseNot:
 					{
-					int LA73_3 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_3 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 				case At:
 					{
-					int LA73_4 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_4 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 				case VariableId:
 					{
-					int LA73_5 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_5 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 				case MinusMinus:
 				case PlusPlus:
 					{
-					int LA73_6 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_6 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 				case Plus:
 					{
-					int LA73_7 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_7 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 				case Minus:
 					{
-					int LA73_8 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_8 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 				case Bool:
-					{
-					int LA73_9 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
-					}
-					}
-					break;
-				case Int:
-					{
-					int LA73_10 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
-					}
-					}
-					break;
 				case Float:
-					{
-					int LA73_11 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
-					}
-					}
-					break;
+				case Int:
+				case Null:
 				case String:
 					{
-					int LA73_12 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_9 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 				case LeftSquareBrace:
 					{
-					int LA73_13 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_10 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 				case TypeArray:
 					{
-					int LA73_14 = input.LA(2);
-					if ( (synpred130_TSPHP()) ) {
-						alt73=1;
+					int LA78_11 = input.LA(2);
+					if ( (synpred137_TSPHP()) ) {
+						alt78=1;
 					}
 					}
 					break;
 			}
-			switch (alt73) {
+			switch (alt78) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:5: expression '=>'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:5: expression '=>'
 					{
-					pushFollow(FOLLOW_expression_in_array_content2702);
+					pushFollow(FOLLOW_expression_in_array_content2833);
 					expression();
 					state._fsp--;
 					if (state.failed) return ;
-					match(input,Arrow,FOLLOW_Arrow_in_array_content2704); if (state.failed) return ;
+					match(input,Arrow,FOLLOW_Arrow_in_array_content2835); if (state.failed) return ;
 					}
 					break;
 
 			}
 
-			pushFollow(FOLLOW_expression_in_array_content2708);
+			pushFollow(FOLLOW_expression_in_array_content2839);
 			expression();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:35: ( ',' ( expression '=>' )? expression )*
-			loop75:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:35: ( ',' ( expression '=>' )? expression )*
+			loop80:
 			do {
-				int alt75=2;
-				int LA75_0 = input.LA(1);
-				if ( (LA75_0==Comma) ) {
-					alt75=1;
+				int alt80=2;
+				int LA80_0 = input.LA(1);
+				if ( (LA80_0==Comma) ) {
+					alt80=1;
 				}
 
-				switch (alt75) {
+				switch (alt80) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:36: ',' ( expression '=>' )? expression
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:36: ',' ( expression '=>' )? expression
 					{
-					match(input,Comma,FOLLOW_Comma_in_array_content2712); if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:40: ( expression '=>' )?
-					int alt74=2;
+					match(input,Comma,FOLLOW_Comma_in_array_content2843); if (state.failed) return ;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:40: ( expression '=>' )?
+					int alt79=2;
 					switch ( input.LA(1) ) {
 						case LogicNot:
 							{
-							int LA74_1 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_1 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 						case LeftParanthesis:
 							{
-							int LA74_2 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_2 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 						case BitwiseNot:
 							{
-							int LA74_3 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_3 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 						case At:
 							{
-							int LA74_4 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_4 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 						case VariableId:
 							{
-							int LA74_5 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_5 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 						case MinusMinus:
 						case PlusPlus:
 							{
-							int LA74_6 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_6 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 						case Plus:
 							{
-							int LA74_7 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_7 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 						case Minus:
 							{
-							int LA74_8 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_8 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 						case Bool:
-							{
-							int LA74_9 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
-							}
-							}
-							break;
-						case Int:
-							{
-							int LA74_10 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
-							}
-							}
-							break;
 						case Float:
-							{
-							int LA74_11 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
-							}
-							}
-							break;
+						case Int:
+						case Null:
 						case String:
 							{
-							int LA74_12 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_9 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 						case LeftSquareBrace:
 							{
-							int LA74_13 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_10 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 						case TypeArray:
 							{
-							int LA74_14 = input.LA(2);
-							if ( (synpred131_TSPHP()) ) {
-								alt74=1;
+							int LA79_11 = input.LA(2);
+							if ( (synpred138_TSPHP()) ) {
+								alt79=1;
 							}
 							}
 							break;
 					}
-					switch (alt74) {
+					switch (alt79) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:41: expression '=>'
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:41: expression '=>'
 							{
-							pushFollow(FOLLOW_expression_in_array_content2715);
+							pushFollow(FOLLOW_expression_in_array_content2846);
 							expression();
 							state._fsp--;
 							if (state.failed) return ;
-							match(input,Arrow,FOLLOW_Arrow_in_array_content2717); if (state.failed) return ;
+							match(input,Arrow,FOLLOW_Arrow_in_array_content2848); if (state.failed) return ;
 							}
 							break;
 
 					}
 
-					pushFollow(FOLLOW_expression_in_array_content2721);
+					pushFollow(FOLLOW_expression_in_array_content2852);
 					expression();
 					state._fsp--;
 					if (state.failed) return ;
@@ -5012,7 +5965,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop75;
+					break loop80;
 				}
 			} while (true);
 
@@ -5033,38 +5986,38 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "ifCondition"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:501:1: ifCondition : 'if' '(' expression ')' instructionWithoutBreakContinue ( 'else' instructionWithoutBreakContinue )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:530:1: ifCondition : 'if' '(' expression ')' instructionWithoutBreakContinue ( 'else' instructionWithoutBreakContinue )? ;
 	public final void ifCondition() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:502:2: ( 'if' '(' expression ')' instructionWithoutBreakContinue ( 'else' instructionWithoutBreakContinue )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:502:4: 'if' '(' expression ')' instructionWithoutBreakContinue ( 'else' instructionWithoutBreakContinue )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:531:2: ( 'if' '(' expression ')' instructionWithoutBreakContinue ( 'else' instructionWithoutBreakContinue )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:531:4: 'if' '(' expression ')' instructionWithoutBreakContinue ( 'else' instructionWithoutBreakContinue )?
 			{
-			match(input,If,FOLLOW_If_in_ifCondition2733); if (state.failed) return ;
-			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_ifCondition2735); if (state.failed) return ;
-			pushFollow(FOLLOW_expression_in_ifCondition2737);
+			match(input,If,FOLLOW_If_in_ifCondition2864); if (state.failed) return ;
+			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_ifCondition2866); if (state.failed) return ;
+			pushFollow(FOLLOW_expression_in_ifCondition2868);
 			expression();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_ifCondition2739); if (state.failed) return ;
-			pushFollow(FOLLOW_instructionWithoutBreakContinue_in_ifCondition2741);
+			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_ifCondition2870); if (state.failed) return ;
+			pushFollow(FOLLOW_instructionWithoutBreakContinue_in_ifCondition2872);
 			instructionWithoutBreakContinue();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:3: ( 'else' instructionWithoutBreakContinue )?
-			int alt76=2;
-			int LA76_0 = input.LA(1);
-			if ( (LA76_0==Else) ) {
-				int LA76_1 = input.LA(2);
-				if ( (synpred133_TSPHP()) ) {
-					alt76=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:532:3: ( 'else' instructionWithoutBreakContinue )?
+			int alt81=2;
+			int LA81_0 = input.LA(1);
+			if ( (LA81_0==Else) ) {
+				int LA81_1 = input.LA(2);
+				if ( (synpred140_TSPHP()) ) {
+					alt81=1;
 				}
 			}
-			switch (alt76) {
+			switch (alt81) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:5: 'else' instructionWithoutBreakContinue
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:532:5: 'else' instructionWithoutBreakContinue
 					{
-					match(input,Else,FOLLOW_Else_in_ifCondition2748); if (state.failed) return ;
-					pushFollow(FOLLOW_instructionWithoutBreakContinue_in_ifCondition2750);
+					match(input,Else,FOLLOW_Else_in_ifCondition2879); if (state.failed) return ;
+					pushFollow(FOLLOW_instructionWithoutBreakContinue_in_ifCondition2881);
 					instructionWithoutBreakContinue();
 					state._fsp--;
 					if (state.failed) return ;
@@ -5090,25 +6043,25 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "forLoop"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:1: forLoop : 'for' '(' ( forInit )? ';' ( expressionList )? ';' ( forUpdate )? ')' instructionInclBreakContinue ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:536:1: forLoop : 'for' '(' ( forInit )? ';' ( expressionList )? ';' ( forUpdate )? ')' instructionInclBreakContinue ;
 	public final void forLoop() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:9: ( 'for' '(' ( forInit )? ';' ( expressionList )? ';' ( forUpdate )? ')' instructionInclBreakContinue )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:11: 'for' '(' ( forInit )? ';' ( expressionList )? ';' ( forUpdate )? ')' instructionInclBreakContinue
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:536:9: ( 'for' '(' ( forInit )? ';' ( expressionList )? ';' ( forUpdate )? ')' instructionInclBreakContinue )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:536:11: 'for' '(' ( forInit )? ';' ( expressionList )? ';' ( forUpdate )? ')' instructionInclBreakContinue
 			{
-			match(input,For,FOLLOW_For_in_forLoop2765); if (state.failed) return ;
-			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_forLoop2767); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:21: ( forInit )?
-			int alt77=2;
-			int LA77_0 = input.LA(1);
-			if ( (LA77_0==MinusMinus||LA77_0==PlusPlus||(LA77_0 >= TypeArray && LA77_0 <= VariableId)) ) {
-				alt77=1;
+			match(input,For,FOLLOW_For_in_forLoop2896); if (state.failed) return ;
+			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_forLoop2898); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:536:21: ( forInit )?
+			int alt82=2;
+			int LA82_0 = input.LA(1);
+			if ( (LA82_0==Identifier||LA82_0==MinusMinus||LA82_0==PlusPlus||(LA82_0 >= TypeArray && LA82_0 <= VariableId)) ) {
+				alt82=1;
 			}
-			switch (alt77) {
+			switch (alt82) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:21: forInit
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:536:21: forInit
 					{
-					pushFollow(FOLLOW_forInit_in_forLoop2769);
+					pushFollow(FOLLOW_forInit_in_forLoop2900);
 					forInit();
 					state._fsp--;
 					if (state.failed) return ;
@@ -5117,18 +6070,18 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			match(input,Semicolon,FOLLOW_Semicolon_in_forLoop2772); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:34: ( expressionList )?
-			int alt78=2;
-			int LA78_0 = input.LA(1);
-			if ( (LA78_0==At||LA78_0==BitwiseNot||LA78_0==Bool||LA78_0==Float||LA78_0==Int||(LA78_0 >= LeftParanthesis && LA78_0 <= LeftSquareBrace)||LA78_0==LogicNot||LA78_0==Minus||LA78_0==MinusMinus||LA78_0==Plus||LA78_0==PlusPlus||LA78_0==String||LA78_0==TypeArray||LA78_0==VariableId) ) {
-				alt78=1;
+			match(input,Semicolon,FOLLOW_Semicolon_in_forLoop2903); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:536:34: ( expressionList )?
+			int alt83=2;
+			int LA83_0 = input.LA(1);
+			if ( (LA83_0==At||LA83_0==BitwiseNot||LA83_0==Bool||LA83_0==Float||LA83_0==Int||(LA83_0 >= LeftParanthesis && LA83_0 <= LeftSquareBrace)||LA83_0==LogicNot||LA83_0==Minus||LA83_0==MinusMinus||LA83_0==Null||LA83_0==Plus||LA83_0==PlusPlus||LA83_0==String||LA83_0==TypeArray||LA83_0==VariableId) ) {
+				alt83=1;
 			}
-			switch (alt78) {
+			switch (alt83) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:34: expressionList
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:536:34: expressionList
 					{
-					pushFollow(FOLLOW_expressionList_in_forLoop2774);
+					pushFollow(FOLLOW_expressionList_in_forLoop2905);
 					expressionList();
 					state._fsp--;
 					if (state.failed) return ;
@@ -5137,18 +6090,18 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			match(input,Semicolon,FOLLOW_Semicolon_in_forLoop2778); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:55: ( forUpdate )?
-			int alt79=2;
-			int LA79_0 = input.LA(1);
-			if ( (LA79_0==MinusMinus||LA79_0==PlusPlus||LA79_0==VariableId) ) {
-				alt79=1;
+			match(input,Semicolon,FOLLOW_Semicolon_in_forLoop2909); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:536:55: ( forUpdate )?
+			int alt84=2;
+			int LA84_0 = input.LA(1);
+			if ( (LA84_0==MinusMinus||LA84_0==PlusPlus||LA84_0==VariableId) ) {
+				alt84=1;
 			}
-			switch (alt79) {
+			switch (alt84) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:55: forUpdate
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:536:55: forUpdate
 					{
-					pushFollow(FOLLOW_forUpdate_in_forLoop2780);
+					pushFollow(FOLLOW_forUpdate_in_forLoop2911);
 					forUpdate();
 					state._fsp--;
 					if (state.failed) return ;
@@ -5157,8 +6110,8 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_forLoop2783); if (state.failed) return ;
-			pushFollow(FOLLOW_instructionInclBreakContinue_in_forLoop2785);
+			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_forLoop2914); if (state.failed) return ;
+			pushFollow(FOLLOW_instructionInclBreakContinue_in_forLoop2916);
 			instructionInclBreakContinue();
 			state._fsp--;
 			if (state.failed) return ;
@@ -5179,41 +6132,41 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "forInit"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:509:1: forInit : ( variableDeclaration | variableAssignment ) ( ',' variableAssignment )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:1: forInit : ( variableDeclaration | variableAssignment ) ( ',' variableAssignment )* ;
 	public final void forInit() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:509:9: ( ( variableDeclaration | variableAssignment ) ( ',' variableAssignment )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:509:11: ( variableDeclaration | variableAssignment ) ( ',' variableAssignment )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:9: ( ( variableDeclaration | variableAssignment ) ( ',' variableAssignment )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:11: ( variableDeclaration | variableAssignment ) ( ',' variableAssignment )*
 			{
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:509:11: ( variableDeclaration | variableAssignment )
-			int alt80=2;
-			int LA80_0 = input.LA(1);
-			if ( ((LA80_0 >= TypeArray && LA80_0 <= TypeString)) ) {
-				alt80=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:11: ( variableDeclaration | variableAssignment )
+			int alt85=2;
+			int LA85_0 = input.LA(1);
+			if ( (LA85_0==Identifier||(LA85_0 >= TypeArray && LA85_0 <= TypeString)) ) {
+				alt85=1;
 			}
-			else if ( (LA80_0==MinusMinus||LA80_0==PlusPlus||LA80_0==VariableId) ) {
-				alt80=2;
+			else if ( (LA85_0==MinusMinus||LA85_0==PlusPlus||LA85_0==VariableId) ) {
+				alt85=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 80, 0, input);
+					new NoViableAltException("", 85, 0, input);
 				throw nvae;
 			}
-			switch (alt80) {
+			switch (alt85) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:509:12: variableDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:12: variableDeclaration
 					{
-					pushFollow(FOLLOW_variableDeclaration_in_forInit2794);
+					pushFollow(FOLLOW_variableDeclaration_in_forInit2925);
 					variableDeclaration();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:509:32: variableAssignment
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:32: variableAssignment
 					{
-					pushFollow(FOLLOW_variableAssignment_in_forInit2796);
+					pushFollow(FOLLOW_variableAssignment_in_forInit2927);
 					variableAssignment();
 					state._fsp--;
 					if (state.failed) return ;
@@ -5222,21 +6175,21 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:509:52: ( ',' variableAssignment )*
-			loop81:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:52: ( ',' variableAssignment )*
+			loop86:
 			do {
-				int alt81=2;
-				int LA81_0 = input.LA(1);
-				if ( (LA81_0==Comma) ) {
-					alt81=1;
+				int alt86=2;
+				int LA86_0 = input.LA(1);
+				if ( (LA86_0==Comma) ) {
+					alt86=1;
 				}
 
-				switch (alt81) {
+				switch (alt86) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:509:53: ',' variableAssignment
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:53: ',' variableAssignment
 					{
-					match(input,Comma,FOLLOW_Comma_in_forInit2800); if (state.failed) return ;
-					pushFollow(FOLLOW_variableAssignment_in_forInit2802);
+					match(input,Comma,FOLLOW_Comma_in_forInit2931); if (state.failed) return ;
+					pushFollow(FOLLOW_variableAssignment_in_forInit2933);
 					variableAssignment();
 					state._fsp--;
 					if (state.failed) return ;
@@ -5244,7 +6197,7 @@ public class TSPHPParser extends Parser {
 					break;
 
 				default :
-					break loop81;
+					break loop86;
 				}
 			} while (true);
 
@@ -5265,35 +6218,41 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "forUpdate"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:510:1: forUpdate : variableAssignment ( ',' variableAssignment )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:539:1: forUpdate : variableAssignment ( ',' variableAssignment )* ;
 	public final void forUpdate() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:511:2: ( variableAssignment ( ',' variableAssignment )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:511:4: variableAssignment ( ',' variableAssignment )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:540:2: ( variableAssignment ( ',' variableAssignment )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:540:4: variableAssignment ( ',' variableAssignment )*
 			{
-			pushFollow(FOLLOW_variableAssignment_in_forUpdate2812);
+			pushFollow(FOLLOW_variableAssignment_in_forUpdate2943);
 			variableAssignment();
 			state._fsp--;
 			if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:511:23: ( ',' variableAssignment )?
-			int alt82=2;
-			int LA82_0 = input.LA(1);
-			if ( (LA82_0==Comma) ) {
-				alt82=1;
-			}
-			switch (alt82) {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:540:23: ( ',' variableAssignment )*
+			loop87:
+			do {
+				int alt87=2;
+				int LA87_0 = input.LA(1);
+				if ( (LA87_0==Comma) ) {
+					alt87=1;
+				}
+
+				switch (alt87) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:511:24: ',' variableAssignment
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:540:24: ',' variableAssignment
 					{
-					match(input,Comma,FOLLOW_Comma_in_forUpdate2815); if (state.failed) return ;
-					pushFollow(FOLLOW_variableAssignment_in_forUpdate2817);
+					match(input,Comma,FOLLOW_Comma_in_forUpdate2946); if (state.failed) return ;
+					pushFollow(FOLLOW_variableAssignment_in_forUpdate2948);
 					variableAssignment();
 					state._fsp--;
 					if (state.failed) return ;
 					}
 					break;
 
-			}
+				default :
+					break loop87;
+				}
+			} while (true);
 
 			}
 
@@ -5312,40 +6271,40 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "foreachLoop"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:513:1: foreachLoop : 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:542:1: foreachLoop : 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue ;
 	public final void foreachLoop() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:2: ( 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:4: 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:543:2: ( 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:543:4: 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue
 			{
-			match(input,Foreach,FOLLOW_Foreach_in_foreachLoop2828); if (state.failed) return ;
-			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_foreachLoop2830); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:18: ( VariableId | array )
-			int alt83=2;
-			int LA83_0 = input.LA(1);
-			if ( (LA83_0==VariableId) ) {
-				alt83=1;
+			match(input,Foreach,FOLLOW_Foreach_in_foreachLoop2959); if (state.failed) return ;
+			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_foreachLoop2961); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:543:18: ( VariableId | array )
+			int alt88=2;
+			int LA88_0 = input.LA(1);
+			if ( (LA88_0==VariableId) ) {
+				alt88=1;
 			}
-			else if ( (LA83_0==LeftSquareBrace||LA83_0==TypeArray) ) {
-				alt83=2;
+			else if ( (LA88_0==LeftSquareBrace||LA88_0==TypeArray) ) {
+				alt88=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 83, 0, input);
+					new NoViableAltException("", 88, 0, input);
 				throw nvae;
 			}
-			switch (alt83) {
+			switch (alt88) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:19: VariableId
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:543:19: VariableId
 					{
-					match(input,VariableId,FOLLOW_VariableId_in_foreachLoop2833); if (state.failed) return ;
+					match(input,VariableId,FOLLOW_VariableId_in_foreachLoop2964); if (state.failed) return ;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:30: array
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:543:30: array
 					{
-					pushFollow(FOLLOW_array_in_foreachLoop2835);
+					pushFollow(FOLLOW_array_in_foreachLoop2966);
 					array();
 					state._fsp--;
 					if (state.failed) return ;
@@ -5354,27 +6313,27 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			match(input,As,FOLLOW_As_in_foreachLoop2838); if (state.failed) return ;
-			match(input,VariableId,FOLLOW_VariableId_in_foreachLoop2840); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:53: ( '=>' VariableId )?
-			int alt84=2;
-			int LA84_0 = input.LA(1);
-			if ( (LA84_0==Arrow) ) {
-				alt84=1;
+			match(input,As,FOLLOW_As_in_foreachLoop2969); if (state.failed) return ;
+			match(input,VariableId,FOLLOW_VariableId_in_foreachLoop2971); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:543:53: ( '=>' VariableId )?
+			int alt89=2;
+			int LA89_0 = input.LA(1);
+			if ( (LA89_0==Arrow) ) {
+				alt89=1;
 			}
-			switch (alt84) {
+			switch (alt89) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:54: '=>' VariableId
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:543:54: '=>' VariableId
 					{
-					match(input,Arrow,FOLLOW_Arrow_in_foreachLoop2843); if (state.failed) return ;
-					match(input,VariableId,FOLLOW_VariableId_in_foreachLoop2845); if (state.failed) return ;
+					match(input,Arrow,FOLLOW_Arrow_in_foreachLoop2974); if (state.failed) return ;
+					match(input,VariableId,FOLLOW_VariableId_in_foreachLoop2976); if (state.failed) return ;
 					}
 					break;
 
 			}
 
-			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_foreachLoop2849); if (state.failed) return ;
-			pushFollow(FOLLOW_instructionInclBreakContinue_in_foreachLoop2851);
+			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_foreachLoop2980); if (state.failed) return ;
+			pushFollow(FOLLOW_instructionInclBreakContinue_in_foreachLoop2982);
 			instructionInclBreakContinue();
 			state._fsp--;
 			if (state.failed) return ;
@@ -5395,20 +6354,20 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "whileLoop"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:516:1: whileLoop : 'while' '(' expression ')' instructionInclBreakContinue ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:545:1: whileLoop : 'while' '(' expression ')' instructionInclBreakContinue ;
 	public final void whileLoop() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:517:2: ( 'while' '(' expression ')' instructionInclBreakContinue )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:517:4: 'while' '(' expression ')' instructionInclBreakContinue
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:546:2: ( 'while' '(' expression ')' instructionInclBreakContinue )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:546:4: 'while' '(' expression ')' instructionInclBreakContinue
 			{
-			match(input,While,FOLLOW_While_in_whileLoop2860); if (state.failed) return ;
-			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_whileLoop2862); if (state.failed) return ;
-			pushFollow(FOLLOW_expression_in_whileLoop2864);
+			match(input,While,FOLLOW_While_in_whileLoop2991); if (state.failed) return ;
+			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_whileLoop2993); if (state.failed) return ;
+			pushFollow(FOLLOW_expression_in_whileLoop2995);
 			expression();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_whileLoop2866); if (state.failed) return ;
-			pushFollow(FOLLOW_instructionInclBreakContinue_in_whileLoop2868);
+			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_whileLoop2997); if (state.failed) return ;
+			pushFollow(FOLLOW_instructionInclBreakContinue_in_whileLoop2999);
 			instructionInclBreakContinue();
 			state._fsp--;
 			if (state.failed) return ;
@@ -5429,25 +6388,25 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "doWhileLoop"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:519:1: doWhileLoop : 'do' instructionInclBreakContinue 'while' '(' expression ')' ';' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:548:1: doWhileLoop : 'do' instructionInclBreakContinue 'while' '(' expression ')' ';' ;
 	public final void doWhileLoop() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:520:2: ( 'do' instructionInclBreakContinue 'while' '(' expression ')' ';' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:520:4: 'do' instructionInclBreakContinue 'while' '(' expression ')' ';'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:549:2: ( 'do' instructionInclBreakContinue 'while' '(' expression ')' ';' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:549:4: 'do' instructionInclBreakContinue 'while' '(' expression ')' ';'
 			{
-			match(input,Do,FOLLOW_Do_in_doWhileLoop2878); if (state.failed) return ;
-			pushFollow(FOLLOW_instructionInclBreakContinue_in_doWhileLoop2880);
+			match(input,Do,FOLLOW_Do_in_doWhileLoop3009); if (state.failed) return ;
+			pushFollow(FOLLOW_instructionInclBreakContinue_in_doWhileLoop3011);
 			instructionInclBreakContinue();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,While,FOLLOW_While_in_doWhileLoop2882); if (state.failed) return ;
-			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_doWhileLoop2884); if (state.failed) return ;
-			pushFollow(FOLLOW_expression_in_doWhileLoop2886);
+			match(input,While,FOLLOW_While_in_doWhileLoop3013); if (state.failed) return ;
+			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_doWhileLoop3015); if (state.failed) return ;
+			pushFollow(FOLLOW_expression_in_doWhileLoop3017);
 			expression();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_doWhileLoop2888); if (state.failed) return ;
-			match(input,Semicolon,FOLLOW_Semicolon_in_doWhileLoop2890); if (state.failed) return ;
+			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_doWhileLoop3019); if (state.failed) return ;
+			match(input,Semicolon,FOLLOW_Semicolon_in_doWhileLoop3021); if (state.failed) return ;
 			}
 
 		}
@@ -5465,27 +6424,27 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "switchCondition"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:522:1: switchCondition : 'switch' '(' VariableId ')' '{' ( ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ | ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ ( defaultLabel ( instructionInclBreakContinue )+ )? ) '}' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:551:1: switchCondition : 'switch' '(' VariableId ')' '{' ( ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ | ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ ( defaultLabel ( instructionInclBreakContinue )+ )? ) '}' ;
 	public final void switchCondition() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:523:2: ( 'switch' '(' VariableId ')' '{' ( ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ | ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ ( defaultLabel ( instructionInclBreakContinue )+ )? ) '}' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:523:4: 'switch' '(' VariableId ')' '{' ( ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ | ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ ( defaultLabel ( instructionInclBreakContinue )+ )? ) '}'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:552:2: ( 'switch' '(' VariableId ')' '{' ( ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ | ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ ( defaultLabel ( instructionInclBreakContinue )+ )? ) '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:552:4: 'switch' '(' VariableId ')' '{' ( ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ | ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ ( defaultLabel ( instructionInclBreakContinue )+ )? ) '}'
 			{
-			match(input,Switch,FOLLOW_Switch_in_switchCondition2900); if (state.failed) return ;
-			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_switchCondition2902); if (state.failed) return ;
-			match(input,VariableId,FOLLOW_VariableId_in_switchCondition2904); if (state.failed) return ;
-			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_switchCondition2906); if (state.failed) return ;
-			match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_switchCondition2908); if (state.failed) return ;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:524:3: ( ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ | ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ ( defaultLabel ( instructionInclBreakContinue )+ )? )
-			int alt97=2;
-			int LA97_0 = input.LA(1);
-			if ( (LA97_0==Case) ) {
-				int LA97_1 = input.LA(2);
-				if ( (synpred149_TSPHP()) ) {
-					alt97=1;
+			match(input,Switch,FOLLOW_Switch_in_switchCondition3031); if (state.failed) return ;
+			match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_switchCondition3033); if (state.failed) return ;
+			match(input,VariableId,FOLLOW_VariableId_in_switchCondition3035); if (state.failed) return ;
+			match(input,RightParanthesis,FOLLOW_RightParanthesis_in_switchCondition3037); if (state.failed) return ;
+			match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_switchCondition3039); if (state.failed) return ;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:553:3: ( ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ | ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ ( defaultLabel ( instructionInclBreakContinue )+ )? )
+			int alt102=2;
+			int LA102_0 = input.LA(1);
+			if ( (LA102_0==Case) ) {
+				int LA102_1 = input.LA(2);
+				if ( (synpred156_TSPHP()) ) {
+					alt102=1;
 				}
 				else if ( (true) ) {
-					alt97=2;
+					alt102=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return ;}
@@ -5493,7 +6452,7 @@ public class TSPHPParser extends Parser {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 97, 1, input);
+							new NoViableAltException("", 102, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -5503,198 +6462,43 @@ public class TSPHPParser extends Parser {
 			else {
 				if (state.backtracking>0) {state.failed=true; return ;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 97, 0, input);
+					new NoViableAltException("", 102, 0, input);
 				throw nvae;
 			}
-			switch (alt97) {
+			switch (alt102) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:4: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:4: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
 					{
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:4: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
-					int cnt87=0;
-					loop87:
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:4: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
+					int cnt92=0;
+					loop92:
 					do {
-						int alt87=2;
-						int LA87_0 = input.LA(1);
-						if ( (LA87_0==Case) ) {
-							alt87=1;
+						int alt92=2;
+						int LA92_0 = input.LA(1);
+						if ( (LA92_0==Case) ) {
+							alt92=1;
 						}
 
-						switch (alt87) {
+						switch (alt92) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:5: ( caseLabel )+ ( instructionInclBreakContinue )+
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:5: ( caseLabel )+ ( instructionInclBreakContinue )+
 							{
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:5: ( caseLabel )+
-							int cnt85=0;
-							loop85:
-							do {
-								int alt85=2;
-								int LA85_0 = input.LA(1);
-								if ( (LA85_0==Case) ) {
-									alt85=1;
-								}
-
-								switch (alt85) {
-								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:5: caseLabel
-									{
-									pushFollow(FOLLOW_caseLabel_in_switchCondition2919);
-									caseLabel();
-									state._fsp--;
-									if (state.failed) return ;
-									}
-									break;
-
-								default :
-									if ( cnt85 >= 1 ) break loop85;
-									if (state.backtracking>0) {state.failed=true; return ;}
-										EarlyExitException eee =
-											new EarlyExitException(85, input);
-										throw eee;
-								}
-								cnt85++;
-							} while (true);
-
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:16: ( instructionInclBreakContinue )+
-							int cnt86=0;
-							loop86:
-							do {
-								int alt86=2;
-								int LA86_0 = input.LA(1);
-								if ( (LA86_0==Break||LA86_0==Continue||LA86_0==Do||(LA86_0 >= For && LA86_0 <= Foreach)||LA86_0==If||LA86_0==LeftCurlyBrace||LA86_0==MinusMinus||LA86_0==PlusPlus||LA86_0==Return||(LA86_0 >= Switch && LA86_0 <= VariableId)||LA86_0==While||LA86_0==108) ) {
-									alt86=1;
-								}
-
-								switch (alt86) {
-								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:16: instructionInclBreakContinue
-									{
-									pushFollow(FOLLOW_instructionInclBreakContinue_in_switchCondition2922);
-									instructionInclBreakContinue();
-									state._fsp--;
-									if (state.failed) return ;
-									}
-									break;
-
-								default :
-									if ( cnt86 >= 1 ) break loop86;
-									if (state.backtracking>0) {state.failed=true; return ;}
-										EarlyExitException eee =
-											new EarlyExitException(86, input);
-										throw eee;
-								}
-								cnt86++;
-							} while (true);
-
-							}
-							break;
-
-						default :
-							if ( cnt87 >= 1 ) break loop87;
-							if (state.backtracking>0) {state.failed=true; return ;}
-								EarlyExitException eee =
-									new EarlyExitException(87, input);
-								throw eee;
-						}
-						cnt87++;
-					} while (true);
-
-					pushFollow(FOLLOW_defaultLabel_in_switchCondition2927);
-					defaultLabel();
-					state._fsp--;
-					if (state.failed) return ;
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:61: ( instructionInclBreakContinue )+
-					int cnt88=0;
-					loop88:
-					do {
-						int alt88=2;
-						int LA88_0 = input.LA(1);
-						if ( (LA88_0==Break||LA88_0==Continue||LA88_0==Do||(LA88_0 >= For && LA88_0 <= Foreach)||LA88_0==If||LA88_0==LeftCurlyBrace||LA88_0==MinusMinus||LA88_0==PlusPlus||LA88_0==Return||(LA88_0 >= Switch && LA88_0 <= VariableId)||LA88_0==While||LA88_0==108) ) {
-							alt88=1;
-						}
-
-						switch (alt88) {
-						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:61: instructionInclBreakContinue
-							{
-							pushFollow(FOLLOW_instructionInclBreakContinue_in_switchCondition2929);
-							instructionInclBreakContinue();
-							state._fsp--;
-							if (state.failed) return ;
-							}
-							break;
-
-						default :
-							if ( cnt88 >= 1 ) break loop88;
-							if (state.backtracking>0) {state.failed=true; return ;}
-								EarlyExitException eee =
-									new EarlyExitException(88, input);
-								throw eee;
-						}
-						cnt88++;
-					} while (true);
-
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:91: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
-					int cnt91=0;
-					loop91:
-					do {
-						int alt91=2;
-						int LA91_0 = input.LA(1);
-						if ( (LA91_0==Case) ) {
-							alt91=1;
-						}
-
-						switch (alt91) {
-						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:92: ( caseLabel )+ ( instructionInclBreakContinue )+
-							{
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:92: ( caseLabel )+
-							int cnt89=0;
-							loop89:
-							do {
-								int alt89=2;
-								int LA89_0 = input.LA(1);
-								if ( (LA89_0==Case) ) {
-									alt89=1;
-								}
-
-								switch (alt89) {
-								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:92: caseLabel
-									{
-									pushFollow(FOLLOW_caseLabel_in_switchCondition2933);
-									caseLabel();
-									state._fsp--;
-									if (state.failed) return ;
-									}
-									break;
-
-								default :
-									if ( cnt89 >= 1 ) break loop89;
-									if (state.backtracking>0) {state.failed=true; return ;}
-										EarlyExitException eee =
-											new EarlyExitException(89, input);
-										throw eee;
-								}
-								cnt89++;
-							} while (true);
-
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:103: ( instructionInclBreakContinue )+
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:5: ( caseLabel )+
 							int cnt90=0;
 							loop90:
 							do {
 								int alt90=2;
 								int LA90_0 = input.LA(1);
-								if ( (LA90_0==Break||LA90_0==Continue||LA90_0==Do||(LA90_0 >= For && LA90_0 <= Foreach)||LA90_0==If||LA90_0==LeftCurlyBrace||LA90_0==MinusMinus||LA90_0==PlusPlus||LA90_0==Return||(LA90_0 >= Switch && LA90_0 <= VariableId)||LA90_0==While||LA90_0==108) ) {
+								if ( (LA90_0==Case) ) {
 									alt90=1;
 								}
 
 								switch (alt90) {
 								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:103: instructionInclBreakContinue
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:5: caseLabel
 									{
-									pushFollow(FOLLOW_instructionInclBreakContinue_in_switchCondition2936);
-									instructionInclBreakContinue();
+									pushFollow(FOLLOW_caseLabel_in_switchCondition3050);
+									caseLabel();
 									state._fsp--;
 									if (state.failed) return ;
 									}
@@ -5710,84 +6514,21 @@ public class TSPHPParser extends Parser {
 								cnt90++;
 							} while (true);
 
-							}
-							break;
-
-						default :
-							if ( cnt91 >= 1 ) break loop91;
-							if (state.backtracking>0) {state.failed=true; return ;}
-								EarlyExitException eee =
-									new EarlyExitException(91, input);
-								throw eee;
-						}
-						cnt91++;
-					} while (true);
-
-					}
-					break;
-				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:5: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ ( defaultLabel ( instructionInclBreakContinue )+ )?
-					{
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:5: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
-					int cnt94=0;
-					loop94:
-					do {
-						int alt94=2;
-						int LA94_0 = input.LA(1);
-						if ( (LA94_0==Case) ) {
-							alt94=1;
-						}
-
-						switch (alt94) {
-						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:6: ( caseLabel )+ ( instructionInclBreakContinue )+
-							{
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:6: ( caseLabel )+
-							int cnt92=0;
-							loop92:
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:16: ( instructionInclBreakContinue )+
+							int cnt91=0;
+							loop91:
 							do {
-								int alt92=2;
-								int LA92_0 = input.LA(1);
-								if ( (LA92_0==Case) ) {
-									alt92=1;
+								int alt91=2;
+								int LA91_0 = input.LA(1);
+								if ( (LA91_0==Break||LA91_0==Continue||LA91_0==Do||LA91_0==Echo||(LA91_0 >= For && LA91_0 <= Foreach)||(LA91_0 >= Identifier && LA91_0 <= If)||LA91_0==LeftCurlyBrace||LA91_0==MinusMinus||LA91_0==PlusPlus||LA91_0==Return||(LA91_0 >= Switch && LA91_0 <= VariableId)||LA91_0==While) ) {
+									alt91=1;
 								}
 
-								switch (alt92) {
+								switch (alt91) {
 								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:6: caseLabel
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:16: instructionInclBreakContinue
 									{
-									pushFollow(FOLLOW_caseLabel_in_switchCondition2946);
-									caseLabel();
-									state._fsp--;
-									if (state.failed) return ;
-									}
-									break;
-
-								default :
-									if ( cnt92 >= 1 ) break loop92;
-									if (state.backtracking>0) {state.failed=true; return ;}
-										EarlyExitException eee =
-											new EarlyExitException(92, input);
-										throw eee;
-								}
-								cnt92++;
-							} while (true);
-
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:17: ( instructionInclBreakContinue )+
-							int cnt93=0;
-							loop93:
-							do {
-								int alt93=2;
-								int LA93_0 = input.LA(1);
-								if ( (LA93_0==Break||LA93_0==Continue||LA93_0==Do||(LA93_0 >= For && LA93_0 <= Foreach)||LA93_0==If||LA93_0==LeftCurlyBrace||LA93_0==MinusMinus||LA93_0==PlusPlus||LA93_0==Return||(LA93_0 >= Switch && LA93_0 <= VariableId)||LA93_0==While||LA93_0==108) ) {
-									alt93=1;
-								}
-
-								switch (alt93) {
-								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:17: instructionInclBreakContinue
-									{
-									pushFollow(FOLLOW_instructionInclBreakContinue_in_switchCondition2949);
+									pushFollow(FOLLOW_instructionInclBreakContinue_in_switchCondition3053);
 									instructionInclBreakContinue();
 									state._fsp--;
 									if (state.failed) return ;
@@ -5795,57 +6536,123 @@ public class TSPHPParser extends Parser {
 									break;
 
 								default :
-									if ( cnt93 >= 1 ) break loop93;
+									if ( cnt91 >= 1 ) break loop91;
 									if (state.backtracking>0) {state.failed=true; return ;}
 										EarlyExitException eee =
-											new EarlyExitException(93, input);
+											new EarlyExitException(91, input);
 										throw eee;
 								}
-								cnt93++;
+								cnt91++;
 							} while (true);
 
 							}
 							break;
 
 						default :
-							if ( cnt94 >= 1 ) break loop94;
+							if ( cnt92 >= 1 ) break loop92;
 							if (state.backtracking>0) {state.failed=true; return ;}
 								EarlyExitException eee =
-									new EarlyExitException(94, input);
+									new EarlyExitException(92, input);
 								throw eee;
 						}
-						cnt94++;
+						cnt92++;
 					} while (true);
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:49: ( defaultLabel ( instructionInclBreakContinue )+ )?
-					int alt96=2;
-					int LA96_0 = input.LA(1);
-					if ( (LA96_0==Default) ) {
-						alt96=1;
-					}
-					switch (alt96) {
+					pushFollow(FOLLOW_defaultLabel_in_switchCondition3058);
+					defaultLabel();
+					state._fsp--;
+					if (state.failed) return ;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:61: ( instructionInclBreakContinue )+
+					int cnt93=0;
+					loop93:
+					do {
+						int alt93=2;
+						int LA93_0 = input.LA(1);
+						if ( (LA93_0==Break||LA93_0==Continue||LA93_0==Do||LA93_0==Echo||(LA93_0 >= For && LA93_0 <= Foreach)||(LA93_0 >= Identifier && LA93_0 <= If)||LA93_0==LeftCurlyBrace||LA93_0==MinusMinus||LA93_0==PlusPlus||LA93_0==Return||(LA93_0 >= Switch && LA93_0 <= VariableId)||LA93_0==While) ) {
+							alt93=1;
+						}
+
+						switch (alt93) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:50: defaultLabel ( instructionInclBreakContinue )+
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:61: instructionInclBreakContinue
 							{
-							pushFollow(FOLLOW_defaultLabel_in_switchCondition2955);
-							defaultLabel();
+							pushFollow(FOLLOW_instructionInclBreakContinue_in_switchCondition3060);
+							instructionInclBreakContinue();
 							state._fsp--;
 							if (state.failed) return ;
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:63: ( instructionInclBreakContinue )+
+							}
+							break;
+
+						default :
+							if ( cnt93 >= 1 ) break loop93;
+							if (state.backtracking>0) {state.failed=true; return ;}
+								EarlyExitException eee =
+									new EarlyExitException(93, input);
+								throw eee;
+						}
+						cnt93++;
+					} while (true);
+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:91: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
+					int cnt96=0;
+					loop96:
+					do {
+						int alt96=2;
+						int LA96_0 = input.LA(1);
+						if ( (LA96_0==Case) ) {
+							alt96=1;
+						}
+
+						switch (alt96) {
+						case 1 :
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:92: ( caseLabel )+ ( instructionInclBreakContinue )+
+							{
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:92: ( caseLabel )+
+							int cnt94=0;
+							loop94:
+							do {
+								int alt94=2;
+								int LA94_0 = input.LA(1);
+								if ( (LA94_0==Case) ) {
+									alt94=1;
+								}
+
+								switch (alt94) {
+								case 1 :
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:92: caseLabel
+									{
+									pushFollow(FOLLOW_caseLabel_in_switchCondition3064);
+									caseLabel();
+									state._fsp--;
+									if (state.failed) return ;
+									}
+									break;
+
+								default :
+									if ( cnt94 >= 1 ) break loop94;
+									if (state.backtracking>0) {state.failed=true; return ;}
+										EarlyExitException eee =
+											new EarlyExitException(94, input);
+										throw eee;
+								}
+								cnt94++;
+							} while (true);
+
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:103: ( instructionInclBreakContinue )+
 							int cnt95=0;
 							loop95:
 							do {
 								int alt95=2;
 								int LA95_0 = input.LA(1);
-								if ( (LA95_0==Break||LA95_0==Continue||LA95_0==Do||(LA95_0 >= For && LA95_0 <= Foreach)||LA95_0==If||LA95_0==LeftCurlyBrace||LA95_0==MinusMinus||LA95_0==PlusPlus||LA95_0==Return||(LA95_0 >= Switch && LA95_0 <= VariableId)||LA95_0==While||LA95_0==108) ) {
+								if ( (LA95_0==Break||LA95_0==Continue||LA95_0==Do||LA95_0==Echo||(LA95_0 >= For && LA95_0 <= Foreach)||(LA95_0 >= Identifier && LA95_0 <= If)||LA95_0==LeftCurlyBrace||LA95_0==MinusMinus||LA95_0==PlusPlus||LA95_0==Return||(LA95_0 >= Switch && LA95_0 <= VariableId)||LA95_0==While) ) {
 									alt95=1;
 								}
 
 								switch (alt95) {
 								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:63: instructionInclBreakContinue
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:103: instructionInclBreakContinue
 									{
-									pushFollow(FOLLOW_instructionInclBreakContinue_in_switchCondition2957);
+									pushFollow(FOLLOW_instructionInclBreakContinue_in_switchCondition3067);
 									instructionInclBreakContinue();
 									state._fsp--;
 									if (state.failed) return ;
@@ -5865,6 +6672,158 @@ public class TSPHPParser extends Parser {
 							}
 							break;
 
+						default :
+							if ( cnt96 >= 1 ) break loop96;
+							if (state.backtracking>0) {state.failed=true; return ;}
+								EarlyExitException eee =
+									new EarlyExitException(96, input);
+								throw eee;
+						}
+						cnt96++;
+					} while (true);
+
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:5: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ ( defaultLabel ( instructionInclBreakContinue )+ )?
+					{
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:5: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
+					int cnt99=0;
+					loop99:
+					do {
+						int alt99=2;
+						int LA99_0 = input.LA(1);
+						if ( (LA99_0==Case) ) {
+							alt99=1;
+						}
+
+						switch (alt99) {
+						case 1 :
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:6: ( caseLabel )+ ( instructionInclBreakContinue )+
+							{
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:6: ( caseLabel )+
+							int cnt97=0;
+							loop97:
+							do {
+								int alt97=2;
+								int LA97_0 = input.LA(1);
+								if ( (LA97_0==Case) ) {
+									alt97=1;
+								}
+
+								switch (alt97) {
+								case 1 :
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:6: caseLabel
+									{
+									pushFollow(FOLLOW_caseLabel_in_switchCondition3077);
+									caseLabel();
+									state._fsp--;
+									if (state.failed) return ;
+									}
+									break;
+
+								default :
+									if ( cnt97 >= 1 ) break loop97;
+									if (state.backtracking>0) {state.failed=true; return ;}
+										EarlyExitException eee =
+											new EarlyExitException(97, input);
+										throw eee;
+								}
+								cnt97++;
+							} while (true);
+
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:17: ( instructionInclBreakContinue )+
+							int cnt98=0;
+							loop98:
+							do {
+								int alt98=2;
+								int LA98_0 = input.LA(1);
+								if ( (LA98_0==Break||LA98_0==Continue||LA98_0==Do||LA98_0==Echo||(LA98_0 >= For && LA98_0 <= Foreach)||(LA98_0 >= Identifier && LA98_0 <= If)||LA98_0==LeftCurlyBrace||LA98_0==MinusMinus||LA98_0==PlusPlus||LA98_0==Return||(LA98_0 >= Switch && LA98_0 <= VariableId)||LA98_0==While) ) {
+									alt98=1;
+								}
+
+								switch (alt98) {
+								case 1 :
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:17: instructionInclBreakContinue
+									{
+									pushFollow(FOLLOW_instructionInclBreakContinue_in_switchCondition3080);
+									instructionInclBreakContinue();
+									state._fsp--;
+									if (state.failed) return ;
+									}
+									break;
+
+								default :
+									if ( cnt98 >= 1 ) break loop98;
+									if (state.backtracking>0) {state.failed=true; return ;}
+										EarlyExitException eee =
+											new EarlyExitException(98, input);
+										throw eee;
+								}
+								cnt98++;
+							} while (true);
+
+							}
+							break;
+
+						default :
+							if ( cnt99 >= 1 ) break loop99;
+							if (state.backtracking>0) {state.failed=true; return ;}
+								EarlyExitException eee =
+									new EarlyExitException(99, input);
+								throw eee;
+						}
+						cnt99++;
+					} while (true);
+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:49: ( defaultLabel ( instructionInclBreakContinue )+ )?
+					int alt101=2;
+					int LA101_0 = input.LA(1);
+					if ( (LA101_0==Default) ) {
+						alt101=1;
+					}
+					switch (alt101) {
+						case 1 :
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:50: defaultLabel ( instructionInclBreakContinue )+
+							{
+							pushFollow(FOLLOW_defaultLabel_in_switchCondition3086);
+							defaultLabel();
+							state._fsp--;
+							if (state.failed) return ;
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:63: ( instructionInclBreakContinue )+
+							int cnt100=0;
+							loop100:
+							do {
+								int alt100=2;
+								int LA100_0 = input.LA(1);
+								if ( (LA100_0==Break||LA100_0==Continue||LA100_0==Do||LA100_0==Echo||(LA100_0 >= For && LA100_0 <= Foreach)||(LA100_0 >= Identifier && LA100_0 <= If)||LA100_0==LeftCurlyBrace||LA100_0==MinusMinus||LA100_0==PlusPlus||LA100_0==Return||(LA100_0 >= Switch && LA100_0 <= VariableId)||LA100_0==While) ) {
+									alt100=1;
+								}
+
+								switch (alt100) {
+								case 1 :
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:63: instructionInclBreakContinue
+									{
+									pushFollow(FOLLOW_instructionInclBreakContinue_in_switchCondition3088);
+									instructionInclBreakContinue();
+									state._fsp--;
+									if (state.failed) return ;
+									}
+									break;
+
+								default :
+									if ( cnt100 >= 1 ) break loop100;
+									if (state.backtracking>0) {state.failed=true; return ;}
+										EarlyExitException eee =
+											new EarlyExitException(100, input);
+										throw eee;
+								}
+								cnt100++;
+							} while (true);
+
+							}
+							break;
+
 					}
 
 					}
@@ -5872,7 +6831,7 @@ public class TSPHPParser extends Parser {
 
 			}
 
-			match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_switchCondition2968); if (state.failed) return ;
+			match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_switchCondition3099); if (state.failed) return ;
 			}
 
 		}
@@ -5890,18 +6849,18 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "caseLabel"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:531:1: caseLabel : 'case' expression ':' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:560:1: caseLabel : 'case' expression ':' ;
 	public final void caseLabel() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:532:2: ( 'case' expression ':' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:532:4: 'case' expression ':'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:561:2: ( 'case' expression ':' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:561:4: 'case' expression ':'
 			{
-			match(input,Case,FOLLOW_Case_in_caseLabel2980); if (state.failed) return ;
-			pushFollow(FOLLOW_expression_in_caseLabel2982);
+			match(input,Case,FOLLOW_Case_in_caseLabel3111); if (state.failed) return ;
+			pushFollow(FOLLOW_expression_in_caseLabel3113);
 			expression();
 			state._fsp--;
 			if (state.failed) return ;
-			match(input,Colon,FOLLOW_Colon_in_caseLabel2984); if (state.failed) return ;
+			match(input,Colon,FOLLOW_Colon_in_caseLabel3115); if (state.failed) return ;
 			}
 
 		}
@@ -5919,14 +6878,14 @@ public class TSPHPParser extends Parser {
 
 
 	// $ANTLR start "defaultLabel"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:534:1: defaultLabel : 'default' ':' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:563:1: defaultLabel : 'default' ':' ;
 	public final void defaultLabel() throws RecognitionException {
 		try {
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:535:2: ( 'default' ':' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:535:4: 'default' ':'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:564:2: ( 'default' ':' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:564:4: 'default' ':'
 			{
-			match(input,Default,FOLLOW_Default_in_defaultLabel2993); if (state.failed) return ;
-			match(input,Colon,FOLLOW_Colon_in_defaultLabel2995); if (state.failed) return ;
+			match(input,Default,FOLLOW_Default_in_defaultLabel3124); if (state.failed) return ;
+			match(input,Colon,FOLLOW_Colon_in_defaultLabel3126); if (state.failed) return ;
 			}
 
 		}
@@ -5941,241 +6900,86 @@ public class TSPHPParser extends Parser {
 	}
 	// $ANTLR end "defaultLabel"
 
-	// $ANTLR start synpred130_TSPHP
-	public final void synpred130_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:5: ( expression '=>' )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:5: expression '=>'
+	// $ANTLR start synpred137_TSPHP
+	public final void synpred137_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:5: ( expression '=>' )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:5: expression '=>'
 		{
-		pushFollow(FOLLOW_expression_in_synpred130_TSPHP2702);
+		pushFollow(FOLLOW_expression_in_synpred137_TSPHP2833);
 		expression();
 		state._fsp--;
 		if (state.failed) return ;
-		match(input,Arrow,FOLLOW_Arrow_in_synpred130_TSPHP2704); if (state.failed) return ;
+		match(input,Arrow,FOLLOW_Arrow_in_synpred137_TSPHP2835); if (state.failed) return ;
 		}
 
 	}
-	// $ANTLR end synpred130_TSPHP
+	// $ANTLR end synpred137_TSPHP
 
-	// $ANTLR start synpred131_TSPHP
-	public final void synpred131_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:41: ( expression '=>' )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:41: expression '=>'
+	// $ANTLR start synpred138_TSPHP
+	public final void synpred138_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:41: ( expression '=>' )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:41: expression '=>'
 		{
-		pushFollow(FOLLOW_expression_in_synpred131_TSPHP2715);
+		pushFollow(FOLLOW_expression_in_synpred138_TSPHP2846);
 		expression();
 		state._fsp--;
 		if (state.failed) return ;
-		match(input,Arrow,FOLLOW_Arrow_in_synpred131_TSPHP2717); if (state.failed) return ;
+		match(input,Arrow,FOLLOW_Arrow_in_synpred138_TSPHP2848); if (state.failed) return ;
 		}
 
 	}
-	// $ANTLR end synpred131_TSPHP
+	// $ANTLR end synpred138_TSPHP
 
-	// $ANTLR start synpred133_TSPHP
-	public final void synpred133_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:5: ( 'else' instructionWithoutBreakContinue )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:5: 'else' instructionWithoutBreakContinue
+	// $ANTLR start synpred140_TSPHP
+	public final void synpred140_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:532:5: ( 'else' instructionWithoutBreakContinue )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:532:5: 'else' instructionWithoutBreakContinue
 		{
-		match(input,Else,FOLLOW_Else_in_synpred133_TSPHP2748); if (state.failed) return ;
-		pushFollow(FOLLOW_instructionWithoutBreakContinue_in_synpred133_TSPHP2750);
+		match(input,Else,FOLLOW_Else_in_synpred140_TSPHP2879); if (state.failed) return ;
+		pushFollow(FOLLOW_instructionWithoutBreakContinue_in_synpred140_TSPHP2881);
 		instructionWithoutBreakContinue();
 		state._fsp--;
 		if (state.failed) return ;
 		}
 
 	}
-	// $ANTLR end synpred133_TSPHP
+	// $ANTLR end synpred140_TSPHP
 
-	// $ANTLR start synpred149_TSPHP
-	public final void synpred149_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:4: ( ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:4: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
+	// $ANTLR start synpred156_TSPHP
+	public final void synpred156_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:4: ( ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:4: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+ defaultLabel ( instructionInclBreakContinue )+ ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
 		{
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:4: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
-		int cnt117=0;
-		loop117:
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:4: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
+		int cnt122=0;
+		loop122:
 		do {
-			int alt117=2;
-			int LA117_0 = input.LA(1);
-			if ( (LA117_0==Case) ) {
-				alt117=1;
+			int alt122=2;
+			int LA122_0 = input.LA(1);
+			if ( (LA122_0==Case) ) {
+				alt122=1;
 			}
 
-			switch (alt117) {
+			switch (alt122) {
 			case 1 :
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:5: ( caseLabel )+ ( instructionInclBreakContinue )+
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:5: ( caseLabel )+ ( instructionInclBreakContinue )+
 				{
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:5: ( caseLabel )+
-				int cnt115=0;
-				loop115:
-				do {
-					int alt115=2;
-					int LA115_0 = input.LA(1);
-					if ( (LA115_0==Case) ) {
-						alt115=1;
-					}
-
-					switch (alt115) {
-					case 1 :
-						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:5: caseLabel
-						{
-						pushFollow(FOLLOW_caseLabel_in_synpred149_TSPHP2919);
-						caseLabel();
-						state._fsp--;
-						if (state.failed) return ;
-						}
-						break;
-
-					default :
-						if ( cnt115 >= 1 ) break loop115;
-						if (state.backtracking>0) {state.failed=true; return ;}
-							EarlyExitException eee =
-								new EarlyExitException(115, input);
-							throw eee;
-					}
-					cnt115++;
-				} while (true);
-
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:16: ( instructionInclBreakContinue )+
-				int cnt116=0;
-				loop116:
-				do {
-					int alt116=2;
-					int LA116_0 = input.LA(1);
-					if ( (LA116_0==Break||LA116_0==Continue||LA116_0==Do||(LA116_0 >= For && LA116_0 <= Foreach)||LA116_0==If||LA116_0==LeftCurlyBrace||LA116_0==MinusMinus||LA116_0==PlusPlus||LA116_0==Return||(LA116_0 >= Switch && LA116_0 <= VariableId)||LA116_0==While||LA116_0==108) ) {
-						alt116=1;
-					}
-
-					switch (alt116) {
-					case 1 :
-						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:16: instructionInclBreakContinue
-						{
-						pushFollow(FOLLOW_instructionInclBreakContinue_in_synpred149_TSPHP2922);
-						instructionInclBreakContinue();
-						state._fsp--;
-						if (state.failed) return ;
-						}
-						break;
-
-					default :
-						if ( cnt116 >= 1 ) break loop116;
-						if (state.backtracking>0) {state.failed=true; return ;}
-							EarlyExitException eee =
-								new EarlyExitException(116, input);
-							throw eee;
-					}
-					cnt116++;
-				} while (true);
-
-				}
-				break;
-
-			default :
-				if ( cnt117 >= 1 ) break loop117;
-				if (state.backtracking>0) {state.failed=true; return ;}
-					EarlyExitException eee =
-						new EarlyExitException(117, input);
-					throw eee;
-			}
-			cnt117++;
-		} while (true);
-
-		pushFollow(FOLLOW_defaultLabel_in_synpred149_TSPHP2927);
-		defaultLabel();
-		state._fsp--;
-		if (state.failed) return ;
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:61: ( instructionInclBreakContinue )+
-		int cnt118=0;
-		loop118:
-		do {
-			int alt118=2;
-			int LA118_0 = input.LA(1);
-			if ( (LA118_0==Break||LA118_0==Continue||LA118_0==Do||(LA118_0 >= For && LA118_0 <= Foreach)||LA118_0==If||LA118_0==LeftCurlyBrace||LA118_0==MinusMinus||LA118_0==PlusPlus||LA118_0==Return||(LA118_0 >= Switch && LA118_0 <= VariableId)||LA118_0==While||LA118_0==108) ) {
-				alt118=1;
-			}
-
-			switch (alt118) {
-			case 1 :
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:61: instructionInclBreakContinue
-				{
-				pushFollow(FOLLOW_instructionInclBreakContinue_in_synpred149_TSPHP2929);
-				instructionInclBreakContinue();
-				state._fsp--;
-				if (state.failed) return ;
-				}
-				break;
-
-			default :
-				if ( cnt118 >= 1 ) break loop118;
-				if (state.backtracking>0) {state.failed=true; return ;}
-					EarlyExitException eee =
-						new EarlyExitException(118, input);
-					throw eee;
-			}
-			cnt118++;
-		} while (true);
-
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:91: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
-		int cnt121=0;
-		loop121:
-		do {
-			int alt121=2;
-			int LA121_0 = input.LA(1);
-			if ( (LA121_0==Case) ) {
-				alt121=1;
-			}
-
-			switch (alt121) {
-			case 1 :
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:92: ( caseLabel )+ ( instructionInclBreakContinue )+
-				{
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:92: ( caseLabel )+
-				int cnt119=0;
-				loop119:
-				do {
-					int alt119=2;
-					int LA119_0 = input.LA(1);
-					if ( (LA119_0==Case) ) {
-						alt119=1;
-					}
-
-					switch (alt119) {
-					case 1 :
-						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:92: caseLabel
-						{
-						pushFollow(FOLLOW_caseLabel_in_synpred149_TSPHP2933);
-						caseLabel();
-						state._fsp--;
-						if (state.failed) return ;
-						}
-						break;
-
-					default :
-						if ( cnt119 >= 1 ) break loop119;
-						if (state.backtracking>0) {state.failed=true; return ;}
-							EarlyExitException eee =
-								new EarlyExitException(119, input);
-							throw eee;
-					}
-					cnt119++;
-				} while (true);
-
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:103: ( instructionInclBreakContinue )+
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:5: ( caseLabel )+
 				int cnt120=0;
 				loop120:
 				do {
 					int alt120=2;
 					int LA120_0 = input.LA(1);
-					if ( (LA120_0==Break||LA120_0==Continue||LA120_0==Do||(LA120_0 >= For && LA120_0 <= Foreach)||LA120_0==If||LA120_0==LeftCurlyBrace||LA120_0==MinusMinus||LA120_0==PlusPlus||LA120_0==Return||(LA120_0 >= Switch && LA120_0 <= VariableId)||LA120_0==While||LA120_0==108) ) {
+					if ( (LA120_0==Case) ) {
 						alt120=1;
 					}
 
 					switch (alt120) {
 					case 1 :
-						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:103: instructionInclBreakContinue
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:5: caseLabel
 						{
-						pushFollow(FOLLOW_instructionInclBreakContinue_in_synpred149_TSPHP2936);
-						instructionInclBreakContinue();
+						pushFollow(FOLLOW_caseLabel_in_synpred156_TSPHP3050);
+						caseLabel();
 						state._fsp--;
 						if (state.failed) return ;
 						}
@@ -6191,31 +6995,186 @@ public class TSPHPParser extends Parser {
 					cnt120++;
 				} while (true);
 
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:16: ( instructionInclBreakContinue )+
+				int cnt121=0;
+				loop121:
+				do {
+					int alt121=2;
+					int LA121_0 = input.LA(1);
+					if ( (LA121_0==Break||LA121_0==Continue||LA121_0==Do||LA121_0==Echo||(LA121_0 >= For && LA121_0 <= Foreach)||(LA121_0 >= Identifier && LA121_0 <= If)||LA121_0==LeftCurlyBrace||LA121_0==MinusMinus||LA121_0==PlusPlus||LA121_0==Return||(LA121_0 >= Switch && LA121_0 <= VariableId)||LA121_0==While) ) {
+						alt121=1;
+					}
+
+					switch (alt121) {
+					case 1 :
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:16: instructionInclBreakContinue
+						{
+						pushFollow(FOLLOW_instructionInclBreakContinue_in_synpred156_TSPHP3053);
+						instructionInclBreakContinue();
+						state._fsp--;
+						if (state.failed) return ;
+						}
+						break;
+
+					default :
+						if ( cnt121 >= 1 ) break loop121;
+						if (state.backtracking>0) {state.failed=true; return ;}
+							EarlyExitException eee =
+								new EarlyExitException(121, input);
+							throw eee;
+					}
+					cnt121++;
+				} while (true);
+
 				}
 				break;
 
 			default :
-				if ( cnt121 >= 1 ) break loop121;
+				if ( cnt122 >= 1 ) break loop122;
 				if (state.backtracking>0) {state.failed=true; return ;}
 					EarlyExitException eee =
-						new EarlyExitException(121, input);
+						new EarlyExitException(122, input);
 					throw eee;
 			}
-			cnt121++;
+			cnt122++;
+		} while (true);
+
+		pushFollow(FOLLOW_defaultLabel_in_synpred156_TSPHP3058);
+		defaultLabel();
+		state._fsp--;
+		if (state.failed) return ;
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:61: ( instructionInclBreakContinue )+
+		int cnt123=0;
+		loop123:
+		do {
+			int alt123=2;
+			int LA123_0 = input.LA(1);
+			if ( (LA123_0==Break||LA123_0==Continue||LA123_0==Do||LA123_0==Echo||(LA123_0 >= For && LA123_0 <= Foreach)||(LA123_0 >= Identifier && LA123_0 <= If)||LA123_0==LeftCurlyBrace||LA123_0==MinusMinus||LA123_0==PlusPlus||LA123_0==Return||(LA123_0 >= Switch && LA123_0 <= VariableId)||LA123_0==While) ) {
+				alt123=1;
+			}
+
+			switch (alt123) {
+			case 1 :
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:61: instructionInclBreakContinue
+				{
+				pushFollow(FOLLOW_instructionInclBreakContinue_in_synpred156_TSPHP3060);
+				instructionInclBreakContinue();
+				state._fsp--;
+				if (state.failed) return ;
+				}
+				break;
+
+			default :
+				if ( cnt123 >= 1 ) break loop123;
+				if (state.backtracking>0) {state.failed=true; return ;}
+					EarlyExitException eee =
+						new EarlyExitException(123, input);
+					throw eee;
+			}
+			cnt123++;
+		} while (true);
+
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:91: ( ( caseLabel )+ ( instructionInclBreakContinue )+ )+
+		int cnt126=0;
+		loop126:
+		do {
+			int alt126=2;
+			int LA126_0 = input.LA(1);
+			if ( (LA126_0==Case) ) {
+				alt126=1;
+			}
+
+			switch (alt126) {
+			case 1 :
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:92: ( caseLabel )+ ( instructionInclBreakContinue )+
+				{
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:92: ( caseLabel )+
+				int cnt124=0;
+				loop124:
+				do {
+					int alt124=2;
+					int LA124_0 = input.LA(1);
+					if ( (LA124_0==Case) ) {
+						alt124=1;
+					}
+
+					switch (alt124) {
+					case 1 :
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:92: caseLabel
+						{
+						pushFollow(FOLLOW_caseLabel_in_synpred156_TSPHP3064);
+						caseLabel();
+						state._fsp--;
+						if (state.failed) return ;
+						}
+						break;
+
+					default :
+						if ( cnt124 >= 1 ) break loop124;
+						if (state.backtracking>0) {state.failed=true; return ;}
+							EarlyExitException eee =
+								new EarlyExitException(124, input);
+							throw eee;
+					}
+					cnt124++;
+				} while (true);
+
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:103: ( instructionInclBreakContinue )+
+				int cnt125=0;
+				loop125:
+				do {
+					int alt125=2;
+					int LA125_0 = input.LA(1);
+					if ( (LA125_0==Break||LA125_0==Continue||LA125_0==Do||LA125_0==Echo||(LA125_0 >= For && LA125_0 <= Foreach)||(LA125_0 >= Identifier && LA125_0 <= If)||LA125_0==LeftCurlyBrace||LA125_0==MinusMinus||LA125_0==PlusPlus||LA125_0==Return||(LA125_0 >= Switch && LA125_0 <= VariableId)||LA125_0==While) ) {
+						alt125=1;
+					}
+
+					switch (alt125) {
+					case 1 :
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:554:103: instructionInclBreakContinue
+						{
+						pushFollow(FOLLOW_instructionInclBreakContinue_in_synpred156_TSPHP3067);
+						instructionInclBreakContinue();
+						state._fsp--;
+						if (state.failed) return ;
+						}
+						break;
+
+					default :
+						if ( cnt125 >= 1 ) break loop125;
+						if (state.backtracking>0) {state.failed=true; return ;}
+							EarlyExitException eee =
+								new EarlyExitException(125, input);
+							throw eee;
+					}
+					cnt125++;
+				} while (true);
+
+				}
+				break;
+
+			default :
+				if ( cnt126 >= 1 ) break loop126;
+				if (state.backtracking>0) {state.failed=true; return ;}
+					EarlyExitException eee =
+						new EarlyExitException(126, input);
+					throw eee;
+			}
+			cnt126++;
 		} while (true);
 
 		}
 
 	}
-	// $ANTLR end synpred149_TSPHP
+	// $ANTLR end synpred156_TSPHP
 
 	// Delegated rules
 
-	public final boolean synpred149_TSPHP() {
+	public final boolean synpred156_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
 		try {
-			synpred149_TSPHP_fragment(); // can never throw exception
+			synpred156_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -6225,11 +7184,11 @@ public class TSPHPParser extends Parser {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred131_TSPHP() {
+	public final boolean synpred137_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
 		try {
-			synpred131_TSPHP_fragment(); // can never throw exception
+			synpred137_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -6239,11 +7198,11 @@ public class TSPHPParser extends Parser {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred133_TSPHP() {
+	public final boolean synpred138_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
 		try {
-			synpred133_TSPHP_fragment(); // can never throw exception
+			synpred138_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -6253,11 +7212,11 @@ public class TSPHPParser extends Parser {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred130_TSPHP() {
+	public final boolean synpred140_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
 		try {
-			synpred130_TSPHP_fragment(); // can never throw exception
+			synpred140_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -6275,24 +7234,24 @@ public class TSPHPParser extends Parser {
 	static final String DFA3_eofS =
 		"\10\uffff";
 	static final String DFA3_minS =
-		"\1\4\1\60\1\uffff\1\12\1\uffff\1\60\1\uffff\1\12";
+		"\1\4\1\61\1\uffff\1\12\1\uffff\1\61\1\uffff\1\12";
 	static final String DFA3_maxS =
-		"\1\154\1\64\1\uffff\1\130\1\uffff\1\60\1\uffff\1\130";
+		"\1\155\1\66\1\uffff\1\133\1\uffff\1\61\1\uffff\1\133";
 	static final String DFA3_acceptS =
 		"\2\uffff\1\3\1\uffff\1\2\1\uffff\1\1\1\uffff";
 	static final String DFA3_specialS =
 		"\10\uffff}>";
 	static final String[] DFA3_transitionS = {
-			"\1\2\20\uffff\1\2\11\uffff\1\2\7\uffff\1\2\1\uffff\3\2\5\uffff\1\2\2"+
-			"\uffff\1\2\14\uffff\1\2\4\uffff\1\1\6\uffff\1\2\4\uffff\1\2\14\uffff"+
-			"\12\2\1\uffff\1\2\1\uffff\1\2",
-			"\1\3\3\uffff\1\4",
+			"\1\2\20\uffff\1\2\11\uffff\1\2\4\uffff\1\2\3\uffff\1\2\1\uffff\3\2\4"+
+			"\uffff\2\2\2\uffff\2\2\14\uffff\1\2\4\uffff\1\1\7\uffff\1\2\4\uffff\1"+
+			"\2\14\uffff\12\2\1\uffff\1\2",
+			"\1\3\4\uffff\1\4",
 			"",
-			"\1\5\51\uffff\1\4\43\uffff\1\6",
+			"\1\5\53\uffff\1\4\44\uffff\1\6",
 			"",
 			"\1\7",
 			"",
-			"\1\5\51\uffff\1\4\43\uffff\1\6"
+			"\1\5\53\uffff\1\4\44\uffff\1\6"
 	};
 
 	static final short[] DFA3_eot = DFA.unpackEncodedString(DFA3_eotS);
@@ -6326,326 +7285,339 @@ public class TSPHPParser extends Parser {
 		}
 		@Override
 		public String getDescription() {
-			return "156:1: prog : ( ( namespaceSemicolon )+ EOF | ( namespaceBracket )+ EOF | withoutNamespace EOF );";
+			return "159:1: prog : ( ( namespaceSemicolon )+ EOF | ( namespaceBracket )+ EOF | withoutNamespace EOF );";
 		}
 	}
 
-	public static final BitSet FOLLOW_namespaceSemicolon_in_prog761 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_EOF_in_prog764 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_namespaceBracket_in_prog769 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000040L});
-	public static final BitSet FOLLOW_EOF_in_prog772 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_withoutNamespace_in_prog777 = new BitSet(new long[]{0x0000000000000000L});
-	public static final BitSet FOLLOW_EOF_in_prog779 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Namespace_in_namespaceSemicolon792 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_namespaceId_in_namespaceSemicolon794 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_namespaceSemicolon796 = new BitSet(new long[]{0x00120E8080200010L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_statement_in_namespaceSemicolon798 = new BitSet(new long[]{0x00120E8080200012L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_Namespace_in_namespaceBracket811 = new BitSet(new long[]{0x0011000000000000L});
-	public static final BitSet FOLLOW_namespaceId_in_namespaceBracket813 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_namespaceBracket816 = new BitSet(new long[]{0x00120E8080200010L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_statement_in_namespaceBracket818 = new BitSet(new long[]{0x00120E8080200010L,0x000015FF800C2002L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_namespaceBracket821 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_namespaceId887 = new BitSet(new long[]{0x0000000000000402L});
-	public static final BitSet FOLLOW_Backslash_in_namespaceId890 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_namespaceId892 = new BitSet(new long[]{0x0000000000000402L});
-	public static final BitSet FOLLOW_statement_in_withoutNamespace905 = new BitSet(new long[]{0x00120E8080200012L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_definition_in_statement916 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_statement921 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_classDeclaration_in_definition932 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionDeclaration_in_definition937 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Class_in_classDeclaration956 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_classDeclaration958 = new BitSet(new long[]{0x0014004000000000L});
-	public static final BitSet FOLLOW_extendsDeclaration_in_classDeclaration960 = new BitSet(new long[]{0x0014000000000000L});
-	public static final BitSet FOLLOW_implementsDeclaration_in_classDeclaration963 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_classDeclaration966 = new BitSet(new long[]{0x0000088002000010L,0x000000002001C000L});
-	public static final BitSet FOLLOW_classBody_in_classDeclaration968 = new BitSet(new long[]{0x0000088002000010L,0x000000002009C000L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_classDeclaration971 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Extends_in_extendsDeclaration985 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_identifierList_in_extendsDeclaration987 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_identifierList996 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Comma_in_identifierList999 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_identifierList1001 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Implements_in_implementsDeclaration1012 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_identifierList_in_implementsDeclaration1014 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_constantDeclaration_in_classBody1024 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_attributeDeclaration_in_classBody1029 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_methodDeclaration_in_classBody1035 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Const_in_constantDeclaration1044 = new BitSet(new long[]{0x0000000000000000L,0x000000FF00000000L});
-	public static final BitSet FOLLOW_primitiveTypes_in_constantDeclaration1046 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_constDeclarationList_in_constantDeclaration1048 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_constantDeclaration1050 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_constantAssignment_in_constDeclarationList1060 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Comma_in_constDeclarationList1063 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_constantAssignment_in_constDeclarationList1065 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Identifier_in_constantAssignment1075 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_Assign_in_constantAssignment1078 = new BitSet(new long[]{0x8068010000040000L,0x0000010140000800L});
-	public static final BitSet FOLLOW_unaryAtom_in_constantAssignment1080 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableDeclaration_in_variableDeclarationListWithoutVariableId1089 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Comma_in_variableDeclarationListWithoutVariableId1092 = new BitSet(new long[]{0x0000000000000000L,0x0000010000002002L});
-	public static final BitSet FOLLOW_variableAssignment_in_variableDeclarationListWithoutVariableId1094 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Static_in_attributeDeclaration1106 = new BitSet(new long[]{0x0000000000000000L,0x000000000001C000L});
-	public static final BitSet FOLLOW_accessor_in_attributeDeclaration1109 = new BitSet(new long[]{0x0000000000000000L,0x000000FF00000000L});
-	public static final BitSet FOLLOW_variableDeclarationListInclVariableId_in_attributeDeclaration1111 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_attributeDeclaration1113 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_accessorWithoutPrivate_in_accessor1121 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Private_in_accessor1126 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableDeclaration_in_variableDeclarationListInclVariableId1149 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Comma_in_variableDeclarationListInclVariableId1152 = new BitSet(new long[]{0x0000000000000000L,0x0000010000002002L});
-	public static final BitSet FOLLOW_variableAssignment_in_variableDeclarationListInclVariableId1155 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_VariableId_in_variableDeclarationListInclVariableId1157 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Abstract_in_methodDeclaration1172 = new BitSet(new long[]{0x0000080000000000L,0x0000000000018000L});
-	public static final BitSet FOLLOW_accessorWithoutPrivate_in_methodDeclaration1174 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_Static_in_methodDeclaration1188 = new BitSet(new long[]{0x0000088000000000L,0x000000000001C000L});
-	public static final BitSet FOLLOW_Final_in_methodDeclaration1190 = new BitSet(new long[]{0x0000080000000000L,0x000000000001C000L});
-	public static final BitSet FOLLOW_Final_in_methodDeclaration1198 = new BitSet(new long[]{0x0000080000000000L,0x000000002001C000L});
-	public static final BitSet FOLLOW_Static_in_methodDeclaration1200 = new BitSet(new long[]{0x0000080000000000L,0x000000000001C000L});
-	public static final BitSet FOLLOW_accessor_in_methodDeclaration1214 = new BitSet(new long[]{0x0000080000000000L});
-	public static final BitSet FOLLOW_functionDeclaration_in_methodDeclaration1221 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Function_in_functionDeclaration1232 = new BitSet(new long[]{0x0000000000000000L,0x000002FF00000000L});
-	public static final BitSet FOLLOW_returnType_in_functionDeclaration1234 = new BitSet(new long[]{0x0001000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_functionDeclaration1236 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_functionDeclaration1238 = new BitSet(new long[]{0x0000000000000000L,0x000000FF00100000L});
-	public static final BitSet FOLLOW_paramList_in_functionDeclaration1240 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_functionDeclaration1243 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_functionDeclaration1245 = new BitSet(new long[]{0x0012060080000000L,0x000015FF800C2002L});
-	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_functionDeclaration1247 = new BitSet(new long[]{0x0012060080000000L,0x000015FF800C2002L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_functionDeclaration1250 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveTypes_in_returnType1260 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Void_in_returnType1264 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveTypesWithoutResource_in_primitiveTypes1315 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeResource_in_primitiveTypes1320 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1332 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Comma_in_paramList1335 = new BitSet(new long[]{0x0000000000000000L,0x000000FF00000000L});
-	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1337 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_paramDeclaration_in_paramList1344 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Comma_in_paramList1347 = new BitSet(new long[]{0x0000000000000000L,0x000000FF00000000L});
-	public static final BitSet FOLLOW_paramDeclaration_in_paramList1349 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_paramDeclaration_in_paramList1356 = new BitSet(new long[]{0x0000000000800000L,0x000000FF00000000L});
-	public static final BitSet FOLLOW_paramDeclaration_in_paramList1359 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_Comma_in_paramList1361 = new BitSet(new long[]{0x0000000000800000L,0x000000FF00000000L});
-	public static final BitSet FOLLOW_Comma_in_paramList1366 = new BitSet(new long[]{0x0000000000000000L,0x000000FF00000000L});
-	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1368 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_primitiveTypes_in_paramDeclaration1382 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
-	public static final BitSet FOLLOW_VariableId_in_paramDeclaration1384 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_paramDeclaration_in_paramDeclarationOptional1394 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_Assign_in_paramDeclarationOptional1397 = new BitSet(new long[]{0x8068010000040000L,0x0000010140000800L});
-	public static final BitSet FOLLOW_unaryAtom_in_paramDeclarationOptional1399 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_instructionWithoutBreakContinue1421 = new BitSet(new long[]{0x0012060080000000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_instructionWithoutBreakContinue1423 = new BitSet(new long[]{0x0012060080000000L,0x000015FF800C2002L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_instructionWithoutBreakContinue1427 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_instruction_in_instructionWithoutBreakContinue1432 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_instructionInclBreakContinue1443 = new BitSet(new long[]{0x0012060084080000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_instructionInclBreakContinue1445 = new BitSet(new long[]{0x0012060084080000L,0x000015FF800C2002L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_instructionInclBreakContinue1449 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_instruction_in_instructionInclBreakContinue1454 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_set_in_instructionInclBreakContinue1459 = new BitSet(new long[]{0x0008000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Int_in_instructionInclBreakContinue1465 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instructionInclBreakContinue1468 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableAssignment_in_instruction1480 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instruction1482 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableDeclaration_in_instruction1487 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instruction1489 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ifCondition_in_instruction1494 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_switchCondition_in_instruction1499 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_forLoop_in_instruction1504 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_foreachLoop_in_instruction1509 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_whileLoop_in_instruction1514 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_doWhileLoop_in_instruction1519 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Return_in_instruction1524 = new BitSet(new long[]{0x8868010000042100L,0x0000010141002802L});
-	public static final BitSet FOLLOW_expression_in_instruction1526 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instruction1529 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_108_in_instruction1534 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expressionList_in_instruction1536 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instruction1538 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expression_in_expressionList1550 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Comma_in_expressionList1553 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_expressionList1555 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VariableId_in_variableAssignment1566 = new BitSet(new long[]{0x0000000440029080L,0x0000000014001029L});
-	public static final BitSet FOLLOW_assignmentOperator_in_variableAssignment1568 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_variableAssignment1570 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_postIncrementDecrement_in_variableAssignment1575 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_preIncrementDecrement_in_variableAssignment1580 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VariableId_in_postIncrementDecrement1658 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002002L});
-	public static final BitSet FOLLOW_set_in_postIncrementDecrement1660 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_set_in_preIncrementDecrement1674 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
-	public static final BitSet FOLLOW_VariableId_in_preIncrementDecrement1680 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveTypes_in_variableDeclaration1692 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
-	public static final BitSet FOLLOW_VariableId_in_variableDeclaration1694 = new BitSet(new long[]{0x0000000000000082L});
-	public static final BitSet FOLLOW_Assign_in_variableDeclaration1697 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_variableDeclaration1699 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_logicOrWeak_in_expression1711 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_logicXorWeak_in_logicOrWeak1720 = new BitSet(new long[]{0x2000000000000002L});
-	public static final BitSet FOLLOW_LogicOrWeak_in_logicOrWeak1723 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_logicXorWeak_in_logicOrWeak1725 = new BitSet(new long[]{0x2000000000000002L});
-	public static final BitSet FOLLOW_logicAndWeak_in_logicXorWeak1738 = new BitSet(new long[]{0x4000000000000002L});
-	public static final BitSet FOLLOW_LogicXorWeak_in_logicXorWeak1741 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_logicAndWeak_in_logicXorWeak1743 = new BitSet(new long[]{0x4000000000000002L});
-	public static final BitSet FOLLOW_assignment_in_logicAndWeak1756 = new BitSet(new long[]{0x0400000000000002L});
-	public static final BitSet FOLLOW_LogicAndWeak_in_logicAndWeak1759 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_assignment_in_logicAndWeak1761 = new BitSet(new long[]{0x0400000000000002L});
-	public static final BitSet FOLLOW_ternary_in_assignment1772 = new BitSet(new long[]{0x0000000440029082L,0x0000000014001029L});
-	public static final BitSet FOLLOW_assignmentOperator_in_assignment1775 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_ternary_in_assignment1777 = new BitSet(new long[]{0x0000000440029082L,0x0000000014001029L});
-	public static final BitSet FOLLOW_logicOr_in_ternary1787 = new BitSet(new long[]{0x0000000000000002L,0x0000000000020000L});
-	public static final BitSet FOLLOW_QuestionMark_in_ternary1790 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_ternary1792 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_Colon_in_ternary1794 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_logicOr_in_ternary1796 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_logicAnd_in_logicOr1806 = new BitSet(new long[]{0x1000000000000002L});
-	public static final BitSet FOLLOW_LogicOr_in_logicOr1809 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_logicAnd_in_logicOr1811 = new BitSet(new long[]{0x1000000000000002L});
-	public static final BitSet FOLLOW_bitwiseOr_in_logicAnd1820 = new BitSet(new long[]{0x0200000000000002L});
-	public static final BitSet FOLLOW_LogicAnd_in_logicAnd1823 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_bitwiseOr_in_logicAnd1825 = new BitSet(new long[]{0x0200000000000002L});
-	public static final BitSet FOLLOW_bitwiseXor_in_bitwiseOr1836 = new BitSet(new long[]{0x0000000000004002L});
-	public static final BitSet FOLLOW_BitwiseOr_in_bitwiseOr1839 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_bitwiseXor_in_bitwiseOr1841 = new BitSet(new long[]{0x0000000000004002L});
-	public static final BitSet FOLLOW_bitwiseAnd_in_bitwiseXor1852 = new BitSet(new long[]{0x0000000000010002L});
-	public static final BitSet FOLLOW_BitwiseXor_in_bitwiseXor1855 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_bitwiseAnd_in_bitwiseXor1857 = new BitSet(new long[]{0x0000000000010002L});
-	public static final BitSet FOLLOW_equality_in_bitwiseAnd1868 = new BitSet(new long[]{0x0000000000000802L});
-	public static final BitSet FOLLOW_BitwiseAnd_in_bitwiseAnd1871 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_equality_in_bitwiseAnd1873 = new BitSet(new long[]{0x0000000000000802L});
-	public static final BitSet FOLLOW_comparison_in_equality1882 = new BitSet(new long[]{0x0000802000000002L,0x0000000000000380L});
-	public static final BitSet FOLLOW_equalityOperator_in_equality1885 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_comparison_in_equality1887 = new BitSet(new long[]{0x0000802000000002L,0x0000000000000380L});
-	public static final BitSet FOLLOW_bitwiseShift_in_comparison1929 = new BitSet(new long[]{0x0180300000000002L});
-	public static final BitSet FOLLOW_comparisonOperator_in_comparison1932 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_bitwiseShift_in_comparison1934 = new BitSet(new long[]{0x0180300000000002L});
-	public static final BitSet FOLLOW_termOrStringConcatenation_in_bitwiseShift1970 = new BitSet(new long[]{0x0000000000000002L,0x000000000A000000L});
-	public static final BitSet FOLLOW_set_in_bitwiseShift1973 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_termOrStringConcatenation_in_bitwiseShift1979 = new BitSet(new long[]{0x0000000000000002L,0x000000000A000000L});
-	public static final BitSet FOLLOW_factor_in_termOrStringConcatenation1989 = new BitSet(new long[]{0x8000000200000002L,0x0000000000000800L});
-	public static final BitSet FOLLOW_set_in_termOrStringConcatenation1992 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_factor_in_termOrStringConcatenation2000 = new BitSet(new long[]{0x8000000200000002L,0x0000000000000800L});
-	public static final BitSet FOLLOW_logicNot_in_factor2010 = new BitSet(new long[]{0x0000000020000002L,0x0000000000000014L});
-	public static final BitSet FOLLOW_set_in_factor2013 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_logicNot_in_factor2021 = new BitSet(new long[]{0x0000000020000002L,0x0000000000000014L});
-	public static final BitSet FOLLOW_LogicNot_in_logicNot2030 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_logicNot_in_logicNot2032 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_logicNot2037 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_castOrBitwiseNotOrAt2051 = new BitSet(new long[]{0x0000000000000000L,0x000000BF00000000L});
-	public static final BitSet FOLLOW_primitiveTypesWithoutResource_in_castOrBitwiseNotOrAt2053 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_castOrBitwiseNotOrAt2055 = new BitSet(new long[]{0x8068010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2058 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BitwiseNot_in_castOrBitwiseNotOrAt2063 = new BitSet(new long[]{0x8068010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2065 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_At_in_castOrBitwiseNotOrAt2070 = new BitSet(new long[]{0x8068010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2072 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_incrementDecrement_in_castOrBitwiseNotOrAt2077 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_postIncrementDecrement_in_incrementDecrement2089 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_preIncrementDecrement_in_incrementDecrement2094 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_unaryAtom_in_incrementDecrement2099 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Plus_in_unaryAtom2110 = new BitSet(new long[]{0x0068010000040000L,0x0000010140000000L});
-	public static final BitSet FOLLOW_atom_in_unaryAtom2112 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Minus_in_unaryAtom2117 = new BitSet(new long[]{0x0068010000040000L,0x0000010140000000L});
-	public static final BitSet FOLLOW_atom_in_unaryAtom2119 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_atom_in_unaryAtom2124 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_atom2136 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_atom2138 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_atom2140 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveAtom_in_atom2145 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VariableId_in_atom2150 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Plus_in_unaryPrimitiveAtom2164 = new BitSet(new long[]{0x0048010000040000L,0x0000000140000000L});
-	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2166 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Minus_in_unaryPrimitiveAtom2171 = new BitSet(new long[]{0x0048010000040000L,0x0000000140000000L});
-	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2173 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2178 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Bool_in_primitiveAtom2189 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Int_in_primitiveAtom2194 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Float_in_primitiveAtom2199 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_String_in_primitiveAtom2204 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_array_in_primitiveAtom2209 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftSquareBrace_in_array2671 = new BitSet(new long[]{0x8868010000042100L,0x0000010140202802L});
-	public static final BitSet FOLLOW_array_content_in_array2673 = new BitSet(new long[]{0x0000000000000000L,0x0000000000200000L});
-	public static final BitSet FOLLOW_RightSquareBrace_in_array2676 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeArray_in_array2682 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_array2684 = new BitSet(new long[]{0x8868010000042100L,0x0000010140102802L});
-	public static final BitSet FOLLOW_array_content_in_array2686 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_array2689 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expression_in_array_content2702 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_Arrow_in_array_content2704 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_array_content2708 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Comma_in_array_content2712 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_array_content2715 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_Arrow_in_array_content2717 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_array_content2721 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_If_in_ifCondition2733 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_ifCondition2735 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_ifCondition2737 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_ifCondition2739 = new BitSet(new long[]{0x0012060080000000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_ifCondition2741 = new BitSet(new long[]{0x0000001000000002L});
-	public static final BitSet FOLLOW_Else_in_ifCondition2748 = new BitSet(new long[]{0x0012060080000000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_ifCondition2750 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_For_in_forLoop2765 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_forLoop2767 = new BitSet(new long[]{0x0000000000000000L,0x000001FF01002002L});
-	public static final BitSet FOLLOW_forInit_in_forLoop2769 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_forLoop2772 = new BitSet(new long[]{0x8868010000042100L,0x0000010141002802L});
-	public static final BitSet FOLLOW_expressionList_in_forLoop2774 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_forLoop2778 = new BitSet(new long[]{0x0000000000000000L,0x0000010000102002L});
-	public static final BitSet FOLLOW_forUpdate_in_forLoop2780 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_forLoop2783 = new BitSet(new long[]{0x0012060084080000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_forLoop2785 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableDeclaration_in_forInit2794 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_variableAssignment_in_forInit2796 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Comma_in_forInit2800 = new BitSet(new long[]{0x0000000000000000L,0x0000010000002002L});
-	public static final BitSet FOLLOW_variableAssignment_in_forInit2802 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_variableAssignment_in_forUpdate2812 = new BitSet(new long[]{0x0000000000800002L});
-	public static final BitSet FOLLOW_Comma_in_forUpdate2815 = new BitSet(new long[]{0x0000000000000000L,0x0000010000002002L});
-	public static final BitSet FOLLOW_variableAssignment_in_forUpdate2817 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Foreach_in_foreachLoop2828 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_foreachLoop2830 = new BitSet(new long[]{0x0040000000000000L,0x0000010100000000L});
-	public static final BitSet FOLLOW_VariableId_in_foreachLoop2833 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_array_in_foreachLoop2835 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_As_in_foreachLoop2838 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
-	public static final BitSet FOLLOW_VariableId_in_foreachLoop2840 = new BitSet(new long[]{0x0000000000000020L,0x0000000000100000L});
-	public static final BitSet FOLLOW_Arrow_in_foreachLoop2843 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
-	public static final BitSet FOLLOW_VariableId_in_foreachLoop2845 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_foreachLoop2849 = new BitSet(new long[]{0x0012060084080000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_foreachLoop2851 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_While_in_whileLoop2860 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_whileLoop2862 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_whileLoop2864 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_whileLoop2866 = new BitSet(new long[]{0x0012060084080000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_whileLoop2868 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Do_in_doWhileLoop2878 = new BitSet(new long[]{0x0012060084080000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_doWhileLoop2880 = new BitSet(new long[]{0x0000000000000000L,0x0000040000000000L});
-	public static final BitSet FOLLOW_While_in_doWhileLoop2882 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_doWhileLoop2884 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_doWhileLoop2886 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_doWhileLoop2888 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-	public static final BitSet FOLLOW_Semicolon_in_doWhileLoop2890 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Switch_in_switchCondition2900 = new BitSet(new long[]{0x0020000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_switchCondition2902 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
-	public static final BitSet FOLLOW_VariableId_in_switchCondition2904 = new BitSet(new long[]{0x0000000000000000L,0x0000000000100000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_switchCondition2906 = new BitSet(new long[]{0x0010000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_switchCondition2908 = new BitSet(new long[]{0x0000000000100000L});
-	public static final BitSet FOLLOW_caseLabel_in_switchCondition2919 = new BitSet(new long[]{0x0012060084180000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_switchCondition2922 = new BitSet(new long[]{0x0012060094180000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_defaultLabel_in_switchCondition2927 = new BitSet(new long[]{0x0012060084080000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_switchCondition2929 = new BitSet(new long[]{0x0012060084180000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_caseLabel_in_switchCondition2933 = new BitSet(new long[]{0x0012060084180000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_switchCondition2936 = new BitSet(new long[]{0x0012060084180000L,0x000015FF800C2002L});
-	public static final BitSet FOLLOW_caseLabel_in_switchCondition2946 = new BitSet(new long[]{0x0012060084180000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_switchCondition2949 = new BitSet(new long[]{0x0012060094180000L,0x000015FF800C2002L});
-	public static final BitSet FOLLOW_defaultLabel_in_switchCondition2955 = new BitSet(new long[]{0x0012060084080000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_switchCondition2957 = new BitSet(new long[]{0x0012060084080000L,0x000015FF800C2002L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_switchCondition2968 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Case_in_caseLabel2980 = new BitSet(new long[]{0x8868010000042100L,0x0000010140002802L});
-	public static final BitSet FOLLOW_expression_in_caseLabel2982 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_Colon_in_caseLabel2984 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Default_in_defaultLabel2993 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_Colon_in_defaultLabel2995 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expression_in_synpred130_TSPHP2702 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_Arrow_in_synpred130_TSPHP2704 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expression_in_synpred131_TSPHP2715 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_Arrow_in_synpred131_TSPHP2717 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Else_in_synpred133_TSPHP2748 = new BitSet(new long[]{0x0012060080000000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_synpred133_TSPHP2750 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_caseLabel_in_synpred149_TSPHP2919 = new BitSet(new long[]{0x0012060084180000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_synpred149_TSPHP2922 = new BitSet(new long[]{0x0012060094180000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_defaultLabel_in_synpred149_TSPHP2927 = new BitSet(new long[]{0x0012060084080000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_synpred149_TSPHP2929 = new BitSet(new long[]{0x0012060084180000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_caseLabel_in_synpred149_TSPHP2933 = new BitSet(new long[]{0x0012060084180000L,0x000015FF80042002L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_synpred149_TSPHP2936 = new BitSet(new long[]{0x0012060084180002L,0x000015FF80042002L});
+	public static final BitSet FOLLOW_namespaceSemicolon_in_prog785 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_EOF_in_prog788 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_namespaceBracket_in_prog793 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000100L});
+	public static final BitSet FOLLOW_EOF_in_prog796 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_withoutNamespace_in_prog801 = new BitSet(new long[]{0x0000000000000000L});
+	public static final BitSet FOLLOW_EOF_in_prog803 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Namespace_in_namespaceSemicolon816 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_namespaceId_in_namespaceSemicolon818 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_namespaceSemicolon820 = new BitSet(new long[]{0x00661D1080200010L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_statement_in_namespaceSemicolon822 = new BitSet(new long[]{0x00661D1080200012L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_Namespace_in_namespaceBracket835 = new BitSet(new long[]{0x0042000000000000L});
+	public static final BitSet FOLLOW_namespaceId_in_namespaceBracket837 = new BitSet(new long[]{0x0040000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_namespaceBracket840 = new BitSet(new long[]{0x00661D1080200010L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_statement_in_namespaceBracket842 = new BitSet(new long[]{0x00661D1080200010L,0x00002FFC00610008L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_namespaceBracket845 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_namespaceId911 = new BitSet(new long[]{0x0000000000000402L});
+	public static final BitSet FOLLOW_Backslash_in_namespaceId914 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_namespaceId916 = new BitSet(new long[]{0x0000000000000402L});
+	public static final BitSet FOLLOW_statement_in_withoutNamespace929 = new BitSet(new long[]{0x00661D1080200012L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_definition_in_statement940 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_statement945 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_classDeclaration_in_definition956 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_interfaceDeclaration_in_definition961 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionDeclaration_in_definition966 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Class_in_classDeclaration985 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_classDeclaration987 = new BitSet(new long[]{0x0048008000000000L});
+	public static final BitSet FOLLOW_extendsDeclaration_in_classDeclaration989 = new BitSet(new long[]{0x0048000000000000L});
+	public static final BitSet FOLLOW_implementsDeclaration_in_classDeclaration992 = new BitSet(new long[]{0x0040000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_classDeclaration995 = new BitSet(new long[]{0x0000110002000010L,0x00000001000E0000L});
+	public static final BitSet FOLLOW_classBody_in_classDeclaration997 = new BitSet(new long[]{0x0000110002000010L,0x00000001004E0000L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_classDeclaration1000 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Extends_in_extendsDeclaration1014 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_identifierList_in_extendsDeclaration1016 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_identifierList1025 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Comma_in_identifierList1028 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_identifierList1030 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Implements_in_implementsDeclaration1041 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_identifierList_in_implementsDeclaration1043 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constantDeclaration_in_classBody1053 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_attributeDeclaration_in_classBody1058 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_methodDeclaration_in_classBody1064 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Const_in_constantDeclaration1073 = new BitSet(new long[]{0x0000000000000000L,0x000004F000000000L});
+	public static final BitSet FOLLOW_primitiveTypes_in_constantDeclaration1075 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_constDeclarationList_in_constantDeclaration1077 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_constantDeclaration1079 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constantAssignment_in_constDeclarationList1089 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Comma_in_constDeclarationList1092 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_constantAssignment_in_constDeclarationList1094 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Identifier_in_constantAssignment1104 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_Assign_in_constantAssignment1107 = new BitSet(new long[]{0x0010020000040000L,0x0000000200005002L});
+	public static final BitSet FOLLOW_unaryPrimitiveAtom_in_constantAssignment1109 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableDeclaration_in_variableDeclarationListWithoutVariableId1118 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Comma_in_variableDeclarationListWithoutVariableId1121 = new BitSet(new long[]{0x0000000000000000L,0x0000080000010008L});
+	public static final BitSet FOLLOW_variableAssignment_in_variableDeclarationListWithoutVariableId1123 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Static_in_attributeDeclaration1135 = new BitSet(new long[]{0x0000000000000000L,0x00000000000E0000L});
+	public static final BitSet FOLLOW_accessor_in_attributeDeclaration1138 = new BitSet(new long[]{0x0002000000000000L,0x000007F800000000L});
+	public static final BitSet FOLLOW_variableDeclarationListInclVariableId_in_attributeDeclaration1140 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_attributeDeclaration1142 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_accessorWithoutPrivate_in_accessor1149 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Private_in_accessor1154 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableDeclaration_in_variableDeclarationListInclVariableId1177 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Comma_in_variableDeclarationListInclVariableId1180 = new BitSet(new long[]{0x0000000000000000L,0x0000080000010008L});
+	public static final BitSet FOLLOW_variableAssignment_in_variableDeclarationListInclVariableId1183 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_VariableId_in_variableDeclarationListInclVariableId1185 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Abstract_in_methodDeclaration1200 = new BitSet(new long[]{0x0000100000000000L,0x00000000000C0000L});
+	public static final BitSet FOLLOW_accessorWithoutPrivate_in_methodDeclaration1202 = new BitSet(new long[]{0x0000100000000000L});
+	public static final BitSet FOLLOW_Static_in_methodDeclaration1216 = new BitSet(new long[]{0x0000110000000000L,0x00000000000E0000L});
+	public static final BitSet FOLLOW_Final_in_methodDeclaration1218 = new BitSet(new long[]{0x0000100000000000L,0x00000000000E0000L});
+	public static final BitSet FOLLOW_Final_in_methodDeclaration1226 = new BitSet(new long[]{0x0000100000000000L,0x00000001000E0000L});
+	public static final BitSet FOLLOW_Static_in_methodDeclaration1228 = new BitSet(new long[]{0x0000100000000000L,0x00000000000E0000L});
+	public static final BitSet FOLLOW_accessor_in_methodDeclaration1242 = new BitSet(new long[]{0x0000100000000000L});
+	public static final BitSet FOLLOW_functionDeclaration_in_methodDeclaration1249 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Interface_in_interfaceDeclaration1259 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_interfaceDeclaration1261 = new BitSet(new long[]{0x0048000000000000L});
+	public static final BitSet FOLLOW_implementsDeclaration_in_interfaceDeclaration1263 = new BitSet(new long[]{0x0040000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_interfaceDeclaration1266 = new BitSet(new long[]{0x0000100002000000L,0x0000000000480000L});
+	public static final BitSet FOLLOW_interfaceBody_in_interfaceDeclaration1268 = new BitSet(new long[]{0x0000100002000000L,0x0000000000480000L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_interfaceDeclaration1271 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constantDeclaration_in_interfaceBody1280 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_interfaceMethodDeclaration_in_interfaceBody1285 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Public_in_interfaceMethodDeclaration1296 = new BitSet(new long[]{0x0000100000000000L});
+	public static final BitSet FOLLOW_functionDeclarationWithoutBody_in_interfaceMethodDeclaration1299 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_interfaceMethodDeclaration1301 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionDeclarationWithoutBody_in_functionDeclaration1312 = new BitSet(new long[]{0x0040000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_functionDeclaration1314 = new BitSet(new long[]{0x00460C1080000000L,0x00002FFC00610008L});
+	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_functionDeclaration1316 = new BitSet(new long[]{0x00460C1080000000L,0x00002FFC00610008L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_functionDeclaration1319 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Function_in_functionDeclarationWithoutBody1329 = new BitSet(new long[]{0x0002000000000000L,0x000017F800000000L});
+	public static final BitSet FOLLOW_returnType_in_functionDeclarationWithoutBody1331 = new BitSet(new long[]{0x0002000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_functionDeclarationWithoutBody1333 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_functionDeclarationWithoutBody1335 = new BitSet(new long[]{0x0002000000000000L,0x000007F800800000L});
+	public static final BitSet FOLLOW_paramList_in_functionDeclarationWithoutBody1337 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_functionDeclarationWithoutBody1340 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_allTypes_in_returnType1350 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Void_in_returnType1354 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveTypesExtended_in_allTypes1361 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_classInterfaceType_in_allTypes1365 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveTypes_in_primitiveTypesInclArray1406 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeArray_in_primitiveTypesInclArray1411 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveTypesInclArray_in_primitiveTypesExtended1423 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeResource_in_primitiveTypesExtended1428 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1458 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Comma_in_paramList1461 = new BitSet(new long[]{0x0002000000000000L,0x000007F800000000L});
+	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1463 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_paramDeclaration_in_paramList1470 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Comma_in_paramList1473 = new BitSet(new long[]{0x0002000000000000L,0x000007F800000000L});
+	public static final BitSet FOLLOW_paramDeclaration_in_paramList1475 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_paramDeclaration_in_paramList1482 = new BitSet(new long[]{0x0002000000800000L,0x000007F800000000L});
+	public static final BitSet FOLLOW_paramDeclaration_in_paramList1485 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_Comma_in_paramList1487 = new BitSet(new long[]{0x0002000000800000L,0x000007F800000000L});
+	public static final BitSet FOLLOW_Comma_in_paramList1492 = new BitSet(new long[]{0x0002000000000000L,0x000007F800000000L});
+	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1494 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_allTypes_in_paramDeclaration1508 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
+	public static final BitSet FOLLOW_VariableId_in_paramDeclaration1510 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_paramDeclaration_in_paramDeclarationOptional1520 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_Assign_in_paramDeclarationOptional1523 = new BitSet(new long[]{0x0190020000040000L,0x0000080A00005002L});
+	public static final BitSet FOLLOW_unaryAtom_in_paramDeclarationOptional1525 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_instructionWithoutBreakContinue1547 = new BitSet(new long[]{0x00460C1080000000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_instructionWithoutBreakContinue1549 = new BitSet(new long[]{0x00460C1080000000L,0x00002FFC00610008L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_instructionWithoutBreakContinue1553 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_instruction_in_instructionWithoutBreakContinue1558 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_instructionInclBreakContinue1569 = new BitSet(new long[]{0x00460C1084080000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_instructionInclBreakContinue1571 = new BitSet(new long[]{0x00460C1084080000L,0x00002FFC00610008L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_instructionInclBreakContinue1575 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_instruction_in_instructionInclBreakContinue1580 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_set_in_instructionInclBreakContinue1585 = new BitSet(new long[]{0x0010000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Int_in_instructionInclBreakContinue1591 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instructionInclBreakContinue1594 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableAssignment_in_instruction1606 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instruction1608 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableDeclaration_in_instruction1613 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instruction1615 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ifCondition_in_instruction1620 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_switchCondition_in_instruction1625 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_forLoop_in_instruction1630 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_foreachLoop_in_instruction1635 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_whileLoop_in_instruction1640 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_doWhileLoop_in_instruction1645 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Return_in_instruction1650 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0801500AL});
+	public static final BitSet FOLLOW_expression_in_instruction1652 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instruction1655 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Echo_in_instruction1660 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expressionList_in_instruction1662 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instruction1664 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expression_in_expressionList1676 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Comma_in_expressionList1679 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_expressionList1681 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_VariableId_in_variableAssignment1692 = new BitSet(new long[]{0x0000000440029080L,0x00000000A00080A4L});
+	public static final BitSet FOLLOW_assignmentOperator_in_variableAssignment1694 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_variableAssignment1696 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_postIncrementDecrement_in_variableAssignment1701 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_preIncrementDecrement_in_variableAssignment1706 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VariableId_in_postIncrementDecrement1784 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010008L});
+	public static final BitSet FOLLOW_set_in_postIncrementDecrement1786 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_set_in_preIncrementDecrement1800 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
+	public static final BitSet FOLLOW_VariableId_in_preIncrementDecrement1806 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_allTypes_in_variableDeclaration1818 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
+	public static final BitSet FOLLOW_VariableId_in_variableDeclaration1820 = new BitSet(new long[]{0x0000000000000082L});
+	public static final BitSet FOLLOW_Assign_in_variableDeclaration1823 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_variableDeclaration1825 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_logicOrWeak_in_expression1837 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_logicXorWeak_in_logicOrWeak1846 = new BitSet(new long[]{0x8000000000000002L});
+	public static final BitSet FOLLOW_LogicOrWeak_in_logicOrWeak1849 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_logicXorWeak_in_logicOrWeak1851 = new BitSet(new long[]{0x8000000000000002L});
+	public static final BitSet FOLLOW_logicAndWeak_in_logicXorWeak1864 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
+	public static final BitSet FOLLOW_LogicXorWeak_in_logicXorWeak1867 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_logicAndWeak_in_logicXorWeak1869 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000001L});
+	public static final BitSet FOLLOW_assignment_in_logicAndWeak1882 = new BitSet(new long[]{0x1000000000000002L});
+	public static final BitSet FOLLOW_LogicAndWeak_in_logicAndWeak1885 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_assignment_in_logicAndWeak1887 = new BitSet(new long[]{0x1000000000000002L});
+	public static final BitSet FOLLOW_ternary_in_assignment1898 = new BitSet(new long[]{0x0000000440029082L,0x00000000A00080A4L});
+	public static final BitSet FOLLOW_assignmentOperator_in_assignment1901 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_ternary_in_assignment1903 = new BitSet(new long[]{0x0000000440029082L,0x00000000A00080A4L});
+	public static final BitSet FOLLOW_logicOr_in_ternary1913 = new BitSet(new long[]{0x0000000000000002L,0x0000000000100000L});
+	public static final BitSet FOLLOW_QuestionMark_in_ternary1916 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_ternary1918 = new BitSet(new long[]{0x0000000000400000L});
+	public static final BitSet FOLLOW_Colon_in_ternary1920 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_logicOr_in_ternary1922 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_logicAnd_in_logicOr1932 = new BitSet(new long[]{0x4000000000000002L});
+	public static final BitSet FOLLOW_LogicOr_in_logicOr1935 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_logicAnd_in_logicOr1937 = new BitSet(new long[]{0x4000000000000002L});
+	public static final BitSet FOLLOW_bitwiseOr_in_logicAnd1946 = new BitSet(new long[]{0x0800000000000002L});
+	public static final BitSet FOLLOW_LogicAnd_in_logicAnd1949 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_bitwiseOr_in_logicAnd1951 = new BitSet(new long[]{0x0800000000000002L});
+	public static final BitSet FOLLOW_bitwiseXor_in_bitwiseOr1962 = new BitSet(new long[]{0x0000000000004002L});
+	public static final BitSet FOLLOW_BitwiseOr_in_bitwiseOr1965 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_bitwiseXor_in_bitwiseOr1967 = new BitSet(new long[]{0x0000000000004002L});
+	public static final BitSet FOLLOW_bitwiseAnd_in_bitwiseXor1978 = new BitSet(new long[]{0x0000000000010002L});
+	public static final BitSet FOLLOW_BitwiseXor_in_bitwiseXor1981 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_bitwiseAnd_in_bitwiseXor1983 = new BitSet(new long[]{0x0000000000010002L});
+	public static final BitSet FOLLOW_equality_in_bitwiseAnd1994 = new BitSet(new long[]{0x0000000000000802L});
+	public static final BitSet FOLLOW_BitwiseAnd_in_bitwiseAnd1997 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_equality_in_bitwiseAnd1999 = new BitSet(new long[]{0x0000000000000802L});
+	public static final BitSet FOLLOW_comparison_in_equality2008 = new BitSet(new long[]{0x0001004000000002L,0x0000000000000E00L});
+	public static final BitSet FOLLOW_equalityOperator_in_equality2011 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_comparison_in_equality2013 = new BitSet(new long[]{0x0001004000000002L,0x0000000000000E00L});
+	public static final BitSet FOLLOW_bitwiseShift_in_comparison2055 = new BitSet(new long[]{0x0600600000000002L});
+	public static final BitSet FOLLOW_comparisonOperator_in_comparison2058 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_bitwiseShift_in_comparison2060 = new BitSet(new long[]{0x0600600000000002L});
+	public static final BitSet FOLLOW_termOrStringConcatenation_in_bitwiseShift2096 = new BitSet(new long[]{0x0000000000000002L,0x0000000050000000L});
+	public static final BitSet FOLLOW_set_in_bitwiseShift2099 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_termOrStringConcatenation_in_bitwiseShift2105 = new BitSet(new long[]{0x0000000000000002L,0x0000000050000000L});
+	public static final BitSet FOLLOW_factor_in_termOrStringConcatenation2115 = new BitSet(new long[]{0x0000000200000002L,0x0000000000004002L});
+	public static final BitSet FOLLOW_set_in_termOrStringConcatenation2118 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_factor_in_termOrStringConcatenation2126 = new BitSet(new long[]{0x0000000200000002L,0x0000000000004002L});
+	public static final BitSet FOLLOW_logicNot_in_factor2136 = new BitSet(new long[]{0x0000000020000002L,0x0000000000000050L});
+	public static final BitSet FOLLOW_set_in_factor2139 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_logicNot_in_factor2147 = new BitSet(new long[]{0x0000000020000002L,0x0000000000000050L});
+	public static final BitSet FOLLOW_LogicNot_in_logicNot2156 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_logicNot_in_logicNot2158 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_logicNot2163 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_castOrBitwiseNotOrAt2177 = new BitSet(new long[]{0x0000000000000000L,0x000004F800000000L});
+	public static final BitSet FOLLOW_primitiveTypesInclArray_in_castOrBitwiseNotOrAt2179 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_castOrBitwiseNotOrAt2181 = new BitSet(new long[]{0x0190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2184 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BitwiseNot_in_castOrBitwiseNotOrAt2189 = new BitSet(new long[]{0x0190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2191 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_At_in_castOrBitwiseNotOrAt2196 = new BitSet(new long[]{0x0190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2198 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_incrementDecrement_in_castOrBitwiseNotOrAt2203 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_postIncrementDecrement_in_incrementDecrement2215 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_preIncrementDecrement_in_incrementDecrement2220 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_unaryAtom_in_incrementDecrement2225 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Plus_in_unaryAtom2236 = new BitSet(new long[]{0x0190020000040000L,0x0000080A00001000L});
+	public static final BitSet FOLLOW_atom_in_unaryAtom2238 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Minus_in_unaryAtom2243 = new BitSet(new long[]{0x0190020000040000L,0x0000080A00001000L});
+	public static final BitSet FOLLOW_atom_in_unaryAtom2245 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_atom_in_unaryAtom2250 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_atom2262 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_atom2264 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_atom2266 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveAtom_in_atom2271 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_array_in_atom2276 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VariableId_in_atom2281 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Plus_in_unaryPrimitiveAtom2295 = new BitSet(new long[]{0x0010020000040000L,0x0000000200001000L});
+	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2297 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Minus_in_unaryPrimitiveAtom2302 = new BitSet(new long[]{0x0010020000040000L,0x0000000200001000L});
+	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2304 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom2309 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftSquareBrace_in_array2802 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0101500AL});
+	public static final BitSet FOLLOW_array_content_in_array2804 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+	public static final BitSet FOLLOW_RightSquareBrace_in_array2807 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeArray_in_array2813 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_array2815 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0081500AL});
+	public static final BitSet FOLLOW_array_content_in_array2817 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_array2820 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expression_in_array_content2833 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_Arrow_in_array_content2835 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_array_content2839 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Comma_in_array_content2843 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_array_content2846 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_Arrow_in_array_content2848 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_array_content2852 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_If_in_ifCondition2864 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_ifCondition2866 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_ifCondition2868 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_ifCondition2870 = new BitSet(new long[]{0x00460C1080000000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_ifCondition2872 = new BitSet(new long[]{0x0000002000000002L});
+	public static final BitSet FOLLOW_Else_in_ifCondition2879 = new BitSet(new long[]{0x00460C1080000000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_ifCondition2881 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_For_in_forLoop2896 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_forLoop2898 = new BitSet(new long[]{0x0002000000000000L,0x00000FF808010008L});
+	public static final BitSet FOLLOW_forInit_in_forLoop2900 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_forLoop2903 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0801500AL});
+	public static final BitSet FOLLOW_expressionList_in_forLoop2905 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_forLoop2909 = new BitSet(new long[]{0x0000000000000000L,0x0000080000810008L});
+	public static final BitSet FOLLOW_forUpdate_in_forLoop2911 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_forLoop2914 = new BitSet(new long[]{0x00460C1084080000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_forLoop2916 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableDeclaration_in_forInit2925 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_variableAssignment_in_forInit2927 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Comma_in_forInit2931 = new BitSet(new long[]{0x0000000000000000L,0x0000080000010008L});
+	public static final BitSet FOLLOW_variableAssignment_in_forInit2933 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_variableAssignment_in_forUpdate2943 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Comma_in_forUpdate2946 = new BitSet(new long[]{0x0000000000000000L,0x0000080000010008L});
+	public static final BitSet FOLLOW_variableAssignment_in_forUpdate2948 = new BitSet(new long[]{0x0000000000800002L});
+	public static final BitSet FOLLOW_Foreach_in_foreachLoop2959 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_foreachLoop2961 = new BitSet(new long[]{0x0100000000000000L,0x0000080800000000L});
+	public static final BitSet FOLLOW_VariableId_in_foreachLoop2964 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_array_in_foreachLoop2966 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_As_in_foreachLoop2969 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
+	public static final BitSet FOLLOW_VariableId_in_foreachLoop2971 = new BitSet(new long[]{0x0000000000000020L,0x0000000000800000L});
+	public static final BitSet FOLLOW_Arrow_in_foreachLoop2974 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
+	public static final BitSet FOLLOW_VariableId_in_foreachLoop2976 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_foreachLoop2980 = new BitSet(new long[]{0x00460C1084080000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_foreachLoop2982 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_While_in_whileLoop2991 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_whileLoop2993 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_whileLoop2995 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_whileLoop2997 = new BitSet(new long[]{0x00460C1084080000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_whileLoop2999 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Do_in_doWhileLoop3009 = new BitSet(new long[]{0x00460C1084080000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_doWhileLoop3011 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000000L});
+	public static final BitSet FOLLOW_While_in_doWhileLoop3013 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_doWhileLoop3015 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_doWhileLoop3017 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_doWhileLoop3019 = new BitSet(new long[]{0x0000000000000000L,0x0000000008000000L});
+	public static final BitSet FOLLOW_Semicolon_in_doWhileLoop3021 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Switch_in_switchCondition3031 = new BitSet(new long[]{0x0080000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_switchCondition3033 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
+	public static final BitSet FOLLOW_VariableId_in_switchCondition3035 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_switchCondition3037 = new BitSet(new long[]{0x0040000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_switchCondition3039 = new BitSet(new long[]{0x0000000000100000L});
+	public static final BitSet FOLLOW_caseLabel_in_switchCondition3050 = new BitSet(new long[]{0x00460C1084180000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_switchCondition3053 = new BitSet(new long[]{0x00460C1094180000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_defaultLabel_in_switchCondition3058 = new BitSet(new long[]{0x00460C1084080000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_switchCondition3060 = new BitSet(new long[]{0x00460C1084180000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_caseLabel_in_switchCondition3064 = new BitSet(new long[]{0x00460C1084180000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_switchCondition3067 = new BitSet(new long[]{0x00460C1084180000L,0x00002FFC00610008L});
+	public static final BitSet FOLLOW_caseLabel_in_switchCondition3077 = new BitSet(new long[]{0x00460C1084180000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_switchCondition3080 = new BitSet(new long[]{0x00460C1094180000L,0x00002FFC00610008L});
+	public static final BitSet FOLLOW_defaultLabel_in_switchCondition3086 = new BitSet(new long[]{0x00460C1084080000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_switchCondition3088 = new BitSet(new long[]{0x00460C1084080000L,0x00002FFC00610008L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_switchCondition3099 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Case_in_caseLabel3111 = new BitSet(new long[]{0x2190020000042100L,0x0000080A0001500AL});
+	public static final BitSet FOLLOW_expression_in_caseLabel3113 = new BitSet(new long[]{0x0000000000400000L});
+	public static final BitSet FOLLOW_Colon_in_caseLabel3115 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Default_in_defaultLabel3124 = new BitSet(new long[]{0x0000000000400000L});
+	public static final BitSet FOLLOW_Colon_in_defaultLabel3126 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expression_in_synpred137_TSPHP2833 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_Arrow_in_synpred137_TSPHP2835 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expression_in_synpred138_TSPHP2846 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_Arrow_in_synpred138_TSPHP2848 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Else_in_synpred140_TSPHP2879 = new BitSet(new long[]{0x00460C1080000000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_synpred140_TSPHP2881 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_caseLabel_in_synpred156_TSPHP3050 = new BitSet(new long[]{0x00460C1084180000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_synpred156_TSPHP3053 = new BitSet(new long[]{0x00460C1094180000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_defaultLabel_in_synpred156_TSPHP3058 = new BitSet(new long[]{0x00460C1084080000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_synpred156_TSPHP3060 = new BitSet(new long[]{0x00460C1084180000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_caseLabel_in_synpred156_TSPHP3064 = new BitSet(new long[]{0x00460C1084180000L,0x00002FFC00210008L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_synpred156_TSPHP3067 = new BitSet(new long[]{0x00460C1084180002L,0x00002FFC00210008L});
 }

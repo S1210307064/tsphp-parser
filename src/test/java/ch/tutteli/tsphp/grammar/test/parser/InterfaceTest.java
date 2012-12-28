@@ -16,12 +16,9 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.TSPHPParser;
-import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
-import java.util.ArrayList;
+import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,27 +29,25 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ClassConstantErrorTest extends AParserParserExceptionTest
+public class InterfaceTest extends AParserTest
 {
 
-    public ClassConstantErrorTest(String testString, int character, int position) {
-        super(testString, RecognitionException.class, character, position);
-
+    public InterfaceTest(String testString) {
+        super(testString);
     }
 
     @Test
     public void test() throws RecognitionException {
-        super.parseExpectingException();
+        super.parseAndCheckForException();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-        collection.addAll(Arrays.asList(new Object[][]{
-                    {"class a{ const float $a=1.0;}",TSPHPParser.VariableId,21},
-                    {"class a{ const float a;}",TSPHPParser.Semicolon,22},
-                    {"class a{ const float a=1.0+1.0;}",TSPHPParser.Plus,26},
-                }));
-        return collection;
+        return Arrays.asList(new Object[][]{
+                    {"interface a{}"},
+                    {"interface a implements b{}"},
+                    {"interface a implements b,c,d,e{}"},
+                    
+                });
     }
 }
