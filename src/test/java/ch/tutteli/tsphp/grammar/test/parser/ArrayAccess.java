@@ -60,6 +60,8 @@ public class ArrayAccess extends AParserTest
         }
         collection.add(new Object[]{"int $d = $a->foo()[0]->foo('hallo')->bar()[2][3];"});
         collection.add(new Object[]{"int $d = foo()[0]->foo('hallo')->bar()[2][3];"});
+        collection.add(new Object[]{"int $d = foo()[0]->foo('hallo')->bar()[2][3]->fo()[2][3+1];"});
+        collection.add(new Object[]{"int $d = foo()[0]->foo('hallo')[0][$a]->bar()[2]->foo()[3][5]->foo();"});
         return collection;
     }
 }

@@ -525,7 +525,7 @@ atomOrCall
 	;	
 
 functionCall
-	:	namespaceId '(' expressionList? ')' ('->' Identifier '(' expressionList?')')* arrayAccessCall?;
+	:	classInterfaceTypeWithoutObject '(' expressionList? ')' ('->' Identifier '(' expressionList?')')* arrayAccessCall?;
 
 methodCall
 	:	( (varAccess '->') | staticAccess) Identifier '(' expressionList?')' ('->' Identifier '(' expressionList?')')* arrayAccessCall?
@@ -535,9 +535,11 @@ arrayAccessCall
 	:	 (('[' expression ']') ('->'Identifier '(' expressionList?')')?)+;
 
 atom	:	'(' expression ')'
-	|	primitiveAtom
 	|	array
+	|	staticAccess Identifier
 	|	varAccess
+	|	Identifier
+	|	primitiveAtom
 	;
 	
 unaryPrimitiveAtom

@@ -51,6 +51,7 @@ public class ClassStaticAccessTest extends AParserTest
             collection.add(new Object[]{type+"::foo();"});
             collection.add(new Object[]{type+"::$a->foo();"});
             collection.add(new Object[]{"$a = "+type+"::$a;"});
+            collection.add(new Object[]{"$a = "+type+"::constant;"});
         }
         return collection;
     }

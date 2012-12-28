@@ -48,6 +48,13 @@ public class FunctionCallTest extends AParserTest
         collection.add(new Object[]{"foo();"});
         collection.add(new Object[]{"foo(1,1);"});
         collection.add(new Object[]{"foo(true || false,1+1,'hello'.'world');"});
+        collection.add(new Object[]{"\\foo();"});
+        collection.add(new Object[]{"a\\foo();"});
+        collection.add(new Object[]{"a\\a\\foo();"});
+        collection.add(new Object[]{"a\\a\\b\\foo();"});
+        collection.add(new Object[]{"\\a\\foo();"});
+        collection.add(new Object[]{"\\a\\b\\foo();"});
+        collection.add(new Object[]{"\\a\\b\\c\\foo();"});
 
         String[] expressions = ExpressionTest.getExpressionsWithoutAssignment();
         for(String expression:expressions){
