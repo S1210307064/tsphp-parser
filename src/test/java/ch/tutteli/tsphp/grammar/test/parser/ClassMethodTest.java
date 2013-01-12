@@ -69,6 +69,11 @@ public class ClassMethodTest extends AParserTest
                     {"class a{ final static private function string getName(){ $a=1; }}"},
                     {"class a{ final static protected function string getName(){ $a=1; }}"},
                     {"class a{ final static public function string getName(){ $a=1; }}"},
+                    //return types
+                    {"class a{ public function void getName(){ $a=1; }}"},
+                    {"class a{ public function MyClass getName(){ $a=1; }}"},
+                    {"class a{ public function a\\MyClass getName(){ $a=1; }}"},
+                    {"class a{ public function \\a\\MyClass getName(){ $a=1; }}"},
         });
     }
 }

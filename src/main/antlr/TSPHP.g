@@ -18,6 +18,7 @@ grammar TSPHP;
 
 options {
     backtrack = true; 
+    memoize=true;
 }
 
 tokens{
@@ -50,6 +51,7 @@ tokens{
 	Dolar = '$';
 	Dot = '.';
 	DotEqual = '.=';
+	DoubleColon = '::';
 	Echo = 'echo';
 	Else = 'else';
 	Equal = '==';	
@@ -64,6 +66,7 @@ tokens{
 	Identical = '===';
 	If = 'if';
 	Implements = 'implements';
+	Instanceof = 'instanceof';
 	Interface = 'interface';
 	LeftCurlyBrace = '{';
 	LeftParanthesis = '(';
@@ -205,8 +208,8 @@ useDeclarationList
 	:	'use' useDeclaration (',' useDeclaration)* ';';
 	
 useDeclaration
-	:	( (Identifier '\\' Identifier ('\\' Identifier)*)
-			| ('\\' Identifier ('\\' Identifier)*)
+	:	( (Identifier '\\' namespaceId)
+			| ('\\'namespaceId)
 			) 
 		('as' Identifier)? 
 	;
@@ -262,7 +265,8 @@ variableDeclarationListInclVariableId
 	:	variableDeclaration (',' (variableAssignment|VariableId) )*;
 
 
-methodDeclaration	:	(	'abstract' accessorWithoutPrivate?
+methodDeclaration	
+	:	(	'abstract' accessorWithoutPrivate?
 		| 	
 			(	'static' 'final'?
 			|	'final' 'static'?
@@ -525,10 +529,14 @@ atomOrCall
 	;	
 
 functionCall
-	:	classInterfaceTypeWithoutObject '(' expressionList? ')' ('->' Identifier '(' expressionList?')')* arrayAccessCall?;
+	:	classInterfaceTypeWithoutObject '(' expressionList? ')' callArrayAccess;
+
+callArrayAccess
+	:	('->' Identifier '(' expressionList?')')* arrayAccessCall?
+	;
 
 methodCall
-	:	( (varAccess '->') | staticAccess) Identifier '(' expressionList?')' ('->' Identifier '(' expressionList?')')* arrayAccessCall?
+	:	( (varAccess '->') | staticAccess) Identifier '(' expressionList?')' callArrayAccess
 	;
 
 arrayAccessCall

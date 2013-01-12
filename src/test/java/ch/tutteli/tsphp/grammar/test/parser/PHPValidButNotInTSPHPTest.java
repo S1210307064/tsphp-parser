@@ -73,8 +73,11 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     //for with declaration without assignment
                     {"for($a;;){}",TSPHPParser.Semicolon,6},
                     {"for($a=1,$b;;){}",TSPHPParser.Semicolon,11},
+                    {"for(;;$a){}",TSPHPParser.RightParanthesis,8},
+                    {"for(;;$a++,$b){}",TSPHPParser.RightParanthesis,13},
                     //for with unusfull expressions
                     {"for($a=1,1+1-2;;){}",TSPHPParser.Int,9},
+                    {"for($a=1;;1+1-2){}",TSPHPParser.Int,10},
                     
                     //empty foreach block
                     {"foreach($a as $k);", TSPHPParser.Semicolon, 17},
@@ -97,18 +100,22 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     {"switch($a){case 1: $a=1; case 2:}", TSPHPParser.RightCurlyBrace, 32},
                     //switch case label without command
                     {"switch($a){case 1: $a=1; case 2: case 3:}", TSPHPParser.RightCurlyBrace, 40},
+                    //switch default label without command
+                    {"switch($a){case 1: $a=1; default:}", TSPHPParser.RightCurlyBrace, 33},
                     //switch only with default block
                     {"switch($a){default: $a=1;}", TSPHPParser.Default, 11},
                     //switch with case label do nothing more than default
                     {"switch($a){ case 1: default: $a=1;}", TSPHPParser.Default, 20},
                     //switch with case labels do nothing more than default
                     {"switch($a){ case 1: case 2: default: $a=1;}", TSPHPParser.Default, 28},
+                    //switch with case labels do nothing more than default
+                    {"switch($a){ case 0: $a=1; case 1: case 2: default: $a=1;}", TSPHPParser.Default, 42},
                     //switch with multiple default blocks
                     {"switch($a){case 1: default: $a=1; break; case 2: default: $a=2; break;}", TSPHPParser.Default, 19},
                     //function with pseudo optional parameter
                     {"function a ($a,$b=1,$c){$a=1;}",TSPHPParser.LeftParanthesis,11},
                     //empty try block
-                    {"try{}catch(\\Exception){}",TSPHPParser.RightCurlyBrace,4},
+                    {"try{}catch(\\Exception $e){}",TSPHPParser.RightCurlyBrace,4},
                     //empty class    
                     {"class a{}", TSPHPParser.RightCurlyBrace, 8},
                     //empty namespace

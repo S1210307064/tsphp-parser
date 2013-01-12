@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
+import ch.tutteli.tsphp.grammar.test.utils.KeywordHelper;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class ClassErrorTest extends AParserParserExceptionTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> variables() {
-        return NewErrorTest.getKeywords("class ", "{private int $a=1;}");
+        return KeywordHelper.getKeywords("class ", "{private int $a=1;}");
     }
 
    

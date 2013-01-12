@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
+import ch.tutteli.tsphp.grammar.test.utils.KeywordHelper;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class InterfaceErrorTest extends AParserParserExceptionTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> variables() {
-        return NewErrorTest.getKeywords("interface ", "{}");
+        return KeywordHelper.getKeywords("interface ", "{}");
     }
 
    
