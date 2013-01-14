@@ -54,6 +54,7 @@ public class ExpressionErrorTest extends AParserParserExceptionTest
                     {"$a ! instanceof $b;", TSPHPParser.LogicNot, 3},
                     //not yet possible in PHP
                     {"new Foo()[0];", TSPHPParser.LeftSquareBrace, 9},
+                    
                     //expressions with only two operands
                     {"1 < 2 < 3;", TSPHPParser.LessThan, 6},
                     {"1 < 2 <= 3;", TSPHPParser.LessEqualThan, 6},
