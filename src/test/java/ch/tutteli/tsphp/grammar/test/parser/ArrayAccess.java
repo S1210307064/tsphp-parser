@@ -16,7 +16,6 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -40,7 +39,7 @@ public class ArrayAccess extends AParserTest
 
     @Test
     public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+        parseAndCheckForException();
     }
 
     @Parameterized.Parameters
@@ -61,7 +60,8 @@ public class ArrayAccess extends AParserTest
         collection.add(new Object[]{"int $d = $a->foo()[0]->foo('hallo')->bar()[2][3];"});
         collection.add(new Object[]{"int $d = foo()[0]->foo('hallo')->bar()[2][3];"});
         collection.add(new Object[]{"int $d = foo()[0]->foo('hallo')->bar()[2][3]->fo()[2][3+1];"});
-        collection.add(new Object[]{"int $d = foo()[0]->foo('hallo')[0][$a]->bar()[2]->foo()[3][5]->foo();"});
+        collection.add(new Object[]{"int $d = foo()[0]->a->foo('hallo')[0][$a]->bar()[2]->foo()[3][5]->foo();"});
+        collection.add(new Object[]{"int $d = $a->a[0]->b[0][1]->foo()->bar()[2]->foo()[3][5]->foo();"});
         return collection;
     }
 }

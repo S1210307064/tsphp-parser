@@ -33,7 +33,6 @@ public class KeywordHelper
     public static List<Object[]> getKeywords(String prefix) {
         return getKeywords(prefix, "");
     }
-
     public static List<Object[]> getKeywords(String prefix, String appendix) {
         int prefixLength = prefix.length();
         return Arrays.asList(new Object[][]{

@@ -41,7 +41,7 @@ public class ExpressionWithoutAssignmentTest extends AParserTest
     @Test
     public void test() throws RecognitionException {
         isErrorReportingOn=false;
-        super.parse();
+        parse();
         
         Assert.assertTrue(testString + " failed, lexer threw exception(s) - see output", lexer.getExceptions().isEmpty());
         Assert.assertFalse(testString + " failed, parser threw exception(s) - see output", parser.getExceptions().isEmpty());

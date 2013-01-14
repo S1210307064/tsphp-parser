@@ -17,8 +17,8 @@
 grammar TSPHP;
 
 options {
-    backtrack = true; 
-    memoize=true;
+	backtrack = true; 
+	memoize=true;
 }
 
 tokens{
@@ -338,7 +338,7 @@ paramDeclaration
 	:	allTypes VariableId;
 	
 paramDeclarationOptional
-	:	paramDeclaration  '=' unaryAtom;
+	:	paramDeclaration  '=' unaryPrimitiveAtom;
 
 VariableId	
 	:	'$' Identifier;
@@ -365,8 +365,8 @@ instruction
 	|	doWhileLoop
 	|	tryCatch
 	|	throwException
-	|	functionCall ';'
-	|	methodCall ';'
+	|	functionCallFluentWithoutAccessAtTheEnd ';'
+	|	methodCallFluentWithoutAccessAtTheEnd ';'	
 	|	'return' expression? ';'
 	|	'echo' expressionList ';'
 	|	'exit' ';'
@@ -377,7 +377,11 @@ expressionList
 
 variableAssignment
 	:	VariableId assignmentOperator expression
-	|	postIncrementDecrement
+	|	incrementDecrement
+	;
+	
+incrementDecrement
+	:	postIncrementDecrement
 	|	preIncrementDecrement
 	;
 
@@ -397,46 +401,49 @@ assignmentOperator
 	;
 	
 postIncrementDecrement
-	:	VariableId ('++'|'--');
+	:	variableMemberStaticMember ('++'|'--');
 	
 preIncrementDecrement
-	:	('++'|'--') VariableId;
+	:	('++'|'--') variableMemberStaticMember;
 	
 	
 variableDeclaration
-	:	allTypes VariableId ('=' expression)? ;
+	:	allTypes VariableId ('='^ expression)? ;
 
 expression
 	:	logicOrWeak;
 
+expressionForTest
+	:	expression ';';
+
 logicOrWeak
-	:	logicXorWeak ('or' logicXorWeak)*; 
+	:	logicXorWeak ('or'^ logicXorWeak)*; 
 	
 logicXorWeak
-	:	logicAndWeak ('xor' logicAndWeak)*; 
+	:	logicAndWeak ('xor'^ logicAndWeak)*; 
 	
 logicAndWeak
-	:	assignment ('and' assignment)*;
+	:	assignment ('and'^ assignment)*;
 
 assignment
 	:	ternary (assignmentOperator ternary)*;
 
-ternary	:	logicOr ('?' expression ':' expression)?;
+ternary	:	logicOr ('?'^ expression ':'! expression)?;
 
-logicOr	:	logicAnd ('||' logicAnd)*;
+logicOr	:	logicAnd ('||'^ logicAnd)*;
 
-logicAnd:	bitwiseOr ('&&' bitwiseOr)*;
+logicAnd:	bitwiseOr ('&&'^ bitwiseOr)*;
 
 bitwiseOr
-	:	bitwiseXor ('|' bitwiseXor)*;
+	:	bitwiseXor ('|'^ bitwiseXor)*;
 
 bitwiseXor
-	:	bitwiseAnd ('^' bitwiseAnd)*;
+	:	bitwiseAnd ('^'^ bitwiseAnd)*;
 
 bitwiseAnd
-	:	equality ('&' equality)*;
+	:	equality ('&'^ equality)*;
 
-equality:	comparison (equalityOperator comparison)*;
+equality:	comparison (equalityOperator^ comparison)?;
 
 equalityOperator
 	:	'=='
@@ -447,7 +454,7 @@ equalityOperator
 	;
 
 comparison
-	:	bitwiseShift (comparisonOperator bitwiseShift)*;
+	:	bitwiseShift (comparisonOperator^ bitwiseShift)?;
 
 comparisonOperator
 	:	'<'
@@ -456,11 +463,11 @@ comparisonOperator
 	|	'>='
 	;
 
-bitwiseShift	:	termOrStringConcatenation (('<<'|'>>') termOrStringConcatenation)*;
+bitwiseShift	:	termOrStringConcatenation (('<<'|'>>')^ termOrStringConcatenation)*;
 
-termOrStringConcatenation	:	factor (('+'|'-'|'.') factor)*;
+termOrStringConcatenation	:	factor (('+'|'-'|'.')^ factor)*;
 
-factor	:	logicNot (('*'|'/'|'%') logicNot)*;
+factor	:	logicNot (('*'|'/'|'%')^ logicNot)*;
 
 logicNot:	'!' logicNot
 	|	instanceOf
@@ -468,86 +475,110 @@ logicNot:	'!' logicNot
 
 
 instanceOf
-	:	castOrBitwiseNotOrAt ('instanceof' (classInterfaceTypeWithoutObject|VariableId))?;
+	:	castOrBitwiseNotOrAt ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
 
 castOrBitwiseNotOrAt
 	:	('(' (primitiveTypesInclArray|classInterfaceTypeInclObject) ')') castOrBitwiseNotOrAt
-	|	'~' castOrBitwiseNotOrAt
-	|	'@' castOrBitwiseNotOrAt
-	|	incrementDecrement
-	;
-	
-incrementDecrement
-	:	postIncrementDecrement
-	|	preIncrementDecrement
-	|	arrayAccess
-	;
-	
-arrayAccess
-	:	fluentObject ('[' expression ']')+
+	|	'~'^ castOrBitwiseNotOrAt
+	|	'@'^ castOrBitwiseNotOrAt
 	|	newOrClone
 	;
 
-
-fluentObject
-	:	functionCall
-	|	methodCall
-	|	varAccess
+newOrClone
+	:	'clone' variableMemberStaticMember
+	|	newObject
+	|	unaryPrimary
 	;
+
 	
-varAccess
-	:	'$this' ('->' Identifier)*
-	|	staticAccess VariableId
+variableMemberStaticMember
+	:	staticAccessOrParent VariableId	memberAccessOrArrayAccess*
+	|	'$this' memberAccessOrArrayAccess+
+	|	VariableId memberAccessOrArrayAccess+
+	|	'$this'
 	|	VariableId
 	;
-	
-staticAccess
+
+staticAccessOrParent
 	:	'self::'
 	|	'parent::'
 	|	classInterfaceTypeWithoutObject'::'
 	;
 
-newOrClone
-	:	newObject
-	|	'clone' VariableId
-	|	unaryAtom
+memberAccessOrArrayAccess
+	:	memberAccess
+	|	arrayAccess
 	;
+memberAccess
+	:	'->' Identifier
+	;
+arrayAccess
+	:	'[' expression ']'
+	;
+	
 
 newObject
 	:	'new' classInterfaceTypeWithoutObject
 	|	'new' classInterfaceTypeWithoutObject '(' expressionList? ')';
 
-unaryAtom
-	:	'+' atomOrCall
-	|	'-' atomOrCall
-	|	atomOrCall
+unaryPrimary
+	:	'+' primary
+	|	'-' primary
+	|	primary
 	;
-atomOrCall
-	:	functionCall
-	|	methodCall
+primary
+	:	functionCallFluentInclAccessAtTheEnd
+	|	methodCallFluentInclAccessAtTheEnd
 	|	atom
 	;	
 
+functionCallFluentInclAccessAtTheEnd
+	:	functionCallFluentWithoutAccessAtTheEnd memberAccessOrArrayAccess?
+	;
+
+functionCallFluentWithoutAccessAtTheEnd
+	:	functionCall callOrAccess* call
+	|	functionCall call*
+	;
+
 functionCall
-	:	classInterfaceTypeWithoutObject '(' expressionList? ')' callArrayAccess;
-
-callArrayAccess
-	:	('->' Identifier '(' expressionList?')')* arrayAccessCall?
+	:	classInterfaceTypeWithoutObject '(' expressionList? ')'
 	;
 
+callOrAccess
+	:	memberAccessOrArrayAccess
+	|	call
+	;	
+	
+call	:	('->' Identifier '(' expressionList?')');
+	
+methodCallFluentInclAccessAtTheEnd
+	:	methodCallFluentWithoutAccessAtTheEnd memberAccessOrArrayAccess?
+	;
+	
+methodCallFluentWithoutAccessAtTheEnd
+	: 	methodCall callOrAccess* call
+	|	methodCall call*
+	;
 methodCall
-	:	( (varAccess '->') | staticAccess) Identifier '(' expressionList?')' callArrayAccess
+	:	( (variableMemberStaticMember '->') | staticAccessOrParent) Identifier '(' expressionList?')'
 	;
-
-arrayAccessCall
-	:	 (('[' expression ']') ('->'Identifier '(' expressionList?')')?)+;
 
 atom	:	'(' expression ')'
+	|	incrementDecrement
+	|	variableMemberStaticMember
+	|	classConstant
+	|	globalConstant
 	|	array
-	|	staticAccess Identifier
-	|	varAccess
-	|	Identifier
 	|	primitiveAtom
+	;
+	
+globalConstant
+	:	Identifier
+	;
+
+classConstant
+	:	staticAccessOrParent Identifier
 	;
 	
 unaryPrimitiveAtom
@@ -664,7 +695,7 @@ whileLoop
 doWhileLoop
 	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';';
 
-tryCatch:	'try' '{' instructionInclBreakContinue+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')''{' instructionInclBreakContinue* '}';¨
+tryCatch:	'try' '{' instructionInclBreakContinue+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')''{' instructionInclBreakContinue* '}';
 
 throwException
 	:	'throw' newObject ';';

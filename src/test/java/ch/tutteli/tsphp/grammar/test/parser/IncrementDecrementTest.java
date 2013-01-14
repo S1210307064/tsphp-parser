@@ -20,6 +20,7 @@ import ch.tutteli.tsphp.grammar.test.lexer.FragmentsTest;
 import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -32,10 +33,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class StringDeclarationTest extends AParserTest
+public class IncrementDecrementTest extends AParserTest
 {
 
-    public StringDeclarationTest(String testString) {
+    public IncrementDecrementTest(String testString) {
         super(testString);
     }
 
@@ -47,15 +48,27 @@ public class StringDeclarationTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        Collection<Object[]> strings = FragmentsTest.getStringFragments();
-        for(Object[] obj: strings){
-            collection.add(new Object[]{"string $a = "+obj[1]+";"});
-        }
-        
-        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
-        for (Object[] obj : idTestStrings) {
-            collection.add(new Object[]{"string $d = $" + obj[1] + ";"});
-        }
+        collection.addAll(testStrings("$a"));
+        collection.addAll(testStrings("$this"));
+        collection.addAll(testStrings("self::$a"));
+        collection.addAll(testStrings("parent::$a"));
         return collection;
+    }
+
+    private static Collection<Object[]> testStrings(String variable) {
+        return Arrays.asList(new Object[][]{
+                    {"++" + variable + ";"},
+                    {"--" + variable + ";"},
+                    {"++" + variable + "->a;"},
+                    {"--" + variable + "->a;"},
+                    {"++" + variable + "[0];"},
+                    {"--" + variable + "[0];"},
+                    {variable + "++;"},
+                    {variable + "--;"},
+                    {variable + "->a" + "++;"},
+                    {variable + "->a" + "--;"},
+                    {variable + "[0]" + "++;"},
+                    {variable + "[0]" + "--;"}
+                });
     }
 }

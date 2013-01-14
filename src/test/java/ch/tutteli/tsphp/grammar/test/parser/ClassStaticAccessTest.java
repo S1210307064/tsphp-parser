@@ -40,7 +40,7 @@ public class ClassStaticAccessTest extends AParserTest
 
     @Test
     public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+        parseAndCheckForException();
     }
 
     @Parameterized.Parameters

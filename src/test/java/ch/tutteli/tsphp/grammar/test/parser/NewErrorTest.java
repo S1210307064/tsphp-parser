@@ -19,9 +19,14 @@ package ch.tutteli.tsphp.grammar.test.parser;
 import ch.tutteli.tsphp.grammar.TSPHPParser;
 import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import ch.tutteli.tsphp.grammar.test.utils.KeywordHelper;
+import ch.tutteli.tsphp.grammar.test.utils.TestTSPHPLexer;
+import ch.tutteli.tsphp.grammar.test.utils.TestTSPHPParser;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import org.antlr.runtime.ANTLRStringStream;
+import org.antlr.runtime.CharStream;
+import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -47,6 +52,11 @@ public class NewErrorTest extends AParserParserExceptionTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> variables() {
-        return KeywordHelper.getKeywords("$a = new ", "()");
+        return KeywordHelper.getKeywords("new ", "()");
+    }
+    
+    @Override
+     protected void run() throws RecognitionException {
+        parser.newObject();
     }
 }

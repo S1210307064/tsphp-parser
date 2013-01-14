@@ -39,7 +39,7 @@ public class NewTest extends AParserTest
 
     @Test
     public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+        parseAndCheckForException();
     }
 
     @Parameterized.Parameters

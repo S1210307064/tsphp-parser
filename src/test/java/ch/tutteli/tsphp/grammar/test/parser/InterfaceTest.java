@@ -38,7 +38,7 @@ public class InterfaceTest extends AParserTest
 
     @Test
     public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+        parseAndCheckForException();
     }
 
     @Parameterized.Parameters

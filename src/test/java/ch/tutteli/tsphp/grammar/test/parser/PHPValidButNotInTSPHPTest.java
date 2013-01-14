@@ -71,13 +71,13 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     {"for(;;){}", TSPHPParser.RightCurlyBrace, 8},
                     {"for(;;);", TSPHPParser.Semicolon, 7},
                     //for with declaration without assignment
-                    {"for($a;;){}",TSPHPParser.Semicolon,6},
-                    {"for($a=1,$b;;){}",TSPHPParser.Semicolon,11},
-                    {"for(;;$a){}",TSPHPParser.RightParanthesis,8},
-                    {"for(;;$a++,$b){}",TSPHPParser.RightParanthesis,13},
-                    //for with unusfull expressions
-                    {"for($a=1,1+1-2;;){}",TSPHPParser.Int,9},
-                    {"for($a=1;;1+1-2){}",TSPHPParser.Int,10},
+                    {"for($a;;){$a=1;}",TSPHPParser.Semicolon,6},
+                    {"for($a=1,$b;;){$a=1;}",TSPHPParser.Semicolon,11},
+                    {"for(;;$a){$a=1;}",TSPHPParser.RightParanthesis,8},
+                    {"for(;;$a++,$b){$a=1;}",TSPHPParser.RightParanthesis,13},
+                    //for with unusefull expressions
+                    {"for($a=1,1+1-2;;){$a=1;}",TSPHPParser.Int,9},
+                    {"for($a=1;;1+1-2){$a=1;}",TSPHPParser.Int,10},
                     
                     //empty foreach block
                     {"foreach($a as $k);", TSPHPParser.Semicolon, 17},
@@ -124,6 +124,12 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     {"namespace {}",TSPHPParser.RightCurlyBrace, 11},
                     //use outside of semicolon namespace
                     {"use a\\a; namespace a;",TSPHPParser.Namespace, 9},
+                    //clone a new instance directly
+                    {"Foo $foo = clone new Foo();",TSPHPParser.VariableId,4},
+                    //clone a return value directly
+                    {"Foo $foo = clone createFoo();",TSPHPParser.VariableId,4},
+                    //clone without assignment
+                    {"clone $foo;", TSPHPParser.Clone,0},
                 }));
         //expressions without assignments - see ExpressionWithoutAssignmentTest
         return collection;

@@ -33,8 +33,8 @@ public abstract class AParserTest extends ATest
 {
 
     protected TestTSPHPParser parser;
-    protected TestTSPHPLexer lexer ;
-    
+    protected TestTSPHPLexer lexer;
+
     public AParserTest() {
     }
 
@@ -56,6 +56,10 @@ public abstract class AParserTest extends ATest
 
         parser = new TestTSPHPParser(tokens);
         parser.setErrorReporting(isErrorReportingOn);
+        run();
+    }
+
+    protected void run() throws RecognitionException {
         parser.prog();
     }
 }

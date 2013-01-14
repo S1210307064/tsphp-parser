@@ -41,7 +41,7 @@ public class MethodCallTest extends AParserTest
 
     @Test
     public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+        parseAndCheckForException();
     }
 
     @Parameterized.Parameters
@@ -73,7 +73,11 @@ public class MethodCallTest extends AParserTest
         List<Object[]> collection = new ArrayList<>();
         Collection<Object[]> ids = TokenTest.getIDTestStrings();
         for (Object[] obj : ids) {
-            collection.addAll(Arrays.asList(new Object[][]{{prefix + obj[1] + "();"}, {prefix + obj[1] + "()->" + obj[1] + "();"}, {prefix + obj[1] + "()->" + obj[1] + "()->" + obj[1] + "();"}}));
+            collection.addAll(Arrays.asList(new Object[][]{
+                        {prefix + obj[1] + "();"},
+                        {prefix + obj[1] + "()->" + obj[1] + "();"},
+                        {prefix + obj[1] + "()->" + obj[1] + "()->" + obj[1] + "();"}
+                    }));
         }
         return collection;
     }

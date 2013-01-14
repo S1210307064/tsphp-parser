@@ -34,7 +34,7 @@ public abstract class AParserLexerExceptionTest extends AParserExceptionTest
     }
 
     public void parseExpectingException() throws RecognitionException {
-        super.parse();
+        parse();
 
         List<RecognitionException> exceptions = lexer.getExceptions();;
         Assert.assertFalse(testString + " - exceptions is empty ", exceptions.isEmpty());

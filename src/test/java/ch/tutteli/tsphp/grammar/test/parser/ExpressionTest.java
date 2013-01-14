@@ -40,7 +40,7 @@ public class ExpressionTest extends AParserTest
 
     @Test
     public void test() throws RecognitionException {
-        super.parseAndCheckForException();
+        parseAndCheckForException();
     }
 
     @Parameterized.Parameters
@@ -70,7 +70,7 @@ public class ExpressionTest extends AParserTest
         return expressions;
     }
 
-    public static String[] getInstructionExpressions() {
+    private static String[] getInstructionExpressions() {
         return new String[]{
                     "$b = 1",
                     "$b += 1",
@@ -91,11 +91,19 @@ public class ExpressionTest extends AParserTest
                     "$a--",
                     "foo()",
                     "$a->foo()",
+                    "$a->a->foo()",
+                    "$a[0]->foo()",
+                    "$a[0][1]->foo()",
+                    "self::foo()",
+                    "self::$a->foo()",
+                    "parent::foo()",
+                    "parent::$a->foo()",
+                    
                     
         };
     }
-
-    public static String[] getExpressionsWithoutAssignment() {
+    
+    public static String[] getExpressionsWithoutAssignment() { 
         return new String[]{
                     "true or false",
                     "true xor false",
@@ -116,12 +124,12 @@ public class ExpressionTest extends AParserTest
                     "$b===$c",
                     "$b!==$c",
                     "$b<>$c",
-                    "$a == $b != $c === $d !== $e <> $f",
+                    "$a == $b && $c != $c || $c === $d && $a !== $e || $a <> $f",
                     "$a < $b",
                     "$a <= $b",
                     "$a > $b",
                     "$a >= $b",
-                    "$a < 4 <= 7 > 10 >= $d",
+                    "$a < 4 && 2 <= 7 || 1 > 10 && 2 >= $d",
                     "1 << 4",
                     "16 >> 4",
                     "$a << 2 >> 5",
@@ -154,11 +162,22 @@ public class ExpressionTest extends AParserTest
                     "new a",
                     "new a()",
                     "clone $a",
+                    "clone $a->a",
+                    "clone $a[0]",
                     "$a",
+                    "$a->a",
                     "$a[0]",
+                    "foo()->a",
+                    "$a[0]->a",
+                    "$a->foo()->a",
+                    "+foo()",
+                    "-foo()",
+                    "+$a->foo()",
+                    "-$a->foo()",
                     "(1+1)",
                     //constant
                     "a",
+                    "A::a"
                 };
     }
 }

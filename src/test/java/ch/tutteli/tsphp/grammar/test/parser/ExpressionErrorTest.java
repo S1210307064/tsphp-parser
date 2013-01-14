@@ -43,10 +43,68 @@ public class ExpressionErrorTest extends AParserParserExceptionTest
         super.parseExpectingException();
     }
 
+    @Override
+    protected void run() throws RecognitionException {
+        parser.expressionForTest();
+    }
+
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"$a = $a ! instanceof $b;",TSPHPParser.LogicNot,8},
+                    {"$a ! instanceof $b;", TSPHPParser.LogicNot, 3},
+                    //not yet possible in PHP
+                    {"new Foo()[0];", TSPHPParser.LeftSquareBrace, 9},
+                    //expressions with only two operands
+                    {"1 < 2 < 3;", TSPHPParser.LessThan, 6},
+                    {"1 < 2 <= 3;", TSPHPParser.LessEqualThan, 6},
+                    {"1 < 2 > 3;", TSPHPParser.GreaterThan, 6},
+                    {"1 < 2 >= 3;", TSPHPParser.GreaterEqualThan, 6},
+                    {"1 <= 2 < 3;", TSPHPParser.LessThan, 7},
+                    {"1 <= 2 <= 3;", TSPHPParser.LessEqualThan, 7},
+                    {"1 <= 2 > 3;", TSPHPParser.GreaterThan, 7},
+                    {"1 <= 2 >= 3;", TSPHPParser.GreaterEqualThan, 7},
+                    {"1 > 2 < 3;", TSPHPParser.LessThan, 6},
+                    {"1 > 2 <= 3;", TSPHPParser.LessEqualThan, 6},
+                    {"1 > 2 > 3;", TSPHPParser.GreaterThan, 6},
+                    {"1 > 2 >= 3;", TSPHPParser.GreaterEqualThan, 6},
+                    {"1 >= 2 < 3;", TSPHPParser.LessThan, 7},
+                    {"1 >= 2 <= 3;", TSPHPParser.LessEqualThan, 7},
+                    {"1 >= 2 > 3;", TSPHPParser.GreaterThan, 7},
+                    {"1 >= 2 >= 3;", TSPHPParser.GreaterEqualThan, 7},
+                    {"1 == 2 == 3;", TSPHPParser.Equal, 7},
+                    {"1 == 2 === 3;", TSPHPParser.Identical, 7},
+                    {"1 == 2 != 3;", TSPHPParser.NotEqual, 7},
+                    {"1 == 2 !== 3;", TSPHPParser.NotIdentical, 7},
+                    {"1 == 2 <> 3;", TSPHPParser.NotEqualAlternative, 7},
+                    {"1 === 2 == 3;", TSPHPParser.Equal, 8},
+                    {"1 === 2 === 3;", TSPHPParser.Identical, 8},
+                    {"1 === 2 != 3;", TSPHPParser.NotEqual, 8},
+                    {"1 === 2 !== 3;", TSPHPParser.NotIdentical, 8},
+                    {"1 === 2 <> 3;", TSPHPParser.NotEqualAlternative, 8},
+                    {"1 != 2 == 3;", TSPHPParser.Equal, 7},
+                    {"1 != 2 === 3;", TSPHPParser.Identical, 7},
+                    {"1 != 2 != 3;", TSPHPParser.NotEqual, 7},
+                    {"1 != 2 !== 3;", TSPHPParser.NotIdentical, 7},
+                    {"1 != 2 <> 3;", TSPHPParser.NotEqualAlternative, 7},
+                    {"1 !== 2 == 3;", TSPHPParser.Equal, 8},
+                    {"1 !== 2 === 3;", TSPHPParser.Identical, 8},
+                    {"1 !== 2 != 3;", TSPHPParser.NotEqual, 8},
+                    {"1 !== 2 !== 3;", TSPHPParser.NotIdentical, 8},
+                    {"1 !== 2 <> 3;", TSPHPParser.NotEqualAlternative, 8},
+                    {"1 <> 2 == 3;", TSPHPParser.Equal, 7},
+                    {"1 <> 2 === 3;", TSPHPParser.Identical, 7},
+                    {"1 <> 2 != 3;", TSPHPParser.NotEqual, 7},
+                    {"1 <> 2 !== 3;", TSPHPParser.NotIdentical, 7},
+                    {"1 <> 2 <> 3;", TSPHPParser.NotEqualAlternative, 7},
+                    //increment/decrement a primitive type
+                    {"++1;", TSPHPParser.Int, 2},
+                    {"--1;", TSPHPParser.Int, 2},
+                    {"1++;", TSPHPParser.PlusPlus, 1},
+                    {"1--;", TSPHPParser.MinusMinus, 1},
+                    {"++1.0;", TSPHPParser.Float, 2},
+                    {"--1.0;", TSPHPParser.Float, 2},
+                    {"1.1++;", TSPHPParser.PlusPlus, 3},
+                    {"1.1--;", TSPHPParser.MinusMinus, 3},
                 });
     }
 }

@@ -41,7 +41,7 @@ public class TokenTest extends ALexerTest
 
     @Test
     public void testTokens() throws Exception {
-        super.analyseAndCheckForError();
+        analyseAndCheckForError();
     }
 
     @Parameterized.Parameters

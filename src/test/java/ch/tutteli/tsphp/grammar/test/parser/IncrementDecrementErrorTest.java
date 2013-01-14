@@ -30,24 +30,39 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class BreakErrorTest extends AParserParserExceptionTest
+public class IncrementDecrementErrorTest extends AParserParserExceptionTest
 {
 
-    public BreakErrorTest(String testString, int character, int position) {
+    public IncrementDecrementErrorTest(String testString, int character, int position) {
         super(testString, RecognitionException.class, character, position);
 
     }
 
     @Test
     public void test() throws RecognitionException {
-        parseExpectingException();
+        super.parseExpectingException();
+    }
+
+    @Override
+    protected void run() throws RecognitionException {
+        parser.instruction();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
+
         return Arrays.asList(new Object[][]{
-                    {"break;",TSPHPParser.Break,0},
-                    {"function void foo(){break;}",TSPHPParser.Break,20}
+                    //increment or decrement from call
+                    {"++foo();", TSPHPParser.LeftParanthesis, 5},
+                    {"--foo();", TSPHPParser.LeftParanthesis, 5},
+                    {"++$a->foo();", TSPHPParser.ObjectOperator, 4},
+                    {"--$a->foo();", TSPHPParser.ObjectOperator, 4},
+                    {"++$this->foo();", TSPHPParser.ObjectOperator, 7},
+                    {"--$this->foo();", TSPHPParser.ObjectOperator, 7},
+                    {"++self::$a->foo();", TSPHPParser.ObjectOperator, 10},
+                    {"--self::$a->foo();", TSPHPParser.ObjectOperator, 10},
+                    {"++parent::$a->foo();", TSPHPParser.ObjectOperator, 12},
+                    {"--parent::$a->foo();", TSPHPParser.ObjectOperator, 12}
                 });
     }
 }
