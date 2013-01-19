@@ -182,7 +182,6 @@ public class TokenTest extends ALexerTest
         String[] nullCombinations = VariationHelper.getUppercaseCombinations("null");
         for(String combination:nullCombinations){
             collection.add(new Object[]{"mNull",combination,TSPHPLexer.Null});
-            System.out.println(combination);
         }
         
         return collection;

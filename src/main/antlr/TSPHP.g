@@ -19,6 +19,8 @@ grammar TSPHP;
 options {
 	backtrack = true; 
 	memoize=true;
+	output=AST;
+	ASTLabelType=CommonTree;
 }
 
 tokens{
@@ -129,6 +131,13 @@ tokens{
 	Use = 'use';
 	Void = 'void';
 	While = 'while';
+
+	// Imaginary tokens
+	CAST;
+	POST_INCREMENT;
+	PRE_INCREMENT;
+	UMINUS;
+	UPLUS;
 }
 
 
@@ -296,6 +305,11 @@ returnType
 
 allTypes:	primitiveTypesExtended | classInterfaceTypeInclObject;
 
+allTypesWithoutResource
+	:	primitiveTypesInclArray
+	| 	classInterfaceTypeInclObject
+	;
+
 primitiveTypes
 	:	TypeBool
 	|	TypeBoolean
@@ -397,10 +411,12 @@ assignmentOperator
 	;
 	
 postIncrementDecrement
-	:	variableMemberStaticMember ('++'|'--');
+	:	variableMemberStaticMember ('++'|'--') -> ^(POST_INCREMENT variableMemberStaticMember)
+	;
 	
 preIncrementDecrement
-	:	('++'|'--') variableMemberStaticMember;
+	:	('++'|'--') variableMemberStaticMember -> ^(PRE_INCREMENT variableMemberStaticMember)
+	;
 	
 	
 variableDeclaration
@@ -410,7 +426,7 @@ expression
 	:	logicOrWeak;
 
 expressionForTest
-	:	expression ';';
+	:	expression ';'!;
 
 logicOrWeak
 	:	logicXorWeak ('or'^ logicXorWeak)*; 
@@ -422,7 +438,7 @@ logicAndWeak
 	:	assignment ('and'^ assignment)*;
 
 assignment
-	:	ternary (assignmentOperator ternary)*;
+	:	ternary (assignmentOperator^ ternary)*;
 
 ternary	:	logicOr ('?'^ expression ':'! expression)?;
 
@@ -465,7 +481,7 @@ termOrStringConcatenation	:	factor (('+'|'-'|'.')^ factor)*;
 
 factor	:	logicNot (('*'|'/'|'%')^ logicNot)*;
 
-logicNot:	'!' logicNot
+logicNot:	'!'^ logicNot
 	|	instanceOf
 	;
 
@@ -474,14 +490,14 @@ instanceOf
 	:	castOrBitwiseNotOrAt ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
 
 castOrBitwiseNotOrAt
-	:	('(' (primitiveTypesInclArray|classInterfaceTypeInclObject) ')') castOrBitwiseNotOrAt
+	:	'(' allTypesWithoutResource ')' castOrBitwiseNotOrAt -> ^(CAST allTypesWithoutResource castOrBitwiseNotOrAt)
 	|	'~'^ castOrBitwiseNotOrAt
-	|	'@'^ castOrBitwiseNotOrAt
+	|	'@'^ castOrBitwiseNotOrAt 
 	|	newOrClone
 	;
 
 newOrClone
-	:	'clone' variableMemberStaticMember
+	:	'clone'^ variableMemberStaticMember
 	|	newObject
 	|	unaryPrimary
 	;
@@ -514,12 +530,12 @@ arrayAccess
 	
 
 newObject
-	:	'new' classInterfaceTypeWithoutObject
-	|	'new' classInterfaceTypeWithoutObject '(' expressionList? ')';
+	:	'new' classInterfaceTypeWithoutObject ('(' expressionList? ')')? -> ^('new' classInterfaceTypeWithoutObject expressionList?)
+	;
 
 unaryPrimary
-	:	'+' primary
-	|	'-' primary
+	:	'+' primary -> ^(UPLUS primary)
+	|	'-' primary -> ^(UMINUS primary)
 	|	primary
 	;
 primary
@@ -560,7 +576,7 @@ methodCall
 	:	( (variableMemberStaticMember '->') | staticAccessOrParent) Identifier '(' expressionList?')'
 	;
 
-atom	:	'(' expression ')'
+atom	:	'(' expression ')' -> expression
 	|	incrementDecrement
 	|	variableMemberStaticMember
 	|	classConstant

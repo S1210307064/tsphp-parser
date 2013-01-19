@@ -19,6 +19,7 @@ package ch.tutteli.tsphp.grammar.test.utils;
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.ParserRuleReturnScope;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -34,6 +35,7 @@ public abstract class AParserTest extends ATest
 
     protected TestTSPHPParser parser;
     protected TestTSPHPLexer lexer;
+    protected ParserRuleReturnScope result;
 
     public AParserTest() {
     }
@@ -60,6 +62,6 @@ public abstract class AParserTest extends ATest
     }
 
     protected void run() throws RecognitionException {
-        parser.prog();
+        result = parser.prog();
     }
 }
