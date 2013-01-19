@@ -17,8 +17,10 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -48,113 +50,129 @@ public class ExpressionTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                    {"$a or $b;", "(or $a $b)"},
-                    {"$a or $b or $c;", "(or (or $a $b) $c)"},
+        String[][] expressions = getExpressions();
+        for (String[] expression : expressions) {
+            expression[0] = expression[0] + ";";
+        }
+        return Arrays.asList((Object[][]) expressions);
+    }
+
+    public static String[][] getExpressions() {
+        return new String[][]{
+                    {"$a or $b", "(or $a $b)"},
+                    {"$a or $b or $c", "(or (or $a $b) $c)"},
                     //
-                    {"$a xor $b;", "(xor $a $b)"},
-                    {"$a xor $b xor $c;", "(xor (xor $a $b) $c)"},
+                    {"$a xor $b", "(xor $a $b)"},
+                    {"$a xor $b xor $c", "(xor (xor $a $b) $c)"},
                     //
-                    {"$a and $b;", "(and $a $b)"},
-                    {"$a and $b and $c;", "(and (and $a $b) $c)"},
+                    {"$a and $b", "(and $a $b)"},
+                    {"$a and $b and $c", "(and (and $a $b) $c)"},
                     //
-                    {"$a and $b or $c xor $d;", "(or (and $a $b) (xor $c $d))"},
-                    {"$a or $b and $c xor $d;", "(or $a (xor (and $b $c) $d))"},
-                    {"$a or $b and $c xor $d;", "(or $a (xor (and $b $c) $d))"},
+                    {"$a and $b or $c xor $d", "(or (and $a $b) (xor $c $d))"},
+                    {"$a or $b and $c xor $d", "(or $a (xor (and $b $c) $d))"},
+                    {"$a or $b and $c xor $d", "(or $a (xor (and $b $c) $d))"},
                     //
-                    {"$a = $b;", "(= $a $b)"},
-                    {"$a += $b;", "(+= $a $b)"},
-                    {"$a -= $b;", "(-= $a $b)"},
-                    {"$a *= $b;", "(*= $a $b)"},
-                    {"$a /= $b;", "(/= $a $b)"},
-                    {"$a &= $b;", "(&= $a $b)"},
-                    {"$a |= $b;", "(|= $a $b)"},
-                    {"$a ^= $b;", "(^= $a $b)"},
-                    {"$a %= $b;", "(%= $a $b)"},
-                    {"$a .= $b;", "(.= $a $b)"},
-                    {"$a <<= $b;", "(<<= $a $b)"},
-                    {"$a >>= $b;", "(>>= $a $b)"},
+                    {"$a = $b", "(= $a $b)"},
+                    {"$a += $b", "(+= $a $b)"},
+                    {"$a -= $b", "(-= $a $b)"},
+                    {"$a *= $b", "(*= $a $b)"},
+                    {"$a /= $b", "(/= $a $b)"},
+                    {"$a &= $b", "(&= $a $b)"},
+                    {"$a |= $b", "(|= $a $b)"},
+                    {"$a ^= $b", "(^= $a $b)"},
+                    {"$a %= $b", "(%= $a $b)"},
+                    {"$a .= $b", "(.= $a $b)"},
+                    {"$a <<= $b", "(<<= $a $b)"},
+                    {"$a >>= $b", "(>>= $a $b)"},
                     //
-                    {"true ? $a : $b;", "(? true $a $b)"},
-                    {"true ? $a ? $b : $c : $d;", "(? true (? $a $b $c) $d)"},
-                    {"true ? $a : $b ? $c : $d;", "(? true $a (? $b $c $d))"},
+                    {"true ? $a : $b", "(? true $a $b)"},
+                    {"true ? $a ? $b : $c : $d", "(? true (? $a $b $c) $d)"},
+                    {"true ? $a : $b ? $c : $d", "(? true $a (? $b $c $d))"},
                     //
-                    {"$a = true ? $c += $d : $e -= $f;", "(= $a (? true (+= $c $d) (-= $e $f)))"},
-                    {"$a *= true ? $c /= $d ? $e &= $f : $g |= $h : $i ^= $j;", "(*= $a (? true (/= $c (? $d (&= $e $f) (|= $g $h))) (^= $i $j)))"},
-                    {"$a %= true ? $c .= $d ? $e <<= $f : $g >>= $h : $i = $j;", "(%= $a (? true (.= $c (? $d (<<= $e $f) (>>= $g $h))) (= $i $j)))"},
+                    {"$a = true ? $c += $d : $e -= $f", "(= $a (? true (+= $c $d) (-= $e $f)))"},
+                    {"$a *= true ? $c /= $d ? $e &= $f : $g |= $h : $i ^= $j", "(*= $a (? true (/= $c (? $d (&= $e $f) (|= $g $h))) (^= $i $j)))"},
+                    {"$a %= true ? $c .= $d ? $e <<= $f : $g >>= $h : $i = $j", "(%= $a (? true (.= $c (? $d (<<= $e $f) (>>= $g $h))) (= $i $j)))"},
                     //
-                    {"$a || $b;", "(|| $a $b)"},
-                    {"$a || $b || $c;", "(|| (|| $a $b) $c)"},
+                    {"$a || $b", "(|| $a $b)"},
+                    {"$a || $b || $c", "(|| (|| $a $b) $c)"},
                     //
-                    {"$a && $b;", "(&& $a $b)"},
-                    {"$a && $b && $c;", "(&& (&& $a $b) $c)"},
+                    {"$a && $b", "(&& $a $b)"},
+                    {"$a && $b && $c", "(&& (&& $a $b) $c)"},
                     //
-                    {"$a && $b || $c;", "(|| (&& $a $b) $c)"},
-                    {"$a || $b && $c;", "(|| $a (&& $b $c))"},
-                    {"$a || $b && $c ? $d : $e;", "(? (|| $a (&& $b $c)) $d $e)"},
+                    {"$a && $b || $c", "(|| (&& $a $b) $c)"},
+                    {"$a || $b && $c", "(|| $a (&& $b $c))"},
+                    {"$a || $b && $c ? $d : $e", "(? (|| $a (&& $b $c)) $d $e)"},
                     //
-                    {"$a | $b;", "(| $a $b)"},
-                    {"$a | $b | $c;", "(| (| $a $b) $c)"},
+                    {"$a | $b", "(| $a $b)"},
+                    {"$a | $b | $c", "(| (| $a $b) $c)"},
                     //
-                    {"$a ^ $b;", "(^ $a $b)"},
-                    {"$a ^ $b ^ $c;", "(^ (^ $a $b) $c)"},
+                    {"$a ^ $b", "(^ $a $b)"},
+                    {"$a ^ $b ^ $c", "(^ (^ $a $b) $c)"},
                     //
-                    {"$a & $b;", "(& $a $b)"},
-                    {"$a & $b & $c;", "(& (& $a $b) $c)"},
+                    {"$a & $b", "(& $a $b)"},
+                    {"$a & $b & $c", "(& (& $a $b) $c)"},
                     //
-                    {"$a & $b | $c ^ $d;", "(| (& $a $b) (^ $c $d))"},
-                    {"$a | $b & $c ^ $d;", "(| $a (^ (& $b $c) $d))"},
-                    {"$a | $b & $c ^ $d;", "(| $a (^ (& $b $c) $d))"},
+                    {"$a & $b | $c ^ $d", "(| (& $a $b) (^ $c $d))"},
+                    {"$a | $b & $c ^ $d", "(| $a (^ (& $b $c) $d))"},
+                    {"$a | $b & $c ^ $d", "(| $a (^ (& $b $c) $d))"},
                     //
-                    {"$a == $b;", "(== $a $b)"},
-                    {"$a === $b;", "(=== $a $b)"},
-                    {"$a != $b;", "(!= $a $b)"},
-                    {"$a !== $b;", "(!== $a $b)"},
-                    {"$a <> $b;", "(<> $a $b)"},
+                    {"$a == $b", "(== $a $b)"},
+                    {"$a === $b", "(=== $a $b)"},
+                    {"$a != $b", "(!= $a $b)"},
+                    {"$a !== $b", "(!== $a $b)"},
+                    {"$a <> $b", "(<> $a $b)"},
                     //
-                    {"$a < $b;", "(< $a $b)"},
-                    {"$a <= $b;", "(<= $a $b)"},
-                    {"$a > $b;", "(> $a $b)"},
-                    {"$a >= $b;", "(>= $a $b)"},
+                    {"$a < $b", "(< $a $b)"},
+                    {"$a <= $b", "(<= $a $b)"},
+                    {"$a > $b", "(> $a $b)"},
+                    {"$a >= $b", "(>= $a $b)"},
                     //
-                    {"$a == $b | $c < $d & $e ? $f != $g : $h === $i;","(? (| (== $a $b) (& (< $c $d) $e)) (!= $f $g) (=== $h $i))"},
+                    {"$a == $b | $c < $d & $e ? $f != $g : $h === $i", "(? (| (== $a $b) (& (< $c $d) $e)) (!= $f $g) (=== $h $i))"},
                     //
-                    {"1 << 2;","(<< 1 2)"},
-                    {"1 >> 2;","(>> 1 2)"},
-                    {"1 >> 2 << 3 >> 5;","(>> (<< (>> 1 2) 3) 5)"},
+                    {"1 << 2", "(<< 1 2)"},
+                    {"1 >> 2", "(>> 1 2)"},
+                    {"1 >> 2 << 3 >> 5", "(>> (<< (>> 1 2) 3) 5)"},
                     //
-                    {"1 + 2;","(+ 1 2)"},
-                    {"1 - 2;","(- 1 2)"},
-                    {"$a . $b;","(. $a $b)"},
+                    {"1 + 2", "(+ 1 2)"},
+                    {"1 - 2", "(- 1 2)"},
+                    {"$a . $b", "(. $a $b)"},
                     //
-                    {"1 + 2;","(+ 1 2)"},
-                    {"1 - 2;","(- 1 2)"},
-                    {"$a . $b;","(. $a $b)"},
+                    {"1 + 2", "(+ 1 2)"},
+                    {"1 - 2", "(- 1 2)"},
+                    {"$a . $b", "(. $a $b)"},
                     //
-                    {"$a << $b >> $c + $d * $e - $f;","(>> (<< $a $b) (- (+ $c (* $d $e)) $f))"},
+                    {"$a << $b >> $c + $d * $e - $f", "(>> (<< $a $b) (- (+ $c (* $d $e)) $f))"},
                     //
-                    {"!$a;","(! $a)"},
-                    {"!!$a;","(! (! $a))"},
-                    {"!!! $a;","(! (! (! $a)))"},
+                    {"!$a", "(! $a)"},
+                    {"!!$a", "(! (! $a))"},
+                    {"!!! $a", "(! (! (! $a)))"},
                     //
-                    {"$a instanceof MyClass;","(instanceof $a MyClass)"},
-                    {"$a instanceof $b;","(instanceof $a $b)"},
+                    {"$a instanceof MyClass", "(instanceof $a MyClass)"},
+                    {"$a instanceof $b", "(instanceof $a $b)"},
                     //
-                    {"(Type) $a;","(CAST Type $a)"},
-                    {"~$a;","(~ $a)"},
-                    {"@$a;","(@ $a)"},
-                    {"(Type) (MyClass) $a;","(CAST Type (CAST MyClass $a))"},
-                    {"~~$a;","(~ (~ $a))"},
-                    {"@@$a;","(@ (@ $a))"},
-                    {"@(Type) ~$a;","(@ (CAST Type (~ $a)))"},
+                    {"(Type) $a", "(cast Type $a)"},
+                    {"~$a", "(~ $a)"},
+                    {"@$a", "(@ $a)"},
+                    {"(Type) (MyClass) $a", "(cast Type (cast MyClass $a))"},
+                    {"~~$a", "(~ (~ $a))"},
+                    {"@@$a", "(@ (@ $a))"},
+                    {"@(Type) ~$a", "(@ (cast Type (~ $a)))"},
                     //
-                    {"clone $a;","(clone $a)"},
+                    {"clone $a", "(clone $a)"},
                     //
-                    {"($a);","$a"},
+                    {"+$a", "(unary plus $a)"},
+                    {"+1", "(unary plus 1)"},
+                    {"-$a", "(unary minus $a)"},
+                    {"-2", "(unary minus 2)"},
                     //
-                    {"(int) clone $a + $b;","(+ (CAST int (clone $a)) $b)"},
-                    {"($a + $b) * $c;","(* (+ $a $b) $c)"},
-                    {"!($a instanceof Type) || $a < $b+$c == ~(1 | 3 & 12);","(|| (! (instanceof $a Type)) (== (< $a (+ $b $c)) (~ (| 1 (& 3 12)))))"},
-                });
+                    {"+$a + $b", "(+ (unary plus $a) $b)"},
+                    {"-$a - $b", "(- (unary minus $a) $b)"},
+                    //
+                    {"($a)", "$a"},
+                    //
+                    {"(int) clone $a + $b", "(+ (cast int (clone $a)) $b)"},
+                    {"(-$a + $b) * $c", "(* (+ (unary minus $a) $b) $c)"},
+                    {"!($a instanceof Type) || $a < $b+$c == ~(1 | 3 & 12)", "(|| (! (instanceof $a Type)) (== (< $a (+ $b $c)) (~ (| 1 (& 3 12)))))"}
+                };
     }
 }

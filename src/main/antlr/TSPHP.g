@@ -383,7 +383,7 @@ instruction
 	;
 	
 expressionList
-	:	expression (',' expression)*;
+	:	expression (','! expression)*;
 
 variableAssignment
 	:	VariableId assignmentOperator expression
@@ -411,11 +411,11 @@ assignmentOperator
 	;
 	
 postIncrementDecrement
-	:	variableMemberStaticMember ('++'|'--') -> ^(POST_INCREMENT variableMemberStaticMember)
+	:	variableMemberStaticMember post = ('++'|'--') -> ^(POST_INCREMENT[$post, "post increment"] variableMemberStaticMember)
 	;
 	
 preIncrementDecrement
-	:	('++'|'--') variableMemberStaticMember -> ^(PRE_INCREMENT variableMemberStaticMember)
+	:	pre = ('++'|'--') variableMemberStaticMember -> ^(PRE_INCREMENT[$pre, "pre increment"] variableMemberStaticMember)
 	;
 	
 	
@@ -490,7 +490,7 @@ instanceOf
 	:	castOrBitwiseNotOrAt ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
 
 castOrBitwiseNotOrAt
-	:	'(' allTypesWithoutResource ')' castOrBitwiseNotOrAt -> ^(CAST allTypesWithoutResource castOrBitwiseNotOrAt)
+	:	cast = '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt -> ^(CAST[$cast,"cast"] allTypesWithoutResource castOrBitwiseNotOrAt)
 	|	'~'^ castOrBitwiseNotOrAt
 	|	'@'^ castOrBitwiseNotOrAt 
 	|	newOrClone
@@ -534,8 +534,8 @@ newObject
 	;
 
 unaryPrimary
-	:	'+' primary -> ^(UPLUS primary)
-	|	'-' primary -> ^(UMINUS primary)
+	:	uplus = '+' primary -> ^(UPLUS[$uplus,"unary plus"] primary)
+	|	uminus = '-' primary -> ^(UMINUS[$uminus,"unary minus"] primary)
 	|	primary
 	;
 primary
