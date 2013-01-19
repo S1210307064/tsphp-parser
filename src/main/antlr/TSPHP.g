@@ -387,7 +387,7 @@ expressionList
 	:	expression (','! expression)*;
 
 variableAssignment
-	:	VariableId assignmentOperator expression
+	:	VariableId assignmentOperator^ expression
 	|	incrementDecrement
 	;
 	
