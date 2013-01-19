@@ -134,8 +134,9 @@ tokens{
 
 	// Imaginary tokens
 	CAST;
-	POST_INCREMENT;
-	PRE_INCREMENT;
+	POST_INCREMENT_DECREMENT;
+	PRE_INCREMENT_DECREMENT;
+	VARIABLE_DECLARATION;
 	UMINUS;
 	UPLUS;
 }
@@ -180,9 +181,9 @@ package ch.tutteli.tsphp.grammar;
 package ch.tutteli.tsphp.grammar;
 }
 
-prog	:	namespaceSemicolon+ EOF
-	|	namespaceBracket+ EOF
-	|	withoutNamespace EOF
+prog	:	namespaceSemicolon+ EOF!
+	|	namespaceBracket+ EOF!
+	|	withoutNamespace EOF!
 	;
 	
 namespaceSemicolon
@@ -312,7 +313,7 @@ allTypesWithoutResource
 
 primitiveTypes
 	:	TypeBool
-	|	TypeBoolean
+	|	TypeBoolean -> TypeBool
 	|	TypeInt
 	|	TypeFloat
 	|	TypeString
@@ -365,8 +366,8 @@ instructionInclBreakContinue
 	;	
 
 instruction
-	:	variableAssignment ';'
-	|	variableDeclaration ';'
+	:	variableAssignment ';'!
+	|	variableDeclaration ';'!
 	|	ifCondition
 	|	switchCondition
 	|	forLoop
@@ -375,11 +376,11 @@ instruction
 	|	doWhileLoop
 	|	tryCatch
 	|	throwException
-	|	functionCallFluentWithoutAccessAtTheEnd ';'
-	|	methodCallFluentWithoutAccessAtTheEnd ';'	
-	|	'return' expression? ';'
-	|	'echo' expressionList ';'
-	|	'exit' ';'
+	|	functionCallFluentWithoutAccessAtTheEnd ';'!
+	|	methodCallFluentWithoutAccessAtTheEnd ';'!	
+	|	'return' expression? ';'!
+	|	'echo' expressionList ';'!
+	|	'exit' ';'!
 	;
 	
 expressionList
@@ -411,16 +412,16 @@ assignmentOperator
 	;
 	
 postIncrementDecrement
-	:	variableMemberStaticMember post = ('++'|'--') -> ^(POST_INCREMENT[$post, "post increment"] variableMemberStaticMember)
+	:	variableMemberStaticMember ('++'|'--') -> ^(POST_INCREMENT_DECREMENT[$variableMemberStaticMember.start, "post increment/decrement"] variableMemberStaticMember)
 	;
 	
 preIncrementDecrement
-	:	pre = ('++'|'--') variableMemberStaticMember -> ^(PRE_INCREMENT[$pre, "pre increment"] variableMemberStaticMember)
+	:	pre = ('++'|'--') variableMemberStaticMember -> ^(PRE_INCREMENT_DECREMENT[$pre, "pre increment/decrement"] variableMemberStaticMember)
 	;
 	
 	
 variableDeclaration
-	:	allTypes VariableId ('='^ expression)? ;
+	:	 allTypes VariableId ('=' expression)? -> ^(VARIABLE_DECLARATION[$allTypes.start,"variable declaration"] allTypes VariableId expression?) ;
 
 expression
 	:	logicOrWeak;

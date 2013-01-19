@@ -51,7 +51,7 @@ public class ReturnTest extends AParserTest
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{instruction+";"});
         collection.add(new Object[]{"function void setName(){"+instruction+";}"});
-        collection.addAll( getControllStructuresWithInstruction("return"));
+        collection.addAll( getControllStructuresWithInstruction(instruction));
         return collection;
     }
     public static List<Object[]> getControllStructuresWithInstruction(String instruction) {

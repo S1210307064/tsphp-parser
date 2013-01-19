@@ -31,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class NewClassTest extends AAstTest
+public class VariableDeclaration extends AAstTest
 {
 
-    public NewClassTest(String testString, String expectedResult) {
+    public VariableDeclaration(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -43,29 +43,22 @@ public class NewClassTest extends AAstTest
         compareAst();
     }
 
-    @Override
-    protected void run() throws RecognitionException {
-        result = parser.expressionForTest();
-    }
-
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"new Type;", "(new Type)"},
-                    {"new Type();", "(new Type)"}
+                    {"Type $a;", "(variable declaration Type $a)"},
+                    {"bool $a;", "(variable declaration bool $a)"},
+                    {"boolean $a;", "(variable declaration bool $a)"},
+                    {"int $a;", "(variable declaration int $a)"},
+                    {"float $a;", "(variable declaration float $a)"},
+                    {"string $a;", "(variable declaration string $a)"},
+                    {"array $a;", "(variable declaration array $a)"},
+                    {"resource $a;", "(variable declaration resource $a)"}
                 }));
         String[][] expressions = ExpressionTest.getExpressions();
         for (Object[] expression : expressions) {
-            collection.add(new Object[]{"new Type(" + expression[0] + ");", "(new Type " + expression[1] + ")"});
-            collection.add(new Object[]{
-                        "new Type(" + expression[0] + "," + expression[0] + ");",
-                        "(new Type " + expression[1] + " " + expression[1] + ")"
-                    });
-            collection.add(new Object[]{
-                        "new Type(" + expression[0] + "," + expression[0] + "," + expression[0] + ");",
-                        "(new Type " + expression[1] + " " + expression[1] + " " + expression[1] + ")"
-                    });
+            collection.add(new Object[]{"Type $a = " + expression[0] + ";", "(variable declaration Type $a " + expression[1] + ")"});
         }
         return collection;
     }
