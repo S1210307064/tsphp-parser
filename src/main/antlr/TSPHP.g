@@ -91,8 +91,6 @@ tokens{
 	NotEqual = '!=';
 	NotEqualAlternative = '<>';
 	NotIdentical = '!==';
-	Null = 'null';
-	NULL = 'NULL';
 	ObjectOperator = '->';
 	Parent = 'parent::';
 	Plus = '+';
@@ -173,7 +171,6 @@ package ch.tutteli.tsphp.grammar;
 package ch.tutteli.tsphp.grammar;
 }
 
-	
 prog	:	namespaceSemicolon+ EOF
 	|	namespaceBracket+ EOF
 	|	withoutNamespace EOF
@@ -187,6 +184,8 @@ namespaceBracket
 
 //Must before Id otherwise Id match true and false
 Bool	:	'true'|'false';
+
+Null	:	('N'|'n') ('U'|'u') ('L'|'l') ('L'|'l');
 
 Identifier	
 	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*;
@@ -247,9 +246,6 @@ constDeclarationList
 	
 constantAssignment
 	:	Identifier  '=' unaryPrimitiveAtom;
-
-variableDeclarationListWithoutVariableId
-	:	variableDeclaration (',' variableAssignment)*;
 
 attributeDeclaration	
 	:	'static'? accessor variableDeclarationListInclVariableId ';';
@@ -593,7 +589,6 @@ primitiveAtom
 	|	Float
 	|	String
 	|	Null
-	|	NULL
 	|	Identifier
 	;
 	

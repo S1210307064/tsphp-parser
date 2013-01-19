@@ -19,6 +19,7 @@ package ch.tutteli.tsphp.grammar.test.lexer;
 import ch.tutteli.tsphp.grammar.TSPHPLexer;
 import ch.tutteli.tsphp.grammar.test.utils.ALexerTest;
 import ch.tutteli.tsphp.grammar.test.utils.IdentifierHelper;
+import ch.tutteli.tsphp.grammar.test.utils.VariationHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -178,9 +179,15 @@ public class TokenTest extends ALexerTest
             collection.add(new Object[]{"mVariableId", "$" + obj[1], TSPHPLexer.VariableId});
         }
 
+        String[] nullCombinations = VariationHelper.getUppercaseCombinations("null");
+        for(String combination:nullCombinations){
+            collection.add(new Object[]{"mNull",combination,TSPHPLexer.Null});
+            System.out.println(combination);
+        }
+        
         return collection;
     }
-
+    
     public static String[] getFloatTestStrings() {
         return new String[]{
                     "5867491023e7845120963",

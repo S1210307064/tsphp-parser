@@ -18,19 +18,16 @@ package ch.tutteli.tsphp.grammar.test.utils;
 
 import ch.tutteli.tsphp.grammar.TSPHPParser;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import org.antlr.runtime.MismatchedTokenException;
-import org.antlr.runtime.NoViableAltException;
 
 /**
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-public class VariantionHelper
+public class VariationHelper
 {
 
-    private VariantionHelper() {
+    private VariationHelper() {
     }
 
     public static List<Object[]> getUpperCaseVariations(String[] texts, String prefix, String appendix) {
@@ -54,5 +51,26 @@ public class VariantionHelper
             }
         }
         return collection;
+    }
+
+    public static String[] getUppercaseCombinations(String token) {
+        int tokenLenght = token.length();
+        String character = token.substring(0, 1);
+        String characterUpperCase = character.toUpperCase();
+
+        String[] combinations;
+        if (tokenLenght > 1) {
+            combinations = new String[(int) Math.pow(2, tokenLenght)];
+            String[] subCombinations = getUppercaseCombinations(token.substring(1));
+            for (int i = 0; i < subCombinations.length; ++i) {
+                combinations[i * 2] = character + subCombinations[i];
+                combinations[i * 2 + 1] = characterUpperCase + subCombinations[i];
+            }
+
+        } else {
+            combinations = new String[]{character, characterUpperCase};
+        }
+
+        return combinations;
     }
 }
