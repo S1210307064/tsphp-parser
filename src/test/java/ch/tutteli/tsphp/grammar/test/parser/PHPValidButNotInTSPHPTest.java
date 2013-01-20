@@ -70,14 +70,6 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     //empty for block
                     {"for(;;){}", TSPHPParser.RightCurlyBrace, 8},
                     {"for(;;);", TSPHPParser.Semicolon, 7},
-                    //for with declaration without assignment
-                    {"for($a;;){$a=1;}",TSPHPParser.Semicolon,6},
-                    {"for($a=1,$b;;){$a=1;}",TSPHPParser.Semicolon,11},
-                    {"for(;;$a){$a=1;}",TSPHPParser.RightParanthesis,8},
-                    {"for(;;$a++,$b){$a=1;}",TSPHPParser.RightParanthesis,13},
-                    //for with unusefull expressions
-                    {"for($a=1,1+1-2;;){$a=1;}",TSPHPParser.Int,9},
-                    {"for($a=1;;1+1-2){$a=1;}",TSPHPParser.Int,10},
                     
                     //empty foreach block
                     {"foreach($a as $k);", TSPHPParser.Semicolon, 17},

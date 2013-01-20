@@ -16,6 +16,7 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
+import ch.tutteli.tsphp.grammar.TSPHPParser;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.Arrays;
 import java.util.Collection;
@@ -44,6 +45,15 @@ public class ForTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
+                     //for with declaration without assignment
+                    {"for($a;;){$a=1;}"},
+                    {"for($a=1,$b;;){$a=1;}"},
+                    {"for(;;$a){$a=1;}"},
+                    {"for(;;$a++,$b){$a=1;}"},
+                    //for with unusefull expressions
+                    {"for($a=1,1+1-2;;){$a=1;}"},
+                    {"for($a=1;;1+1-2){$a=1;}"},
+                    //
                     {"for(int $a=1 ; true ; ++$i  ) $a=1;"},
                     {"for(         ; true ; ++$i  ) $a=1;"},
                     {"for(         ;      ; $i+=1 ) $a=1;"},

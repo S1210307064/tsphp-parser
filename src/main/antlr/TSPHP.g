@@ -712,9 +712,9 @@ defaultLabel
 	
 forLoop	:	'for' '(' forInit? ';' expressionList?  ';' forUpdate? ')' instructionInclBreakContinue;
 
-forInit	:	(variableDeclaration|variableAssignment) (',' variableAssignment)*;
+forInit	:	(variableDeclaration||expression) (',' expression)*;
 forUpdate
-	:	variableAssignment (',' variableAssignment)*;
+	:	expressionList?;
 
 foreachLoop
 	:	'foreach' '(' (VariableId|array) 'as' VariableId ('=>' VariableId)? ')' instructionInclBreakContinue;
