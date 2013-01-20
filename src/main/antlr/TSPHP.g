@@ -139,9 +139,12 @@ tokens{
 	CLASS_INTERFACE_TYPE;
 	EXPRESSION_LIST;
 	FUNCTION_CALL;
+	FUNCTION_DECLARATION;
 	MEMBER_ACCESS;
 	MEMBER_ACCESS_STATIC;
 	METHOD_CALL;
+	PARAM_DECLARATION;
+	PARAM_LIST;
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
 	SWITCH_CASES;
@@ -230,8 +233,8 @@ useDeclarationList
 	:	'use' useDeclaration (',' useDeclaration)* ';';
 	
 useDeclaration
-	:	( (Identifier '\\' namespaceId)
-		  | ('\\'namespaceId)
+	:	(	(Identifier '\\' namespaceId)
+		|	('\\' namespaceId)
 		) 
 		('as' Identifier)? 
 	;
@@ -317,11 +320,12 @@ interfaceMethodDeclaration
 /******* Procedural related - is also be used by OOP ************/
 //***************************************************************/
 functionDeclaration	
-	:	 functionDeclarationWithoutBody '{' instructionWithoutBreakContinue* '}'
+	:	functionDeclarationWithoutBody '{' instructionWithoutBreakContinue* '}' 
+		-> ^(FUNCTION_DECLARATION[$functionDeclarationWithoutBody.start,"function declaration"] functionDeclarationWithoutBody ^(BLOCK instructionWithoutBreakContinue*))
 	;
 	
 functionDeclarationWithoutBody
-	:	'function' returnType Identifier '(' paramList? ')'
+	:	'function'! returnType Identifier '('! paramList ')'!
 	;
 	
 returnType
@@ -365,13 +369,13 @@ classInterfaceTypeInclObject
 	;
 	
 paramList
-	:	paramDeclarationOptional (',' paramDeclarationOptional)*
-	|	paramDeclaration (',' paramDeclaration)*
-	|	paramDeclaration (paramDeclaration ',')* (',' paramDeclarationOptional)+
+	:	paramDeclarationOptional (',' paramDeclarationOptional)* -> ^(PARAM_LIST paramDeclarationOptional+)
+	|	paramDeclaration (',' paramDeclaration)* (',' paramDeclarationOptional)* ->^(PARAM_LIST paramDeclaration+ paramDeclarationOptional*)
+	|	/*empty*/ -> PARAM_LIST
 	;
 	
 paramDeclaration
-	:	allTypes VariableId;
+	:	allTypes VariableId -> ^(PARAM_DECLARATION[$allTypes.start,"parameter declaration"] allTypes VariableId);
 	
 paramDeclarationOptional
 	:	paramDeclaration  '=' unaryPrimitiveAtom;

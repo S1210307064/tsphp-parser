@@ -49,9 +49,10 @@ public class FunctionTest extends AParserTest
                     {"function void setName(string $firstname,string $lastname){int $a=1;}"},
                     {"function string getName(){return \"Robert\";}"},
                     {"function void foo(string $a, string $b='hallo'){$a=$b;}"},
-                    {"function void foo(string $a, string $b=+1){$a=$b;}"},
-                    {"function void foo(string $a, string $b=-10){$a=$b;}"},
-                    {"function void foo(string $a, string $b=E_ALL){$a=$b;}"} 
+                    {"function void foo(string $a, int $i, int $b=+1){$a=$b;}"},
+                    {"function void foo(string $a, int $i, int $b=-10, float $d=2.0){$a=$b;}"},
+                    {"function void foo(string $a, int $b=E_ALL){$a=$b;}"},
+                    {"function void foo(string $a, boolean $a=true, object $d=null){$a=$b;}"} 
                 });
     }
 }
