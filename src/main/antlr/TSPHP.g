@@ -313,7 +313,7 @@ allTypesWithoutResource
 
 primitiveTypes
 	:	TypeBool
-	|	TypeBoolean -> TypeBool
+	|	bool = TypeBoolean -> TypeBool[$bool,"bool"]
 	|	TypeInt
 	|	TypeFloat
 	|	TypeString
@@ -672,8 +672,8 @@ array_content
 
 
 ifCondition
-	:	'if' '(' expression ')' instructionInclBreakContinue	
-		( 'else' instructionInclBreakContinue )?
+	:	'if' '(' expression ')' instructionThen =instructionInclBreakContinue	
+		( 'else' instructionElse =instructionInclBreakContinue )? -> ^('if' expression $instructionThen $instructionElse?)
 	;
 
 
