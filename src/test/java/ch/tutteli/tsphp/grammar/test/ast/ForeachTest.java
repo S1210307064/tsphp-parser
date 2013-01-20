@@ -14,9 +14,9 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.test.parser;
+package ch.tutteli.tsphp.grammar.test.ast;
 
-import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
+import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -31,40 +31,32 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ForeachTest extends AParserTest
+public class ForeachTest extends AAstTest
 {
 
-    public ForeachTest(String testString) {
-        super(testString);
+    public ForeachTest(String testString, String expectedResult) {
+        super(testString, expectedResult);
     }
 
     @Test
     public void test() throws RecognitionException {
-        parseAndCheckForException();
+        compareAst();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
+       List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"foreach($a as int $k => MyClass $v)$a=1;"},
-                    {"foreach($a as float $k) $a=1;"},
-                    {"foreach($a as string $k => string $v){$a=1;}"},
-                    {"foreach($a as bool $k) {$a=1;}"},
-                    {"foreach($a as boolean $k=> array $v){$a=1; $b=1;}"},
-                    {"foreach($a as int $k) {$a=1; $b=3;}"},
+                    {"foreach($a as $k=>$v)$a=1;", "(foreach $a $key"},
+                    {"foreach($a as $k) $a=1;"},
+                    {"foreach($a as $k=>$v){$a=1;}"},
+                    {"foreach($a as $k) {$a=1;}"},
+                    {"foreach($a as $k=>$v){$a=1; $b=1;}"},
+                    {"foreach($a as $k) {$a=1; $b=3;}"},
                     
         }));
-        
-        String[] arrayTestStrings = ArrayDeclarationTest.getArrayTestStrings();
-        for (String string : arrayTestStrings) {
-            collection.add(new Object[]{"foreach(" + string + " as int $k) $a=1;"});
-            collection.add(new Object[]{"foreach(" + string + " as float $k => MyClass $v) $a=1;"});
-            collection.add(new Object[]{"foreach(" + string + " as bool $k) {$a=1;}"});
-            collection.add(new Object[]{"foreach(" + string + " as string $k => string $v) {$a=1;}"});
-            
-        }
-        
+
+
         return collection;
     }
 }

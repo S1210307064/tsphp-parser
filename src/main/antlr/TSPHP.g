@@ -167,6 +167,7 @@ tokens{
  */
 package ch.tutteli.tsphp.grammar;
 }
+
 @lexer::header{
 /*
  * Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
@@ -734,7 +735,7 @@ variableDeclarationList
 	;
 
 foreachLoop
-	:	'foreach' '(' (VariableId|array) 'as' VariableId ('=>' VariableId)? ')' instructionInclBreakContinue;
+	:	'foreach' '(' expression 'as' primitiveTypes VariableId ('=>' allTypesWithoutResource VariableId)? ')' instructionInclBreakContinue;
 
 whileLoop
 	:	'while' '(' expression ')' instructionInclBreakContinue;
