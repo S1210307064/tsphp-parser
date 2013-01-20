@@ -1,4 +1,4 @@
-// $ANTLR 3.x D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2013-01-20 01:48:19
+// $ANTLR 3.x D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2013-01-20 02:59:22
 
 /*
  * Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
@@ -32,7 +32,7 @@ import org.antlr.runtime.tree.*;
 @SuppressWarnings("all")
 public class TSPHPParser extends Parser {
 	public static final String[] tokenNames = new String[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "Abstract", "Arrow", "As", "Assign", "At", "BINARY", "BLOCK", "Backslash", "BitwiseAnd", "BitwiseAndEqual", "BitwiseNot", "BitwiseOr", "BitwiseOrEqual", "BitwiseXor", "BitwiseXorEqual", "Bool", "Break", "CAST", "Case", "Catch", "Class", "Clone", "Colon", "Comma", "Comment", "Const", "Continue", "DECIMAL", "Default", "Divide", "DivideEqual", "Do", "Dolar", "Dot", "DotEqual", "DoubleColon", "EXPONENT", "Echo", "Else", "Equal", "Exit", "Extends", "Final", "Float", "For", "Foreach", "Function", "GreaterEqualThan", "GreaterThan", "HEXADECIMAL", "Identical", "Identifier", "If", "Implements", "Instanceof", "Int", "Interface", "LeftCurlyBrace", "LeftParanthesis", "LeftSquareBrace", "LessEqualThan", "LessThan", "LogicAnd", "LogicAndWeak", "LogicNot", "LogicOr", "LogicOrWeak", "LogicXorWeak", "Minus", "MinusEqual", "MinusMinus", "Modulo", "ModuloEqual", "Multiply", "MultiplyEqual", "Namespace", "New", "NotEqual", "NotEqualAlternative", "NotIdentical", "Null", "OCTAL", "ObjectOperator", "POST_INCREMENT_DECREMENT", "PRE_INCREMENT_DECREMENT", "Parent", "Plus", "PlusEqual", "PlusPlus", "Private", "ProtectParent", "ProtectSelf", "ProtectThis", "Protected", "Public", "QuestionMark", "Return", "RightCurlyBrace", "RightParanthesis", "RightSquareBrace", "STRING_DOUBLE_QUOTED", "STRING_SINGLE_QUOTED", "SWITCH_CASES", "SWITCH_GROUP", "SWITCH_INSTRUCTIONS", "Self", "Semicolon", "ShiftLeft", "ShiftLeftEqual", "ShiftRight", "ShiftRightEqual", "Static", "String", "Switch", "This", "Throw", "Try", "TypeArray", "TypeBool", "TypeBoolean", "TypeFloat", "TypeInt", "TypeObject", "TypeResource", "TypeString", "UMINUS", "UPLUS", "Use", "VARIABLE_DECLARATION", "VariableId", "Void", "While", "Whitespace"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "Abstract", "Arrow", "As", "Assign", "At", "BINARY", "BLOCK", "Backslash", "BitwiseAnd", "BitwiseAndEqual", "BitwiseNot", "BitwiseOr", "BitwiseOrEqual", "BitwiseXor", "BitwiseXorEqual", "Bool", "Break", "CAST", "Case", "Catch", "Class", "Clone", "Colon", "Comma", "Comment", "Const", "Continue", "DECIMAL", "Default", "Divide", "DivideEqual", "Do", "Dolar", "Dot", "DotEqual", "DoubleColon", "EXPONENT", "EXPRESSION_LIST", "Echo", "Else", "Equal", "Exit", "Extends", "Final", "Float", "For", "Foreach", "Function", "GreaterEqualThan", "GreaterThan", "HEXADECIMAL", "Identical", "Identifier", "If", "Implements", "Instanceof", "Int", "Interface", "LeftCurlyBrace", "LeftParanthesis", "LeftSquareBrace", "LessEqualThan", "LessThan", "LogicAnd", "LogicAndWeak", "LogicNot", "LogicOr", "LogicOrWeak", "LogicXorWeak", "Minus", "MinusEqual", "MinusMinus", "Modulo", "ModuloEqual", "Multiply", "MultiplyEqual", "Namespace", "New", "NotEqual", "NotEqualAlternative", "NotIdentical", "Null", "OCTAL", "ObjectOperator", "POST_INCREMENT_DECREMENT", "PRE_INCREMENT_DECREMENT", "Parent", "Plus", "PlusEqual", "PlusPlus", "Private", "ProtectParent", "ProtectSelf", "ProtectThis", "Protected", "Public", "QuestionMark", "Return", "RightCurlyBrace", "RightParanthesis", "RightSquareBrace", "STRING_DOUBLE_QUOTED", "STRING_SINGLE_QUOTED", "SWITCH_CASES", "SWITCH_GROUP", "SWITCH_INSTRUCTIONS", "Self", "Semicolon", "ShiftLeft", "ShiftLeftEqual", "ShiftRight", "ShiftRightEqual", "Static", "String", "Switch", "This", "Throw", "Try", "TypeArray", "TypeBool", "TypeBoolean", "TypeFloat", "TypeInt", "TypeObject", "TypeResource", "TypeString", "UMINUS", "UPLUS", "Use", "VARIABLE_DECLARATION", "VARIABLE_DECLARATION_LIST", "VariableId", "Void", "While", "Whitespace"
 	};
 
 	public static final int EOF=-1;
@@ -73,102 +73,104 @@ public class TSPHPParser extends Parser {
 	public static final int DotEqual=38;
 	public static final int DoubleColon=39;
 	public static final int EXPONENT=40;
-	public static final int Echo=41;
-	public static final int Else=42;
-	public static final int Equal=43;
-	public static final int Exit=44;
-	public static final int Extends=45;
-	public static final int Final=46;
-	public static final int Float=47;
-	public static final int For=48;
-	public static final int Foreach=49;
-	public static final int Function=50;
-	public static final int GreaterEqualThan=51;
-	public static final int GreaterThan=52;
-	public static final int HEXADECIMAL=53;
-	public static final int Identical=54;
-	public static final int Identifier=55;
-	public static final int If=56;
-	public static final int Implements=57;
-	public static final int Instanceof=58;
-	public static final int Int=59;
-	public static final int Interface=60;
-	public static final int LeftCurlyBrace=61;
-	public static final int LeftParanthesis=62;
-	public static final int LeftSquareBrace=63;
-	public static final int LessEqualThan=64;
-	public static final int LessThan=65;
-	public static final int LogicAnd=66;
-	public static final int LogicAndWeak=67;
-	public static final int LogicNot=68;
-	public static final int LogicOr=69;
-	public static final int LogicOrWeak=70;
-	public static final int LogicXorWeak=71;
-	public static final int Minus=72;
-	public static final int MinusEqual=73;
-	public static final int MinusMinus=74;
-	public static final int Modulo=75;
-	public static final int ModuloEqual=76;
-	public static final int Multiply=77;
-	public static final int MultiplyEqual=78;
-	public static final int Namespace=79;
-	public static final int New=80;
-	public static final int NotEqual=81;
-	public static final int NotEqualAlternative=82;
-	public static final int NotIdentical=83;
-	public static final int Null=84;
-	public static final int OCTAL=85;
-	public static final int ObjectOperator=86;
-	public static final int POST_INCREMENT_DECREMENT=87;
-	public static final int PRE_INCREMENT_DECREMENT=88;
-	public static final int Parent=89;
-	public static final int Plus=90;
-	public static final int PlusEqual=91;
-	public static final int PlusPlus=92;
-	public static final int Private=93;
-	public static final int ProtectParent=94;
-	public static final int ProtectSelf=95;
-	public static final int ProtectThis=96;
-	public static final int Protected=97;
-	public static final int Public=98;
-	public static final int QuestionMark=99;
-	public static final int Return=100;
-	public static final int RightCurlyBrace=101;
-	public static final int RightParanthesis=102;
-	public static final int RightSquareBrace=103;
-	public static final int STRING_DOUBLE_QUOTED=104;
-	public static final int STRING_SINGLE_QUOTED=105;
-	public static final int SWITCH_CASES=106;
-	public static final int SWITCH_GROUP=107;
-	public static final int SWITCH_INSTRUCTIONS=108;
-	public static final int Self=109;
-	public static final int Semicolon=110;
-	public static final int ShiftLeft=111;
-	public static final int ShiftLeftEqual=112;
-	public static final int ShiftRight=113;
-	public static final int ShiftRightEqual=114;
-	public static final int Static=115;
-	public static final int String=116;
-	public static final int Switch=117;
-	public static final int This=118;
-	public static final int Throw=119;
-	public static final int Try=120;
-	public static final int TypeArray=121;
-	public static final int TypeBool=122;
-	public static final int TypeBoolean=123;
-	public static final int TypeFloat=124;
-	public static final int TypeInt=125;
-	public static final int TypeObject=126;
-	public static final int TypeResource=127;
-	public static final int TypeString=128;
-	public static final int UMINUS=129;
-	public static final int UPLUS=130;
-	public static final int Use=131;
-	public static final int VARIABLE_DECLARATION=132;
-	public static final int VariableId=133;
-	public static final int Void=134;
-	public static final int While=135;
-	public static final int Whitespace=136;
+	public static final int EXPRESSION_LIST=41;
+	public static final int Echo=42;
+	public static final int Else=43;
+	public static final int Equal=44;
+	public static final int Exit=45;
+	public static final int Extends=46;
+	public static final int Final=47;
+	public static final int Float=48;
+	public static final int For=49;
+	public static final int Foreach=50;
+	public static final int Function=51;
+	public static final int GreaterEqualThan=52;
+	public static final int GreaterThan=53;
+	public static final int HEXADECIMAL=54;
+	public static final int Identical=55;
+	public static final int Identifier=56;
+	public static final int If=57;
+	public static final int Implements=58;
+	public static final int Instanceof=59;
+	public static final int Int=60;
+	public static final int Interface=61;
+	public static final int LeftCurlyBrace=62;
+	public static final int LeftParanthesis=63;
+	public static final int LeftSquareBrace=64;
+	public static final int LessEqualThan=65;
+	public static final int LessThan=66;
+	public static final int LogicAnd=67;
+	public static final int LogicAndWeak=68;
+	public static final int LogicNot=69;
+	public static final int LogicOr=70;
+	public static final int LogicOrWeak=71;
+	public static final int LogicXorWeak=72;
+	public static final int Minus=73;
+	public static final int MinusEqual=74;
+	public static final int MinusMinus=75;
+	public static final int Modulo=76;
+	public static final int ModuloEqual=77;
+	public static final int Multiply=78;
+	public static final int MultiplyEqual=79;
+	public static final int Namespace=80;
+	public static final int New=81;
+	public static final int NotEqual=82;
+	public static final int NotEqualAlternative=83;
+	public static final int NotIdentical=84;
+	public static final int Null=85;
+	public static final int OCTAL=86;
+	public static final int ObjectOperator=87;
+	public static final int POST_INCREMENT_DECREMENT=88;
+	public static final int PRE_INCREMENT_DECREMENT=89;
+	public static final int Parent=90;
+	public static final int Plus=91;
+	public static final int PlusEqual=92;
+	public static final int PlusPlus=93;
+	public static final int Private=94;
+	public static final int ProtectParent=95;
+	public static final int ProtectSelf=96;
+	public static final int ProtectThis=97;
+	public static final int Protected=98;
+	public static final int Public=99;
+	public static final int QuestionMark=100;
+	public static final int Return=101;
+	public static final int RightCurlyBrace=102;
+	public static final int RightParanthesis=103;
+	public static final int RightSquareBrace=104;
+	public static final int STRING_DOUBLE_QUOTED=105;
+	public static final int STRING_SINGLE_QUOTED=106;
+	public static final int SWITCH_CASES=107;
+	public static final int SWITCH_GROUP=108;
+	public static final int SWITCH_INSTRUCTIONS=109;
+	public static final int Self=110;
+	public static final int Semicolon=111;
+	public static final int ShiftLeft=112;
+	public static final int ShiftLeftEqual=113;
+	public static final int ShiftRight=114;
+	public static final int ShiftRightEqual=115;
+	public static final int Static=116;
+	public static final int String=117;
+	public static final int Switch=118;
+	public static final int This=119;
+	public static final int Throw=120;
+	public static final int Try=121;
+	public static final int TypeArray=122;
+	public static final int TypeBool=123;
+	public static final int TypeBoolean=124;
+	public static final int TypeFloat=125;
+	public static final int TypeInt=126;
+	public static final int TypeObject=127;
+	public static final int TypeResource=128;
+	public static final int TypeString=129;
+	public static final int UMINUS=130;
+	public static final int UPLUS=131;
+	public static final int Use=132;
+	public static final int VARIABLE_DECLARATION=133;
+	public static final int VARIABLE_DECLARATION_LIST=134;
+	public static final int VariableId=135;
+	public static final int Void=136;
+	public static final int While=137;
+	public static final int Whitespace=138;
 
 	// delegates
 	public Parser[] getDelegates() {
@@ -183,7 +185,7 @@ public class TSPHPParser extends Parser {
 	}
 	public TSPHPParser(TokenStream input, RecognizerSharedState state) {
 		super(input, state);
-		this.state.ruleMemo = new HashMap[311+1];
+		this.state.ruleMemo = new HashMap[305+1];
 		 
 
 	}
@@ -207,7 +209,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "prog"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:188:1: prog : ( ( namespaceSemicolon )+ EOF !| ( namespaceBracket )+ EOF !| withoutNamespace EOF !);
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:190:1: prog : ( ( namespaceSemicolon )+ EOF !| ( namespaceBracket )+ EOF !| withoutNamespace EOF !);
 	public final TSPHPParser.prog_return prog() throws RecognitionException {
 		TSPHPParser.prog_return retval = new TSPHPParser.prog_return();
 		retval.start = input.LT(1);
@@ -229,17 +231,17 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 1) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:188:6: ( ( namespaceSemicolon )+ EOF !| ( namespaceBracket )+ EOF !| withoutNamespace EOF !)
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:190:6: ( ( namespaceSemicolon )+ EOF !| ( namespaceBracket )+ EOF !| withoutNamespace EOF !)
 			int alt3=3;
 			alt3 = dfa3.predict(input);
 			switch (alt3) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:188:8: ( namespaceSemicolon )+ EOF !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:190:8: ( namespaceSemicolon )+ EOF !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:188:8: ( namespaceSemicolon )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:190:8: ( namespaceSemicolon )+
 					int cnt1=0;
 					loop1:
 					do {
@@ -251,9 +253,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt1) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:188:8: namespaceSemicolon
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:190:8: namespaceSemicolon
 							{
-							pushFollow(FOLLOW_namespaceSemicolon_in_prog961);
+							pushFollow(FOLLOW_namespaceSemicolon_in_prog969);
 							namespaceSemicolon1=namespaceSemicolon();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -272,16 +274,16 @@ public TreeAdaptor getTreeAdaptor() {
 						cnt1++;
 					} while (true);
 
-					EOF2=(Token)match(input,EOF,FOLLOW_EOF_in_prog964); if (state.failed) return retval;
+					EOF2=(Token)match(input,EOF,FOLLOW_EOF_in_prog972); if (state.failed) return retval;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:189:4: ( namespaceBracket )+ EOF !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:4: ( namespaceBracket )+ EOF !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:189:4: ( namespaceBracket )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:4: ( namespaceBracket )+
 					int cnt2=0;
 					loop2:
 					do {
@@ -293,9 +295,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt2) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:189:4: namespaceBracket
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:191:4: namespaceBracket
 							{
-							pushFollow(FOLLOW_namespaceBracket_in_prog970);
+							pushFollow(FOLLOW_namespaceBracket_in_prog978);
 							namespaceBracket3=namespaceBracket();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -314,22 +316,22 @@ public TreeAdaptor getTreeAdaptor() {
 						cnt2++;
 					} while (true);
 
-					EOF4=(Token)match(input,EOF,FOLLOW_EOF_in_prog973); if (state.failed) return retval;
+					EOF4=(Token)match(input,EOF,FOLLOW_EOF_in_prog981); if (state.failed) return retval;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:190:4: withoutNamespace EOF !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:192:4: withoutNamespace EOF !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_withoutNamespace_in_prog979);
+					pushFollow(FOLLOW_withoutNamespace_in_prog987);
 					withoutNamespace5=withoutNamespace();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, withoutNamespace5.getTree());
 
-					EOF6=(Token)match(input,EOF,FOLLOW_EOF_in_prog981); if (state.failed) return retval;
+					EOF6=(Token)match(input,EOF,FOLLOW_EOF_in_prog989); if (state.failed) return retval;
 					}
 					break;
 
@@ -363,7 +365,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "namespaceSemicolon"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:193:1: namespaceSemicolon : ( 'namespace' namespaceId ';' ( statement )+ ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:195:1: namespaceSemicolon : ( 'namespace' namespaceId ';' ( statement )+ ) ;
 	public final TSPHPParser.namespaceSemicolon_return namespaceSemicolon() throws RecognitionException {
 		TSPHPParser.namespaceSemicolon_return retval = new TSPHPParser.namespaceSemicolon_return();
 		retval.start = input.LT(1);
@@ -382,16 +384,16 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 2) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:194:2: ( ( 'namespace' namespaceId ';' ( statement )+ ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:194:4: ( 'namespace' namespaceId ';' ( statement )+ )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:196:2: ( ( 'namespace' namespaceId ';' ( statement )+ ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:196:4: ( 'namespace' namespaceId ';' ( statement )+ )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:194:4: ( 'namespace' namespaceId ';' ( statement )+ )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:194:5: 'namespace' namespaceId ';' ( statement )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:196:4: ( 'namespace' namespaceId ';' ( statement )+ )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:196:5: 'namespace' namespaceId ';' ( statement )+
 			{
-			string_literal7=(Token)match(input,Namespace,FOLLOW_Namespace_in_namespaceSemicolon995); if (state.failed) return retval;
+			string_literal7=(Token)match(input,Namespace,FOLLOW_Namespace_in_namespaceSemicolon1003); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal7_tree = 
 			(CommonTree)adaptor.create(string_literal7)
@@ -399,13 +401,13 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal7_tree);
 			}
 
-			pushFollow(FOLLOW_namespaceId_in_namespaceSemicolon997);
+			pushFollow(FOLLOW_namespaceId_in_namespaceSemicolon1005);
 			namespaceId8=namespaceId();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, namespaceId8.getTree());
 
-			char_literal9=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_namespaceSemicolon999); if (state.failed) return retval;
+			char_literal9=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_namespaceSemicolon1007); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal9_tree = 
 			(CommonTree)adaptor.create(char_literal9)
@@ -413,7 +415,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, char_literal9_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:194:33: ( statement )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:196:33: ( statement )+
 			int cnt4=0;
 			loop4:
 			do {
@@ -425,9 +427,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt4) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:194:33: statement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:196:33: statement
 					{
-					pushFollow(FOLLOW_statement_in_namespaceSemicolon1001);
+					pushFollow(FOLLOW_statement_in_namespaceSemicolon1009);
 					statement10=statement();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -479,7 +481,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "namespaceBracket"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:196:1: namespaceBracket : ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:198:1: namespaceBracket : ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' ) ;
 	public final TSPHPParser.namespaceBracket_return namespaceBracket() throws RecognitionException {
 		TSPHPParser.namespaceBracket_return retval = new TSPHPParser.namespaceBracket_return();
 		retval.start = input.LT(1);
@@ -500,16 +502,16 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 3) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:197:2: ( ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:197:4: ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:199:2: ( ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:199:4: ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:197:4: ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:197:5: 'namespace' ( namespaceId )? '{' ( statement )+ '}'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:199:4: ( 'namespace' ( namespaceId )? '{' ( statement )+ '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:199:5: 'namespace' ( namespaceId )? '{' ( statement )+ '}'
 			{
-			string_literal11=(Token)match(input,Namespace,FOLLOW_Namespace_in_namespaceBracket1014); if (state.failed) return retval;
+			string_literal11=(Token)match(input,Namespace,FOLLOW_Namespace_in_namespaceBracket1022); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal11_tree = 
 			(CommonTree)adaptor.create(string_literal11)
@@ -517,7 +519,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal11_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:197:17: ( namespaceId )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:199:17: ( namespaceId )?
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( (LA5_0==Identifier) ) {
@@ -525,9 +527,9 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt5) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:197:17: namespaceId
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:199:17: namespaceId
 					{
-					pushFollow(FOLLOW_namespaceId_in_namespaceBracket1016);
+					pushFollow(FOLLOW_namespaceId_in_namespaceBracket1024);
 					namespaceId12=namespaceId();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -538,7 +540,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			char_literal13=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_namespaceBracket1019); if (state.failed) return retval;
+			char_literal13=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_namespaceBracket1027); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal13_tree = 
 			(CommonTree)adaptor.create(char_literal13)
@@ -546,7 +548,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, char_literal13_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:197:34: ( statement )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:199:34: ( statement )+
 			int cnt6=0;
 			loop6:
 			do {
@@ -558,9 +560,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt6) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:197:34: statement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:199:34: statement
 					{
-					pushFollow(FOLLOW_statement_in_namespaceBracket1021);
+					pushFollow(FOLLOW_statement_in_namespaceBracket1029);
 					statement14=statement();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -579,7 +581,7 @@ public TreeAdaptor getTreeAdaptor() {
 				cnt6++;
 			} while (true);
 
-			char_literal15=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_namespaceBracket1024); if (state.failed) return retval;
+			char_literal15=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_namespaceBracket1032); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal15_tree = 
 			(CommonTree)adaptor.create(char_literal15)
@@ -620,7 +622,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "namespaceId"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:207:1: namespaceId : Identifier ( '\\\\' Identifier )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:209:1: namespaceId : Identifier ( '\\\\' Identifier )* ;
 	public final TSPHPParser.namespaceId_return namespaceId() throws RecognitionException {
 		TSPHPParser.namespaceId_return retval = new TSPHPParser.namespaceId_return();
 		retval.start = input.LT(1);
@@ -639,13 +641,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 4) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:208:2: ( Identifier ( '\\\\' Identifier )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:208:4: Identifier ( '\\\\' Identifier )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:210:2: ( Identifier ( '\\\\' Identifier )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:210:4: Identifier ( '\\\\' Identifier )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			Identifier16=(Token)match(input,Identifier,FOLLOW_Identifier_in_namespaceId1120); if (state.failed) return retval;
+			Identifier16=(Token)match(input,Identifier,FOLLOW_Identifier_in_namespaceId1128); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			Identifier16_tree = 
 			(CommonTree)adaptor.create(Identifier16)
@@ -653,7 +655,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, Identifier16_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:208:15: ( '\\\\' Identifier )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:210:15: ( '\\\\' Identifier )*
 			loop7:
 			do {
 				int alt7=2;
@@ -664,9 +666,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt7) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:208:16: '\\\\' Identifier
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:210:16: '\\\\' Identifier
 					{
-					char_literal17=(Token)match(input,Backslash,FOLLOW_Backslash_in_namespaceId1123); if (state.failed) return retval;
+					char_literal17=(Token)match(input,Backslash,FOLLOW_Backslash_in_namespaceId1131); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal17_tree = 
 					(CommonTree)adaptor.create(char_literal17)
@@ -674,7 +676,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, char_literal17_tree);
 					}
 
-					Identifier18=(Token)match(input,Identifier,FOLLOW_Identifier_in_namespaceId1125); if (state.failed) return retval;
+					Identifier18=(Token)match(input,Identifier,FOLLOW_Identifier_in_namespaceId1133); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					Identifier18_tree = 
 					(CommonTree)adaptor.create(Identifier18)
@@ -721,7 +723,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "withoutNamespace"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:211:1: withoutNamespace : ( statement )+ ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:213:1: withoutNamespace : ( statement )+ ;
 	public final TSPHPParser.withoutNamespace_return withoutNamespace() throws RecognitionException {
 		TSPHPParser.withoutNamespace_return retval = new TSPHPParser.withoutNamespace_return();
 		retval.start = input.LT(1);
@@ -735,13 +737,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 5) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:212:2: ( ( statement )+ )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:212:4: ( statement )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:214:2: ( ( statement )+ )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:214:4: ( statement )+
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:212:4: ( statement )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:214:4: ( statement )+
 			int cnt8=0;
 			loop8:
 			do {
@@ -753,9 +755,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt8) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:212:4: statement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:214:4: statement
 					{
-					pushFollow(FOLLOW_statement_in_withoutNamespace1138);
+					pushFollow(FOLLOW_statement_in_withoutNamespace1146);
 					statement19=statement();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -805,7 +807,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "statement"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:214:1: statement : ( useDeclarationList | definition | instructionWithoutBreakContinue );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:216:1: statement : ( useDeclarationList | definition | instructionWithoutBreakContinue );
 	public final TSPHPParser.statement_return statement() throws RecognitionException {
 		TSPHPParser.statement_return retval = new TSPHPParser.statement_return();
 		retval.start = input.LT(1);
@@ -821,7 +823,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 6) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:215:2: ( useDeclarationList | definition | instructionWithoutBreakContinue )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:217:2: ( useDeclarationList | definition | instructionWithoutBreakContinue )
 			int alt9=3;
 			switch ( input.LA(1) ) {
 			case Use:
@@ -879,12 +881,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt9) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:215:4: useDeclarationList
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:217:4: useDeclarationList
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_useDeclarationList_in_statement1149);
+					pushFollow(FOLLOW_useDeclarationList_in_statement1157);
 					useDeclarationList20=useDeclarationList();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -893,12 +895,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:216:4: definition
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:218:4: definition
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_definition_in_statement1154);
+					pushFollow(FOLLOW_definition_in_statement1162);
 					definition21=definition();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -907,12 +909,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:217:4: instructionWithoutBreakContinue
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:219:4: instructionWithoutBreakContinue
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_instructionWithoutBreakContinue_in_statement1159);
+					pushFollow(FOLLOW_instructionWithoutBreakContinue_in_statement1167);
 					instructionWithoutBreakContinue22=instructionWithoutBreakContinue();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -951,7 +953,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "useDeclarationList"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:220:1: useDeclarationList : 'use' useDeclaration ( ',' useDeclaration )* ';' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:222:1: useDeclarationList : 'use' useDeclaration ( ',' useDeclaration )* ';' ;
 	public final TSPHPParser.useDeclarationList_return useDeclarationList() throws RecognitionException {
 		TSPHPParser.useDeclarationList_return retval = new TSPHPParser.useDeclarationList_return();
 		retval.start = input.LT(1);
@@ -972,13 +974,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 7) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:221:2: ( 'use' useDeclaration ( ',' useDeclaration )* ';' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:221:4: 'use' useDeclaration ( ',' useDeclaration )* ';'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:223:2: ( 'use' useDeclaration ( ',' useDeclaration )* ';' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:223:4: 'use' useDeclaration ( ',' useDeclaration )* ';'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal23=(Token)match(input,Use,FOLLOW_Use_in_useDeclarationList1171); if (state.failed) return retval;
+			string_literal23=(Token)match(input,Use,FOLLOW_Use_in_useDeclarationList1179); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal23_tree = 
 			(CommonTree)adaptor.create(string_literal23)
@@ -986,13 +988,13 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal23_tree);
 			}
 
-			pushFollow(FOLLOW_useDeclaration_in_useDeclarationList1173);
+			pushFollow(FOLLOW_useDeclaration_in_useDeclarationList1181);
 			useDeclaration24=useDeclaration();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, useDeclaration24.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:221:25: ( ',' useDeclaration )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:223:25: ( ',' useDeclaration )*
 			loop10:
 			do {
 				int alt10=2;
@@ -1003,9 +1005,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt10) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:221:26: ',' useDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:223:26: ',' useDeclaration
 					{
-					char_literal25=(Token)match(input,Comma,FOLLOW_Comma_in_useDeclarationList1176); if (state.failed) return retval;
+					char_literal25=(Token)match(input,Comma,FOLLOW_Comma_in_useDeclarationList1184); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal25_tree = 
 					(CommonTree)adaptor.create(char_literal25)
@@ -1013,7 +1015,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, char_literal25_tree);
 					}
 
-					pushFollow(FOLLOW_useDeclaration_in_useDeclarationList1178);
+					pushFollow(FOLLOW_useDeclaration_in_useDeclarationList1186);
 					useDeclaration26=useDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1027,7 +1029,7 @@ public TreeAdaptor getTreeAdaptor() {
 				}
 			} while (true);
 
-			char_literal27=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_useDeclarationList1182); if (state.failed) return retval;
+			char_literal27=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_useDeclarationList1190); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal27_tree = 
 			(CommonTree)adaptor.create(char_literal27)
@@ -1066,7 +1068,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "useDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:223:1: useDeclaration : ( ( Identifier '\\\\' namespaceId ) | ( '\\\\' namespaceId ) ) ( 'as' Identifier )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:225:1: useDeclaration : ( ( Identifier '\\\\' namespaceId ) | ( '\\\\' namespaceId ) ) ( 'as' Identifier )? ;
 	public final TSPHPParser.useDeclaration_return useDeclaration() throws RecognitionException {
 		TSPHPParser.useDeclaration_return retval = new TSPHPParser.useDeclaration_return();
 		retval.start = input.LT(1);
@@ -1091,13 +1093,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 8) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:224:2: ( ( ( Identifier '\\\\' namespaceId ) | ( '\\\\' namespaceId ) ) ( 'as' Identifier )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:224:4: ( ( Identifier '\\\\' namespaceId ) | ( '\\\\' namespaceId ) ) ( 'as' Identifier )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:226:2: ( ( ( Identifier '\\\\' namespaceId ) | ( '\\\\' namespaceId ) ) ( 'as' Identifier )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:226:4: ( ( Identifier '\\\\' namespaceId ) | ( '\\\\' namespaceId ) ) ( 'as' Identifier )?
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:224:4: ( ( Identifier '\\\\' namespaceId ) | ( '\\\\' namespaceId ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:226:4: ( ( Identifier '\\\\' namespaceId ) | ( '\\\\' namespaceId ) )
 			int alt11=2;
 			int LA11_0 = input.LA(1);
 			if ( (LA11_0==Identifier) ) {
@@ -1114,12 +1116,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt11) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:224:6: ( Identifier '\\\\' namespaceId )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:226:6: ( Identifier '\\\\' namespaceId )
 					{
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:224:6: ( Identifier '\\\\' namespaceId )
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:224:7: Identifier '\\\\' namespaceId
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:226:6: ( Identifier '\\\\' namespaceId )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:226:7: Identifier '\\\\' namespaceId
 					{
-					Identifier28=(Token)match(input,Identifier,FOLLOW_Identifier_in_useDeclaration1195); if (state.failed) return retval;
+					Identifier28=(Token)match(input,Identifier,FOLLOW_Identifier_in_useDeclaration1203); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					Identifier28_tree = 
 					(CommonTree)adaptor.create(Identifier28)
@@ -1127,7 +1129,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, Identifier28_tree);
 					}
 
-					char_literal29=(Token)match(input,Backslash,FOLLOW_Backslash_in_useDeclaration1197); if (state.failed) return retval;
+					char_literal29=(Token)match(input,Backslash,FOLLOW_Backslash_in_useDeclaration1205); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal29_tree = 
 					(CommonTree)adaptor.create(char_literal29)
@@ -1135,7 +1137,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, char_literal29_tree);
 					}
 
-					pushFollow(FOLLOW_namespaceId_in_useDeclaration1199);
+					pushFollow(FOLLOW_namespaceId_in_useDeclaration1207);
 					namespaceId30=namespaceId();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1146,12 +1148,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:225:6: ( '\\\\' namespaceId )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:227:6: ( '\\\\' namespaceId )
 					{
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:225:6: ( '\\\\' namespaceId )
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:225:7: '\\\\' namespaceId
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:227:6: ( '\\\\' namespaceId )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:227:7: '\\\\' namespaceId
 					{
-					char_literal31=(Token)match(input,Backslash,FOLLOW_Backslash_in_useDeclaration1208); if (state.failed) return retval;
+					char_literal31=(Token)match(input,Backslash,FOLLOW_Backslash_in_useDeclaration1216); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal31_tree = 
 					(CommonTree)adaptor.create(char_literal31)
@@ -1159,7 +1161,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, char_literal31_tree);
 					}
 
-					pushFollow(FOLLOW_namespaceId_in_useDeclaration1209);
+					pushFollow(FOLLOW_namespaceId_in_useDeclaration1217);
 					namespaceId32=namespaceId();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1172,7 +1174,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:227:3: ( 'as' Identifier )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:229:3: ( 'as' Identifier )?
 			int alt12=2;
 			int LA12_0 = input.LA(1);
 			if ( (LA12_0==As) ) {
@@ -1180,9 +1182,9 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt12) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:227:4: 'as' Identifier
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:229:4: 'as' Identifier
 					{
-					string_literal33=(Token)match(input,As,FOLLOW_As_in_useDeclaration1221); if (state.failed) return retval;
+					string_literal33=(Token)match(input,As,FOLLOW_As_in_useDeclaration1229); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					string_literal33_tree = 
 					(CommonTree)adaptor.create(string_literal33)
@@ -1190,7 +1192,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, string_literal33_tree);
 					}
 
-					Identifier34=(Token)match(input,Identifier,FOLLOW_Identifier_in_useDeclaration1223); if (state.failed) return retval;
+					Identifier34=(Token)match(input,Identifier,FOLLOW_Identifier_in_useDeclaration1231); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					Identifier34_tree = 
 					(CommonTree)adaptor.create(Identifier34)
@@ -1234,7 +1236,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "definition"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:229:1: definition : ( classDeclaration | interfaceDeclaration | functionDeclaration | constDeclarationList );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:231:1: definition : ( classDeclaration | interfaceDeclaration | functionDeclaration | constDeclarationList );
 	public final TSPHPParser.definition_return definition() throws RecognitionException {
 		TSPHPParser.definition_return retval = new TSPHPParser.definition_return();
 		retval.start = input.LT(1);
@@ -1251,7 +1253,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 9) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:230:2: ( classDeclaration | interfaceDeclaration | functionDeclaration | constDeclarationList )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:232:2: ( classDeclaration | interfaceDeclaration | functionDeclaration | constDeclarationList )
 			int alt13=4;
 			switch ( input.LA(1) ) {
 			case Abstract:
@@ -1284,12 +1286,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt13) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:230:4: classDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:232:4: classDeclaration
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_classDeclaration_in_definition1236);
+					pushFollow(FOLLOW_classDeclaration_in_definition1244);
 					classDeclaration35=classDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1298,12 +1300,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:231:4: interfaceDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:233:4: interfaceDeclaration
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_interfaceDeclaration_in_definition1241);
+					pushFollow(FOLLOW_interfaceDeclaration_in_definition1249);
 					interfaceDeclaration36=interfaceDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1312,12 +1314,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:232:4: functionDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:234:4: functionDeclaration
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_functionDeclaration_in_definition1246);
+					pushFollow(FOLLOW_functionDeclaration_in_definition1254);
 					functionDeclaration37=functionDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1326,12 +1328,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 4 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:233:4: constDeclarationList
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:235:4: constDeclarationList
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_constDeclarationList_in_definition1251);
+					pushFollow(FOLLOW_constDeclarationList_in_definition1259);
 					constDeclarationList38=constDeclarationList();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1370,7 +1372,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "classDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:239:1: classDeclaration : ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:241:1: classDeclaration : ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}' ;
 	public final TSPHPParser.classDeclaration_return classDeclaration() throws RecognitionException {
 		TSPHPParser.classDeclaration_return retval = new TSPHPParser.classDeclaration_return();
 		retval.start = input.LT(1);
@@ -1396,13 +1398,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 10) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:2: ( ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:4: ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:2: ( ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:4: ( 'abstract' | 'final' )? 'class' Identifier ( extendsDeclaration )? ( implementsDeclaration )? '{' ( classBody )+ '}'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:4: ( 'abstract' | 'final' )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:4: ( 'abstract' | 'final' )?
 			int alt14=2;
 			int LA14_0 = input.LA(1);
 			if ( (LA14_0==Abstract||LA14_0==Final) ) {
@@ -1431,7 +1433,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			string_literal40=(Token)match(input,Class,FOLLOW_Class_in_classDeclaration1273); if (state.failed) return retval;
+			string_literal40=(Token)match(input,Class,FOLLOW_Class_in_classDeclaration1281); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal40_tree = 
 			(CommonTree)adaptor.create(string_literal40)
@@ -1439,7 +1441,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal40_tree);
 			}
 
-			Identifier41=(Token)match(input,Identifier,FOLLOW_Identifier_in_classDeclaration1275); if (state.failed) return retval;
+			Identifier41=(Token)match(input,Identifier,FOLLOW_Identifier_in_classDeclaration1283); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			Identifier41_tree = 
 			(CommonTree)adaptor.create(Identifier41)
@@ -1447,7 +1449,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, Identifier41_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:45: ( extendsDeclaration )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:45: ( extendsDeclaration )?
 			int alt15=2;
 			int LA15_0 = input.LA(1);
 			if ( (LA15_0==Extends) ) {
@@ -1455,9 +1457,9 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt15) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:45: extendsDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:45: extendsDeclaration
 					{
-					pushFollow(FOLLOW_extendsDeclaration_in_classDeclaration1277);
+					pushFollow(FOLLOW_extendsDeclaration_in_classDeclaration1285);
 					extendsDeclaration42=extendsDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1468,7 +1470,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:65: ( implementsDeclaration )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:65: ( implementsDeclaration )?
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0==Implements) ) {
@@ -1476,9 +1478,9 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt16) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:65: implementsDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:65: implementsDeclaration
 					{
-					pushFollow(FOLLOW_implementsDeclaration_in_classDeclaration1280);
+					pushFollow(FOLLOW_implementsDeclaration_in_classDeclaration1288);
 					implementsDeclaration43=implementsDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1489,7 +1491,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			char_literal44=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_classDeclaration1283); if (state.failed) return retval;
+			char_literal44=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_classDeclaration1291); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal44_tree = 
 			(CommonTree)adaptor.create(char_literal44)
@@ -1497,7 +1499,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, char_literal44_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:92: ( classBody )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:92: ( classBody )+
 			int cnt17=0;
 			loop17:
 			do {
@@ -1509,9 +1511,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt17) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:240:92: classBody
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:242:92: classBody
 					{
-					pushFollow(FOLLOW_classBody_in_classDeclaration1285);
+					pushFollow(FOLLOW_classBody_in_classDeclaration1293);
 					classBody45=classBody();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1530,7 +1532,7 @@ public TreeAdaptor getTreeAdaptor() {
 				cnt17++;
 			} while (true);
 
-			char_literal46=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_classDeclaration1288); if (state.failed) return retval;
+			char_literal46=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_classDeclaration1296); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal46_tree = 
 			(CommonTree)adaptor.create(char_literal46)
@@ -1569,7 +1571,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "extendsDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:243:1: extendsDeclaration : 'extends' identifierList ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:245:1: extendsDeclaration : 'extends' identifierList ;
 	public final TSPHPParser.extendsDeclaration_return extendsDeclaration() throws RecognitionException {
 		TSPHPParser.extendsDeclaration_return retval = new TSPHPParser.extendsDeclaration_return();
 		retval.start = input.LT(1);
@@ -1585,13 +1587,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 11) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:244:2: ( 'extends' identifierList )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:244:4: 'extends' identifierList
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:246:2: ( 'extends' identifierList )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:246:4: 'extends' identifierList
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal47=(Token)match(input,Extends,FOLLOW_Extends_in_extendsDeclaration1302); if (state.failed) return retval;
+			string_literal47=(Token)match(input,Extends,FOLLOW_Extends_in_extendsDeclaration1310); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal47_tree = 
 			(CommonTree)adaptor.create(string_literal47)
@@ -1599,7 +1601,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal47_tree);
 			}
 
-			pushFollow(FOLLOW_identifierList_in_extendsDeclaration1304);
+			pushFollow(FOLLOW_identifierList_in_extendsDeclaration1312);
 			identifierList48=identifierList();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -1636,7 +1638,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "identifierList"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:246:1: identifierList : Identifier ( ',' Identifier )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:248:1: identifierList : Identifier ( ',' Identifier )* ;
 	public final TSPHPParser.identifierList_return identifierList() throws RecognitionException {
 		TSPHPParser.identifierList_return retval = new TSPHPParser.identifierList_return();
 		retval.start = input.LT(1);
@@ -1655,13 +1657,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 12) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:247:2: ( Identifier ( ',' Identifier )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:247:4: Identifier ( ',' Identifier )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:249:2: ( Identifier ( ',' Identifier )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:249:4: Identifier ( ',' Identifier )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			Identifier49=(Token)match(input,Identifier,FOLLOW_Identifier_in_identifierList1313); if (state.failed) return retval;
+			Identifier49=(Token)match(input,Identifier,FOLLOW_Identifier_in_identifierList1321); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			Identifier49_tree = 
 			(CommonTree)adaptor.create(Identifier49)
@@ -1669,7 +1671,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, Identifier49_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:247:15: ( ',' Identifier )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:249:15: ( ',' Identifier )*
 			loop18:
 			do {
 				int alt18=2;
@@ -1680,9 +1682,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt18) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:247:16: ',' Identifier
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:249:16: ',' Identifier
 					{
-					char_literal50=(Token)match(input,Comma,FOLLOW_Comma_in_identifierList1316); if (state.failed) return retval;
+					char_literal50=(Token)match(input,Comma,FOLLOW_Comma_in_identifierList1324); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal50_tree = 
 					(CommonTree)adaptor.create(char_literal50)
@@ -1690,7 +1692,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, char_literal50_tree);
 					}
 
-					Identifier51=(Token)match(input,Identifier,FOLLOW_Identifier_in_identifierList1318); if (state.failed) return retval;
+					Identifier51=(Token)match(input,Identifier,FOLLOW_Identifier_in_identifierList1326); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					Identifier51_tree = 
 					(CommonTree)adaptor.create(Identifier51)
@@ -1737,7 +1739,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "implementsDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:249:1: implementsDeclaration : 'implements' identifierList ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:251:1: implementsDeclaration : 'implements' identifierList ;
 	public final TSPHPParser.implementsDeclaration_return implementsDeclaration() throws RecognitionException {
 		TSPHPParser.implementsDeclaration_return retval = new TSPHPParser.implementsDeclaration_return();
 		retval.start = input.LT(1);
@@ -1753,13 +1755,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 13) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:250:2: ( 'implements' identifierList )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:250:4: 'implements' identifierList
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:252:2: ( 'implements' identifierList )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:252:4: 'implements' identifierList
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal52=(Token)match(input,Implements,FOLLOW_Implements_in_implementsDeclaration1329); if (state.failed) return retval;
+			string_literal52=(Token)match(input,Implements,FOLLOW_Implements_in_implementsDeclaration1337); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal52_tree = 
 			(CommonTree)adaptor.create(string_literal52)
@@ -1767,7 +1769,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal52_tree);
 			}
 
-			pushFollow(FOLLOW_identifierList_in_implementsDeclaration1331);
+			pushFollow(FOLLOW_identifierList_in_implementsDeclaration1339);
 			identifierList53=identifierList();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -1804,7 +1806,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "classBody"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:252:1: classBody : ( constDeclarationList | attributeDeclaration | methodDeclaration );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:254:1: classBody : ( constDeclarationList | attributeDeclaration | methodDeclaration );
 	public final TSPHPParser.classBody_return classBody() throws RecognitionException {
 		TSPHPParser.classBody_return retval = new TSPHPParser.classBody_return();
 		retval.start = input.LT(1);
@@ -1820,7 +1822,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 14) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:253:2: ( constDeclarationList | attributeDeclaration | methodDeclaration )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:255:2: ( constDeclarationList | attributeDeclaration | methodDeclaration )
 			int alt19=3;
 			switch ( input.LA(1) ) {
 			case Const:
@@ -1962,12 +1964,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt19) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:253:4: constDeclarationList
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:255:4: constDeclarationList
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_constDeclarationList_in_classBody1341);
+					pushFollow(FOLLOW_constDeclarationList_in_classBody1349);
 					constDeclarationList54=constDeclarationList();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1976,12 +1978,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:254:4: attributeDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:256:4: attributeDeclaration
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_attributeDeclaration_in_classBody1346);
+					pushFollow(FOLLOW_attributeDeclaration_in_classBody1354);
 					attributeDeclaration55=attributeDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -1990,12 +1992,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:255:4: methodDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:257:4: methodDeclaration
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_methodDeclaration_in_classBody1352);
+					pushFollow(FOLLOW_methodDeclaration_in_classBody1360);
 					methodDeclaration56=methodDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -2034,7 +2036,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "constDeclarationList"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:258:1: constDeclarationList : 'const' primitiveTypes constantAssignment ( ',' constantAssignment )* ';' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:260:1: constDeclarationList : 'const' primitiveTypes constantAssignment ( ',' constantAssignment )* ';' ;
 	public final TSPHPParser.constDeclarationList_return constDeclarationList() throws RecognitionException {
 		TSPHPParser.constDeclarationList_return retval = new TSPHPParser.constDeclarationList_return();
 		retval.start = input.LT(1);
@@ -2056,13 +2058,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 15) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:259:2: ( 'const' primitiveTypes constantAssignment ( ',' constantAssignment )* ';' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:259:5: 'const' primitiveTypes constantAssignment ( ',' constantAssignment )* ';'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:261:2: ( 'const' primitiveTypes constantAssignment ( ',' constantAssignment )* ';' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:261:5: 'const' primitiveTypes constantAssignment ( ',' constantAssignment )* ';'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal57=(Token)match(input,Const,FOLLOW_Const_in_constDeclarationList1364); if (state.failed) return retval;
+			string_literal57=(Token)match(input,Const,FOLLOW_Const_in_constDeclarationList1372); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal57_tree = 
 			(CommonTree)adaptor.create(string_literal57)
@@ -2070,19 +2072,19 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal57_tree);
 			}
 
-			pushFollow(FOLLOW_primitiveTypes_in_constDeclarationList1366);
+			pushFollow(FOLLOW_primitiveTypes_in_constDeclarationList1374);
 			primitiveTypes58=primitiveTypes();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, primitiveTypes58.getTree());
 
-			pushFollow(FOLLOW_constantAssignment_in_constDeclarationList1368);
+			pushFollow(FOLLOW_constantAssignment_in_constDeclarationList1376);
 			constantAssignment59=constantAssignment();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, constantAssignment59.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:259:47: ( ',' constantAssignment )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:261:47: ( ',' constantAssignment )*
 			loop20:
 			do {
 				int alt20=2;
@@ -2093,9 +2095,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt20) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:259:48: ',' constantAssignment
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:261:48: ',' constantAssignment
 					{
-					char_literal60=(Token)match(input,Comma,FOLLOW_Comma_in_constDeclarationList1371); if (state.failed) return retval;
+					char_literal60=(Token)match(input,Comma,FOLLOW_Comma_in_constDeclarationList1379); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal60_tree = 
 					(CommonTree)adaptor.create(char_literal60)
@@ -2103,7 +2105,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, char_literal60_tree);
 					}
 
-					pushFollow(FOLLOW_constantAssignment_in_constDeclarationList1373);
+					pushFollow(FOLLOW_constantAssignment_in_constDeclarationList1381);
 					constantAssignment61=constantAssignment();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -2117,7 +2119,7 @@ public TreeAdaptor getTreeAdaptor() {
 				}
 			} while (true);
 
-			char_literal62=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_constDeclarationList1377); if (state.failed) return retval;
+			char_literal62=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_constDeclarationList1385); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal62_tree = 
 			(CommonTree)adaptor.create(char_literal62)
@@ -2156,7 +2158,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "constantAssignment"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:261:1: constantAssignment : Identifier '=' unaryPrimitiveAtom ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:263:1: constantAssignment : Identifier '=' unaryPrimitiveAtom ;
 	public final TSPHPParser.constantAssignment_return constantAssignment() throws RecognitionException {
 		TSPHPParser.constantAssignment_return retval = new TSPHPParser.constantAssignment_return();
 		retval.start = input.LT(1);
@@ -2174,13 +2176,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 16) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:262:2: ( Identifier '=' unaryPrimitiveAtom )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:262:4: Identifier '=' unaryPrimitiveAtom
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:264:2: ( Identifier '=' unaryPrimitiveAtom )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:264:4: Identifier '=' unaryPrimitiveAtom
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			Identifier63=(Token)match(input,Identifier,FOLLOW_Identifier_in_constantAssignment1387); if (state.failed) return retval;
+			Identifier63=(Token)match(input,Identifier,FOLLOW_Identifier_in_constantAssignment1395); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			Identifier63_tree = 
 			(CommonTree)adaptor.create(Identifier63)
@@ -2188,7 +2190,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, Identifier63_tree);
 			}
 
-			char_literal64=(Token)match(input,Assign,FOLLOW_Assign_in_constantAssignment1390); if (state.failed) return retval;
+			char_literal64=(Token)match(input,Assign,FOLLOW_Assign_in_constantAssignment1398); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal64_tree = 
 			(CommonTree)adaptor.create(char_literal64)
@@ -2196,7 +2198,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, char_literal64_tree);
 			}
 
-			pushFollow(FOLLOW_unaryPrimitiveAtom_in_constantAssignment1392);
+			pushFollow(FOLLOW_unaryPrimitiveAtom_in_constantAssignment1400);
 			unaryPrimitiveAtom65=unaryPrimitiveAtom();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -2233,7 +2235,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "attributeDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:264:1: attributeDeclaration : ( 'static' )? accessor variableDeclarationListInclVariableId ';' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:266:1: attributeDeclaration : ( 'static' )? accessor variableDeclarationListInclVariableId ';' ;
 	public final TSPHPParser.attributeDeclaration_return attributeDeclaration() throws RecognitionException {
 		TSPHPParser.attributeDeclaration_return retval = new TSPHPParser.attributeDeclaration_return();
 		retval.start = input.LT(1);
@@ -2252,13 +2254,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 17) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:2: ( ( 'static' )? accessor variableDeclarationListInclVariableId ';' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:4: ( 'static' )? accessor variableDeclarationListInclVariableId ';'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:267:2: ( ( 'static' )? accessor variableDeclarationListInclVariableId ';' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:267:4: ( 'static' )? accessor variableDeclarationListInclVariableId ';'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:4: ( 'static' )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:267:4: ( 'static' )?
 			int alt21=2;
 			int LA21_0 = input.LA(1);
 			if ( (LA21_0==Static) ) {
@@ -2266,9 +2268,9 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt21) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:265:4: 'static'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:267:4: 'static'
 					{
-					string_literal66=(Token)match(input,Static,FOLLOW_Static_in_attributeDeclaration1402); if (state.failed) return retval;
+					string_literal66=(Token)match(input,Static,FOLLOW_Static_in_attributeDeclaration1410); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					string_literal66_tree = 
 					(CommonTree)adaptor.create(string_literal66)
@@ -2281,19 +2283,19 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			pushFollow(FOLLOW_accessor_in_attributeDeclaration1405);
+			pushFollow(FOLLOW_accessor_in_attributeDeclaration1413);
 			accessor67=accessor();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, accessor67.getTree());
 
-			pushFollow(FOLLOW_variableDeclarationListInclVariableId_in_attributeDeclaration1407);
+			pushFollow(FOLLOW_variableDeclarationListInclVariableId_in_attributeDeclaration1415);
 			variableDeclarationListInclVariableId68=variableDeclarationListInclVariableId();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, variableDeclarationListInclVariableId68.getTree());
 
-			char_literal69=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_attributeDeclaration1409); if (state.failed) return retval;
+			char_literal69=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_attributeDeclaration1417); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal69_tree = 
 			(CommonTree)adaptor.create(char_literal69)
@@ -2332,7 +2334,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "accessor"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:267:1: accessor : ( accessorWithoutPrivate | 'private' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:269:1: accessor : ( accessorWithoutPrivate | 'private' );
 	public final TSPHPParser.accessor_return accessor() throws RecognitionException {
 		TSPHPParser.accessor_return retval = new TSPHPParser.accessor_return();
 		retval.start = input.LT(1);
@@ -2348,7 +2350,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 18) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:267:9: ( accessorWithoutPrivate | 'private' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:269:9: ( accessorWithoutPrivate | 'private' )
 			int alt22=2;
 			int LA22_0 = input.LA(1);
 			if ( ((LA22_0 >= Protected && LA22_0 <= Public)) ) {
@@ -2365,12 +2367,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt22) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:267:11: accessorWithoutPrivate
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:269:11: accessorWithoutPrivate
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_accessorWithoutPrivate_in_accessor1416);
+					pushFollow(FOLLOW_accessorWithoutPrivate_in_accessor1424);
 					accessorWithoutPrivate70=accessorWithoutPrivate();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -2379,12 +2381,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:268:4: 'private'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:270:4: 'private'
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					string_literal71=(Token)match(input,Private,FOLLOW_Private_in_accessor1421); if (state.failed) return retval;
+					string_literal71=(Token)match(input,Private,FOLLOW_Private_in_accessor1429); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					string_literal71_tree = 
 					(CommonTree)adaptor.create(string_literal71)
@@ -2425,7 +2427,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "accessorWithoutPrivate"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:271:1: accessorWithoutPrivate : ( 'protected' | 'public' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:273:1: accessorWithoutPrivate : ( 'protected' | 'public' );
 	public final TSPHPParser.accessorWithoutPrivate_return accessorWithoutPrivate() throws RecognitionException {
 		TSPHPParser.accessorWithoutPrivate_return retval = new TSPHPParser.accessorWithoutPrivate_return();
 		retval.start = input.LT(1);
@@ -2440,7 +2442,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 19) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:272:2: ( 'protected' | 'public' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:274:2: ( 'protected' | 'public' )
 			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
@@ -2491,7 +2493,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "variableDeclarationListInclVariableId"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:274:1: variableDeclarationListInclVariableId : variableDeclaration ( ',' ( variableAssignment | VariableId ) )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:276:1: variableDeclarationListInclVariableId : variableDeclaration ( ',' ( variableAssignment | VariableId ) )* ;
 	public final TSPHPParser.variableDeclarationListInclVariableId_return variableDeclarationListInclVariableId() throws RecognitionException {
 		TSPHPParser.variableDeclarationListInclVariableId_return retval = new TSPHPParser.variableDeclarationListInclVariableId_return();
 		retval.start = input.LT(1);
@@ -2510,19 +2512,19 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 20) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:275:2: ( variableDeclaration ( ',' ( variableAssignment | VariableId ) )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:275:4: variableDeclaration ( ',' ( variableAssignment | VariableId ) )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:277:2: ( variableDeclaration ( ',' ( variableAssignment | VariableId ) )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:277:4: variableDeclaration ( ',' ( variableAssignment | VariableId ) )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_variableDeclaration_in_variableDeclarationListInclVariableId1444);
+			pushFollow(FOLLOW_variableDeclaration_in_variableDeclarationListInclVariableId1452);
 			variableDeclaration73=variableDeclaration();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, variableDeclaration73.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:275:24: ( ',' ( variableAssignment | VariableId ) )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:277:24: ( ',' ( variableAssignment | VariableId ) )*
 			loop24:
 			do {
 				int alt24=2;
@@ -2533,9 +2535,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt24) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:275:25: ',' ( variableAssignment | VariableId )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:277:25: ',' ( variableAssignment | VariableId )
 					{
-					char_literal74=(Token)match(input,Comma,FOLLOW_Comma_in_variableDeclarationListInclVariableId1447); if (state.failed) return retval;
+					char_literal74=(Token)match(input,Comma,FOLLOW_Comma_in_variableDeclarationListInclVariableId1455); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal74_tree = 
 					(CommonTree)adaptor.create(char_literal74)
@@ -2543,7 +2545,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, char_literal74_tree);
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:275:29: ( variableAssignment | VariableId )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:277:29: ( variableAssignment | VariableId )
 					int alt23=2;
 					int LA23_0 = input.LA(1);
 					if ( (LA23_0==VariableId) ) {
@@ -2578,9 +2580,9 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					switch (alt23) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:275:30: variableAssignment
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:277:30: variableAssignment
 							{
-							pushFollow(FOLLOW_variableAssignment_in_variableDeclarationListInclVariableId1450);
+							pushFollow(FOLLOW_variableAssignment_in_variableDeclarationListInclVariableId1458);
 							variableAssignment75=variableAssignment();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -2589,9 +2591,9 @@ public TreeAdaptor getTreeAdaptor() {
 							}
 							break;
 						case 2 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:275:49: VariableId
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:277:49: VariableId
 							{
-							VariableId76=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableDeclarationListInclVariableId1452); if (state.failed) return retval;
+							VariableId76=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableDeclarationListInclVariableId1460); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
 							VariableId76_tree = 
 							(CommonTree)adaptor.create(VariableId76)
@@ -2643,7 +2645,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "methodDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:278:1: methodDeclaration : ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:280:1: methodDeclaration : ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration ;
 	public final TSPHPParser.methodDeclaration_return methodDeclaration() throws RecognitionException {
 		TSPHPParser.methodDeclaration_return retval = new TSPHPParser.methodDeclaration_return();
 		retval.start = input.LT(1);
@@ -2669,13 +2671,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 21) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:279:2: ( ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:279:4: ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:2: ( ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:4: ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? ) functionDeclaration
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:279:4: ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:4: ( 'abstract' ( accessorWithoutPrivate )? | ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )? )
 			int alt30=2;
 			int LA30_0 = input.LA(1);
 			if ( (LA30_0==Abstract) ) {
@@ -2692,9 +2694,9 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt30) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:279:6: 'abstract' ( accessorWithoutPrivate )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:6: 'abstract' ( accessorWithoutPrivate )?
 					{
-					string_literal77=(Token)match(input,Abstract,FOLLOW_Abstract_in_methodDeclaration1469); if (state.failed) return retval;
+					string_literal77=(Token)match(input,Abstract,FOLLOW_Abstract_in_methodDeclaration1477); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					string_literal77_tree = 
 					(CommonTree)adaptor.create(string_literal77)
@@ -2702,7 +2704,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, string_literal77_tree);
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:279:17: ( accessorWithoutPrivate )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:17: ( accessorWithoutPrivate )?
 					int alt25=2;
 					int LA25_0 = input.LA(1);
 					if ( ((LA25_0 >= Protected && LA25_0 <= Public)) ) {
@@ -2710,9 +2712,9 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					switch (alt25) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:279:17: accessorWithoutPrivate
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:17: accessorWithoutPrivate
 							{
-							pushFollow(FOLLOW_accessorWithoutPrivate_in_methodDeclaration1471);
+							pushFollow(FOLLOW_accessorWithoutPrivate_in_methodDeclaration1479);
 							accessorWithoutPrivate78=accessorWithoutPrivate();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -2726,9 +2728,9 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:4: ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:283:4: ( 'static' ( 'final' )? | 'final' ( 'static' )? |) ( accessor )?
 					{
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:4: ( 'static' ( 'final' )? | 'final' ( 'static' )? |)
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:283:4: ( 'static' ( 'final' )? | 'final' ( 'static' )? |)
 					int alt28=3;
 					switch ( input.LA(1) ) {
 					case Static:
@@ -2757,9 +2759,9 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					switch (alt28) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:6: 'static' ( 'final' )?
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:283:6: 'static' ( 'final' )?
 							{
-							string_literal79=(Token)match(input,Static,FOLLOW_Static_in_methodDeclaration1485); if (state.failed) return retval;
+							string_literal79=(Token)match(input,Static,FOLLOW_Static_in_methodDeclaration1493); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
 							string_literal79_tree = 
 							(CommonTree)adaptor.create(string_literal79)
@@ -2767,7 +2769,7 @@ public TreeAdaptor getTreeAdaptor() {
 							adaptor.addChild(root_0, string_literal79_tree);
 							}
 
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:15: ( 'final' )?
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:283:15: ( 'final' )?
 							int alt26=2;
 							int LA26_0 = input.LA(1);
 							if ( (LA26_0==Final) ) {
@@ -2775,9 +2777,9 @@ public TreeAdaptor getTreeAdaptor() {
 							}
 							switch (alt26) {
 								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:281:15: 'final'
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:283:15: 'final'
 									{
-									string_literal80=(Token)match(input,Final,FOLLOW_Final_in_methodDeclaration1487); if (state.failed) return retval;
+									string_literal80=(Token)match(input,Final,FOLLOW_Final_in_methodDeclaration1495); if (state.failed) return retval;
 									if ( state.backtracking==0 ) {
 									string_literal80_tree = 
 									(CommonTree)adaptor.create(string_literal80)
@@ -2793,9 +2795,9 @@ public TreeAdaptor getTreeAdaptor() {
 							}
 							break;
 						case 2 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:282:6: 'final' ( 'static' )?
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:284:6: 'final' ( 'static' )?
 							{
-							string_literal81=(Token)match(input,Final,FOLLOW_Final_in_methodDeclaration1495); if (state.failed) return retval;
+							string_literal81=(Token)match(input,Final,FOLLOW_Final_in_methodDeclaration1503); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
 							string_literal81_tree = 
 							(CommonTree)adaptor.create(string_literal81)
@@ -2803,7 +2805,7 @@ public TreeAdaptor getTreeAdaptor() {
 							adaptor.addChild(root_0, string_literal81_tree);
 							}
 
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:282:14: ( 'static' )?
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:284:14: ( 'static' )?
 							int alt27=2;
 							int LA27_0 = input.LA(1);
 							if ( (LA27_0==Static) ) {
@@ -2811,9 +2813,9 @@ public TreeAdaptor getTreeAdaptor() {
 							}
 							switch (alt27) {
 								case 1 :
-									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:282:14: 'static'
+									// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:284:14: 'static'
 									{
-									string_literal82=(Token)match(input,Static,FOLLOW_Static_in_methodDeclaration1497); if (state.failed) return retval;
+									string_literal82=(Token)match(input,Static,FOLLOW_Static_in_methodDeclaration1505); if (state.failed) return retval;
 									if ( state.backtracking==0 ) {
 									string_literal82_tree = 
 									(CommonTree)adaptor.create(string_literal82)
@@ -2829,14 +2831,14 @@ public TreeAdaptor getTreeAdaptor() {
 							}
 							break;
 						case 3 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:284:4: 
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:286:4: 
 							{
 							}
 							break;
 
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:284:6: ( accessor )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:286:6: ( accessor )?
 					int alt29=2;
 					int LA29_0 = input.LA(1);
 					if ( (LA29_0==Private||(LA29_0 >= Protected && LA29_0 <= Public)) ) {
@@ -2844,9 +2846,9 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					switch (alt29) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:284:6: accessor
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:286:6: accessor
 							{
-							pushFollow(FOLLOW_accessor_in_methodDeclaration1511);
+							pushFollow(FOLLOW_accessor_in_methodDeclaration1519);
 							accessor83=accessor();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -2862,7 +2864,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			pushFollow(FOLLOW_functionDeclaration_in_methodDeclaration1518);
+			pushFollow(FOLLOW_functionDeclaration_in_methodDeclaration1526);
 			functionDeclaration84=functionDeclaration();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -2899,7 +2901,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "interfaceDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:287:1: interfaceDeclaration : 'interface' Identifier ( implementsDeclaration )? '{' ( interfaceBody )* '}' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:289:1: interfaceDeclaration : 'interface' Identifier ( implementsDeclaration )? '{' ( interfaceBody )* '}' ;
 	public final TSPHPParser.interfaceDeclaration_return interfaceDeclaration() throws RecognitionException {
 		TSPHPParser.interfaceDeclaration_return retval = new TSPHPParser.interfaceDeclaration_return();
 		retval.start = input.LT(1);
@@ -2922,13 +2924,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 22) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:288:2: ( 'interface' Identifier ( implementsDeclaration )? '{' ( interfaceBody )* '}' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:288:4: 'interface' Identifier ( implementsDeclaration )? '{' ( interfaceBody )* '}'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:290:2: ( 'interface' Identifier ( implementsDeclaration )? '{' ( interfaceBody )* '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:290:4: 'interface' Identifier ( implementsDeclaration )? '{' ( interfaceBody )* '}'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal85=(Token)match(input,Interface,FOLLOW_Interface_in_interfaceDeclaration1528); if (state.failed) return retval;
+			string_literal85=(Token)match(input,Interface,FOLLOW_Interface_in_interfaceDeclaration1536); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal85_tree = 
 			(CommonTree)adaptor.create(string_literal85)
@@ -2936,7 +2938,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal85_tree);
 			}
 
-			Identifier86=(Token)match(input,Identifier,FOLLOW_Identifier_in_interfaceDeclaration1530); if (state.failed) return retval;
+			Identifier86=(Token)match(input,Identifier,FOLLOW_Identifier_in_interfaceDeclaration1538); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			Identifier86_tree = 
 			(CommonTree)adaptor.create(Identifier86)
@@ -2944,7 +2946,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, Identifier86_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:288:27: ( implementsDeclaration )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:290:27: ( implementsDeclaration )?
 			int alt31=2;
 			int LA31_0 = input.LA(1);
 			if ( (LA31_0==Implements) ) {
@@ -2952,9 +2954,9 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt31) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:288:27: implementsDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:290:27: implementsDeclaration
 					{
-					pushFollow(FOLLOW_implementsDeclaration_in_interfaceDeclaration1532);
+					pushFollow(FOLLOW_implementsDeclaration_in_interfaceDeclaration1540);
 					implementsDeclaration87=implementsDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -2965,7 +2967,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			char_literal88=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_interfaceDeclaration1535); if (state.failed) return retval;
+			char_literal88=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_interfaceDeclaration1543); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal88_tree = 
 			(CommonTree)adaptor.create(char_literal88)
@@ -2973,7 +2975,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, char_literal88_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:288:54: ( interfaceBody )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:290:54: ( interfaceBody )*
 			loop32:
 			do {
 				int alt32=2;
@@ -2984,9 +2986,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt32) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:288:54: interfaceBody
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:290:54: interfaceBody
 					{
-					pushFollow(FOLLOW_interfaceBody_in_interfaceDeclaration1537);
+					pushFollow(FOLLOW_interfaceBody_in_interfaceDeclaration1545);
 					interfaceBody89=interfaceBody();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3000,7 +3002,7 @@ public TreeAdaptor getTreeAdaptor() {
 				}
 			} while (true);
 
-			char_literal90=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_interfaceDeclaration1540); if (state.failed) return retval;
+			char_literal90=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_interfaceDeclaration1548); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal90_tree = 
 			(CommonTree)adaptor.create(char_literal90)
@@ -3039,7 +3041,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "interfaceBody"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:290:1: interfaceBody : ( constDeclarationList | interfaceMethodDeclaration );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:292:1: interfaceBody : ( constDeclarationList | interfaceMethodDeclaration );
 	public final TSPHPParser.interfaceBody_return interfaceBody() throws RecognitionException {
 		TSPHPParser.interfaceBody_return retval = new TSPHPParser.interfaceBody_return();
 		retval.start = input.LT(1);
@@ -3054,7 +3056,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 23) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:291:2: ( constDeclarationList | interfaceMethodDeclaration )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:293:2: ( constDeclarationList | interfaceMethodDeclaration )
 			int alt33=2;
 			int LA33_0 = input.LA(1);
 			if ( (LA33_0==Const) ) {
@@ -3071,12 +3073,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt33) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:291:4: constDeclarationList
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:293:4: constDeclarationList
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_constDeclarationList_in_interfaceBody1549);
+					pushFollow(FOLLOW_constDeclarationList_in_interfaceBody1557);
 					constDeclarationList91=constDeclarationList();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3085,12 +3087,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:292:4: interfaceMethodDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:294:4: interfaceMethodDeclaration
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_interfaceMethodDeclaration_in_interfaceBody1554);
+					pushFollow(FOLLOW_interfaceMethodDeclaration_in_interfaceBody1562);
 					interfaceMethodDeclaration92=interfaceMethodDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3129,7 +3131,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "interfaceMethodDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:295:1: interfaceMethodDeclaration : ( 'public' )? functionDeclarationWithoutBody ';' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:297:1: interfaceMethodDeclaration : ( 'public' )? functionDeclarationWithoutBody ';' ;
 	public final TSPHPParser.interfaceMethodDeclaration_return interfaceMethodDeclaration() throws RecognitionException {
 		TSPHPParser.interfaceMethodDeclaration_return retval = new TSPHPParser.interfaceMethodDeclaration_return();
 		retval.start = input.LT(1);
@@ -3147,13 +3149,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 24) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:296:2: ( ( 'public' )? functionDeclarationWithoutBody ';' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:296:4: ( 'public' )? functionDeclarationWithoutBody ';'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:298:2: ( ( 'public' )? functionDeclarationWithoutBody ';' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:298:4: ( 'public' )? functionDeclarationWithoutBody ';'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:296:4: ( 'public' )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:298:4: ( 'public' )?
 			int alt34=2;
 			int LA34_0 = input.LA(1);
 			if ( (LA34_0==Public) ) {
@@ -3161,9 +3163,9 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt34) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:296:4: 'public'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:298:4: 'public'
 					{
-					string_literal93=(Token)match(input,Public,FOLLOW_Public_in_interfaceMethodDeclaration1565); if (state.failed) return retval;
+					string_literal93=(Token)match(input,Public,FOLLOW_Public_in_interfaceMethodDeclaration1573); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					string_literal93_tree = 
 					(CommonTree)adaptor.create(string_literal93)
@@ -3176,13 +3178,13 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			pushFollow(FOLLOW_functionDeclarationWithoutBody_in_interfaceMethodDeclaration1568);
+			pushFollow(FOLLOW_functionDeclarationWithoutBody_in_interfaceMethodDeclaration1576);
 			functionDeclarationWithoutBody94=functionDeclarationWithoutBody();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, functionDeclarationWithoutBody94.getTree());
 
-			char_literal95=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_interfaceMethodDeclaration1570); if (state.failed) return retval;
+			char_literal95=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_interfaceMethodDeclaration1578); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal95_tree = 
 			(CommonTree)adaptor.create(char_literal95)
@@ -3221,7 +3223,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "functionDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:302:1: functionDeclaration : functionDeclarationWithoutBody '{' ( instructionWithoutBreakContinue )* '}' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:304:1: functionDeclaration : functionDeclarationWithoutBody '{' ( instructionWithoutBreakContinue )* '}' ;
 	public final TSPHPParser.functionDeclaration_return functionDeclaration() throws RecognitionException {
 		TSPHPParser.functionDeclaration_return retval = new TSPHPParser.functionDeclaration_return();
 		retval.start = input.LT(1);
@@ -3240,19 +3242,19 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 25) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:303:2: ( functionDeclarationWithoutBody '{' ( instructionWithoutBreakContinue )* '}' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:303:5: functionDeclarationWithoutBody '{' ( instructionWithoutBreakContinue )* '}'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:305:2: ( functionDeclarationWithoutBody '{' ( instructionWithoutBreakContinue )* '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:305:5: functionDeclarationWithoutBody '{' ( instructionWithoutBreakContinue )* '}'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_functionDeclarationWithoutBody_in_functionDeclaration1586);
+			pushFollow(FOLLOW_functionDeclarationWithoutBody_in_functionDeclaration1594);
 			functionDeclarationWithoutBody96=functionDeclarationWithoutBody();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, functionDeclarationWithoutBody96.getTree());
 
-			char_literal97=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_functionDeclaration1588); if (state.failed) return retval;
+			char_literal97=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_functionDeclaration1596); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal97_tree = 
 			(CommonTree)adaptor.create(char_literal97)
@@ -3260,7 +3262,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, char_literal97_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:303:40: ( instructionWithoutBreakContinue )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:305:40: ( instructionWithoutBreakContinue )*
 			loop35:
 			do {
 				int alt35=2;
@@ -3271,9 +3273,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt35) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:303:40: instructionWithoutBreakContinue
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:305:40: instructionWithoutBreakContinue
 					{
-					pushFollow(FOLLOW_instructionWithoutBreakContinue_in_functionDeclaration1590);
+					pushFollow(FOLLOW_instructionWithoutBreakContinue_in_functionDeclaration1598);
 					instructionWithoutBreakContinue98=instructionWithoutBreakContinue();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3287,7 +3289,7 @@ public TreeAdaptor getTreeAdaptor() {
 				}
 			} while (true);
 
-			char_literal99=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_functionDeclaration1593); if (state.failed) return retval;
+			char_literal99=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_functionDeclaration1601); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal99_tree = 
 			(CommonTree)adaptor.create(char_literal99)
@@ -3326,7 +3328,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "functionDeclarationWithoutBody"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:305:1: functionDeclarationWithoutBody : 'function' returnType Identifier '(' ( paramList )? ')' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:307:1: functionDeclarationWithoutBody : 'function' returnType Identifier '(' ( paramList )? ')' ;
 	public final TSPHPParser.functionDeclarationWithoutBody_return functionDeclarationWithoutBody() throws RecognitionException {
 		TSPHPParser.functionDeclarationWithoutBody_return retval = new TSPHPParser.functionDeclarationWithoutBody_return();
 		retval.start = input.LT(1);
@@ -3349,13 +3351,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 26) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:306:2: ( 'function' returnType Identifier '(' ( paramList )? ')' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:306:4: 'function' returnType Identifier '(' ( paramList )? ')'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:308:2: ( 'function' returnType Identifier '(' ( paramList )? ')' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:308:4: 'function' returnType Identifier '(' ( paramList )? ')'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal100=(Token)match(input,Function,FOLLOW_Function_in_functionDeclarationWithoutBody1603); if (state.failed) return retval;
+			string_literal100=(Token)match(input,Function,FOLLOW_Function_in_functionDeclarationWithoutBody1611); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal100_tree = 
 			(CommonTree)adaptor.create(string_literal100)
@@ -3363,13 +3365,13 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal100_tree);
 			}
 
-			pushFollow(FOLLOW_returnType_in_functionDeclarationWithoutBody1605);
+			pushFollow(FOLLOW_returnType_in_functionDeclarationWithoutBody1613);
 			returnType101=returnType();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, returnType101.getTree());
 
-			Identifier102=(Token)match(input,Identifier,FOLLOW_Identifier_in_functionDeclarationWithoutBody1607); if (state.failed) return retval;
+			Identifier102=(Token)match(input,Identifier,FOLLOW_Identifier_in_functionDeclarationWithoutBody1615); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			Identifier102_tree = 
 			(CommonTree)adaptor.create(Identifier102)
@@ -3377,7 +3379,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, Identifier102_tree);
 			}
 
-			char_literal103=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_functionDeclarationWithoutBody1609); if (state.failed) return retval;
+			char_literal103=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_functionDeclarationWithoutBody1617); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal103_tree = 
 			(CommonTree)adaptor.create(char_literal103)
@@ -3385,7 +3387,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, char_literal103_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:306:41: ( paramList )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:308:41: ( paramList )?
 			int alt36=2;
 			int LA36_0 = input.LA(1);
 			if ( (LA36_0==Backslash||LA36_0==Identifier||(LA36_0 >= TypeArray && LA36_0 <= TypeString)) ) {
@@ -3393,9 +3395,9 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt36) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:306:41: paramList
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:308:41: paramList
 					{
-					pushFollow(FOLLOW_paramList_in_functionDeclarationWithoutBody1611);
+					pushFollow(FOLLOW_paramList_in_functionDeclarationWithoutBody1619);
 					paramList104=paramList();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3406,7 +3408,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			char_literal105=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_functionDeclarationWithoutBody1614); if (state.failed) return retval;
+			char_literal105=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_functionDeclarationWithoutBody1622); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal105_tree = 
 			(CommonTree)adaptor.create(char_literal105)
@@ -3445,7 +3447,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "returnType"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:308:1: returnType : ( allTypes | 'void' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:310:1: returnType : ( allTypes | 'void' );
 	public final TSPHPParser.returnType_return returnType() throws RecognitionException {
 		TSPHPParser.returnType_return retval = new TSPHPParser.returnType_return();
 		retval.start = input.LT(1);
@@ -3461,7 +3463,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 27) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:309:2: ( allTypes | 'void' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:2: ( allTypes | 'void' )
 			int alt37=2;
 			int LA37_0 = input.LA(1);
 			if ( (LA37_0==Backslash||LA37_0==Identifier||(LA37_0 >= TypeArray && LA37_0 <= TypeString)) ) {
@@ -3478,12 +3480,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt37) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:309:4: allTypes
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:4: allTypes
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_allTypes_in_returnType1624);
+					pushFollow(FOLLOW_allTypes_in_returnType1632);
 					allTypes106=allTypes();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3492,12 +3494,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:309:15: 'void'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:15: 'void'
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					string_literal107=(Token)match(input,Void,FOLLOW_Void_in_returnType1628); if (state.failed) return retval;
+					string_literal107=(Token)match(input,Void,FOLLOW_Void_in_returnType1636); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					string_literal107_tree = 
 					(CommonTree)adaptor.create(string_literal107)
@@ -3538,7 +3540,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "allTypes"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:1: allTypes : ( primitiveTypesExtended | classInterfaceTypeInclObject );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:313:1: allTypes : ( primitiveTypesExtended | classInterfaceTypeInclObject );
 	public final TSPHPParser.allTypes_return allTypes() throws RecognitionException {
 		TSPHPParser.allTypes_return retval = new TSPHPParser.allTypes_return();
 		retval.start = input.LT(1);
@@ -3553,7 +3555,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 28) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:9: ( primitiveTypesExtended | classInterfaceTypeInclObject )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:313:9: ( primitiveTypesExtended | classInterfaceTypeInclObject )
 			int alt38=2;
 			int LA38_0 = input.LA(1);
 			if ( ((LA38_0 >= TypeArray && LA38_0 <= TypeInt)||(LA38_0 >= TypeResource && LA38_0 <= TypeString)) ) {
@@ -3570,12 +3572,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt38) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:11: primitiveTypesExtended
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:313:11: primitiveTypesExtended
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_primitiveTypesExtended_in_allTypes1635);
+					pushFollow(FOLLOW_primitiveTypesExtended_in_allTypes1643);
 					primitiveTypesExtended108=primitiveTypesExtended();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3584,12 +3586,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:311:36: classInterfaceTypeInclObject
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:313:36: classInterfaceTypeInclObject
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_classInterfaceTypeInclObject_in_allTypes1639);
+					pushFollow(FOLLOW_classInterfaceTypeInclObject_in_allTypes1647);
 					classInterfaceTypeInclObject109=classInterfaceTypeInclObject();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3628,7 +3630,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "allTypesWithoutResource"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:313:1: allTypesWithoutResource : ( primitiveTypesInclArray | classInterfaceTypeInclObject );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:315:1: allTypesWithoutResource : ( primitiveTypesInclArray | classInterfaceTypeInclObject );
 	public final TSPHPParser.allTypesWithoutResource_return allTypesWithoutResource() throws RecognitionException {
 		TSPHPParser.allTypesWithoutResource_return retval = new TSPHPParser.allTypesWithoutResource_return();
 		retval.start = input.LT(1);
@@ -3643,7 +3645,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 29) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:314:2: ( primitiveTypesInclArray | classInterfaceTypeInclObject )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:316:2: ( primitiveTypesInclArray | classInterfaceTypeInclObject )
 			int alt39=2;
 			int LA39_0 = input.LA(1);
 			if ( ((LA39_0 >= TypeArray && LA39_0 <= TypeInt)||LA39_0==TypeString) ) {
@@ -3660,12 +3662,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt39) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:314:4: primitiveTypesInclArray
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:316:4: primitiveTypesInclArray
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_primitiveTypesInclArray_in_allTypesWithoutResource1648);
+					pushFollow(FOLLOW_primitiveTypesInclArray_in_allTypesWithoutResource1656);
 					primitiveTypesInclArray110=primitiveTypesInclArray();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3674,12 +3676,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:315:5: classInterfaceTypeInclObject
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:317:5: classInterfaceTypeInclObject
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_classInterfaceTypeInclObject_in_allTypesWithoutResource1654);
+					pushFollow(FOLLOW_classInterfaceTypeInclObject_in_allTypesWithoutResource1662);
 					classInterfaceTypeInclObject111=classInterfaceTypeInclObject();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3718,7 +3720,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "primitiveTypes"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:318:1: primitiveTypes : ( TypeBool |bool= TypeBoolean -> TypeBool[$bool,\"bool\"] | TypeInt | TypeFloat | TypeString );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:320:1: primitiveTypes : ( TypeBool |bool= TypeBoolean -> TypeBool[$bool,\"bool\"] | TypeInt | TypeFloat | TypeString );
 	public final TSPHPParser.primitiveTypes_return primitiveTypes() throws RecognitionException {
 		TSPHPParser.primitiveTypes_return retval = new TSPHPParser.primitiveTypes_return();
 		retval.start = input.LT(1);
@@ -3742,7 +3744,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 30) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:319:2: ( TypeBool |bool= TypeBoolean -> TypeBool[$bool,\"bool\"] | TypeInt | TypeFloat | TypeString )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:321:2: ( TypeBool |bool= TypeBoolean -> TypeBool[$bool,\"bool\"] | TypeInt | TypeFloat | TypeString )
 			int alt40=5;
 			switch ( input.LA(1) ) {
 			case TypeBool:
@@ -3778,12 +3780,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt40) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:319:4: TypeBool
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:321:4: TypeBool
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					TypeBool112=(Token)match(input,TypeBool,FOLLOW_TypeBool_in_primitiveTypes1665); if (state.failed) return retval;
+					TypeBool112=(Token)match(input,TypeBool,FOLLOW_TypeBool_in_primitiveTypes1673); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					TypeBool112_tree = 
 					(CommonTree)adaptor.create(TypeBool112)
@@ -3794,9 +3796,9 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:320:4: bool= TypeBoolean
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:322:4: bool= TypeBoolean
 					{
-					bool=(Token)match(input,TypeBoolean,FOLLOW_TypeBoolean_in_primitiveTypes1674); if (state.failed) return retval; 
+					bool=(Token)match(input,TypeBoolean,FOLLOW_TypeBoolean_in_primitiveTypes1682); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_TypeBoolean.add(bool);
 
 					// AST REWRITE
@@ -3812,7 +3814,7 @@ public TreeAdaptor getTreeAdaptor() {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 320:23: -> TypeBool[$bool,\"bool\"]
+					// 322:23: -> TypeBool[$bool,\"bool\"]
 					{
 						adaptor.addChild(root_0, 
 						(CommonTree)adaptor.create(TypeBool, bool, "bool")
@@ -3827,12 +3829,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:321:4: TypeInt
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:323:4: TypeInt
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					TypeInt113=(Token)match(input,TypeInt,FOLLOW_TypeInt_in_primitiveTypes1684); if (state.failed) return retval;
+					TypeInt113=(Token)match(input,TypeInt,FOLLOW_TypeInt_in_primitiveTypes1692); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					TypeInt113_tree = 
 					(CommonTree)adaptor.create(TypeInt113)
@@ -3843,12 +3845,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 4 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:322:4: TypeFloat
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:324:4: TypeFloat
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					TypeFloat114=(Token)match(input,TypeFloat,FOLLOW_TypeFloat_in_primitiveTypes1689); if (state.failed) return retval;
+					TypeFloat114=(Token)match(input,TypeFloat,FOLLOW_TypeFloat_in_primitiveTypes1697); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					TypeFloat114_tree = 
 					(CommonTree)adaptor.create(TypeFloat114)
@@ -3859,12 +3861,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 5 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:323:4: TypeString
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:325:4: TypeString
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					TypeString115=(Token)match(input,TypeString,FOLLOW_TypeString_in_primitiveTypes1694); if (state.failed) return retval;
+					TypeString115=(Token)match(input,TypeString,FOLLOW_TypeString_in_primitiveTypes1702); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					TypeString115_tree = 
 					(CommonTree)adaptor.create(TypeString115)
@@ -3905,7 +3907,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "primitiveTypesInclArray"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:326:1: primitiveTypesInclArray : ( primitiveTypes | TypeArray );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:328:1: primitiveTypesInclArray : ( primitiveTypes | TypeArray );
 	public final TSPHPParser.primitiveTypesInclArray_return primitiveTypesInclArray() throws RecognitionException {
 		TSPHPParser.primitiveTypesInclArray_return retval = new TSPHPParser.primitiveTypesInclArray_return();
 		retval.start = input.LT(1);
@@ -3921,7 +3923,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 31) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:327:2: ( primitiveTypes | TypeArray )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:329:2: ( primitiveTypes | TypeArray )
 			int alt41=2;
 			int LA41_0 = input.LA(1);
 			if ( ((LA41_0 >= TypeBool && LA41_0 <= TypeInt)||LA41_0==TypeString) ) {
@@ -3938,12 +3940,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt41) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:327:4: primitiveTypes
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:329:4: primitiveTypes
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_primitiveTypes_in_primitiveTypesInclArray1706);
+					pushFollow(FOLLOW_primitiveTypes_in_primitiveTypesInclArray1714);
 					primitiveTypes116=primitiveTypes();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -3952,12 +3954,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:328:4: TypeArray
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:330:4: TypeArray
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					TypeArray117=(Token)match(input,TypeArray,FOLLOW_TypeArray_in_primitiveTypesInclArray1711); if (state.failed) return retval;
+					TypeArray117=(Token)match(input,TypeArray,FOLLOW_TypeArray_in_primitiveTypesInclArray1719); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					TypeArray117_tree = 
 					(CommonTree)adaptor.create(TypeArray117)
@@ -3998,7 +4000,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "primitiveTypesExtended"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:331:1: primitiveTypesExtended : ( primitiveTypesInclArray | TypeResource );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:333:1: primitiveTypesExtended : ( primitiveTypesInclArray | TypeResource );
 	public final TSPHPParser.primitiveTypesExtended_return primitiveTypesExtended() throws RecognitionException {
 		TSPHPParser.primitiveTypesExtended_return retval = new TSPHPParser.primitiveTypesExtended_return();
 		retval.start = input.LT(1);
@@ -4014,7 +4016,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 32) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:332:2: ( primitiveTypesInclArray | TypeResource )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:334:2: ( primitiveTypesInclArray | TypeResource )
 			int alt42=2;
 			int LA42_0 = input.LA(1);
 			if ( ((LA42_0 >= TypeArray && LA42_0 <= TypeInt)||LA42_0==TypeString) ) {
@@ -4031,12 +4033,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt42) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:332:4: primitiveTypesInclArray
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:334:4: primitiveTypesInclArray
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_primitiveTypesInclArray_in_primitiveTypesExtended1723);
+					pushFollow(FOLLOW_primitiveTypesInclArray_in_primitiveTypesExtended1731);
 					primitiveTypesInclArray118=primitiveTypesInclArray();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -4045,12 +4047,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:333:4: TypeResource
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:335:4: TypeResource
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					TypeResource119=(Token)match(input,TypeResource,FOLLOW_TypeResource_in_primitiveTypesExtended1728); if (state.failed) return retval;
+					TypeResource119=(Token)match(input,TypeResource,FOLLOW_TypeResource_in_primitiveTypesExtended1736); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					TypeResource119_tree = 
 					(CommonTree)adaptor.create(TypeResource119)
@@ -4091,7 +4093,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "classInterfaceTypeWithoutObject"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:336:1: classInterfaceTypeWithoutObject : ( '\\\\' )? namespaceId ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:338:1: classInterfaceTypeWithoutObject : ( '\\\\' )? namespaceId ;
 	public final TSPHPParser.classInterfaceTypeWithoutObject_return classInterfaceTypeWithoutObject() throws RecognitionException {
 		TSPHPParser.classInterfaceTypeWithoutObject_return retval = new TSPHPParser.classInterfaceTypeWithoutObject_return();
 		retval.start = input.LT(1);
@@ -4107,13 +4109,13 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 33) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:338:2: ( ( '\\\\' )? namespaceId )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:338:4: ( '\\\\' )? namespaceId
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:340:2: ( ( '\\\\' )? namespaceId )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:340:4: ( '\\\\' )? namespaceId
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:338:4: ( '\\\\' )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:340:4: ( '\\\\' )?
 			int alt43=2;
 			int LA43_0 = input.LA(1);
 			if ( (LA43_0==Backslash) ) {
@@ -4121,9 +4123,9 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt43) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:338:4: '\\\\'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:340:4: '\\\\'
 					{
-					char_literal120=(Token)match(input,Backslash,FOLLOW_Backslash_in_classInterfaceTypeWithoutObject1742); if (state.failed) return retval;
+					char_literal120=(Token)match(input,Backslash,FOLLOW_Backslash_in_classInterfaceTypeWithoutObject1750); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					char_literal120_tree = 
 					(CommonTree)adaptor.create(char_literal120)
@@ -4136,7 +4138,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			pushFollow(FOLLOW_namespaceId_in_classInterfaceTypeWithoutObject1745);
+			pushFollow(FOLLOW_namespaceId_in_classInterfaceTypeWithoutObject1753);
 			namespaceId121=namespaceId();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -4173,7 +4175,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "classInterfaceTypeInclObject"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:341:1: classInterfaceTypeInclObject : ( TypeObject | classInterfaceTypeWithoutObject );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:343:1: classInterfaceTypeInclObject : ( TypeObject | classInterfaceTypeWithoutObject );
 	public final TSPHPParser.classInterfaceTypeInclObject_return classInterfaceTypeInclObject() throws RecognitionException {
 		TSPHPParser.classInterfaceTypeInclObject_return retval = new TSPHPParser.classInterfaceTypeInclObject_return();
 		retval.start = input.LT(1);
@@ -4189,7 +4191,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 34) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:342:2: ( TypeObject | classInterfaceTypeWithoutObject )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:344:2: ( TypeObject | classInterfaceTypeWithoutObject )
 			int alt44=2;
 			int LA44_0 = input.LA(1);
 			if ( (LA44_0==TypeObject) ) {
@@ -4206,12 +4208,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt44) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:342:4: TypeObject
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:344:4: TypeObject
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					TypeObject122=(Token)match(input,TypeObject,FOLLOW_TypeObject_in_classInterfaceTypeInclObject1758); if (state.failed) return retval;
+					TypeObject122=(Token)match(input,TypeObject,FOLLOW_TypeObject_in_classInterfaceTypeInclObject1766); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					TypeObject122_tree = 
 					(CommonTree)adaptor.create(TypeObject122)
@@ -4222,12 +4224,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:343:4: classInterfaceTypeWithoutObject
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:345:4: classInterfaceTypeWithoutObject
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_classInterfaceTypeInclObject1764);
+					pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_classInterfaceTypeInclObject1772);
 					classInterfaceTypeWithoutObject123=classInterfaceTypeWithoutObject();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -4266,7 +4268,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "paramList"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:346:1: paramList : ( paramDeclarationOptional ( ',' paramDeclarationOptional )* | paramDeclaration ( ',' paramDeclaration )* | paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+ );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:348:1: paramList : ( paramDeclarationOptional ( ',' paramDeclarationOptional )* | paramDeclaration ( ',' paramDeclaration )* | paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+ );
 	public final TSPHPParser.paramList_return paramList() throws RecognitionException {
 		TSPHPParser.paramList_return retval = new TSPHPParser.paramList_return();
 		retval.start = input.LT(1);
@@ -4294,23 +4296,23 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 35) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:347:2: ( paramDeclarationOptional ( ',' paramDeclarationOptional )* | paramDeclaration ( ',' paramDeclaration )* | paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+ )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:349:2: ( paramDeclarationOptional ( ',' paramDeclarationOptional )* | paramDeclaration ( ',' paramDeclaration )* | paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+ )
 			int alt49=3;
 			alt49 = dfa49.predict(input);
 			switch (alt49) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:347:4: paramDeclarationOptional ( ',' paramDeclarationOptional )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:349:4: paramDeclarationOptional ( ',' paramDeclarationOptional )*
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1776);
+					pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1784);
 					paramDeclarationOptional124=paramDeclarationOptional();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, paramDeclarationOptional124.getTree());
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:347:29: ( ',' paramDeclarationOptional )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:349:29: ( ',' paramDeclarationOptional )*
 					loop45:
 					do {
 						int alt45=2;
@@ -4321,9 +4323,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt45) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:347:30: ',' paramDeclarationOptional
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:349:30: ',' paramDeclarationOptional
 							{
-							char_literal125=(Token)match(input,Comma,FOLLOW_Comma_in_paramList1779); if (state.failed) return retval;
+							char_literal125=(Token)match(input,Comma,FOLLOW_Comma_in_paramList1787); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
 							char_literal125_tree = 
 							(CommonTree)adaptor.create(char_literal125)
@@ -4331,7 +4333,7 @@ public TreeAdaptor getTreeAdaptor() {
 							adaptor.addChild(root_0, char_literal125_tree);
 							}
 
-							pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1781);
+							pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1789);
 							paramDeclarationOptional126=paramDeclarationOptional();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -4348,18 +4350,18 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:348:4: paramDeclaration ( ',' paramDeclaration )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:350:4: paramDeclaration ( ',' paramDeclaration )*
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_paramDeclaration_in_paramList1788);
+					pushFollow(FOLLOW_paramDeclaration_in_paramList1796);
 					paramDeclaration127=paramDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, paramDeclaration127.getTree());
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:348:21: ( ',' paramDeclaration )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:350:21: ( ',' paramDeclaration )*
 					loop46:
 					do {
 						int alt46=2;
@@ -4370,9 +4372,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt46) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:348:22: ',' paramDeclaration
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:350:22: ',' paramDeclaration
 							{
-							char_literal128=(Token)match(input,Comma,FOLLOW_Comma_in_paramList1791); if (state.failed) return retval;
+							char_literal128=(Token)match(input,Comma,FOLLOW_Comma_in_paramList1799); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
 							char_literal128_tree = 
 							(CommonTree)adaptor.create(char_literal128)
@@ -4380,7 +4382,7 @@ public TreeAdaptor getTreeAdaptor() {
 							adaptor.addChild(root_0, char_literal128_tree);
 							}
 
-							pushFollow(FOLLOW_paramDeclaration_in_paramList1793);
+							pushFollow(FOLLOW_paramDeclaration_in_paramList1801);
 							paramDeclaration129=paramDeclaration();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -4397,18 +4399,18 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:349:4: paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:351:4: paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_paramDeclaration_in_paramList1800);
+					pushFollow(FOLLOW_paramDeclaration_in_paramList1808);
 					paramDeclaration130=paramDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, paramDeclaration130.getTree());
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:349:21: ( paramDeclaration ',' )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:351:21: ( paramDeclaration ',' )*
 					loop47:
 					do {
 						int alt47=2;
@@ -4419,15 +4421,15 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt47) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:349:22: paramDeclaration ','
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:351:22: paramDeclaration ','
 							{
-							pushFollow(FOLLOW_paramDeclaration_in_paramList1803);
+							pushFollow(FOLLOW_paramDeclaration_in_paramList1811);
 							paramDeclaration131=paramDeclaration();
 							state._fsp--;
 							if (state.failed) return retval;
 							if ( state.backtracking==0 ) adaptor.addChild(root_0, paramDeclaration131.getTree());
 
-							char_literal132=(Token)match(input,Comma,FOLLOW_Comma_in_paramList1805); if (state.failed) return retval;
+							char_literal132=(Token)match(input,Comma,FOLLOW_Comma_in_paramList1813); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
 							char_literal132_tree = 
 							(CommonTree)adaptor.create(char_literal132)
@@ -4443,7 +4445,7 @@ public TreeAdaptor getTreeAdaptor() {
 						}
 					} while (true);
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:349:45: ( ',' paramDeclarationOptional )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:351:45: ( ',' paramDeclarationOptional )+
 					int cnt48=0;
 					loop48:
 					do {
@@ -4455,9 +4457,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt48) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:349:46: ',' paramDeclarationOptional
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:351:46: ',' paramDeclarationOptional
 							{
-							char_literal133=(Token)match(input,Comma,FOLLOW_Comma_in_paramList1810); if (state.failed) return retval;
+							char_literal133=(Token)match(input,Comma,FOLLOW_Comma_in_paramList1818); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
 							char_literal133_tree = 
 							(CommonTree)adaptor.create(char_literal133)
@@ -4465,7 +4467,7 @@ public TreeAdaptor getTreeAdaptor() {
 							adaptor.addChild(root_0, char_literal133_tree);
 							}
 
-							pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1812);
+							pushFollow(FOLLOW_paramDeclarationOptional_in_paramList1820);
 							paramDeclarationOptional134=paramDeclarationOptional();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -4517,7 +4519,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "paramDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:352:1: paramDeclaration : allTypes VariableId ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:354:1: paramDeclaration : allTypes VariableId ;
 	public final TSPHPParser.paramDeclaration_return paramDeclaration() throws RecognitionException {
 		TSPHPParser.paramDeclaration_return retval = new TSPHPParser.paramDeclaration_return();
 		retval.start = input.LT(1);
@@ -4533,19 +4535,19 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 36) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:353:2: ( allTypes VariableId )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:353:4: allTypes VariableId
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:355:2: ( allTypes VariableId )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:355:4: allTypes VariableId
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_allTypes_in_paramDeclaration1826);
+			pushFollow(FOLLOW_allTypes_in_paramDeclaration1834);
 			allTypes135=allTypes();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, allTypes135.getTree());
 
-			VariableId136=(Token)match(input,VariableId,FOLLOW_VariableId_in_paramDeclaration1828); if (state.failed) return retval;
+			VariableId136=(Token)match(input,VariableId,FOLLOW_VariableId_in_paramDeclaration1836); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			VariableId136_tree = 
 			(CommonTree)adaptor.create(VariableId136)
@@ -4584,7 +4586,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "paramDeclarationOptional"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:355:1: paramDeclarationOptional : paramDeclaration '=' unaryPrimitiveAtom ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:357:1: paramDeclarationOptional : paramDeclaration '=' unaryPrimitiveAtom ;
 	public final TSPHPParser.paramDeclarationOptional_return paramDeclarationOptional() throws RecognitionException {
 		TSPHPParser.paramDeclarationOptional_return retval = new TSPHPParser.paramDeclarationOptional_return();
 		retval.start = input.LT(1);
@@ -4601,19 +4603,19 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 37) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:356:2: ( paramDeclaration '=' unaryPrimitiveAtom )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:356:4: paramDeclaration '=' unaryPrimitiveAtom
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:358:2: ( paramDeclaration '=' unaryPrimitiveAtom )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:358:4: paramDeclaration '=' unaryPrimitiveAtom
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_paramDeclaration_in_paramDeclarationOptional1838);
+			pushFollow(FOLLOW_paramDeclaration_in_paramDeclarationOptional1846);
 			paramDeclaration137=paramDeclaration();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) adaptor.addChild(root_0, paramDeclaration137.getTree());
 
-			char_literal138=(Token)match(input,Assign,FOLLOW_Assign_in_paramDeclarationOptional1841); if (state.failed) return retval;
+			char_literal138=(Token)match(input,Assign,FOLLOW_Assign_in_paramDeclarationOptional1849); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal138_tree = 
 			(CommonTree)adaptor.create(char_literal138)
@@ -4621,7 +4623,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, char_literal138_tree);
 			}
 
-			pushFollow(FOLLOW_unaryPrimitiveAtom_in_paramDeclarationOptional1843);
+			pushFollow(FOLLOW_unaryPrimitiveAtom_in_paramDeclarationOptional1851);
 			unaryPrimitiveAtom139=unaryPrimitiveAtom();
 			state._fsp--;
 			if (state.failed) return retval;
@@ -4658,7 +4660,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "instructionWithoutBreakContinue"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:361:1: instructionWithoutBreakContinue : (block= '{' ( instructionWithoutBreakContinue )+ '}' -> ^( BLOCK[$block,\"block\"] ( instructionWithoutBreakContinue )+ ) | instruction );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:363:1: instructionWithoutBreakContinue : (block= '{' ( instructionWithoutBreakContinue )+ '}' -> ^( BLOCK[$block,\"block\"] ( instructionWithoutBreakContinue )+ ) | instruction );
 	public final TSPHPParser.instructionWithoutBreakContinue_return instructionWithoutBreakContinue() throws RecognitionException {
 		TSPHPParser.instructionWithoutBreakContinue_return retval = new TSPHPParser.instructionWithoutBreakContinue_return();
 		retval.start = input.LT(1);
@@ -4680,7 +4682,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 38) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:362:2: (block= '{' ( instructionWithoutBreakContinue )+ '}' -> ^( BLOCK[$block,\"block\"] ( instructionWithoutBreakContinue )+ ) | instruction )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:364:2: (block= '{' ( instructionWithoutBreakContinue )+ '}' -> ^( BLOCK[$block,\"block\"] ( instructionWithoutBreakContinue )+ ) | instruction )
 			int alt51=2;
 			int LA51_0 = input.LA(1);
 			if ( (LA51_0==LeftCurlyBrace) ) {
@@ -4697,12 +4699,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt51) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:362:4: block= '{' ( instructionWithoutBreakContinue )+ '}'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:364:4: block= '{' ( instructionWithoutBreakContinue )+ '}'
 					{
-					block=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_instructionWithoutBreakContinue1869); if (state.failed) return retval; 
+					block=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_instructionWithoutBreakContinue1877); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_LeftCurlyBrace.add(block);
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:362:16: ( instructionWithoutBreakContinue )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:364:16: ( instructionWithoutBreakContinue )+
 					int cnt50=0;
 					loop50:
 					do {
@@ -4714,9 +4716,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt50) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:362:16: instructionWithoutBreakContinue
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:364:16: instructionWithoutBreakContinue
 							{
-							pushFollow(FOLLOW_instructionWithoutBreakContinue_in_instructionWithoutBreakContinue1871);
+							pushFollow(FOLLOW_instructionWithoutBreakContinue_in_instructionWithoutBreakContinue1879);
 							instructionWithoutBreakContinue140=instructionWithoutBreakContinue();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -4734,7 +4736,7 @@ public TreeAdaptor getTreeAdaptor() {
 						cnt50++;
 					} while (true);
 
-					char_literal141=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_instructionWithoutBreakContinue1875); if (state.failed) return retval; 
+					char_literal141=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_instructionWithoutBreakContinue1883); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_RightCurlyBrace.add(char_literal141);
 
 					// AST REWRITE
@@ -4750,9 +4752,9 @@ public TreeAdaptor getTreeAdaptor() {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 362:54: -> ^( BLOCK[$block,\"block\"] ( instructionWithoutBreakContinue )+ )
+					// 364:54: -> ^( BLOCK[$block,\"block\"] ( instructionWithoutBreakContinue )+ )
 					{
-						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:362:57: ^( BLOCK[$block,\"block\"] ( instructionWithoutBreakContinue )+ )
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:364:57: ^( BLOCK[$block,\"block\"] ( instructionWithoutBreakContinue )+ )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot(
@@ -4780,12 +4782,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:363:4: instruction
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:365:4: instruction
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_instruction_in_instructionWithoutBreakContinue1890);
+					pushFollow(FOLLOW_instruction_in_instructionWithoutBreakContinue1898);
 					instruction142=instruction();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -4824,7 +4826,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "instructionInclBreakContinue"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:366:1: instructionInclBreakContinue : (block= '{' ( instructionInclBreakContinue )+ '}' -> ^( BLOCK[$block,\"block\"] ( instructionInclBreakContinue )+ ) | instruction | ( 'break' | 'continue' ) ^ ( Int )? ';' !);
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:368:1: instructionInclBreakContinue : (block= '{' ( instructionInclBreakContinue )+ '}' -> ^( BLOCK[$block,\"block\"] ( instructionInclBreakContinue )+ ) | instruction | ( 'break' | 'continue' ) ^ ( Int )? ';' !);
 	public final TSPHPParser.instructionInclBreakContinue_return instructionInclBreakContinue() throws RecognitionException {
 		TSPHPParser.instructionInclBreakContinue_return retval = new TSPHPParser.instructionInclBreakContinue_return();
 		retval.start = input.LT(1);
@@ -4852,7 +4854,7 @@ public TreeAdaptor getTreeAdaptor() {
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 39) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:367:2: (block= '{' ( instructionInclBreakContinue )+ '}' -> ^( BLOCK[$block,\"block\"] ( instructionInclBreakContinue )+ ) | instruction | ( 'break' | 'continue' ) ^ ( Int )? ';' !)
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:369:2: (block= '{' ( instructionInclBreakContinue )+ '}' -> ^( BLOCK[$block,\"block\"] ( instructionInclBreakContinue )+ ) | instruction | ( 'break' | 'continue' ) ^ ( Int )? ';' !)
 			int alt54=3;
 			switch ( input.LA(1) ) {
 			case LeftCurlyBrace:
@@ -4905,12 +4907,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt54) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:367:4: block= '{' ( instructionInclBreakContinue )+ '}'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:369:4: block= '{' ( instructionInclBreakContinue )+ '}'
 					{
-					block=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_instructionInclBreakContinue1906); if (state.failed) return retval; 
+					block=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_instructionInclBreakContinue1914); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_LeftCurlyBrace.add(block);
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:367:17: ( instructionInclBreakContinue )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:369:17: ( instructionInclBreakContinue )+
 					int cnt52=0;
 					loop52:
 					do {
@@ -4922,9 +4924,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt52) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:367:17: instructionInclBreakContinue
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:369:17: instructionInclBreakContinue
 							{
-							pushFollow(FOLLOW_instructionInclBreakContinue_in_instructionInclBreakContinue1908);
+							pushFollow(FOLLOW_instructionInclBreakContinue_in_instructionInclBreakContinue1916);
 							instructionInclBreakContinue143=instructionInclBreakContinue();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -4942,7 +4944,7 @@ public TreeAdaptor getTreeAdaptor() {
 						cnt52++;
 					} while (true);
 
-					char_literal144=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_instructionInclBreakContinue1912); if (state.failed) return retval; 
+					char_literal144=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_instructionInclBreakContinue1920); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_RightCurlyBrace.add(char_literal144);
 
 					// AST REWRITE
@@ -4958,9 +4960,9 @@ public TreeAdaptor getTreeAdaptor() {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 367:52: -> ^( BLOCK[$block,\"block\"] ( instructionInclBreakContinue )+ )
+					// 369:52: -> ^( BLOCK[$block,\"block\"] ( instructionInclBreakContinue )+ )
 					{
-						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:367:55: ^( BLOCK[$block,\"block\"] ( instructionInclBreakContinue )+ )
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:369:55: ^( BLOCK[$block,\"block\"] ( instructionInclBreakContinue )+ )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot(
@@ -4988,12 +4990,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:368:4: instruction
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:370:4: instruction
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_instruction_in_instructionInclBreakContinue1927);
+					pushFollow(FOLLOW_instruction_in_instructionInclBreakContinue1935);
 					instruction145=instruction();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -5002,7 +5004,7 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:369:4: ( 'break' | 'continue' ) ^ ( Int )? ';' !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:371:4: ( 'break' | 'continue' ) ^ ( Int )? ';' !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
@@ -5022,7 +5024,7 @@ public TreeAdaptor getTreeAdaptor() {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:369:26: ( Int )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:371:26: ( Int )?
 					int alt53=2;
 					int LA53_0 = input.LA(1);
 					if ( (LA53_0==Int) ) {
@@ -5030,9 +5032,9 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					switch (alt53) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:369:26: Int
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:371:26: Int
 							{
-							Int147=(Token)match(input,Int,FOLLOW_Int_in_instructionInclBreakContinue1939); if (state.failed) return retval;
+							Int147=(Token)match(input,Int,FOLLOW_Int_in_instructionInclBreakContinue1947); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
 							Int147_tree = 
 							(CommonTree)adaptor.create(Int147)
@@ -5045,7 +5047,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 					}
 
-					char_literal148=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instructionInclBreakContinue1942); if (state.failed) return retval;
+					char_literal148=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instructionInclBreakContinue1950); if (state.failed) return retval;
 					}
 					break;
 
@@ -5079,7 +5081,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "instruction"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:372:1: instruction : ( variableAssignment ';' !| variableDeclaration ';' !| ifCondition | switchCondition | forLoop | foreachLoop | whileLoop | doWhileLoop | tryCatch | throwException | functionCallFluentWithoutAccessAtTheEnd ';' !| methodCallFluentWithoutAccessAtTheEnd ';' !| 'return' ( expression )? ';' !| 'echo' expressionList ';' !| 'exit' ';' !);
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:374:1: instruction : ( variableAssignment ';' !| variableDeclaration ';' !| ifCondition | switchCondition | forLoop | foreachLoop | whileLoop | doWhileLoop | tryCatch | throwException | functionCallFluentWithoutAccessAtTheEnd ';' !| methodCallFluentWithoutAccessAtTheEnd ';' !| 'return' ( expression )? ';' !| 'echo' ^ expression ( ',' ! expression )* ';' !| 'exit' ';' !);
 	public final TSPHPParser.instruction_return instruction() throws RecognitionException {
 		TSPHPParser.instruction_return retval = new TSPHPParser.instruction_return();
 		retval.start = input.LT(1);
@@ -5095,8 +5097,9 @@ public TreeAdaptor getTreeAdaptor() {
 		Token char_literal167=null;
 		Token string_literal168=null;
 		Token char_literal170=null;
-		Token string_literal171=null;
 		Token char_literal172=null;
+		Token string_literal173=null;
+		Token char_literal174=null;
 		ParserRuleReturnScope variableAssignment149 =null;
 		ParserRuleReturnScope variableDeclaration151 =null;
 		ParserRuleReturnScope ifCondition153 =null;
@@ -5110,7 +5113,8 @@ public TreeAdaptor getTreeAdaptor() {
 		ParserRuleReturnScope functionCallFluentWithoutAccessAtTheEnd161 =null;
 		ParserRuleReturnScope methodCallFluentWithoutAccessAtTheEnd163 =null;
 		ParserRuleReturnScope expression166 =null;
-		ParserRuleReturnScope expressionList169 =null;
+		ParserRuleReturnScope expression169 =null;
+		ParserRuleReturnScope expression171 =null;
 
 		CommonTree char_literal150_tree=null;
 		CommonTree char_literal152_tree=null;
@@ -5120,23 +5124,24 @@ public TreeAdaptor getTreeAdaptor() {
 		CommonTree char_literal167_tree=null;
 		CommonTree string_literal168_tree=null;
 		CommonTree char_literal170_tree=null;
-		CommonTree string_literal171_tree=null;
 		CommonTree char_literal172_tree=null;
+		CommonTree string_literal173_tree=null;
+		CommonTree char_literal174_tree=null;
 
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 40) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:373:2: ( variableAssignment ';' !| variableDeclaration ';' !| ifCondition | switchCondition | forLoop | foreachLoop | whileLoop | doWhileLoop | tryCatch | throwException | functionCallFluentWithoutAccessAtTheEnd ';' !| methodCallFluentWithoutAccessAtTheEnd ';' !| 'return' ( expression )? ';' !| 'echo' expressionList ';' !| 'exit' ';' !)
-			int alt56=15;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:375:2: ( variableAssignment ';' !| variableDeclaration ';' !| ifCondition | switchCondition | forLoop | foreachLoop | whileLoop | doWhileLoop | tryCatch | throwException | functionCallFluentWithoutAccessAtTheEnd ';' !| methodCallFluentWithoutAccessAtTheEnd ';' !| 'return' ( expression )? ';' !| 'echo' ^ expression ( ',' ! expression )* ';' !| 'exit' ';' !)
+			int alt57=15;
 			switch ( input.LA(1) ) {
 			case VariableId:
 				{
-				int LA56_1 = input.LA(2);
+				int LA57_1 = input.LA(2);
 				if ( (synpred69_TSPHP()) ) {
-					alt56=1;
+					alt57=1;
 				}
 				else if ( (synpred80_TSPHP()) ) {
-					alt56=12;
+					alt57=12;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -5144,7 +5149,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 56, 1, input);
+							new NoViableAltException("", 57, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -5154,12 +5159,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Self:
 				{
-				int LA56_2 = input.LA(2);
+				int LA57_2 = input.LA(2);
 				if ( (synpred69_TSPHP()) ) {
-					alt56=1;
+					alt57=1;
 				}
 				else if ( (synpred80_TSPHP()) ) {
-					alt56=12;
+					alt57=12;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -5167,7 +5172,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 56, 2, input);
+							new NoViableAltException("", 57, 2, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -5177,12 +5182,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Parent:
 				{
-				int LA56_3 = input.LA(2);
+				int LA57_3 = input.LA(2);
 				if ( (synpred69_TSPHP()) ) {
-					alt56=1;
+					alt57=1;
 				}
 				else if ( (synpred80_TSPHP()) ) {
-					alt56=12;
+					alt57=12;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -5190,7 +5195,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 56, 3, input);
+							new NoViableAltException("", 57, 3, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -5200,18 +5205,18 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Backslash:
 				{
-				int LA56_4 = input.LA(2);
+				int LA57_4 = input.LA(2);
 				if ( (synpred69_TSPHP()) ) {
-					alt56=1;
+					alt57=1;
 				}
 				else if ( (synpred70_TSPHP()) ) {
-					alt56=2;
+					alt57=2;
 				}
 				else if ( (synpred79_TSPHP()) ) {
-					alt56=11;
+					alt57=11;
 				}
 				else if ( (synpred80_TSPHP()) ) {
-					alt56=12;
+					alt57=12;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -5219,7 +5224,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 56, 4, input);
+							new NoViableAltException("", 57, 4, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -5229,18 +5234,18 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Identifier:
 				{
-				int LA56_5 = input.LA(2);
+				int LA57_5 = input.LA(2);
 				if ( (synpred69_TSPHP()) ) {
-					alt56=1;
+					alt57=1;
 				}
 				else if ( (synpred70_TSPHP()) ) {
-					alt56=2;
+					alt57=2;
 				}
 				else if ( (synpred79_TSPHP()) ) {
-					alt56=11;
+					alt57=11;
 				}
 				else if ( (synpred80_TSPHP()) ) {
-					alt56=12;
+					alt57=12;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -5248,7 +5253,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 56, 5, input);
+							new NoViableAltException("", 57, 5, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -5258,12 +5263,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case This:
 				{
-				int LA56_6 = input.LA(2);
+				int LA57_6 = input.LA(2);
 				if ( (synpred69_TSPHP()) ) {
-					alt56=1;
+					alt57=1;
 				}
 				else if ( (synpred80_TSPHP()) ) {
-					alt56=12;
+					alt57=12;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -5271,7 +5276,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 56, 6, input);
+							new NoViableAltException("", 57, 6, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -5282,7 +5287,7 @@ public TreeAdaptor getTreeAdaptor() {
 			case MinusMinus:
 			case PlusPlus:
 				{
-				alt56=1;
+				alt57=1;
 				}
 				break;
 			case TypeArray:
@@ -5294,108 +5299,108 @@ public TreeAdaptor getTreeAdaptor() {
 			case TypeResource:
 			case TypeString:
 				{
-				alt56=2;
+				alt57=2;
 				}
 				break;
 			case If:
 				{
-				alt56=3;
+				alt57=3;
 				}
 				break;
 			case Switch:
 				{
-				alt56=4;
+				alt57=4;
 				}
 				break;
 			case For:
 				{
-				alt56=5;
+				alt57=5;
 				}
 				break;
 			case Foreach:
 				{
-				alt56=6;
+				alt57=6;
 				}
 				break;
 			case While:
 				{
-				alt56=7;
+				alt57=7;
 				}
 				break;
 			case Do:
 				{
-				alt56=8;
+				alt57=8;
 				}
 				break;
 			case Try:
 				{
-				alt56=9;
+				alt57=9;
 				}
 				break;
 			case Throw:
 				{
-				alt56=10;
+				alt57=10;
 				}
 				break;
 			case Return:
 				{
-				alt56=13;
+				alt57=13;
 				}
 				break;
 			case Echo:
 				{
-				alt56=14;
+				alt57=14;
 				}
 				break;
 			case Exit:
 				{
-				alt56=15;
+				alt57=15;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 56, 0, input);
+					new NoViableAltException("", 57, 0, input);
 				throw nvae;
 			}
-			switch (alt56) {
+			switch (alt57) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:373:4: variableAssignment ';' !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:375:4: variableAssignment ';' !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_variableAssignment_in_instruction1955);
+					pushFollow(FOLLOW_variableAssignment_in_instruction1963);
 					variableAssignment149=variableAssignment();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, variableAssignment149.getTree());
 
-					char_literal150=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction1957); if (state.failed) return retval;
+					char_literal150=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction1965); if (state.failed) return retval;
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:374:4: variableDeclaration ';' !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:4: variableDeclaration ';' !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_variableDeclaration_in_instruction1963);
+					pushFollow(FOLLOW_variableDeclaration_in_instruction1971);
 					variableDeclaration151=variableDeclaration();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, variableDeclaration151.getTree());
 
-					char_literal152=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction1965); if (state.failed) return retval;
+					char_literal152=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction1973); if (state.failed) return retval;
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:375:4: ifCondition
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:377:4: ifCondition
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_ifCondition_in_instruction1971);
+					pushFollow(FOLLOW_ifCondition_in_instruction1979);
 					ifCondition153=ifCondition();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -5404,12 +5409,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 4 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:4: switchCondition
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:378:4: switchCondition
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_switchCondition_in_instruction1976);
+					pushFollow(FOLLOW_switchCondition_in_instruction1984);
 					switchCondition154=switchCondition();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -5418,12 +5423,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 5 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:377:4: forLoop
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:379:4: forLoop
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_forLoop_in_instruction1981);
+					pushFollow(FOLLOW_forLoop_in_instruction1989);
 					forLoop155=forLoop();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -5432,12 +5437,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 6 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:378:4: foreachLoop
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:380:4: foreachLoop
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_foreachLoop_in_instruction1986);
+					pushFollow(FOLLOW_foreachLoop_in_instruction1994);
 					foreachLoop156=foreachLoop();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -5446,12 +5451,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 7 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:379:4: whileLoop
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:381:4: whileLoop
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_whileLoop_in_instruction1991);
+					pushFollow(FOLLOW_whileLoop_in_instruction1999);
 					whileLoop157=whileLoop();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -5460,12 +5465,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 8 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:380:4: doWhileLoop
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:382:4: doWhileLoop
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_doWhileLoop_in_instruction1996);
+					pushFollow(FOLLOW_doWhileLoop_in_instruction2004);
 					doWhileLoop158=doWhileLoop();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -5474,12 +5479,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 9 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:381:4: tryCatch
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:383:4: tryCatch
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_tryCatch_in_instruction2001);
+					pushFollow(FOLLOW_tryCatch_in_instruction2009);
 					tryCatch159=tryCatch();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -5488,12 +5493,12 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 10 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:382:4: throwException
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:384:4: throwException
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_throwException_in_instruction2006);
+					pushFollow(FOLLOW_throwException_in_instruction2014);
 					throwException160=throwException();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -5502,42 +5507,42 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 11 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:383:4: functionCallFluentWithoutAccessAtTheEnd ';' !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:4: functionCallFluentWithoutAccessAtTheEnd ';' !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_instruction2011);
+					pushFollow(FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_instruction2019);
 					functionCallFluentWithoutAccessAtTheEnd161=functionCallFluentWithoutAccessAtTheEnd();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, functionCallFluentWithoutAccessAtTheEnd161.getTree());
 
-					char_literal162=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction2013); if (state.failed) return retval;
+					char_literal162=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction2021); if (state.failed) return retval;
 					}
 					break;
 				case 12 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:384:4: methodCallFluentWithoutAccessAtTheEnd ';' !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:386:4: methodCallFluentWithoutAccessAtTheEnd ';' !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_instruction2019);
+					pushFollow(FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_instruction2027);
 					methodCallFluentWithoutAccessAtTheEnd163=methodCallFluentWithoutAccessAtTheEnd();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, methodCallFluentWithoutAccessAtTheEnd163.getTree());
 
-					char_literal164=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction2021); if (state.failed) return retval;
+					char_literal164=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction2029); if (state.failed) return retval;
 					}
 					break;
 				case 13 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:4: 'return' ( expression )? ';' !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:387:4: 'return' ( expression )? ';' !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					string_literal165=(Token)match(input,Return,FOLLOW_Return_in_instruction2028); if (state.failed) return retval;
+					string_literal165=(Token)match(input,Return,FOLLOW_Return_in_instruction2036); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					string_literal165_tree = 
 					(CommonTree)adaptor.create(string_literal165)
@@ -5545,7 +5550,7 @@ public TreeAdaptor getTreeAdaptor() {
 					adaptor.addChild(root_0, string_literal165_tree);
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:13: ( expression )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:387:13: ( expression )?
 					int alt55=2;
 					int LA55_0 = input.LA(1);
 					if ( (LA55_0==At||LA55_0==Backslash||LA55_0==BitwiseNot||LA55_0==Bool||LA55_0==Clone||LA55_0==Float||LA55_0==Identifier||LA55_0==Int||(LA55_0 >= LeftParanthesis && LA55_0 <= LeftSquareBrace)||LA55_0==LogicNot||LA55_0==Minus||LA55_0==MinusMinus||LA55_0==New||LA55_0==Null||(LA55_0 >= Parent && LA55_0 <= Plus)||LA55_0==PlusPlus||LA55_0==Self||LA55_0==String||LA55_0==This||LA55_0==TypeArray||LA55_0==VariableId) ) {
@@ -5553,9 +5558,9 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					switch (alt55) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:13: expression
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:387:13: expression
 							{
-							pushFollow(FOLLOW_expression_in_instruction2030);
+							pushFollow(FOLLOW_expression_in_instruction2038);
 							expression166=expression();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -5566,47 +5571,75 @@ public TreeAdaptor getTreeAdaptor() {
 
 					}
 
-					char_literal167=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction2033); if (state.failed) return retval;
+					char_literal167=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction2041); if (state.failed) return retval;
 					}
 					break;
 				case 14 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:386:4: 'echo' expressionList ';' !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:388:4: 'echo' ^ expression ( ',' ! expression )* ';' !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					string_literal168=(Token)match(input,Echo,FOLLOW_Echo_in_instruction2039); if (state.failed) return retval;
+					string_literal168=(Token)match(input,Echo,FOLLOW_Echo_in_instruction2047); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					string_literal168_tree = 
 					(CommonTree)adaptor.create(string_literal168)
 					;
-					adaptor.addChild(root_0, string_literal168_tree);
+					root_0 = (CommonTree)adaptor.becomeRoot(string_literal168_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_expressionList_in_instruction2041);
-					expressionList169=expressionList();
+					pushFollow(FOLLOW_expression_in_instruction2050);
+					expression169=expression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList169.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression169.getTree());
 
-					char_literal170=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction2043); if (state.failed) return retval;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:388:23: ( ',' ! expression )*
+					loop56:
+					do {
+						int alt56=2;
+						int LA56_0 = input.LA(1);
+						if ( (LA56_0==Comma) ) {
+							alt56=1;
+						}
+
+						switch (alt56) {
+						case 1 :
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:388:24: ',' ! expression
+							{
+							char_literal170=(Token)match(input,Comma,FOLLOW_Comma_in_instruction2053); if (state.failed) return retval;
+							pushFollow(FOLLOW_expression_in_instruction2056);
+							expression171=expression();
+							state._fsp--;
+							if (state.failed) return retval;
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, expression171.getTree());
+
+							}
+							break;
+
+						default :
+							break loop56;
+						}
+					} while (true);
+
+					char_literal172=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction2060); if (state.failed) return retval;
 					}
 					break;
 				case 15 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:387:4: 'exit' ';' !
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:389:4: 'exit' ';' !
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					string_literal171=(Token)match(input,Exit,FOLLOW_Exit_in_instruction2049); if (state.failed) return retval;
+					string_literal173=(Token)match(input,Exit,FOLLOW_Exit_in_instruction2066); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal171_tree = 
-					(CommonTree)adaptor.create(string_literal171)
+					string_literal173_tree = 
+					(CommonTree)adaptor.create(string_literal173)
 					;
-					adaptor.addChild(root_0, string_literal171_tree);
+					adaptor.addChild(root_0, string_literal173_tree);
 					}
 
-					char_literal172=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction2051); if (state.failed) return retval;
+					char_literal174=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_instruction2068); if (state.failed) return retval;
 					}
 					break;
 
@@ -5640,7 +5673,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "expressionList"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:390:1: expressionList : expression ( ',' ! expression )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:392:1: expressionList : ( expression ( ',' expression )* -> ^( EXPRESSION_LIST ( expression )+ ) | -> EXPRESSION_LIST );
 	public final TSPHPParser.expressionList_return expressionList() throws RecognitionException {
 		TSPHPParser.expressionList_return retval = new TSPHPParser.expressionList_return();
 		retval.start = input.LT(1);
@@ -5648,57 +5681,144 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal174=null;
-		ParserRuleReturnScope expression173 =null;
+		Token char_literal176=null;
 		ParserRuleReturnScope expression175 =null;
+		ParserRuleReturnScope expression177 =null;
 
-		CommonTree char_literal174_tree=null;
+		CommonTree char_literal176_tree=null;
+		RewriteRuleTokenStream stream_Comma=new RewriteRuleTokenStream(adaptor,"token Comma");
+		RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
 
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 41) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:2: ( expression ( ',' ! expression )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:4: expression ( ',' ! expression )*
-			{
-			root_0 = (CommonTree)adaptor.nil();
-
-
-			pushFollow(FOLLOW_expression_in_expressionList2064);
-			expression173=expression();
-			state._fsp--;
-			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression173.getTree());
-
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:15: ( ',' ! expression )*
-			loop57:
-			do {
-				int alt57=2;
-				int LA57_0 = input.LA(1);
-				if ( (LA57_0==Comma) ) {
-					alt57=1;
-				}
-
-				switch (alt57) {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:2: ( expression ( ',' expression )* -> ^( EXPRESSION_LIST ( expression )+ ) | -> EXPRESSION_LIST )
+			int alt59=2;
+			int LA59_0 = input.LA(1);
+			if ( (LA59_0==At||LA59_0==Backslash||LA59_0==BitwiseNot||LA59_0==Bool||LA59_0==Clone||LA59_0==Float||LA59_0==Identifier||LA59_0==Int||(LA59_0 >= LeftParanthesis && LA59_0 <= LeftSquareBrace)||LA59_0==LogicNot||LA59_0==Minus||LA59_0==MinusMinus||LA59_0==New||LA59_0==Null||(LA59_0 >= Parent && LA59_0 <= Plus)||LA59_0==PlusPlus||LA59_0==Self||LA59_0==String||LA59_0==This||LA59_0==TypeArray||LA59_0==VariableId) ) {
+				alt59=1;
+			}
+			else if ( (LA59_0==RightParanthesis||LA59_0==Semicolon) ) {
+				alt59=2;
+			}
+			else {
+				if (state.backtracking>0) {state.failed=true; return retval;}
+				NoViableAltException nvae =
+					new NoViableAltException("", 59, 0, input);
+				throw nvae;
+			}
+			switch (alt59) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:391:16: ',' ! expression
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:4: expression ( ',' expression )*
 					{
-					char_literal174=(Token)match(input,Comma,FOLLOW_Comma_in_expressionList2067); if (state.failed) return retval;
-					pushFollow(FOLLOW_expression_in_expressionList2070);
+					pushFollow(FOLLOW_expression_in_expressionList2081);
 					expression175=expression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression175.getTree());
+					if ( state.backtracking==0 ) stream_expression.add(expression175.getTree());
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:15: ( ',' expression )*
+					loop58:
+					do {
+						int alt58=2;
+						int LA58_0 = input.LA(1);
+						if ( (LA58_0==Comma) ) {
+							alt58=1;
+						}
+
+						switch (alt58) {
+						case 1 :
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:16: ',' expression
+							{
+							char_literal176=(Token)match(input,Comma,FOLLOW_Comma_in_expressionList2084); if (state.failed) return retval; 
+							if ( state.backtracking==0 ) stream_Comma.add(char_literal176);
+
+							pushFollow(FOLLOW_expression_in_expressionList2086);
+							expression177=expression();
+							state._fsp--;
+							if (state.failed) return retval;
+							if ( state.backtracking==0 ) stream_expression.add(expression177.getTree());
+							}
+							break;
+
+						default :
+							break loop58;
+						}
+					} while (true);
+
+					// AST REWRITE
+					// elements: expression
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					if ( state.backtracking==0 ) {
+
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (CommonTree)adaptor.nil();
+					// 393:33: -> ^( EXPRESSION_LIST ( expression )+ )
+					{
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:36: ^( EXPRESSION_LIST ( expression )+ )
+						{
+						CommonTree root_1 = (CommonTree)adaptor.nil();
+						root_1 = (CommonTree)adaptor.becomeRoot(
+						(CommonTree)adaptor.create(EXPRESSION_LIST, "EXPRESSION_LIST")
+						, root_1);
+
+						if ( !(stream_expression.hasNext()) ) {
+							throw new RewriteEarlyExitException();
+						}
+						while ( stream_expression.hasNext() ) {
+							adaptor.addChild(root_1, stream_expression.nextTree());
+
+						}
+						stream_expression.reset();
+
+						adaptor.addChild(root_0, root_1);
+						}
+
+					}
+
+
+					retval.tree = root_0;
+					}
+
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:394:4: 
+					{
+					// AST REWRITE
+					// elements: 
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					if ( state.backtracking==0 ) {
+
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (CommonTree)adaptor.nil();
+					// 394:4: -> EXPRESSION_LIST
+					{
+						adaptor.addChild(root_0, 
+						(CommonTree)adaptor.create(EXPRESSION_LIST, "EXPRESSION_LIST")
+						);
+
+					}
+
+
+					retval.tree = root_0;
+					}
 
 					}
 					break;
 
-				default :
-					break loop57;
-				}
-			} while (true);
-
 			}
-
 			retval.stop = input.LT(-1);
 
 			if ( state.backtracking==0 ) {
@@ -5728,7 +5848,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "variableAssignment"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:393:1: variableAssignment : ( VariableId assignmentOperator ^ expression | incrementDecrement );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:397:1: variableAssignment : ( VariableId assignmentOperator ^ expression | incrementDecrement );
 	public final TSPHPParser.variableAssignment_return variableAssignment() throws RecognitionException {
 		TSPHPParser.variableAssignment_return retval = new TSPHPParser.variableAssignment_return();
 		retval.start = input.LT(1);
@@ -5736,26 +5856,26 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token VariableId176=null;
-		ParserRuleReturnScope assignmentOperator177 =null;
-		ParserRuleReturnScope expression178 =null;
-		ParserRuleReturnScope incrementDecrement179 =null;
+		Token VariableId178=null;
+		ParserRuleReturnScope assignmentOperator179 =null;
+		ParserRuleReturnScope expression180 =null;
+		ParserRuleReturnScope incrementDecrement181 =null;
 
-		CommonTree VariableId176_tree=null;
+		CommonTree VariableId178_tree=null;
 
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 42) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:394:2: ( VariableId assignmentOperator ^ expression | incrementDecrement )
-			int alt58=2;
-			int LA58_0 = input.LA(1);
-			if ( (LA58_0==VariableId) ) {
-				int LA58_1 = input.LA(2);
-				if ( (LA58_1==Assign||LA58_1==BitwiseAndEqual||LA58_1==BitwiseOrEqual||LA58_1==BitwiseXorEqual||LA58_1==DivideEqual||LA58_1==DotEqual||LA58_1==MinusEqual||LA58_1==ModuloEqual||LA58_1==MultiplyEqual||LA58_1==PlusEqual||LA58_1==ShiftLeftEqual||LA58_1==ShiftRightEqual) ) {
-					alt58=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:398:2: ( VariableId assignmentOperator ^ expression | incrementDecrement )
+			int alt60=2;
+			int LA60_0 = input.LA(1);
+			if ( (LA60_0==VariableId) ) {
+				int LA60_1 = input.LA(2);
+				if ( (LA60_1==Assign||LA60_1==BitwiseAndEqual||LA60_1==BitwiseOrEqual||LA60_1==BitwiseXorEqual||LA60_1==DivideEqual||LA60_1==DotEqual||LA60_1==MinusEqual||LA60_1==ModuloEqual||LA60_1==MultiplyEqual||LA60_1==PlusEqual||LA60_1==ShiftLeftEqual||LA60_1==ShiftRightEqual) ) {
+					alt60=1;
 				}
-				else if ( (LA58_1==LeftSquareBrace||LA58_1==MinusMinus||LA58_1==ObjectOperator||LA58_1==PlusPlus) ) {
-					alt58=2;
+				else if ( (LA60_1==LeftSquareBrace||LA60_1==MinusMinus||LA60_1==ObjectOperator||LA60_1==PlusPlus) ) {
+					alt60=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -5763,61 +5883,61 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 58, 1, input);
+							new NoViableAltException("", 60, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
 					}
 				}
 			}
-			else if ( (LA58_0==Backslash||LA58_0==Identifier||LA58_0==MinusMinus||LA58_0==Parent||LA58_0==PlusPlus||LA58_0==Self||LA58_0==This) ) {
-				alt58=2;
+			else if ( (LA60_0==Backslash||LA60_0==Identifier||LA60_0==MinusMinus||LA60_0==Parent||LA60_0==PlusPlus||LA60_0==Self||LA60_0==This) ) {
+				alt60=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 58, 0, input);
+					new NoViableAltException("", 60, 0, input);
 				throw nvae;
 			}
-			switch (alt58) {
+			switch (alt60) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:394:4: VariableId assignmentOperator ^ expression
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:398:4: VariableId assignmentOperator ^ expression
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					VariableId176=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableAssignment2081); if (state.failed) return retval;
+					VariableId178=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableAssignment2115); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					VariableId176_tree = 
-					(CommonTree)adaptor.create(VariableId176)
+					VariableId178_tree = 
+					(CommonTree)adaptor.create(VariableId178)
 					;
-					adaptor.addChild(root_0, VariableId176_tree);
+					adaptor.addChild(root_0, VariableId178_tree);
 					}
 
-					pushFollow(FOLLOW_assignmentOperator_in_variableAssignment2083);
-					assignmentOperator177=assignmentOperator();
+					pushFollow(FOLLOW_assignmentOperator_in_variableAssignment2117);
+					assignmentOperator179=assignmentOperator();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(assignmentOperator177.getTree(), root_0);
-					pushFollow(FOLLOW_expression_in_variableAssignment2086);
-					expression178=expression();
+					if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(assignmentOperator179.getTree(), root_0);
+					pushFollow(FOLLOW_expression_in_variableAssignment2120);
+					expression180=expression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression178.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression180.getTree());
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:395:4: incrementDecrement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:399:4: incrementDecrement
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_incrementDecrement_in_variableAssignment2091);
-					incrementDecrement179=incrementDecrement();
+					pushFollow(FOLLOW_incrementDecrement_in_variableAssignment2125);
+					incrementDecrement181=incrementDecrement();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, incrementDecrement179.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, incrementDecrement181.getTree());
 
 					}
 					break;
@@ -5852,7 +5972,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "incrementDecrement"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:398:1: incrementDecrement : ( postIncrementDecrement | preIncrementDecrement );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:402:1: incrementDecrement : ( postIncrementDecrement | preIncrementDecrement );
 	public final TSPHPParser.incrementDecrement_return incrementDecrement() throws RecognitionException {
 		TSPHPParser.incrementDecrement_return retval = new TSPHPParser.incrementDecrement_return();
 		retval.start = input.LT(1);
@@ -5860,54 +5980,54 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope postIncrementDecrement180 =null;
-		ParserRuleReturnScope preIncrementDecrement181 =null;
+		ParserRuleReturnScope postIncrementDecrement182 =null;
+		ParserRuleReturnScope preIncrementDecrement183 =null;
 
 
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 43) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:399:2: ( postIncrementDecrement | preIncrementDecrement )
-			int alt59=2;
-			int LA59_0 = input.LA(1);
-			if ( (LA59_0==Backslash||LA59_0==Identifier||LA59_0==Parent||LA59_0==Self||LA59_0==This||LA59_0==VariableId) ) {
-				alt59=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:403:2: ( postIncrementDecrement | preIncrementDecrement )
+			int alt61=2;
+			int LA61_0 = input.LA(1);
+			if ( (LA61_0==Backslash||LA61_0==Identifier||LA61_0==Parent||LA61_0==Self||LA61_0==This||LA61_0==VariableId) ) {
+				alt61=1;
 			}
-			else if ( (LA59_0==MinusMinus||LA59_0==PlusPlus) ) {
-				alt59=2;
+			else if ( (LA61_0==MinusMinus||LA61_0==PlusPlus) ) {
+				alt61=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 59, 0, input);
+					new NoViableAltException("", 61, 0, input);
 				throw nvae;
 			}
-			switch (alt59) {
+			switch (alt61) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:399:4: postIncrementDecrement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:403:4: postIncrementDecrement
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_postIncrementDecrement_in_incrementDecrement2103);
-					postIncrementDecrement180=postIncrementDecrement();
+					pushFollow(FOLLOW_postIncrementDecrement_in_incrementDecrement2137);
+					postIncrementDecrement182=postIncrementDecrement();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, postIncrementDecrement180.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, postIncrementDecrement182.getTree());
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:400:4: preIncrementDecrement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:404:4: preIncrementDecrement
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_preIncrementDecrement_in_incrementDecrement2108);
-					preIncrementDecrement181=preIncrementDecrement();
+					pushFollow(FOLLOW_preIncrementDecrement_in_incrementDecrement2142);
+					preIncrementDecrement183=preIncrementDecrement();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, preIncrementDecrement181.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, preIncrementDecrement183.getTree());
 
 					}
 					break;
@@ -5942,7 +6062,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "assignmentOperator"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:403:1: assignmentOperator : ( '=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '%=' | '.=' | '<<=' | '>>=' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:407:1: assignmentOperator : ( '=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '%=' | '.=' | '<<=' | '>>=' );
 	public final TSPHPParser.assignmentOperator_return assignmentOperator() throws RecognitionException {
 		TSPHPParser.assignmentOperator_return retval = new TSPHPParser.assignmentOperator_return();
 		retval.start = input.LT(1);
@@ -5950,24 +6070,24 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token set182=null;
+		Token set184=null;
 
-		CommonTree set182_tree=null;
+		CommonTree set184_tree=null;
 
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 44) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:404:2: ( '=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '%=' | '.=' | '<<=' | '>>=' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:408:2: ( '=' | '+=' | '-=' | '*=' | '/=' | '&=' | '|=' | '^=' | '%=' | '.=' | '<<=' | '>>=' )
 			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			set182=(Token)input.LT(1);
+			set184=(Token)input.LT(1);
 			if ( input.LA(1)==Assign||input.LA(1)==BitwiseAndEqual||input.LA(1)==BitwiseOrEqual||input.LA(1)==BitwiseXorEqual||input.LA(1)==DivideEqual||input.LA(1)==DotEqual||input.LA(1)==MinusEqual||input.LA(1)==ModuloEqual||input.LA(1)==MultiplyEqual||input.LA(1)==PlusEqual||input.LA(1)==ShiftLeftEqual||input.LA(1)==ShiftRightEqual ) {
 				input.consume();
 				if ( state.backtracking==0 ) adaptor.addChild(root_0, 
-				(CommonTree)adaptor.create(set182)
+				(CommonTree)adaptor.create(set184)
 				);
 				state.errorRecovery=false;
 				state.failed=false;
@@ -6008,7 +6128,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "postIncrementDecrement"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:418:1: postIncrementDecrement : variableMemberStaticMember ( '++' | '--' ) -> ^( POST_INCREMENT_DECREMENT[$variableMemberStaticMember.start, \"post increment/decrement\"] variableMemberStaticMember ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:422:1: postIncrementDecrement : variableMemberStaticMember plusPlusOrMinusMinus -> ^( POST_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember ) ;
 	public final TSPHPParser.postIncrementDecrement_return postIncrementDecrement() throws RecognitionException {
 		TSPHPParser.postIncrementDecrement_return retval = new TSPHPParser.postIncrementDecrement_return();
 		retval.start = input.LT(1);
@@ -6016,64 +6136,30 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal184=null;
-		Token string_literal185=null;
-		ParserRuleReturnScope variableMemberStaticMember183 =null;
+		ParserRuleReturnScope variableMemberStaticMember185 =null;
+		ParserRuleReturnScope plusPlusOrMinusMinus186 =null;
 
-		CommonTree string_literal184_tree=null;
-		CommonTree string_literal185_tree=null;
-		RewriteRuleTokenStream stream_MinusMinus=new RewriteRuleTokenStream(adaptor,"token MinusMinus");
-		RewriteRuleTokenStream stream_PlusPlus=new RewriteRuleTokenStream(adaptor,"token PlusPlus");
 		RewriteRuleSubtreeStream stream_variableMemberStaticMember=new RewriteRuleSubtreeStream(adaptor,"rule variableMemberStaticMember");
+		RewriteRuleSubtreeStream stream_plusPlusOrMinusMinus=new RewriteRuleSubtreeStream(adaptor,"rule plusPlusOrMinusMinus");
 
 		try {
 			if ( state.backtracking>0 && alreadyParsedRule(input, 45) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:2: ( variableMemberStaticMember ( '++' | '--' ) -> ^( POST_INCREMENT_DECREMENT[$variableMemberStaticMember.start, \"post increment/decrement\"] variableMemberStaticMember ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:4: variableMemberStaticMember ( '++' | '--' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:423:2: ( variableMemberStaticMember plusPlusOrMinusMinus -> ^( POST_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:423:4: variableMemberStaticMember plusPlusOrMinusMinus
 			{
-			pushFollow(FOLLOW_variableMemberStaticMember_in_postIncrementDecrement2186);
-			variableMemberStaticMember183=variableMemberStaticMember();
+			pushFollow(FOLLOW_variableMemberStaticMember_in_postIncrementDecrement2221);
+			variableMemberStaticMember185=variableMemberStaticMember();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) stream_variableMemberStaticMember.add(variableMemberStaticMember183.getTree());
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:31: ( '++' | '--' )
-			int alt60=2;
-			int LA60_0 = input.LA(1);
-			if ( (LA60_0==PlusPlus) ) {
-				alt60=1;
-			}
-			else if ( (LA60_0==MinusMinus) ) {
-				alt60=2;
-			}
-			else {
-				if (state.backtracking>0) {state.failed=true; return retval;}
-				NoViableAltException nvae =
-					new NoViableAltException("", 60, 0, input);
-				throw nvae;
-			}
-			switch (alt60) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:32: '++'
-					{
-					string_literal184=(Token)match(input,PlusPlus,FOLLOW_PlusPlus_in_postIncrementDecrement2189); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_PlusPlus.add(string_literal184);
-
-					}
-					break;
-				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:37: '--'
-					{
-					string_literal185=(Token)match(input,MinusMinus,FOLLOW_MinusMinus_in_postIncrementDecrement2191); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_MinusMinus.add(string_literal185);
-
-					}
-					break;
-
-			}
-
+			if ( state.backtracking==0 ) stream_variableMemberStaticMember.add(variableMemberStaticMember185.getTree());
+			pushFollow(FOLLOW_plusPlusOrMinusMinus_in_postIncrementDecrement2223);
+			plusPlusOrMinusMinus186=plusPlusOrMinusMinus();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) stream_plusPlusOrMinusMinus.add(plusPlusOrMinusMinus186.getTree());
 			// AST REWRITE
-			// elements: variableMemberStaticMember
+			// elements: plusPlusOrMinusMinus, variableMemberStaticMember
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -6085,14 +6171,16 @@ public TreeAdaptor getTreeAdaptor() {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 419:43: -> ^( POST_INCREMENT_DECREMENT[$variableMemberStaticMember.start, \"post increment/decrement\"] variableMemberStaticMember )
+			// 423:52: -> ^( POST_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember )
 			{
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:419:46: ^( POST_INCREMENT_DECREMENT[$variableMemberStaticMember.start, \"post increment/decrement\"] variableMemberStaticMember )
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:423:55: ^( POST_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(
-				(CommonTree)adaptor.create(POST_INCREMENT_DECREMENT, (variableMemberStaticMember183!=null?((Token)variableMemberStaticMember183.start):null), "post increment/decrement")
+				(CommonTree)adaptor.create(POST_INCREMENT_DECREMENT, "POST_INCREMENT_DECREMENT")
 				, root_1);
+
+				adaptor.addChild(root_1, stream_plusPlusOrMinusMinus.nextTree());
 
 				adaptor.addChild(root_1, stream_variableMemberStaticMember.nextTree());
 
@@ -6129,6 +6217,72 @@ public TreeAdaptor getTreeAdaptor() {
 	// $ANTLR end "postIncrementDecrement"
 
 
+	public static class plusPlusOrMinusMinus_return extends ParserRuleReturnScope {
+		CommonTree tree;
+		public Object getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "plusPlusOrMinusMinus"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:426:1: plusPlusOrMinusMinus : ( '++' | '--' );
+	public final TSPHPParser.plusPlusOrMinusMinus_return plusPlusOrMinusMinus() throws RecognitionException {
+		TSPHPParser.plusPlusOrMinusMinus_return retval = new TSPHPParser.plusPlusOrMinusMinus_return();
+		retval.start = input.LT(1);
+		int plusPlusOrMinusMinus_StartIndex = input.index();
+
+		CommonTree root_0 = null;
+
+		Token set187=null;
+
+		CommonTree set187_tree=null;
+
+		try {
+			if ( state.backtracking>0 && alreadyParsedRule(input, 46) ) { return retval; }
+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:427:2: ( '++' | '--' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
+			{
+			root_0 = (CommonTree)adaptor.nil();
+
+
+			set187=(Token)input.LT(1);
+			if ( input.LA(1)==MinusMinus||input.LA(1)==PlusPlus ) {
+				input.consume();
+				if ( state.backtracking==0 ) adaptor.addChild(root_0, 
+				(CommonTree)adaptor.create(set187)
+				);
+				state.errorRecovery=false;
+				state.failed=false;
+			}
+			else {
+				if (state.backtracking>0) {state.failed=true; return retval;}
+				MismatchedSetException mse = new MismatchedSetException(null,input);
+				throw mse;
+			}
+			}
+
+			retval.stop = input.LT(-1);
+
+			if ( state.backtracking==0 ) {
+			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+			retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+		}
+		finally {
+			// do for sure before leaving
+			if ( state.backtracking>0 ) { memoize(input, 46, plusPlusOrMinusMinus_StartIndex); }
+
+		}
+		return retval;
+	}
+	// $ANTLR end "plusPlusOrMinusMinus"
+
+
 	public static class preIncrementDecrement_return extends ParserRuleReturnScope {
 		CommonTree tree;
 		public Object getTree() { return tree; }
@@ -6136,7 +6290,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "preIncrementDecrement"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:422:1: preIncrementDecrement : pre= ( '++' | '--' ) variableMemberStaticMember -> ^( PRE_INCREMENT_DECREMENT[$pre, \"pre increment/decrement\"] variableMemberStaticMember ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:431:1: preIncrementDecrement : plusPlusOrMinusMinus variableMemberStaticMember -> ^( PRE_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember ) ;
 	public final TSPHPParser.preIncrementDecrement_return preIncrementDecrement() throws RecognitionException {
 		TSPHPParser.preIncrementDecrement_return retval = new TSPHPParser.preIncrementDecrement_return();
 		retval.start = input.LT(1);
@@ -6144,66 +6298,30 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token pre=null;
-		Token string_literal186=null;
-		Token string_literal187=null;
-		ParserRuleReturnScope variableMemberStaticMember188 =null;
+		ParserRuleReturnScope plusPlusOrMinusMinus188 =null;
+		ParserRuleReturnScope variableMemberStaticMember189 =null;
 
-		CommonTree pre_tree=null;
-		CommonTree string_literal186_tree=null;
-		CommonTree string_literal187_tree=null;
-		RewriteRuleTokenStream stream_MinusMinus=new RewriteRuleTokenStream(adaptor,"token MinusMinus");
-		RewriteRuleTokenStream stream_PlusPlus=new RewriteRuleTokenStream(adaptor,"token PlusPlus");
 		RewriteRuleSubtreeStream stream_variableMemberStaticMember=new RewriteRuleSubtreeStream(adaptor,"rule variableMemberStaticMember");
+		RewriteRuleSubtreeStream stream_plusPlusOrMinusMinus=new RewriteRuleSubtreeStream(adaptor,"rule plusPlusOrMinusMinus");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 46) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 47) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:423:2: (pre= ( '++' | '--' ) variableMemberStaticMember -> ^( PRE_INCREMENT_DECREMENT[$pre, \"pre increment/decrement\"] variableMemberStaticMember ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:423:4: pre= ( '++' | '--' ) variableMemberStaticMember
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:432:2: ( plusPlusOrMinusMinus variableMemberStaticMember -> ^( PRE_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:432:4: plusPlusOrMinusMinus variableMemberStaticMember
 			{
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:423:10: ( '++' | '--' )
-			int alt61=2;
-			int LA61_0 = input.LA(1);
-			if ( (LA61_0==PlusPlus) ) {
-				alt61=1;
-			}
-			else if ( (LA61_0==MinusMinus) ) {
-				alt61=2;
-			}
-			else {
-				if (state.backtracking>0) {state.failed=true; return retval;}
-				NoViableAltException nvae =
-					new NoViableAltException("", 61, 0, input);
-				throw nvae;
-			}
-			switch (alt61) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:423:11: '++'
-					{
-					string_literal186=(Token)match(input,PlusPlus,FOLLOW_PlusPlus_in_preIncrementDecrement2218); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_PlusPlus.add(string_literal186);
-
-					}
-					break;
-				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:423:16: '--'
-					{
-					string_literal187=(Token)match(input,MinusMinus,FOLLOW_MinusMinus_in_preIncrementDecrement2220); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_MinusMinus.add(string_literal187);
-
-					}
-					break;
-
-			}
-
-			pushFollow(FOLLOW_variableMemberStaticMember_in_preIncrementDecrement2223);
-			variableMemberStaticMember188=variableMemberStaticMember();
+			pushFollow(FOLLOW_plusPlusOrMinusMinus_in_preIncrementDecrement2262);
+			plusPlusOrMinusMinus188=plusPlusOrMinusMinus();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) stream_variableMemberStaticMember.add(variableMemberStaticMember188.getTree());
+			if ( state.backtracking==0 ) stream_plusPlusOrMinusMinus.add(plusPlusOrMinusMinus188.getTree());
+			pushFollow(FOLLOW_variableMemberStaticMember_in_preIncrementDecrement2264);
+			variableMemberStaticMember189=variableMemberStaticMember();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) stream_variableMemberStaticMember.add(variableMemberStaticMember189.getTree());
 			// AST REWRITE
-			// elements: variableMemberStaticMember
+			// elements: variableMemberStaticMember, plusPlusOrMinusMinus
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -6215,14 +6333,16 @@ public TreeAdaptor getTreeAdaptor() {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 423:49: -> ^( PRE_INCREMENT_DECREMENT[$pre, \"pre increment/decrement\"] variableMemberStaticMember )
+			// 432:52: -> ^( PRE_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember )
 			{
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:423:52: ^( PRE_INCREMENT_DECREMENT[$pre, \"pre increment/decrement\"] variableMemberStaticMember )
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:432:55: ^( PRE_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(
-				(CommonTree)adaptor.create(PRE_INCREMENT_DECREMENT, pre, "pre increment/decrement")
+				(CommonTree)adaptor.create(PRE_INCREMENT_DECREMENT, "PRE_INCREMENT_DECREMENT")
 				, root_1);
+
+				adaptor.addChild(root_1, stream_plusPlusOrMinusMinus.nextTree());
 
 				adaptor.addChild(root_1, stream_variableMemberStaticMember.nextTree());
 
@@ -6251,7 +6371,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 46, preIncrementDecrement_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 47, preIncrementDecrement_StartIndex); }
 
 		}
 		return retval;
@@ -6266,7 +6386,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "variableDeclaration"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:427:1: variableDeclaration : allTypes VariableId ( '=' expression )? -> ^( VARIABLE_DECLARATION[$allTypes.start,\"variable declaration\"] allTypes VariableId ( expression )? ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:436:1: variableDeclaration : allTypes VariableId ( '=' expression )? -> ^( VARIABLE_DECLARATION[$allTypes.start,\"variable declaration\"] allTypes VariableId ( expression )? ) ;
 	public final TSPHPParser.variableDeclaration_return variableDeclaration() throws RecognitionException {
 		TSPHPParser.variableDeclaration_return retval = new TSPHPParser.variableDeclaration_return();
 		retval.start = input.LT(1);
@@ -6274,33 +6394,33 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token VariableId190=null;
-		Token char_literal191=null;
-		ParserRuleReturnScope allTypes189 =null;
-		ParserRuleReturnScope expression192 =null;
+		Token VariableId191=null;
+		Token char_literal192=null;
+		ParserRuleReturnScope allTypes190 =null;
+		ParserRuleReturnScope expression193 =null;
 
-		CommonTree VariableId190_tree=null;
-		CommonTree char_literal191_tree=null;
+		CommonTree VariableId191_tree=null;
+		CommonTree char_literal192_tree=null;
 		RewriteRuleTokenStream stream_Assign=new RewriteRuleTokenStream(adaptor,"token Assign");
 		RewriteRuleTokenStream stream_VariableId=new RewriteRuleTokenStream(adaptor,"token VariableId");
 		RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
 		RewriteRuleSubtreeStream stream_allTypes=new RewriteRuleSubtreeStream(adaptor,"rule allTypes");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 47) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 48) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:2: ( allTypes VariableId ( '=' expression )? -> ^( VARIABLE_DECLARATION[$allTypes.start,\"variable declaration\"] allTypes VariableId ( expression )? ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:5: allTypes VariableId ( '=' expression )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:2: ( allTypes VariableId ( '=' expression )? -> ^( VARIABLE_DECLARATION[$allTypes.start,\"variable declaration\"] allTypes VariableId ( expression )? ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:5: allTypes VariableId ( '=' expression )?
 			{
-			pushFollow(FOLLOW_allTypes_in_variableDeclaration2247);
-			allTypes189=allTypes();
+			pushFollow(FOLLOW_allTypes_in_variableDeclaration2289);
+			allTypes190=allTypes();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) stream_allTypes.add(allTypes189.getTree());
-			VariableId190=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableDeclaration2249); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_VariableId.add(VariableId190);
+			if ( state.backtracking==0 ) stream_allTypes.add(allTypes190.getTree());
+			VariableId191=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableDeclaration2291); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_VariableId.add(VariableId191);
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:25: ( '=' expression )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:25: ( '=' expression )?
 			int alt62=2;
 			int LA62_0 = input.LA(1);
 			if ( (LA62_0==Assign) ) {
@@ -6308,23 +6428,23 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt62) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:26: '=' expression
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:26: '=' expression
 					{
-					char_literal191=(Token)match(input,Assign,FOLLOW_Assign_in_variableDeclaration2252); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_Assign.add(char_literal191);
+					char_literal192=(Token)match(input,Assign,FOLLOW_Assign_in_variableDeclaration2294); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_Assign.add(char_literal192);
 
-					pushFollow(FOLLOW_expression_in_variableDeclaration2254);
-					expression192=expression();
+					pushFollow(FOLLOW_expression_in_variableDeclaration2296);
+					expression193=expression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_expression.add(expression192.getTree());
+					if ( state.backtracking==0 ) stream_expression.add(expression193.getTree());
 					}
 					break;
 
 			}
 
 			// AST REWRITE
-			// elements: expression, allTypes, VariableId
+			// elements: expression, VariableId, allTypes
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -6336,13 +6456,13 @@ public TreeAdaptor getTreeAdaptor() {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 428:43: -> ^( VARIABLE_DECLARATION[$allTypes.start,\"variable declaration\"] allTypes VariableId ( expression )? )
+			// 437:43: -> ^( VARIABLE_DECLARATION[$allTypes.start,\"variable declaration\"] allTypes VariableId ( expression )? )
 			{
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:46: ^( VARIABLE_DECLARATION[$allTypes.start,\"variable declaration\"] allTypes VariableId ( expression )? )
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:46: ^( VARIABLE_DECLARATION[$allTypes.start,\"variable declaration\"] allTypes VariableId ( expression )? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(
-				(CommonTree)adaptor.create(VARIABLE_DECLARATION, (allTypes189!=null?((Token)allTypes189.start):null), "variable declaration")
+				(CommonTree)adaptor.create(VARIABLE_DECLARATION, (allTypes190!=null?((Token)allTypes190.start):null), "variable declaration")
 				, root_1);
 
 				adaptor.addChild(root_1, stream_allTypes.nextTree());
@@ -6351,7 +6471,7 @@ public TreeAdaptor getTreeAdaptor() {
 				stream_VariableId.nextNode()
 				);
 
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:428:129: ( expression )?
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:129: ( expression )?
 				if ( stream_expression.hasNext() ) {
 					adaptor.addChild(root_1, stream_expression.nextTree());
 
@@ -6383,7 +6503,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 47, variableDeclaration_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 48, variableDeclaration_StartIndex); }
 
 		}
 		return retval;
@@ -6398,7 +6518,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "expression"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:430:1: expression : logicOrWeak ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:439:1: expression : logicOrWeak ;
 	public final TSPHPParser.expression_return expression() throws RecognitionException {
 		TSPHPParser.expression_return retval = new TSPHPParser.expression_return();
 		retval.start = input.LT(1);
@@ -6406,23 +6526,23 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope logicOrWeak193 =null;
+		ParserRuleReturnScope logicOrWeak194 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 48) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 49) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:431:2: ( logicOrWeak )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:431:4: logicOrWeak
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:440:2: ( logicOrWeak )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:440:4: logicOrWeak
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_logicOrWeak_in_expression2280);
-			logicOrWeak193=logicOrWeak();
+			pushFollow(FOLLOW_logicOrWeak_in_expression2322);
+			logicOrWeak194=logicOrWeak();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicOrWeak193.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicOrWeak194.getTree());
 
 			}
 
@@ -6440,7 +6560,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 48, expression_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 49, expression_StartIndex); }
 
 		}
 		return retval;
@@ -6455,7 +6575,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "expressionForTest"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:433:1: expressionForTest : expression ';' !;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:442:1: expressionForTest : expression ';' !;
 	public final TSPHPParser.expressionForTest_return expressionForTest() throws RecognitionException {
 		TSPHPParser.expressionForTest_return retval = new TSPHPParser.expressionForTest_return();
 		retval.start = input.LT(1);
@@ -6463,27 +6583,27 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal195=null;
-		ParserRuleReturnScope expression194 =null;
+		Token char_literal196=null;
+		ParserRuleReturnScope expression195 =null;
 
-		CommonTree char_literal195_tree=null;
+		CommonTree char_literal196_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 49) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 50) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:434:2: ( expression ';' !)
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:434:4: expression ';' !
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:443:2: ( expression ';' !)
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:443:4: expression ';' !
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_expression_in_expressionForTest2289);
-			expression194=expression();
+			pushFollow(FOLLOW_expression_in_expressionForTest2331);
+			expression195=expression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression194.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression195.getTree());
 
-			char_literal195=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_expressionForTest2291); if (state.failed) return retval;
+			char_literal196=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_expressionForTest2333); if (state.failed) return retval;
 			}
 
 			retval.stop = input.LT(-1);
@@ -6500,7 +6620,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 49, expressionForTest_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 50, expressionForTest_StartIndex); }
 
 		}
 		return retval;
@@ -6515,7 +6635,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "logicOrWeak"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:436:1: logicOrWeak : logicXorWeak ( 'or' ^ logicXorWeak )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:445:1: logicOrWeak : logicXorWeak ( 'or' ^ logicXorWeak )* ;
 	public final TSPHPParser.logicOrWeak_return logicOrWeak() throws RecognitionException {
 		TSPHPParser.logicOrWeak_return retval = new TSPHPParser.logicOrWeak_return();
 		retval.start = input.LT(1);
@@ -6523,35 +6643,35 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal197=null;
-		ParserRuleReturnScope logicXorWeak196 =null;
-		ParserRuleReturnScope logicXorWeak198 =null;
+		Token string_literal198=null;
+		ParserRuleReturnScope logicXorWeak197 =null;
+		ParserRuleReturnScope logicXorWeak199 =null;
 
-		CommonTree string_literal197_tree=null;
+		CommonTree string_literal198_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 50) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 51) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:2: ( logicXorWeak ( 'or' ^ logicXorWeak )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:4: logicXorWeak ( 'or' ^ logicXorWeak )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:2: ( logicXorWeak ( 'or' ^ logicXorWeak )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:4: logicXorWeak ( 'or' ^ logicXorWeak )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_logicXorWeak_in_logicOrWeak2301);
-			logicXorWeak196=logicXorWeak();
+			pushFollow(FOLLOW_logicXorWeak_in_logicOrWeak2343);
+			logicXorWeak197=logicXorWeak();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicXorWeak196.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicXorWeak197.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:17: ( 'or' ^ logicXorWeak )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:17: ( 'or' ^ logicXorWeak )*
 			loop63:
 			do {
 				int alt63=2;
 				int LA63_0 = input.LA(1);
 				if ( (LA63_0==LogicOrWeak) ) {
 					int LA63_2 = input.LA(2);
-					if ( (synpred101_TSPHP()) ) {
+					if ( (synpred102_TSPHP()) ) {
 						alt63=1;
 					}
 
@@ -6559,21 +6679,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt63) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:18: 'or' ^ logicXorWeak
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:18: 'or' ^ logicXorWeak
 					{
-					string_literal197=(Token)match(input,LogicOrWeak,FOLLOW_LogicOrWeak_in_logicOrWeak2304); if (state.failed) return retval;
+					string_literal198=(Token)match(input,LogicOrWeak,FOLLOW_LogicOrWeak_in_logicOrWeak2346); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal197_tree = 
-					(CommonTree)adaptor.create(string_literal197)
+					string_literal198_tree = 
+					(CommonTree)adaptor.create(string_literal198)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(string_literal197_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(string_literal198_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_logicXorWeak_in_logicOrWeak2307);
-					logicXorWeak198=logicXorWeak();
+					pushFollow(FOLLOW_logicXorWeak_in_logicOrWeak2349);
+					logicXorWeak199=logicXorWeak();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicXorWeak198.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicXorWeak199.getTree());
 
 					}
 					break;
@@ -6599,7 +6719,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 50, logicOrWeak_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 51, logicOrWeak_StartIndex); }
 
 		}
 		return retval;
@@ -6614,7 +6734,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "logicXorWeak"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:439:1: logicXorWeak : logicAndWeak ( 'xor' ^ logicAndWeak )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:448:1: logicXorWeak : logicAndWeak ( 'xor' ^ logicAndWeak )* ;
 	public final TSPHPParser.logicXorWeak_return logicXorWeak() throws RecognitionException {
 		TSPHPParser.logicXorWeak_return retval = new TSPHPParser.logicXorWeak_return();
 		retval.start = input.LT(1);
@@ -6622,35 +6742,35 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal200=null;
-		ParserRuleReturnScope logicAndWeak199 =null;
-		ParserRuleReturnScope logicAndWeak201 =null;
+		Token string_literal201=null;
+		ParserRuleReturnScope logicAndWeak200 =null;
+		ParserRuleReturnScope logicAndWeak202 =null;
 
-		CommonTree string_literal200_tree=null;
+		CommonTree string_literal201_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 51) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 52) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:440:2: ( logicAndWeak ( 'xor' ^ logicAndWeak )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:440:4: logicAndWeak ( 'xor' ^ logicAndWeak )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:449:2: ( logicAndWeak ( 'xor' ^ logicAndWeak )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:449:4: logicAndWeak ( 'xor' ^ logicAndWeak )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_logicAndWeak_in_logicXorWeak2320);
-			logicAndWeak199=logicAndWeak();
+			pushFollow(FOLLOW_logicAndWeak_in_logicXorWeak2362);
+			logicAndWeak200=logicAndWeak();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicAndWeak199.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicAndWeak200.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:440:17: ( 'xor' ^ logicAndWeak )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:449:17: ( 'xor' ^ logicAndWeak )*
 			loop64:
 			do {
 				int alt64=2;
 				int LA64_0 = input.LA(1);
 				if ( (LA64_0==LogicXorWeak) ) {
 					int LA64_2 = input.LA(2);
-					if ( (synpred102_TSPHP()) ) {
+					if ( (synpred103_TSPHP()) ) {
 						alt64=1;
 					}
 
@@ -6658,21 +6778,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt64) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:440:18: 'xor' ^ logicAndWeak
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:449:18: 'xor' ^ logicAndWeak
 					{
-					string_literal200=(Token)match(input,LogicXorWeak,FOLLOW_LogicXorWeak_in_logicXorWeak2323); if (state.failed) return retval;
+					string_literal201=(Token)match(input,LogicXorWeak,FOLLOW_LogicXorWeak_in_logicXorWeak2365); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal200_tree = 
-					(CommonTree)adaptor.create(string_literal200)
+					string_literal201_tree = 
+					(CommonTree)adaptor.create(string_literal201)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(string_literal200_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(string_literal201_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_logicAndWeak_in_logicXorWeak2326);
-					logicAndWeak201=logicAndWeak();
+					pushFollow(FOLLOW_logicAndWeak_in_logicXorWeak2368);
+					logicAndWeak202=logicAndWeak();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicAndWeak201.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicAndWeak202.getTree());
 
 					}
 					break;
@@ -6698,7 +6818,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 51, logicXorWeak_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 52, logicXorWeak_StartIndex); }
 
 		}
 		return retval;
@@ -6713,7 +6833,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "logicAndWeak"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:442:1: logicAndWeak : assignment ( 'and' ^ assignment )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:451:1: logicAndWeak : assignment ( 'and' ^ assignment )* ;
 	public final TSPHPParser.logicAndWeak_return logicAndWeak() throws RecognitionException {
 		TSPHPParser.logicAndWeak_return retval = new TSPHPParser.logicAndWeak_return();
 		retval.start = input.LT(1);
@@ -6721,35 +6841,35 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal203=null;
-		ParserRuleReturnScope assignment202 =null;
-		ParserRuleReturnScope assignment204 =null;
+		Token string_literal204=null;
+		ParserRuleReturnScope assignment203 =null;
+		ParserRuleReturnScope assignment205 =null;
 
-		CommonTree string_literal203_tree=null;
+		CommonTree string_literal204_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 52) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 53) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:443:2: ( assignment ( 'and' ^ assignment )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:443:4: assignment ( 'and' ^ assignment )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:2: ( assignment ( 'and' ^ assignment )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:4: assignment ( 'and' ^ assignment )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_assignment_in_logicAndWeak2339);
-			assignment202=assignment();
+			pushFollow(FOLLOW_assignment_in_logicAndWeak2381);
+			assignment203=assignment();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, assignment202.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, assignment203.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:443:15: ( 'and' ^ assignment )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:15: ( 'and' ^ assignment )*
 			loop65:
 			do {
 				int alt65=2;
 				int LA65_0 = input.LA(1);
 				if ( (LA65_0==LogicAndWeak) ) {
 					int LA65_2 = input.LA(2);
-					if ( (synpred103_TSPHP()) ) {
+					if ( (synpred104_TSPHP()) ) {
 						alt65=1;
 					}
 
@@ -6757,21 +6877,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt65) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:443:16: 'and' ^ assignment
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:16: 'and' ^ assignment
 					{
-					string_literal203=(Token)match(input,LogicAndWeak,FOLLOW_LogicAndWeak_in_logicAndWeak2342); if (state.failed) return retval;
+					string_literal204=(Token)match(input,LogicAndWeak,FOLLOW_LogicAndWeak_in_logicAndWeak2384); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal203_tree = 
-					(CommonTree)adaptor.create(string_literal203)
+					string_literal204_tree = 
+					(CommonTree)adaptor.create(string_literal204)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(string_literal203_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(string_literal204_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_assignment_in_logicAndWeak2345);
-					assignment204=assignment();
+					pushFollow(FOLLOW_assignment_in_logicAndWeak2387);
+					assignment205=assignment();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, assignment204.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, assignment205.getTree());
 
 					}
 					break;
@@ -6797,7 +6917,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 52, logicAndWeak_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 53, logicAndWeak_StartIndex); }
 
 		}
 		return retval;
@@ -6812,7 +6932,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "assignment"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:445:1: assignment : ternary ( assignmentOperator ^ ternary )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:454:1: assignment : ternary ( assignmentOperator ^ ternary )* ;
 	public final TSPHPParser.assignment_return assignment() throws RecognitionException {
 		TSPHPParser.assignment_return retval = new TSPHPParser.assignment_return();
 		retval.start = input.LT(1);
@@ -6820,34 +6940,34 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope ternary205 =null;
-		ParserRuleReturnScope assignmentOperator206 =null;
-		ParserRuleReturnScope ternary207 =null;
+		ParserRuleReturnScope ternary206 =null;
+		ParserRuleReturnScope assignmentOperator207 =null;
+		ParserRuleReturnScope ternary208 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 53) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 54) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:2: ( ternary ( assignmentOperator ^ ternary )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:4: ternary ( assignmentOperator ^ ternary )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:2: ( ternary ( assignmentOperator ^ ternary )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:4: ternary ( assignmentOperator ^ ternary )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_ternary_in_assignment2356);
-			ternary205=ternary();
+			pushFollow(FOLLOW_ternary_in_assignment2398);
+			ternary206=ternary();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, ternary205.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, ternary206.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:12: ( assignmentOperator ^ ternary )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:12: ( assignmentOperator ^ ternary )*
 			loop66:
 			do {
 				int alt66=2;
 				int LA66_0 = input.LA(1);
 				if ( (LA66_0==Assign||LA66_0==BitwiseAndEqual||LA66_0==BitwiseOrEqual||LA66_0==BitwiseXorEqual||LA66_0==DivideEqual||LA66_0==DotEqual||LA66_0==MinusEqual||LA66_0==ModuloEqual||LA66_0==MultiplyEqual||LA66_0==PlusEqual||LA66_0==ShiftLeftEqual||LA66_0==ShiftRightEqual) ) {
 					int LA66_2 = input.LA(2);
-					if ( (synpred104_TSPHP()) ) {
+					if ( (synpred105_TSPHP()) ) {
 						alt66=1;
 					}
 
@@ -6855,18 +6975,18 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt66) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:13: assignmentOperator ^ ternary
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:13: assignmentOperator ^ ternary
 					{
-					pushFollow(FOLLOW_assignmentOperator_in_assignment2359);
-					assignmentOperator206=assignmentOperator();
+					pushFollow(FOLLOW_assignmentOperator_in_assignment2401);
+					assignmentOperator207=assignmentOperator();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(assignmentOperator206.getTree(), root_0);
-					pushFollow(FOLLOW_ternary_in_assignment2362);
-					ternary207=ternary();
+					if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(assignmentOperator207.getTree(), root_0);
+					pushFollow(FOLLOW_ternary_in_assignment2404);
+					ternary208=ternary();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, ternary207.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, ternary208.getTree());
 
 					}
 					break;
@@ -6892,7 +7012,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 53, assignment_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 54, assignment_StartIndex); }
 
 		}
 		return retval;
@@ -6907,7 +7027,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "ternary"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:448:1: ternary : logicOr ( '?' ^ expression ':' ! expression )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:457:1: ternary : logicOr ( '?' ^ expression ':' ! expression )? ;
 	public final TSPHPParser.ternary_return ternary() throws RecognitionException {
 		TSPHPParser.ternary_return retval = new TSPHPParser.ternary_return();
 		retval.start = input.LT(1);
@@ -6915,31 +7035,31 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal209=null;
-		Token char_literal211=null;
-		ParserRuleReturnScope logicOr208 =null;
-		ParserRuleReturnScope expression210 =null;
-		ParserRuleReturnScope expression212 =null;
+		Token char_literal210=null;
+		Token char_literal212=null;
+		ParserRuleReturnScope logicOr209 =null;
+		ParserRuleReturnScope expression211 =null;
+		ParserRuleReturnScope expression213 =null;
 
-		CommonTree char_literal209_tree=null;
-		CommonTree char_literal211_tree=null;
+		CommonTree char_literal210_tree=null;
+		CommonTree char_literal212_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 54) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 55) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:448:9: ( logicOr ( '?' ^ expression ':' ! expression )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:448:11: logicOr ( '?' ^ expression ':' ! expression )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:457:9: ( logicOr ( '?' ^ expression ':' ! expression )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:457:11: logicOr ( '?' ^ expression ':' ! expression )?
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_logicOr_in_ternary2372);
-			logicOr208=logicOr();
+			pushFollow(FOLLOW_logicOr_in_ternary2414);
+			logicOr209=logicOr();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicOr208.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicOr209.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:448:19: ( '?' ^ expression ':' ! expression )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:457:19: ( '?' ^ expression ':' ! expression )?
 			int alt67=2;
 			int LA67_0 = input.LA(1);
 			if ( (LA67_0==QuestionMark) ) {
@@ -6947,28 +7067,28 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt67) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:448:20: '?' ^ expression ':' ! expression
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:457:20: '?' ^ expression ':' ! expression
 					{
-					char_literal209=(Token)match(input,QuestionMark,FOLLOW_QuestionMark_in_ternary2375); if (state.failed) return retval;
+					char_literal210=(Token)match(input,QuestionMark,FOLLOW_QuestionMark_in_ternary2417); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal209_tree = 
-					(CommonTree)adaptor.create(char_literal209)
+					char_literal210_tree = 
+					(CommonTree)adaptor.create(char_literal210)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(char_literal209_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(char_literal210_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_expression_in_ternary2378);
-					expression210=expression();
+					pushFollow(FOLLOW_expression_in_ternary2420);
+					expression211=expression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression210.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression211.getTree());
 
-					char_literal211=(Token)match(input,Colon,FOLLOW_Colon_in_ternary2380); if (state.failed) return retval;
-					pushFollow(FOLLOW_expression_in_ternary2383);
-					expression212=expression();
+					char_literal212=(Token)match(input,Colon,FOLLOW_Colon_in_ternary2422); if (state.failed) return retval;
+					pushFollow(FOLLOW_expression_in_ternary2425);
+					expression213=expression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression212.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression213.getTree());
 
 					}
 					break;
@@ -6991,7 +7111,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 54, ternary_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 55, ternary_StartIndex); }
 
 		}
 		return retval;
@@ -7006,7 +7126,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "logicOr"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:450:1: logicOr : logicAnd ( '||' ^ logicAnd )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:459:1: logicOr : logicAnd ( '||' ^ logicAnd )* ;
 	public final TSPHPParser.logicOr_return logicOr() throws RecognitionException {
 		TSPHPParser.logicOr_return retval = new TSPHPParser.logicOr_return();
 		retval.start = input.LT(1);
@@ -7014,28 +7134,28 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal214=null;
-		ParserRuleReturnScope logicAnd213 =null;
-		ParserRuleReturnScope logicAnd215 =null;
+		Token string_literal215=null;
+		ParserRuleReturnScope logicAnd214 =null;
+		ParserRuleReturnScope logicAnd216 =null;
 
-		CommonTree string_literal214_tree=null;
+		CommonTree string_literal215_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 55) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 56) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:450:9: ( logicAnd ( '||' ^ logicAnd )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:450:11: logicAnd ( '||' ^ logicAnd )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:459:9: ( logicAnd ( '||' ^ logicAnd )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:459:11: logicAnd ( '||' ^ logicAnd )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_logicAnd_in_logicOr2393);
-			logicAnd213=logicAnd();
+			pushFollow(FOLLOW_logicAnd_in_logicOr2435);
+			logicAnd214=logicAnd();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicAnd213.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicAnd214.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:450:20: ( '||' ^ logicAnd )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:459:20: ( '||' ^ logicAnd )*
 			loop68:
 			do {
 				int alt68=2;
@@ -7046,21 +7166,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt68) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:450:21: '||' ^ logicAnd
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:459:21: '||' ^ logicAnd
 					{
-					string_literal214=(Token)match(input,LogicOr,FOLLOW_LogicOr_in_logicOr2396); if (state.failed) return retval;
+					string_literal215=(Token)match(input,LogicOr,FOLLOW_LogicOr_in_logicOr2438); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal214_tree = 
-					(CommonTree)adaptor.create(string_literal214)
+					string_literal215_tree = 
+					(CommonTree)adaptor.create(string_literal215)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(string_literal214_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(string_literal215_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_logicAnd_in_logicOr2399);
-					logicAnd215=logicAnd();
+					pushFollow(FOLLOW_logicAnd_in_logicOr2441);
+					logicAnd216=logicAnd();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicAnd215.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicAnd216.getTree());
 
 					}
 					break;
@@ -7086,7 +7206,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 55, logicOr_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 56, logicOr_StartIndex); }
 
 		}
 		return retval;
@@ -7101,7 +7221,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "logicAnd"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:1: logicAnd : bitwiseOr ( '&&' ^ bitwiseOr )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:461:1: logicAnd : bitwiseOr ( '&&' ^ bitwiseOr )* ;
 	public final TSPHPParser.logicAnd_return logicAnd() throws RecognitionException {
 		TSPHPParser.logicAnd_return retval = new TSPHPParser.logicAnd_return();
 		retval.start = input.LT(1);
@@ -7109,28 +7229,28 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal217=null;
-		ParserRuleReturnScope bitwiseOr216 =null;
-		ParserRuleReturnScope bitwiseOr218 =null;
+		Token string_literal218=null;
+		ParserRuleReturnScope bitwiseOr217 =null;
+		ParserRuleReturnScope bitwiseOr219 =null;
 
-		CommonTree string_literal217_tree=null;
+		CommonTree string_literal218_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 56) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 57) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:9: ( bitwiseOr ( '&&' ^ bitwiseOr )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:11: bitwiseOr ( '&&' ^ bitwiseOr )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:461:9: ( bitwiseOr ( '&&' ^ bitwiseOr )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:461:11: bitwiseOr ( '&&' ^ bitwiseOr )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_bitwiseOr_in_logicAnd2408);
-			bitwiseOr216=bitwiseOr();
+			pushFollow(FOLLOW_bitwiseOr_in_logicAnd2450);
+			bitwiseOr217=bitwiseOr();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseOr216.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseOr217.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:21: ( '&&' ^ bitwiseOr )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:461:21: ( '&&' ^ bitwiseOr )*
 			loop69:
 			do {
 				int alt69=2;
@@ -7141,21 +7261,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt69) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:22: '&&' ^ bitwiseOr
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:461:22: '&&' ^ bitwiseOr
 					{
-					string_literal217=(Token)match(input,LogicAnd,FOLLOW_LogicAnd_in_logicAnd2411); if (state.failed) return retval;
+					string_literal218=(Token)match(input,LogicAnd,FOLLOW_LogicAnd_in_logicAnd2453); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal217_tree = 
-					(CommonTree)adaptor.create(string_literal217)
+					string_literal218_tree = 
+					(CommonTree)adaptor.create(string_literal218)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(string_literal217_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(string_literal218_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_bitwiseOr_in_logicAnd2414);
-					bitwiseOr218=bitwiseOr();
+					pushFollow(FOLLOW_bitwiseOr_in_logicAnd2456);
+					bitwiseOr219=bitwiseOr();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseOr218.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseOr219.getTree());
 
 					}
 					break;
@@ -7181,7 +7301,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 56, logicAnd_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 57, logicAnd_StartIndex); }
 
 		}
 		return retval;
@@ -7196,7 +7316,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "bitwiseOr"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:454:1: bitwiseOr : bitwiseXor ( '|' ^ bitwiseXor )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:463:1: bitwiseOr : bitwiseXor ( '|' ^ bitwiseXor )* ;
 	public final TSPHPParser.bitwiseOr_return bitwiseOr() throws RecognitionException {
 		TSPHPParser.bitwiseOr_return retval = new TSPHPParser.bitwiseOr_return();
 		retval.start = input.LT(1);
@@ -7204,28 +7324,28 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal220=null;
-		ParserRuleReturnScope bitwiseXor219 =null;
-		ParserRuleReturnScope bitwiseXor221 =null;
+		Token char_literal221=null;
+		ParserRuleReturnScope bitwiseXor220 =null;
+		ParserRuleReturnScope bitwiseXor222 =null;
 
-		CommonTree char_literal220_tree=null;
+		CommonTree char_literal221_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 57) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 58) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:2: ( bitwiseXor ( '|' ^ bitwiseXor )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:4: bitwiseXor ( '|' ^ bitwiseXor )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:464:2: ( bitwiseXor ( '|' ^ bitwiseXor )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:464:4: bitwiseXor ( '|' ^ bitwiseXor )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_bitwiseXor_in_bitwiseOr2425);
-			bitwiseXor219=bitwiseXor();
+			pushFollow(FOLLOW_bitwiseXor_in_bitwiseOr2467);
+			bitwiseXor220=bitwiseXor();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseXor219.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseXor220.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:15: ( '|' ^ bitwiseXor )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:464:15: ( '|' ^ bitwiseXor )*
 			loop70:
 			do {
 				int alt70=2;
@@ -7236,21 +7356,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt70) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:16: '|' ^ bitwiseXor
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:464:16: '|' ^ bitwiseXor
 					{
-					char_literal220=(Token)match(input,BitwiseOr,FOLLOW_BitwiseOr_in_bitwiseOr2428); if (state.failed) return retval;
+					char_literal221=(Token)match(input,BitwiseOr,FOLLOW_BitwiseOr_in_bitwiseOr2470); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal220_tree = 
-					(CommonTree)adaptor.create(char_literal220)
+					char_literal221_tree = 
+					(CommonTree)adaptor.create(char_literal221)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(char_literal220_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(char_literal221_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_bitwiseXor_in_bitwiseOr2431);
-					bitwiseXor221=bitwiseXor();
+					pushFollow(FOLLOW_bitwiseXor_in_bitwiseOr2473);
+					bitwiseXor222=bitwiseXor();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseXor221.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseXor222.getTree());
 
 					}
 					break;
@@ -7276,7 +7396,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 57, bitwiseOr_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 58, bitwiseOr_StartIndex); }
 
 		}
 		return retval;
@@ -7291,7 +7411,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "bitwiseXor"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:457:1: bitwiseXor : bitwiseAnd ( '^' ^ bitwiseAnd )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:466:1: bitwiseXor : bitwiseAnd ( '^' ^ bitwiseAnd )* ;
 	public final TSPHPParser.bitwiseXor_return bitwiseXor() throws RecognitionException {
 		TSPHPParser.bitwiseXor_return retval = new TSPHPParser.bitwiseXor_return();
 		retval.start = input.LT(1);
@@ -7299,28 +7419,28 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal223=null;
-		ParserRuleReturnScope bitwiseAnd222 =null;
-		ParserRuleReturnScope bitwiseAnd224 =null;
+		Token char_literal224=null;
+		ParserRuleReturnScope bitwiseAnd223 =null;
+		ParserRuleReturnScope bitwiseAnd225 =null;
 
-		CommonTree char_literal223_tree=null;
+		CommonTree char_literal224_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 58) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 59) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:458:2: ( bitwiseAnd ( '^' ^ bitwiseAnd )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:458:4: bitwiseAnd ( '^' ^ bitwiseAnd )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:467:2: ( bitwiseAnd ( '^' ^ bitwiseAnd )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:467:4: bitwiseAnd ( '^' ^ bitwiseAnd )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_bitwiseAnd_in_bitwiseXor2442);
-			bitwiseAnd222=bitwiseAnd();
+			pushFollow(FOLLOW_bitwiseAnd_in_bitwiseXor2484);
+			bitwiseAnd223=bitwiseAnd();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseAnd222.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseAnd223.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:458:15: ( '^' ^ bitwiseAnd )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:467:15: ( '^' ^ bitwiseAnd )*
 			loop71:
 			do {
 				int alt71=2;
@@ -7331,21 +7451,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt71) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:458:16: '^' ^ bitwiseAnd
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:467:16: '^' ^ bitwiseAnd
 					{
-					char_literal223=(Token)match(input,BitwiseXor,FOLLOW_BitwiseXor_in_bitwiseXor2445); if (state.failed) return retval;
+					char_literal224=(Token)match(input,BitwiseXor,FOLLOW_BitwiseXor_in_bitwiseXor2487); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal223_tree = 
-					(CommonTree)adaptor.create(char_literal223)
+					char_literal224_tree = 
+					(CommonTree)adaptor.create(char_literal224)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(char_literal223_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(char_literal224_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_bitwiseAnd_in_bitwiseXor2448);
-					bitwiseAnd224=bitwiseAnd();
+					pushFollow(FOLLOW_bitwiseAnd_in_bitwiseXor2490);
+					bitwiseAnd225=bitwiseAnd();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseAnd224.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseAnd225.getTree());
 
 					}
 					break;
@@ -7371,7 +7491,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 58, bitwiseXor_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 59, bitwiseXor_StartIndex); }
 
 		}
 		return retval;
@@ -7386,7 +7506,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "bitwiseAnd"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:460:1: bitwiseAnd : equality ( '&' ^ equality )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:469:1: bitwiseAnd : equality ( '&' ^ equality )* ;
 	public final TSPHPParser.bitwiseAnd_return bitwiseAnd() throws RecognitionException {
 		TSPHPParser.bitwiseAnd_return retval = new TSPHPParser.bitwiseAnd_return();
 		retval.start = input.LT(1);
@@ -7394,28 +7514,28 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal226=null;
-		ParserRuleReturnScope equality225 =null;
-		ParserRuleReturnScope equality227 =null;
+		Token char_literal227=null;
+		ParserRuleReturnScope equality226 =null;
+		ParserRuleReturnScope equality228 =null;
 
-		CommonTree char_literal226_tree=null;
+		CommonTree char_literal227_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 59) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 60) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:461:2: ( equality ( '&' ^ equality )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:461:4: equality ( '&' ^ equality )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:470:2: ( equality ( '&' ^ equality )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:470:4: equality ( '&' ^ equality )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_equality_in_bitwiseAnd2459);
-			equality225=equality();
+			pushFollow(FOLLOW_equality_in_bitwiseAnd2501);
+			equality226=equality();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, equality225.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, equality226.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:461:13: ( '&' ^ equality )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:470:13: ( '&' ^ equality )*
 			loop72:
 			do {
 				int alt72=2;
@@ -7426,21 +7546,21 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt72) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:461:14: '&' ^ equality
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:470:14: '&' ^ equality
 					{
-					char_literal226=(Token)match(input,BitwiseAnd,FOLLOW_BitwiseAnd_in_bitwiseAnd2462); if (state.failed) return retval;
+					char_literal227=(Token)match(input,BitwiseAnd,FOLLOW_BitwiseAnd_in_bitwiseAnd2504); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal226_tree = 
-					(CommonTree)adaptor.create(char_literal226)
+					char_literal227_tree = 
+					(CommonTree)adaptor.create(char_literal227)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(char_literal226_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(char_literal227_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_equality_in_bitwiseAnd2465);
-					equality227=equality();
+					pushFollow(FOLLOW_equality_in_bitwiseAnd2507);
+					equality228=equality();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, equality227.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, equality228.getTree());
 
 					}
 					break;
@@ -7466,7 +7586,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 59, bitwiseAnd_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 60, bitwiseAnd_StartIndex); }
 
 		}
 		return retval;
@@ -7481,7 +7601,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "equality"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:463:1: equality : comparison ( equalityOperator ^ comparison )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:472:1: equality : comparison ( equalityOperator ^ comparison )? ;
 	public final TSPHPParser.equality_return equality() throws RecognitionException {
 		TSPHPParser.equality_return retval = new TSPHPParser.equality_return();
 		retval.start = input.LT(1);
@@ -7489,27 +7609,27 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope comparison228 =null;
-		ParserRuleReturnScope equalityOperator229 =null;
-		ParserRuleReturnScope comparison230 =null;
+		ParserRuleReturnScope comparison229 =null;
+		ParserRuleReturnScope equalityOperator230 =null;
+		ParserRuleReturnScope comparison231 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 60) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 61) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:463:9: ( comparison ( equalityOperator ^ comparison )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:463:11: comparison ( equalityOperator ^ comparison )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:472:9: ( comparison ( equalityOperator ^ comparison )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:472:11: comparison ( equalityOperator ^ comparison )?
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_comparison_in_equality2474);
-			comparison228=comparison();
+			pushFollow(FOLLOW_comparison_in_equality2516);
+			comparison229=comparison();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, comparison228.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, comparison229.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:463:22: ( equalityOperator ^ comparison )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:472:22: ( equalityOperator ^ comparison )?
 			int alt73=2;
 			int LA73_0 = input.LA(1);
 			if ( (LA73_0==Equal||LA73_0==Identical||(LA73_0 >= NotEqual && LA73_0 <= NotIdentical)) ) {
@@ -7517,18 +7637,18 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt73) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:463:23: equalityOperator ^ comparison
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:472:23: equalityOperator ^ comparison
 					{
-					pushFollow(FOLLOW_equalityOperator_in_equality2477);
-					equalityOperator229=equalityOperator();
+					pushFollow(FOLLOW_equalityOperator_in_equality2519);
+					equalityOperator230=equalityOperator();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(equalityOperator229.getTree(), root_0);
-					pushFollow(FOLLOW_comparison_in_equality2480);
-					comparison230=comparison();
+					if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(equalityOperator230.getTree(), root_0);
+					pushFollow(FOLLOW_comparison_in_equality2522);
+					comparison231=comparison();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, comparison230.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, comparison231.getTree());
 
 					}
 					break;
@@ -7551,7 +7671,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 60, equality_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 61, equality_StartIndex); }
 
 		}
 		return retval;
@@ -7566,7 +7686,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "equalityOperator"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:465:1: equalityOperator : ( '==' | '===' | '!=' | '!==' | '<>' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:474:1: equalityOperator : ( '==' | '===' | '!=' | '!==' | '<>' );
 	public final TSPHPParser.equalityOperator_return equalityOperator() throws RecognitionException {
 		TSPHPParser.equalityOperator_return retval = new TSPHPParser.equalityOperator_return();
 		retval.start = input.LT(1);
@@ -7574,24 +7694,24 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token set231=null;
+		Token set232=null;
 
-		CommonTree set231_tree=null;
+		CommonTree set232_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 61) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 62) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:466:2: ( '==' | '===' | '!=' | '!==' | '<>' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:475:2: ( '==' | '===' | '!=' | '!==' | '<>' )
 			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			set231=(Token)input.LT(1);
+			set232=(Token)input.LT(1);
 			if ( input.LA(1)==Equal||input.LA(1)==Identical||(input.LA(1) >= NotEqual && input.LA(1) <= NotIdentical) ) {
 				input.consume();
 				if ( state.backtracking==0 ) adaptor.addChild(root_0, 
-				(CommonTree)adaptor.create(set231)
+				(CommonTree)adaptor.create(set232)
 				);
 				state.errorRecovery=false;
 				state.failed=false;
@@ -7617,7 +7737,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 61, equalityOperator_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 62, equalityOperator_StartIndex); }
 
 		}
 		return retval;
@@ -7632,7 +7752,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "comparison"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:473:1: comparison : bitwiseShift ( comparisonOperator ^ bitwiseShift )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:482:1: comparison : bitwiseShift ( comparisonOperator ^ bitwiseShift )? ;
 	public final TSPHPParser.comparison_return comparison() throws RecognitionException {
 		TSPHPParser.comparison_return retval = new TSPHPParser.comparison_return();
 		retval.start = input.LT(1);
@@ -7640,27 +7760,27 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope bitwiseShift232 =null;
-		ParserRuleReturnScope comparisonOperator233 =null;
-		ParserRuleReturnScope bitwiseShift234 =null;
+		ParserRuleReturnScope bitwiseShift233 =null;
+		ParserRuleReturnScope comparisonOperator234 =null;
+		ParserRuleReturnScope bitwiseShift235 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 62) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 63) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:474:2: ( bitwiseShift ( comparisonOperator ^ bitwiseShift )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:474:4: bitwiseShift ( comparisonOperator ^ bitwiseShift )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:483:2: ( bitwiseShift ( comparisonOperator ^ bitwiseShift )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:483:4: bitwiseShift ( comparisonOperator ^ bitwiseShift )?
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_bitwiseShift_in_comparison2522);
-			bitwiseShift232=bitwiseShift();
+			pushFollow(FOLLOW_bitwiseShift_in_comparison2564);
+			bitwiseShift233=bitwiseShift();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseShift232.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseShift233.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:474:17: ( comparisonOperator ^ bitwiseShift )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:483:17: ( comparisonOperator ^ bitwiseShift )?
 			int alt74=2;
 			int LA74_0 = input.LA(1);
 			if ( ((LA74_0 >= GreaterEqualThan && LA74_0 <= GreaterThan)||(LA74_0 >= LessEqualThan && LA74_0 <= LessThan)) ) {
@@ -7668,18 +7788,18 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt74) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:474:18: comparisonOperator ^ bitwiseShift
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:483:18: comparisonOperator ^ bitwiseShift
 					{
-					pushFollow(FOLLOW_comparisonOperator_in_comparison2525);
-					comparisonOperator233=comparisonOperator();
+					pushFollow(FOLLOW_comparisonOperator_in_comparison2567);
+					comparisonOperator234=comparisonOperator();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(comparisonOperator233.getTree(), root_0);
-					pushFollow(FOLLOW_bitwiseShift_in_comparison2528);
-					bitwiseShift234=bitwiseShift();
+					if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(comparisonOperator234.getTree(), root_0);
+					pushFollow(FOLLOW_bitwiseShift_in_comparison2570);
+					bitwiseShift235=bitwiseShift();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseShift234.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, bitwiseShift235.getTree());
 
 					}
 					break;
@@ -7702,7 +7822,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 62, comparison_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 63, comparison_StartIndex); }
 
 		}
 		return retval;
@@ -7717,7 +7837,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "comparisonOperator"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:476:1: comparisonOperator : ( '<' | '<=' | '>' | '>=' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:485:1: comparisonOperator : ( '<' | '<=' | '>' | '>=' );
 	public final TSPHPParser.comparisonOperator_return comparisonOperator() throws RecognitionException {
 		TSPHPParser.comparisonOperator_return retval = new TSPHPParser.comparisonOperator_return();
 		retval.start = input.LT(1);
@@ -7725,24 +7845,24 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token set235=null;
+		Token set236=null;
 
-		CommonTree set235_tree=null;
+		CommonTree set236_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 63) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 64) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:477:2: ( '<' | '<=' | '>' | '>=' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:486:2: ( '<' | '<=' | '>' | '>=' )
 			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			set235=(Token)input.LT(1);
+			set236=(Token)input.LT(1);
 			if ( (input.LA(1) >= GreaterEqualThan && input.LA(1) <= GreaterThan)||(input.LA(1) >= LessEqualThan && input.LA(1) <= LessThan) ) {
 				input.consume();
 				if ( state.backtracking==0 ) adaptor.addChild(root_0, 
-				(CommonTree)adaptor.create(set235)
+				(CommonTree)adaptor.create(set236)
 				);
 				state.errorRecovery=false;
 				state.failed=false;
@@ -7768,7 +7888,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 63, comparisonOperator_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 64, comparisonOperator_StartIndex); }
 
 		}
 		return retval;
@@ -7783,7 +7903,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "bitwiseShift"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:483:1: bitwiseShift : termOrStringConcatenation ( ( '<<' | '>>' ) ^ termOrStringConcatenation )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:492:1: bitwiseShift : termOrStringConcatenation ( ( '<<' | '>>' ) ^ termOrStringConcatenation )* ;
 	public final TSPHPParser.bitwiseShift_return bitwiseShift() throws RecognitionException {
 		TSPHPParser.bitwiseShift_return retval = new TSPHPParser.bitwiseShift_return();
 		retval.start = input.LT(1);
@@ -7791,28 +7911,28 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token set237=null;
-		ParserRuleReturnScope termOrStringConcatenation236 =null;
-		ParserRuleReturnScope termOrStringConcatenation238 =null;
+		Token set238=null;
+		ParserRuleReturnScope termOrStringConcatenation237 =null;
+		ParserRuleReturnScope termOrStringConcatenation239 =null;
 
-		CommonTree set237_tree=null;
+		CommonTree set238_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 64) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 65) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:483:14: ( termOrStringConcatenation ( ( '<<' | '>>' ) ^ termOrStringConcatenation )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:483:16: termOrStringConcatenation ( ( '<<' | '>>' ) ^ termOrStringConcatenation )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:492:14: ( termOrStringConcatenation ( ( '<<' | '>>' ) ^ termOrStringConcatenation )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:492:16: termOrStringConcatenation ( ( '<<' | '>>' ) ^ termOrStringConcatenation )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_termOrStringConcatenation_in_bitwiseShift2564);
-			termOrStringConcatenation236=termOrStringConcatenation();
+			pushFollow(FOLLOW_termOrStringConcatenation_in_bitwiseShift2606);
+			termOrStringConcatenation237=termOrStringConcatenation();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, termOrStringConcatenation236.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, termOrStringConcatenation237.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:483:42: ( ( '<<' | '>>' ) ^ termOrStringConcatenation )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:492:42: ( ( '<<' | '>>' ) ^ termOrStringConcatenation )*
 			loop75:
 			do {
 				int alt75=2;
@@ -7823,14 +7943,14 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt75) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:483:43: ( '<<' | '>>' ) ^ termOrStringConcatenation
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:492:43: ( '<<' | '>>' ) ^ termOrStringConcatenation
 					{
-					set237=(Token)input.LT(1);
-					set237=(Token)input.LT(1);
+					set238=(Token)input.LT(1);
+					set238=(Token)input.LT(1);
 					if ( input.LA(1)==ShiftLeft||input.LA(1)==ShiftRight ) {
 						input.consume();
 						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(
-						(CommonTree)adaptor.create(set237)
+						(CommonTree)adaptor.create(set238)
 						, root_0);
 						state.errorRecovery=false;
 						state.failed=false;
@@ -7840,11 +7960,11 @@ public TreeAdaptor getTreeAdaptor() {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_termOrStringConcatenation_in_bitwiseShift2574);
-					termOrStringConcatenation238=termOrStringConcatenation();
+					pushFollow(FOLLOW_termOrStringConcatenation_in_bitwiseShift2616);
+					termOrStringConcatenation239=termOrStringConcatenation();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, termOrStringConcatenation238.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, termOrStringConcatenation239.getTree());
 
 					}
 					break;
@@ -7870,7 +7990,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 64, bitwiseShift_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 65, bitwiseShift_StartIndex); }
 
 		}
 		return retval;
@@ -7885,7 +8005,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "termOrStringConcatenation"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:485:1: termOrStringConcatenation : factor ( ( '+' | '-' | '.' ) ^ factor )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:494:1: termOrStringConcatenation : factor ( ( '+' | '-' | '.' ) ^ factor )* ;
 	public final TSPHPParser.termOrStringConcatenation_return termOrStringConcatenation() throws RecognitionException {
 		TSPHPParser.termOrStringConcatenation_return retval = new TSPHPParser.termOrStringConcatenation_return();
 		retval.start = input.LT(1);
@@ -7893,28 +8013,28 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token set240=null;
-		ParserRuleReturnScope factor239 =null;
-		ParserRuleReturnScope factor241 =null;
+		Token set241=null;
+		ParserRuleReturnScope factor240 =null;
+		ParserRuleReturnScope factor242 =null;
 
-		CommonTree set240_tree=null;
+		CommonTree set241_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 65) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 66) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:485:27: ( factor ( ( '+' | '-' | '.' ) ^ factor )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:485:29: factor ( ( '+' | '-' | '.' ) ^ factor )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:494:27: ( factor ( ( '+' | '-' | '.' ) ^ factor )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:494:29: factor ( ( '+' | '-' | '.' ) ^ factor )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_factor_in_termOrStringConcatenation2584);
-			factor239=factor();
+			pushFollow(FOLLOW_factor_in_termOrStringConcatenation2626);
+			factor240=factor();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, factor239.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, factor240.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:485:36: ( ( '+' | '-' | '.' ) ^ factor )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:494:36: ( ( '+' | '-' | '.' ) ^ factor )*
 			loop76:
 			do {
 				int alt76=2;
@@ -7925,14 +8045,14 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt76) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:485:37: ( '+' | '-' | '.' ) ^ factor
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:494:37: ( '+' | '-' | '.' ) ^ factor
 					{
-					set240=(Token)input.LT(1);
-					set240=(Token)input.LT(1);
+					set241=(Token)input.LT(1);
+					set241=(Token)input.LT(1);
 					if ( input.LA(1)==Dot||input.LA(1)==Minus||input.LA(1)==Plus ) {
 						input.consume();
 						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(
-						(CommonTree)adaptor.create(set240)
+						(CommonTree)adaptor.create(set241)
 						, root_0);
 						state.errorRecovery=false;
 						state.failed=false;
@@ -7942,11 +8062,11 @@ public TreeAdaptor getTreeAdaptor() {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_factor_in_termOrStringConcatenation2596);
-					factor241=factor();
+					pushFollow(FOLLOW_factor_in_termOrStringConcatenation2638);
+					factor242=factor();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, factor241.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, factor242.getTree());
 
 					}
 					break;
@@ -7972,7 +8092,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 65, termOrStringConcatenation_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 66, termOrStringConcatenation_StartIndex); }
 
 		}
 		return retval;
@@ -7987,7 +8107,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "factor"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:487:1: factor : logicNot ( ( '*' | '/' | '%' ) ^ logicNot )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:496:1: factor : logicNot ( ( '*' | '/' | '%' ) ^ logicNot )* ;
 	public final TSPHPParser.factor_return factor() throws RecognitionException {
 		TSPHPParser.factor_return retval = new TSPHPParser.factor_return();
 		retval.start = input.LT(1);
@@ -7995,28 +8115,28 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token set243=null;
-		ParserRuleReturnScope logicNot242 =null;
-		ParserRuleReturnScope logicNot244 =null;
+		Token set244=null;
+		ParserRuleReturnScope logicNot243 =null;
+		ParserRuleReturnScope logicNot245 =null;
 
-		CommonTree set243_tree=null;
+		CommonTree set244_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 66) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 67) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:487:8: ( logicNot ( ( '*' | '/' | '%' ) ^ logicNot )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:487:10: logicNot ( ( '*' | '/' | '%' ) ^ logicNot )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:496:8: ( logicNot ( ( '*' | '/' | '%' ) ^ logicNot )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:496:10: logicNot ( ( '*' | '/' | '%' ) ^ logicNot )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_logicNot_in_factor2606);
-			logicNot242=logicNot();
+			pushFollow(FOLLOW_logicNot_in_factor2648);
+			logicNot243=logicNot();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicNot242.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, logicNot243.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:487:19: ( ( '*' | '/' | '%' ) ^ logicNot )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:496:19: ( ( '*' | '/' | '%' ) ^ logicNot )*
 			loop77:
 			do {
 				int alt77=2;
@@ -8027,14 +8147,14 @@ public TreeAdaptor getTreeAdaptor() {
 
 				switch (alt77) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:487:20: ( '*' | '/' | '%' ) ^ logicNot
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:496:20: ( '*' | '/' | '%' ) ^ logicNot
 					{
-					set243=(Token)input.LT(1);
-					set243=(Token)input.LT(1);
+					set244=(Token)input.LT(1);
+					set244=(Token)input.LT(1);
 					if ( input.LA(1)==Divide||input.LA(1)==Modulo||input.LA(1)==Multiply ) {
 						input.consume();
 						if ( state.backtracking==0 ) root_0 = (CommonTree)adaptor.becomeRoot(
-						(CommonTree)adaptor.create(set243)
+						(CommonTree)adaptor.create(set244)
 						, root_0);
 						state.errorRecovery=false;
 						state.failed=false;
@@ -8044,11 +8164,11 @@ public TreeAdaptor getTreeAdaptor() {
 						MismatchedSetException mse = new MismatchedSetException(null,input);
 						throw mse;
 					}
-					pushFollow(FOLLOW_logicNot_in_factor2618);
-					logicNot244=logicNot();
+					pushFollow(FOLLOW_logicNot_in_factor2660);
+					logicNot245=logicNot();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicNot244.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicNot245.getTree());
 
 					}
 					break;
@@ -8074,7 +8194,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 66, factor_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 67, factor_StartIndex); }
 
 		}
 		return retval;
@@ -8089,7 +8209,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "logicNot"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:489:1: logicNot : ( '!' ^ logicNot | instanceOf );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:1: logicNot : ( '!' ^ logicNot | instanceOf );
 	public final TSPHPParser.logicNot_return logicNot() throws RecognitionException {
 		TSPHPParser.logicNot_return retval = new TSPHPParser.logicNot_return();
 		retval.start = input.LT(1);
@@ -8097,16 +8217,16 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal245=null;
-		ParserRuleReturnScope logicNot246 =null;
-		ParserRuleReturnScope instanceOf247 =null;
+		Token char_literal246=null;
+		ParserRuleReturnScope logicNot247 =null;
+		ParserRuleReturnScope instanceOf248 =null;
 
-		CommonTree char_literal245_tree=null;
+		CommonTree char_literal246_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 67) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 68) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:489:9: ( '!' ^ logicNot | instanceOf )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:9: ( '!' ^ logicNot | instanceOf )
 			int alt78=2;
 			int LA78_0 = input.LA(1);
 			if ( (LA78_0==LogicNot) ) {
@@ -8123,38 +8243,38 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt78) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:489:11: '!' ^ logicNot
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:11: '!' ^ logicNot
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					char_literal245=(Token)match(input,LogicNot,FOLLOW_LogicNot_in_logicNot2627); if (state.failed) return retval;
+					char_literal246=(Token)match(input,LogicNot,FOLLOW_LogicNot_in_logicNot2669); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal245_tree = 
-					(CommonTree)adaptor.create(char_literal245)
+					char_literal246_tree = 
+					(CommonTree)adaptor.create(char_literal246)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(char_literal245_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(char_literal246_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_logicNot_in_logicNot2630);
-					logicNot246=logicNot();
+					pushFollow(FOLLOW_logicNot_in_logicNot2672);
+					logicNot247=logicNot();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicNot246.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, logicNot247.getTree());
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:490:4: instanceOf
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:499:4: instanceOf
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_instanceOf_in_logicNot2635);
-					instanceOf247=instanceOf();
+					pushFollow(FOLLOW_instanceOf_in_logicNot2677);
+					instanceOf248=instanceOf();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, instanceOf247.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, instanceOf248.getTree());
 
 					}
 					break;
@@ -8174,7 +8294,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 67, logicNot_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 68, logicNot_StartIndex); }
 
 		}
 		return retval;
@@ -8189,7 +8309,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "instanceOf"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:494:1: instanceOf : castOrBitwiseNotOrAt ( 'instanceof' ^ ( classInterfaceTypeWithoutObject | VariableId ) )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:502:1: instanceOf : castOrBitwiseNotOrAt ( 'instanceof' ^ ( classInterfaceTypeWithoutObject | VariableId ) )? ;
 	public final TSPHPParser.instanceOf_return instanceOf() throws RecognitionException {
 		TSPHPParser.instanceOf_return retval = new TSPHPParser.instanceOf_return();
 		retval.start = input.LT(1);
@@ -8197,30 +8317,30 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal249=null;
-		Token VariableId251=null;
-		ParserRuleReturnScope castOrBitwiseNotOrAt248 =null;
-		ParserRuleReturnScope classInterfaceTypeWithoutObject250 =null;
+		Token string_literal250=null;
+		Token VariableId252=null;
+		ParserRuleReturnScope castOrBitwiseNotOrAt249 =null;
+		ParserRuleReturnScope classInterfaceTypeWithoutObject251 =null;
 
-		CommonTree string_literal249_tree=null;
-		CommonTree VariableId251_tree=null;
+		CommonTree string_literal250_tree=null;
+		CommonTree VariableId252_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 68) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 69) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:495:2: ( castOrBitwiseNotOrAt ( 'instanceof' ^ ( classInterfaceTypeWithoutObject | VariableId ) )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:495:4: castOrBitwiseNotOrAt ( 'instanceof' ^ ( classInterfaceTypeWithoutObject | VariableId ) )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:2: ( castOrBitwiseNotOrAt ( 'instanceof' ^ ( classInterfaceTypeWithoutObject | VariableId ) )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:4: castOrBitwiseNotOrAt ( 'instanceof' ^ ( classInterfaceTypeWithoutObject | VariableId ) )?
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_instanceOf2647);
-			castOrBitwiseNotOrAt248=castOrBitwiseNotOrAt();
+			pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_instanceOf2688);
+			castOrBitwiseNotOrAt249=castOrBitwiseNotOrAt();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, castOrBitwiseNotOrAt248.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, castOrBitwiseNotOrAt249.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:495:25: ( 'instanceof' ^ ( classInterfaceTypeWithoutObject | VariableId ) )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:25: ( 'instanceof' ^ ( classInterfaceTypeWithoutObject | VariableId ) )?
 			int alt80=2;
 			int LA80_0 = input.LA(1);
 			if ( (LA80_0==Instanceof) ) {
@@ -8228,17 +8348,17 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt80) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:495:26: 'instanceof' ^ ( classInterfaceTypeWithoutObject | VariableId )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:26: 'instanceof' ^ ( classInterfaceTypeWithoutObject | VariableId )
 					{
-					string_literal249=(Token)match(input,Instanceof,FOLLOW_Instanceof_in_instanceOf2650); if (state.failed) return retval;
+					string_literal250=(Token)match(input,Instanceof,FOLLOW_Instanceof_in_instanceOf2691); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal249_tree = 
-					(CommonTree)adaptor.create(string_literal249)
+					string_literal250_tree = 
+					(CommonTree)adaptor.create(string_literal250)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(string_literal249_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(string_literal250_tree, root_0);
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:495:40: ( classInterfaceTypeWithoutObject | VariableId )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:40: ( classInterfaceTypeWithoutObject | VariableId )
 					int alt79=2;
 					int LA79_0 = input.LA(1);
 					if ( (LA79_0==Backslash||LA79_0==Identifier) ) {
@@ -8255,25 +8375,25 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					switch (alt79) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:495:41: classInterfaceTypeWithoutObject
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:41: classInterfaceTypeWithoutObject
 							{
-							pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_instanceOf2654);
-							classInterfaceTypeWithoutObject250=classInterfaceTypeWithoutObject();
+							pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_instanceOf2695);
+							classInterfaceTypeWithoutObject251=classInterfaceTypeWithoutObject();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, classInterfaceTypeWithoutObject250.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, classInterfaceTypeWithoutObject251.getTree());
 
 							}
 							break;
 						case 2 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:495:73: VariableId
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:503:73: VariableId
 							{
-							VariableId251=(Token)match(input,VariableId,FOLLOW_VariableId_in_instanceOf2656); if (state.failed) return retval;
+							VariableId252=(Token)match(input,VariableId,FOLLOW_VariableId_in_instanceOf2697); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
-							VariableId251_tree = 
-							(CommonTree)adaptor.create(VariableId251)
+							VariableId252_tree = 
+							(CommonTree)adaptor.create(VariableId252)
 							;
-							adaptor.addChild(root_0, VariableId251_tree);
+							adaptor.addChild(root_0, VariableId252_tree);
 							}
 
 							}
@@ -8302,7 +8422,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 68, instanceOf_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 69, instanceOf_StartIndex); }
 
 		}
 		return retval;
@@ -8317,7 +8437,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "castOrBitwiseNotOrAt"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:497:1: castOrBitwiseNotOrAt : (cast= '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt -> ^( CAST[$cast,\"cast\"] allTypesWithoutResource castOrBitwiseNotOrAt ) | '~' ^ castOrBitwiseNotOrAt | '@' ^ castOrBitwiseNotOrAt | newOrClone );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:505:1: castOrBitwiseNotOrAt : (cast= '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt -> ^( CAST[$cast,\"cast\"] allTypesWithoutResource castOrBitwiseNotOrAt ) | '~' ^ castOrBitwiseNotOrAt | '@' ^ castOrBitwiseNotOrAt | newOrClone );
 	public final TSPHPParser.castOrBitwiseNotOrAt_return castOrBitwiseNotOrAt() throws RecognitionException {
 		TSPHPParser.castOrBitwiseNotOrAt_return retval = new TSPHPParser.castOrBitwiseNotOrAt_return();
 		retval.start = input.LT(1);
@@ -8326,34 +8446,34 @@ public TreeAdaptor getTreeAdaptor() {
 		CommonTree root_0 = null;
 
 		Token cast=null;
-		Token char_literal253=null;
-		Token char_literal255=null;
-		Token char_literal257=null;
-		ParserRuleReturnScope allTypesWithoutResource252 =null;
-		ParserRuleReturnScope castOrBitwiseNotOrAt254 =null;
-		ParserRuleReturnScope castOrBitwiseNotOrAt256 =null;
-		ParserRuleReturnScope castOrBitwiseNotOrAt258 =null;
-		ParserRuleReturnScope newOrClone259 =null;
+		Token char_literal254=null;
+		Token char_literal256=null;
+		Token char_literal258=null;
+		ParserRuleReturnScope allTypesWithoutResource253 =null;
+		ParserRuleReturnScope castOrBitwiseNotOrAt255 =null;
+		ParserRuleReturnScope castOrBitwiseNotOrAt257 =null;
+		ParserRuleReturnScope castOrBitwiseNotOrAt259 =null;
+		ParserRuleReturnScope newOrClone260 =null;
 
 		CommonTree cast_tree=null;
-		CommonTree char_literal253_tree=null;
-		CommonTree char_literal255_tree=null;
-		CommonTree char_literal257_tree=null;
+		CommonTree char_literal254_tree=null;
+		CommonTree char_literal256_tree=null;
+		CommonTree char_literal258_tree=null;
 		RewriteRuleTokenStream stream_LeftParanthesis=new RewriteRuleTokenStream(adaptor,"token LeftParanthesis");
 		RewriteRuleTokenStream stream_RightParanthesis=new RewriteRuleTokenStream(adaptor,"token RightParanthesis");
 		RewriteRuleSubtreeStream stream_castOrBitwiseNotOrAt=new RewriteRuleSubtreeStream(adaptor,"rule castOrBitwiseNotOrAt");
 		RewriteRuleSubtreeStream stream_allTypesWithoutResource=new RewriteRuleSubtreeStream(adaptor,"rule allTypesWithoutResource");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 69) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 70) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:2: (cast= '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt -> ^( CAST[$cast,\"cast\"] allTypesWithoutResource castOrBitwiseNotOrAt ) | '~' ^ castOrBitwiseNotOrAt | '@' ^ castOrBitwiseNotOrAt | newOrClone )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:506:2: (cast= '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt -> ^( CAST[$cast,\"cast\"] allTypesWithoutResource castOrBitwiseNotOrAt ) | '~' ^ castOrBitwiseNotOrAt | '@' ^ castOrBitwiseNotOrAt | newOrClone )
 			int alt81=4;
 			switch ( input.LA(1) ) {
 			case LeftParanthesis:
 				{
 				int LA81_1 = input.LA(2);
-				if ( (synpred131_TSPHP()) ) {
+				if ( (synpred132_TSPHP()) ) {
 					alt81=1;
 				}
 				else if ( (true) ) {
@@ -8414,26 +8534,26 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt81) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:4: cast= '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:506:4: cast= '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt
 					{
-					cast=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_castOrBitwiseNotOrAt2672); if (state.failed) return retval; 
+					cast=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_castOrBitwiseNotOrAt2713); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_LeftParanthesis.add(cast);
 
-					pushFollow(FOLLOW_allTypesWithoutResource_in_castOrBitwiseNotOrAt2674);
-					allTypesWithoutResource252=allTypesWithoutResource();
+					pushFollow(FOLLOW_allTypesWithoutResource_in_castOrBitwiseNotOrAt2715);
+					allTypesWithoutResource253=allTypesWithoutResource();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_allTypesWithoutResource.add(allTypesWithoutResource252.getTree());
-					char_literal253=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_castOrBitwiseNotOrAt2676); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal253);
+					if ( state.backtracking==0 ) stream_allTypesWithoutResource.add(allTypesWithoutResource253.getTree());
+					char_literal254=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_castOrBitwiseNotOrAt2717); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal254);
 
-					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2678);
-					castOrBitwiseNotOrAt254=castOrBitwiseNotOrAt();
+					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2719);
+					castOrBitwiseNotOrAt255=castOrBitwiseNotOrAt();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_castOrBitwiseNotOrAt.add(castOrBitwiseNotOrAt254.getTree());
+					if ( state.backtracking==0 ) stream_castOrBitwiseNotOrAt.add(castOrBitwiseNotOrAt255.getTree());
 					// AST REWRITE
-					// elements: castOrBitwiseNotOrAt, allTypesWithoutResource
+					// elements: allTypesWithoutResource, castOrBitwiseNotOrAt
 					// token labels: 
 					// rule labels: retval
 					// token list labels: 
@@ -8445,9 +8565,9 @@ public TreeAdaptor getTreeAdaptor() {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 498:64: -> ^( CAST[$cast,\"cast\"] allTypesWithoutResource castOrBitwiseNotOrAt )
+					// 506:64: -> ^( CAST[$cast,\"cast\"] allTypesWithoutResource castOrBitwiseNotOrAt )
 					{
-						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:67: ^( CAST[$cast,\"cast\"] allTypesWithoutResource castOrBitwiseNotOrAt )
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:506:67: ^( CAST[$cast,\"cast\"] allTypesWithoutResource castOrBitwiseNotOrAt )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot(
@@ -8470,60 +8590,60 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:499:4: '~' ^ castOrBitwiseNotOrAt
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:4: '~' ^ castOrBitwiseNotOrAt
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					char_literal255=(Token)match(input,BitwiseNot,FOLLOW_BitwiseNot_in_castOrBitwiseNotOrAt2694); if (state.failed) return retval;
+					char_literal256=(Token)match(input,BitwiseNot,FOLLOW_BitwiseNot_in_castOrBitwiseNotOrAt2735); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal255_tree = 
-					(CommonTree)adaptor.create(char_literal255)
+					char_literal256_tree = 
+					(CommonTree)adaptor.create(char_literal256)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(char_literal255_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(char_literal256_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2697);
-					castOrBitwiseNotOrAt256=castOrBitwiseNotOrAt();
+					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2738);
+					castOrBitwiseNotOrAt257=castOrBitwiseNotOrAt();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, castOrBitwiseNotOrAt256.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, castOrBitwiseNotOrAt257.getTree());
 
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:500:4: '@' ^ castOrBitwiseNotOrAt
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:508:4: '@' ^ castOrBitwiseNotOrAt
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					char_literal257=(Token)match(input,At,FOLLOW_At_in_castOrBitwiseNotOrAt2702); if (state.failed) return retval;
+					char_literal258=(Token)match(input,At,FOLLOW_At_in_castOrBitwiseNotOrAt2743); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal257_tree = 
-					(CommonTree)adaptor.create(char_literal257)
+					char_literal258_tree = 
+					(CommonTree)adaptor.create(char_literal258)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(char_literal257_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(char_literal258_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2705);
-					castOrBitwiseNotOrAt258=castOrBitwiseNotOrAt();
+					pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2746);
+					castOrBitwiseNotOrAt259=castOrBitwiseNotOrAt();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, castOrBitwiseNotOrAt258.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, castOrBitwiseNotOrAt259.getTree());
 
 					}
 					break;
 				case 4 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:501:4: newOrClone
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:509:4: newOrClone
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_newOrClone_in_castOrBitwiseNotOrAt2711);
-					newOrClone259=newOrClone();
+					pushFollow(FOLLOW_newOrClone_in_castOrBitwiseNotOrAt2752);
+					newOrClone260=newOrClone();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, newOrClone259.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, newOrClone260.getTree());
 
 					}
 					break;
@@ -8543,7 +8663,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 69, castOrBitwiseNotOrAt_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 70, castOrBitwiseNotOrAt_StartIndex); }
 
 		}
 		return retval;
@@ -8558,7 +8678,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "newOrClone"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:504:1: newOrClone : ( 'clone' ^ variableMemberStaticMember | newObject | unaryPrimary );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:512:1: newOrClone : ( 'clone' ^ variableMemberStaticMember | newObject | unaryPrimary );
 	public final TSPHPParser.newOrClone_return newOrClone() throws RecognitionException {
 		TSPHPParser.newOrClone_return retval = new TSPHPParser.newOrClone_return();
 		retval.start = input.LT(1);
@@ -8566,17 +8686,17 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal260=null;
-		ParserRuleReturnScope variableMemberStaticMember261 =null;
-		ParserRuleReturnScope newObject262 =null;
-		ParserRuleReturnScope unaryPrimary263 =null;
+		Token string_literal261=null;
+		ParserRuleReturnScope variableMemberStaticMember262 =null;
+		ParserRuleReturnScope newObject263 =null;
+		ParserRuleReturnScope unaryPrimary264 =null;
 
-		CommonTree string_literal260_tree=null;
+		CommonTree string_literal261_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 70) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 71) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:505:2: ( 'clone' ^ variableMemberStaticMember | newObject | unaryPrimary )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:513:2: ( 'clone' ^ variableMemberStaticMember | newObject | unaryPrimary )
 			int alt82=3;
 			switch ( input.LA(1) ) {
 			case Clone:
@@ -8619,52 +8739,52 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt82) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:505:4: 'clone' ^ variableMemberStaticMember
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:513:4: 'clone' ^ variableMemberStaticMember
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					string_literal260=(Token)match(input,Clone,FOLLOW_Clone_in_newOrClone2722); if (state.failed) return retval;
+					string_literal261=(Token)match(input,Clone,FOLLOW_Clone_in_newOrClone2763); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal260_tree = 
-					(CommonTree)adaptor.create(string_literal260)
+					string_literal261_tree = 
+					(CommonTree)adaptor.create(string_literal261)
 					;
-					root_0 = (CommonTree)adaptor.becomeRoot(string_literal260_tree, root_0);
+					root_0 = (CommonTree)adaptor.becomeRoot(string_literal261_tree, root_0);
 					}
 
-					pushFollow(FOLLOW_variableMemberStaticMember_in_newOrClone2725);
-					variableMemberStaticMember261=variableMemberStaticMember();
+					pushFollow(FOLLOW_variableMemberStaticMember_in_newOrClone2766);
+					variableMemberStaticMember262=variableMemberStaticMember();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, variableMemberStaticMember261.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, variableMemberStaticMember262.getTree());
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:506:4: newObject
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:4: newObject
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_newObject_in_newOrClone2730);
-					newObject262=newObject();
+					pushFollow(FOLLOW_newObject_in_newOrClone2771);
+					newObject263=newObject();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, newObject262.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, newObject263.getTree());
 
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:507:4: unaryPrimary
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:515:4: unaryPrimary
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_unaryPrimary_in_newOrClone2735);
-					unaryPrimary263=unaryPrimary();
+					pushFollow(FOLLOW_unaryPrimary_in_newOrClone2776);
+					unaryPrimary264=unaryPrimary();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryPrimary263.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, unaryPrimary264.getTree());
 
 					}
 					break;
@@ -8684,7 +8804,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 70, newOrClone_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 71, newOrClone_StartIndex); }
 
 		}
 		return retval;
@@ -8699,7 +8819,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "variableMemberStaticMember"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:511:1: variableMemberStaticMember : ( staticAccessOrParent VariableId ( memberAccessOrArrayAccess )* | '$this' ( memberAccessOrArrayAccess )+ | VariableId ( memberAccessOrArrayAccess )+ | '$this' | VariableId );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:519:1: variableMemberStaticMember : ( staticAccessOrParent VariableId ( memberAccessOrArrayAccess )* | '$this' ( memberAccessOrArrayAccess )+ | VariableId ( memberAccessOrArrayAccess )+ | '$this' | VariableId );
 	public final TSPHPParser.variableMemberStaticMember_return variableMemberStaticMember() throws RecognitionException {
 		TSPHPParser.variableMemberStaticMember_return retval = new TSPHPParser.variableMemberStaticMember_return();
 		retval.start = input.LT(1);
@@ -8707,26 +8827,26 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token VariableId265=null;
-		Token string_literal267=null;
-		Token VariableId269=null;
-		Token string_literal271=null;
-		Token VariableId272=null;
-		ParserRuleReturnScope staticAccessOrParent264 =null;
-		ParserRuleReturnScope memberAccessOrArrayAccess266 =null;
-		ParserRuleReturnScope memberAccessOrArrayAccess268 =null;
-		ParserRuleReturnScope memberAccessOrArrayAccess270 =null;
+		Token VariableId266=null;
+		Token string_literal268=null;
+		Token VariableId270=null;
+		Token string_literal272=null;
+		Token VariableId273=null;
+		ParserRuleReturnScope staticAccessOrParent265 =null;
+		ParserRuleReturnScope memberAccessOrArrayAccess267 =null;
+		ParserRuleReturnScope memberAccessOrArrayAccess269 =null;
+		ParserRuleReturnScope memberAccessOrArrayAccess271 =null;
 
-		CommonTree VariableId265_tree=null;
-		CommonTree string_literal267_tree=null;
-		CommonTree VariableId269_tree=null;
-		CommonTree string_literal271_tree=null;
-		CommonTree VariableId272_tree=null;
+		CommonTree VariableId266_tree=null;
+		CommonTree string_literal268_tree=null;
+		CommonTree VariableId270_tree=null;
+		CommonTree string_literal272_tree=null;
+		CommonTree VariableId273_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 71) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 72) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:512:2: ( staticAccessOrParent VariableId ( memberAccessOrArrayAccess )* | '$this' ( memberAccessOrArrayAccess )+ | VariableId ( memberAccessOrArrayAccess )+ | '$this' | VariableId )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:520:2: ( staticAccessOrParent VariableId ( memberAccessOrArrayAccess )* | '$this' ( memberAccessOrArrayAccess )+ | VariableId ( memberAccessOrArrayAccess )+ | '$this' | VariableId )
 			int alt86=5;
 			switch ( input.LA(1) ) {
 			case Backslash:
@@ -8979,26 +9099,26 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt86) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:512:4: staticAccessOrParent VariableId ( memberAccessOrArrayAccess )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:520:4: staticAccessOrParent VariableId ( memberAccessOrArrayAccess )*
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_staticAccessOrParent_in_variableMemberStaticMember2748);
-					staticAccessOrParent264=staticAccessOrParent();
+					pushFollow(FOLLOW_staticAccessOrParent_in_variableMemberStaticMember2789);
+					staticAccessOrParent265=staticAccessOrParent();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, staticAccessOrParent264.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, staticAccessOrParent265.getTree());
 
-					VariableId265=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableMemberStaticMember2750); if (state.failed) return retval;
+					VariableId266=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableMemberStaticMember2791); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					VariableId265_tree = 
-					(CommonTree)adaptor.create(VariableId265)
+					VariableId266_tree = 
+					(CommonTree)adaptor.create(VariableId266)
 					;
-					adaptor.addChild(root_0, VariableId265_tree);
+					adaptor.addChild(root_0, VariableId266_tree);
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:512:36: ( memberAccessOrArrayAccess )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:520:36: ( memberAccessOrArrayAccess )*
 					loop83:
 					do {
 						int alt83=2;
@@ -9020,13 +9140,13 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt83) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:512:36: memberAccessOrArrayAccess
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:520:36: memberAccessOrArrayAccess
 							{
-							pushFollow(FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2752);
-							memberAccessOrArrayAccess266=memberAccessOrArrayAccess();
+							pushFollow(FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2793);
+							memberAccessOrArrayAccess267=memberAccessOrArrayAccess();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess266.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess267.getTree());
 
 							}
 							break;
@@ -9039,20 +9159,20 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:513:4: '$this' ( memberAccessOrArrayAccess )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:521:4: '$this' ( memberAccessOrArrayAccess )+
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					string_literal267=(Token)match(input,This,FOLLOW_This_in_variableMemberStaticMember2758); if (state.failed) return retval;
+					string_literal268=(Token)match(input,This,FOLLOW_This_in_variableMemberStaticMember2799); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal267_tree = 
-					(CommonTree)adaptor.create(string_literal267)
+					string_literal268_tree = 
+					(CommonTree)adaptor.create(string_literal268)
 					;
-					adaptor.addChild(root_0, string_literal267_tree);
+					adaptor.addChild(root_0, string_literal268_tree);
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:513:12: ( memberAccessOrArrayAccess )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:521:12: ( memberAccessOrArrayAccess )+
 					int cnt84=0;
 					loop84:
 					do {
@@ -9075,13 +9195,13 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt84) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:513:12: memberAccessOrArrayAccess
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:521:12: memberAccessOrArrayAccess
 							{
-							pushFollow(FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2760);
-							memberAccessOrArrayAccess268=memberAccessOrArrayAccess();
+							pushFollow(FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2801);
+							memberAccessOrArrayAccess269=memberAccessOrArrayAccess();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess268.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess269.getTree());
 
 							}
 							break;
@@ -9099,20 +9219,20 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:4: VariableId ( memberAccessOrArrayAccess )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:522:4: VariableId ( memberAccessOrArrayAccess )+
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					VariableId269=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableMemberStaticMember2766); if (state.failed) return retval;
+					VariableId270=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableMemberStaticMember2807); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					VariableId269_tree = 
-					(CommonTree)adaptor.create(VariableId269)
+					VariableId270_tree = 
+					(CommonTree)adaptor.create(VariableId270)
 					;
-					adaptor.addChild(root_0, VariableId269_tree);
+					adaptor.addChild(root_0, VariableId270_tree);
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:15: ( memberAccessOrArrayAccess )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:522:15: ( memberAccessOrArrayAccess )+
 					int cnt85=0;
 					loop85:
 					do {
@@ -9135,13 +9255,13 @@ public TreeAdaptor getTreeAdaptor() {
 
 						switch (alt85) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:514:15: memberAccessOrArrayAccess
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:522:15: memberAccessOrArrayAccess
 							{
-							pushFollow(FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2768);
-							memberAccessOrArrayAccess270=memberAccessOrArrayAccess();
+							pushFollow(FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2809);
+							memberAccessOrArrayAccess271=memberAccessOrArrayAccess();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess270.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess271.getTree());
 
 							}
 							break;
@@ -9159,33 +9279,33 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 4 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:515:4: '$this'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:523:4: '$this'
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					string_literal271=(Token)match(input,This,FOLLOW_This_in_variableMemberStaticMember2774); if (state.failed) return retval;
+					string_literal272=(Token)match(input,This,FOLLOW_This_in_variableMemberStaticMember2815); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal271_tree = 
-					(CommonTree)adaptor.create(string_literal271)
+					string_literal272_tree = 
+					(CommonTree)adaptor.create(string_literal272)
 					;
-					adaptor.addChild(root_0, string_literal271_tree);
+					adaptor.addChild(root_0, string_literal272_tree);
 					}
 
 					}
 					break;
 				case 5 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:516:4: VariableId
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:524:4: VariableId
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					VariableId272=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableMemberStaticMember2779); if (state.failed) return retval;
+					VariableId273=(Token)match(input,VariableId,FOLLOW_VariableId_in_variableMemberStaticMember2820); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					VariableId272_tree = 
-					(CommonTree)adaptor.create(VariableId272)
+					VariableId273_tree = 
+					(CommonTree)adaptor.create(VariableId273)
 					;
-					adaptor.addChild(root_0, VariableId272_tree);
+					adaptor.addChild(root_0, VariableId273_tree);
 					}
 
 					}
@@ -9206,7 +9326,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 71, variableMemberStaticMember_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 72, variableMemberStaticMember_StartIndex); }
 
 		}
 		return retval;
@@ -9221,7 +9341,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "staticAccessOrParent"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:519:1: staticAccessOrParent : ( 'self::' | 'parent::' | classInterfaceTypeWithoutObject '::' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:1: staticAccessOrParent : ( 'self::' | 'parent::' | classInterfaceTypeWithoutObject '::' );
 	public final TSPHPParser.staticAccessOrParent_return staticAccessOrParent() throws RecognitionException {
 		TSPHPParser.staticAccessOrParent_return retval = new TSPHPParser.staticAccessOrParent_return();
 		retval.start = input.LT(1);
@@ -9229,19 +9349,19 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal273=null;
 		Token string_literal274=null;
-		Token string_literal276=null;
-		ParserRuleReturnScope classInterfaceTypeWithoutObject275 =null;
+		Token string_literal275=null;
+		Token string_literal277=null;
+		ParserRuleReturnScope classInterfaceTypeWithoutObject276 =null;
 
-		CommonTree string_literal273_tree=null;
 		CommonTree string_literal274_tree=null;
-		CommonTree string_literal276_tree=null;
+		CommonTree string_literal275_tree=null;
+		CommonTree string_literal277_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 72) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 73) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:520:2: ( 'self::' | 'parent::' | classInterfaceTypeWithoutObject '::' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:528:2: ( 'self::' | 'parent::' | classInterfaceTypeWithoutObject '::' )
 			int alt87=3;
 			switch ( input.LA(1) ) {
 			case Self:
@@ -9268,28 +9388,12 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt87) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:520:4: 'self::'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:528:4: 'self::'
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					string_literal273=(Token)match(input,Self,FOLLOW_Self_in_staticAccessOrParent2790); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					string_literal273_tree = 
-					(CommonTree)adaptor.create(string_literal273)
-					;
-					adaptor.addChild(root_0, string_literal273_tree);
-					}
-
-					}
-					break;
-				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:521:4: 'parent::'
-					{
-					root_0 = (CommonTree)adaptor.nil();
-
-
-					string_literal274=(Token)match(input,Parent,FOLLOW_Parent_in_staticAccessOrParent2795); if (state.failed) return retval;
+					string_literal274=(Token)match(input,Self,FOLLOW_Self_in_staticAccessOrParent2831); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
 					string_literal274_tree = 
 					(CommonTree)adaptor.create(string_literal274)
@@ -9299,24 +9403,40 @@ public TreeAdaptor getTreeAdaptor() {
 
 					}
 					break;
-				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:522:4: classInterfaceTypeWithoutObject '::'
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:529:4: 'parent::'
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_staticAccessOrParent2800);
-					classInterfaceTypeWithoutObject275=classInterfaceTypeWithoutObject();
+					string_literal275=(Token)match(input,Parent,FOLLOW_Parent_in_staticAccessOrParent2836); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					string_literal275_tree = 
+					(CommonTree)adaptor.create(string_literal275)
+					;
+					adaptor.addChild(root_0, string_literal275_tree);
+					}
+
+					}
+					break;
+				case 3 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:530:4: classInterfaceTypeWithoutObject '::'
+					{
+					root_0 = (CommonTree)adaptor.nil();
+
+
+					pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_staticAccessOrParent2841);
+					classInterfaceTypeWithoutObject276=classInterfaceTypeWithoutObject();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, classInterfaceTypeWithoutObject275.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, classInterfaceTypeWithoutObject276.getTree());
 
-					string_literal276=(Token)match(input,DoubleColon,FOLLOW_DoubleColon_in_staticAccessOrParent2801); if (state.failed) return retval;
+					string_literal277=(Token)match(input,DoubleColon,FOLLOW_DoubleColon_in_staticAccessOrParent2842); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal276_tree = 
-					(CommonTree)adaptor.create(string_literal276)
+					string_literal277_tree = 
+					(CommonTree)adaptor.create(string_literal277)
 					;
-					adaptor.addChild(root_0, string_literal276_tree);
+					adaptor.addChild(root_0, string_literal277_tree);
 					}
 
 					}
@@ -9337,7 +9457,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 72, staticAccessOrParent_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 73, staticAccessOrParent_StartIndex); }
 
 		}
 		return retval;
@@ -9352,7 +9472,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "memberAccessOrArrayAccess"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:525:1: memberAccessOrArrayAccess : ( memberAccess | arrayAccess );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:533:1: memberAccessOrArrayAccess : ( memberAccess | arrayAccess );
 	public final TSPHPParser.memberAccessOrArrayAccess_return memberAccessOrArrayAccess() throws RecognitionException {
 		TSPHPParser.memberAccessOrArrayAccess_return retval = new TSPHPParser.memberAccessOrArrayAccess_return();
 		retval.start = input.LT(1);
@@ -9360,14 +9480,14 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope memberAccess277 =null;
-		ParserRuleReturnScope arrayAccess278 =null;
+		ParserRuleReturnScope memberAccess278 =null;
+		ParserRuleReturnScope arrayAccess279 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 73) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 74) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:2: ( memberAccess | arrayAccess )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:534:2: ( memberAccess | arrayAccess )
 			int alt88=2;
 			int LA88_0 = input.LA(1);
 			if ( (LA88_0==ObjectOperator) ) {
@@ -9384,30 +9504,30 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 			switch (alt88) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:526:4: memberAccess
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:534:4: memberAccess
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_memberAccess_in_memberAccessOrArrayAccess2812);
-					memberAccess277=memberAccess();
+					pushFollow(FOLLOW_memberAccess_in_memberAccessOrArrayAccess2853);
+					memberAccess278=memberAccess();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccess277.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccess278.getTree());
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:527:4: arrayAccess
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:535:4: arrayAccess
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_arrayAccess_in_memberAccessOrArrayAccess2817);
-					arrayAccess278=arrayAccess();
+					pushFollow(FOLLOW_arrayAccess_in_memberAccessOrArrayAccess2858);
+					arrayAccess279=arrayAccess();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, arrayAccess278.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, arrayAccess279.getTree());
 
 					}
 					break;
@@ -9427,7 +9547,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 73, memberAccessOrArrayAccess_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 74, memberAccessOrArrayAccess_StartIndex); }
 
 		}
 		return retval;
@@ -9442,7 +9562,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "memberAccess"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:529:1: memberAccess : '->' Identifier ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:537:1: memberAccess : '->' Identifier ;
 	public final TSPHPParser.memberAccess_return memberAccess() throws RecognitionException {
 		TSPHPParser.memberAccess_return retval = new TSPHPParser.memberAccess_return();
 		retval.start = input.LT(1);
@@ -9450,35 +9570,35 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal279=null;
-		Token Identifier280=null;
+		Token string_literal280=null;
+		Token Identifier281=null;
 
-		CommonTree string_literal279_tree=null;
-		CommonTree Identifier280_tree=null;
+		CommonTree string_literal280_tree=null;
+		CommonTree Identifier281_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 74) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 75) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:530:2: ( '->' Identifier )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:530:4: '->' Identifier
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:2: ( '->' Identifier )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:4: '->' Identifier
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal279=(Token)match(input,ObjectOperator,FOLLOW_ObjectOperator_in_memberAccess2827); if (state.failed) return retval;
+			string_literal280=(Token)match(input,ObjectOperator,FOLLOW_ObjectOperator_in_memberAccess2868); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal279_tree = 
-			(CommonTree)adaptor.create(string_literal279)
+			string_literal280_tree = 
+			(CommonTree)adaptor.create(string_literal280)
 			;
-			adaptor.addChild(root_0, string_literal279_tree);
+			adaptor.addChild(root_0, string_literal280_tree);
 			}
 
-			Identifier280=(Token)match(input,Identifier,FOLLOW_Identifier_in_memberAccess2829); if (state.failed) return retval;
+			Identifier281=(Token)match(input,Identifier,FOLLOW_Identifier_in_memberAccess2870); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			Identifier280_tree = 
-			(CommonTree)adaptor.create(Identifier280)
+			Identifier281_tree = 
+			(CommonTree)adaptor.create(Identifier281)
 			;
-			adaptor.addChild(root_0, Identifier280_tree);
+			adaptor.addChild(root_0, Identifier281_tree);
 			}
 
 			}
@@ -9497,7 +9617,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 74, memberAccess_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 75, memberAccess_StartIndex); }
 
 		}
 		return retval;
@@ -9512,7 +9632,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "arrayAccess"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:532:1: arrayAccess : '[' expression ']' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:540:1: arrayAccess : '[' expression ']' ;
 	public final TSPHPParser.arrayAccess_return arrayAccess() throws RecognitionException {
 		TSPHPParser.arrayAccess_return retval = new TSPHPParser.arrayAccess_return();
 		retval.start = input.LT(1);
@@ -9520,42 +9640,42 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal281=null;
-		Token char_literal283=null;
-		ParserRuleReturnScope expression282 =null;
+		Token char_literal282=null;
+		Token char_literal284=null;
+		ParserRuleReturnScope expression283 =null;
 
-		CommonTree char_literal281_tree=null;
-		CommonTree char_literal283_tree=null;
+		CommonTree char_literal282_tree=null;
+		CommonTree char_literal284_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 75) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 76) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:533:2: ( '[' expression ']' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:533:4: '[' expression ']'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:541:2: ( '[' expression ']' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:541:4: '[' expression ']'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			char_literal281=(Token)match(input,LeftSquareBrace,FOLLOW_LeftSquareBrace_in_arrayAccess2839); if (state.failed) return retval;
+			char_literal282=(Token)match(input,LeftSquareBrace,FOLLOW_LeftSquareBrace_in_arrayAccess2880); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal281_tree = 
-			(CommonTree)adaptor.create(char_literal281)
+			char_literal282_tree = 
+			(CommonTree)adaptor.create(char_literal282)
 			;
-			adaptor.addChild(root_0, char_literal281_tree);
+			adaptor.addChild(root_0, char_literal282_tree);
 			}
 
-			pushFollow(FOLLOW_expression_in_arrayAccess2841);
-			expression282=expression();
+			pushFollow(FOLLOW_expression_in_arrayAccess2882);
+			expression283=expression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression282.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression283.getTree());
 
-			char_literal283=(Token)match(input,RightSquareBrace,FOLLOW_RightSquareBrace_in_arrayAccess2843); if (state.failed) return retval;
+			char_literal284=(Token)match(input,RightSquareBrace,FOLLOW_RightSquareBrace_in_arrayAccess2884); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal283_tree = 
-			(CommonTree)adaptor.create(char_literal283)
+			char_literal284_tree = 
+			(CommonTree)adaptor.create(char_literal284)
 			;
-			adaptor.addChild(root_0, char_literal283_tree);
+			adaptor.addChild(root_0, char_literal284_tree);
 			}
 
 			}
@@ -9574,7 +9694,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 75, arrayAccess_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 76, arrayAccess_StartIndex); }
 
 		}
 		return retval;
@@ -9589,7 +9709,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "newObject"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:537:1: newObject : 'new' classInterfaceTypeWithoutObject ( '(' ( expressionList )? ')' )? -> ^( 'new' classInterfaceTypeWithoutObject ( expressionList )? ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:545:1: newObject : ( 'new' classInterfaceTypeWithoutObject '(' expressionList ')' -> ^( 'new' classInterfaceTypeWithoutObject expressionList ) | 'new' classInterfaceTypeWithoutObject -> ^( 'new' classInterfaceTypeWithoutObject EXPRESSION_LIST ) );
 	public final TSPHPParser.newObject_return newObject() throws RecognitionException {
 		TSPHPParser.newObject_return retval = new TSPHPParser.newObject_return();
 		retval.start = input.LT(1);
@@ -9597,15 +9717,18 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal284=null;
-		Token char_literal286=null;
-		Token char_literal288=null;
-		ParserRuleReturnScope classInterfaceTypeWithoutObject285 =null;
-		ParserRuleReturnScope expressionList287 =null;
+		Token string_literal285=null;
+		Token char_literal287=null;
+		Token char_literal289=null;
+		Token string_literal290=null;
+		ParserRuleReturnScope classInterfaceTypeWithoutObject286 =null;
+		ParserRuleReturnScope expressionList288 =null;
+		ParserRuleReturnScope classInterfaceTypeWithoutObject291 =null;
 
-		CommonTree string_literal284_tree=null;
-		CommonTree char_literal286_tree=null;
-		CommonTree char_literal288_tree=null;
+		CommonTree string_literal285_tree=null;
+		CommonTree char_literal287_tree=null;
+		CommonTree char_literal289_tree=null;
+		CommonTree string_literal290_tree=null;
 		RewriteRuleTokenStream stream_LeftParanthesis=new RewriteRuleTokenStream(adaptor,"token LeftParanthesis");
 		RewriteRuleTokenStream stream_New=new RewriteRuleTokenStream(adaptor,"token New");
 		RewriteRuleTokenStream stream_RightParanthesis=new RewriteRuleTokenStream(adaptor,"token RightParanthesis");
@@ -9613,102 +9736,123 @@ public TreeAdaptor getTreeAdaptor() {
 		RewriteRuleSubtreeStream stream_expressionList=new RewriteRuleSubtreeStream(adaptor,"rule expressionList");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 76) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 77) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:2: ( 'new' classInterfaceTypeWithoutObject ( '(' ( expressionList )? ')' )? -> ^( 'new' classInterfaceTypeWithoutObject ( expressionList )? ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:4: 'new' classInterfaceTypeWithoutObject ( '(' ( expressionList )? ')' )?
-			{
-			string_literal284=(Token)match(input,New,FOLLOW_New_in_newObject2856); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_New.add(string_literal284);
-
-			pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_newObject2858);
-			classInterfaceTypeWithoutObject285=classInterfaceTypeWithoutObject();
-			state._fsp--;
-			if (state.failed) return retval;
-			if ( state.backtracking==0 ) stream_classInterfaceTypeWithoutObject.add(classInterfaceTypeWithoutObject285.getTree());
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:42: ( '(' ( expressionList )? ')' )?
-			int alt90=2;
-			int LA90_0 = input.LA(1);
-			if ( (LA90_0==LeftParanthesis) ) {
-				alt90=1;
-			}
-			switch (alt90) {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:546:2: ( 'new' classInterfaceTypeWithoutObject '(' expressionList ')' -> ^( 'new' classInterfaceTypeWithoutObject expressionList ) | 'new' classInterfaceTypeWithoutObject -> ^( 'new' classInterfaceTypeWithoutObject EXPRESSION_LIST ) )
+			int alt89=2;
+			alt89 = dfa89.predict(input);
+			switch (alt89) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:43: '(' ( expressionList )? ')'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:546:4: 'new' classInterfaceTypeWithoutObject '(' expressionList ')'
 					{
-					char_literal286=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_newObject2861); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_LeftParanthesis.add(char_literal286);
+					string_literal285=(Token)match(input,New,FOLLOW_New_in_newObject2897); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_New.add(string_literal285);
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:47: ( expressionList )?
-					int alt89=2;
-					int LA89_0 = input.LA(1);
-					if ( (LA89_0==At||LA89_0==Backslash||LA89_0==BitwiseNot||LA89_0==Bool||LA89_0==Clone||LA89_0==Float||LA89_0==Identifier||LA89_0==Int||(LA89_0 >= LeftParanthesis && LA89_0 <= LeftSquareBrace)||LA89_0==LogicNot||LA89_0==Minus||LA89_0==MinusMinus||LA89_0==New||LA89_0==Null||(LA89_0 >= Parent && LA89_0 <= Plus)||LA89_0==PlusPlus||LA89_0==Self||LA89_0==String||LA89_0==This||LA89_0==TypeArray||LA89_0==VariableId) ) {
-						alt89=1;
+					pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_newObject2899);
+					classInterfaceTypeWithoutObject286=classInterfaceTypeWithoutObject();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) stream_classInterfaceTypeWithoutObject.add(classInterfaceTypeWithoutObject286.getTree());
+					char_literal287=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_newObject2901); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_LeftParanthesis.add(char_literal287);
+
+					pushFollow(FOLLOW_expressionList_in_newObject2903);
+					expressionList288=expressionList();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) stream_expressionList.add(expressionList288.getTree());
+					char_literal289=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_newObject2905); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal289);
+
+					// AST REWRITE
+					// elements: classInterfaceTypeWithoutObject, New, expressionList
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					if ( state.backtracking==0 ) {
+
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (CommonTree)adaptor.nil();
+					// 546:65: -> ^( 'new' classInterfaceTypeWithoutObject expressionList )
+					{
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:546:68: ^( 'new' classInterfaceTypeWithoutObject expressionList )
+						{
+						CommonTree root_1 = (CommonTree)adaptor.nil();
+						root_1 = (CommonTree)adaptor.becomeRoot(
+						stream_New.nextNode()
+						, root_1);
+
+						adaptor.addChild(root_1, stream_classInterfaceTypeWithoutObject.nextTree());
+
+						adaptor.addChild(root_1, stream_expressionList.nextTree());
+
+						adaptor.addChild(root_0, root_1);
+						}
+
 					}
-					switch (alt89) {
-						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:47: expressionList
-							{
-							pushFollow(FOLLOW_expressionList_in_newObject2863);
-							expressionList287=expressionList();
-							state._fsp--;
-							if (state.failed) return retval;
-							if ( state.backtracking==0 ) stream_expressionList.add(expressionList287.getTree());
-							}
-							break;
+
+
+					retval.tree = root_0;
+					}
+
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:547:4: 'new' classInterfaceTypeWithoutObject
+					{
+					string_literal290=(Token)match(input,New,FOLLOW_New_in_newObject2920); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_New.add(string_literal290);
+
+					pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_newObject2922);
+					classInterfaceTypeWithoutObject291=classInterfaceTypeWithoutObject();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) stream_classInterfaceTypeWithoutObject.add(classInterfaceTypeWithoutObject291.getTree());
+					// AST REWRITE
+					// elements: New, classInterfaceTypeWithoutObject
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					if ( state.backtracking==0 ) {
+
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (CommonTree)adaptor.nil();
+					// 547:42: -> ^( 'new' classInterfaceTypeWithoutObject EXPRESSION_LIST )
+					{
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:547:45: ^( 'new' classInterfaceTypeWithoutObject EXPRESSION_LIST )
+						{
+						CommonTree root_1 = (CommonTree)adaptor.nil();
+						root_1 = (CommonTree)adaptor.becomeRoot(
+						stream_New.nextNode()
+						, root_1);
+
+						adaptor.addChild(root_1, stream_classInterfaceTypeWithoutObject.nextTree());
+
+						adaptor.addChild(root_1, 
+						(CommonTree)adaptor.create(EXPRESSION_LIST, "EXPRESSION_LIST")
+						);
+
+						adaptor.addChild(root_0, root_1);
+						}
 
 					}
 
-					char_literal288=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_newObject2866); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal288);
+
+					retval.tree = root_0;
+					}
 
 					}
 					break;
 
 			}
-
-			// AST REWRITE
-			// elements: New, classInterfaceTypeWithoutObject, expressionList
-			// token labels: 
-			// rule labels: retval
-			// token list labels: 
-			// rule list labels: 
-			// wildcard labels: 
-			if ( state.backtracking==0 ) {
-
-			retval.tree = root_0;
-			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
-
-			root_0 = (CommonTree)adaptor.nil();
-			// 538:69: -> ^( 'new' classInterfaceTypeWithoutObject ( expressionList )? )
-			{
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:72: ^( 'new' classInterfaceTypeWithoutObject ( expressionList )? )
-				{
-				CommonTree root_1 = (CommonTree)adaptor.nil();
-				root_1 = (CommonTree)adaptor.becomeRoot(
-				stream_New.nextNode()
-				, root_1);
-
-				adaptor.addChild(root_1, stream_classInterfaceTypeWithoutObject.nextTree());
-
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:538:112: ( expressionList )?
-				if ( stream_expressionList.hasNext() ) {
-					adaptor.addChild(root_1, stream_expressionList.nextTree());
-
-				}
-				stream_expressionList.reset();
-
-				adaptor.addChild(root_0, root_1);
-				}
-
-			}
-
-
-			retval.tree = root_0;
-			}
-
-			}
-
 			retval.stop = input.LT(-1);
 
 			if ( state.backtracking==0 ) {
@@ -9723,7 +9867,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 76, newObject_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 77, newObject_StartIndex); }
 
 		}
 		return retval;
@@ -9738,7 +9882,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "unaryPrimary"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:541:1: unaryPrimary : (uplus= '+' primary -> ^( UPLUS[$uplus,\"unary plus\"] primary ) |uminus= '-' primary -> ^( UMINUS[$uminus,\"unary minus\"] primary ) | primary );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:550:1: unaryPrimary : (uplus= '+' primary -> ^( UPLUS[$uplus,\"unary plus\"] primary ) |uminus= '-' primary -> ^( UMINUS[$uminus,\"unary minus\"] primary ) | primary );
 	public final TSPHPParser.unaryPrimary_return unaryPrimary() throws RecognitionException {
 		TSPHPParser.unaryPrimary_return retval = new TSPHPParser.unaryPrimary_return();
 		retval.start = input.LT(1);
@@ -9748,9 +9892,9 @@ public TreeAdaptor getTreeAdaptor() {
 
 		Token uplus=null;
 		Token uminus=null;
-		ParserRuleReturnScope primary289 =null;
-		ParserRuleReturnScope primary290 =null;
-		ParserRuleReturnScope primary291 =null;
+		ParserRuleReturnScope primary292 =null;
+		ParserRuleReturnScope primary293 =null;
+		ParserRuleReturnScope primary294 =null;
 
 		CommonTree uplus_tree=null;
 		CommonTree uminus_tree=null;
@@ -9759,19 +9903,19 @@ public TreeAdaptor getTreeAdaptor() {
 		RewriteRuleSubtreeStream stream_primary=new RewriteRuleSubtreeStream(adaptor,"rule primary");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 77) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 78) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:542:2: (uplus= '+' primary -> ^( UPLUS[$uplus,\"unary plus\"] primary ) |uminus= '-' primary -> ^( UMINUS[$uminus,\"unary minus\"] primary ) | primary )
-			int alt91=3;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:551:2: (uplus= '+' primary -> ^( UPLUS[$uplus,\"unary plus\"] primary ) |uminus= '-' primary -> ^( UMINUS[$uminus,\"unary minus\"] primary ) | primary )
+			int alt90=3;
 			switch ( input.LA(1) ) {
 			case Plus:
 				{
-				alt91=1;
+				alt90=1;
 				}
 				break;
 			case Minus:
 				{
-				alt91=2;
+				alt90=2;
 				}
 				break;
 			case Backslash:
@@ -9791,27 +9935,27 @@ public TreeAdaptor getTreeAdaptor() {
 			case TypeArray:
 			case VariableId:
 				{
-				alt91=3;
+				alt90=3;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 91, 0, input);
+					new NoViableAltException("", 90, 0, input);
 				throw nvae;
 			}
-			switch (alt91) {
+			switch (alt90) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:542:4: uplus= '+' primary
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:551:4: uplus= '+' primary
 					{
-					uplus=(Token)match(input,Plus,FOLLOW_Plus_in_unaryPrimary2894); if (state.failed) return retval; 
+					uplus=(Token)match(input,Plus,FOLLOW_Plus_in_unaryPrimary2947); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_Plus.add(uplus);
 
-					pushFollow(FOLLOW_primary_in_unaryPrimary2896);
-					primary289=primary();
+					pushFollow(FOLLOW_primary_in_unaryPrimary2949);
+					primary292=primary();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_primary.add(primary289.getTree());
+					if ( state.backtracking==0 ) stream_primary.add(primary292.getTree());
 					// AST REWRITE
 					// elements: primary
 					// token labels: 
@@ -9825,9 +9969,9 @@ public TreeAdaptor getTreeAdaptor() {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 542:24: -> ^( UPLUS[$uplus,\"unary plus\"] primary )
+					// 551:24: -> ^( UPLUS[$uplus,\"unary plus\"] primary )
 					{
-						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:542:27: ^( UPLUS[$uplus,\"unary plus\"] primary )
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:551:27: ^( UPLUS[$uplus,\"unary plus\"] primary )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot(
@@ -9848,16 +9992,16 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:543:4: uminus= '-' primary
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:552:4: uminus= '-' primary
 					{
-					uminus=(Token)match(input,Minus,FOLLOW_Minus_in_unaryPrimary2914); if (state.failed) return retval; 
+					uminus=(Token)match(input,Minus,FOLLOW_Minus_in_unaryPrimary2967); if (state.failed) return retval; 
 					if ( state.backtracking==0 ) stream_Minus.add(uminus);
 
-					pushFollow(FOLLOW_primary_in_unaryPrimary2916);
-					primary290=primary();
+					pushFollow(FOLLOW_primary_in_unaryPrimary2969);
+					primary293=primary();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_primary.add(primary290.getTree());
+					if ( state.backtracking==0 ) stream_primary.add(primary293.getTree());
 					// AST REWRITE
 					// elements: primary
 					// token labels: 
@@ -9871,9 +10015,9 @@ public TreeAdaptor getTreeAdaptor() {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 543:25: -> ^( UMINUS[$uminus,\"unary minus\"] primary )
+					// 552:25: -> ^( UMINUS[$uminus,\"unary minus\"] primary )
 					{
-						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:543:28: ^( UMINUS[$uminus,\"unary minus\"] primary )
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:552:28: ^( UMINUS[$uminus,\"unary minus\"] primary )
 						{
 						CommonTree root_1 = (CommonTree)adaptor.nil();
 						root_1 = (CommonTree)adaptor.becomeRoot(
@@ -9894,16 +10038,16 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:544:4: primary
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:553:4: primary
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_primary_in_unaryPrimary2930);
-					primary291=primary();
+					pushFollow(FOLLOW_primary_in_unaryPrimary2983);
+					primary294=primary();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, primary291.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, primary294.getTree());
 
 					}
 					break;
@@ -9923,7 +10067,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 77, unaryPrimary_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 78, unaryPrimary_StartIndex); }
 
 		}
 		return retval;
@@ -9938,7 +10082,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "primary"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:546:1: primary : ( functionCallFluentInclAccessAtTheEnd | methodCallFluentInclAccessAtTheEnd | atom );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:555:1: primary : ( functionCallFluentInclAccessAtTheEnd | methodCallFluentInclAccessAtTheEnd | atom );
 	public final TSPHPParser.primary_return primary() throws RecognitionException {
 		TSPHPParser.primary_return retval = new TSPHPParser.primary_return();
 		retval.start = input.LT(1);
@@ -9946,28 +10090,28 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope functionCallFluentInclAccessAtTheEnd292 =null;
-		ParserRuleReturnScope methodCallFluentInclAccessAtTheEnd293 =null;
-		ParserRuleReturnScope atom294 =null;
+		ParserRuleReturnScope functionCallFluentInclAccessAtTheEnd295 =null;
+		ParserRuleReturnScope methodCallFluentInclAccessAtTheEnd296 =null;
+		ParserRuleReturnScope atom297 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 78) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 79) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:547:2: ( functionCallFluentInclAccessAtTheEnd | methodCallFluentInclAccessAtTheEnd | atom )
-			int alt92=3;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:556:2: ( functionCallFluentInclAccessAtTheEnd | methodCallFluentInclAccessAtTheEnd | atom )
+			int alt91=3;
 			switch ( input.LA(1) ) {
 			case Backslash:
 				{
-				int LA92_1 = input.LA(2);
+				int LA91_1 = input.LA(2);
 				if ( (synpred150_TSPHP()) ) {
-					alt92=1;
+					alt91=1;
 				}
 				else if ( (synpred151_TSPHP()) ) {
-					alt92=2;
+					alt91=2;
 				}
 				else if ( (true) ) {
-					alt92=3;
+					alt91=3;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -9975,7 +10119,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 92, 1, input);
+							new NoViableAltException("", 91, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -9985,15 +10129,15 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Identifier:
 				{
-				int LA92_2 = input.LA(2);
+				int LA91_2 = input.LA(2);
 				if ( (synpred150_TSPHP()) ) {
-					alt92=1;
+					alt91=1;
 				}
 				else if ( (synpred151_TSPHP()) ) {
-					alt92=2;
+					alt91=2;
 				}
 				else if ( (true) ) {
-					alt92=3;
+					alt91=3;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10001,7 +10145,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 92, 2, input);
+							new NoViableAltException("", 91, 2, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10011,12 +10155,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Self:
 				{
-				int LA92_3 = input.LA(2);
+				int LA91_3 = input.LA(2);
 				if ( (synpred151_TSPHP()) ) {
-					alt92=2;
+					alt91=2;
 				}
 				else if ( (true) ) {
-					alt92=3;
+					alt91=3;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10024,7 +10168,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 92, 3, input);
+							new NoViableAltException("", 91, 3, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10034,12 +10178,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Parent:
 				{
-				int LA92_4 = input.LA(2);
+				int LA91_4 = input.LA(2);
 				if ( (synpred151_TSPHP()) ) {
-					alt92=2;
+					alt91=2;
 				}
 				else if ( (true) ) {
-					alt92=3;
+					alt91=3;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10047,7 +10191,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 92, 4, input);
+							new NoViableAltException("", 91, 4, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10057,12 +10201,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case This:
 				{
-				int LA92_5 = input.LA(2);
+				int LA91_5 = input.LA(2);
 				if ( (synpred151_TSPHP()) ) {
-					alt92=2;
+					alt91=2;
 				}
 				else if ( (true) ) {
-					alt92=3;
+					alt91=3;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10070,7 +10214,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 92, 5, input);
+							new NoViableAltException("", 91, 5, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10080,12 +10224,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case VariableId:
 				{
-				int LA92_6 = input.LA(2);
+				int LA91_6 = input.LA(2);
 				if ( (synpred151_TSPHP()) ) {
-					alt92=2;
+					alt91=2;
 				}
 				else if ( (true) ) {
-					alt92=3;
+					alt91=3;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10093,7 +10237,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 92, 6, input);
+							new NoViableAltException("", 91, 6, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10112,55 +10256,55 @@ public TreeAdaptor getTreeAdaptor() {
 			case String:
 			case TypeArray:
 				{
-				alt92=3;
+				alt91=3;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 92, 0, input);
+					new NoViableAltException("", 91, 0, input);
 				throw nvae;
 			}
-			switch (alt92) {
+			switch (alt91) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:547:4: functionCallFluentInclAccessAtTheEnd
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:556:4: functionCallFluentInclAccessAtTheEnd
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_functionCallFluentInclAccessAtTheEnd_in_primary2940);
-					functionCallFluentInclAccessAtTheEnd292=functionCallFluentInclAccessAtTheEnd();
+					pushFollow(FOLLOW_functionCallFluentInclAccessAtTheEnd_in_primary2993);
+					functionCallFluentInclAccessAtTheEnd295=functionCallFluentInclAccessAtTheEnd();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, functionCallFluentInclAccessAtTheEnd292.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, functionCallFluentInclAccessAtTheEnd295.getTree());
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:548:4: methodCallFluentInclAccessAtTheEnd
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:4: methodCallFluentInclAccessAtTheEnd
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_methodCallFluentInclAccessAtTheEnd_in_primary2945);
-					methodCallFluentInclAccessAtTheEnd293=methodCallFluentInclAccessAtTheEnd();
+					pushFollow(FOLLOW_methodCallFluentInclAccessAtTheEnd_in_primary2998);
+					methodCallFluentInclAccessAtTheEnd296=methodCallFluentInclAccessAtTheEnd();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, methodCallFluentInclAccessAtTheEnd293.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, methodCallFluentInclAccessAtTheEnd296.getTree());
 
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:549:4: atom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:558:4: atom
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_atom_in_primary2950);
-					atom294=atom();
+					pushFollow(FOLLOW_atom_in_primary3003);
+					atom297=atom();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, atom294.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, atom297.getTree());
 
 					}
 					break;
@@ -10180,7 +10324,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 78, primary_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 79, primary_StartIndex); }
 
 		}
 		return retval;
@@ -10195,7 +10339,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "functionCallFluentInclAccessAtTheEnd"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:552:1: functionCallFluentInclAccessAtTheEnd : functionCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:561:1: functionCallFluentInclAccessAtTheEnd : functionCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )? ;
 	public final TSPHPParser.functionCallFluentInclAccessAtTheEnd_return functionCallFluentInclAccessAtTheEnd() throws RecognitionException {
 		TSPHPParser.functionCallFluentInclAccessAtTheEnd_return retval = new TSPHPParser.functionCallFluentInclAccessAtTheEnd_return();
 		retval.start = input.LT(1);
@@ -10203,40 +10347,40 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope functionCallFluentWithoutAccessAtTheEnd295 =null;
-		ParserRuleReturnScope memberAccessOrArrayAccess296 =null;
+		ParserRuleReturnScope functionCallFluentWithoutAccessAtTheEnd298 =null;
+		ParserRuleReturnScope memberAccessOrArrayAccess299 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 79) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 80) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:553:2: ( functionCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:553:4: functionCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:562:2: ( functionCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:562:4: functionCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )?
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_functionCallFluentInclAccessAtTheEnd2962);
-			functionCallFluentWithoutAccessAtTheEnd295=functionCallFluentWithoutAccessAtTheEnd();
+			pushFollow(FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_functionCallFluentInclAccessAtTheEnd3015);
+			functionCallFluentWithoutAccessAtTheEnd298=functionCallFluentWithoutAccessAtTheEnd();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, functionCallFluentWithoutAccessAtTheEnd295.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, functionCallFluentWithoutAccessAtTheEnd298.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:553:44: ( memberAccessOrArrayAccess )?
-			int alt93=2;
-			int LA93_0 = input.LA(1);
-			if ( (LA93_0==LeftSquareBrace||LA93_0==ObjectOperator) ) {
-				alt93=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:562:44: ( memberAccessOrArrayAccess )?
+			int alt92=2;
+			int LA92_0 = input.LA(1);
+			if ( (LA92_0==LeftSquareBrace||LA92_0==ObjectOperator) ) {
+				alt92=1;
 			}
-			switch (alt93) {
+			switch (alt92) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:553:44: memberAccessOrArrayAccess
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:562:44: memberAccessOrArrayAccess
 					{
-					pushFollow(FOLLOW_memberAccessOrArrayAccess_in_functionCallFluentInclAccessAtTheEnd2964);
-					memberAccessOrArrayAccess296=memberAccessOrArrayAccess();
+					pushFollow(FOLLOW_memberAccessOrArrayAccess_in_functionCallFluentInclAccessAtTheEnd3017);
+					memberAccessOrArrayAccess299=memberAccessOrArrayAccess();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess296.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess299.getTree());
 
 					}
 					break;
@@ -10259,7 +10403,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 79, functionCallFluentInclAccessAtTheEnd_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 80, functionCallFluentInclAccessAtTheEnd_StartIndex); }
 
 		}
 		return retval;
@@ -10274,7 +10418,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "functionCallFluentWithoutAccessAtTheEnd"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:556:1: functionCallFluentWithoutAccessAtTheEnd : ( functionCall ( callOrAccess )* call | functionCall ( call )* );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:565:1: functionCallFluentWithoutAccessAtTheEnd : ( functionCall ( callOrAccess )* call | functionCall ( call )* );
 	public final TSPHPParser.functionCallFluentWithoutAccessAtTheEnd_return functionCallFluentWithoutAccessAtTheEnd() throws RecognitionException {
 		TSPHPParser.functionCallFluentWithoutAccessAtTheEnd_return retval = new TSPHPParser.functionCallFluentWithoutAccessAtTheEnd_return();
 		retval.start = input.LT(1);
@@ -10282,26 +10426,26 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope functionCall297 =null;
-		ParserRuleReturnScope callOrAccess298 =null;
-		ParserRuleReturnScope call299 =null;
 		ParserRuleReturnScope functionCall300 =null;
-		ParserRuleReturnScope call301 =null;
+		ParserRuleReturnScope callOrAccess301 =null;
+		ParserRuleReturnScope call302 =null;
+		ParserRuleReturnScope functionCall303 =null;
+		ParserRuleReturnScope call304 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 80) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 81) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:2: ( functionCall ( callOrAccess )* call | functionCall ( call )* )
-			int alt96=2;
-			int LA96_0 = input.LA(1);
-			if ( (LA96_0==Backslash) ) {
-				int LA96_1 = input.LA(2);
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:2: ( functionCall ( callOrAccess )* call | functionCall ( call )* )
+			int alt95=2;
+			int LA95_0 = input.LA(1);
+			if ( (LA95_0==Backslash) ) {
+				int LA95_1 = input.LA(2);
 				if ( (synpred154_TSPHP()) ) {
-					alt96=1;
+					alt95=1;
 				}
 				else if ( (true) ) {
-					alt96=2;
+					alt95=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10309,20 +10453,20 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 96, 1, input);
+							new NoViableAltException("", 95, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
 					}
 				}
 			}
-			else if ( (LA96_0==Identifier) ) {
-				int LA96_2 = input.LA(2);
+			else if ( (LA95_0==Identifier) ) {
+				int LA95_2 = input.LA(2);
 				if ( (synpred154_TSPHP()) ) {
-					alt96=1;
+					alt95=1;
 				}
 				else if ( (true) ) {
-					alt96=2;
+					alt95=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10330,7 +10474,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 96, 2, input);
+							new NoViableAltException("", 95, 2, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10340,108 +10484,108 @@ public TreeAdaptor getTreeAdaptor() {
 			else {
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 96, 0, input);
+					new NoViableAltException("", 95, 0, input);
 				throw nvae;
 			}
-			switch (alt96) {
+			switch (alt95) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:4: functionCall ( callOrAccess )* call
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:4: functionCall ( callOrAccess )* call
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_functionCall_in_functionCallFluentWithoutAccessAtTheEnd2976);
-					functionCall297=functionCall();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, functionCall297.getTree());
-
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:17: ( callOrAccess )*
-					loop94:
-					do {
-						int alt94=2;
-						int LA94_0 = input.LA(1);
-						if ( (LA94_0==ObjectOperator) ) {
-							int LA94_1 = input.LA(2);
-							if ( (synpred153_TSPHP()) ) {
-								alt94=1;
-							}
-
-						}
-						else if ( (LA94_0==LeftSquareBrace) ) {
-							alt94=1;
-						}
-
-						switch (alt94) {
-						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:17: callOrAccess
-							{
-							pushFollow(FOLLOW_callOrAccess_in_functionCallFluentWithoutAccessAtTheEnd2978);
-							callOrAccess298=callOrAccess();
-							state._fsp--;
-							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, callOrAccess298.getTree());
-
-							}
-							break;
-
-						default :
-							break loop94;
-						}
-					} while (true);
-
-					pushFollow(FOLLOW_call_in_functionCallFluentWithoutAccessAtTheEnd2981);
-					call299=call();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, call299.getTree());
-
-					}
-					break;
-				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:558:4: functionCall ( call )*
-					{
-					root_0 = (CommonTree)adaptor.nil();
-
-
-					pushFollow(FOLLOW_functionCall_in_functionCallFluentWithoutAccessAtTheEnd2986);
+					pushFollow(FOLLOW_functionCall_in_functionCallFluentWithoutAccessAtTheEnd3029);
 					functionCall300=functionCall();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, functionCall300.getTree());
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:558:17: ( call )*
-					loop95:
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:17: ( callOrAccess )*
+					loop93:
 					do {
-						int alt95=2;
-						int LA95_0 = input.LA(1);
-						if ( (LA95_0==ObjectOperator) ) {
-							int LA95_2 = input.LA(2);
-							if ( (LA95_2==Identifier) ) {
-								int LA95_3 = input.LA(3);
-								if ( (LA95_3==LeftParanthesis) ) {
-									alt95=1;
+						int alt93=2;
+						int LA93_0 = input.LA(1);
+						if ( (LA93_0==ObjectOperator) ) {
+							int LA93_1 = input.LA(2);
+							if ( (synpred153_TSPHP()) ) {
+								alt93=1;
+							}
+
+						}
+						else if ( (LA93_0==LeftSquareBrace) ) {
+							alt93=1;
+						}
+
+						switch (alt93) {
+						case 1 :
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:17: callOrAccess
+							{
+							pushFollow(FOLLOW_callOrAccess_in_functionCallFluentWithoutAccessAtTheEnd3031);
+							callOrAccess301=callOrAccess();
+							state._fsp--;
+							if (state.failed) return retval;
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, callOrAccess301.getTree());
+
+							}
+							break;
+
+						default :
+							break loop93;
+						}
+					} while (true);
+
+					pushFollow(FOLLOW_call_in_functionCallFluentWithoutAccessAtTheEnd3034);
+					call302=call();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, call302.getTree());
+
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:567:4: functionCall ( call )*
+					{
+					root_0 = (CommonTree)adaptor.nil();
+
+
+					pushFollow(FOLLOW_functionCall_in_functionCallFluentWithoutAccessAtTheEnd3039);
+					functionCall303=functionCall();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, functionCall303.getTree());
+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:567:17: ( call )*
+					loop94:
+					do {
+						int alt94=2;
+						int LA94_0 = input.LA(1);
+						if ( (LA94_0==ObjectOperator) ) {
+							int LA94_2 = input.LA(2);
+							if ( (LA94_2==Identifier) ) {
+								int LA94_3 = input.LA(3);
+								if ( (LA94_3==LeftParanthesis) ) {
+									alt94=1;
 								}
 
 							}
 
 						}
 
-						switch (alt95) {
+						switch (alt94) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:558:17: call
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:567:17: call
 							{
-							pushFollow(FOLLOW_call_in_functionCallFluentWithoutAccessAtTheEnd2988);
-							call301=call();
+							pushFollow(FOLLOW_call_in_functionCallFluentWithoutAccessAtTheEnd3041);
+							call304=call();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, call301.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, call304.getTree());
 
 							}
 							break;
 
 						default :
-							break loop95;
+							break loop94;
 						}
 					} while (true);
 
@@ -10463,7 +10607,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 80, functionCallFluentWithoutAccessAtTheEnd_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 81, functionCallFluentWithoutAccessAtTheEnd_StartIndex); }
 
 		}
 		return retval;
@@ -10478,7 +10622,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "functionCall"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:561:1: functionCall : classInterfaceTypeWithoutObject '(' ( expressionList )? ')' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:570:1: functionCall : classInterfaceTypeWithoutObject '(' expressionList ')' ;
 	public final TSPHPParser.functionCall_return functionCall() throws RecognitionException {
 		TSPHPParser.functionCall_return retval = new TSPHPParser.functionCall_return();
 		retval.start = input.LT(1);
@@ -10486,64 +10630,49 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal303=null;
-		Token char_literal305=null;
-		ParserRuleReturnScope classInterfaceTypeWithoutObject302 =null;
-		ParserRuleReturnScope expressionList304 =null;
+		Token char_literal306=null;
+		Token char_literal308=null;
+		ParserRuleReturnScope classInterfaceTypeWithoutObject305 =null;
+		ParserRuleReturnScope expressionList307 =null;
 
-		CommonTree char_literal303_tree=null;
-		CommonTree char_literal305_tree=null;
+		CommonTree char_literal306_tree=null;
+		CommonTree char_literal308_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 81) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 82) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:562:2: ( classInterfaceTypeWithoutObject '(' ( expressionList )? ')' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:562:4: classInterfaceTypeWithoutObject '(' ( expressionList )? ')'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:571:2: ( classInterfaceTypeWithoutObject '(' expressionList ')' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:571:4: classInterfaceTypeWithoutObject '(' expressionList ')'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_functionCall3000);
-			classInterfaceTypeWithoutObject302=classInterfaceTypeWithoutObject();
+			pushFollow(FOLLOW_classInterfaceTypeWithoutObject_in_functionCall3053);
+			classInterfaceTypeWithoutObject305=classInterfaceTypeWithoutObject();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, classInterfaceTypeWithoutObject302.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, classInterfaceTypeWithoutObject305.getTree());
 
-			char_literal303=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_functionCall3002); if (state.failed) return retval;
+			char_literal306=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_functionCall3055); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal303_tree = 
-			(CommonTree)adaptor.create(char_literal303)
+			char_literal306_tree = 
+			(CommonTree)adaptor.create(char_literal306)
 			;
-			adaptor.addChild(root_0, char_literal303_tree);
+			adaptor.addChild(root_0, char_literal306_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:562:40: ( expressionList )?
-			int alt97=2;
-			int LA97_0 = input.LA(1);
-			if ( (LA97_0==At||LA97_0==Backslash||LA97_0==BitwiseNot||LA97_0==Bool||LA97_0==Clone||LA97_0==Float||LA97_0==Identifier||LA97_0==Int||(LA97_0 >= LeftParanthesis && LA97_0 <= LeftSquareBrace)||LA97_0==LogicNot||LA97_0==Minus||LA97_0==MinusMinus||LA97_0==New||LA97_0==Null||(LA97_0 >= Parent && LA97_0 <= Plus)||LA97_0==PlusPlus||LA97_0==Self||LA97_0==String||LA97_0==This||LA97_0==TypeArray||LA97_0==VariableId) ) {
-				alt97=1;
-			}
-			switch (alt97) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:562:40: expressionList
-					{
-					pushFollow(FOLLOW_expressionList_in_functionCall3004);
-					expressionList304=expressionList();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList304.getTree());
+			pushFollow(FOLLOW_expressionList_in_functionCall3057);
+			expressionList307=expressionList();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList307.getTree());
 
-					}
-					break;
-
-			}
-
-			char_literal305=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_functionCall3007); if (state.failed) return retval;
+			char_literal308=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_functionCall3059); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal305_tree = 
-			(CommonTree)adaptor.create(char_literal305)
+			char_literal308_tree = 
+			(CommonTree)adaptor.create(char_literal308)
 			;
-			adaptor.addChild(root_0, char_literal305_tree);
+			adaptor.addChild(root_0, char_literal308_tree);
 			}
 
 			}
@@ -10562,7 +10691,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 81, functionCall_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 82, functionCall_StartIndex); }
 
 		}
 		return retval;
@@ -10577,7 +10706,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "callOrAccess"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:565:1: callOrAccess : ( memberAccessOrArrayAccess | call );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:574:1: callOrAccess : ( memberAccessOrArrayAccess | call );
 	public final TSPHPParser.callOrAccess_return callOrAccess() throws RecognitionException {
 		TSPHPParser.callOrAccess_return retval = new TSPHPParser.callOrAccess_return();
 		retval.start = input.LT(1);
@@ -10585,25 +10714,25 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope memberAccessOrArrayAccess306 =null;
-		ParserRuleReturnScope call307 =null;
+		ParserRuleReturnScope memberAccessOrArrayAccess309 =null;
+		ParserRuleReturnScope call310 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 82) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 83) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:2: ( memberAccessOrArrayAccess | call )
-			int alt98=2;
-			int LA98_0 = input.LA(1);
-			if ( (LA98_0==ObjectOperator) ) {
-				int LA98_1 = input.LA(2);
-				if ( (LA98_1==Identifier) ) {
-					int LA98_3 = input.LA(3);
-					if ( (LA98_3==LeftParanthesis) ) {
-						alt98=2;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:575:2: ( memberAccessOrArrayAccess | call )
+			int alt96=2;
+			int LA96_0 = input.LA(1);
+			if ( (LA96_0==ObjectOperator) ) {
+				int LA96_1 = input.LA(2);
+				if ( (LA96_1==Identifier) ) {
+					int LA96_3 = input.LA(3);
+					if ( (LA96_3==LeftParanthesis) ) {
+						alt96=2;
 					}
-					else if ( (LA98_3==EOF||LA98_3==LeftSquareBrace||LA98_3==ObjectOperator) ) {
-						alt98=1;
+					else if ( (LA96_3==EOF||LA96_3==LeftSquareBrace||LA96_3==ObjectOperator) ) {
+						alt96=1;
 					}
 					else {
 						if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10612,7 +10741,7 @@ public TreeAdaptor getTreeAdaptor() {
 							for (int nvaeConsume = 0; nvaeConsume < 3 - 1; nvaeConsume++)
 								input.consume();
 							NoViableAltException nvae =
-								new NoViableAltException("", 98, 3, input);
+								new NoViableAltException("", 96, 3, input);
 							throw nvae;
 						} finally {
 							input.rewind(nvaeMark);
@@ -10625,48 +10754,48 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 98, 1, input);
+							new NoViableAltException("", 96, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
 					}
 				}
 			}
-			else if ( (LA98_0==LeftSquareBrace) ) {
-				alt98=1;
+			else if ( (LA96_0==LeftSquareBrace) ) {
+				alt96=1;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 98, 0, input);
+					new NoViableAltException("", 96, 0, input);
 				throw nvae;
 			}
-			switch (alt98) {
+			switch (alt96) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:4: memberAccessOrArrayAccess
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:575:4: memberAccessOrArrayAccess
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_memberAccessOrArrayAccess_in_callOrAccess3018);
-					memberAccessOrArrayAccess306=memberAccessOrArrayAccess();
+					pushFollow(FOLLOW_memberAccessOrArrayAccess_in_callOrAccess3070);
+					memberAccessOrArrayAccess309=memberAccessOrArrayAccess();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess306.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess309.getTree());
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:567:4: call
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:576:4: call
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_call_in_callOrAccess3023);
-					call307=call();
+					pushFollow(FOLLOW_call_in_callOrAccess3075);
+					call310=call();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, call307.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, call310.getTree());
 
 					}
 					break;
@@ -10686,7 +10815,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 82, callOrAccess_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 83, callOrAccess_StartIndex); }
 
 		}
 		return retval;
@@ -10701,7 +10830,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "call"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:570:1: call : ( '->' Identifier '(' ( expressionList )? ')' ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:579:1: call : ( '->' Identifier '(' expressionList ')' ) ;
 	public final TSPHPParser.call_return call() throws RecognitionException {
 		TSPHPParser.call_return retval = new TSPHPParser.call_return();
 		retval.start = input.LT(1);
@@ -10709,80 +10838,65 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal308=null;
-		Token Identifier309=null;
-		Token char_literal310=null;
-		Token char_literal312=null;
-		ParserRuleReturnScope expressionList311 =null;
+		Token string_literal311=null;
+		Token Identifier312=null;
+		Token char_literal313=null;
+		Token char_literal315=null;
+		ParserRuleReturnScope expressionList314 =null;
 
-		CommonTree string_literal308_tree=null;
-		CommonTree Identifier309_tree=null;
-		CommonTree char_literal310_tree=null;
-		CommonTree char_literal312_tree=null;
+		CommonTree string_literal311_tree=null;
+		CommonTree Identifier312_tree=null;
+		CommonTree char_literal313_tree=null;
+		CommonTree char_literal315_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 83) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 84) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:570:6: ( ( '->' Identifier '(' ( expressionList )? ')' ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:570:8: ( '->' Identifier '(' ( expressionList )? ')' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:579:6: ( ( '->' Identifier '(' expressionList ')' ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:579:8: ( '->' Identifier '(' expressionList ')' )
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:570:8: ( '->' Identifier '(' ( expressionList )? ')' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:570:9: '->' Identifier '(' ( expressionList )? ')'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:579:8: ( '->' Identifier '(' expressionList ')' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:579:9: '->' Identifier '(' expressionList ')'
 			{
-			string_literal308=(Token)match(input,ObjectOperator,FOLLOW_ObjectOperator_in_call3036); if (state.failed) return retval;
+			string_literal311=(Token)match(input,ObjectOperator,FOLLOW_ObjectOperator_in_call3088); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal308_tree = 
-			(CommonTree)adaptor.create(string_literal308)
+			string_literal311_tree = 
+			(CommonTree)adaptor.create(string_literal311)
 			;
-			adaptor.addChild(root_0, string_literal308_tree);
+			adaptor.addChild(root_0, string_literal311_tree);
 			}
 
-			Identifier309=(Token)match(input,Identifier,FOLLOW_Identifier_in_call3038); if (state.failed) return retval;
+			Identifier312=(Token)match(input,Identifier,FOLLOW_Identifier_in_call3090); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			Identifier309_tree = 
-			(CommonTree)adaptor.create(Identifier309)
+			Identifier312_tree = 
+			(CommonTree)adaptor.create(Identifier312)
 			;
-			adaptor.addChild(root_0, Identifier309_tree);
+			adaptor.addChild(root_0, Identifier312_tree);
 			}
 
-			char_literal310=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_call3040); if (state.failed) return retval;
+			char_literal313=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_call3092); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal310_tree = 
-			(CommonTree)adaptor.create(char_literal310)
+			char_literal313_tree = 
+			(CommonTree)adaptor.create(char_literal313)
 			;
-			adaptor.addChild(root_0, char_literal310_tree);
+			adaptor.addChild(root_0, char_literal313_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:570:29: ( expressionList )?
-			int alt99=2;
-			int LA99_0 = input.LA(1);
-			if ( (LA99_0==At||LA99_0==Backslash||LA99_0==BitwiseNot||LA99_0==Bool||LA99_0==Clone||LA99_0==Float||LA99_0==Identifier||LA99_0==Int||(LA99_0 >= LeftParanthesis && LA99_0 <= LeftSquareBrace)||LA99_0==LogicNot||LA99_0==Minus||LA99_0==MinusMinus||LA99_0==New||LA99_0==Null||(LA99_0 >= Parent && LA99_0 <= Plus)||LA99_0==PlusPlus||LA99_0==Self||LA99_0==String||LA99_0==This||LA99_0==TypeArray||LA99_0==VariableId) ) {
-				alt99=1;
-			}
-			switch (alt99) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:570:29: expressionList
-					{
-					pushFollow(FOLLOW_expressionList_in_call3042);
-					expressionList311=expressionList();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList311.getTree());
+			pushFollow(FOLLOW_expressionList_in_call3094);
+			expressionList314=expressionList();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList314.getTree());
 
-					}
-					break;
-
-			}
-
-			char_literal312=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_call3044); if (state.failed) return retval;
+			char_literal315=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_call3095); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal312_tree = 
-			(CommonTree)adaptor.create(char_literal312)
+			char_literal315_tree = 
+			(CommonTree)adaptor.create(char_literal315)
 			;
-			adaptor.addChild(root_0, char_literal312_tree);
+			adaptor.addChild(root_0, char_literal315_tree);
 			}
 
 			}
@@ -10803,7 +10917,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 83, call_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 84, call_StartIndex); }
 
 		}
 		return retval;
@@ -10818,7 +10932,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "methodCallFluentInclAccessAtTheEnd"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:572:1: methodCallFluentInclAccessAtTheEnd : methodCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )? ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:581:1: methodCallFluentInclAccessAtTheEnd : methodCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )? ;
 	public final TSPHPParser.methodCallFluentInclAccessAtTheEnd_return methodCallFluentInclAccessAtTheEnd() throws RecognitionException {
 		TSPHPParser.methodCallFluentInclAccessAtTheEnd_return retval = new TSPHPParser.methodCallFluentInclAccessAtTheEnd_return();
 		retval.start = input.LT(1);
@@ -10826,40 +10940,40 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope methodCallFluentWithoutAccessAtTheEnd313 =null;
-		ParserRuleReturnScope memberAccessOrArrayAccess314 =null;
+		ParserRuleReturnScope methodCallFluentWithoutAccessAtTheEnd316 =null;
+		ParserRuleReturnScope memberAccessOrArrayAccess317 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 84) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 85) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:573:2: ( methodCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:573:4: methodCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:582:2: ( methodCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )? )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:582:4: methodCallFluentWithoutAccessAtTheEnd ( memberAccessOrArrayAccess )?
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_methodCallFluentInclAccessAtTheEnd3055);
-			methodCallFluentWithoutAccessAtTheEnd313=methodCallFluentWithoutAccessAtTheEnd();
+			pushFollow(FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_methodCallFluentInclAccessAtTheEnd3106);
+			methodCallFluentWithoutAccessAtTheEnd316=methodCallFluentWithoutAccessAtTheEnd();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, methodCallFluentWithoutAccessAtTheEnd313.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, methodCallFluentWithoutAccessAtTheEnd316.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:573:42: ( memberAccessOrArrayAccess )?
-			int alt100=2;
-			int LA100_0 = input.LA(1);
-			if ( (LA100_0==LeftSquareBrace||LA100_0==ObjectOperator) ) {
-				alt100=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:582:42: ( memberAccessOrArrayAccess )?
+			int alt97=2;
+			int LA97_0 = input.LA(1);
+			if ( (LA97_0==LeftSquareBrace||LA97_0==ObjectOperator) ) {
+				alt97=1;
 			}
-			switch (alt100) {
+			switch (alt97) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:573:42: memberAccessOrArrayAccess
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:582:42: memberAccessOrArrayAccess
 					{
-					pushFollow(FOLLOW_memberAccessOrArrayAccess_in_methodCallFluentInclAccessAtTheEnd3057);
-					memberAccessOrArrayAccess314=memberAccessOrArrayAccess();
+					pushFollow(FOLLOW_memberAccessOrArrayAccess_in_methodCallFluentInclAccessAtTheEnd3108);
+					memberAccessOrArrayAccess317=memberAccessOrArrayAccess();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess314.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, memberAccessOrArrayAccess317.getTree());
 
 					}
 					break;
@@ -10882,7 +10996,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 84, methodCallFluentInclAccessAtTheEnd_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 85, methodCallFluentInclAccessAtTheEnd_StartIndex); }
 
 		}
 		return retval;
@@ -10897,7 +11011,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "methodCallFluentWithoutAccessAtTheEnd"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:576:1: methodCallFluentWithoutAccessAtTheEnd : ( methodCall ( callOrAccess )* call | methodCall ( call )* );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:585:1: methodCallFluentWithoutAccessAtTheEnd : ( methodCall ( callOrAccess )* call | methodCall ( call )* );
 	public final TSPHPParser.methodCallFluentWithoutAccessAtTheEnd_return methodCallFluentWithoutAccessAtTheEnd() throws RecognitionException {
 		TSPHPParser.methodCallFluentWithoutAccessAtTheEnd_return retval = new TSPHPParser.methodCallFluentWithoutAccessAtTheEnd_return();
 		retval.start = input.LT(1);
@@ -10905,27 +11019,27 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope methodCall315 =null;
-		ParserRuleReturnScope callOrAccess316 =null;
-		ParserRuleReturnScope call317 =null;
 		ParserRuleReturnScope methodCall318 =null;
-		ParserRuleReturnScope call319 =null;
+		ParserRuleReturnScope callOrAccess319 =null;
+		ParserRuleReturnScope call320 =null;
+		ParserRuleReturnScope methodCall321 =null;
+		ParserRuleReturnScope call322 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 85) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 86) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:577:2: ( methodCall ( callOrAccess )* call | methodCall ( call )* )
-			int alt103=2;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:2: ( methodCall ( callOrAccess )* call | methodCall ( call )* )
+			int alt100=2;
 			switch ( input.LA(1) ) {
 			case Self:
 				{
-				int LA103_1 = input.LA(2);
-				if ( (synpred161_TSPHP()) ) {
-					alt103=1;
+				int LA100_1 = input.LA(2);
+				if ( (synpred159_TSPHP()) ) {
+					alt100=1;
 				}
 				else if ( (true) ) {
-					alt103=2;
+					alt100=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10933,7 +11047,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 103, 1, input);
+							new NoViableAltException("", 100, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10943,12 +11057,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Parent:
 				{
-				int LA103_2 = input.LA(2);
-				if ( (synpred161_TSPHP()) ) {
-					alt103=1;
+				int LA100_2 = input.LA(2);
+				if ( (synpred159_TSPHP()) ) {
+					alt100=1;
 				}
 				else if ( (true) ) {
-					alt103=2;
+					alt100=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10956,7 +11070,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 103, 2, input);
+							new NoViableAltException("", 100, 2, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10966,12 +11080,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Backslash:
 				{
-				int LA103_3 = input.LA(2);
-				if ( (synpred161_TSPHP()) ) {
-					alt103=1;
+				int LA100_3 = input.LA(2);
+				if ( (synpred159_TSPHP()) ) {
+					alt100=1;
 				}
 				else if ( (true) ) {
-					alt103=2;
+					alt100=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -10979,7 +11093,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 103, 3, input);
+							new NoViableAltException("", 100, 3, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -10989,12 +11103,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Identifier:
 				{
-				int LA103_4 = input.LA(2);
-				if ( (synpred161_TSPHP()) ) {
-					alt103=1;
+				int LA100_4 = input.LA(2);
+				if ( (synpred159_TSPHP()) ) {
+					alt100=1;
 				}
 				else if ( (true) ) {
-					alt103=2;
+					alt100=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -11002,7 +11116,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 103, 4, input);
+							new NoViableAltException("", 100, 4, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -11012,12 +11126,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case This:
 				{
-				int LA103_5 = input.LA(2);
-				if ( (synpred161_TSPHP()) ) {
-					alt103=1;
+				int LA100_5 = input.LA(2);
+				if ( (synpred159_TSPHP()) ) {
+					alt100=1;
 				}
 				else if ( (true) ) {
-					alt103=2;
+					alt100=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -11025,7 +11139,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 103, 5, input);
+							new NoViableAltException("", 100, 5, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -11035,12 +11149,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case VariableId:
 				{
-				int LA103_6 = input.LA(2);
-				if ( (synpred161_TSPHP()) ) {
-					alt103=1;
+				int LA100_6 = input.LA(2);
+				if ( (synpred159_TSPHP()) ) {
+					alt100=1;
 				}
 				else if ( (true) ) {
-					alt103=2;
+					alt100=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -11048,7 +11162,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 103, 6, input);
+							new NoViableAltException("", 100, 6, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -11059,108 +11173,108 @@ public TreeAdaptor getTreeAdaptor() {
 			default:
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 103, 0, input);
+					new NoViableAltException("", 100, 0, input);
 				throw nvae;
 			}
-			switch (alt103) {
+			switch (alt100) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:577:5: methodCall ( callOrAccess )* call
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:5: methodCall ( callOrAccess )* call
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_methodCall_in_methodCallFluentWithoutAccessAtTheEnd3071);
-					methodCall315=methodCall();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, methodCall315.getTree());
-
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:577:16: ( callOrAccess )*
-					loop101:
-					do {
-						int alt101=2;
-						int LA101_0 = input.LA(1);
-						if ( (LA101_0==ObjectOperator) ) {
-							int LA101_1 = input.LA(2);
-							if ( (synpred160_TSPHP()) ) {
-								alt101=1;
-							}
-
-						}
-						else if ( (LA101_0==LeftSquareBrace) ) {
-							alt101=1;
-						}
-
-						switch (alt101) {
-						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:577:16: callOrAccess
-							{
-							pushFollow(FOLLOW_callOrAccess_in_methodCallFluentWithoutAccessAtTheEnd3073);
-							callOrAccess316=callOrAccess();
-							state._fsp--;
-							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, callOrAccess316.getTree());
-
-							}
-							break;
-
-						default :
-							break loop101;
-						}
-					} while (true);
-
-					pushFollow(FOLLOW_call_in_methodCallFluentWithoutAccessAtTheEnd3076);
-					call317=call();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, call317.getTree());
-
-					}
-					break;
-				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:578:4: methodCall ( call )*
-					{
-					root_0 = (CommonTree)adaptor.nil();
-
-
-					pushFollow(FOLLOW_methodCall_in_methodCallFluentWithoutAccessAtTheEnd3081);
+					pushFollow(FOLLOW_methodCall_in_methodCallFluentWithoutAccessAtTheEnd3122);
 					methodCall318=methodCall();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, methodCall318.getTree());
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:578:15: ( call )*
-					loop102:
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:16: ( callOrAccess )*
+					loop98:
 					do {
-						int alt102=2;
-						int LA102_0 = input.LA(1);
-						if ( (LA102_0==ObjectOperator) ) {
-							int LA102_2 = input.LA(2);
-							if ( (LA102_2==Identifier) ) {
-								int LA102_3 = input.LA(3);
-								if ( (LA102_3==LeftParanthesis) ) {
-									alt102=1;
+						int alt98=2;
+						int LA98_0 = input.LA(1);
+						if ( (LA98_0==ObjectOperator) ) {
+							int LA98_1 = input.LA(2);
+							if ( (synpred158_TSPHP()) ) {
+								alt98=1;
+							}
+
+						}
+						else if ( (LA98_0==LeftSquareBrace) ) {
+							alt98=1;
+						}
+
+						switch (alt98) {
+						case 1 :
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:16: callOrAccess
+							{
+							pushFollow(FOLLOW_callOrAccess_in_methodCallFluentWithoutAccessAtTheEnd3124);
+							callOrAccess319=callOrAccess();
+							state._fsp--;
+							if (state.failed) return retval;
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, callOrAccess319.getTree());
+
+							}
+							break;
+
+						default :
+							break loop98;
+						}
+					} while (true);
+
+					pushFollow(FOLLOW_call_in_methodCallFluentWithoutAccessAtTheEnd3127);
+					call320=call();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, call320.getTree());
+
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:587:4: methodCall ( call )*
+					{
+					root_0 = (CommonTree)adaptor.nil();
+
+
+					pushFollow(FOLLOW_methodCall_in_methodCallFluentWithoutAccessAtTheEnd3132);
+					methodCall321=methodCall();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, methodCall321.getTree());
+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:587:15: ( call )*
+					loop99:
+					do {
+						int alt99=2;
+						int LA99_0 = input.LA(1);
+						if ( (LA99_0==ObjectOperator) ) {
+							int LA99_2 = input.LA(2);
+							if ( (LA99_2==Identifier) ) {
+								int LA99_3 = input.LA(3);
+								if ( (LA99_3==LeftParanthesis) ) {
+									alt99=1;
 								}
 
 							}
 
 						}
 
-						switch (alt102) {
+						switch (alt99) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:578:15: call
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:587:15: call
 							{
-							pushFollow(FOLLOW_call_in_methodCallFluentWithoutAccessAtTheEnd3083);
-							call319=call();
+							pushFollow(FOLLOW_call_in_methodCallFluentWithoutAccessAtTheEnd3134);
+							call322=call();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, call319.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, call322.getTree());
 
 							}
 							break;
 
 						default :
-							break loop102;
+							break loop99;
 						}
 					} while (true);
 
@@ -11182,7 +11296,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 85, methodCallFluentWithoutAccessAtTheEnd_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 86, methodCallFluentWithoutAccessAtTheEnd_StartIndex); }
 
 		}
 		return retval;
@@ -11197,7 +11311,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "methodCall"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:580:1: methodCall : ( ( variableMemberStaticMember '->' ) | staticAccessOrParent ) Identifier '(' ( expressionList )? ')' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:589:1: methodCall : ( ( variableMemberStaticMember '->' ) | staticAccessOrParent ) Identifier '(' expressionList ')' ;
 	public final TSPHPParser.methodCall_return methodCall() throws RecognitionException {
 		TSPHPParser.methodCall_return retval = new TSPHPParser.methodCall_return();
 		retval.start = input.LT(1);
@@ -11205,50 +11319,50 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal321=null;
-		Token Identifier323=null;
-		Token char_literal324=null;
-		Token char_literal326=null;
-		ParserRuleReturnScope variableMemberStaticMember320 =null;
-		ParserRuleReturnScope staticAccessOrParent322 =null;
-		ParserRuleReturnScope expressionList325 =null;
+		Token string_literal324=null;
+		Token Identifier326=null;
+		Token char_literal327=null;
+		Token char_literal329=null;
+		ParserRuleReturnScope variableMemberStaticMember323 =null;
+		ParserRuleReturnScope staticAccessOrParent325 =null;
+		ParserRuleReturnScope expressionList328 =null;
 
-		CommonTree string_literal321_tree=null;
-		CommonTree Identifier323_tree=null;
-		CommonTree char_literal324_tree=null;
-		CommonTree char_literal326_tree=null;
+		CommonTree string_literal324_tree=null;
+		CommonTree Identifier326_tree=null;
+		CommonTree char_literal327_tree=null;
+		CommonTree char_literal329_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 86) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 87) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:581:2: ( ( ( variableMemberStaticMember '->' ) | staticAccessOrParent ) Identifier '(' ( expressionList )? ')' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:581:4: ( ( variableMemberStaticMember '->' ) | staticAccessOrParent ) Identifier '(' ( expressionList )? ')'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:590:2: ( ( ( variableMemberStaticMember '->' ) | staticAccessOrParent ) Identifier '(' expressionList ')' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:590:4: ( ( variableMemberStaticMember '->' ) | staticAccessOrParent ) Identifier '(' expressionList ')'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:581:4: ( ( variableMemberStaticMember '->' ) | staticAccessOrParent )
-			int alt104=2;
-			alt104 = dfa104.predict(input);
-			switch (alt104) {
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:590:4: ( ( variableMemberStaticMember '->' ) | staticAccessOrParent )
+			int alt101=2;
+			alt101 = dfa101.predict(input);
+			switch (alt101) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:581:6: ( variableMemberStaticMember '->' )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:590:6: ( variableMemberStaticMember '->' )
 					{
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:581:6: ( variableMemberStaticMember '->' )
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:581:7: variableMemberStaticMember '->'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:590:6: ( variableMemberStaticMember '->' )
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:590:7: variableMemberStaticMember '->'
 					{
-					pushFollow(FOLLOW_variableMemberStaticMember_in_methodCall3097);
-					variableMemberStaticMember320=variableMemberStaticMember();
+					pushFollow(FOLLOW_variableMemberStaticMember_in_methodCall3148);
+					variableMemberStaticMember323=variableMemberStaticMember();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, variableMemberStaticMember320.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, variableMemberStaticMember323.getTree());
 
-					string_literal321=(Token)match(input,ObjectOperator,FOLLOW_ObjectOperator_in_methodCall3099); if (state.failed) return retval;
+					string_literal324=(Token)match(input,ObjectOperator,FOLLOW_ObjectOperator_in_methodCall3150); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal321_tree = 
-					(CommonTree)adaptor.create(string_literal321)
+					string_literal324_tree = 
+					(CommonTree)adaptor.create(string_literal324)
 					;
-					adaptor.addChild(root_0, string_literal321_tree);
+					adaptor.addChild(root_0, string_literal324_tree);
 					}
 
 					}
@@ -11256,62 +11370,47 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:581:42: staticAccessOrParent
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:590:42: staticAccessOrParent
 					{
-					pushFollow(FOLLOW_staticAccessOrParent_in_methodCall3104);
-					staticAccessOrParent322=staticAccessOrParent();
+					pushFollow(FOLLOW_staticAccessOrParent_in_methodCall3155);
+					staticAccessOrParent325=staticAccessOrParent();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, staticAccessOrParent322.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, staticAccessOrParent325.getTree());
 
 					}
 					break;
 
 			}
 
-			Identifier323=(Token)match(input,Identifier,FOLLOW_Identifier_in_methodCall3107); if (state.failed) return retval;
+			Identifier326=(Token)match(input,Identifier,FOLLOW_Identifier_in_methodCall3158); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			Identifier323_tree = 
-			(CommonTree)adaptor.create(Identifier323)
+			Identifier326_tree = 
+			(CommonTree)adaptor.create(Identifier326)
 			;
-			adaptor.addChild(root_0, Identifier323_tree);
+			adaptor.addChild(root_0, Identifier326_tree);
 			}
 
-			char_literal324=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_methodCall3109); if (state.failed) return retval;
+			char_literal327=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_methodCall3160); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal324_tree = 
-			(CommonTree)adaptor.create(char_literal324)
+			char_literal327_tree = 
+			(CommonTree)adaptor.create(char_literal327)
 			;
-			adaptor.addChild(root_0, char_literal324_tree);
+			adaptor.addChild(root_0, char_literal327_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:581:79: ( expressionList )?
-			int alt105=2;
-			int LA105_0 = input.LA(1);
-			if ( (LA105_0==At||LA105_0==Backslash||LA105_0==BitwiseNot||LA105_0==Bool||LA105_0==Clone||LA105_0==Float||LA105_0==Identifier||LA105_0==Int||(LA105_0 >= LeftParanthesis && LA105_0 <= LeftSquareBrace)||LA105_0==LogicNot||LA105_0==Minus||LA105_0==MinusMinus||LA105_0==New||LA105_0==Null||(LA105_0 >= Parent && LA105_0 <= Plus)||LA105_0==PlusPlus||LA105_0==Self||LA105_0==String||LA105_0==This||LA105_0==TypeArray||LA105_0==VariableId) ) {
-				alt105=1;
-			}
-			switch (alt105) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:581:79: expressionList
-					{
-					pushFollow(FOLLOW_expressionList_in_methodCall3111);
-					expressionList325=expressionList();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList325.getTree());
+			pushFollow(FOLLOW_expressionList_in_methodCall3162);
+			expressionList328=expressionList();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList328.getTree());
 
-					}
-					break;
-
-			}
-
-			char_literal326=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_methodCall3113); if (state.failed) return retval;
+			char_literal329=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_methodCall3163); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal326_tree = 
-			(CommonTree)adaptor.create(char_literal326)
+			char_literal329_tree = 
+			(CommonTree)adaptor.create(char_literal329)
 			;
-			adaptor.addChild(root_0, char_literal326_tree);
+			adaptor.addChild(root_0, char_literal329_tree);
 			}
 
 			}
@@ -11330,7 +11429,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 86, methodCall_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 87, methodCall_StartIndex); }
 
 		}
 		return retval;
@@ -11345,7 +11444,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "atom"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:584:1: atom : ( '(' expression ')' -> expression | incrementDecrement | variableMemberStaticMember | classConstant | globalConstant | array | primitiveAtom );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:593:1: atom : ( '(' expression ')' -> expression | incrementDecrement | variableMemberStaticMember | classConstant | globalConstant | array | primitiveAtom );
 	public final TSPHPParser.atom_return atom() throws RecognitionException {
 		TSPHPParser.atom_return retval = new TSPHPParser.atom_return();
 		retval.start = input.LT(1);
@@ -11353,44 +11452,44 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal327=null;
-		Token char_literal329=null;
-		ParserRuleReturnScope expression328 =null;
-		ParserRuleReturnScope incrementDecrement330 =null;
-		ParserRuleReturnScope variableMemberStaticMember331 =null;
-		ParserRuleReturnScope classConstant332 =null;
-		ParserRuleReturnScope globalConstant333 =null;
-		ParserRuleReturnScope array334 =null;
-		ParserRuleReturnScope primitiveAtom335 =null;
+		Token char_literal330=null;
+		Token char_literal332=null;
+		ParserRuleReturnScope expression331 =null;
+		ParserRuleReturnScope incrementDecrement333 =null;
+		ParserRuleReturnScope variableMemberStaticMember334 =null;
+		ParserRuleReturnScope classConstant335 =null;
+		ParserRuleReturnScope globalConstant336 =null;
+		ParserRuleReturnScope array337 =null;
+		ParserRuleReturnScope primitiveAtom338 =null;
 
-		CommonTree char_literal327_tree=null;
-		CommonTree char_literal329_tree=null;
+		CommonTree char_literal330_tree=null;
+		CommonTree char_literal332_tree=null;
 		RewriteRuleTokenStream stream_LeftParanthesis=new RewriteRuleTokenStream(adaptor,"token LeftParanthesis");
 		RewriteRuleTokenStream stream_RightParanthesis=new RewriteRuleTokenStream(adaptor,"token RightParanthesis");
 		RewriteRuleSubtreeStream stream_expression=new RewriteRuleSubtreeStream(adaptor,"rule expression");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 87) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 88) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:584:6: ( '(' expression ')' -> expression | incrementDecrement | variableMemberStaticMember | classConstant | globalConstant | array | primitiveAtom )
-			int alt106=7;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:593:6: ( '(' expression ')' -> expression | incrementDecrement | variableMemberStaticMember | classConstant | globalConstant | array | primitiveAtom )
+			int alt102=7;
 			switch ( input.LA(1) ) {
 			case LeftParanthesis:
 				{
-				alt106=1;
+				alt102=1;
 				}
 				break;
 			case Self:
 				{
-				int LA106_2 = input.LA(2);
-				if ( (synpred166_TSPHP()) ) {
-					alt106=2;
+				int LA102_2 = input.LA(2);
+				if ( (synpred163_TSPHP()) ) {
+					alt102=2;
 				}
-				else if ( (synpred167_TSPHP()) ) {
-					alt106=3;
+				else if ( (synpred164_TSPHP()) ) {
+					alt102=3;
 				}
-				else if ( (synpred168_TSPHP()) ) {
-					alt106=4;
+				else if ( (synpred165_TSPHP()) ) {
+					alt102=4;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -11398,7 +11497,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 106, 2, input);
+							new NoViableAltException("", 102, 2, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -11408,15 +11507,15 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Parent:
 				{
-				int LA106_3 = input.LA(2);
-				if ( (synpred166_TSPHP()) ) {
-					alt106=2;
+				int LA102_3 = input.LA(2);
+				if ( (synpred163_TSPHP()) ) {
+					alt102=2;
 				}
-				else if ( (synpred167_TSPHP()) ) {
-					alt106=3;
+				else if ( (synpred164_TSPHP()) ) {
+					alt102=3;
 				}
-				else if ( (synpred168_TSPHP()) ) {
-					alt106=4;
+				else if ( (synpred165_TSPHP()) ) {
+					alt102=4;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -11424,7 +11523,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 106, 3, input);
+							new NoViableAltException("", 102, 3, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -11434,15 +11533,15 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Backslash:
 				{
-				int LA106_4 = input.LA(2);
-				if ( (synpred166_TSPHP()) ) {
-					alt106=2;
+				int LA102_4 = input.LA(2);
+				if ( (synpred163_TSPHP()) ) {
+					alt102=2;
 				}
-				else if ( (synpred167_TSPHP()) ) {
-					alt106=3;
+				else if ( (synpred164_TSPHP()) ) {
+					alt102=3;
 				}
-				else if ( (synpred168_TSPHP()) ) {
-					alt106=4;
+				else if ( (synpred165_TSPHP()) ) {
+					alt102=4;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -11450,7 +11549,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 106, 4, input);
+							new NoViableAltException("", 102, 4, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -11460,21 +11559,21 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case Identifier:
 				{
-				int LA106_5 = input.LA(2);
-				if ( (synpred166_TSPHP()) ) {
-					alt106=2;
+				int LA102_5 = input.LA(2);
+				if ( (synpred163_TSPHP()) ) {
+					alt102=2;
 				}
-				else if ( (synpred167_TSPHP()) ) {
-					alt106=3;
+				else if ( (synpred164_TSPHP()) ) {
+					alt102=3;
 				}
-				else if ( (synpred168_TSPHP()) ) {
-					alt106=4;
+				else if ( (synpred165_TSPHP()) ) {
+					alt102=4;
 				}
-				else if ( (synpred169_TSPHP()) ) {
-					alt106=5;
+				else if ( (synpred166_TSPHP()) ) {
+					alt102=5;
 				}
 				else if ( (true) ) {
-					alt106=7;
+					alt102=7;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -11482,7 +11581,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 106, 5, input);
+							new NoViableAltException("", 102, 5, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -11492,12 +11591,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case This:
 				{
-				int LA106_6 = input.LA(2);
-				if ( (synpred166_TSPHP()) ) {
-					alt106=2;
+				int LA102_6 = input.LA(2);
+				if ( (synpred163_TSPHP()) ) {
+					alt102=2;
 				}
-				else if ( (synpred167_TSPHP()) ) {
-					alt106=3;
+				else if ( (synpred164_TSPHP()) ) {
+					alt102=3;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -11505,7 +11604,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 106, 6, input);
+							new NoViableAltException("", 102, 6, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -11515,12 +11614,12 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 			case VariableId:
 				{
-				int LA106_7 = input.LA(2);
-				if ( (synpred166_TSPHP()) ) {
-					alt106=2;
+				int LA102_7 = input.LA(2);
+				if ( (synpred163_TSPHP()) ) {
+					alt102=2;
 				}
-				else if ( (synpred167_TSPHP()) ) {
-					alt106=3;
+				else if ( (synpred164_TSPHP()) ) {
+					alt102=3;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -11528,7 +11627,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 106, 7, input);
+							new NoViableAltException("", 102, 7, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -11539,13 +11638,13 @@ public TreeAdaptor getTreeAdaptor() {
 			case MinusMinus:
 			case PlusPlus:
 				{
-				alt106=2;
+				alt102=2;
 				}
 				break;
 			case LeftSquareBrace:
 			case TypeArray:
 				{
-				alt106=6;
+				alt102=6;
 				}
 				break;
 			case Bool:
@@ -11554,29 +11653,29 @@ public TreeAdaptor getTreeAdaptor() {
 			case Null:
 			case String:
 				{
-				alt106=7;
+				alt102=7;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 106, 0, input);
+					new NoViableAltException("", 102, 0, input);
 				throw nvae;
 			}
-			switch (alt106) {
+			switch (alt102) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:584:8: '(' expression ')'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:593:8: '(' expression ')'
 					{
-					char_literal327=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_atom3123); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_LeftParanthesis.add(char_literal327);
+					char_literal330=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_atom3173); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_LeftParanthesis.add(char_literal330);
 
-					pushFollow(FOLLOW_expression_in_atom3125);
-					expression328=expression();
+					pushFollow(FOLLOW_expression_in_atom3175);
+					expression331=expression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_expression.add(expression328.getTree());
-					char_literal329=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_atom3127); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal329);
+					if ( state.backtracking==0 ) stream_expression.add(expression331.getTree());
+					char_literal332=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_atom3177); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal332);
 
 					// AST REWRITE
 					// elements: expression
@@ -11591,7 +11690,7 @@ public TreeAdaptor getTreeAdaptor() {
 					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 					root_0 = (CommonTree)adaptor.nil();
-					// 584:27: -> expression
+					// 593:27: -> expression
 					{
 						adaptor.addChild(root_0, stream_expression.nextTree());
 
@@ -11604,86 +11703,86 @@ public TreeAdaptor getTreeAdaptor() {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:585:4: incrementDecrement
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:594:4: incrementDecrement
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_incrementDecrement_in_atom3136);
-					incrementDecrement330=incrementDecrement();
+					pushFollow(FOLLOW_incrementDecrement_in_atom3186);
+					incrementDecrement333=incrementDecrement();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, incrementDecrement330.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, incrementDecrement333.getTree());
 
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:4: variableMemberStaticMember
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:595:4: variableMemberStaticMember
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_variableMemberStaticMember_in_atom3141);
-					variableMemberStaticMember331=variableMemberStaticMember();
+					pushFollow(FOLLOW_variableMemberStaticMember_in_atom3191);
+					variableMemberStaticMember334=variableMemberStaticMember();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, variableMemberStaticMember331.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, variableMemberStaticMember334.getTree());
 
 					}
 					break;
 				case 4 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:587:4: classConstant
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:596:4: classConstant
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_classConstant_in_atom3146);
-					classConstant332=classConstant();
+					pushFollow(FOLLOW_classConstant_in_atom3196);
+					classConstant335=classConstant();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, classConstant332.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, classConstant335.getTree());
 
 					}
 					break;
 				case 5 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:588:4: globalConstant
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:597:4: globalConstant
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_globalConstant_in_atom3151);
-					globalConstant333=globalConstant();
+					pushFollow(FOLLOW_globalConstant_in_atom3201);
+					globalConstant336=globalConstant();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, globalConstant333.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, globalConstant336.getTree());
 
 					}
 					break;
 				case 6 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:589:4: array
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:598:4: array
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_array_in_atom3156);
-					array334=array();
+					pushFollow(FOLLOW_array_in_atom3206);
+					array337=array();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, array334.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, array337.getTree());
 
 					}
 					break;
 				case 7 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:590:4: primitiveAtom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:599:4: primitiveAtom
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					pushFollow(FOLLOW_primitiveAtom_in_atom3161);
-					primitiveAtom335=primitiveAtom();
+					pushFollow(FOLLOW_primitiveAtom_in_atom3211);
+					primitiveAtom338=primitiveAtom();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, primitiveAtom335.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, primitiveAtom338.getTree());
 
 					}
 					break;
@@ -11703,7 +11802,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 87, atom_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 88, atom_StartIndex); }
 
 		}
 		return retval;
@@ -11718,7 +11817,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "globalConstant"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:593:1: globalConstant : Identifier ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:602:1: globalConstant : Identifier ;
 	public final TSPHPParser.globalConstant_return globalConstant() throws RecognitionException {
 		TSPHPParser.globalConstant_return retval = new TSPHPParser.globalConstant_return();
 		retval.start = input.LT(1);
@@ -11726,25 +11825,25 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token Identifier336=null;
+		Token Identifier339=null;
 
-		CommonTree Identifier336_tree=null;
+		CommonTree Identifier339_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 88) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 89) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:594:2: ( Identifier )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:594:4: Identifier
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:603:2: ( Identifier )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:603:4: Identifier
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			Identifier336=(Token)match(input,Identifier,FOLLOW_Identifier_in_globalConstant3173); if (state.failed) return retval;
+			Identifier339=(Token)match(input,Identifier,FOLLOW_Identifier_in_globalConstant3223); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			Identifier336_tree = 
-			(CommonTree)adaptor.create(Identifier336)
+			Identifier339_tree = 
+			(CommonTree)adaptor.create(Identifier339)
 			;
-			adaptor.addChild(root_0, Identifier336_tree);
+			adaptor.addChild(root_0, Identifier339_tree);
 			}
 
 			}
@@ -11763,7 +11862,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 88, globalConstant_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 89, globalConstant_StartIndex); }
 
 		}
 		return retval;
@@ -11778,7 +11877,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "classConstant"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:597:1: classConstant : staticAccessOrParent Identifier ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:606:1: classConstant : staticAccessOrParent Identifier ;
 	public final TSPHPParser.classConstant_return classConstant() throws RecognitionException {
 		TSPHPParser.classConstant_return retval = new TSPHPParser.classConstant_return();
 		retval.start = input.LT(1);
@@ -11786,32 +11885,32 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token Identifier338=null;
-		ParserRuleReturnScope staticAccessOrParent337 =null;
+		Token Identifier341=null;
+		ParserRuleReturnScope staticAccessOrParent340 =null;
 
-		CommonTree Identifier338_tree=null;
+		CommonTree Identifier341_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 89) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 90) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:598:2: ( staticAccessOrParent Identifier )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:598:4: staticAccessOrParent Identifier
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:607:2: ( staticAccessOrParent Identifier )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:607:4: staticAccessOrParent Identifier
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			pushFollow(FOLLOW_staticAccessOrParent_in_classConstant3184);
-			staticAccessOrParent337=staticAccessOrParent();
+			pushFollow(FOLLOW_staticAccessOrParent_in_classConstant3234);
+			staticAccessOrParent340=staticAccessOrParent();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, staticAccessOrParent337.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, staticAccessOrParent340.getTree());
 
-			Identifier338=(Token)match(input,Identifier,FOLLOW_Identifier_in_classConstant3186); if (state.failed) return retval;
+			Identifier341=(Token)match(input,Identifier,FOLLOW_Identifier_in_classConstant3236); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			Identifier338_tree = 
-			(CommonTree)adaptor.create(Identifier338)
+			Identifier341_tree = 
+			(CommonTree)adaptor.create(Identifier341)
 			;
-			adaptor.addChild(root_0, Identifier338_tree);
+			adaptor.addChild(root_0, Identifier341_tree);
 			}
 
 			}
@@ -11830,7 +11929,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 89, classConstant_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 90, classConstant_StartIndex); }
 
 		}
 		return retval;
@@ -11845,7 +11944,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "unaryPrimitiveAtom"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:601:1: unaryPrimitiveAtom : ( '+' primitiveAtom | '-' primitiveAtom | primitiveAtom );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:610:1: unaryPrimitiveAtom : ( '+' primitiveAtom | '-' primitiveAtom | primitiveAtom );
 	public final TSPHPParser.unaryPrimitiveAtom_return unaryPrimitiveAtom() throws RecognitionException {
 		TSPHPParser.unaryPrimitiveAtom_return retval = new TSPHPParser.unaryPrimitiveAtom_return();
 		retval.start = input.LT(1);
@@ -11853,29 +11952,29 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal339=null;
-		Token char_literal341=null;
-		ParserRuleReturnScope primitiveAtom340 =null;
-		ParserRuleReturnScope primitiveAtom342 =null;
+		Token char_literal342=null;
+		Token char_literal344=null;
 		ParserRuleReturnScope primitiveAtom343 =null;
+		ParserRuleReturnScope primitiveAtom345 =null;
+		ParserRuleReturnScope primitiveAtom346 =null;
 
-		CommonTree char_literal339_tree=null;
-		CommonTree char_literal341_tree=null;
+		CommonTree char_literal342_tree=null;
+		CommonTree char_literal344_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 90) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 91) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:602:2: ( '+' primitiveAtom | '-' primitiveAtom | primitiveAtom )
-			int alt107=3;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:611:2: ( '+' primitiveAtom | '-' primitiveAtom | primitiveAtom )
+			int alt103=3;
 			switch ( input.LA(1) ) {
 			case Plus:
 				{
-				alt107=1;
+				alt103=1;
 				}
 				break;
 			case Minus:
 				{
-				alt107=2;
+				alt103=2;
 				}
 				break;
 			case Bool:
@@ -11885,71 +11984,71 @@ public TreeAdaptor getTreeAdaptor() {
 			case Null:
 			case String:
 				{
-				alt107=3;
+				alt103=3;
 				}
 				break;
 			default:
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 107, 0, input);
+					new NoViableAltException("", 103, 0, input);
 				throw nvae;
 			}
-			switch (alt107) {
+			switch (alt103) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:602:4: '+' primitiveAtom
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:611:4: '+' primitiveAtom
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					char_literal339=(Token)match(input,Plus,FOLLOW_Plus_in_unaryPrimitiveAtom3198); if (state.failed) return retval;
+					char_literal342=(Token)match(input,Plus,FOLLOW_Plus_in_unaryPrimitiveAtom3248); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal339_tree = 
-					(CommonTree)adaptor.create(char_literal339)
+					char_literal342_tree = 
+					(CommonTree)adaptor.create(char_literal342)
 					;
-					adaptor.addChild(root_0, char_literal339_tree);
+					adaptor.addChild(root_0, char_literal342_tree);
 					}
 
-					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3200);
-					primitiveAtom340=primitiveAtom();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, primitiveAtom340.getTree());
-
-					}
-					break;
-				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:603:4: '-' primitiveAtom
-					{
-					root_0 = (CommonTree)adaptor.nil();
-
-
-					char_literal341=(Token)match(input,Minus,FOLLOW_Minus_in_unaryPrimitiveAtom3205); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					char_literal341_tree = 
-					(CommonTree)adaptor.create(char_literal341)
-					;
-					adaptor.addChild(root_0, char_literal341_tree);
-					}
-
-					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3207);
-					primitiveAtom342=primitiveAtom();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, primitiveAtom342.getTree());
-
-					}
-					break;
-				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:604:4: primitiveAtom
-					{
-					root_0 = (CommonTree)adaptor.nil();
-
-
-					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3212);
+					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3250);
 					primitiveAtom343=primitiveAtom();
 					state._fsp--;
 					if (state.failed) return retval;
 					if ( state.backtracking==0 ) adaptor.addChild(root_0, primitiveAtom343.getTree());
+
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:612:4: '-' primitiveAtom
+					{
+					root_0 = (CommonTree)adaptor.nil();
+
+
+					char_literal344=(Token)match(input,Minus,FOLLOW_Minus_in_unaryPrimitiveAtom3255); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					char_literal344_tree = 
+					(CommonTree)adaptor.create(char_literal344)
+					;
+					adaptor.addChild(root_0, char_literal344_tree);
+					}
+
+					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3257);
+					primitiveAtom345=primitiveAtom();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, primitiveAtom345.getTree());
+
+					}
+					break;
+				case 3 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:613:4: primitiveAtom
+					{
+					root_0 = (CommonTree)adaptor.nil();
+
+
+					pushFollow(FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3262);
+					primitiveAtom346=primitiveAtom();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, primitiveAtom346.getTree());
 
 					}
 					break;
@@ -11969,7 +12068,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 90, unaryPrimitiveAtom_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 91, unaryPrimitiveAtom_StartIndex); }
 
 		}
 		return retval;
@@ -11984,7 +12083,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "primitiveAtom"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:607:1: primitiveAtom : ( Bool | Int | Float | String | Null | Identifier );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:616:1: primitiveAtom : ( Bool | Int | Float | String | Null | Identifier );
 	public final TSPHPParser.primitiveAtom_return primitiveAtom() throws RecognitionException {
 		TSPHPParser.primitiveAtom_return retval = new TSPHPParser.primitiveAtom_return();
 		retval.start = input.LT(1);
@@ -11992,24 +12091,24 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token set344=null;
+		Token set347=null;
 
-		CommonTree set344_tree=null;
+		CommonTree set347_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 91) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 92) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:608:2: ( Bool | Int | Float | String | Null | Identifier )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:617:2: ( Bool | Int | Float | String | Null | Identifier )
 			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			set344=(Token)input.LT(1);
+			set347=(Token)input.LT(1);
 			if ( input.LA(1)==Bool||input.LA(1)==Float||input.LA(1)==Identifier||input.LA(1)==Int||input.LA(1)==Null||input.LA(1)==String ) {
 				input.consume();
 				if ( state.backtracking==0 ) adaptor.addChild(root_0, 
-				(CommonTree)adaptor.create(set344)
+				(CommonTree)adaptor.create(set347)
 				);
 				state.errorRecovery=false;
 				state.failed=false;
@@ -12035,7 +12134,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 91, primitiveAtom_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 92, primitiveAtom_StartIndex); }
 
 		}
 		return retval;
@@ -12050,7 +12149,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "array"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:670:1: array : ( '[' ( array_content )? ']' | TypeArray '(' ( array_content )? ')' );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:679:1: array : ( '[' ( array_content )? ']' | TypeArray '(' ( array_content )? ')' );
 	public final TSPHPParser.array_return array() throws RecognitionException {
 		TSPHPParser.array_return retval = new TSPHPParser.array_return();
 		retval.start = input.LT(1);
@@ -12058,133 +12157,133 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal345=null;
-		Token char_literal347=null;
-		Token TypeArray348=null;
-		Token char_literal349=null;
-		Token char_literal351=null;
-		ParserRuleReturnScope array_content346 =null;
-		ParserRuleReturnScope array_content350 =null;
+		Token char_literal348=null;
+		Token char_literal350=null;
+		Token TypeArray351=null;
+		Token char_literal352=null;
+		Token char_literal354=null;
+		ParserRuleReturnScope array_content349 =null;
+		ParserRuleReturnScope array_content353 =null;
 
-		CommonTree char_literal345_tree=null;
-		CommonTree char_literal347_tree=null;
-		CommonTree TypeArray348_tree=null;
-		CommonTree char_literal349_tree=null;
-		CommonTree char_literal351_tree=null;
+		CommonTree char_literal348_tree=null;
+		CommonTree char_literal350_tree=null;
+		CommonTree TypeArray351_tree=null;
+		CommonTree char_literal352_tree=null;
+		CommonTree char_literal354_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 92) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 93) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:670:7: ( '[' ( array_content )? ']' | TypeArray '(' ( array_content )? ')' )
-			int alt110=2;
-			int LA110_0 = input.LA(1);
-			if ( (LA110_0==LeftSquareBrace) ) {
-				alt110=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:679:7: ( '[' ( array_content )? ']' | TypeArray '(' ( array_content )? ')' )
+			int alt106=2;
+			int LA106_0 = input.LA(1);
+			if ( (LA106_0==LeftSquareBrace) ) {
+				alt106=1;
 			}
-			else if ( (LA110_0==TypeArray) ) {
-				alt110=2;
+			else if ( (LA106_0==TypeArray) ) {
+				alt106=2;
 			}
 			else {
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 110, 0, input);
+					new NoViableAltException("", 106, 0, input);
 				throw nvae;
 			}
-			switch (alt110) {
+			switch (alt106) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:670:9: '[' ( array_content )? ']'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:679:9: '[' ( array_content )? ']'
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					char_literal345=(Token)match(input,LeftSquareBrace,FOLLOW_LeftSquareBrace_in_array3710); if (state.failed) return retval;
+					char_literal348=(Token)match(input,LeftSquareBrace,FOLLOW_LeftSquareBrace_in_array3760); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal345_tree = 
-					(CommonTree)adaptor.create(char_literal345)
+					char_literal348_tree = 
+					(CommonTree)adaptor.create(char_literal348)
 					;
-					adaptor.addChild(root_0, char_literal345_tree);
+					adaptor.addChild(root_0, char_literal348_tree);
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:670:13: ( array_content )?
-					int alt108=2;
-					int LA108_0 = input.LA(1);
-					if ( (LA108_0==At||LA108_0==Backslash||LA108_0==BitwiseNot||LA108_0==Bool||LA108_0==Clone||LA108_0==Float||LA108_0==Identifier||LA108_0==Int||(LA108_0 >= LeftParanthesis && LA108_0 <= LeftSquareBrace)||LA108_0==LogicNot||LA108_0==Minus||LA108_0==MinusMinus||LA108_0==New||LA108_0==Null||(LA108_0 >= Parent && LA108_0 <= Plus)||LA108_0==PlusPlus||LA108_0==Self||LA108_0==String||LA108_0==This||LA108_0==TypeArray||LA108_0==VariableId) ) {
-						alt108=1;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:679:13: ( array_content )?
+					int alt104=2;
+					int LA104_0 = input.LA(1);
+					if ( (LA104_0==At||LA104_0==Backslash||LA104_0==BitwiseNot||LA104_0==Bool||LA104_0==Clone||LA104_0==Float||LA104_0==Identifier||LA104_0==Int||(LA104_0 >= LeftParanthesis && LA104_0 <= LeftSquareBrace)||LA104_0==LogicNot||LA104_0==Minus||LA104_0==MinusMinus||LA104_0==New||LA104_0==Null||(LA104_0 >= Parent && LA104_0 <= Plus)||LA104_0==PlusPlus||LA104_0==Self||LA104_0==String||LA104_0==This||LA104_0==TypeArray||LA104_0==VariableId) ) {
+						alt104=1;
 					}
-					switch (alt108) {
+					switch (alt104) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:670:13: array_content
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:679:13: array_content
 							{
-							pushFollow(FOLLOW_array_content_in_array3712);
-							array_content346=array_content();
+							pushFollow(FOLLOW_array_content_in_array3762);
+							array_content349=array_content();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, array_content346.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, array_content349.getTree());
 
 							}
 							break;
 
 					}
 
-					char_literal347=(Token)match(input,RightSquareBrace,FOLLOW_RightSquareBrace_in_array3715); if (state.failed) return retval;
+					char_literal350=(Token)match(input,RightSquareBrace,FOLLOW_RightSquareBrace_in_array3765); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal347_tree = 
-					(CommonTree)adaptor.create(char_literal347)
+					char_literal350_tree = 
+					(CommonTree)adaptor.create(char_literal350)
 					;
-					adaptor.addChild(root_0, char_literal347_tree);
+					adaptor.addChild(root_0, char_literal350_tree);
 					}
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:671:4: TypeArray '(' ( array_content )? ')'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:680:4: TypeArray '(' ( array_content )? ')'
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					TypeArray348=(Token)match(input,TypeArray,FOLLOW_TypeArray_in_array3721); if (state.failed) return retval;
+					TypeArray351=(Token)match(input,TypeArray,FOLLOW_TypeArray_in_array3771); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					TypeArray348_tree = 
-					(CommonTree)adaptor.create(TypeArray348)
+					TypeArray351_tree = 
+					(CommonTree)adaptor.create(TypeArray351)
 					;
-					adaptor.addChild(root_0, TypeArray348_tree);
+					adaptor.addChild(root_0, TypeArray351_tree);
 					}
 
-					char_literal349=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_array3723); if (state.failed) return retval;
+					char_literal352=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_array3773); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal349_tree = 
-					(CommonTree)adaptor.create(char_literal349)
+					char_literal352_tree = 
+					(CommonTree)adaptor.create(char_literal352)
 					;
-					adaptor.addChild(root_0, char_literal349_tree);
+					adaptor.addChild(root_0, char_literal352_tree);
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:671:18: ( array_content )?
-					int alt109=2;
-					int LA109_0 = input.LA(1);
-					if ( (LA109_0==At||LA109_0==Backslash||LA109_0==BitwiseNot||LA109_0==Bool||LA109_0==Clone||LA109_0==Float||LA109_0==Identifier||LA109_0==Int||(LA109_0 >= LeftParanthesis && LA109_0 <= LeftSquareBrace)||LA109_0==LogicNot||LA109_0==Minus||LA109_0==MinusMinus||LA109_0==New||LA109_0==Null||(LA109_0 >= Parent && LA109_0 <= Plus)||LA109_0==PlusPlus||LA109_0==Self||LA109_0==String||LA109_0==This||LA109_0==TypeArray||LA109_0==VariableId) ) {
-						alt109=1;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:680:18: ( array_content )?
+					int alt105=2;
+					int LA105_0 = input.LA(1);
+					if ( (LA105_0==At||LA105_0==Backslash||LA105_0==BitwiseNot||LA105_0==Bool||LA105_0==Clone||LA105_0==Float||LA105_0==Identifier||LA105_0==Int||(LA105_0 >= LeftParanthesis && LA105_0 <= LeftSquareBrace)||LA105_0==LogicNot||LA105_0==Minus||LA105_0==MinusMinus||LA105_0==New||LA105_0==Null||(LA105_0 >= Parent && LA105_0 <= Plus)||LA105_0==PlusPlus||LA105_0==Self||LA105_0==String||LA105_0==This||LA105_0==TypeArray||LA105_0==VariableId) ) {
+						alt105=1;
 					}
-					switch (alt109) {
+					switch (alt105) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:671:18: array_content
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:680:18: array_content
 							{
-							pushFollow(FOLLOW_array_content_in_array3725);
-							array_content350=array_content();
+							pushFollow(FOLLOW_array_content_in_array3775);
+							array_content353=array_content();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, array_content350.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, array_content353.getTree());
 
 							}
 							break;
 
 					}
 
-					char_literal351=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_array3728); if (state.failed) return retval;
+					char_literal354=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_array3778); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal351_tree = 
-					(CommonTree)adaptor.create(char_literal351)
+					char_literal354_tree = 
+					(CommonTree)adaptor.create(char_literal354)
 					;
-					adaptor.addChild(root_0, char_literal351_tree);
+					adaptor.addChild(root_0, char_literal354_tree);
 					}
 
 					}
@@ -12205,7 +12304,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 92, array_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 93, array_StartIndex); }
 
 		}
 		return retval;
@@ -12220,7 +12319,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "array_content"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:674:1: array_content : ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:683:1: array_content : ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )* ;
 	public final TSPHPParser.array_content_return array_content() throws RecognitionException {
 		TSPHPParser.array_content_return retval = new TSPHPParser.array_content_return();
 		retval.start = input.LT(1);
@@ -12228,171 +12327,164 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal353=null;
-		Token char_literal355=null;
-		Token string_literal357=null;
-		ParserRuleReturnScope expression352 =null;
-		ParserRuleReturnScope expression354 =null;
-		ParserRuleReturnScope expression356 =null;
-		ParserRuleReturnScope expression358 =null;
+		Token string_literal356=null;
+		Token char_literal358=null;
+		Token string_literal360=null;
+		ParserRuleReturnScope expression355 =null;
+		ParserRuleReturnScope expression357 =null;
+		ParserRuleReturnScope expression359 =null;
+		ParserRuleReturnScope expression361 =null;
 
-		CommonTree string_literal353_tree=null;
-		CommonTree char_literal355_tree=null;
-		CommonTree string_literal357_tree=null;
+		CommonTree string_literal356_tree=null;
+		CommonTree char_literal358_tree=null;
+		CommonTree string_literal360_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 93) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 94) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:2: ( ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:4: ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:2: ( ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:4: ( expression '=>' )? expression ( ',' ( expression '=>' )? expression )*
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:4: ( expression '=>' )?
-			int alt111=2;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:4: ( expression '=>' )?
+			int alt107=2;
 			switch ( input.LA(1) ) {
 				case LogicNot:
 					{
-					int LA111_1 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_1 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case LeftParanthesis:
 					{
-					int LA111_2 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_2 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case BitwiseNot:
 					{
-					int LA111_3 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_3 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case At:
 					{
-					int LA111_4 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_4 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case Clone:
 					{
-					int LA111_5 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_5 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case New:
 					{
-					int LA111_6 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_6 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case Plus:
 					{
-					int LA111_7 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_7 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case Minus:
 					{
-					int LA111_8 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_8 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case Backslash:
 					{
-					int LA111_9 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_9 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case Identifier:
 					{
-					int LA111_10 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_10 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case Self:
 					{
-					int LA111_11 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_11 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case Parent:
 					{
-					int LA111_12 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_12 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case This:
 					{
-					int LA111_13 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_13 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case VariableId:
 					{
-					int LA111_14 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
-					}
-					}
-					break;
-				case PlusPlus:
-					{
-					int LA111_15 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_14 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case MinusMinus:
+				case PlusPlus:
 					{
-					int LA111_16 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_15 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case LeftSquareBrace:
 					{
-					int LA111_17 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_16 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 				case TypeArray:
 					{
-					int LA111_18 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_17 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
@@ -12402,29 +12494,29 @@ public TreeAdaptor getTreeAdaptor() {
 				case Null:
 				case String:
 					{
-					int LA111_19 = input.LA(2);
-					if ( (synpred181_TSPHP()) ) {
-						alt111=1;
+					int LA107_18 = input.LA(2);
+					if ( (synpred178_TSPHP()) ) {
+						alt107=1;
 					}
 					}
 					break;
 			}
-			switch (alt111) {
+			switch (alt107) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:5: expression '=>'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:5: expression '=>'
 					{
-					pushFollow(FOLLOW_expression_in_array_content3741);
-					expression352=expression();
+					pushFollow(FOLLOW_expression_in_array_content3791);
+					expression355=expression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression352.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression355.getTree());
 
-					string_literal353=(Token)match(input,Arrow,FOLLOW_Arrow_in_array_content3743); if (state.failed) return retval;
+					string_literal356=(Token)match(input,Arrow,FOLLOW_Arrow_in_array_content3793); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal353_tree = 
-					(CommonTree)adaptor.create(string_literal353)
+					string_literal356_tree = 
+					(CommonTree)adaptor.create(string_literal356)
 					;
-					adaptor.addChild(root_0, string_literal353_tree);
+					adaptor.addChild(root_0, string_literal356_tree);
 					}
 
 					}
@@ -12432,177 +12524,170 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			pushFollow(FOLLOW_expression_in_array_content3747);
-			expression354=expression();
+			pushFollow(FOLLOW_expression_in_array_content3797);
+			expression357=expression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression354.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression357.getTree());
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:35: ( ',' ( expression '=>' )? expression )*
-			loop113:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:35: ( ',' ( expression '=>' )? expression )*
+			loop109:
 			do {
-				int alt113=2;
-				int LA113_0 = input.LA(1);
-				if ( (LA113_0==Comma) ) {
-					alt113=1;
+				int alt109=2;
+				int LA109_0 = input.LA(1);
+				if ( (LA109_0==Comma) ) {
+					alt109=1;
 				}
 
-				switch (alt113) {
+				switch (alt109) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:36: ',' ( expression '=>' )? expression
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:36: ',' ( expression '=>' )? expression
 					{
-					char_literal355=(Token)match(input,Comma,FOLLOW_Comma_in_array_content3751); if (state.failed) return retval;
+					char_literal358=(Token)match(input,Comma,FOLLOW_Comma_in_array_content3801); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					char_literal355_tree = 
-					(CommonTree)adaptor.create(char_literal355)
+					char_literal358_tree = 
+					(CommonTree)adaptor.create(char_literal358)
 					;
-					adaptor.addChild(root_0, char_literal355_tree);
+					adaptor.addChild(root_0, char_literal358_tree);
 					}
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:40: ( expression '=>' )?
-					int alt112=2;
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:40: ( expression '=>' )?
+					int alt108=2;
 					switch ( input.LA(1) ) {
 						case LogicNot:
 							{
-							int LA112_1 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_1 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case LeftParanthesis:
 							{
-							int LA112_2 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_2 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case BitwiseNot:
 							{
-							int LA112_3 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_3 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case At:
 							{
-							int LA112_4 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_4 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case Clone:
 							{
-							int LA112_5 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_5 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case New:
 							{
-							int LA112_6 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_6 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case Plus:
 							{
-							int LA112_7 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_7 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case Minus:
 							{
-							int LA112_8 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_8 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case Backslash:
 							{
-							int LA112_9 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_9 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case Identifier:
 							{
-							int LA112_10 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_10 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case Self:
 							{
-							int LA112_11 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_11 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case Parent:
 							{
-							int LA112_12 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_12 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case This:
 							{
-							int LA112_13 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_13 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case VariableId:
 							{
-							int LA112_14 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
-							}
-							}
-							break;
-						case PlusPlus:
-							{
-							int LA112_15 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_14 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case MinusMinus:
+						case PlusPlus:
 							{
-							int LA112_16 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_15 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case LeftSquareBrace:
 							{
-							int LA112_17 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_16 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 						case TypeArray:
 							{
-							int LA112_18 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_17 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
@@ -12612,29 +12697,29 @@ public TreeAdaptor getTreeAdaptor() {
 						case Null:
 						case String:
 							{
-							int LA112_19 = input.LA(2);
-							if ( (synpred182_TSPHP()) ) {
-								alt112=1;
+							int LA108_18 = input.LA(2);
+							if ( (synpred179_TSPHP()) ) {
+								alt108=1;
 							}
 							}
 							break;
 					}
-					switch (alt112) {
+					switch (alt108) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:41: expression '=>'
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:41: expression '=>'
 							{
-							pushFollow(FOLLOW_expression_in_array_content3754);
-							expression356=expression();
+							pushFollow(FOLLOW_expression_in_array_content3804);
+							expression359=expression();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, expression356.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, expression359.getTree());
 
-							string_literal357=(Token)match(input,Arrow,FOLLOW_Arrow_in_array_content3756); if (state.failed) return retval;
+							string_literal360=(Token)match(input,Arrow,FOLLOW_Arrow_in_array_content3806); if (state.failed) return retval;
 							if ( state.backtracking==0 ) {
-							string_literal357_tree = 
-							(CommonTree)adaptor.create(string_literal357)
+							string_literal360_tree = 
+							(CommonTree)adaptor.create(string_literal360)
 							;
-							adaptor.addChild(root_0, string_literal357_tree);
+							adaptor.addChild(root_0, string_literal360_tree);
 							}
 
 							}
@@ -12642,17 +12727,17 @@ public TreeAdaptor getTreeAdaptor() {
 
 					}
 
-					pushFollow(FOLLOW_expression_in_array_content3760);
-					expression358=expression();
+					pushFollow(FOLLOW_expression_in_array_content3810);
+					expression361=expression();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression358.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression361.getTree());
 
 					}
 					break;
 
 				default :
-					break loop113;
+					break loop109;
 				}
 			} while (true);
 
@@ -12672,7 +12757,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 93, array_content_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 94, array_content_StartIndex); }
 
 		}
 		return retval;
@@ -12687,7 +12772,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "ifCondition"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:678:1: ifCondition : 'if' '(' expression ')' instructionThen= instructionInclBreakContinue ( 'else' instructionElse= instructionInclBreakContinue )? -> ^( 'if' expression $instructionThen ( $instructionElse)? ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:687:1: ifCondition : 'if' '(' expression ')' instructionThen= instructionInclBreakContinue ( 'else' instructionElse= instructionInclBreakContinue )? -> ^( 'if' expression $instructionThen ( $instructionElse)? ) ;
 	public final TSPHPParser.ifCondition_return ifCondition() throws RecognitionException {
 		TSPHPParser.ifCondition_return retval = new TSPHPParser.ifCondition_return();
 		retval.start = input.LT(1);
@@ -12695,18 +12780,18 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal359=null;
-		Token char_literal360=null;
-		Token char_literal362=null;
-		Token string_literal363=null;
+		Token string_literal362=null;
+		Token char_literal363=null;
+		Token char_literal365=null;
+		Token string_literal366=null;
 		ParserRuleReturnScope instructionThen =null;
 		ParserRuleReturnScope instructionElse =null;
-		ParserRuleReturnScope expression361 =null;
+		ParserRuleReturnScope expression364 =null;
 
-		CommonTree string_literal359_tree=null;
-		CommonTree char_literal360_tree=null;
-		CommonTree char_literal362_tree=null;
-		CommonTree string_literal363_tree=null;
+		CommonTree string_literal362_tree=null;
+		CommonTree char_literal363_tree=null;
+		CommonTree char_literal365_tree=null;
+		CommonTree string_literal366_tree=null;
 		RewriteRuleTokenStream stream_LeftParanthesis=new RewriteRuleTokenStream(adaptor,"token LeftParanthesis");
 		RewriteRuleTokenStream stream_Else=new RewriteRuleTokenStream(adaptor,"token Else");
 		RewriteRuleTokenStream stream_RightParanthesis=new RewriteRuleTokenStream(adaptor,"token RightParanthesis");
@@ -12715,47 +12800,47 @@ public TreeAdaptor getTreeAdaptor() {
 		RewriteRuleSubtreeStream stream_instructionInclBreakContinue=new RewriteRuleSubtreeStream(adaptor,"rule instructionInclBreakContinue");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 94) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 95) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:679:2: ( 'if' '(' expression ')' instructionThen= instructionInclBreakContinue ( 'else' instructionElse= instructionInclBreakContinue )? -> ^( 'if' expression $instructionThen ( $instructionElse)? ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:679:4: 'if' '(' expression ')' instructionThen= instructionInclBreakContinue ( 'else' instructionElse= instructionInclBreakContinue )?
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:2: ( 'if' '(' expression ')' instructionThen= instructionInclBreakContinue ( 'else' instructionElse= instructionInclBreakContinue )? -> ^( 'if' expression $instructionThen ( $instructionElse)? ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:4: 'if' '(' expression ')' instructionThen= instructionInclBreakContinue ( 'else' instructionElse= instructionInclBreakContinue )?
 			{
-			string_literal359=(Token)match(input,If,FOLLOW_If_in_ifCondition3772); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_If.add(string_literal359);
+			string_literal362=(Token)match(input,If,FOLLOW_If_in_ifCondition3822); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_If.add(string_literal362);
 
-			char_literal360=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_ifCondition3774); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_LeftParanthesis.add(char_literal360);
+			char_literal363=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_ifCondition3824); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_LeftParanthesis.add(char_literal363);
 
-			pushFollow(FOLLOW_expression_in_ifCondition3776);
-			expression361=expression();
+			pushFollow(FOLLOW_expression_in_ifCondition3826);
+			expression364=expression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) stream_expression.add(expression361.getTree());
-			char_literal362=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_ifCondition3778); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal362);
+			if ( state.backtracking==0 ) stream_expression.add(expression364.getTree());
+			char_literal365=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_ifCondition3828); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal365);
 
-			pushFollow(FOLLOW_instructionInclBreakContinue_in_ifCondition3783);
+			pushFollow(FOLLOW_instructionInclBreakContinue_in_ifCondition3833);
 			instructionThen=instructionInclBreakContinue();
 			state._fsp--;
 			if (state.failed) return retval;
 			if ( state.backtracking==0 ) stream_instructionInclBreakContinue.add(instructionThen.getTree());
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:680:3: ( 'else' instructionElse= instructionInclBreakContinue )?
-			int alt114=2;
-			int LA114_0 = input.LA(1);
-			if ( (LA114_0==Else) ) {
-				int LA114_1 = input.LA(2);
-				if ( (synpred184_TSPHP()) ) {
-					alt114=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:3: ( 'else' instructionElse= instructionInclBreakContinue )?
+			int alt110=2;
+			int LA110_0 = input.LA(1);
+			if ( (LA110_0==Else) ) {
+				int LA110_1 = input.LA(2);
+				if ( (synpred181_TSPHP()) ) {
+					alt110=1;
 				}
 			}
-			switch (alt114) {
+			switch (alt110) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:680:5: 'else' instructionElse= instructionInclBreakContinue
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:5: 'else' instructionElse= instructionInclBreakContinue
 					{
-					string_literal363=(Token)match(input,Else,FOLLOW_Else_in_ifCondition3790); if (state.failed) return retval; 
-					if ( state.backtracking==0 ) stream_Else.add(string_literal363);
+					string_literal366=(Token)match(input,Else,FOLLOW_Else_in_ifCondition3840); if (state.failed) return retval; 
+					if ( state.backtracking==0 ) stream_Else.add(string_literal366);
 
-					pushFollow(FOLLOW_instructionInclBreakContinue_in_ifCondition3795);
+					pushFollow(FOLLOW_instructionInclBreakContinue_in_ifCondition3845);
 					instructionElse=instructionInclBreakContinue();
 					state._fsp--;
 					if (state.failed) return retval;
@@ -12766,7 +12851,7 @@ public TreeAdaptor getTreeAdaptor() {
 			}
 
 			// AST REWRITE
-			// elements: expression, instructionThen, instructionElse, If
+			// elements: expression, If, instructionElse, instructionThen
 			// token labels: 
 			// rule labels: retval, instructionThen, instructionElse
 			// token list labels: 
@@ -12780,9 +12865,9 @@ public TreeAdaptor getTreeAdaptor() {
 			RewriteRuleSubtreeStream stream_instructionElse=new RewriteRuleSubtreeStream(adaptor,"rule instructionElse",instructionElse!=null?instructionElse.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 680:61: -> ^( 'if' expression $instructionThen ( $instructionElse)? )
+			// 689:61: -> ^( 'if' expression $instructionThen ( $instructionElse)? )
 			{
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:680:64: ^( 'if' expression $instructionThen ( $instructionElse)? )
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:64: ^( 'if' expression $instructionThen ( $instructionElse)? )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(
@@ -12793,7 +12878,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 				adaptor.addChild(root_1, stream_instructionThen.nextTree());
 
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:680:100: ( $instructionElse)?
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:100: ( $instructionElse)?
 				if ( stream_instructionElse.hasNext() ) {
 					adaptor.addChild(root_1, stream_instructionElse.nextTree());
 
@@ -12825,7 +12910,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 94, ifCondition_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 95, ifCondition_StartIndex); }
 
 		}
 		return retval;
@@ -12840,7 +12925,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "switchCondition"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:1: switchCondition : 'switch' '(' VariableId ')' '{' switchContent '}' -> ^( 'switch' VariableId switchContent ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:693:1: switchCondition : 'switch' '(' VariableId ')' '{' switchContent '}' -> ^( 'switch' VariableId switchContent ) ;
 	public final TSPHPParser.switchCondition_return switchCondition() throws RecognitionException {
 		TSPHPParser.switchCondition_return retval = new TSPHPParser.switchCondition_return();
 		retval.start = input.LT(1);
@@ -12848,20 +12933,20 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal364=null;
-		Token char_literal365=null;
-		Token VariableId366=null;
-		Token char_literal367=null;
+		Token string_literal367=null;
 		Token char_literal368=null;
+		Token VariableId369=null;
 		Token char_literal370=null;
-		ParserRuleReturnScope switchContent369 =null;
+		Token char_literal371=null;
+		Token char_literal373=null;
+		ParserRuleReturnScope switchContent372 =null;
 
-		CommonTree string_literal364_tree=null;
-		CommonTree char_literal365_tree=null;
-		CommonTree VariableId366_tree=null;
-		CommonTree char_literal367_tree=null;
+		CommonTree string_literal367_tree=null;
 		CommonTree char_literal368_tree=null;
+		CommonTree VariableId369_tree=null;
 		CommonTree char_literal370_tree=null;
+		CommonTree char_literal371_tree=null;
+		CommonTree char_literal373_tree=null;
 		RewriteRuleTokenStream stream_LeftCurlyBrace=new RewriteRuleTokenStream(adaptor,"token LeftCurlyBrace");
 		RewriteRuleTokenStream stream_Switch=new RewriteRuleTokenStream(adaptor,"token Switch");
 		RewriteRuleTokenStream stream_LeftParanthesis=new RewriteRuleTokenStream(adaptor,"token LeftParanthesis");
@@ -12871,36 +12956,36 @@ public TreeAdaptor getTreeAdaptor() {
 		RewriteRuleSubtreeStream stream_switchContent=new RewriteRuleSubtreeStream(adaptor,"rule switchContent");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 95) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 96) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:685:2: ( 'switch' '(' VariableId ')' '{' switchContent '}' -> ^( 'switch' VariableId switchContent ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:685:4: 'switch' '(' VariableId ')' '{' switchContent '}'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:694:2: ( 'switch' '(' VariableId ')' '{' switchContent '}' -> ^( 'switch' VariableId switchContent ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:694:4: 'switch' '(' VariableId ')' '{' switchContent '}'
 			{
-			string_literal364=(Token)match(input,Switch,FOLLOW_Switch_in_switchCondition3826); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_Switch.add(string_literal364);
+			string_literal367=(Token)match(input,Switch,FOLLOW_Switch_in_switchCondition3876); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_Switch.add(string_literal367);
 
-			char_literal365=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_switchCondition3828); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_LeftParanthesis.add(char_literal365);
+			char_literal368=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_switchCondition3878); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_LeftParanthesis.add(char_literal368);
 
-			VariableId366=(Token)match(input,VariableId,FOLLOW_VariableId_in_switchCondition3830); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_VariableId.add(VariableId366);
+			VariableId369=(Token)match(input,VariableId,FOLLOW_VariableId_in_switchCondition3880); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_VariableId.add(VariableId369);
 
-			char_literal367=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_switchCondition3832); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal367);
+			char_literal370=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_switchCondition3882); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal370);
 
-			char_literal368=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_switchCondition3834); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_LeftCurlyBrace.add(char_literal368);
+			char_literal371=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_switchCondition3884); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_LeftCurlyBrace.add(char_literal371);
 
-			pushFollow(FOLLOW_switchContent_in_switchCondition3836);
-			switchContent369=switchContent();
+			pushFollow(FOLLOW_switchContent_in_switchCondition3886);
+			switchContent372=switchContent();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) stream_switchContent.add(switchContent369.getTree());
-			char_literal370=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_switchCondition3838); if (state.failed) return retval; 
-			if ( state.backtracking==0 ) stream_RightCurlyBrace.add(char_literal370);
+			if ( state.backtracking==0 ) stream_switchContent.add(switchContent372.getTree());
+			char_literal373=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_switchCondition3888); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_RightCurlyBrace.add(char_literal373);
 
 			// AST REWRITE
-			// elements: VariableId, Switch, switchContent
+			// elements: switchContent, Switch, VariableId
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -12912,9 +12997,9 @@ public TreeAdaptor getTreeAdaptor() {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 685:55: -> ^( 'switch' VariableId switchContent )
+			// 694:55: -> ^( 'switch' VariableId switchContent )
 			{
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:685:58: ^( 'switch' VariableId switchContent )
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:694:58: ^( 'switch' VariableId switchContent )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(
@@ -12952,7 +13037,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 95, switchCondition_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 96, switchCondition_StartIndex); }
 
 		}
 		return retval;
@@ -12967,7 +13052,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "switchContent"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:687:1: switchContent : ( ( normalCase )+ defaultCase ( normalCase )+ | ( normalCase )+ ( defaultCase )? );
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:696:1: switchContent : ( ( normalCase )+ defaultCase ( normalCase )+ | ( normalCase )+ ( defaultCase )? );
 	public final TSPHPParser.switchContent_return switchContent() throws RecognitionException {
 		TSPHPParser.switchContent_return retval = new TSPHPParser.switchContent_return();
 		retval.start = input.LT(1);
@@ -12975,26 +13060,26 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope normalCase371 =null;
-		ParserRuleReturnScope defaultCase372 =null;
-		ParserRuleReturnScope normalCase373 =null;
 		ParserRuleReturnScope normalCase374 =null;
 		ParserRuleReturnScope defaultCase375 =null;
+		ParserRuleReturnScope normalCase376 =null;
+		ParserRuleReturnScope normalCase377 =null;
+		ParserRuleReturnScope defaultCase378 =null;
 
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 96) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 97) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:2: ( ( normalCase )+ defaultCase ( normalCase )+ | ( normalCase )+ ( defaultCase )? )
-			int alt119=2;
-			int LA119_0 = input.LA(1);
-			if ( (LA119_0==Case) ) {
-				int LA119_1 = input.LA(2);
-				if ( (synpred187_TSPHP()) ) {
-					alt119=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:2: ( ( normalCase )+ defaultCase ( normalCase )+ | ( normalCase )+ ( defaultCase )? )
+			int alt115=2;
+			int LA115_0 = input.LA(1);
+			if ( (LA115_0==Case) ) {
+				int LA115_1 = input.LA(2);
+				if ( (synpred184_TSPHP()) ) {
+					alt115=1;
 				}
 				else if ( (true) ) {
-					alt119=2;
+					alt115=2;
 				}
 				else {
 					if (state.backtracking>0) {state.failed=true; return retval;}
@@ -13002,7 +13087,7 @@ public TreeAdaptor getTreeAdaptor() {
 					try {
 						input.consume();
 						NoViableAltException nvae =
-							new NoViableAltException("", 119, 1, input);
+							new NoViableAltException("", 115, 1, input);
 						throw nvae;
 					} finally {
 						input.rewind(nvaeMark);
@@ -13012,111 +13097,31 @@ public TreeAdaptor getTreeAdaptor() {
 			else {
 				if (state.backtracking>0) {state.failed=true; return retval;}
 				NoViableAltException nvae =
-					new NoViableAltException("", 119, 0, input);
+					new NoViableAltException("", 115, 0, input);
 				throw nvae;
 			}
-			switch (alt119) {
+			switch (alt115) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:4: ( normalCase )+ defaultCase ( normalCase )+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:4: ( normalCase )+ defaultCase ( normalCase )+
 					{
 					root_0 = (CommonTree)adaptor.nil();
 
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:4: ( normalCase )+
-					int cnt115=0;
-					loop115:
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:4: ( normalCase )+
+					int cnt111=0;
+					loop111:
 					do {
-						int alt115=2;
-						int LA115_0 = input.LA(1);
-						if ( (LA115_0==Case) ) {
-							alt115=1;
+						int alt111=2;
+						int LA111_0 = input.LA(1);
+						if ( (LA111_0==Case) ) {
+							alt111=1;
 						}
 
-						switch (alt115) {
+						switch (alt111) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:4: normalCase
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:4: normalCase
 							{
-							pushFollow(FOLLOW_normalCase_in_switchContent3859);
-							normalCase371=normalCase();
-							state._fsp--;
-							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, normalCase371.getTree());
-
-							}
-							break;
-
-						default :
-							if ( cnt115 >= 1 ) break loop115;
-							if (state.backtracking>0) {state.failed=true; return retval;}
-								EarlyExitException eee =
-									new EarlyExitException(115, input);
-								throw eee;
-						}
-						cnt115++;
-					} while (true);
-
-					pushFollow(FOLLOW_defaultCase_in_switchContent3862);
-					defaultCase372=defaultCase();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, defaultCase372.getTree());
-
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:28: ( normalCase )+
-					int cnt116=0;
-					loop116:
-					do {
-						int alt116=2;
-						int LA116_0 = input.LA(1);
-						if ( (LA116_0==Case) ) {
-							alt116=1;
-						}
-
-						switch (alt116) {
-						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:28: normalCase
-							{
-							pushFollow(FOLLOW_normalCase_in_switchContent3864);
-							normalCase373=normalCase();
-							state._fsp--;
-							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, normalCase373.getTree());
-
-							}
-							break;
-
-						default :
-							if ( cnt116 >= 1 ) break loop116;
-							if (state.backtracking>0) {state.failed=true; return retval;}
-								EarlyExitException eee =
-									new EarlyExitException(116, input);
-								throw eee;
-						}
-						cnt116++;
-					} while (true);
-
-					}
-					break;
-				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:4: ( normalCase )+ ( defaultCase )?
-					{
-					root_0 = (CommonTree)adaptor.nil();
-
-
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:4: ( normalCase )+
-					int cnt117=0;
-					loop117:
-					do {
-						int alt117=2;
-						int LA117_0 = input.LA(1);
-						if ( (LA117_0==Case) ) {
-							alt117=1;
-						}
-
-						switch (alt117) {
-						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:4: normalCase
-							{
-							pushFollow(FOLLOW_normalCase_in_switchContent3871);
+							pushFollow(FOLLOW_normalCase_in_switchContent3909);
 							normalCase374=normalCase();
 							state._fsp--;
 							if (state.failed) return retval;
@@ -13126,30 +13131,110 @@ public TreeAdaptor getTreeAdaptor() {
 							break;
 
 						default :
-							if ( cnt117 >= 1 ) break loop117;
+							if ( cnt111 >= 1 ) break loop111;
 							if (state.backtracking>0) {state.failed=true; return retval;}
 								EarlyExitException eee =
-									new EarlyExitException(117, input);
+									new EarlyExitException(111, input);
 								throw eee;
 						}
-						cnt117++;
+						cnt111++;
 					} while (true);
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:16: ( defaultCase )?
-					int alt118=2;
-					int LA118_0 = input.LA(1);
-					if ( (LA118_0==Default) ) {
-						alt118=1;
-					}
-					switch (alt118) {
+					pushFollow(FOLLOW_defaultCase_in_switchContent3912);
+					defaultCase375=defaultCase();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, defaultCase375.getTree());
+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:28: ( normalCase )+
+					int cnt112=0;
+					loop112:
+					do {
+						int alt112=2;
+						int LA112_0 = input.LA(1);
+						if ( (LA112_0==Case) ) {
+							alt112=1;
+						}
+
+						switch (alt112) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:16: defaultCase
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:28: normalCase
 							{
-							pushFollow(FOLLOW_defaultCase_in_switchContent3874);
-							defaultCase375=defaultCase();
+							pushFollow(FOLLOW_normalCase_in_switchContent3914);
+							normalCase376=normalCase();
 							state._fsp--;
 							if (state.failed) return retval;
-							if ( state.backtracking==0 ) adaptor.addChild(root_0, defaultCase375.getTree());
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, normalCase376.getTree());
+
+							}
+							break;
+
+						default :
+							if ( cnt112 >= 1 ) break loop112;
+							if (state.backtracking>0) {state.failed=true; return retval;}
+								EarlyExitException eee =
+									new EarlyExitException(112, input);
+								throw eee;
+						}
+						cnt112++;
+					} while (true);
+
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:698:4: ( normalCase )+ ( defaultCase )?
+					{
+					root_0 = (CommonTree)adaptor.nil();
+
+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:698:4: ( normalCase )+
+					int cnt113=0;
+					loop113:
+					do {
+						int alt113=2;
+						int LA113_0 = input.LA(1);
+						if ( (LA113_0==Case) ) {
+							alt113=1;
+						}
+
+						switch (alt113) {
+						case 1 :
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:698:4: normalCase
+							{
+							pushFollow(FOLLOW_normalCase_in_switchContent3921);
+							normalCase377=normalCase();
+							state._fsp--;
+							if (state.failed) return retval;
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, normalCase377.getTree());
+
+							}
+							break;
+
+						default :
+							if ( cnt113 >= 1 ) break loop113;
+							if (state.backtracking>0) {state.failed=true; return retval;}
+								EarlyExitException eee =
+									new EarlyExitException(113, input);
+								throw eee;
+						}
+						cnt113++;
+					} while (true);
+
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:698:16: ( defaultCase )?
+					int alt114=2;
+					int LA114_0 = input.LA(1);
+					if ( (LA114_0==Default) ) {
+						alt114=1;
+					}
+					switch (alt114) {
+						case 1 :
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:698:16: defaultCase
+							{
+							pushFollow(FOLLOW_defaultCase_in_switchContent3924);
+							defaultCase378=defaultCase();
+							state._fsp--;
+							if (state.failed) return retval;
+							if ( state.backtracking==0 ) adaptor.addChild(root_0, defaultCase378.getTree());
 
 							}
 							break;
@@ -13174,7 +13259,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 96, switchContent_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 97, switchContent_StartIndex); }
 
 		}
 		return retval;
@@ -13189,7 +13274,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "normalCase"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:692:1: normalCase : ( caseLabel )+ ( instructionInclBreakContinue )+ -> ^( SWITCH_GROUP ^( SWITCH_CASES[$normalCase.start,\"switch cases\"] ( caseLabel )+ ) ( instructionInclBreakContinue )+ ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:701:1: normalCase : ( caseLabel )+ ( instructionInclBreakContinue )+ -> ^( SWITCH_GROUP ^( SWITCH_CASES[$normalCase.start,\"switch cases\"] ( caseLabel )+ ) ( instructionInclBreakContinue )+ ) ;
 	public final TSPHPParser.normalCase_return normalCase() throws RecognitionException {
 		TSPHPParser.normalCase_return retval = new TSPHPParser.normalCase_return();
 		retval.start = input.LT(1);
@@ -13197,80 +13282,80 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope caseLabel376 =null;
-		ParserRuleReturnScope instructionInclBreakContinue377 =null;
+		ParserRuleReturnScope caseLabel379 =null;
+		ParserRuleReturnScope instructionInclBreakContinue380 =null;
 
 		RewriteRuleSubtreeStream stream_instructionInclBreakContinue=new RewriteRuleSubtreeStream(adaptor,"rule instructionInclBreakContinue");
 		RewriteRuleSubtreeStream stream_caseLabel=new RewriteRuleSubtreeStream(adaptor,"rule caseLabel");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 97) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 98) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:693:2: ( ( caseLabel )+ ( instructionInclBreakContinue )+ -> ^( SWITCH_GROUP ^( SWITCH_CASES[$normalCase.start,\"switch cases\"] ( caseLabel )+ ) ( instructionInclBreakContinue )+ ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:693:4: ( caseLabel )+ ( instructionInclBreakContinue )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:702:2: ( ( caseLabel )+ ( instructionInclBreakContinue )+ -> ^( SWITCH_GROUP ^( SWITCH_CASES[$normalCase.start,\"switch cases\"] ( caseLabel )+ ) ( instructionInclBreakContinue )+ ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:702:4: ( caseLabel )+ ( instructionInclBreakContinue )+
 			{
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:693:4: ( caseLabel )+
-			int cnt120=0;
-			loop120:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:702:4: ( caseLabel )+
+			int cnt116=0;
+			loop116:
 			do {
-				int alt120=2;
-				int LA120_0 = input.LA(1);
-				if ( (LA120_0==Case) ) {
-					alt120=1;
+				int alt116=2;
+				int LA116_0 = input.LA(1);
+				if ( (LA116_0==Case) ) {
+					alt116=1;
 				}
 
-				switch (alt120) {
+				switch (alt116) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:693:4: caseLabel
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:702:4: caseLabel
 					{
-					pushFollow(FOLLOW_caseLabel_in_normalCase3886);
-					caseLabel376=caseLabel();
+					pushFollow(FOLLOW_caseLabel_in_normalCase3936);
+					caseLabel379=caseLabel();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_caseLabel.add(caseLabel376.getTree());
+					if ( state.backtracking==0 ) stream_caseLabel.add(caseLabel379.getTree());
 					}
 					break;
 
 				default :
-					if ( cnt120 >= 1 ) break loop120;
+					if ( cnt116 >= 1 ) break loop116;
 					if (state.backtracking>0) {state.failed=true; return retval;}
 						EarlyExitException eee =
-							new EarlyExitException(120, input);
+							new EarlyExitException(116, input);
 						throw eee;
 				}
-				cnt120++;
+				cnt116++;
 			} while (true);
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:693:15: ( instructionInclBreakContinue )+
-			int cnt121=0;
-			loop121:
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:702:15: ( instructionInclBreakContinue )+
+			int cnt117=0;
+			loop117:
 			do {
-				int alt121=2;
-				int LA121_0 = input.LA(1);
-				if ( (LA121_0==Backslash||LA121_0==Break||LA121_0==Continue||LA121_0==Do||LA121_0==Echo||LA121_0==Exit||(LA121_0 >= For && LA121_0 <= Foreach)||(LA121_0 >= Identifier && LA121_0 <= If)||LA121_0==LeftCurlyBrace||LA121_0==MinusMinus||LA121_0==Parent||LA121_0==PlusPlus||LA121_0==Return||LA121_0==Self||(LA121_0 >= Switch && LA121_0 <= TypeString)||LA121_0==VariableId||LA121_0==While) ) {
-					alt121=1;
+				int alt117=2;
+				int LA117_0 = input.LA(1);
+				if ( (LA117_0==Backslash||LA117_0==Break||LA117_0==Continue||LA117_0==Do||LA117_0==Echo||LA117_0==Exit||(LA117_0 >= For && LA117_0 <= Foreach)||(LA117_0 >= Identifier && LA117_0 <= If)||LA117_0==LeftCurlyBrace||LA117_0==MinusMinus||LA117_0==Parent||LA117_0==PlusPlus||LA117_0==Return||LA117_0==Self||(LA117_0 >= Switch && LA117_0 <= TypeString)||LA117_0==VariableId||LA117_0==While) ) {
+					alt117=1;
 				}
 
-				switch (alt121) {
+				switch (alt117) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:693:15: instructionInclBreakContinue
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:702:15: instructionInclBreakContinue
 					{
-					pushFollow(FOLLOW_instructionInclBreakContinue_in_normalCase3889);
-					instructionInclBreakContinue377=instructionInclBreakContinue();
+					pushFollow(FOLLOW_instructionInclBreakContinue_in_normalCase3939);
+					instructionInclBreakContinue380=instructionInclBreakContinue();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_instructionInclBreakContinue.add(instructionInclBreakContinue377.getTree());
+					if ( state.backtracking==0 ) stream_instructionInclBreakContinue.add(instructionInclBreakContinue380.getTree());
 					}
 					break;
 
 				default :
-					if ( cnt121 >= 1 ) break loop121;
+					if ( cnt117 >= 1 ) break loop117;
 					if (state.backtracking>0) {state.failed=true; return retval;}
 						EarlyExitException eee =
-							new EarlyExitException(121, input);
+							new EarlyExitException(117, input);
 						throw eee;
 				}
-				cnt121++;
+				cnt117++;
 			} while (true);
 
 			// AST REWRITE
@@ -13286,16 +13371,16 @@ public TreeAdaptor getTreeAdaptor() {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 694:3: -> ^( SWITCH_GROUP ^( SWITCH_CASES[$normalCase.start,\"switch cases\"] ( caseLabel )+ ) ( instructionInclBreakContinue )+ )
+			// 703:3: -> ^( SWITCH_GROUP ^( SWITCH_CASES[$normalCase.start,\"switch cases\"] ( caseLabel )+ ) ( instructionInclBreakContinue )+ )
 			{
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:694:6: ^( SWITCH_GROUP ^( SWITCH_CASES[$normalCase.start,\"switch cases\"] ( caseLabel )+ ) ( instructionInclBreakContinue )+ )
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:703:6: ^( SWITCH_GROUP ^( SWITCH_CASES[$normalCase.start,\"switch cases\"] ( caseLabel )+ ) ( instructionInclBreakContinue )+ )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(
 				(CommonTree)adaptor.create(SWITCH_GROUP, "SWITCH_GROUP")
 				, root_1);
 
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:695:4: ^( SWITCH_CASES[$normalCase.start,\"switch cases\"] ( caseLabel )+ )
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:704:4: ^( SWITCH_CASES[$normalCase.start,\"switch cases\"] ( caseLabel )+ )
 				{
 				CommonTree root_2 = (CommonTree)adaptor.nil();
 				root_2 = (CommonTree)adaptor.becomeRoot(
@@ -13348,7 +13433,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 97, normalCase_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 98, normalCase_StartIndex); }
 
 		}
 		return retval;
@@ -13363,7 +13448,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "defaultCase"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:699:1: defaultCase : defaultLabel ( instructionInclBreakContinue )+ -> ^( SWITCH_GROUP ^( SWITCH_CASES[$defaultCase.start,\"switch cases\"] defaultLabel ) ( instructionInclBreakContinue )+ ) ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:708:1: defaultCase : defaultLabel ( instructionInclBreakContinue )+ -> ^( SWITCH_GROUP ^( SWITCH_CASES[$defaultCase.start,\"switch cases\"] defaultLabel ) ( instructionInclBreakContinue )+ ) ;
 	public final TSPHPParser.defaultCase_return defaultCase() throws RecognitionException {
 		TSPHPParser.defaultCase_return retval = new TSPHPParser.defaultCase_return();
 		retval.start = input.LT(1);
@@ -13371,57 +13456,57 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		ParserRuleReturnScope defaultLabel378 =null;
-		ParserRuleReturnScope instructionInclBreakContinue379 =null;
+		ParserRuleReturnScope defaultLabel381 =null;
+		ParserRuleReturnScope instructionInclBreakContinue382 =null;
 
 		RewriteRuleSubtreeStream stream_defaultLabel=new RewriteRuleSubtreeStream(adaptor,"rule defaultLabel");
 		RewriteRuleSubtreeStream stream_instructionInclBreakContinue=new RewriteRuleSubtreeStream(adaptor,"rule instructionInclBreakContinue");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 98) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 99) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:700:2: ( defaultLabel ( instructionInclBreakContinue )+ -> ^( SWITCH_GROUP ^( SWITCH_CASES[$defaultCase.start,\"switch cases\"] defaultLabel ) ( instructionInclBreakContinue )+ ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:700:4: defaultLabel ( instructionInclBreakContinue )+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:709:2: ( defaultLabel ( instructionInclBreakContinue )+ -> ^( SWITCH_GROUP ^( SWITCH_CASES[$defaultCase.start,\"switch cases\"] defaultLabel ) ( instructionInclBreakContinue )+ ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:709:4: defaultLabel ( instructionInclBreakContinue )+
 			{
-			pushFollow(FOLLOW_defaultLabel_in_defaultCase3932);
-			defaultLabel378=defaultLabel();
+			pushFollow(FOLLOW_defaultLabel_in_defaultCase3982);
+			defaultLabel381=defaultLabel();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) stream_defaultLabel.add(defaultLabel378.getTree());
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:700:17: ( instructionInclBreakContinue )+
-			int cnt122=0;
-			loop122:
+			if ( state.backtracking==0 ) stream_defaultLabel.add(defaultLabel381.getTree());
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:709:17: ( instructionInclBreakContinue )+
+			int cnt118=0;
+			loop118:
 			do {
-				int alt122=2;
-				int LA122_0 = input.LA(1);
-				if ( (LA122_0==Backslash||LA122_0==Break||LA122_0==Continue||LA122_0==Do||LA122_0==Echo||LA122_0==Exit||(LA122_0 >= For && LA122_0 <= Foreach)||(LA122_0 >= Identifier && LA122_0 <= If)||LA122_0==LeftCurlyBrace||LA122_0==MinusMinus||LA122_0==Parent||LA122_0==PlusPlus||LA122_0==Return||LA122_0==Self||(LA122_0 >= Switch && LA122_0 <= TypeString)||LA122_0==VariableId||LA122_0==While) ) {
-					alt122=1;
+				int alt118=2;
+				int LA118_0 = input.LA(1);
+				if ( (LA118_0==Backslash||LA118_0==Break||LA118_0==Continue||LA118_0==Do||LA118_0==Echo||LA118_0==Exit||(LA118_0 >= For && LA118_0 <= Foreach)||(LA118_0 >= Identifier && LA118_0 <= If)||LA118_0==LeftCurlyBrace||LA118_0==MinusMinus||LA118_0==Parent||LA118_0==PlusPlus||LA118_0==Return||LA118_0==Self||(LA118_0 >= Switch && LA118_0 <= TypeString)||LA118_0==VariableId||LA118_0==While) ) {
+					alt118=1;
 				}
 
-				switch (alt122) {
+				switch (alt118) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:700:17: instructionInclBreakContinue
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:709:17: instructionInclBreakContinue
 					{
-					pushFollow(FOLLOW_instructionInclBreakContinue_in_defaultCase3934);
-					instructionInclBreakContinue379=instructionInclBreakContinue();
+					pushFollow(FOLLOW_instructionInclBreakContinue_in_defaultCase3984);
+					instructionInclBreakContinue382=instructionInclBreakContinue();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) stream_instructionInclBreakContinue.add(instructionInclBreakContinue379.getTree());
+					if ( state.backtracking==0 ) stream_instructionInclBreakContinue.add(instructionInclBreakContinue382.getTree());
 					}
 					break;
 
 				default :
-					if ( cnt122 >= 1 ) break loop122;
+					if ( cnt118 >= 1 ) break loop118;
 					if (state.backtracking>0) {state.failed=true; return retval;}
 						EarlyExitException eee =
-							new EarlyExitException(122, input);
+							new EarlyExitException(118, input);
 						throw eee;
 				}
-				cnt122++;
+				cnt118++;
 			} while (true);
 
 			// AST REWRITE
-			// elements: defaultLabel, instructionInclBreakContinue
+			// elements: instructionInclBreakContinue, defaultLabel
 			// token labels: 
 			// rule labels: retval
 			// token list labels: 
@@ -13433,16 +13518,16 @@ public TreeAdaptor getTreeAdaptor() {
 			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
 
 			root_0 = (CommonTree)adaptor.nil();
-			// 701:3: -> ^( SWITCH_GROUP ^( SWITCH_CASES[$defaultCase.start,\"switch cases\"] defaultLabel ) ( instructionInclBreakContinue )+ )
+			// 710:3: -> ^( SWITCH_GROUP ^( SWITCH_CASES[$defaultCase.start,\"switch cases\"] defaultLabel ) ( instructionInclBreakContinue )+ )
 			{
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:701:6: ^( SWITCH_GROUP ^( SWITCH_CASES[$defaultCase.start,\"switch cases\"] defaultLabel ) ( instructionInclBreakContinue )+ )
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:710:6: ^( SWITCH_GROUP ^( SWITCH_CASES[$defaultCase.start,\"switch cases\"] defaultLabel ) ( instructionInclBreakContinue )+ )
 				{
 				CommonTree root_1 = (CommonTree)adaptor.nil();
 				root_1 = (CommonTree)adaptor.becomeRoot(
 				(CommonTree)adaptor.create(SWITCH_GROUP, "SWITCH_GROUP")
 				, root_1);
 
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:702:4: ^( SWITCH_CASES[$defaultCase.start,\"switch cases\"] defaultLabel )
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:711:4: ^( SWITCH_CASES[$defaultCase.start,\"switch cases\"] defaultLabel )
 				{
 				CommonTree root_2 = (CommonTree)adaptor.nil();
 				root_2 = (CommonTree)adaptor.becomeRoot(
@@ -13488,7 +13573,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 98, defaultCase_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 99, defaultCase_StartIndex); }
 
 		}
 		return retval;
@@ -13503,7 +13588,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "caseLabel"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:707:1: caseLabel : 'case' ! expression ':' !;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:716:1: caseLabel : 'case' ! expression ':' !;
 	public final TSPHPParser.caseLabel_return caseLabel() throws RecognitionException {
 		TSPHPParser.caseLabel_return retval = new TSPHPParser.caseLabel_return();
 		retval.start = input.LT(1);
@@ -13511,30 +13596,30 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal380=null;
-		Token char_literal382=null;
-		ParserRuleReturnScope expression381 =null;
+		Token string_literal383=null;
+		Token char_literal385=null;
+		ParserRuleReturnScope expression384 =null;
 
-		CommonTree string_literal380_tree=null;
-		CommonTree char_literal382_tree=null;
+		CommonTree string_literal383_tree=null;
+		CommonTree char_literal385_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 99) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 100) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:708:2: ( 'case' ! expression ':' !)
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:708:4: 'case' ! expression ':' !
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:717:2: ( 'case' ! expression ':' !)
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:717:4: 'case' ! expression ':' !
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal380=(Token)match(input,Case,FOLLOW_Case_in_caseLabel3977); if (state.failed) return retval;
-			pushFollow(FOLLOW_expression_in_caseLabel3980);
-			expression381=expression();
+			string_literal383=(Token)match(input,Case,FOLLOW_Case_in_caseLabel4027); if (state.failed) return retval;
+			pushFollow(FOLLOW_expression_in_caseLabel4030);
+			expression384=expression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression381.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression384.getTree());
 
-			char_literal382=(Token)match(input,Colon,FOLLOW_Colon_in_caseLabel3982); if (state.failed) return retval;
+			char_literal385=(Token)match(input,Colon,FOLLOW_Colon_in_caseLabel4032); if (state.failed) return retval;
 			}
 
 			retval.stop = input.LT(-1);
@@ -13551,7 +13636,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 99, caseLabel_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 100, caseLabel_StartIndex); }
 
 		}
 		return retval;
@@ -13566,7 +13651,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "defaultLabel"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:710:1: defaultLabel : 'default' ':' !;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:719:1: defaultLabel : 'default' ':' !;
 	public final TSPHPParser.defaultLabel_return defaultLabel() throws RecognitionException {
 		TSPHPParser.defaultLabel_return retval = new TSPHPParser.defaultLabel_return();
 		retval.start = input.LT(1);
@@ -13574,30 +13659,30 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal383=null;
-		Token char_literal384=null;
+		Token string_literal386=null;
+		Token char_literal387=null;
 
-		CommonTree string_literal383_tree=null;
-		CommonTree char_literal384_tree=null;
+		CommonTree string_literal386_tree=null;
+		CommonTree char_literal387_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 100) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 101) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:711:2: ( 'default' ':' !)
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:711:4: 'default' ':' !
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:720:2: ( 'default' ':' !)
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:720:4: 'default' ':' !
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal383=(Token)match(input,Default,FOLLOW_Default_in_defaultLabel3992); if (state.failed) return retval;
+			string_literal386=(Token)match(input,Default,FOLLOW_Default_in_defaultLabel4042); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal383_tree = 
-			(CommonTree)adaptor.create(string_literal383)
+			string_literal386_tree = 
+			(CommonTree)adaptor.create(string_literal386)
 			;
-			adaptor.addChild(root_0, string_literal383_tree);
+			adaptor.addChild(root_0, string_literal386_tree);
 			}
 
-			char_literal384=(Token)match(input,Colon,FOLLOW_Colon_in_defaultLabel3994); if (state.failed) return retval;
+			char_literal387=(Token)match(input,Colon,FOLLOW_Colon_in_defaultLabel4044); if (state.failed) return retval;
 			}
 
 			retval.stop = input.LT(-1);
@@ -13614,7 +13699,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 100, defaultLabel_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 101, defaultLabel_StartIndex); }
 
 		}
 		return retval;
@@ -13629,7 +13714,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "forLoop"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:1: forLoop : 'for' '(' ( forInit )? ';' ( expressionList )? ';' ( forUpdate )? ')' instructionInclBreakContinue ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:722:1: forLoop : 'for' '(' forInit ';' expressionList ';' expressionList ')' instructionInclBreakContinue -> ^( 'for' forInit expressionList expressionList instructionInclBreakContinue ) ;
 	public final TSPHPParser.forLoop_return forLoop() throws RecognitionException {
 		TSPHPParser.forLoop_return retval = new TSPHPParser.forLoop_return();
 		retval.start = input.LT(1);
@@ -13637,151 +13722,108 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal385=null;
-		Token char_literal386=null;
-		Token char_literal388=null;
-		Token char_literal390=null;
-		Token char_literal392=null;
-		ParserRuleReturnScope forInit387 =null;
-		ParserRuleReturnScope expressionList389 =null;
-		ParserRuleReturnScope forUpdate391 =null;
-		ParserRuleReturnScope instructionInclBreakContinue393 =null;
+		Token string_literal388=null;
+		Token char_literal389=null;
+		Token char_literal391=null;
+		Token char_literal393=null;
+		Token char_literal395=null;
+		ParserRuleReturnScope forInit390 =null;
+		ParserRuleReturnScope expressionList392 =null;
+		ParserRuleReturnScope expressionList394 =null;
+		ParserRuleReturnScope instructionInclBreakContinue396 =null;
 
-		CommonTree string_literal385_tree=null;
-		CommonTree char_literal386_tree=null;
-		CommonTree char_literal388_tree=null;
-		CommonTree char_literal390_tree=null;
-		CommonTree char_literal392_tree=null;
+		CommonTree string_literal388_tree=null;
+		CommonTree char_literal389_tree=null;
+		CommonTree char_literal391_tree=null;
+		CommonTree char_literal393_tree=null;
+		CommonTree char_literal395_tree=null;
+		RewriteRuleTokenStream stream_LeftParanthesis=new RewriteRuleTokenStream(adaptor,"token LeftParanthesis");
+		RewriteRuleTokenStream stream_Semicolon=new RewriteRuleTokenStream(adaptor,"token Semicolon");
+		RewriteRuleTokenStream stream_For=new RewriteRuleTokenStream(adaptor,"token For");
+		RewriteRuleTokenStream stream_RightParanthesis=new RewriteRuleTokenStream(adaptor,"token RightParanthesis");
+		RewriteRuleSubtreeStream stream_expressionList=new RewriteRuleSubtreeStream(adaptor,"rule expressionList");
+		RewriteRuleSubtreeStream stream_forInit=new RewriteRuleSubtreeStream(adaptor,"rule forInit");
+		RewriteRuleSubtreeStream stream_instructionInclBreakContinue=new RewriteRuleSubtreeStream(adaptor,"rule instructionInclBreakContinue");
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 101) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 102) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:9: ( 'for' '(' ( forInit )? ';' ( expressionList )? ';' ( forUpdate )? ')' instructionInclBreakContinue )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:11: 'for' '(' ( forInit )? ';' ( expressionList )? ';' ( forUpdate )? ')' instructionInclBreakContinue
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:722:9: ( 'for' '(' forInit ';' expressionList ';' expressionList ')' instructionInclBreakContinue -> ^( 'for' forInit expressionList expressionList instructionInclBreakContinue ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:722:11: 'for' '(' forInit ';' expressionList ';' expressionList ')' instructionInclBreakContinue
 			{
-			root_0 = (CommonTree)adaptor.nil();
+			string_literal388=(Token)match(input,For,FOLLOW_For_in_forLoop4054); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_For.add(string_literal388);
 
+			char_literal389=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_forLoop4056); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_LeftParanthesis.add(char_literal389);
 
-			string_literal385=(Token)match(input,For,FOLLOW_For_in_forLoop4004); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			string_literal385_tree = 
-			(CommonTree)adaptor.create(string_literal385)
-			;
-			adaptor.addChild(root_0, string_literal385_tree);
-			}
-
-			char_literal386=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_forLoop4006); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			char_literal386_tree = 
-			(CommonTree)adaptor.create(char_literal386)
-			;
-			adaptor.addChild(root_0, char_literal386_tree);
-			}
-
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:21: ( forInit )?
-			int alt123=2;
-			int LA123_0 = input.LA(1);
-			if ( (LA123_0==At||LA123_0==Backslash||LA123_0==BitwiseNot||LA123_0==Bool||LA123_0==Clone||LA123_0==Comma||LA123_0==Float||LA123_0==Identifier||LA123_0==Int||(LA123_0 >= LeftParanthesis && LA123_0 <= LeftSquareBrace)||LA123_0==LogicNot||LA123_0==Minus||LA123_0==MinusMinus||LA123_0==New||LA123_0==Null||(LA123_0 >= Parent && LA123_0 <= Plus)||LA123_0==PlusPlus||LA123_0==Self||LA123_0==String||LA123_0==This||(LA123_0 >= TypeArray && LA123_0 <= TypeString)||LA123_0==VariableId) ) {
-				alt123=1;
-			}
-			else if ( (LA123_0==Semicolon) ) {
-				int LA123_2 = input.LA(2);
-				if ( (synpred193_TSPHP()) ) {
-					alt123=1;
-				}
-			}
-			switch (alt123) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:21: forInit
-					{
-					pushFollow(FOLLOW_forInit_in_forLoop4008);
-					forInit387=forInit();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, forInit387.getTree());
-
-					}
-					break;
-
-			}
-
-			char_literal388=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_forLoop4011); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			char_literal388_tree = 
-			(CommonTree)adaptor.create(char_literal388)
-			;
-			adaptor.addChild(root_0, char_literal388_tree);
-			}
-
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:34: ( expressionList )?
-			int alt124=2;
-			int LA124_0 = input.LA(1);
-			if ( (LA124_0==At||LA124_0==Backslash||LA124_0==BitwiseNot||LA124_0==Bool||LA124_0==Clone||LA124_0==Float||LA124_0==Identifier||LA124_0==Int||(LA124_0 >= LeftParanthesis && LA124_0 <= LeftSquareBrace)||LA124_0==LogicNot||LA124_0==Minus||LA124_0==MinusMinus||LA124_0==New||LA124_0==Null||(LA124_0 >= Parent && LA124_0 <= Plus)||LA124_0==PlusPlus||LA124_0==Self||LA124_0==String||LA124_0==This||LA124_0==TypeArray||LA124_0==VariableId) ) {
-				alt124=1;
-			}
-			switch (alt124) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:34: expressionList
-					{
-					pushFollow(FOLLOW_expressionList_in_forLoop4013);
-					expressionList389=expressionList();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList389.getTree());
-
-					}
-					break;
-
-			}
-
-			char_literal390=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_forLoop4017); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			char_literal390_tree = 
-			(CommonTree)adaptor.create(char_literal390)
-			;
-			adaptor.addChild(root_0, char_literal390_tree);
-			}
-
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:55: ( forUpdate )?
-			int alt125=2;
-			int LA125_0 = input.LA(1);
-			if ( (LA125_0==At||LA125_0==Backslash||LA125_0==BitwiseNot||LA125_0==Bool||LA125_0==Clone||LA125_0==Float||LA125_0==Identifier||LA125_0==Int||(LA125_0 >= LeftParanthesis && LA125_0 <= LeftSquareBrace)||LA125_0==LogicNot||LA125_0==Minus||LA125_0==MinusMinus||LA125_0==New||LA125_0==Null||(LA125_0 >= Parent && LA125_0 <= Plus)||LA125_0==PlusPlus||LA125_0==Self||LA125_0==String||LA125_0==This||LA125_0==TypeArray||LA125_0==VariableId) ) {
-				alt125=1;
-			}
-			else if ( (LA125_0==RightParanthesis) ) {
-				int LA125_2 = input.LA(2);
-				if ( (synpred195_TSPHP()) ) {
-					alt125=1;
-				}
-			}
-			switch (alt125) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:55: forUpdate
-					{
-					pushFollow(FOLLOW_forUpdate_in_forLoop4019);
-					forUpdate391=forUpdate();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, forUpdate391.getTree());
-
-					}
-					break;
-
-			}
-
-			char_literal392=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_forLoop4022); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			char_literal392_tree = 
-			(CommonTree)adaptor.create(char_literal392)
-			;
-			adaptor.addChild(root_0, char_literal392_tree);
-			}
-
-			pushFollow(FOLLOW_instructionInclBreakContinue_in_forLoop4024);
-			instructionInclBreakContinue393=instructionInclBreakContinue();
+			pushFollow(FOLLOW_forInit_in_forLoop4058);
+			forInit390=forInit();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue393.getTree());
+			if ( state.backtracking==0 ) stream_forInit.add(forInit390.getTree());
+			char_literal391=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_forLoop4060); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_Semicolon.add(char_literal391);
+
+			pushFollow(FOLLOW_expressionList_in_forLoop4062);
+			expressionList392=expressionList();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) stream_expressionList.add(expressionList392.getTree());
+			char_literal393=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_forLoop4065); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_Semicolon.add(char_literal393);
+
+			pushFollow(FOLLOW_expressionList_in_forLoop4067);
+			expressionList394=expressionList();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) stream_expressionList.add(expressionList394.getTree());
+			char_literal395=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_forLoop4069); if (state.failed) return retval; 
+			if ( state.backtracking==0 ) stream_RightParanthesis.add(char_literal395);
+
+			pushFollow(FOLLOW_instructionInclBreakContinue_in_forLoop4071);
+			instructionInclBreakContinue396=instructionInclBreakContinue();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) stream_instructionInclBreakContinue.add(instructionInclBreakContinue396.getTree());
+			// AST REWRITE
+			// elements: For, expressionList, expressionList, forInit, instructionInclBreakContinue
+			// token labels: 
+			// rule labels: retval
+			// token list labels: 
+			// rule list labels: 
+			// wildcard labels: 
+			if ( state.backtracking==0 ) {
+
+			retval.tree = root_0;
+			RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+			root_0 = (CommonTree)adaptor.nil();
+			// 722:101: -> ^( 'for' forInit expressionList expressionList instructionInclBreakContinue )
+			{
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:722:104: ^( 'for' forInit expressionList expressionList instructionInclBreakContinue )
+				{
+				CommonTree root_1 = (CommonTree)adaptor.nil();
+				root_1 = (CommonTree)adaptor.becomeRoot(
+				stream_For.nextNode()
+				, root_1);
+
+				adaptor.addChild(root_1, stream_forInit.nextTree());
+
+				adaptor.addChild(root_1, stream_expressionList.nextTree());
+
+				adaptor.addChild(root_1, stream_expressionList.nextTree());
+
+				adaptor.addChild(root_1, stream_instructionInclBreakContinue.nextTree());
+
+				adaptor.addChild(root_0, root_1);
+				}
+
+			}
+
+
+			retval.tree = root_0;
+			}
 
 			}
 
@@ -13799,7 +13841,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 101, forLoop_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 102, forLoop_StartIndex); }
 
 		}
 		return retval;
@@ -13814,7 +13856,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "forInit"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:715:1: forInit : ( variableDeclaration || expression ) ( ',' expression )* ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:724:1: forInit : varListOrExprList ;
 	public final TSPHPParser.forInit_return forInit() throws RecognitionException {
 		TSPHPParser.forInit_return retval = new TSPHPParser.forInit_return();
 		retval.start = input.LT(1);
@@ -13822,88 +13864,217 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token char_literal396=null;
-		ParserRuleReturnScope variableDeclaration394 =null;
-		ParserRuleReturnScope expression395 =null;
-		ParserRuleReturnScope expression397 =null;
+		ParserRuleReturnScope varListOrExprList397 =null;
 
-		CommonTree char_literal396_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 102) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 103) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:715:9: ( ( variableDeclaration || expression ) ( ',' expression )* )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:715:11: ( variableDeclaration || expression ) ( ',' expression )*
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:724:9: ( varListOrExprList )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:724:11: varListOrExprList
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:715:11: ( variableDeclaration || expression )
-			int alt126=3;
-			alt126 = dfa126.predict(input);
-			switch (alt126) {
+			pushFollow(FOLLOW_varListOrExprList_in_forInit4093);
+			varListOrExprList397=varListOrExprList();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, varListOrExprList397.getTree());
+
+			}
+
+			retval.stop = input.LT(-1);
+
+			if ( state.backtracking==0 ) {
+			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+			retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+		}
+		finally {
+			// do for sure before leaving
+			if ( state.backtracking>0 ) { memoize(input, 103, forInit_StartIndex); }
+
+		}
+		return retval;
+	}
+	// $ANTLR end "forInit"
+
+
+	public static class varListOrExprList_return extends ParserRuleReturnScope {
+		CommonTree tree;
+		public Object getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "varListOrExprList"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:727:1: varListOrExprList : ( variableDeclarationList -> ^( VARIABLE_DECLARATION_LIST variableDeclarationList ) | expressionList );
+	public final TSPHPParser.varListOrExprList_return varListOrExprList() throws RecognitionException {
+		TSPHPParser.varListOrExprList_return retval = new TSPHPParser.varListOrExprList_return();
+		retval.start = input.LT(1);
+		int varListOrExprList_StartIndex = input.index();
+
+		CommonTree root_0 = null;
+
+		ParserRuleReturnScope variableDeclarationList398 =null;
+		ParserRuleReturnScope expressionList399 =null;
+
+		RewriteRuleSubtreeStream stream_variableDeclarationList=new RewriteRuleSubtreeStream(adaptor,"rule variableDeclarationList");
+
+		try {
+			if ( state.backtracking>0 && alreadyParsedRule(input, 104) ) { return retval; }
+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:728:2: ( variableDeclarationList -> ^( VARIABLE_DECLARATION_LIST variableDeclarationList ) | expressionList )
+			int alt119=2;
+			alt119 = dfa119.predict(input);
+			switch (alt119) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:715:12: variableDeclaration
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:728:4: variableDeclarationList
 					{
-					pushFollow(FOLLOW_variableDeclaration_in_forInit4033);
-					variableDeclaration394=variableDeclaration();
+					pushFollow(FOLLOW_variableDeclarationList_in_varListOrExprList4104);
+					variableDeclarationList398=variableDeclarationList();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, variableDeclaration394.getTree());
+					if ( state.backtracking==0 ) stream_variableDeclarationList.add(variableDeclarationList398.getTree());
+					// AST REWRITE
+					// elements: variableDeclarationList
+					// token labels: 
+					// rule labels: retval
+					// token list labels: 
+					// rule list labels: 
+					// wildcard labels: 
+					if ( state.backtracking==0 ) {
+
+					retval.tree = root_0;
+					RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.getTree():null);
+
+					root_0 = (CommonTree)adaptor.nil();
+					// 728:28: -> ^( VARIABLE_DECLARATION_LIST variableDeclarationList )
+					{
+						// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:728:31: ^( VARIABLE_DECLARATION_LIST variableDeclarationList )
+						{
+						CommonTree root_1 = (CommonTree)adaptor.nil();
+						root_1 = (CommonTree)adaptor.becomeRoot(
+						(CommonTree)adaptor.create(VARIABLE_DECLARATION_LIST, "VARIABLE_DECLARATION_LIST")
+						, root_1);
+
+						adaptor.addChild(root_1, stream_variableDeclarationList.nextTree());
+
+						adaptor.addChild(root_0, root_1);
+						}
+
+					}
+
+
+					retval.tree = root_0;
+					}
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:715:32: 
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:729:4: expressionList
 					{
-					}
-					break;
-				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:715:33: expression
-					{
-					pushFollow(FOLLOW_expression_in_forInit4036);
-					expression395=expression();
+					root_0 = (CommonTree)adaptor.nil();
+
+
+					pushFollow(FOLLOW_expressionList_in_varListOrExprList4117);
+					expressionList399=expressionList();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression395.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList399.getTree());
 
 					}
 					break;
 
 			}
+			retval.stop = input.LT(-1);
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:715:45: ( ',' expression )*
-			loop127:
+			if ( state.backtracking==0 ) {
+			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
+			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
+			}
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+			retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
+		}
+		finally {
+			// do for sure before leaving
+			if ( state.backtracking>0 ) { memoize(input, 104, varListOrExprList_StartIndex); }
+
+		}
+		return retval;
+	}
+	// $ANTLR end "varListOrExprList"
+
+
+	public static class variableDeclarationList_return extends ParserRuleReturnScope {
+		CommonTree tree;
+		public Object getTree() { return tree; }
+	};
+
+
+	// $ANTLR start "variableDeclarationList"
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:732:1: variableDeclarationList : variableDeclaration ( ',' ! variableAssignment )* ;
+	public final TSPHPParser.variableDeclarationList_return variableDeclarationList() throws RecognitionException {
+		TSPHPParser.variableDeclarationList_return retval = new TSPHPParser.variableDeclarationList_return();
+		retval.start = input.LT(1);
+		int variableDeclarationList_StartIndex = input.index();
+
+		CommonTree root_0 = null;
+
+		Token char_literal401=null;
+		ParserRuleReturnScope variableDeclaration400 =null;
+		ParserRuleReturnScope variableAssignment402 =null;
+
+		CommonTree char_literal401_tree=null;
+
+		try {
+			if ( state.backtracking>0 && alreadyParsedRule(input, 105) ) { return retval; }
+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:733:2: ( variableDeclaration ( ',' ! variableAssignment )* )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:733:4: variableDeclaration ( ',' ! variableAssignment )*
+			{
+			root_0 = (CommonTree)adaptor.nil();
+
+
+			pushFollow(FOLLOW_variableDeclaration_in_variableDeclarationList4128);
+			variableDeclaration400=variableDeclaration();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, variableDeclaration400.getTree());
+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:733:24: ( ',' ! variableAssignment )*
+			loop120:
 			do {
-				int alt127=2;
-				int LA127_0 = input.LA(1);
-				if ( (LA127_0==Comma) ) {
-					alt127=1;
+				int alt120=2;
+				int LA120_0 = input.LA(1);
+				if ( (LA120_0==Comma) ) {
+					alt120=1;
 				}
 
-				switch (alt127) {
+				switch (alt120) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:715:46: ',' expression
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:733:25: ',' ! variableAssignment
 					{
-					char_literal396=(Token)match(input,Comma,FOLLOW_Comma_in_forInit4040); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					char_literal396_tree = 
-					(CommonTree)adaptor.create(char_literal396)
-					;
-					adaptor.addChild(root_0, char_literal396_tree);
-					}
-
-					pushFollow(FOLLOW_expression_in_forInit4042);
-					expression397=expression();
+					char_literal401=(Token)match(input,Comma,FOLLOW_Comma_in_variableDeclarationList4131); if (state.failed) return retval;
+					pushFollow(FOLLOW_variableAssignment_in_variableDeclarationList4134);
+					variableAssignment402=variableAssignment();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expression397.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, variableAssignment402.getTree());
 
 					}
 					break;
 
 				default :
-					break loop127;
+					break loop120;
 				}
 			} while (true);
 
@@ -13923,84 +14094,12 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 102, forInit_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 105, variableDeclarationList_StartIndex); }
 
 		}
 		return retval;
 	}
-	// $ANTLR end "forInit"
-
-
-	public static class forUpdate_return extends ParserRuleReturnScope {
-		CommonTree tree;
-		public Object getTree() { return tree; }
-	};
-
-
-	// $ANTLR start "forUpdate"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:716:1: forUpdate : ( expressionList )? ;
-	public final TSPHPParser.forUpdate_return forUpdate() throws RecognitionException {
-		TSPHPParser.forUpdate_return retval = new TSPHPParser.forUpdate_return();
-		retval.start = input.LT(1);
-		int forUpdate_StartIndex = input.index();
-
-		CommonTree root_0 = null;
-
-		ParserRuleReturnScope expressionList398 =null;
-
-
-		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 103) ) { return retval; }
-
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:717:2: ( ( expressionList )? )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:717:4: ( expressionList )?
-			{
-			root_0 = (CommonTree)adaptor.nil();
-
-
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:717:4: ( expressionList )?
-			int alt128=2;
-			int LA128_0 = input.LA(1);
-			if ( (LA128_0==At||LA128_0==Backslash||LA128_0==BitwiseNot||LA128_0==Bool||LA128_0==Clone||LA128_0==Float||LA128_0==Identifier||LA128_0==Int||(LA128_0 >= LeftParanthesis && LA128_0 <= LeftSquareBrace)||LA128_0==LogicNot||LA128_0==Minus||LA128_0==MinusMinus||LA128_0==New||LA128_0==Null||(LA128_0 >= Parent && LA128_0 <= Plus)||LA128_0==PlusPlus||LA128_0==Self||LA128_0==String||LA128_0==This||LA128_0==TypeArray||LA128_0==VariableId) ) {
-				alt128=1;
-			}
-			switch (alt128) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:717:4: expressionList
-					{
-					pushFollow(FOLLOW_expressionList_in_forUpdate4052);
-					expressionList398=expressionList();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, expressionList398.getTree());
-
-					}
-					break;
-
-			}
-
-			}
-
-			retval.stop = input.LT(-1);
-
-			if ( state.backtracking==0 ) {
-			retval.tree = (CommonTree)adaptor.rulePostProcessing(root_0);
-			adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-			}
-		}
-		catch (RecognitionException re) {
-			reportError(re);
-			recover(input,re);
-			retval.tree = (CommonTree)adaptor.errorNode(input, retval.start, input.LT(-1), re);
-		}
-		finally {
-			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 103, forUpdate_StartIndex); }
-
-		}
-		return retval;
-	}
-	// $ANTLR end "forUpdate"
+	// $ANTLR end "variableDeclarationList"
 
 
 	public static class foreachLoop_return extends ParserRuleReturnScope {
@@ -14010,7 +14109,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "foreachLoop"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:719:1: foreachLoop : 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:736:1: foreachLoop : 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue ;
 	public final TSPHPParser.foreachLoop_return foreachLoop() throws RecognitionException {
 		TSPHPParser.foreachLoop_return retval = new TSPHPParser.foreachLoop_return();
 		retval.start = input.LT(1);
@@ -14018,95 +14117,36 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal399=null;
-		Token char_literal400=null;
-		Token VariableId401=null;
 		Token string_literal403=null;
-		Token VariableId404=null;
-		Token string_literal405=null;
-		Token VariableId406=null;
-		Token char_literal407=null;
-		ParserRuleReturnScope array402 =null;
-		ParserRuleReturnScope instructionInclBreakContinue408 =null;
+		Token char_literal404=null;
+		Token VariableId405=null;
+		Token string_literal407=null;
+		Token VariableId408=null;
+		Token string_literal409=null;
+		Token VariableId410=null;
+		Token char_literal411=null;
+		ParserRuleReturnScope array406 =null;
+		ParserRuleReturnScope instructionInclBreakContinue412 =null;
 
-		CommonTree string_literal399_tree=null;
-		CommonTree char_literal400_tree=null;
-		CommonTree VariableId401_tree=null;
 		CommonTree string_literal403_tree=null;
-		CommonTree VariableId404_tree=null;
-		CommonTree string_literal405_tree=null;
-		CommonTree VariableId406_tree=null;
-		CommonTree char_literal407_tree=null;
+		CommonTree char_literal404_tree=null;
+		CommonTree VariableId405_tree=null;
+		CommonTree string_literal407_tree=null;
+		CommonTree VariableId408_tree=null;
+		CommonTree string_literal409_tree=null;
+		CommonTree VariableId410_tree=null;
+		CommonTree char_literal411_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 104) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 106) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:720:2: ( 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:720:4: 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:737:2: ( 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:737:4: 'foreach' '(' ( VariableId | array ) 'as' VariableId ( '=>' VariableId )? ')' instructionInclBreakContinue
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal399=(Token)match(input,Foreach,FOLLOW_Foreach_in_foreachLoop4062); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			string_literal399_tree = 
-			(CommonTree)adaptor.create(string_literal399)
-			;
-			adaptor.addChild(root_0, string_literal399_tree);
-			}
-
-			char_literal400=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_foreachLoop4064); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			char_literal400_tree = 
-			(CommonTree)adaptor.create(char_literal400)
-			;
-			adaptor.addChild(root_0, char_literal400_tree);
-			}
-
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:720:18: ( VariableId | array )
-			int alt129=2;
-			int LA129_0 = input.LA(1);
-			if ( (LA129_0==VariableId) ) {
-				alt129=1;
-			}
-			else if ( (LA129_0==LeftSquareBrace||LA129_0==TypeArray) ) {
-				alt129=2;
-			}
-			else {
-				if (state.backtracking>0) {state.failed=true; return retval;}
-				NoViableAltException nvae =
-					new NoViableAltException("", 129, 0, input);
-				throw nvae;
-			}
-			switch (alt129) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:720:19: VariableId
-					{
-					VariableId401=(Token)match(input,VariableId,FOLLOW_VariableId_in_foreachLoop4067); if (state.failed) return retval;
-					if ( state.backtracking==0 ) {
-					VariableId401_tree = 
-					(CommonTree)adaptor.create(VariableId401)
-					;
-					adaptor.addChild(root_0, VariableId401_tree);
-					}
-
-					}
-					break;
-				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:720:30: array
-					{
-					pushFollow(FOLLOW_array_in_foreachLoop4069);
-					array402=array();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, array402.getTree());
-
-					}
-					break;
-
-			}
-
-			string_literal403=(Token)match(input,As,FOLLOW_As_in_foreachLoop4072); if (state.failed) return retval;
+			string_literal403=(Token)match(input,Foreach,FOLLOW_Foreach_in_foreachLoop4148); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal403_tree = 
 			(CommonTree)adaptor.create(string_literal403)
@@ -14114,38 +14154,97 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal403_tree);
 			}
 
-			VariableId404=(Token)match(input,VariableId,FOLLOW_VariableId_in_foreachLoop4074); if (state.failed) return retval;
+			char_literal404=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_foreachLoop4150); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			VariableId404_tree = 
-			(CommonTree)adaptor.create(VariableId404)
+			char_literal404_tree = 
+			(CommonTree)adaptor.create(char_literal404)
 			;
-			adaptor.addChild(root_0, VariableId404_tree);
+			adaptor.addChild(root_0, char_literal404_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:720:53: ( '=>' VariableId )?
-			int alt130=2;
-			int LA130_0 = input.LA(1);
-			if ( (LA130_0==Arrow) ) {
-				alt130=1;
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:737:18: ( VariableId | array )
+			int alt121=2;
+			int LA121_0 = input.LA(1);
+			if ( (LA121_0==VariableId) ) {
+				alt121=1;
 			}
-			switch (alt130) {
+			else if ( (LA121_0==LeftSquareBrace||LA121_0==TypeArray) ) {
+				alt121=2;
+			}
+			else {
+				if (state.backtracking>0) {state.failed=true; return retval;}
+				NoViableAltException nvae =
+					new NoViableAltException("", 121, 0, input);
+				throw nvae;
+			}
+			switch (alt121) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:720:54: '=>' VariableId
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:737:19: VariableId
 					{
-					string_literal405=(Token)match(input,Arrow,FOLLOW_Arrow_in_foreachLoop4077); if (state.failed) return retval;
+					VariableId405=(Token)match(input,VariableId,FOLLOW_VariableId_in_foreachLoop4153); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					string_literal405_tree = 
-					(CommonTree)adaptor.create(string_literal405)
+					VariableId405_tree = 
+					(CommonTree)adaptor.create(VariableId405)
 					;
-					adaptor.addChild(root_0, string_literal405_tree);
+					adaptor.addChild(root_0, VariableId405_tree);
 					}
 
-					VariableId406=(Token)match(input,VariableId,FOLLOW_VariableId_in_foreachLoop4079); if (state.failed) return retval;
+					}
+					break;
+				case 2 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:737:30: array
+					{
+					pushFollow(FOLLOW_array_in_foreachLoop4155);
+					array406=array();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, array406.getTree());
+
+					}
+					break;
+
+			}
+
+			string_literal407=(Token)match(input,As,FOLLOW_As_in_foreachLoop4158); if (state.failed) return retval;
+			if ( state.backtracking==0 ) {
+			string_literal407_tree = 
+			(CommonTree)adaptor.create(string_literal407)
+			;
+			adaptor.addChild(root_0, string_literal407_tree);
+			}
+
+			VariableId408=(Token)match(input,VariableId,FOLLOW_VariableId_in_foreachLoop4160); if (state.failed) return retval;
+			if ( state.backtracking==0 ) {
+			VariableId408_tree = 
+			(CommonTree)adaptor.create(VariableId408)
+			;
+			adaptor.addChild(root_0, VariableId408_tree);
+			}
+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:737:53: ( '=>' VariableId )?
+			int alt122=2;
+			int LA122_0 = input.LA(1);
+			if ( (LA122_0==Arrow) ) {
+				alt122=1;
+			}
+			switch (alt122) {
+				case 1 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:737:54: '=>' VariableId
+					{
+					string_literal409=(Token)match(input,Arrow,FOLLOW_Arrow_in_foreachLoop4163); if (state.failed) return retval;
 					if ( state.backtracking==0 ) {
-					VariableId406_tree = 
-					(CommonTree)adaptor.create(VariableId406)
+					string_literal409_tree = 
+					(CommonTree)adaptor.create(string_literal409)
 					;
-					adaptor.addChild(root_0, VariableId406_tree);
+					adaptor.addChild(root_0, string_literal409_tree);
+					}
+
+					VariableId410=(Token)match(input,VariableId,FOLLOW_VariableId_in_foreachLoop4165); if (state.failed) return retval;
+					if ( state.backtracking==0 ) {
+					VariableId410_tree = 
+					(CommonTree)adaptor.create(VariableId410)
+					;
+					adaptor.addChild(root_0, VariableId410_tree);
 					}
 
 					}
@@ -14153,19 +14252,19 @@ public TreeAdaptor getTreeAdaptor() {
 
 			}
 
-			char_literal407=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_foreachLoop4083); if (state.failed) return retval;
+			char_literal411=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_foreachLoop4169); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal407_tree = 
-			(CommonTree)adaptor.create(char_literal407)
+			char_literal411_tree = 
+			(CommonTree)adaptor.create(char_literal411)
 			;
-			adaptor.addChild(root_0, char_literal407_tree);
+			adaptor.addChild(root_0, char_literal411_tree);
 			}
 
-			pushFollow(FOLLOW_instructionInclBreakContinue_in_foreachLoop4085);
-			instructionInclBreakContinue408=instructionInclBreakContinue();
+			pushFollow(FOLLOW_instructionInclBreakContinue_in_foreachLoop4171);
+			instructionInclBreakContinue412=instructionInclBreakContinue();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue408.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue412.getTree());
 
 			}
 
@@ -14183,7 +14282,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 104, foreachLoop_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 106, foreachLoop_StartIndex); }
 
 		}
 		return retval;
@@ -14198,7 +14297,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "whileLoop"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:722:1: whileLoop : 'while' '(' expression ')' instructionInclBreakContinue ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:739:1: whileLoop : 'while' '(' expression ')' instructionInclBreakContinue ;
 	public final TSPHPParser.whileLoop_return whileLoop() throws RecognitionException {
 		TSPHPParser.whileLoop_return retval = new TSPHPParser.whileLoop_return();
 		retval.start = input.LT(1);
@@ -14206,60 +14305,60 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal409=null;
-		Token char_literal410=null;
-		Token char_literal412=null;
-		ParserRuleReturnScope expression411 =null;
-		ParserRuleReturnScope instructionInclBreakContinue413 =null;
+		Token string_literal413=null;
+		Token char_literal414=null;
+		Token char_literal416=null;
+		ParserRuleReturnScope expression415 =null;
+		ParserRuleReturnScope instructionInclBreakContinue417 =null;
 
-		CommonTree string_literal409_tree=null;
-		CommonTree char_literal410_tree=null;
-		CommonTree char_literal412_tree=null;
+		CommonTree string_literal413_tree=null;
+		CommonTree char_literal414_tree=null;
+		CommonTree char_literal416_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 105) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 107) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:723:2: ( 'while' '(' expression ')' instructionInclBreakContinue )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:723:4: 'while' '(' expression ')' instructionInclBreakContinue
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:740:2: ( 'while' '(' expression ')' instructionInclBreakContinue )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:740:4: 'while' '(' expression ')' instructionInclBreakContinue
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal409=(Token)match(input,While,FOLLOW_While_in_whileLoop4094); if (state.failed) return retval;
+			string_literal413=(Token)match(input,While,FOLLOW_While_in_whileLoop4180); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal409_tree = 
-			(CommonTree)adaptor.create(string_literal409)
+			string_literal413_tree = 
+			(CommonTree)adaptor.create(string_literal413)
 			;
-			adaptor.addChild(root_0, string_literal409_tree);
+			adaptor.addChild(root_0, string_literal413_tree);
 			}
 
-			char_literal410=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_whileLoop4096); if (state.failed) return retval;
+			char_literal414=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_whileLoop4182); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal410_tree = 
-			(CommonTree)adaptor.create(char_literal410)
+			char_literal414_tree = 
+			(CommonTree)adaptor.create(char_literal414)
 			;
-			adaptor.addChild(root_0, char_literal410_tree);
+			adaptor.addChild(root_0, char_literal414_tree);
 			}
 
-			pushFollow(FOLLOW_expression_in_whileLoop4098);
-			expression411=expression();
+			pushFollow(FOLLOW_expression_in_whileLoop4184);
+			expression415=expression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression411.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression415.getTree());
 
-			char_literal412=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_whileLoop4100); if (state.failed) return retval;
+			char_literal416=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_whileLoop4186); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal412_tree = 
-			(CommonTree)adaptor.create(char_literal412)
+			char_literal416_tree = 
+			(CommonTree)adaptor.create(char_literal416)
 			;
-			adaptor.addChild(root_0, char_literal412_tree);
+			adaptor.addChild(root_0, char_literal416_tree);
 			}
 
-			pushFollow(FOLLOW_instructionInclBreakContinue_in_whileLoop4102);
-			instructionInclBreakContinue413=instructionInclBreakContinue();
+			pushFollow(FOLLOW_instructionInclBreakContinue_in_whileLoop4188);
+			instructionInclBreakContinue417=instructionInclBreakContinue();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue413.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue417.getTree());
 
 			}
 
@@ -14277,7 +14376,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 105, whileLoop_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 107, whileLoop_StartIndex); }
 
 		}
 		return retval;
@@ -14292,7 +14391,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "doWhileLoop"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:725:1: doWhileLoop : 'do' instructionInclBreakContinue 'while' '(' expression ')' ';' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:742:1: doWhileLoop : 'do' instructionInclBreakContinue 'while' '(' expression ')' ';' ;
 	public final TSPHPParser.doWhileLoop_return doWhileLoop() throws RecognitionException {
 		TSPHPParser.doWhileLoop_return retval = new TSPHPParser.doWhileLoop_return();
 		retval.start = input.LT(1);
@@ -14300,79 +14399,79 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal414=null;
-		Token string_literal416=null;
-		Token char_literal417=null;
-		Token char_literal419=null;
-		Token char_literal420=null;
-		ParserRuleReturnScope instructionInclBreakContinue415 =null;
-		ParserRuleReturnScope expression418 =null;
+		Token string_literal418=null;
+		Token string_literal420=null;
+		Token char_literal421=null;
+		Token char_literal423=null;
+		Token char_literal424=null;
+		ParserRuleReturnScope instructionInclBreakContinue419 =null;
+		ParserRuleReturnScope expression422 =null;
 
-		CommonTree string_literal414_tree=null;
-		CommonTree string_literal416_tree=null;
-		CommonTree char_literal417_tree=null;
-		CommonTree char_literal419_tree=null;
-		CommonTree char_literal420_tree=null;
+		CommonTree string_literal418_tree=null;
+		CommonTree string_literal420_tree=null;
+		CommonTree char_literal421_tree=null;
+		CommonTree char_literal423_tree=null;
+		CommonTree char_literal424_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 106) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 108) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:726:2: ( 'do' instructionInclBreakContinue 'while' '(' expression ')' ';' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:726:4: 'do' instructionInclBreakContinue 'while' '(' expression ')' ';'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:743:2: ( 'do' instructionInclBreakContinue 'while' '(' expression ')' ';' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:743:4: 'do' instructionInclBreakContinue 'while' '(' expression ')' ';'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal414=(Token)match(input,Do,FOLLOW_Do_in_doWhileLoop4112); if (state.failed) return retval;
+			string_literal418=(Token)match(input,Do,FOLLOW_Do_in_doWhileLoop4198); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal414_tree = 
-			(CommonTree)adaptor.create(string_literal414)
+			string_literal418_tree = 
+			(CommonTree)adaptor.create(string_literal418)
 			;
-			adaptor.addChild(root_0, string_literal414_tree);
+			adaptor.addChild(root_0, string_literal418_tree);
 			}
 
-			pushFollow(FOLLOW_instructionInclBreakContinue_in_doWhileLoop4114);
-			instructionInclBreakContinue415=instructionInclBreakContinue();
+			pushFollow(FOLLOW_instructionInclBreakContinue_in_doWhileLoop4200);
+			instructionInclBreakContinue419=instructionInclBreakContinue();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue415.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue419.getTree());
 
-			string_literal416=(Token)match(input,While,FOLLOW_While_in_doWhileLoop4116); if (state.failed) return retval;
+			string_literal420=(Token)match(input,While,FOLLOW_While_in_doWhileLoop4202); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal416_tree = 
-			(CommonTree)adaptor.create(string_literal416)
+			string_literal420_tree = 
+			(CommonTree)adaptor.create(string_literal420)
 			;
-			adaptor.addChild(root_0, string_literal416_tree);
+			adaptor.addChild(root_0, string_literal420_tree);
 			}
 
-			char_literal417=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_doWhileLoop4118); if (state.failed) return retval;
+			char_literal421=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_doWhileLoop4204); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal417_tree = 
-			(CommonTree)adaptor.create(char_literal417)
+			char_literal421_tree = 
+			(CommonTree)adaptor.create(char_literal421)
 			;
-			adaptor.addChild(root_0, char_literal417_tree);
+			adaptor.addChild(root_0, char_literal421_tree);
 			}
 
-			pushFollow(FOLLOW_expression_in_doWhileLoop4120);
-			expression418=expression();
+			pushFollow(FOLLOW_expression_in_doWhileLoop4206);
+			expression422=expression();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression418.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, expression422.getTree());
 
-			char_literal419=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_doWhileLoop4122); if (state.failed) return retval;
+			char_literal423=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_doWhileLoop4208); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal419_tree = 
-			(CommonTree)adaptor.create(char_literal419)
+			char_literal423_tree = 
+			(CommonTree)adaptor.create(char_literal423)
 			;
-			adaptor.addChild(root_0, char_literal419_tree);
+			adaptor.addChild(root_0, char_literal423_tree);
 			}
 
-			char_literal420=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_doWhileLoop4124); if (state.failed) return retval;
+			char_literal424=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_doWhileLoop4210); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal420_tree = 
-			(CommonTree)adaptor.create(char_literal420)
+			char_literal424_tree = 
+			(CommonTree)adaptor.create(char_literal424)
 			;
-			adaptor.addChild(root_0, char_literal420_tree);
+			adaptor.addChild(root_0, char_literal424_tree);
 			}
 
 			}
@@ -14391,7 +14490,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 106, doWhileLoop_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 108, doWhileLoop_StartIndex); }
 
 		}
 		return retval;
@@ -14406,7 +14505,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "tryCatch"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:728:1: tryCatch : 'try' '{' ( instructionInclBreakContinue )+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')' '{' ( instructionInclBreakContinue )* '}' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:745:1: tryCatch : 'try' '{' ( instructionInclBreakContinue )+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')' '{' ( instructionInclBreakContinue )* '}' ;
 	public final TSPHPParser.tryCatch_return tryCatch() throws RecognitionException {
 		TSPHPParser.tryCatch_return retval = new TSPHPParser.tryCatch_return();
 		retval.start = input.LT(1);
@@ -14414,96 +14513,39 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal421=null;
-		Token char_literal422=null;
-		Token char_literal424=null;
 		Token string_literal425=null;
 		Token char_literal426=null;
-		Token VariableId428=null;
-		Token char_literal429=null;
+		Token char_literal428=null;
+		Token string_literal429=null;
 		Token char_literal430=null;
-		Token char_literal432=null;
-		ParserRuleReturnScope instructionInclBreakContinue423 =null;
-		ParserRuleReturnScope classInterfaceTypeInclObject427 =null;
-		ParserRuleReturnScope instructionInclBreakContinue431 =null;
+		Token VariableId432=null;
+		Token char_literal433=null;
+		Token char_literal434=null;
+		Token char_literal436=null;
+		ParserRuleReturnScope instructionInclBreakContinue427 =null;
+		ParserRuleReturnScope classInterfaceTypeInclObject431 =null;
+		ParserRuleReturnScope instructionInclBreakContinue435 =null;
 
-		CommonTree string_literal421_tree=null;
-		CommonTree char_literal422_tree=null;
-		CommonTree char_literal424_tree=null;
 		CommonTree string_literal425_tree=null;
 		CommonTree char_literal426_tree=null;
-		CommonTree VariableId428_tree=null;
-		CommonTree char_literal429_tree=null;
+		CommonTree char_literal428_tree=null;
+		CommonTree string_literal429_tree=null;
 		CommonTree char_literal430_tree=null;
-		CommonTree char_literal432_tree=null;
+		CommonTree VariableId432_tree=null;
+		CommonTree char_literal433_tree=null;
+		CommonTree char_literal434_tree=null;
+		CommonTree char_literal436_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 107) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 109) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:728:9: ( 'try' '{' ( instructionInclBreakContinue )+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')' '{' ( instructionInclBreakContinue )* '}' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:728:11: 'try' '{' ( instructionInclBreakContinue )+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')' '{' ( instructionInclBreakContinue )* '}'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:745:9: ( 'try' '{' ( instructionInclBreakContinue )+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')' '{' ( instructionInclBreakContinue )* '}' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:745:11: 'try' '{' ( instructionInclBreakContinue )+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')' '{' ( instructionInclBreakContinue )* '}'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal421=(Token)match(input,Try,FOLLOW_Try_in_tryCatch4131); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			string_literal421_tree = 
-			(CommonTree)adaptor.create(string_literal421)
-			;
-			adaptor.addChild(root_0, string_literal421_tree);
-			}
-
-			char_literal422=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_tryCatch4133); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			char_literal422_tree = 
-			(CommonTree)adaptor.create(char_literal422)
-			;
-			adaptor.addChild(root_0, char_literal422_tree);
-			}
-
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:728:21: ( instructionInclBreakContinue )+
-			int cnt131=0;
-			loop131:
-			do {
-				int alt131=2;
-				int LA131_0 = input.LA(1);
-				if ( (LA131_0==Backslash||LA131_0==Break||LA131_0==Continue||LA131_0==Do||LA131_0==Echo||LA131_0==Exit||(LA131_0 >= For && LA131_0 <= Foreach)||(LA131_0 >= Identifier && LA131_0 <= If)||LA131_0==LeftCurlyBrace||LA131_0==MinusMinus||LA131_0==Parent||LA131_0==PlusPlus||LA131_0==Return||LA131_0==Self||(LA131_0 >= Switch && LA131_0 <= TypeString)||LA131_0==VariableId||LA131_0==While) ) {
-					alt131=1;
-				}
-
-				switch (alt131) {
-				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:728:21: instructionInclBreakContinue
-					{
-					pushFollow(FOLLOW_instructionInclBreakContinue_in_tryCatch4135);
-					instructionInclBreakContinue423=instructionInclBreakContinue();
-					state._fsp--;
-					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue423.getTree());
-
-					}
-					break;
-
-				default :
-					if ( cnt131 >= 1 ) break loop131;
-					if (state.backtracking>0) {state.failed=true; return retval;}
-						EarlyExitException eee =
-							new EarlyExitException(131, input);
-						throw eee;
-				}
-				cnt131++;
-			} while (true);
-
-			char_literal424=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_tryCatch4138); if (state.failed) return retval;
-			if ( state.backtracking==0 ) {
-			char_literal424_tree = 
-			(CommonTree)adaptor.create(char_literal424)
-			;
-			adaptor.addChild(root_0, char_literal424_tree);
-			}
-
-			string_literal425=(Token)match(input,Catch,FOLLOW_Catch_in_tryCatch4140); if (state.failed) return retval;
+			string_literal425=(Token)match(input,Try,FOLLOW_Try_in_tryCatch4217); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			string_literal425_tree = 
 			(CommonTree)adaptor.create(string_literal425)
@@ -14511,7 +14553,7 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, string_literal425_tree);
 			}
 
-			char_literal426=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_tryCatch4142); if (state.failed) return retval;
+			char_literal426=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_tryCatch4219); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal426_tree = 
 			(CommonTree)adaptor.create(char_literal426)
@@ -14519,29 +14561,56 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, char_literal426_tree);
 			}
 
-			pushFollow(FOLLOW_classInterfaceTypeInclObject_in_tryCatch4144);
-			classInterfaceTypeInclObject427=classInterfaceTypeInclObject();
-			state._fsp--;
-			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, classInterfaceTypeInclObject427.getTree());
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:745:21: ( instructionInclBreakContinue )+
+			int cnt123=0;
+			loop123:
+			do {
+				int alt123=2;
+				int LA123_0 = input.LA(1);
+				if ( (LA123_0==Backslash||LA123_0==Break||LA123_0==Continue||LA123_0==Do||LA123_0==Echo||LA123_0==Exit||(LA123_0 >= For && LA123_0 <= Foreach)||(LA123_0 >= Identifier && LA123_0 <= If)||LA123_0==LeftCurlyBrace||LA123_0==MinusMinus||LA123_0==Parent||LA123_0==PlusPlus||LA123_0==Return||LA123_0==Self||(LA123_0 >= Switch && LA123_0 <= TypeString)||LA123_0==VariableId||LA123_0==While) ) {
+					alt123=1;
+				}
 
-			VariableId428=(Token)match(input,VariableId,FOLLOW_VariableId_in_tryCatch4146); if (state.failed) return retval;
+				switch (alt123) {
+				case 1 :
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:745:21: instructionInclBreakContinue
+					{
+					pushFollow(FOLLOW_instructionInclBreakContinue_in_tryCatch4221);
+					instructionInclBreakContinue427=instructionInclBreakContinue();
+					state._fsp--;
+					if (state.failed) return retval;
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue427.getTree());
+
+					}
+					break;
+
+				default :
+					if ( cnt123 >= 1 ) break loop123;
+					if (state.backtracking>0) {state.failed=true; return retval;}
+						EarlyExitException eee =
+							new EarlyExitException(123, input);
+						throw eee;
+				}
+				cnt123++;
+			} while (true);
+
+			char_literal428=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_tryCatch4224); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			VariableId428_tree = 
-			(CommonTree)adaptor.create(VariableId428)
+			char_literal428_tree = 
+			(CommonTree)adaptor.create(char_literal428)
 			;
-			adaptor.addChild(root_0, VariableId428_tree);
+			adaptor.addChild(root_0, char_literal428_tree);
 			}
 
-			char_literal429=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_tryCatch4148); if (state.failed) return retval;
+			string_literal429=(Token)match(input,Catch,FOLLOW_Catch_in_tryCatch4226); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal429_tree = 
-			(CommonTree)adaptor.create(char_literal429)
+			string_literal429_tree = 
+			(CommonTree)adaptor.create(string_literal429)
 			;
-			adaptor.addChild(root_0, char_literal429_tree);
+			adaptor.addChild(root_0, string_literal429_tree);
 			}
 
-			char_literal430=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_tryCatch4149); if (state.failed) return retval;
+			char_literal430=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_tryCatch4228); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
 			char_literal430_tree = 
 			(CommonTree)adaptor.create(char_literal430)
@@ -14549,39 +14618,69 @@ public TreeAdaptor getTreeAdaptor() {
 			adaptor.addChild(root_0, char_literal430_tree);
 			}
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:728:114: ( instructionInclBreakContinue )*
-			loop132:
+			pushFollow(FOLLOW_classInterfaceTypeInclObject_in_tryCatch4230);
+			classInterfaceTypeInclObject431=classInterfaceTypeInclObject();
+			state._fsp--;
+			if (state.failed) return retval;
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, classInterfaceTypeInclObject431.getTree());
+
+			VariableId432=(Token)match(input,VariableId,FOLLOW_VariableId_in_tryCatch4232); if (state.failed) return retval;
+			if ( state.backtracking==0 ) {
+			VariableId432_tree = 
+			(CommonTree)adaptor.create(VariableId432)
+			;
+			adaptor.addChild(root_0, VariableId432_tree);
+			}
+
+			char_literal433=(Token)match(input,RightParanthesis,FOLLOW_RightParanthesis_in_tryCatch4234); if (state.failed) return retval;
+			if ( state.backtracking==0 ) {
+			char_literal433_tree = 
+			(CommonTree)adaptor.create(char_literal433)
+			;
+			adaptor.addChild(root_0, char_literal433_tree);
+			}
+
+			char_literal434=(Token)match(input,LeftCurlyBrace,FOLLOW_LeftCurlyBrace_in_tryCatch4235); if (state.failed) return retval;
+			if ( state.backtracking==0 ) {
+			char_literal434_tree = 
+			(CommonTree)adaptor.create(char_literal434)
+			;
+			adaptor.addChild(root_0, char_literal434_tree);
+			}
+
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:745:114: ( instructionInclBreakContinue )*
+			loop124:
 			do {
-				int alt132=2;
-				int LA132_0 = input.LA(1);
-				if ( (LA132_0==Backslash||LA132_0==Break||LA132_0==Continue||LA132_0==Do||LA132_0==Echo||LA132_0==Exit||(LA132_0 >= For && LA132_0 <= Foreach)||(LA132_0 >= Identifier && LA132_0 <= If)||LA132_0==LeftCurlyBrace||LA132_0==MinusMinus||LA132_0==Parent||LA132_0==PlusPlus||LA132_0==Return||LA132_0==Self||(LA132_0 >= Switch && LA132_0 <= TypeString)||LA132_0==VariableId||LA132_0==While) ) {
-					alt132=1;
+				int alt124=2;
+				int LA124_0 = input.LA(1);
+				if ( (LA124_0==Backslash||LA124_0==Break||LA124_0==Continue||LA124_0==Do||LA124_0==Echo||LA124_0==Exit||(LA124_0 >= For && LA124_0 <= Foreach)||(LA124_0 >= Identifier && LA124_0 <= If)||LA124_0==LeftCurlyBrace||LA124_0==MinusMinus||LA124_0==Parent||LA124_0==PlusPlus||LA124_0==Return||LA124_0==Self||(LA124_0 >= Switch && LA124_0 <= TypeString)||LA124_0==VariableId||LA124_0==While) ) {
+					alt124=1;
 				}
 
-				switch (alt132) {
+				switch (alt124) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:728:114: instructionInclBreakContinue
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:745:114: instructionInclBreakContinue
 					{
-					pushFollow(FOLLOW_instructionInclBreakContinue_in_tryCatch4151);
-					instructionInclBreakContinue431=instructionInclBreakContinue();
+					pushFollow(FOLLOW_instructionInclBreakContinue_in_tryCatch4237);
+					instructionInclBreakContinue435=instructionInclBreakContinue();
 					state._fsp--;
 					if (state.failed) return retval;
-					if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue431.getTree());
+					if ( state.backtracking==0 ) adaptor.addChild(root_0, instructionInclBreakContinue435.getTree());
 
 					}
 					break;
 
 				default :
-					break loop132;
+					break loop124;
 				}
 			} while (true);
 
-			char_literal432=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_tryCatch4154); if (state.failed) return retval;
+			char_literal436=(Token)match(input,RightCurlyBrace,FOLLOW_RightCurlyBrace_in_tryCatch4240); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal432_tree = 
-			(CommonTree)adaptor.create(char_literal432)
+			char_literal436_tree = 
+			(CommonTree)adaptor.create(char_literal436)
 			;
-			adaptor.addChild(root_0, char_literal432_tree);
+			adaptor.addChild(root_0, char_literal436_tree);
 			}
 
 			}
@@ -14600,7 +14699,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 107, tryCatch_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 109, tryCatch_StartIndex); }
 
 		}
 		return retval;
@@ -14615,7 +14714,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
 	// $ANTLR start "throwException"
-	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:730:1: throwException : 'throw' newObject ';' ;
+	// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:747:1: throwException : 'throw' newObject ';' ;
 	public final TSPHPParser.throwException_return throwException() throws RecognitionException {
 		TSPHPParser.throwException_return retval = new TSPHPParser.throwException_return();
 		retval.start = input.LT(1);
@@ -14623,42 +14722,42 @@ public TreeAdaptor getTreeAdaptor() {
 
 		CommonTree root_0 = null;
 
-		Token string_literal433=null;
-		Token char_literal435=null;
-		ParserRuleReturnScope newObject434 =null;
+		Token string_literal437=null;
+		Token char_literal439=null;
+		ParserRuleReturnScope newObject438 =null;
 
-		CommonTree string_literal433_tree=null;
-		CommonTree char_literal435_tree=null;
+		CommonTree string_literal437_tree=null;
+		CommonTree char_literal439_tree=null;
 
 		try {
-			if ( state.backtracking>0 && alreadyParsedRule(input, 108) ) { return retval; }
+			if ( state.backtracking>0 && alreadyParsedRule(input, 110) ) { return retval; }
 
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:731:2: ( 'throw' newObject ';' )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:731:4: 'throw' newObject ';'
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:748:2: ( 'throw' newObject ';' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:748:4: 'throw' newObject ';'
 			{
 			root_0 = (CommonTree)adaptor.nil();
 
 
-			string_literal433=(Token)match(input,Throw,FOLLOW_Throw_in_throwException4163); if (state.failed) return retval;
+			string_literal437=(Token)match(input,Throw,FOLLOW_Throw_in_throwException4249); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			string_literal433_tree = 
-			(CommonTree)adaptor.create(string_literal433)
+			string_literal437_tree = 
+			(CommonTree)adaptor.create(string_literal437)
 			;
-			adaptor.addChild(root_0, string_literal433_tree);
+			adaptor.addChild(root_0, string_literal437_tree);
 			}
 
-			pushFollow(FOLLOW_newObject_in_throwException4165);
-			newObject434=newObject();
+			pushFollow(FOLLOW_newObject_in_throwException4251);
+			newObject438=newObject();
 			state._fsp--;
 			if (state.failed) return retval;
-			if ( state.backtracking==0 ) adaptor.addChild(root_0, newObject434.getTree());
+			if ( state.backtracking==0 ) adaptor.addChild(root_0, newObject438.getTree());
 
-			char_literal435=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_throwException4167); if (state.failed) return retval;
+			char_literal439=(Token)match(input,Semicolon,FOLLOW_Semicolon_in_throwException4253); if (state.failed) return retval;
 			if ( state.backtracking==0 ) {
-			char_literal435_tree = 
-			(CommonTree)adaptor.create(char_literal435)
+			char_literal439_tree = 
+			(CommonTree)adaptor.create(char_literal439)
 			;
-			adaptor.addChild(root_0, char_literal435_tree);
+			adaptor.addChild(root_0, char_literal439_tree);
 			}
 
 			}
@@ -14677,7 +14776,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		finally {
 			// do for sure before leaving
-			if ( state.backtracking>0 ) { memoize(input, 108, throwException_StartIndex); }
+			if ( state.backtracking>0 ) { memoize(input, 110, throwException_StartIndex); }
 
 		}
 		return retval;
@@ -14686,15 +14785,15 @@ public TreeAdaptor getTreeAdaptor() {
 
 	// $ANTLR start synpred69_TSPHP
 	public final void synpred69_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:373:4: ( variableAssignment ';' )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:373:4: variableAssignment ';'
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:375:4: ( variableAssignment ';' )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:375:4: variableAssignment ';'
 		{
-		pushFollow(FOLLOW_variableAssignment_in_synpred69_TSPHP1955);
+		pushFollow(FOLLOW_variableAssignment_in_synpred69_TSPHP1963);
 		variableAssignment();
 		state._fsp--;
 		if (state.failed) return ;
 
-		match(input,Semicolon,FOLLOW_Semicolon_in_synpred69_TSPHP1957); if (state.failed) return ;
+		match(input,Semicolon,FOLLOW_Semicolon_in_synpred69_TSPHP1965); if (state.failed) return ;
 
 		}
 
@@ -14703,15 +14802,15 @@ public TreeAdaptor getTreeAdaptor() {
 
 	// $ANTLR start synpred70_TSPHP
 	public final void synpred70_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:374:4: ( variableDeclaration ';' )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:374:4: variableDeclaration ';'
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:4: ( variableDeclaration ';' )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:376:4: variableDeclaration ';'
 		{
-		pushFollow(FOLLOW_variableDeclaration_in_synpred70_TSPHP1963);
+		pushFollow(FOLLOW_variableDeclaration_in_synpred70_TSPHP1971);
 		variableDeclaration();
 		state._fsp--;
 		if (state.failed) return ;
 
-		match(input,Semicolon,FOLLOW_Semicolon_in_synpred70_TSPHP1965); if (state.failed) return ;
+		match(input,Semicolon,FOLLOW_Semicolon_in_synpred70_TSPHP1973); if (state.failed) return ;
 
 		}
 
@@ -14720,15 +14819,15 @@ public TreeAdaptor getTreeAdaptor() {
 
 	// $ANTLR start synpred79_TSPHP
 	public final void synpred79_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:383:4: ( functionCallFluentWithoutAccessAtTheEnd ';' )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:383:4: functionCallFluentWithoutAccessAtTheEnd ';'
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:4: ( functionCallFluentWithoutAccessAtTheEnd ';' )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:385:4: functionCallFluentWithoutAccessAtTheEnd ';'
 		{
-		pushFollow(FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_synpred79_TSPHP2011);
+		pushFollow(FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_synpred79_TSPHP2019);
 		functionCallFluentWithoutAccessAtTheEnd();
 		state._fsp--;
 		if (state.failed) return ;
 
-		match(input,Semicolon,FOLLOW_Semicolon_in_synpred79_TSPHP2013); if (state.failed) return ;
+		match(input,Semicolon,FOLLOW_Semicolon_in_synpred79_TSPHP2021); if (state.failed) return ;
 
 		}
 
@@ -14737,47 +14836,30 @@ public TreeAdaptor getTreeAdaptor() {
 
 	// $ANTLR start synpred80_TSPHP
 	public final void synpred80_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:384:4: ( methodCallFluentWithoutAccessAtTheEnd ';' )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:384:4: methodCallFluentWithoutAccessAtTheEnd ';'
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:386:4: ( methodCallFluentWithoutAccessAtTheEnd ';' )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:386:4: methodCallFluentWithoutAccessAtTheEnd ';'
 		{
-		pushFollow(FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_synpred80_TSPHP2019);
+		pushFollow(FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_synpred80_TSPHP2027);
 		methodCallFluentWithoutAccessAtTheEnd();
 		state._fsp--;
 		if (state.failed) return ;
 
-		match(input,Semicolon,FOLLOW_Semicolon_in_synpred80_TSPHP2021); if (state.failed) return ;
+		match(input,Semicolon,FOLLOW_Semicolon_in_synpred80_TSPHP2029); if (state.failed) return ;
 
 		}
 
 	}
 	// $ANTLR end synpred80_TSPHP
 
-	// $ANTLR start synpred101_TSPHP
-	public final void synpred101_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:18: ( 'or' logicXorWeak )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:437:18: 'or' logicXorWeak
-		{
-		match(input,LogicOrWeak,FOLLOW_LogicOrWeak_in_synpred101_TSPHP2304); if (state.failed) return ;
-
-		pushFollow(FOLLOW_logicXorWeak_in_synpred101_TSPHP2307);
-		logicXorWeak();
-		state._fsp--;
-		if (state.failed) return ;
-
-		}
-
-	}
-	// $ANTLR end synpred101_TSPHP
-
 	// $ANTLR start synpred102_TSPHP
 	public final void synpred102_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:440:18: ( 'xor' logicAndWeak )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:440:18: 'xor' logicAndWeak
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:18: ( 'or' logicXorWeak )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:18: 'or' logicXorWeak
 		{
-		match(input,LogicXorWeak,FOLLOW_LogicXorWeak_in_synpred102_TSPHP2323); if (state.failed) return ;
+		match(input,LogicOrWeak,FOLLOW_LogicOrWeak_in_synpred102_TSPHP2346); if (state.failed) return ;
 
-		pushFollow(FOLLOW_logicAndWeak_in_synpred102_TSPHP2326);
-		logicAndWeak();
+		pushFollow(FOLLOW_logicXorWeak_in_synpred102_TSPHP2349);
+		logicXorWeak();
 		state._fsp--;
 		if (state.failed) return ;
 
@@ -14788,13 +14870,13 @@ public TreeAdaptor getTreeAdaptor() {
 
 	// $ANTLR start synpred103_TSPHP
 	public final void synpred103_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:443:16: ( 'and' assignment )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:443:16: 'and' assignment
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:449:18: ( 'xor' logicAndWeak )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:449:18: 'xor' logicAndWeak
 		{
-		match(input,LogicAndWeak,FOLLOW_LogicAndWeak_in_synpred103_TSPHP2342); if (state.failed) return ;
+		match(input,LogicXorWeak,FOLLOW_LogicXorWeak_in_synpred103_TSPHP2365); if (state.failed) return ;
 
-		pushFollow(FOLLOW_assignment_in_synpred103_TSPHP2345);
-		assignment();
+		pushFollow(FOLLOW_logicAndWeak_in_synpred103_TSPHP2368);
+		logicAndWeak();
 		state._fsp--;
 		if (state.failed) return ;
 
@@ -14805,16 +14887,13 @@ public TreeAdaptor getTreeAdaptor() {
 
 	// $ANTLR start synpred104_TSPHP
 	public final void synpred104_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:13: ( assignmentOperator ternary )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:446:13: assignmentOperator ternary
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:16: ( 'and' assignment )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:452:16: 'and' assignment
 		{
-		pushFollow(FOLLOW_assignmentOperator_in_synpred104_TSPHP2359);
-		assignmentOperator();
-		state._fsp--;
-		if (state.failed) return ;
+		match(input,LogicAndWeak,FOLLOW_LogicAndWeak_in_synpred104_TSPHP2384); if (state.failed) return ;
 
-		pushFollow(FOLLOW_ternary_in_synpred104_TSPHP2362);
-		ternary();
+		pushFollow(FOLLOW_assignment_in_synpred104_TSPHP2387);
+		assignment();
 		state._fsp--;
 		if (state.failed) return ;
 
@@ -14823,24 +14902,44 @@ public TreeAdaptor getTreeAdaptor() {
 	}
 	// $ANTLR end synpred104_TSPHP
 
-	// $ANTLR start synpred131_TSPHP
-	public final void synpred131_TSPHP_fragment() throws RecognitionException {
+	// $ANTLR start synpred105_TSPHP
+	public final void synpred105_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:13: ( assignmentOperator ternary )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:455:13: assignmentOperator ternary
+		{
+		pushFollow(FOLLOW_assignmentOperator_in_synpred105_TSPHP2401);
+		assignmentOperator();
+		state._fsp--;
+		if (state.failed) return ;
+
+		pushFollow(FOLLOW_ternary_in_synpred105_TSPHP2404);
+		ternary();
+		state._fsp--;
+		if (state.failed) return ;
+
+		}
+
+	}
+	// $ANTLR end synpred105_TSPHP
+
+	// $ANTLR start synpred132_TSPHP
+	public final void synpred132_TSPHP_fragment() throws RecognitionException {
 		Token cast=null;
 
 
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:4: (cast= '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:498:4: cast= '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:506:4: (cast= '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:506:4: cast= '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt
 		{
-		cast=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_synpred131_TSPHP2672); if (state.failed) return ;
+		cast=(Token)match(input,LeftParanthesis,FOLLOW_LeftParanthesis_in_synpred132_TSPHP2713); if (state.failed) return ;
 
-		pushFollow(FOLLOW_allTypesWithoutResource_in_synpred131_TSPHP2674);
+		pushFollow(FOLLOW_allTypesWithoutResource_in_synpred132_TSPHP2715);
 		allTypesWithoutResource();
 		state._fsp--;
 		if (state.failed) return ;
 
-		match(input,RightParanthesis,FOLLOW_RightParanthesis_in_synpred131_TSPHP2676); if (state.failed) return ;
+		match(input,RightParanthesis,FOLLOW_RightParanthesis_in_synpred132_TSPHP2717); if (state.failed) return ;
 
-		pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_synpred131_TSPHP2678);
+		pushFollow(FOLLOW_castOrBitwiseNotOrAt_in_synpred132_TSPHP2719);
 		castOrBitwiseNotOrAt();
 		state._fsp--;
 		if (state.failed) return ;
@@ -14848,14 +14947,14 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 
 	}
-	// $ANTLR end synpred131_TSPHP
+	// $ANTLR end synpred132_TSPHP
 
 	// $ANTLR start synpred150_TSPHP
 	public final void synpred150_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:547:4: ( functionCallFluentInclAccessAtTheEnd )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:547:4: functionCallFluentInclAccessAtTheEnd
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:556:4: ( functionCallFluentInclAccessAtTheEnd )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:556:4: functionCallFluentInclAccessAtTheEnd
 		{
-		pushFollow(FOLLOW_functionCallFluentInclAccessAtTheEnd_in_synpred150_TSPHP2940);
+		pushFollow(FOLLOW_functionCallFluentInclAccessAtTheEnd_in_synpred150_TSPHP2993);
 		functionCallFluentInclAccessAtTheEnd();
 		state._fsp--;
 		if (state.failed) return ;
@@ -14867,10 +14966,10 @@ public TreeAdaptor getTreeAdaptor() {
 
 	// $ANTLR start synpred151_TSPHP
 	public final void synpred151_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:548:4: ( methodCallFluentInclAccessAtTheEnd )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:548:4: methodCallFluentInclAccessAtTheEnd
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:4: ( methodCallFluentInclAccessAtTheEnd )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:4: methodCallFluentInclAccessAtTheEnd
 		{
-		pushFollow(FOLLOW_methodCallFluentInclAccessAtTheEnd_in_synpred151_TSPHP2945);
+		pushFollow(FOLLOW_methodCallFluentInclAccessAtTheEnd_in_synpred151_TSPHP2998);
 		methodCallFluentInclAccessAtTheEnd();
 		state._fsp--;
 		if (state.failed) return ;
@@ -14882,10 +14981,10 @@ public TreeAdaptor getTreeAdaptor() {
 
 	// $ANTLR start synpred153_TSPHP
 	public final void synpred153_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:17: ( callOrAccess )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:17: callOrAccess
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:17: ( callOrAccess )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:17: callOrAccess
 		{
-		pushFollow(FOLLOW_callOrAccess_in_synpred153_TSPHP2978);
+		pushFollow(FOLLOW_callOrAccess_in_synpred153_TSPHP3031);
 		callOrAccess();
 		state._fsp--;
 		if (state.failed) return ;
@@ -14897,35 +14996,35 @@ public TreeAdaptor getTreeAdaptor() {
 
 	// $ANTLR start synpred154_TSPHP
 	public final void synpred154_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:4: ( functionCall ( callOrAccess )* call )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:4: functionCall ( callOrAccess )* call
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:4: ( functionCall ( callOrAccess )* call )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:4: functionCall ( callOrAccess )* call
 		{
-		pushFollow(FOLLOW_functionCall_in_synpred154_TSPHP2976);
+		pushFollow(FOLLOW_functionCall_in_synpred154_TSPHP3029);
 		functionCall();
 		state._fsp--;
 		if (state.failed) return ;
 
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:17: ( callOrAccess )*
-		loop149:
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:17: ( callOrAccess )*
+		loop142:
 		do {
-			int alt149=2;
-			int LA149_0 = input.LA(1);
-			if ( (LA149_0==ObjectOperator) ) {
-				int LA149_1 = input.LA(2);
+			int alt142=2;
+			int LA142_0 = input.LA(1);
+			if ( (LA142_0==ObjectOperator) ) {
+				int LA142_1 = input.LA(2);
 				if ( (synpred153_TSPHP()) ) {
-					alt149=1;
+					alt142=1;
 				}
 
 			}
-			else if ( (LA149_0==LeftSquareBrace) ) {
-				alt149=1;
+			else if ( (LA142_0==LeftSquareBrace) ) {
+				alt142=1;
 			}
 
-			switch (alt149) {
+			switch (alt142) {
 			case 1 :
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:557:17: callOrAccess
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:566:17: callOrAccess
 				{
-				pushFollow(FOLLOW_callOrAccess_in_synpred154_TSPHP2978);
+				pushFollow(FOLLOW_callOrAccess_in_synpred154_TSPHP3031);
 				callOrAccess();
 				state._fsp--;
 				if (state.failed) return ;
@@ -14934,11 +15033,11 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 
 			default :
-				break loop149;
+				break loop142;
 			}
 		} while (true);
 
-		pushFollow(FOLLOW_call_in_synpred154_TSPHP2981);
+		pushFollow(FOLLOW_call_in_synpred154_TSPHP3034);
 		call();
 		state._fsp--;
 		if (state.failed) return ;
@@ -14948,12 +15047,12 @@ public TreeAdaptor getTreeAdaptor() {
 	}
 	// $ANTLR end synpred154_TSPHP
 
-	// $ANTLR start synpred160_TSPHP
-	public final void synpred160_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:577:16: ( callOrAccess )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:577:16: callOrAccess
+	// $ANTLR start synpred158_TSPHP
+	public final void synpred158_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:16: ( callOrAccess )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:16: callOrAccess
 		{
-		pushFollow(FOLLOW_callOrAccess_in_synpred160_TSPHP3073);
+		pushFollow(FOLLOW_callOrAccess_in_synpred158_TSPHP3124);
 		callOrAccess();
 		state._fsp--;
 		if (state.failed) return ;
@@ -14961,39 +15060,39 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 
 	}
-	// $ANTLR end synpred160_TSPHP
+	// $ANTLR end synpred158_TSPHP
 
-	// $ANTLR start synpred161_TSPHP
-	public final void synpred161_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:577:5: ( methodCall ( callOrAccess )* call )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:577:5: methodCall ( callOrAccess )* call
+	// $ANTLR start synpred159_TSPHP
+	public final void synpred159_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:5: ( methodCall ( callOrAccess )* call )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:5: methodCall ( callOrAccess )* call
 		{
-		pushFollow(FOLLOW_methodCall_in_synpred161_TSPHP3071);
+		pushFollow(FOLLOW_methodCall_in_synpred159_TSPHP3122);
 		methodCall();
 		state._fsp--;
 		if (state.failed) return ;
 
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:577:16: ( callOrAccess )*
-		loop150:
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:16: ( callOrAccess )*
+		loop143:
 		do {
-			int alt150=2;
-			int LA150_0 = input.LA(1);
-			if ( (LA150_0==ObjectOperator) ) {
-				int LA150_1 = input.LA(2);
-				if ( (synpred160_TSPHP()) ) {
-					alt150=1;
+			int alt143=2;
+			int LA143_0 = input.LA(1);
+			if ( (LA143_0==ObjectOperator) ) {
+				int LA143_1 = input.LA(2);
+				if ( (synpred158_TSPHP()) ) {
+					alt143=1;
 				}
 
 			}
-			else if ( (LA150_0==LeftSquareBrace) ) {
-				alt150=1;
+			else if ( (LA143_0==LeftSquareBrace) ) {
+				alt143=1;
 			}
 
-			switch (alt150) {
+			switch (alt143) {
 			case 1 :
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:577:16: callOrAccess
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:16: callOrAccess
 				{
-				pushFollow(FOLLOW_callOrAccess_in_synpred161_TSPHP3073);
+				pushFollow(FOLLOW_callOrAccess_in_synpred159_TSPHP3124);
 				callOrAccess();
 				state._fsp--;
 				if (state.failed) return ;
@@ -15002,11 +15101,11 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 
 			default :
-				break loop150;
+				break loop143;
 			}
 		} while (true);
 
-		pushFollow(FOLLOW_call_in_synpred161_TSPHP3076);
+		pushFollow(FOLLOW_call_in_synpred159_TSPHP3127);
 		call();
 		state._fsp--;
 		if (state.failed) return ;
@@ -15014,15 +15113,60 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 
 	}
-	// $ANTLR end synpred161_TSPHP
+	// $ANTLR end synpred159_TSPHP
+
+	// $ANTLR start synpred163_TSPHP
+	public final void synpred163_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:594:4: ( incrementDecrement )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:594:4: incrementDecrement
+		{
+		pushFollow(FOLLOW_incrementDecrement_in_synpred163_TSPHP3186);
+		incrementDecrement();
+		state._fsp--;
+		if (state.failed) return ;
+
+		}
+
+	}
+	// $ANTLR end synpred163_TSPHP
+
+	// $ANTLR start synpred164_TSPHP
+	public final void synpred164_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:595:4: ( variableMemberStaticMember )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:595:4: variableMemberStaticMember
+		{
+		pushFollow(FOLLOW_variableMemberStaticMember_in_synpred164_TSPHP3191);
+		variableMemberStaticMember();
+		state._fsp--;
+		if (state.failed) return ;
+
+		}
+
+	}
+	// $ANTLR end synpred164_TSPHP
+
+	// $ANTLR start synpred165_TSPHP
+	public final void synpred165_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:596:4: ( classConstant )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:596:4: classConstant
+		{
+		pushFollow(FOLLOW_classConstant_in_synpred165_TSPHP3196);
+		classConstant();
+		state._fsp--;
+		if (state.failed) return ;
+
+		}
+
+	}
+	// $ANTLR end synpred165_TSPHP
 
 	// $ANTLR start synpred166_TSPHP
 	public final void synpred166_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:585:4: ( incrementDecrement )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:585:4: incrementDecrement
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:597:4: ( globalConstant )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:597:4: globalConstant
 		{
-		pushFollow(FOLLOW_incrementDecrement_in_synpred166_TSPHP3136);
-		incrementDecrement();
+		pushFollow(FOLLOW_globalConstant_in_synpred166_TSPHP3201);
+		globalConstant();
 		state._fsp--;
 		if (state.failed) return ;
 
@@ -15031,96 +15175,51 @@ public TreeAdaptor getTreeAdaptor() {
 	}
 	// $ANTLR end synpred166_TSPHP
 
-	// $ANTLR start synpred167_TSPHP
-	public final void synpred167_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:4: ( variableMemberStaticMember )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:586:4: variableMemberStaticMember
+	// $ANTLR start synpred178_TSPHP
+	public final void synpred178_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:5: ( expression '=>' )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:5: expression '=>'
 		{
-		pushFollow(FOLLOW_variableMemberStaticMember_in_synpred167_TSPHP3141);
-		variableMemberStaticMember();
+		pushFollow(FOLLOW_expression_in_synpred178_TSPHP3791);
+		expression();
 		state._fsp--;
 		if (state.failed) return ;
+
+		match(input,Arrow,FOLLOW_Arrow_in_synpred178_TSPHP3793); if (state.failed) return ;
 
 		}
 
 	}
-	// $ANTLR end synpred167_TSPHP
+	// $ANTLR end synpred178_TSPHP
 
-	// $ANTLR start synpred168_TSPHP
-	public final void synpred168_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:587:4: ( classConstant )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:587:4: classConstant
+	// $ANTLR start synpred179_TSPHP
+	public final void synpred179_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:41: ( expression '=>' )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:684:41: expression '=>'
 		{
-		pushFollow(FOLLOW_classConstant_in_synpred168_TSPHP3146);
-		classConstant();
+		pushFollow(FOLLOW_expression_in_synpred179_TSPHP3804);
+		expression();
 		state._fsp--;
 		if (state.failed) return ;
+
+		match(input,Arrow,FOLLOW_Arrow_in_synpred179_TSPHP3806); if (state.failed) return ;
 
 		}
 
 	}
-	// $ANTLR end synpred168_TSPHP
-
-	// $ANTLR start synpred169_TSPHP
-	public final void synpred169_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:588:4: ( globalConstant )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:588:4: globalConstant
-		{
-		pushFollow(FOLLOW_globalConstant_in_synpred169_TSPHP3151);
-		globalConstant();
-		state._fsp--;
-		if (state.failed) return ;
-
-		}
-
-	}
-	// $ANTLR end synpred169_TSPHP
+	// $ANTLR end synpred179_TSPHP
 
 	// $ANTLR start synpred181_TSPHP
 	public final void synpred181_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:5: ( expression '=>' )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:5: expression '=>'
-		{
-		pushFollow(FOLLOW_expression_in_synpred181_TSPHP3741);
-		expression();
-		state._fsp--;
-		if (state.failed) return ;
-
-		match(input,Arrow,FOLLOW_Arrow_in_synpred181_TSPHP3743); if (state.failed) return ;
-
-		}
-
-	}
-	// $ANTLR end synpred181_TSPHP
-
-	// $ANTLR start synpred182_TSPHP
-	public final void synpred182_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:41: ( expression '=>' )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:675:41: expression '=>'
-		{
-		pushFollow(FOLLOW_expression_in_synpred182_TSPHP3754);
-		expression();
-		state._fsp--;
-		if (state.failed) return ;
-
-		match(input,Arrow,FOLLOW_Arrow_in_synpred182_TSPHP3756); if (state.failed) return ;
-
-		}
-
-	}
-	// $ANTLR end synpred182_TSPHP
-
-	// $ANTLR start synpred184_TSPHP
-	public final void synpred184_TSPHP_fragment() throws RecognitionException {
 		ParserRuleReturnScope instructionElse =null;
 
 
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:680:5: ( 'else' instructionElse= instructionInclBreakContinue )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:680:5: 'else' instructionElse= instructionInclBreakContinue
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:5: ( 'else' instructionElse= instructionInclBreakContinue )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:689:5: 'else' instructionElse= instructionInclBreakContinue
 		{
-		match(input,Else,FOLLOW_Else_in_synpred184_TSPHP3790); if (state.failed) return ;
+		match(input,Else,FOLLOW_Else_in_synpred181_TSPHP3840); if (state.failed) return ;
 
-		pushFollow(FOLLOW_instructionInclBreakContinue_in_synpred184_TSPHP3795);
+		pushFollow(FOLLOW_instructionInclBreakContinue_in_synpred181_TSPHP3845);
 		instructionElse=instructionInclBreakContinue();
 		state._fsp--;
 		if (state.failed) return ;
@@ -15128,28 +15227,28 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 
 	}
-	// $ANTLR end synpred184_TSPHP
+	// $ANTLR end synpred181_TSPHP
 
-	// $ANTLR start synpred187_TSPHP
-	public final void synpred187_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:4: ( ( normalCase )+ defaultCase ( normalCase )+ )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:4: ( normalCase )+ defaultCase ( normalCase )+
+	// $ANTLR start synpred184_TSPHP
+	public final void synpred184_TSPHP_fragment() throws RecognitionException {
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:4: ( ( normalCase )+ defaultCase ( normalCase )+ )
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:4: ( normalCase )+ defaultCase ( normalCase )+
 		{
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:4: ( normalCase )+
-		int cnt153=0;
-		loop153:
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:4: ( normalCase )+
+		int cnt146=0;
+		loop146:
 		do {
-			int alt153=2;
-			int LA153_0 = input.LA(1);
-			if ( (LA153_0==Case) ) {
-				alt153=1;
+			int alt146=2;
+			int LA146_0 = input.LA(1);
+			if ( (LA146_0==Case) ) {
+				alt146=1;
 			}
 
-			switch (alt153) {
+			switch (alt146) {
 			case 1 :
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:4: normalCase
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:4: normalCase
 				{
-				pushFollow(FOLLOW_normalCase_in_synpred187_TSPHP3859);
+				pushFollow(FOLLOW_normalCase_in_synpred184_TSPHP3909);
 				normalCase();
 				state._fsp--;
 				if (state.failed) return ;
@@ -15158,35 +15257,35 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 
 			default :
-				if ( cnt153 >= 1 ) break loop153;
+				if ( cnt146 >= 1 ) break loop146;
 				if (state.backtracking>0) {state.failed=true; return ;}
 					EarlyExitException eee =
-						new EarlyExitException(153, input);
+						new EarlyExitException(146, input);
 					throw eee;
 			}
-			cnt153++;
+			cnt146++;
 		} while (true);
 
-		pushFollow(FOLLOW_defaultCase_in_synpred187_TSPHP3862);
+		pushFollow(FOLLOW_defaultCase_in_synpred184_TSPHP3912);
 		defaultCase();
 		state._fsp--;
 		if (state.failed) return ;
 
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:28: ( normalCase )+
-		int cnt154=0;
-		loop154:
+		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:28: ( normalCase )+
+		int cnt147=0;
+		loop147:
 		do {
-			int alt154=2;
-			int LA154_0 = input.LA(1);
-			if ( (LA154_0==Case) ) {
-				alt154=1;
+			int alt147=2;
+			int LA147_0 = input.LA(1);
+			if ( (LA147_0==Case) ) {
+				alt147=1;
 			}
 
-			switch (alt154) {
+			switch (alt147) {
 			case 1 :
-				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:688:28: normalCase
+				// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:697:28: normalCase
 				{
-				pushFollow(FOLLOW_normalCase_in_synpred187_TSPHP3864);
+				pushFollow(FOLLOW_normalCase_in_synpred184_TSPHP3914);
 				normalCase();
 				state._fsp--;
 				if (state.failed) return ;
@@ -15195,49 +15294,19 @@ public TreeAdaptor getTreeAdaptor() {
 				break;
 
 			default :
-				if ( cnt154 >= 1 ) break loop154;
+				if ( cnt147 >= 1 ) break loop147;
 				if (state.backtracking>0) {state.failed=true; return ;}
 					EarlyExitException eee =
-						new EarlyExitException(154, input);
+						new EarlyExitException(147, input);
 					throw eee;
 			}
-			cnt154++;
+			cnt147++;
 		} while (true);
 
 		}
 
 	}
-	// $ANTLR end synpred187_TSPHP
-
-	// $ANTLR start synpred193_TSPHP
-	public final void synpred193_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:21: ( forInit )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:21: forInit
-		{
-		pushFollow(FOLLOW_forInit_in_synpred193_TSPHP4008);
-		forInit();
-		state._fsp--;
-		if (state.failed) return ;
-
-		}
-
-	}
-	// $ANTLR end synpred193_TSPHP
-
-	// $ANTLR start synpred195_TSPHP
-	public final void synpred195_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:55: ( forUpdate )
-		// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:713:55: forUpdate
-		{
-		pushFollow(FOLLOW_forUpdate_in_synpred195_TSPHP4019);
-		forUpdate();
-		state._fsp--;
-		if (state.failed) return ;
-
-		}
-
-	}
-	// $ANTLR end synpred195_TSPHP
+	// $ANTLR end synpred184_TSPHP
 
 	// Delegated rules
 
@@ -15269,53 +15338,11 @@ public TreeAdaptor getTreeAdaptor() {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred160_TSPHP() {
+	public final boolean synpred105_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
 		try {
-			synpred160_TSPHP_fragment(); // can never throw exception
-		} catch (RecognitionException re) {
-			System.err.println("impossible: "+re);
-		}
-		boolean success = !state.failed;
-		input.rewind(start);
-		state.backtracking--;
-		state.failed=false;
-		return success;
-	}
-	public final boolean synpred167_TSPHP() {
-		state.backtracking++;
-		int start = input.mark();
-		try {
-			synpred167_TSPHP_fragment(); // can never throw exception
-		} catch (RecognitionException re) {
-			System.err.println("impossible: "+re);
-		}
-		boolean success = !state.failed;
-		input.rewind(start);
-		state.backtracking--;
-		state.failed=false;
-		return success;
-	}
-	public final boolean synpred193_TSPHP() {
-		state.backtracking++;
-		int start = input.mark();
-		try {
-			synpred193_TSPHP_fragment(); // can never throw exception
-		} catch (RecognitionException re) {
-			System.err.println("impossible: "+re);
-		}
-		boolean success = !state.failed;
-		input.rewind(start);
-		state.backtracking--;
-		state.failed=false;
-		return success;
-	}
-	public final boolean synpred131_TSPHP() {
-		state.backtracking++;
-		int start = input.mark();
-		try {
-			synpred131_TSPHP_fragment(); // can never throw exception
+			synpred105_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -15339,11 +15366,11 @@ public TreeAdaptor getTreeAdaptor() {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred161_TSPHP() {
+	public final boolean synpred165_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
 		try {
-			synpred161_TSPHP_fragment(); // can never throw exception
+			synpred165_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -15358,20 +15385,6 @@ public TreeAdaptor getTreeAdaptor() {
 		int start = input.mark();
 		try {
 			synpred104_TSPHP_fragment(); // can never throw exception
-		} catch (RecognitionException re) {
-			System.err.println("impossible: "+re);
-		}
-		boolean success = !state.failed;
-		input.rewind(start);
-		state.backtracking--;
-		state.failed=false;
-		return success;
-	}
-	public final boolean synpred101_TSPHP() {
-		state.backtracking++;
-		int start = input.mark();
-		try {
-			synpred101_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -15409,6 +15422,20 @@ public TreeAdaptor getTreeAdaptor() {
 		state.failed=false;
 		return success;
 	}
+	public final boolean synpred164_TSPHP() {
+		state.backtracking++;
+		int start = input.mark();
+		try {
+			synpred164_TSPHP_fragment(); // can never throw exception
+		} catch (RecognitionException re) {
+			System.err.println("impossible: "+re);
+		}
+		boolean success = !state.failed;
+		input.rewind(start);
+		state.backtracking--;
+		state.failed=false;
+		return success;
+	}
 	public final boolean synpred102_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
@@ -15437,11 +15464,67 @@ public TreeAdaptor getTreeAdaptor() {
 		state.failed=false;
 		return success;
 	}
+	public final boolean synpred179_TSPHP() {
+		state.backtracking++;
+		int start = input.mark();
+		try {
+			synpred179_TSPHP_fragment(); // can never throw exception
+		} catch (RecognitionException re) {
+			System.err.println("impossible: "+re);
+		}
+		boolean success = !state.failed;
+		input.rewind(start);
+		state.backtracking--;
+		state.failed=false;
+		return success;
+	}
+	public final boolean synpred163_TSPHP() {
+		state.backtracking++;
+		int start = input.mark();
+		try {
+			synpred163_TSPHP_fragment(); // can never throw exception
+		} catch (RecognitionException re) {
+			System.err.println("impossible: "+re);
+		}
+		boolean success = !state.failed;
+		input.rewind(start);
+		state.backtracking--;
+		state.failed=false;
+		return success;
+	}
+	public final boolean synpred159_TSPHP() {
+		state.backtracking++;
+		int start = input.mark();
+		try {
+			synpred159_TSPHP_fragment(); // can never throw exception
+		} catch (RecognitionException re) {
+			System.err.println("impossible: "+re);
+		}
+		boolean success = !state.failed;
+		input.rewind(start);
+		state.backtracking--;
+		state.failed=false;
+		return success;
+	}
 	public final boolean synpred80_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
 		try {
 			synpred80_TSPHP_fragment(); // can never throw exception
+		} catch (RecognitionException re) {
+			System.err.println("impossible: "+re);
+		}
+		boolean success = !state.failed;
+		input.rewind(start);
+		state.backtracking--;
+		state.failed=false;
+		return success;
+	}
+	public final boolean synpred132_TSPHP() {
+		state.backtracking++;
+		int start = input.mark();
+		try {
+			synpred132_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -15465,11 +15548,11 @@ public TreeAdaptor getTreeAdaptor() {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred187_TSPHP() {
+	public final boolean synpred178_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
 		try {
-			synpred187_TSPHP_fragment(); // can never throw exception
+			synpred178_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -15479,11 +15562,11 @@ public TreeAdaptor getTreeAdaptor() {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred195_TSPHP() {
+	public final boolean synpred158_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
 		try {
-			synpred195_TSPHP_fragment(); // can never throw exception
+			synpred158_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -15498,20 +15581,6 @@ public TreeAdaptor getTreeAdaptor() {
 		int start = input.mark();
 		try {
 			synpred153_TSPHP_fragment(); // can never throw exception
-		} catch (RecognitionException re) {
-			System.err.println("impossible: "+re);
-		}
-		boolean success = !state.failed;
-		input.rewind(start);
-		state.backtracking--;
-		state.failed=false;
-		return success;
-	}
-	public final boolean synpred169_TSPHP() {
-		state.backtracking++;
-		int start = input.mark();
-		try {
-			synpred169_TSPHP_fragment(); // can never throw exception
 		} catch (RecognitionException re) {
 			System.err.println("impossible: "+re);
 		}
@@ -15549,20 +15618,6 @@ public TreeAdaptor getTreeAdaptor() {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred168_TSPHP() {
-		state.backtracking++;
-		int start = input.mark();
-		try {
-			synpred168_TSPHP_fragment(); // can never throw exception
-		} catch (RecognitionException re) {
-			System.err.println("impossible: "+re);
-		}
-		boolean success = !state.failed;
-		input.rewind(start);
-		state.backtracking--;
-		state.failed=false;
-		return success;
-	}
 	public final boolean synpred70_TSPHP() {
 		state.backtracking++;
 		int start = input.mark();
@@ -15577,50 +15632,37 @@ public TreeAdaptor getTreeAdaptor() {
 		state.failed=false;
 		return success;
 	}
-	public final boolean synpred182_TSPHP() {
-		state.backtracking++;
-		int start = input.mark();
-		try {
-			synpred182_TSPHP_fragment(); // can never throw exception
-		} catch (RecognitionException re) {
-			System.err.println("impossible: "+re);
-		}
-		boolean success = !state.failed;
-		input.rewind(start);
-		state.backtracking--;
-		state.failed=false;
-		return success;
-	}
 
 
 	protected DFA3 dfa3 = new DFA3(this);
 	protected DFA49 dfa49 = new DFA49(this);
-	protected DFA104 dfa104 = new DFA104(this);
-	protected DFA126 dfa126 = new DFA126(this);
+	protected DFA89 dfa89 = new DFA89(this);
+	protected DFA101 dfa101 = new DFA101(this);
+	protected DFA119 dfa119 = new DFA119(this);
 	static final String DFA3_eotS =
 		"\10\uffff";
 	static final String DFA3_eofS =
 		"\10\uffff";
 	static final String DFA3_minS =
-		"\1\4\1\67\1\uffff\1\13\1\uffff\1\67\1\uffff\1\13";
+		"\1\4\1\70\1\uffff\1\13\1\uffff\1\70\1\uffff\1\13";
 	static final String DFA3_maxS =
-		"\1\u0087\1\75\1\uffff\1\156\1\uffff\1\67\1\uffff\1\156";
+		"\1\u0089\1\76\1\uffff\1\157\1\uffff\1\70\1\uffff\1\157";
 	static final String DFA3_acceptS =
 		"\2\uffff\1\3\1\uffff\1\2\1\uffff\1\1\1\uffff";
 	static final String DFA3_specialS =
 		"\10\uffff}>";
 	static final String[] DFA3_transitionS = {
-			"\1\2\6\uffff\1\2\14\uffff\1\2\4\uffff\1\2\5\uffff\1\2\5\uffff\1\2\2\uffff"+
+			"\1\2\6\uffff\1\2\14\uffff\1\2\4\uffff\1\2\5\uffff\1\2\6\uffff\1\2\2\uffff"+
 			"\1\2\1\uffff\1\2\1\uffff\3\2\4\uffff\2\2\3\uffff\2\2\14\uffff\1\2\4\uffff"+
 			"\1\1\11\uffff\1\2\2\uffff\1\2\7\uffff\1\2\10\uffff\1\2\7\uffff\14\2\2"+
-			"\uffff\1\2\1\uffff\1\2\1\uffff\1\2",
+			"\uffff\1\2\2\uffff\1\2\1\uffff\1\2",
 			"\1\3\5\uffff\1\4",
 			"",
-			"\1\5\61\uffff\1\4\60\uffff\1\6",
+			"\1\5\62\uffff\1\4\60\uffff\1\6",
 			"",
 			"\1\7",
 			"",
-			"\1\5\61\uffff\1\4\60\uffff\1\6"
+			"\1\5\62\uffff\1\4\60\uffff\1\6"
 	};
 
 	static final short[] DFA3_eot = DFA.unpackEncodedString(DFA3_eotS);
@@ -15654,7 +15696,7 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		@Override
 		public String getDescription() {
-			return "188:1: prog : ( ( namespaceSemicolon )+ EOF !| ( namespaceBracket )+ EOF !| withoutNamespace EOF !);";
+			return "190:1: prog : ( ( namespaceSemicolon )+ EOF !| ( namespaceBracket )+ EOF !| withoutNamespace EOF !);";
 		}
 	}
 
@@ -15663,17 +15705,17 @@ public TreeAdaptor getTreeAdaptor() {
 	static final String DFA49_eofS =
 		"\13\uffff\1\17\20\uffff\1\17\2\uffff";
 	static final String DFA49_minS =
-		"\1\13\10\u0085\1\67\1\13\1\7\1\67\1\uffff\1\13\2\uffff\1\13\10\u0085\1"+
-		"\67\1\13\1\7\1\67\1\13";
+		"\1\13\10\u0087\1\70\1\13\1\7\1\70\1\uffff\1\13\2\uffff\1\13\10\u0087\1"+
+		"\70\1\13\1\7\1\70\1\13";
 	static final String DFA49_maxS =
-		"\1\u0080\10\u0085\1\67\1\u0085\1\u0080\1\67\1\uffff\1\u0080\2\uffff\11"+
-		"\u0085\1\67\1\u0085\1\146\1\67\1\u0085";
+		"\1\u0081\10\u0087\1\70\1\u0087\1\u0081\1\70\1\uffff\1\u0081\2\uffff\11"+
+		"\u0087\1\70\1\u0087\1\147\1\70\1\u0087";
 	static final String DFA49_acceptS =
 		"\15\uffff\1\1\1\uffff\1\2\1\3\16\uffff";
 	static final String DFA49_specialS =
 		"\37\uffff}>";
 	static final String[] DFA49_transitionS = {
-			"\1\11\53\uffff\1\12\101\uffff\1\6\1\1\1\2\1\4\1\3\1\10\1\7\1\5",
+			"\1\11\54\uffff\1\12\101\uffff\1\6\1\1\1\2\1\4\1\3\1\10\1\7\1\5",
 			"\1\13",
 			"\1\13",
 			"\1\13",
@@ -15683,15 +15725,15 @@ public TreeAdaptor getTreeAdaptor() {
 			"\1\13",
 			"\1\13",
 			"\1\12",
-			"\1\14\171\uffff\1\13",
-			"\1\15\3\uffff\1\20\17\uffff\1\16\33\uffff\1\20\56\uffff\1\17\22\uffff"+
+			"\1\14\173\uffff\1\13",
+			"\1\15\3\uffff\1\20\17\uffff\1\16\34\uffff\1\20\56\uffff\1\17\22\uffff"+
 			"\10\20",
 			"\1\21",
 			"",
-			"\1\32\53\uffff\1\33\101\uffff\1\27\1\22\1\23\1\25\1\24\1\31\1\30\1\26",
+			"\1\32\54\uffff\1\33\101\uffff\1\27\1\22\1\23\1\25\1\24\1\31\1\30\1\26",
 			"",
 			"",
-			"\1\14\171\uffff\1\13",
+			"\1\14\173\uffff\1\13",
 			"\1\34",
 			"\1\34",
 			"\1\34",
@@ -15701,10 +15743,10 @@ public TreeAdaptor getTreeAdaptor() {
 			"\1\34",
 			"\1\34",
 			"\1\33",
-			"\1\35\171\uffff\1\34",
-			"\1\20\23\uffff\1\17\112\uffff\1\17",
+			"\1\35\173\uffff\1\34",
+			"\1\20\23\uffff\1\17\113\uffff\1\17",
 			"\1\36",
-			"\1\35\171\uffff\1\34"
+			"\1\35\173\uffff\1\34"
 	};
 
 	static final short[] DFA49_eot = DFA.unpackEncodedString(DFA49_eotS);
@@ -15738,616 +15780,680 @@ public TreeAdaptor getTreeAdaptor() {
 		}
 		@Override
 		public String getDescription() {
-			return "346:1: paramList : ( paramDeclarationOptional ( ',' paramDeclarationOptional )* | paramDeclaration ( ',' paramDeclaration )* | paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+ );";
+			return "348:1: paramList : ( paramDeclarationOptional ( ',' paramDeclarationOptional )* | paramDeclaration ( ',' paramDeclaration )* | paramDeclaration ( paramDeclaration ',' )* ( ',' paramDeclarationOptional )+ );";
 		}
 	}
 
-	static final String DFA104_eotS =
+	static final String DFA89_eotS =
+		"\10\uffff";
+	static final String DFA89_eofS =
+		"\3\uffff\1\6\3\uffff\1\6";
+	static final String DFA89_minS =
+		"\1\121\1\13\1\70\1\5\1\70\2\uffff\1\5";
+	static final String DFA89_maxS =
+		"\1\121\2\70\1\163\1\70\2\uffff\1\163";
+	static final String DFA89_acceptS =
+		"\5\uffff\1\1\1\2\1\uffff";
+	static final String DFA89_specialS =
+		"\10\uffff}>";
+	static final String[] DFA89_transitionS = {
+			"\1\1",
+			"\1\2\54\uffff\1\3",
+			"\1\3",
+			"\1\6\1\uffff\1\6\3\uffff\1\4\2\6\1\uffff\4\6\7\uffff\2\6\5\uffff\2\6"+
+			"\2\uffff\2\6\5\uffff\1\6\7\uffff\2\6\1\uffff\1\6\3\uffff\1\6\3\uffff"+
+			"\1\5\1\uffff\4\6\1\uffff\5\6\1\uffff\4\6\2\uffff\3\6\6\uffff\2\6\7\uffff"+
+			"\1\6\2\uffff\2\6\6\uffff\5\6",
+			"\1\7",
+			"",
+			"",
+			"\1\6\1\uffff\1\6\3\uffff\1\4\2\6\1\uffff\4\6\7\uffff\2\6\5\uffff\2\6"+
+			"\2\uffff\2\6\5\uffff\1\6\7\uffff\2\6\1\uffff\1\6\3\uffff\1\6\3\uffff"+
+			"\1\5\1\uffff\4\6\1\uffff\5\6\1\uffff\4\6\2\uffff\3\6\6\uffff\2\6\7\uffff"+
+			"\1\6\2\uffff\2\6\6\uffff\5\6"
+	};
+
+	static final short[] DFA89_eot = DFA.unpackEncodedString(DFA89_eotS);
+	static final short[] DFA89_eof = DFA.unpackEncodedString(DFA89_eofS);
+	static final char[] DFA89_min = DFA.unpackEncodedStringToUnsignedChars(DFA89_minS);
+	static final char[] DFA89_max = DFA.unpackEncodedStringToUnsignedChars(DFA89_maxS);
+	static final short[] DFA89_accept = DFA.unpackEncodedString(DFA89_acceptS);
+	static final short[] DFA89_special = DFA.unpackEncodedString(DFA89_specialS);
+	static final short[][] DFA89_transition;
+
+	static {
+		int numStates = DFA89_transitionS.length;
+		DFA89_transition = new short[numStates][];
+		for (int i=0; i<numStates; i++) {
+			DFA89_transition[i] = DFA.unpackEncodedString(DFA89_transitionS[i]);
+		}
+	}
+
+	class DFA89 extends DFA {
+
+		public DFA89(BaseRecognizer recognizer) {
+			this.recognizer = recognizer;
+			this.decisionNumber = 89;
+			this.eot = DFA89_eot;
+			this.eof = DFA89_eof;
+			this.min = DFA89_min;
+			this.max = DFA89_max;
+			this.accept = DFA89_accept;
+			this.special = DFA89_special;
+			this.transition = DFA89_transition;
+		}
+		@Override
+		public String getDescription() {
+			return "545:1: newObject : ( 'new' classInterfaceTypeWithoutObject '(' expressionList ')' -> ^( 'new' classInterfaceTypeWithoutObject expressionList ) | 'new' classInterfaceTypeWithoutObject -> ^( 'new' classInterfaceTypeWithoutObject EXPRESSION_LIST ) );";
+		}
+	}
+
+	static final String DFA101_eotS =
 		"\12\uffff";
-	static final String DFA104_eofS =
+	static final String DFA101_eofS =
 		"\12\uffff";
-	static final String DFA104_minS =
-		"\1\13\3\67\1\13\2\uffff\2\67\1\13";
-	static final String DFA104_maxS =
-		"\3\u0085\1\67\1\47\2\uffff\1\67\1\u0085\1\47";
-	static final String DFA104_acceptS =
+	static final String DFA101_minS =
+		"\1\13\3\70\1\13\2\uffff\2\70\1\13";
+	static final String DFA101_maxS =
+		"\3\u0087\1\70\1\47\2\uffff\1\70\1\u0087\1\47";
+	static final String DFA101_acceptS =
 		"\5\uffff\1\1\1\2\3\uffff";
-	static final String DFA104_specialS =
+	static final String DFA101_specialS =
 		"\12\uffff}>";
-	static final String[] DFA104_transitionS = {
-			"\1\3\53\uffff\1\4\41\uffff\1\2\23\uffff\1\1\10\uffff\1\5\16\uffff\1\5",
-			"\1\6\115\uffff\1\5",
-			"\1\6\115\uffff\1\5",
+	static final String[] DFA101_transitionS = {
+			"\1\3\54\uffff\1\4\41\uffff\1\2\23\uffff\1\1\10\uffff\1\5\17\uffff\1\5",
+			"\1\6\116\uffff\1\5",
+			"\1\6\116\uffff\1\5",
 			"\1\4",
 			"\1\7\33\uffff\1\10",
 			"",
 			"",
 			"\1\11",
-			"\1\6\115\uffff\1\5",
+			"\1\6\116\uffff\1\5",
 			"\1\7\33\uffff\1\10"
 	};
 
-	static final short[] DFA104_eot = DFA.unpackEncodedString(DFA104_eotS);
-	static final short[] DFA104_eof = DFA.unpackEncodedString(DFA104_eofS);
-	static final char[] DFA104_min = DFA.unpackEncodedStringToUnsignedChars(DFA104_minS);
-	static final char[] DFA104_max = DFA.unpackEncodedStringToUnsignedChars(DFA104_maxS);
-	static final short[] DFA104_accept = DFA.unpackEncodedString(DFA104_acceptS);
-	static final short[] DFA104_special = DFA.unpackEncodedString(DFA104_specialS);
-	static final short[][] DFA104_transition;
+	static final short[] DFA101_eot = DFA.unpackEncodedString(DFA101_eotS);
+	static final short[] DFA101_eof = DFA.unpackEncodedString(DFA101_eofS);
+	static final char[] DFA101_min = DFA.unpackEncodedStringToUnsignedChars(DFA101_minS);
+	static final char[] DFA101_max = DFA.unpackEncodedStringToUnsignedChars(DFA101_maxS);
+	static final short[] DFA101_accept = DFA.unpackEncodedString(DFA101_acceptS);
+	static final short[] DFA101_special = DFA.unpackEncodedString(DFA101_specialS);
+	static final short[][] DFA101_transition;
 
 	static {
-		int numStates = DFA104_transitionS.length;
-		DFA104_transition = new short[numStates][];
+		int numStates = DFA101_transitionS.length;
+		DFA101_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA104_transition[i] = DFA.unpackEncodedString(DFA104_transitionS[i]);
+			DFA101_transition[i] = DFA.unpackEncodedString(DFA101_transitionS[i]);
 		}
 	}
 
-	class DFA104 extends DFA {
+	class DFA101 extends DFA {
 
-		public DFA104(BaseRecognizer recognizer) {
+		public DFA101(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 104;
-			this.eot = DFA104_eot;
-			this.eof = DFA104_eof;
-			this.min = DFA104_min;
-			this.max = DFA104_max;
-			this.accept = DFA104_accept;
-			this.special = DFA104_special;
-			this.transition = DFA104_transition;
+			this.decisionNumber = 101;
+			this.eot = DFA101_eot;
+			this.eof = DFA101_eof;
+			this.min = DFA101_min;
+			this.max = DFA101_max;
+			this.accept = DFA101_accept;
+			this.special = DFA101_special;
+			this.transition = DFA101_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "581:4: ( ( variableMemberStaticMember '->' ) | staticAccessOrParent )";
+			return "590:4: ( ( variableMemberStaticMember '->' ) | staticAccessOrParent )";
 		}
 	}
 
-	static final String DFA126_eotS =
-		"\12\uffff";
-	static final String DFA126_eofS =
-		"\1\5\3\uffff\1\6\5\uffff";
-	static final String DFA126_minS =
-		"\1\10\1\uffff\1\76\1\67\1\7\2\uffff\1\13\1\67\1\13";
-	static final String DFA126_maxS =
-		"\1\u0085\1\uffff\1\u0085\1\67\1\u0085\2\uffff\1\u0085\1\67\1\u0085";
-	static final String DFA126_acceptS =
-		"\1\uffff\1\1\3\uffff\1\2\1\3\3\uffff";
-	static final String DFA126_specialS =
-		"\12\uffff}>";
-	static final String[] DFA126_transitionS = {
-			"\1\6\2\uffff\1\3\2\uffff\1\6\4\uffff\1\6\5\uffff\1\6\1\uffff\1\5\23\uffff"+
-			"\1\6\7\uffff\1\4\3\uffff\1\6\2\uffff\2\6\4\uffff\1\6\3\uffff\1\6\1\uffff"+
-			"\1\6\5\uffff\1\6\3\uffff\1\6\4\uffff\2\6\1\uffff\1\6\20\uffff\1\6\1\5"+
-			"\5\uffff\1\6\1\uffff\1\6\2\uffff\1\2\7\1\4\uffff\1\6",
+	static final String DFA119_eotS =
+		"\11\uffff";
+	static final String DFA119_eofS =
+		"\11\uffff";
+	static final String DFA119_minS =
+		"\1\10\1\uffff\1\77\1\70\1\7\1\uffff\1\13\1\70\1\13";
+	static final String DFA119_maxS =
+		"\1\u0087\1\uffff\1\u0087\1\70\1\u0087\1\uffff\1\u0087\1\70\1\u0087";
+	static final String DFA119_acceptS =
+		"\1\uffff\1\1\3\uffff\1\2\3\uffff";
+	static final String DFA119_specialS =
+		"\11\uffff}>";
+	static final String[] DFA119_transitionS = {
+			"\1\5\2\uffff\1\3\2\uffff\1\5\4\uffff\1\5\5\uffff\1\5\26\uffff\1\5\7\uffff"+
+			"\1\4\3\uffff\1\5\2\uffff\2\5\4\uffff\1\5\3\uffff\1\5\1\uffff\1\5\5\uffff"+
+			"\1\5\3\uffff\1\5\4\uffff\2\5\1\uffff\1\5\20\uffff\2\5\5\uffff\1\5\1\uffff"+
+			"\1\5\2\uffff\1\2\7\1\5\uffff\1\5",
 			"",
-			"\1\6\106\uffff\1\1",
-			"\1\7",
-			"\1\6\3\uffff\1\10\2\6\1\uffff\4\6\10\uffff\1\6\5\uffff\2\6\2\uffff\3"+
-			"\6\3\uffff\1\6\7\uffff\2\6\1\uffff\1\6\3\uffff\1\6\3\uffff\1\6\1\uffff"+
-			"\4\6\1\uffff\5\6\1\uffff\4\6\2\uffff\3\6\6\uffff\2\6\7\uffff\1\6\12\uffff"+
-			"\5\6\22\uffff\1\1",
+			"\1\5\107\uffff\1\1",
+			"\1\6",
+			"\1\5\3\uffff\1\7\2\5\1\uffff\4\5\10\uffff\1\5\5\uffff\2\5\2\uffff\3"+
+			"\5\4\uffff\1\5\7\uffff\2\5\1\uffff\1\5\3\uffff\1\5\3\uffff\1\5\1\uffff"+
+			"\4\5\1\uffff\5\5\1\uffff\4\5\2\uffff\3\5\6\uffff\2\5\7\uffff\1\5\12\uffff"+
+			"\5\5\23\uffff\1\1",
 			"",
-			"",
-			"\1\10\33\uffff\1\6\26\uffff\1\6\106\uffff\1\1",
-			"\1\11",
-			"\1\10\33\uffff\1\6\26\uffff\1\6\106\uffff\1\1"
+			"\1\7\33\uffff\1\5\27\uffff\1\5\107\uffff\1\1",
+			"\1\10",
+			"\1\7\33\uffff\1\5\27\uffff\1\5\107\uffff\1\1"
 	};
 
-	static final short[] DFA126_eot = DFA.unpackEncodedString(DFA126_eotS);
-	static final short[] DFA126_eof = DFA.unpackEncodedString(DFA126_eofS);
-	static final char[] DFA126_min = DFA.unpackEncodedStringToUnsignedChars(DFA126_minS);
-	static final char[] DFA126_max = DFA.unpackEncodedStringToUnsignedChars(DFA126_maxS);
-	static final short[] DFA126_accept = DFA.unpackEncodedString(DFA126_acceptS);
-	static final short[] DFA126_special = DFA.unpackEncodedString(DFA126_specialS);
-	static final short[][] DFA126_transition;
+	static final short[] DFA119_eot = DFA.unpackEncodedString(DFA119_eotS);
+	static final short[] DFA119_eof = DFA.unpackEncodedString(DFA119_eofS);
+	static final char[] DFA119_min = DFA.unpackEncodedStringToUnsignedChars(DFA119_minS);
+	static final char[] DFA119_max = DFA.unpackEncodedStringToUnsignedChars(DFA119_maxS);
+	static final short[] DFA119_accept = DFA.unpackEncodedString(DFA119_acceptS);
+	static final short[] DFA119_special = DFA.unpackEncodedString(DFA119_specialS);
+	static final short[][] DFA119_transition;
 
 	static {
-		int numStates = DFA126_transitionS.length;
-		DFA126_transition = new short[numStates][];
+		int numStates = DFA119_transitionS.length;
+		DFA119_transition = new short[numStates][];
 		for (int i=0; i<numStates; i++) {
-			DFA126_transition[i] = DFA.unpackEncodedString(DFA126_transitionS[i]);
+			DFA119_transition[i] = DFA.unpackEncodedString(DFA119_transitionS[i]);
 		}
 	}
 
-	class DFA126 extends DFA {
+	class DFA119 extends DFA {
 
-		public DFA126(BaseRecognizer recognizer) {
+		public DFA119(BaseRecognizer recognizer) {
 			this.recognizer = recognizer;
-			this.decisionNumber = 126;
-			this.eot = DFA126_eot;
-			this.eof = DFA126_eof;
-			this.min = DFA126_min;
-			this.max = DFA126_max;
-			this.accept = DFA126_accept;
-			this.special = DFA126_special;
-			this.transition = DFA126_transition;
+			this.decisionNumber = 119;
+			this.eot = DFA119_eot;
+			this.eof = DFA119_eof;
+			this.min = DFA119_min;
+			this.max = DFA119_max;
+			this.accept = DFA119_accept;
+			this.special = DFA119_special;
+			this.transition = DFA119_transition;
 		}
 		@Override
 		public String getDescription() {
-			return "715:11: ( variableDeclaration || expression )";
+			return "727:1: varListOrExprList : ( variableDeclarationList -> ^( VARIABLE_DECLARATION_LIST variableDeclarationList ) | expressionList );";
 		}
 	}
 
-	public static final BitSet FOLLOW_namespaceSemicolon_in_prog961 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-	public static final BitSet FOLLOW_EOF_in_prog964 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_namespaceBracket_in_prog970 = new BitSet(new long[]{0x0000000000000000L,0x0000000000008000L});
-	public static final BitSet FOLLOW_EOF_in_prog973 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_withoutNamespace_in_prog979 = new BitSet(new long[]{0x0000000000000000L});
+	public static final BitSet FOLLOW_namespaceSemicolon_in_prog969 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
+	public static final BitSet FOLLOW_EOF_in_prog972 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_namespaceBracket_in_prog978 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
 	public static final BitSet FOLLOW_EOF_in_prog981 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Namespace_in_namespaceSemicolon995 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_namespaceId_in_namespaceSemicolon997 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_namespaceSemicolon999 = new BitSet(new long[]{0x3187520821000810L,0xFFE0201012000400L,0x00000000000000A9L});
-	public static final BitSet FOLLOW_statement_in_namespaceSemicolon1001 = new BitSet(new long[]{0x3187520821000812L,0xFFE0201012000400L,0x00000000000000A9L});
-	public static final BitSet FOLLOW_Namespace_in_namespaceBracket1014 = new BitSet(new long[]{0x2080000000000000L});
-	public static final BitSet FOLLOW_namespaceId_in_namespaceBracket1016 = new BitSet(new long[]{0x2000000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_namespaceBracket1019 = new BitSet(new long[]{0x3187520821000810L,0xFFE0201012000400L,0x00000000000000A9L});
-	public static final BitSet FOLLOW_statement_in_namespaceBracket1021 = new BitSet(new long[]{0x3187520821000810L,0xFFE0203012000400L,0x00000000000000A9L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_namespaceBracket1024 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_namespaceId1120 = new BitSet(new long[]{0x0000000000000802L});
-	public static final BitSet FOLLOW_Backslash_in_namespaceId1123 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_namespaceId1125 = new BitSet(new long[]{0x0000000000000802L});
-	public static final BitSet FOLLOW_statement_in_withoutNamespace1138 = new BitSet(new long[]{0x3187520821000812L,0xFFE0201012000400L,0x00000000000000A9L});
-	public static final BitSet FOLLOW_useDeclarationList_in_statement1149 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_definition_in_statement1154 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_statement1159 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Use_in_useDeclarationList1171 = new BitSet(new long[]{0x0080000000000800L});
-	public static final BitSet FOLLOW_useDeclaration_in_useDeclarationList1173 = new BitSet(new long[]{0x0000000008000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Comma_in_useDeclarationList1176 = new BitSet(new long[]{0x0080000000000800L});
-	public static final BitSet FOLLOW_useDeclaration_in_useDeclarationList1178 = new BitSet(new long[]{0x0000000008000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_useDeclarationList1182 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_useDeclaration1195 = new BitSet(new long[]{0x0000000000000800L});
-	public static final BitSet FOLLOW_Backslash_in_useDeclaration1197 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_namespaceId_in_useDeclaration1199 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_Backslash_in_useDeclaration1208 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_namespaceId_in_useDeclaration1209 = new BitSet(new long[]{0x0000000000000042L});
-	public static final BitSet FOLLOW_As_in_useDeclaration1221 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_useDeclaration1223 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_classDeclaration_in_definition1236 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_interfaceDeclaration_in_definition1241 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionDeclaration_in_definition1246 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_constDeclarationList_in_definition1251 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Class_in_classDeclaration1273 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_classDeclaration1275 = new BitSet(new long[]{0x2200200000000000L});
-	public static final BitSet FOLLOW_extendsDeclaration_in_classDeclaration1277 = new BitSet(new long[]{0x2200000000000000L});
-	public static final BitSet FOLLOW_implementsDeclaration_in_classDeclaration1280 = new BitSet(new long[]{0x2000000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_classDeclaration1283 = new BitSet(new long[]{0x0004400020000010L,0x0008000620000000L});
-	public static final BitSet FOLLOW_classBody_in_classDeclaration1285 = new BitSet(new long[]{0x0004400020000010L,0x0008002620000000L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_classDeclaration1288 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Extends_in_extendsDeclaration1302 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_identifierList_in_extendsDeclaration1304 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_identifierList1313 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_Comma_in_identifierList1316 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_identifierList1318 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_Implements_in_implementsDeclaration1329 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_identifierList_in_implementsDeclaration1331 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_constDeclarationList_in_classBody1341 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_attributeDeclaration_in_classBody1346 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_methodDeclaration_in_classBody1352 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Const_in_constDeclarationList1364 = new BitSet(new long[]{0x0000000000000000L,0x3C00000000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_primitiveTypes_in_constDeclarationList1366 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_constantAssignment_in_constDeclarationList1368 = new BitSet(new long[]{0x0000000008000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Comma_in_constDeclarationList1371 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_constantAssignment_in_constDeclarationList1373 = new BitSet(new long[]{0x0000000008000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_constDeclarationList1377 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_constantAssignment1387 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_Assign_in_constantAssignment1390 = new BitSet(new long[]{0x0880800000080000L,0x0010000004100100L});
-	public static final BitSet FOLLOW_unaryPrimitiveAtom_in_constantAssignment1392 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Static_in_attributeDeclaration1402 = new BitSet(new long[]{0x0000000000000000L,0x0000000620000000L});
-	public static final BitSet FOLLOW_accessor_in_attributeDeclaration1405 = new BitSet(new long[]{0x0080000000000800L,0xFE00000000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_variableDeclarationListInclVariableId_in_attributeDeclaration1407 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_attributeDeclaration1409 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_accessorWithoutPrivate_in_accessor1416 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Private_in_accessor1421 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableDeclaration_in_variableDeclarationListInclVariableId1444 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_Comma_in_variableDeclarationListInclVariableId1447 = new BitSet(new long[]{0x0080000000000800L,0x0040200012000400L,0x0000000000000020L});
-	public static final BitSet FOLLOW_variableAssignment_in_variableDeclarationListInclVariableId1450 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_VariableId_in_variableDeclarationListInclVariableId1452 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_Abstract_in_methodDeclaration1469 = new BitSet(new long[]{0x0004000000000000L,0x0000000600000000L});
-	public static final BitSet FOLLOW_accessorWithoutPrivate_in_methodDeclaration1471 = new BitSet(new long[]{0x0004000000000000L});
-	public static final BitSet FOLLOW_Static_in_methodDeclaration1485 = new BitSet(new long[]{0x0004400000000000L,0x0000000620000000L});
-	public static final BitSet FOLLOW_Final_in_methodDeclaration1487 = new BitSet(new long[]{0x0004000000000000L,0x0000000620000000L});
-	public static final BitSet FOLLOW_Final_in_methodDeclaration1495 = new BitSet(new long[]{0x0004000000000000L,0x0008000620000000L});
-	public static final BitSet FOLLOW_Static_in_methodDeclaration1497 = new BitSet(new long[]{0x0004000000000000L,0x0000000620000000L});
-	public static final BitSet FOLLOW_accessor_in_methodDeclaration1511 = new BitSet(new long[]{0x0004000000000000L});
-	public static final BitSet FOLLOW_functionDeclaration_in_methodDeclaration1518 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Interface_in_interfaceDeclaration1528 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_interfaceDeclaration1530 = new BitSet(new long[]{0x2200000000000000L});
-	public static final BitSet FOLLOW_implementsDeclaration_in_interfaceDeclaration1532 = new BitSet(new long[]{0x2000000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_interfaceDeclaration1535 = new BitSet(new long[]{0x0004000020000000L,0x0000002400000000L});
-	public static final BitSet FOLLOW_interfaceBody_in_interfaceDeclaration1537 = new BitSet(new long[]{0x0004000020000000L,0x0000002400000000L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_interfaceDeclaration1540 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_constDeclarationList_in_interfaceBody1549 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_interfaceMethodDeclaration_in_interfaceBody1554 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Public_in_interfaceMethodDeclaration1565 = new BitSet(new long[]{0x0004000000000000L});
-	public static final BitSet FOLLOW_functionDeclarationWithoutBody_in_interfaceMethodDeclaration1568 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_interfaceMethodDeclaration1570 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionDeclarationWithoutBody_in_functionDeclaration1586 = new BitSet(new long[]{0x2000000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_functionDeclaration1588 = new BitSet(new long[]{0x2183120800000800L,0xFFE0203012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_functionDeclaration1590 = new BitSet(new long[]{0x2183120800000800L,0xFFE0203012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_functionDeclaration1593 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Function_in_functionDeclarationWithoutBody1603 = new BitSet(new long[]{0x0080000000000800L,0xFE00000000000000L,0x0000000000000041L});
-	public static final BitSet FOLLOW_returnType_in_functionDeclarationWithoutBody1605 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_functionDeclarationWithoutBody1607 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_functionDeclarationWithoutBody1609 = new BitSet(new long[]{0x0080000000000800L,0xFE00004000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_paramList_in_functionDeclarationWithoutBody1611 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_functionDeclarationWithoutBody1614 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_allTypes_in_returnType1624 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Void_in_returnType1628 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveTypesExtended_in_allTypes1635 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_classInterfaceTypeInclObject_in_allTypes1639 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveTypesInclArray_in_allTypesWithoutResource1648 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_classInterfaceTypeInclObject_in_allTypesWithoutResource1654 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeBool_in_primitiveTypes1665 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeBoolean_in_primitiveTypes1674 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeInt_in_primitiveTypes1684 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeFloat_in_primitiveTypes1689 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeString_in_primitiveTypes1694 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveTypes_in_primitiveTypesInclArray1706 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeArray_in_primitiveTypesInclArray1711 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveTypesInclArray_in_primitiveTypesExtended1723 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeResource_in_primitiveTypesExtended1728 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Backslash_in_classInterfaceTypeWithoutObject1742 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_namespaceId_in_classInterfaceTypeWithoutObject1745 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeObject_in_classInterfaceTypeInclObject1758 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_classInterfaceTypeInclObject1764 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1776 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_Comma_in_paramList1779 = new BitSet(new long[]{0x0080000000000800L,0xFE00000000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1781 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_paramDeclaration_in_paramList1788 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_Comma_in_paramList1791 = new BitSet(new long[]{0x0080000000000800L,0xFE00000000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_paramDeclaration_in_paramList1793 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_paramDeclaration_in_paramList1800 = new BitSet(new long[]{0x0080000008000800L,0xFE00000000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_paramDeclaration_in_paramList1803 = new BitSet(new long[]{0x0000000008000000L});
-	public static final BitSet FOLLOW_Comma_in_paramList1805 = new BitSet(new long[]{0x0080000008000800L,0xFE00000000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_Comma_in_paramList1810 = new BitSet(new long[]{0x0080000000000800L,0xFE00000000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1812 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_allTypes_in_paramDeclaration1826 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_VariableId_in_paramDeclaration1828 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_paramDeclaration_in_paramDeclarationOptional1838 = new BitSet(new long[]{0x0000000000000080L});
-	public static final BitSet FOLLOW_Assign_in_paramDeclarationOptional1841 = new BitSet(new long[]{0x0880800000080000L,0x0010000004100100L});
-	public static final BitSet FOLLOW_unaryPrimitiveAtom_in_paramDeclarationOptional1843 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_instructionWithoutBreakContinue1869 = new BitSet(new long[]{0x2183120800000800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_instructionWithoutBreakContinue1871 = new BitSet(new long[]{0x2183120800000800L,0xFFE0203012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_instructionWithoutBreakContinue1875 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_instruction_in_instructionWithoutBreakContinue1890 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_instructionInclBreakContinue1906 = new BitSet(new long[]{0x2183120840100800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_instructionInclBreakContinue1908 = new BitSet(new long[]{0x2183120840100800L,0xFFE0203012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_instructionInclBreakContinue1912 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_instruction_in_instructionInclBreakContinue1927 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_set_in_instructionInclBreakContinue1932 = new BitSet(new long[]{0x0800000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Int_in_instructionInclBreakContinue1939 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instructionInclBreakContinue1942 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableAssignment_in_instruction1955 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instruction1957 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableDeclaration_in_instruction1963 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
+	public static final BitSet FOLLOW_withoutNamespace_in_prog987 = new BitSet(new long[]{0x0000000000000000L});
+	public static final BitSet FOLLOW_EOF_in_prog989 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Namespace_in_namespaceSemicolon1003 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_namespaceId_in_namespaceSemicolon1005 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_namespaceSemicolon1007 = new BitSet(new long[]{0x630EA40821000810L,0xFFC0402024000800L,0x0000000000000293L});
+	public static final BitSet FOLLOW_statement_in_namespaceSemicolon1009 = new BitSet(new long[]{0x630EA40821000812L,0xFFC0402024000800L,0x0000000000000293L});
+	public static final BitSet FOLLOW_Namespace_in_namespaceBracket1022 = new BitSet(new long[]{0x4100000000000000L});
+	public static final BitSet FOLLOW_namespaceId_in_namespaceBracket1024 = new BitSet(new long[]{0x4000000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_namespaceBracket1027 = new BitSet(new long[]{0x630EA40821000810L,0xFFC0402024000800L,0x0000000000000293L});
+	public static final BitSet FOLLOW_statement_in_namespaceBracket1029 = new BitSet(new long[]{0x630EA40821000810L,0xFFC0406024000800L,0x0000000000000293L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_namespaceBracket1032 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_namespaceId1128 = new BitSet(new long[]{0x0000000000000802L});
+	public static final BitSet FOLLOW_Backslash_in_namespaceId1131 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_namespaceId1133 = new BitSet(new long[]{0x0000000000000802L});
+	public static final BitSet FOLLOW_statement_in_withoutNamespace1146 = new BitSet(new long[]{0x630EA40821000812L,0xFFC0402024000800L,0x0000000000000293L});
+	public static final BitSet FOLLOW_useDeclarationList_in_statement1157 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_definition_in_statement1162 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_statement1167 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Use_in_useDeclarationList1179 = new BitSet(new long[]{0x0100000000000800L});
+	public static final BitSet FOLLOW_useDeclaration_in_useDeclarationList1181 = new BitSet(new long[]{0x0000000008000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Comma_in_useDeclarationList1184 = new BitSet(new long[]{0x0100000000000800L});
+	public static final BitSet FOLLOW_useDeclaration_in_useDeclarationList1186 = new BitSet(new long[]{0x0000000008000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_useDeclarationList1190 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_useDeclaration1203 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_Backslash_in_useDeclaration1205 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_namespaceId_in_useDeclaration1207 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_Backslash_in_useDeclaration1216 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_namespaceId_in_useDeclaration1217 = new BitSet(new long[]{0x0000000000000042L});
+	public static final BitSet FOLLOW_As_in_useDeclaration1229 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_useDeclaration1231 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_classDeclaration_in_definition1244 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_interfaceDeclaration_in_definition1249 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionDeclaration_in_definition1254 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constDeclarationList_in_definition1259 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Class_in_classDeclaration1281 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_classDeclaration1283 = new BitSet(new long[]{0x4400400000000000L});
+	public static final BitSet FOLLOW_extendsDeclaration_in_classDeclaration1285 = new BitSet(new long[]{0x4400000000000000L});
+	public static final BitSet FOLLOW_implementsDeclaration_in_classDeclaration1288 = new BitSet(new long[]{0x4000000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_classDeclaration1291 = new BitSet(new long[]{0x0008800020000010L,0x0010000C40000000L});
+	public static final BitSet FOLLOW_classBody_in_classDeclaration1293 = new BitSet(new long[]{0x0008800020000010L,0x0010004C40000000L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_classDeclaration1296 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Extends_in_extendsDeclaration1310 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_identifierList_in_extendsDeclaration1312 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_identifierList1321 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_Comma_in_identifierList1324 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_identifierList1326 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_Implements_in_implementsDeclaration1337 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_identifierList_in_implementsDeclaration1339 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constDeclarationList_in_classBody1349 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_attributeDeclaration_in_classBody1354 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_methodDeclaration_in_classBody1360 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Const_in_constDeclarationList1372 = new BitSet(new long[]{0x0000000000000000L,0x7800000000000000L,0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveTypes_in_constDeclarationList1374 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_constantAssignment_in_constDeclarationList1376 = new BitSet(new long[]{0x0000000008000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Comma_in_constDeclarationList1379 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_constantAssignment_in_constDeclarationList1381 = new BitSet(new long[]{0x0000000008000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_constDeclarationList1385 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_constantAssignment1395 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_Assign_in_constantAssignment1398 = new BitSet(new long[]{0x1101000000080000L,0x0020000008200200L});
+	public static final BitSet FOLLOW_unaryPrimitiveAtom_in_constantAssignment1400 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Static_in_attributeDeclaration1410 = new BitSet(new long[]{0x0000000000000000L,0x0000000C40000000L});
+	public static final BitSet FOLLOW_accessor_in_attributeDeclaration1413 = new BitSet(new long[]{0x0100000000000800L,0xFC00000000000000L,0x0000000000000003L});
+	public static final BitSet FOLLOW_variableDeclarationListInclVariableId_in_attributeDeclaration1415 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_attributeDeclaration1417 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_accessorWithoutPrivate_in_accessor1424 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Private_in_accessor1429 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableDeclaration_in_variableDeclarationListInclVariableId1452 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_Comma_in_variableDeclarationListInclVariableId1455 = new BitSet(new long[]{0x0100000000000800L,0x0080400024000800L,0x0000000000000080L});
+	public static final BitSet FOLLOW_variableAssignment_in_variableDeclarationListInclVariableId1458 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_VariableId_in_variableDeclarationListInclVariableId1460 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_Abstract_in_methodDeclaration1477 = new BitSet(new long[]{0x0008000000000000L,0x0000000C00000000L});
+	public static final BitSet FOLLOW_accessorWithoutPrivate_in_methodDeclaration1479 = new BitSet(new long[]{0x0008000000000000L});
+	public static final BitSet FOLLOW_Static_in_methodDeclaration1493 = new BitSet(new long[]{0x0008800000000000L,0x0000000C40000000L});
+	public static final BitSet FOLLOW_Final_in_methodDeclaration1495 = new BitSet(new long[]{0x0008000000000000L,0x0000000C40000000L});
+	public static final BitSet FOLLOW_Final_in_methodDeclaration1503 = new BitSet(new long[]{0x0008000000000000L,0x0010000C40000000L});
+	public static final BitSet FOLLOW_Static_in_methodDeclaration1505 = new BitSet(new long[]{0x0008000000000000L,0x0000000C40000000L});
+	public static final BitSet FOLLOW_accessor_in_methodDeclaration1519 = new BitSet(new long[]{0x0008000000000000L});
+	public static final BitSet FOLLOW_functionDeclaration_in_methodDeclaration1526 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Interface_in_interfaceDeclaration1536 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_interfaceDeclaration1538 = new BitSet(new long[]{0x4400000000000000L});
+	public static final BitSet FOLLOW_implementsDeclaration_in_interfaceDeclaration1540 = new BitSet(new long[]{0x4000000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_interfaceDeclaration1543 = new BitSet(new long[]{0x0008000020000000L,0x0000004800000000L});
+	public static final BitSet FOLLOW_interfaceBody_in_interfaceDeclaration1545 = new BitSet(new long[]{0x0008000020000000L,0x0000004800000000L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_interfaceDeclaration1548 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_constDeclarationList_in_interfaceBody1557 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_interfaceMethodDeclaration_in_interfaceBody1562 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Public_in_interfaceMethodDeclaration1573 = new BitSet(new long[]{0x0008000000000000L});
+	public static final BitSet FOLLOW_functionDeclarationWithoutBody_in_interfaceMethodDeclaration1576 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_interfaceMethodDeclaration1578 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionDeclarationWithoutBody_in_functionDeclaration1594 = new BitSet(new long[]{0x4000000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_functionDeclaration1596 = new BitSet(new long[]{0x4306240800000800L,0xFFC0406024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_functionDeclaration1598 = new BitSet(new long[]{0x4306240800000800L,0xFFC0406024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_functionDeclaration1601 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Function_in_functionDeclarationWithoutBody1611 = new BitSet(new long[]{0x0100000000000800L,0xFC00000000000000L,0x0000000000000103L});
+	public static final BitSet FOLLOW_returnType_in_functionDeclarationWithoutBody1613 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_functionDeclarationWithoutBody1615 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_functionDeclarationWithoutBody1617 = new BitSet(new long[]{0x0100000000000800L,0xFC00008000000000L,0x0000000000000003L});
+	public static final BitSet FOLLOW_paramList_in_functionDeclarationWithoutBody1619 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_functionDeclarationWithoutBody1622 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_allTypes_in_returnType1632 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Void_in_returnType1636 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveTypesExtended_in_allTypes1643 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_classInterfaceTypeInclObject_in_allTypes1647 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveTypesInclArray_in_allTypesWithoutResource1656 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_classInterfaceTypeInclObject_in_allTypesWithoutResource1662 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeBool_in_primitiveTypes1673 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeBoolean_in_primitiveTypes1682 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeInt_in_primitiveTypes1692 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeFloat_in_primitiveTypes1697 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeString_in_primitiveTypes1702 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveTypes_in_primitiveTypesInclArray1714 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeArray_in_primitiveTypesInclArray1719 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveTypesInclArray_in_primitiveTypesExtended1731 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeResource_in_primitiveTypesExtended1736 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Backslash_in_classInterfaceTypeWithoutObject1750 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_namespaceId_in_classInterfaceTypeWithoutObject1753 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeObject_in_classInterfaceTypeInclObject1766 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_classInterfaceTypeInclObject1772 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1784 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_Comma_in_paramList1787 = new BitSet(new long[]{0x0100000000000800L,0xFC00000000000000L,0x0000000000000003L});
+	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1789 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_paramDeclaration_in_paramList1796 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_Comma_in_paramList1799 = new BitSet(new long[]{0x0100000000000800L,0xFC00000000000000L,0x0000000000000003L});
+	public static final BitSet FOLLOW_paramDeclaration_in_paramList1801 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_paramDeclaration_in_paramList1808 = new BitSet(new long[]{0x0100000008000800L,0xFC00000000000000L,0x0000000000000003L});
+	public static final BitSet FOLLOW_paramDeclaration_in_paramList1811 = new BitSet(new long[]{0x0000000008000000L});
+	public static final BitSet FOLLOW_Comma_in_paramList1813 = new BitSet(new long[]{0x0100000008000800L,0xFC00000000000000L,0x0000000000000003L});
+	public static final BitSet FOLLOW_Comma_in_paramList1818 = new BitSet(new long[]{0x0100000000000800L,0xFC00000000000000L,0x0000000000000003L});
+	public static final BitSet FOLLOW_paramDeclarationOptional_in_paramList1820 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_allTypes_in_paramDeclaration1834 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_VariableId_in_paramDeclaration1836 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_paramDeclaration_in_paramDeclarationOptional1846 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_Assign_in_paramDeclarationOptional1849 = new BitSet(new long[]{0x1101000000080000L,0x0020000008200200L});
+	public static final BitSet FOLLOW_unaryPrimitiveAtom_in_paramDeclarationOptional1851 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_instructionWithoutBreakContinue1877 = new BitSet(new long[]{0x4306240800000800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionWithoutBreakContinue_in_instructionWithoutBreakContinue1879 = new BitSet(new long[]{0x4306240800000800L,0xFFC0406024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_instructionWithoutBreakContinue1883 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_instruction_in_instructionWithoutBreakContinue1898 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_instructionInclBreakContinue1914 = new BitSet(new long[]{0x4306240840100800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_instructionInclBreakContinue1916 = new BitSet(new long[]{0x4306240840100800L,0xFFC0406024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_instructionInclBreakContinue1920 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_instruction_in_instructionInclBreakContinue1935 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_set_in_instructionInclBreakContinue1940 = new BitSet(new long[]{0x1000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Int_in_instructionInclBreakContinue1947 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instructionInclBreakContinue1950 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableAssignment_in_instruction1963 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
 	public static final BitSet FOLLOW_Semicolon_in_instruction1965 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ifCondition_in_instruction1971 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_switchCondition_in_instruction1976 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_forLoop_in_instruction1981 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_foreachLoop_in_instruction1986 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_whileLoop_in_instruction1991 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_doWhileLoop_in_instruction1996 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_tryCatch_in_instruction2001 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_throwException_in_instruction2006 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_instruction2011 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instruction2013 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_instruction2019 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
+	public static final BitSet FOLLOW_variableDeclaration_in_instruction1971 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instruction1973 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ifCondition_in_instruction1979 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_switchCondition_in_instruction1984 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_forLoop_in_instruction1989 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_foreachLoop_in_instruction1994 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_whileLoop_in_instruction1999 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_doWhileLoop_in_instruction2004 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_tryCatch_in_instruction2009 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_throwException_in_instruction2014 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_instruction2019 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
 	public static final BitSet FOLLOW_Semicolon_in_instruction2021 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Return_in_instruction2028 = new BitSet(new long[]{0xC880800002084900L,0x0250600016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_instruction2030 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instruction2033 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Echo_in_instruction2039 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expressionList_in_instruction2041 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instruction2043 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Exit_in_instruction2049 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_instruction2051 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expression_in_expressionList2064 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_Comma_in_expressionList2067 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_expressionList2070 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_VariableId_in_variableAssignment2081 = new BitSet(new long[]{0x0000004400052080L,0x0005000008005200L});
-	public static final BitSet FOLLOW_assignmentOperator_in_variableAssignment2083 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_variableAssignment2086 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_incrementDecrement_in_variableAssignment2091 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_postIncrementDecrement_in_incrementDecrement2103 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_preIncrementDecrement_in_incrementDecrement2108 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableMemberStaticMember_in_postIncrementDecrement2186 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000400L});
-	public static final BitSet FOLLOW_PlusPlus_in_postIncrementDecrement2189 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_MinusMinus_in_postIncrementDecrement2191 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_PlusPlus_in_preIncrementDecrement2218 = new BitSet(new long[]{0x0080000000000800L,0x0040200002000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_MinusMinus_in_preIncrementDecrement2220 = new BitSet(new long[]{0x0080000000000800L,0x0040200002000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_variableMemberStaticMember_in_preIncrementDecrement2223 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_allTypes_in_variableDeclaration2247 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_VariableId_in_variableDeclaration2249 = new BitSet(new long[]{0x0000000000000082L});
-	public static final BitSet FOLLOW_Assign_in_variableDeclaration2252 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_variableDeclaration2254 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_logicOrWeak_in_expression2280 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expression_in_expressionForTest2289 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_expressionForTest2291 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_logicXorWeak_in_logicOrWeak2301 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-	public static final BitSet FOLLOW_LogicOrWeak_in_logicOrWeak2304 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_logicXorWeak_in_logicOrWeak2307 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-	public static final BitSet FOLLOW_logicAndWeak_in_logicXorWeak2320 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-	public static final BitSet FOLLOW_LogicXorWeak_in_logicXorWeak2323 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_logicAndWeak_in_logicXorWeak2326 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-	public static final BitSet FOLLOW_assignment_in_logicAndWeak2339 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000008L});
-	public static final BitSet FOLLOW_LogicAndWeak_in_logicAndWeak2342 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_assignment_in_logicAndWeak2345 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000008L});
-	public static final BitSet FOLLOW_ternary_in_assignment2356 = new BitSet(new long[]{0x0000004400052082L,0x0005000008005200L});
-	public static final BitSet FOLLOW_assignmentOperator_in_assignment2359 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_ternary_in_assignment2362 = new BitSet(new long[]{0x0000004400052082L,0x0005000008005200L});
-	public static final BitSet FOLLOW_logicOr_in_ternary2372 = new BitSet(new long[]{0x0000000000000002L,0x0000000800000000L});
-	public static final BitSet FOLLOW_QuestionMark_in_ternary2375 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_ternary2378 = new BitSet(new long[]{0x0000000004000000L});
-	public static final BitSet FOLLOW_Colon_in_ternary2380 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_ternary2383 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_logicAnd_in_logicOr2393 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000020L});
-	public static final BitSet FOLLOW_LogicOr_in_logicOr2396 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_logicAnd_in_logicOr2399 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000020L});
-	public static final BitSet FOLLOW_bitwiseOr_in_logicAnd2408 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000004L});
-	public static final BitSet FOLLOW_LogicAnd_in_logicAnd2411 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_bitwiseOr_in_logicAnd2414 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000004L});
-	public static final BitSet FOLLOW_bitwiseXor_in_bitwiseOr2425 = new BitSet(new long[]{0x0000000000008002L});
-	public static final BitSet FOLLOW_BitwiseOr_in_bitwiseOr2428 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_bitwiseXor_in_bitwiseOr2431 = new BitSet(new long[]{0x0000000000008002L});
-	public static final BitSet FOLLOW_bitwiseAnd_in_bitwiseXor2442 = new BitSet(new long[]{0x0000000000020002L});
-	public static final BitSet FOLLOW_BitwiseXor_in_bitwiseXor2445 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_bitwiseAnd_in_bitwiseXor2448 = new BitSet(new long[]{0x0000000000020002L});
-	public static final BitSet FOLLOW_equality_in_bitwiseAnd2459 = new BitSet(new long[]{0x0000000000001002L});
-	public static final BitSet FOLLOW_BitwiseAnd_in_bitwiseAnd2462 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_equality_in_bitwiseAnd2465 = new BitSet(new long[]{0x0000000000001002L});
-	public static final BitSet FOLLOW_comparison_in_equality2474 = new BitSet(new long[]{0x0040080000000002L,0x00000000000E0000L});
-	public static final BitSet FOLLOW_equalityOperator_in_equality2477 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_comparison_in_equality2480 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_bitwiseShift_in_comparison2522 = new BitSet(new long[]{0x0018000000000002L,0x0000000000000003L});
-	public static final BitSet FOLLOW_comparisonOperator_in_comparison2525 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_bitwiseShift_in_comparison2528 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_termOrStringConcatenation_in_bitwiseShift2564 = new BitSet(new long[]{0x0000000000000002L,0x0002800000000000L});
-	public static final BitSet FOLLOW_set_in_bitwiseShift2567 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_termOrStringConcatenation_in_bitwiseShift2574 = new BitSet(new long[]{0x0000000000000002L,0x0002800000000000L});
-	public static final BitSet FOLLOW_factor_in_termOrStringConcatenation2584 = new BitSet(new long[]{0x0000002000000002L,0x0000000004000100L});
-	public static final BitSet FOLLOW_set_in_termOrStringConcatenation2587 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_factor_in_termOrStringConcatenation2596 = new BitSet(new long[]{0x0000002000000002L,0x0000000004000100L});
-	public static final BitSet FOLLOW_logicNot_in_factor2606 = new BitSet(new long[]{0x0000000200000002L,0x0000000000002800L});
-	public static final BitSet FOLLOW_set_in_factor2609 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_logicNot_in_factor2618 = new BitSet(new long[]{0x0000000200000002L,0x0000000000002800L});
-	public static final BitSet FOLLOW_LogicNot_in_logicNot2627 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_logicNot_in_logicNot2630 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_instanceOf_in_logicNot2635 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_instanceOf2647 = new BitSet(new long[]{0x0400000000000002L});
-	public static final BitSet FOLLOW_Instanceof_in_instanceOf2650 = new BitSet(new long[]{0x0080000000000800L,0x0000000000000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_instanceOf2654 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VariableId_in_instanceOf2656 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_castOrBitwiseNotOrAt2672 = new BitSet(new long[]{0x0080000000000800L,0x7E00000000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_allTypesWithoutResource_in_castOrBitwiseNotOrAt2674 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_castOrBitwiseNotOrAt2676 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110500L,0x0000000000000020L});
-	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2678 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_BitwiseNot_in_castOrBitwiseNotOrAt2694 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110500L,0x0000000000000020L});
-	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2697 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_At_in_castOrBitwiseNotOrAt2702 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110500L,0x0000000000000020L});
-	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2705 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_newOrClone_in_castOrBitwiseNotOrAt2711 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Clone_in_newOrClone2722 = new BitSet(new long[]{0x0080000000000800L,0x0040200002000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_variableMemberStaticMember_in_newOrClone2725 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_newObject_in_newOrClone2730 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_unaryPrimary_in_newOrClone2735 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_staticAccessOrParent_in_variableMemberStaticMember2748 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_VariableId_in_variableMemberStaticMember2750 = new BitSet(new long[]{0x8000000000000002L,0x0000000000400000L});
-	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2752 = new BitSet(new long[]{0x8000000000000002L,0x0000000000400000L});
-	public static final BitSet FOLLOW_This_in_variableMemberStaticMember2758 = new BitSet(new long[]{0x8000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2760 = new BitSet(new long[]{0x8000000000000002L,0x0000000000400000L});
-	public static final BitSet FOLLOW_VariableId_in_variableMemberStaticMember2766 = new BitSet(new long[]{0x8000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2768 = new BitSet(new long[]{0x8000000000000002L,0x0000000000400000L});
-	public static final BitSet FOLLOW_This_in_variableMemberStaticMember2774 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_VariableId_in_variableMemberStaticMember2779 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Self_in_staticAccessOrParent2790 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Parent_in_staticAccessOrParent2795 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_staticAccessOrParent2800 = new BitSet(new long[]{0x0000008000000000L});
-	public static final BitSet FOLLOW_DoubleColon_in_staticAccessOrParent2801 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_memberAccess_in_memberAccessOrArrayAccess2812 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_arrayAccess_in_memberAccessOrArrayAccess2817 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ObjectOperator_in_memberAccess2827 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_memberAccess2829 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftSquareBrace_in_arrayAccess2839 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_arrayAccess2841 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
-	public static final BitSet FOLLOW_RightSquareBrace_in_arrayAccess2843 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_New_in_newObject2856 = new BitSet(new long[]{0x0080000000000800L});
-	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_newObject2858 = new BitSet(new long[]{0x4000000000000002L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_newObject2861 = new BitSet(new long[]{0xC880800002084900L,0x0250204016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expressionList_in_newObject2863 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_newObject2866 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Plus_in_unaryPrimary2894 = new BitSet(new long[]{0xC880800000080800L,0x0250200012100400L,0x0000000000000020L});
-	public static final BitSet FOLLOW_primary_in_unaryPrimary2896 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Minus_in_unaryPrimary2914 = new BitSet(new long[]{0xC880800000080800L,0x0250200012100400L,0x0000000000000020L});
-	public static final BitSet FOLLOW_primary_in_unaryPrimary2916 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primary_in_unaryPrimary2930 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionCallFluentInclAccessAtTheEnd_in_primary2940 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_methodCallFluentInclAccessAtTheEnd_in_primary2945 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_atom_in_primary2950 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_functionCallFluentInclAccessAtTheEnd2962 = new BitSet(new long[]{0x8000000000000002L,0x0000000000400000L});
-	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_functionCallFluentInclAccessAtTheEnd2964 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionCall_in_functionCallFluentWithoutAccessAtTheEnd2976 = new BitSet(new long[]{0x8000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_callOrAccess_in_functionCallFluentWithoutAccessAtTheEnd2978 = new BitSet(new long[]{0x8000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_call_in_functionCallFluentWithoutAccessAtTheEnd2981 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionCall_in_functionCallFluentWithoutAccessAtTheEnd2986 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
-	public static final BitSet FOLLOW_call_in_functionCallFluentWithoutAccessAtTheEnd2988 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
-	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_functionCall3000 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_functionCall3002 = new BitSet(new long[]{0xC880800002084900L,0x0250204016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expressionList_in_functionCall3004 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_functionCall3007 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_callOrAccess3018 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_call_in_callOrAccess3023 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ObjectOperator_in_call3036 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_call3038 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_call3040 = new BitSet(new long[]{0xC880800002084900L,0x0250204016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expressionList_in_call3042 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_call3044 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_methodCallFluentInclAccessAtTheEnd3055 = new BitSet(new long[]{0x8000000000000002L,0x0000000000400000L});
-	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_methodCallFluentInclAccessAtTheEnd3057 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_methodCall_in_methodCallFluentWithoutAccessAtTheEnd3071 = new BitSet(new long[]{0x8000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_callOrAccess_in_methodCallFluentWithoutAccessAtTheEnd3073 = new BitSet(new long[]{0x8000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_call_in_methodCallFluentWithoutAccessAtTheEnd3076 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_methodCall_in_methodCallFluentWithoutAccessAtTheEnd3081 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
-	public static final BitSet FOLLOW_call_in_methodCallFluentWithoutAccessAtTheEnd3083 = new BitSet(new long[]{0x0000000000000002L,0x0000000000400000L});
-	public static final BitSet FOLLOW_variableMemberStaticMember_in_methodCall3097 = new BitSet(new long[]{0x0000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_ObjectOperator_in_methodCall3099 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_staticAccessOrParent_in_methodCall3104 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_methodCall3107 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_methodCall3109 = new BitSet(new long[]{0xC880800002084900L,0x0250204016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expressionList_in_methodCall3111 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_methodCall3113 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_atom3123 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_atom3125 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_atom3127 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_incrementDecrement_in_atom3136 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableMemberStaticMember_in_atom3141 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_classConstant_in_atom3146 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_globalConstant_in_atom3151 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_array_in_atom3156 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveAtom_in_atom3161 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Identifier_in_globalConstant3173 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_staticAccessOrParent_in_classConstant3184 = new BitSet(new long[]{0x0080000000000000L});
-	public static final BitSet FOLLOW_Identifier_in_classConstant3186 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Plus_in_unaryPrimitiveAtom3198 = new BitSet(new long[]{0x0880800000080000L,0x0010000000100000L});
-	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3200 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Minus_in_unaryPrimitiveAtom3205 = new BitSet(new long[]{0x0880800000080000L,0x0010000000100000L});
-	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3207 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3212 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftSquareBrace_in_array3710 = new BitSet(new long[]{0xC880800002084900L,0x0250208016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_array_content_in_array3712 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
-	public static final BitSet FOLLOW_RightSquareBrace_in_array3715 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_TypeArray_in_array3721 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_array3723 = new BitSet(new long[]{0xC880800002084900L,0x0250204016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_array_content_in_array3725 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_array3728 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expression_in_array_content3741 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_Arrow_in_array_content3743 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_array_content3747 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_Comma_in_array_content3751 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_array_content3754 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_Arrow_in_array_content3756 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_array_content3760 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_If_in_ifCondition3772 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_ifCondition3774 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_ifCondition3776 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_ifCondition3778 = new BitSet(new long[]{0x2183120840100800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_ifCondition3783 = new BitSet(new long[]{0x0000040000000002L});
-	public static final BitSet FOLLOW_Else_in_ifCondition3790 = new BitSet(new long[]{0x2183120840100800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_ifCondition3795 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Switch_in_switchCondition3826 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_switchCondition3828 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_VariableId_in_switchCondition3830 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_switchCondition3832 = new BitSet(new long[]{0x2000000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_switchCondition3834 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_switchContent_in_switchCondition3836 = new BitSet(new long[]{0x0000000000000000L,0x0000002000000000L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_switchCondition3838 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_normalCase_in_switchContent3859 = new BitSet(new long[]{0x0000000100400000L});
-	public static final BitSet FOLLOW_defaultCase_in_switchContent3862 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_normalCase_in_switchContent3864 = new BitSet(new long[]{0x0000000000400002L});
-	public static final BitSet FOLLOW_normalCase_in_switchContent3871 = new BitSet(new long[]{0x0000000100400002L});
-	public static final BitSet FOLLOW_defaultCase_in_switchContent3874 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_caseLabel_in_normalCase3886 = new BitSet(new long[]{0x2183120840500800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_normalCase3889 = new BitSet(new long[]{0x2183120840100802L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_defaultLabel_in_defaultCase3932 = new BitSet(new long[]{0x2183120840100800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_defaultCase3934 = new BitSet(new long[]{0x2183120840100802L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_Case_in_caseLabel3977 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_caseLabel3980 = new BitSet(new long[]{0x0000000004000000L});
-	public static final BitSet FOLLOW_Colon_in_caseLabel3982 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Default_in_defaultLabel3992 = new BitSet(new long[]{0x0000000004000000L});
-	public static final BitSet FOLLOW_Colon_in_defaultLabel3994 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_For_in_forLoop4004 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_forLoop4006 = new BitSet(new long[]{0xC88080000A084900L,0xFE50600016110510L,0x0000000000000021L});
-	public static final BitSet FOLLOW_forInit_in_forLoop4008 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_forLoop4011 = new BitSet(new long[]{0xC880800002084900L,0x0250600016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expressionList_in_forLoop4013 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_forLoop4017 = new BitSet(new long[]{0xC880800002084900L,0x0250204016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_forUpdate_in_forLoop4019 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_forLoop4022 = new BitSet(new long[]{0x2183120840100800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_forLoop4024 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableDeclaration_in_forInit4033 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_expression_in_forInit4036 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_Comma_in_forInit4040 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_forInit4042 = new BitSet(new long[]{0x0000000008000002L});
-	public static final BitSet FOLLOW_expressionList_in_forUpdate4052 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Foreach_in_foreachLoop4062 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_foreachLoop4064 = new BitSet(new long[]{0x8000000000000000L,0x0200000000000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_VariableId_in_foreachLoop4067 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_array_in_foreachLoop4069 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_As_in_foreachLoop4072 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_VariableId_in_foreachLoop4074 = new BitSet(new long[]{0x0000000000000020L,0x0000004000000000L});
-	public static final BitSet FOLLOW_Arrow_in_foreachLoop4077 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_VariableId_in_foreachLoop4079 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_foreachLoop4083 = new BitSet(new long[]{0x2183120840100800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_foreachLoop4085 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_While_in_whileLoop4094 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_whileLoop4096 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_whileLoop4098 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_whileLoop4100 = new BitSet(new long[]{0x2183120840100800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_whileLoop4102 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Do_in_doWhileLoop4112 = new BitSet(new long[]{0x2183120840100800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_doWhileLoop4114 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
-	public static final BitSet FOLLOW_While_in_doWhileLoop4116 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_doWhileLoop4118 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_expression_in_doWhileLoop4120 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_doWhileLoop4122 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_doWhileLoop4124 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Try_in_tryCatch4131 = new BitSet(new long[]{0x2000000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_tryCatch4133 = new BitSet(new long[]{0x2183120840100800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_tryCatch4135 = new BitSet(new long[]{0x2183120840100800L,0xFFE0203012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_tryCatch4138 = new BitSet(new long[]{0x0000000000800000L});
-	public static final BitSet FOLLOW_Catch_in_tryCatch4140 = new BitSet(new long[]{0x4000000000000000L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_tryCatch4142 = new BitSet(new long[]{0x0080000000000800L,0x4000000000000000L});
-	public static final BitSet FOLLOW_classInterfaceTypeInclObject_in_tryCatch4144 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000020L});
-	public static final BitSet FOLLOW_VariableId_in_tryCatch4146 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_tryCatch4148 = new BitSet(new long[]{0x2000000000000000L});
-	public static final BitSet FOLLOW_LeftCurlyBrace_in_tryCatch4149 = new BitSet(new long[]{0x2183120840100800L,0xFFE0203012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_tryCatch4151 = new BitSet(new long[]{0x2183120840100800L,0xFFE0203012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_RightCurlyBrace_in_tryCatch4154 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Throw_in_throwException4163 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-	public static final BitSet FOLLOW_newObject_in_throwException4165 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_throwException4167 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableAssignment_in_synpred69_TSPHP1955 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_synpred69_TSPHP1957 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableDeclaration_in_synpred70_TSPHP1963 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_synpred70_TSPHP1965 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_synpred79_TSPHP2011 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_synpred79_TSPHP2013 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_synpred80_TSPHP2019 = new BitSet(new long[]{0x0000000000000000L,0x0000400000000000L});
-	public static final BitSet FOLLOW_Semicolon_in_synpred80_TSPHP2021 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LogicOrWeak_in_synpred101_TSPHP2304 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_logicXorWeak_in_synpred101_TSPHP2307 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LogicXorWeak_in_synpred102_TSPHP2323 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_logicAndWeak_in_synpred102_TSPHP2326 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LogicAndWeak_in_synpred103_TSPHP2342 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_assignment_in_synpred103_TSPHP2345 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_assignmentOperator_in_synpred104_TSPHP2359 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110510L,0x0000000000000020L});
-	public static final BitSet FOLLOW_ternary_in_synpred104_TSPHP2362 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_LeftParanthesis_in_synpred131_TSPHP2672 = new BitSet(new long[]{0x0080000000000800L,0x7E00000000000000L,0x0000000000000001L});
-	public static final BitSet FOLLOW_allTypesWithoutResource_in_synpred131_TSPHP2674 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
-	public static final BitSet FOLLOW_RightParanthesis_in_synpred131_TSPHP2676 = new BitSet(new long[]{0xC880800002084900L,0x0250200016110500L,0x0000000000000020L});
-	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_synpred131_TSPHP2678 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionCallFluentInclAccessAtTheEnd_in_synpred150_TSPHP2940 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_methodCallFluentInclAccessAtTheEnd_in_synpred151_TSPHP2945 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_callOrAccess_in_synpred153_TSPHP2978 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_functionCall_in_synpred154_TSPHP2976 = new BitSet(new long[]{0x8000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_callOrAccess_in_synpred154_TSPHP2978 = new BitSet(new long[]{0x8000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_call_in_synpred154_TSPHP2981 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_callOrAccess_in_synpred160_TSPHP3073 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_methodCall_in_synpred161_TSPHP3071 = new BitSet(new long[]{0x8000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_callOrAccess_in_synpred161_TSPHP3073 = new BitSet(new long[]{0x8000000000000000L,0x0000000000400000L});
-	public static final BitSet FOLLOW_call_in_synpred161_TSPHP3076 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_incrementDecrement_in_synpred166_TSPHP3136 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_variableMemberStaticMember_in_synpred167_TSPHP3141 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_classConstant_in_synpred168_TSPHP3146 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_globalConstant_in_synpred169_TSPHP3151 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expression_in_synpred181_TSPHP3741 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_Arrow_in_synpred181_TSPHP3743 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_expression_in_synpred182_TSPHP3754 = new BitSet(new long[]{0x0000000000000020L});
-	public static final BitSet FOLLOW_Arrow_in_synpred182_TSPHP3756 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_Else_in_synpred184_TSPHP3790 = new BitSet(new long[]{0x2183120840100800L,0xFFE0201012000400L,0x00000000000000A1L});
-	public static final BitSet FOLLOW_instructionInclBreakContinue_in_synpred184_TSPHP3795 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_normalCase_in_synpred187_TSPHP3859 = new BitSet(new long[]{0x0000000100400000L});
-	public static final BitSet FOLLOW_defaultCase_in_synpred187_TSPHP3862 = new BitSet(new long[]{0x0000000000400000L});
-	public static final BitSet FOLLOW_normalCase_in_synpred187_TSPHP3864 = new BitSet(new long[]{0x0000000000400002L});
-	public static final BitSet FOLLOW_forInit_in_synpred193_TSPHP4008 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_forUpdate_in_synpred195_TSPHP4019 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_instruction2027 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instruction2029 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Return_in_instruction2036 = new BitSet(new long[]{0x9101000002084900L,0x04A0C0002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_instruction2038 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instruction2041 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Echo_in_instruction2047 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_instruction2050 = new BitSet(new long[]{0x0000000008000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Comma_in_instruction2053 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_instruction2056 = new BitSet(new long[]{0x0000000008000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instruction2060 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Exit_in_instruction2066 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_instruction2068 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expression_in_expressionList2081 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_Comma_in_expressionList2084 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_expressionList2086 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_VariableId_in_variableAssignment2115 = new BitSet(new long[]{0x0000004400052080L,0x000A00001000A400L});
+	public static final BitSet FOLLOW_assignmentOperator_in_variableAssignment2117 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_variableAssignment2120 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_incrementDecrement_in_variableAssignment2125 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_postIncrementDecrement_in_incrementDecrement2137 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_preIncrementDecrement_in_incrementDecrement2142 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableMemberStaticMember_in_postIncrementDecrement2221 = new BitSet(new long[]{0x0000000000000000L,0x0000000020000800L});
+	public static final BitSet FOLLOW_plusPlusOrMinusMinus_in_postIncrementDecrement2223 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_plusPlusOrMinusMinus_in_preIncrementDecrement2262 = new BitSet(new long[]{0x0100000000000800L,0x0080400004000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_variableMemberStaticMember_in_preIncrementDecrement2264 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_allTypes_in_variableDeclaration2289 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_VariableId_in_variableDeclaration2291 = new BitSet(new long[]{0x0000000000000082L});
+	public static final BitSet FOLLOW_Assign_in_variableDeclaration2294 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_variableDeclaration2296 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_logicOrWeak_in_expression2322 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expression_in_expressionForTest2331 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_expressionForTest2333 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_logicXorWeak_in_logicOrWeak2343 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+	public static final BitSet FOLLOW_LogicOrWeak_in_logicOrWeak2346 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_logicXorWeak_in_logicOrWeak2349 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+	public static final BitSet FOLLOW_logicAndWeak_in_logicXorWeak2362 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
+	public static final BitSet FOLLOW_LogicXorWeak_in_logicXorWeak2365 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_logicAndWeak_in_logicXorWeak2368 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
+	public static final BitSet FOLLOW_assignment_in_logicAndWeak2381 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
+	public static final BitSet FOLLOW_LogicAndWeak_in_logicAndWeak2384 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_assignment_in_logicAndWeak2387 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000010L});
+	public static final BitSet FOLLOW_ternary_in_assignment2398 = new BitSet(new long[]{0x0000004400052082L,0x000A00001000A400L});
+	public static final BitSet FOLLOW_assignmentOperator_in_assignment2401 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_ternary_in_assignment2404 = new BitSet(new long[]{0x0000004400052082L,0x000A00001000A400L});
+	public static final BitSet FOLLOW_logicOr_in_ternary2414 = new BitSet(new long[]{0x0000000000000002L,0x0000001000000000L});
+	public static final BitSet FOLLOW_QuestionMark_in_ternary2417 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_ternary2420 = new BitSet(new long[]{0x0000000004000000L});
+	public static final BitSet FOLLOW_Colon_in_ternary2422 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_ternary2425 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_logicAnd_in_logicOr2435 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
+	public static final BitSet FOLLOW_LogicOr_in_logicOr2438 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_logicAnd_in_logicOr2441 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
+	public static final BitSet FOLLOW_bitwiseOr_in_logicAnd2450 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000008L});
+	public static final BitSet FOLLOW_LogicAnd_in_logicAnd2453 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_bitwiseOr_in_logicAnd2456 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000008L});
+	public static final BitSet FOLLOW_bitwiseXor_in_bitwiseOr2467 = new BitSet(new long[]{0x0000000000008002L});
+	public static final BitSet FOLLOW_BitwiseOr_in_bitwiseOr2470 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_bitwiseXor_in_bitwiseOr2473 = new BitSet(new long[]{0x0000000000008002L});
+	public static final BitSet FOLLOW_bitwiseAnd_in_bitwiseXor2484 = new BitSet(new long[]{0x0000000000020002L});
+	public static final BitSet FOLLOW_BitwiseXor_in_bitwiseXor2487 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_bitwiseAnd_in_bitwiseXor2490 = new BitSet(new long[]{0x0000000000020002L});
+	public static final BitSet FOLLOW_equality_in_bitwiseAnd2501 = new BitSet(new long[]{0x0000000000001002L});
+	public static final BitSet FOLLOW_BitwiseAnd_in_bitwiseAnd2504 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_equality_in_bitwiseAnd2507 = new BitSet(new long[]{0x0000000000001002L});
+	public static final BitSet FOLLOW_comparison_in_equality2516 = new BitSet(new long[]{0x0080100000000002L,0x00000000001C0000L});
+	public static final BitSet FOLLOW_equalityOperator_in_equality2519 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_comparison_in_equality2522 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_bitwiseShift_in_comparison2564 = new BitSet(new long[]{0x0030000000000002L,0x0000000000000006L});
+	public static final BitSet FOLLOW_comparisonOperator_in_comparison2567 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_bitwiseShift_in_comparison2570 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_termOrStringConcatenation_in_bitwiseShift2606 = new BitSet(new long[]{0x0000000000000002L,0x0005000000000000L});
+	public static final BitSet FOLLOW_set_in_bitwiseShift2609 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_termOrStringConcatenation_in_bitwiseShift2616 = new BitSet(new long[]{0x0000000000000002L,0x0005000000000000L});
+	public static final BitSet FOLLOW_factor_in_termOrStringConcatenation2626 = new BitSet(new long[]{0x0000002000000002L,0x0000000008000200L});
+	public static final BitSet FOLLOW_set_in_termOrStringConcatenation2629 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_factor_in_termOrStringConcatenation2638 = new BitSet(new long[]{0x0000002000000002L,0x0000000008000200L});
+	public static final BitSet FOLLOW_logicNot_in_factor2648 = new BitSet(new long[]{0x0000000200000002L,0x0000000000005000L});
+	public static final BitSet FOLLOW_set_in_factor2651 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_logicNot_in_factor2660 = new BitSet(new long[]{0x0000000200000002L,0x0000000000005000L});
+	public static final BitSet FOLLOW_LogicNot_in_logicNot2669 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_logicNot_in_logicNot2672 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_instanceOf_in_logicNot2677 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_instanceOf2688 = new BitSet(new long[]{0x0800000000000002L});
+	public static final BitSet FOLLOW_Instanceof_in_instanceOf2691 = new BitSet(new long[]{0x0100000000000800L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_instanceOf2695 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VariableId_in_instanceOf2697 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_castOrBitwiseNotOrAt2713 = new BitSet(new long[]{0x0100000000000800L,0xFC00000000000000L,0x0000000000000002L});
+	public static final BitSet FOLLOW_allTypesWithoutResource_in_castOrBitwiseNotOrAt2715 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_castOrBitwiseNotOrAt2717 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A01L,0x0000000000000080L});
+	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2719 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_BitwiseNot_in_castOrBitwiseNotOrAt2735 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A01L,0x0000000000000080L});
+	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2738 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_At_in_castOrBitwiseNotOrAt2743 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A01L,0x0000000000000080L});
+	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_castOrBitwiseNotOrAt2746 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_newOrClone_in_castOrBitwiseNotOrAt2752 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Clone_in_newOrClone2763 = new BitSet(new long[]{0x0100000000000800L,0x0080400004000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_variableMemberStaticMember_in_newOrClone2766 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_newObject_in_newOrClone2771 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_unaryPrimary_in_newOrClone2776 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_staticAccessOrParent_in_variableMemberStaticMember2789 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_VariableId_in_variableMemberStaticMember2791 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800001L});
+	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2793 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800001L});
+	public static final BitSet FOLLOW_This_in_variableMemberStaticMember2799 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800001L});
+	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2801 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800001L});
+	public static final BitSet FOLLOW_VariableId_in_variableMemberStaticMember2807 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800001L});
+	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_variableMemberStaticMember2809 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800001L});
+	public static final BitSet FOLLOW_This_in_variableMemberStaticMember2815 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_VariableId_in_variableMemberStaticMember2820 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Self_in_staticAccessOrParent2831 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Parent_in_staticAccessOrParent2836 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_staticAccessOrParent2841 = new BitSet(new long[]{0x0000008000000000L});
+	public static final BitSet FOLLOW_DoubleColon_in_staticAccessOrParent2842 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_memberAccess_in_memberAccessOrArrayAccess2853 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_arrayAccess_in_memberAccessOrArrayAccess2858 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ObjectOperator_in_memberAccess2868 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_memberAccess2870 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftSquareBrace_in_arrayAccess2880 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_arrayAccess2882 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
+	public static final BitSet FOLLOW_RightSquareBrace_in_arrayAccess2884 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_New_in_newObject2897 = new BitSet(new long[]{0x0100000000000800L});
+	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_newObject2899 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_newObject2901 = new BitSet(new long[]{0x9101000002084900L,0x04A040802C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expressionList_in_newObject2903 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_newObject2905 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_New_in_newObject2920 = new BitSet(new long[]{0x0100000000000800L});
+	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_newObject2922 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Plus_in_unaryPrimary2947 = new BitSet(new long[]{0x9101000000080800L,0x04A0400024200801L,0x0000000000000080L});
+	public static final BitSet FOLLOW_primary_in_unaryPrimary2949 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Minus_in_unaryPrimary2967 = new BitSet(new long[]{0x9101000000080800L,0x04A0400024200801L,0x0000000000000080L});
+	public static final BitSet FOLLOW_primary_in_unaryPrimary2969 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primary_in_unaryPrimary2983 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionCallFluentInclAccessAtTheEnd_in_primary2993 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_methodCallFluentInclAccessAtTheEnd_in_primary2998 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_atom_in_primary3003 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_functionCallFluentInclAccessAtTheEnd3015 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800001L});
+	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_functionCallFluentInclAccessAtTheEnd3017 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionCall_in_functionCallFluentWithoutAccessAtTheEnd3029 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800001L});
+	public static final BitSet FOLLOW_callOrAccess_in_functionCallFluentWithoutAccessAtTheEnd3031 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800001L});
+	public static final BitSet FOLLOW_call_in_functionCallFluentWithoutAccessAtTheEnd3034 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionCall_in_functionCallFluentWithoutAccessAtTheEnd3039 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800000L});
+	public static final BitSet FOLLOW_call_in_functionCallFluentWithoutAccessAtTheEnd3041 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800000L});
+	public static final BitSet FOLLOW_classInterfaceTypeWithoutObject_in_functionCall3053 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_functionCall3055 = new BitSet(new long[]{0x9101000002084900L,0x04A040802C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expressionList_in_functionCall3057 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_functionCall3059 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_callOrAccess3070 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_call_in_callOrAccess3075 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_ObjectOperator_in_call3088 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_call3090 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_call3092 = new BitSet(new long[]{0x9101000002084900L,0x04A040802C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expressionList_in_call3094 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_call3095 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_methodCallFluentInclAccessAtTheEnd3106 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800001L});
+	public static final BitSet FOLLOW_memberAccessOrArrayAccess_in_methodCallFluentInclAccessAtTheEnd3108 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_methodCall_in_methodCallFluentWithoutAccessAtTheEnd3122 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800001L});
+	public static final BitSet FOLLOW_callOrAccess_in_methodCallFluentWithoutAccessAtTheEnd3124 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800001L});
+	public static final BitSet FOLLOW_call_in_methodCallFluentWithoutAccessAtTheEnd3127 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_methodCall_in_methodCallFluentWithoutAccessAtTheEnd3132 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800000L});
+	public static final BitSet FOLLOW_call_in_methodCallFluentWithoutAccessAtTheEnd3134 = new BitSet(new long[]{0x0000000000000002L,0x0000000000800000L});
+	public static final BitSet FOLLOW_variableMemberStaticMember_in_methodCall3148 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800000L});
+	public static final BitSet FOLLOW_ObjectOperator_in_methodCall3150 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_staticAccessOrParent_in_methodCall3155 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_methodCall3158 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_methodCall3160 = new BitSet(new long[]{0x9101000002084900L,0x04A040802C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expressionList_in_methodCall3162 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_methodCall3163 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_atom3173 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_atom3175 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_atom3177 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_incrementDecrement_in_atom3186 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableMemberStaticMember_in_atom3191 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_classConstant_in_atom3196 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_globalConstant_in_atom3201 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_array_in_atom3206 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveAtom_in_atom3211 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Identifier_in_globalConstant3223 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_staticAccessOrParent_in_classConstant3234 = new BitSet(new long[]{0x0100000000000000L});
+	public static final BitSet FOLLOW_Identifier_in_classConstant3236 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Plus_in_unaryPrimitiveAtom3248 = new BitSet(new long[]{0x1101000000080000L,0x0020000000200000L});
+	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3250 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Minus_in_unaryPrimitiveAtom3255 = new BitSet(new long[]{0x1101000000080000L,0x0020000000200000L});
+	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3257 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_primitiveAtom_in_unaryPrimitiveAtom3262 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftSquareBrace_in_array3760 = new BitSet(new long[]{0x9101000002084900L,0x04A041002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_array_content_in_array3762 = new BitSet(new long[]{0x0000000000000000L,0x0000010000000000L});
+	public static final BitSet FOLLOW_RightSquareBrace_in_array3765 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_TypeArray_in_array3771 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_array3773 = new BitSet(new long[]{0x9101000002084900L,0x04A040802C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_array_content_in_array3775 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_array3778 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expression_in_array_content3791 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_Arrow_in_array_content3793 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_array_content3797 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_Comma_in_array_content3801 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_array_content3804 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_Arrow_in_array_content3806 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_array_content3810 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_If_in_ifCondition3822 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_ifCondition3824 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_ifCondition3826 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_ifCondition3828 = new BitSet(new long[]{0x4306240840100800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_ifCondition3833 = new BitSet(new long[]{0x0000080000000002L});
+	public static final BitSet FOLLOW_Else_in_ifCondition3840 = new BitSet(new long[]{0x4306240840100800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_ifCondition3845 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Switch_in_switchCondition3876 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_switchCondition3878 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_VariableId_in_switchCondition3880 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_switchCondition3882 = new BitSet(new long[]{0x4000000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_switchCondition3884 = new BitSet(new long[]{0x0000000000400000L});
+	public static final BitSet FOLLOW_switchContent_in_switchCondition3886 = new BitSet(new long[]{0x0000000000000000L,0x0000004000000000L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_switchCondition3888 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_normalCase_in_switchContent3909 = new BitSet(new long[]{0x0000000100400000L});
+	public static final BitSet FOLLOW_defaultCase_in_switchContent3912 = new BitSet(new long[]{0x0000000000400000L});
+	public static final BitSet FOLLOW_normalCase_in_switchContent3914 = new BitSet(new long[]{0x0000000000400002L});
+	public static final BitSet FOLLOW_normalCase_in_switchContent3921 = new BitSet(new long[]{0x0000000100400002L});
+	public static final BitSet FOLLOW_defaultCase_in_switchContent3924 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_caseLabel_in_normalCase3936 = new BitSet(new long[]{0x4306240840500800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_normalCase3939 = new BitSet(new long[]{0x4306240840100802L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_defaultLabel_in_defaultCase3982 = new BitSet(new long[]{0x4306240840100800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_defaultCase3984 = new BitSet(new long[]{0x4306240840100802L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_Case_in_caseLabel4027 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_caseLabel4030 = new BitSet(new long[]{0x0000000004000000L});
+	public static final BitSet FOLLOW_Colon_in_caseLabel4032 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Default_in_defaultLabel4042 = new BitSet(new long[]{0x0000000004000000L});
+	public static final BitSet FOLLOW_Colon_in_defaultLabel4044 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_For_in_forLoop4054 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_forLoop4056 = new BitSet(new long[]{0x9101000002084900L,0xFCA040002C220A21L,0x0000000000000083L});
+	public static final BitSet FOLLOW_forInit_in_forLoop4058 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_forLoop4060 = new BitSet(new long[]{0x9101000002084900L,0x04A0C0002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expressionList_in_forLoop4062 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_forLoop4065 = new BitSet(new long[]{0x9101000002084900L,0x04A040802C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expressionList_in_forLoop4067 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_forLoop4069 = new BitSet(new long[]{0x4306240840100800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_forLoop4071 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_varListOrExprList_in_forInit4093 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableDeclarationList_in_varListOrExprList4104 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expressionList_in_varListOrExprList4117 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableDeclaration_in_variableDeclarationList4128 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_Comma_in_variableDeclarationList4131 = new BitSet(new long[]{0x0100000000000800L,0x0080400024000800L,0x0000000000000080L});
+	public static final BitSet FOLLOW_variableAssignment_in_variableDeclarationList4134 = new BitSet(new long[]{0x0000000008000002L});
+	public static final BitSet FOLLOW_Foreach_in_foreachLoop4148 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_foreachLoop4150 = new BitSet(new long[]{0x0000000000000000L,0x0400000000000001L,0x0000000000000080L});
+	public static final BitSet FOLLOW_VariableId_in_foreachLoop4153 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_array_in_foreachLoop4155 = new BitSet(new long[]{0x0000000000000040L});
+	public static final BitSet FOLLOW_As_in_foreachLoop4158 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_VariableId_in_foreachLoop4160 = new BitSet(new long[]{0x0000000000000020L,0x0000008000000000L});
+	public static final BitSet FOLLOW_Arrow_in_foreachLoop4163 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_VariableId_in_foreachLoop4165 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_foreachLoop4169 = new BitSet(new long[]{0x4306240840100800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_foreachLoop4171 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_While_in_whileLoop4180 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_whileLoop4182 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_whileLoop4184 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_whileLoop4186 = new BitSet(new long[]{0x4306240840100800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_whileLoop4188 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Do_in_doWhileLoop4198 = new BitSet(new long[]{0x4306240840100800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_doWhileLoop4200 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000200L});
+	public static final BitSet FOLLOW_While_in_doWhileLoop4202 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_doWhileLoop4204 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_expression_in_doWhileLoop4206 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_doWhileLoop4208 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_doWhileLoop4210 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Try_in_tryCatch4217 = new BitSet(new long[]{0x4000000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_tryCatch4219 = new BitSet(new long[]{0x4306240840100800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_tryCatch4221 = new BitSet(new long[]{0x4306240840100800L,0xFFC0406024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_tryCatch4224 = new BitSet(new long[]{0x0000000000800000L});
+	public static final BitSet FOLLOW_Catch_in_tryCatch4226 = new BitSet(new long[]{0x8000000000000000L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_tryCatch4228 = new BitSet(new long[]{0x0100000000000800L,0x8000000000000000L});
+	public static final BitSet FOLLOW_classInterfaceTypeInclObject_in_tryCatch4230 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000080L});
+	public static final BitSet FOLLOW_VariableId_in_tryCatch4232 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_tryCatch4234 = new BitSet(new long[]{0x4000000000000000L});
+	public static final BitSet FOLLOW_LeftCurlyBrace_in_tryCatch4235 = new BitSet(new long[]{0x4306240840100800L,0xFFC0406024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_tryCatch4237 = new BitSet(new long[]{0x4306240840100800L,0xFFC0406024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_RightCurlyBrace_in_tryCatch4240 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Throw_in_throwException4249 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+	public static final BitSet FOLLOW_newObject_in_throwException4251 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_throwException4253 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableAssignment_in_synpred69_TSPHP1963 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_synpred69_TSPHP1965 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableDeclaration_in_synpred70_TSPHP1971 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_synpred70_TSPHP1973 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionCallFluentWithoutAccessAtTheEnd_in_synpred79_TSPHP2019 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_synpred79_TSPHP2021 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_methodCallFluentWithoutAccessAtTheEnd_in_synpred80_TSPHP2027 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+	public static final BitSet FOLLOW_Semicolon_in_synpred80_TSPHP2029 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LogicOrWeak_in_synpred102_TSPHP2346 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_logicXorWeak_in_synpred102_TSPHP2349 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LogicXorWeak_in_synpred103_TSPHP2365 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_logicAndWeak_in_synpred103_TSPHP2368 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LogicAndWeak_in_synpred104_TSPHP2384 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_assignment_in_synpred104_TSPHP2387 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_assignmentOperator_in_synpred105_TSPHP2401 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A21L,0x0000000000000080L});
+	public static final BitSet FOLLOW_ternary_in_synpred105_TSPHP2404 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_LeftParanthesis_in_synpred132_TSPHP2713 = new BitSet(new long[]{0x0100000000000800L,0xFC00000000000000L,0x0000000000000002L});
+	public static final BitSet FOLLOW_allTypesWithoutResource_in_synpred132_TSPHP2715 = new BitSet(new long[]{0x0000000000000000L,0x0000008000000000L});
+	public static final BitSet FOLLOW_RightParanthesis_in_synpred132_TSPHP2717 = new BitSet(new long[]{0x9101000002084900L,0x04A040002C220A01L,0x0000000000000080L});
+	public static final BitSet FOLLOW_castOrBitwiseNotOrAt_in_synpred132_TSPHP2719 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionCallFluentInclAccessAtTheEnd_in_synpred150_TSPHP2993 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_methodCallFluentInclAccessAtTheEnd_in_synpred151_TSPHP2998 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_callOrAccess_in_synpred153_TSPHP3031 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_functionCall_in_synpred154_TSPHP3029 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800001L});
+	public static final BitSet FOLLOW_callOrAccess_in_synpred154_TSPHP3031 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800001L});
+	public static final BitSet FOLLOW_call_in_synpred154_TSPHP3034 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_callOrAccess_in_synpred158_TSPHP3124 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_methodCall_in_synpred159_TSPHP3122 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800001L});
+	public static final BitSet FOLLOW_callOrAccess_in_synpred159_TSPHP3124 = new BitSet(new long[]{0x0000000000000000L,0x0000000000800001L});
+	public static final BitSet FOLLOW_call_in_synpred159_TSPHP3127 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_incrementDecrement_in_synpred163_TSPHP3186 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_variableMemberStaticMember_in_synpred164_TSPHP3191 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_classConstant_in_synpred165_TSPHP3196 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_globalConstant_in_synpred166_TSPHP3201 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expression_in_synpred178_TSPHP3791 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_Arrow_in_synpred178_TSPHP3793 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_expression_in_synpred179_TSPHP3804 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_Arrow_in_synpred179_TSPHP3806 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_Else_in_synpred181_TSPHP3840 = new BitSet(new long[]{0x4306240840100800L,0xFFC0402024000800L,0x0000000000000283L});
+	public static final BitSet FOLLOW_instructionInclBreakContinue_in_synpred181_TSPHP3845 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_normalCase_in_synpred184_TSPHP3909 = new BitSet(new long[]{0x0000000100400000L});
+	public static final BitSet FOLLOW_defaultCase_in_synpred184_TSPHP3912 = new BitSet(new long[]{0x0000000000400000L});
+	public static final BitSet FOLLOW_normalCase_in_synpred184_TSPHP3914 = new BitSet(new long[]{0x0000000000400002L});
 }

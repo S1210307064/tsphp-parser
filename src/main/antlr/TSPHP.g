@@ -135,12 +135,14 @@ tokens{
 	// Imaginary tokens
 	BLOCK;
 	CAST;
+	EXPRESSION_LIST;
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
 	SWITCH_GROUP;
 	SWITCH_INSTRUCTIONS;
 	SWITCH_CASES;
 	VARIABLE_DECLARATION;
+	VARIABLE_DECLARATION_LIST;
 	UMINUS;
 	UPLUS;
 }
@@ -383,12 +385,14 @@ instruction
 	|	functionCallFluentWithoutAccessAtTheEnd ';'!
 	|	methodCallFluentWithoutAccessAtTheEnd ';'!	
 	|	'return' expression? ';'!
-	|	'echo' expressionList ';'!
+	|	'echo'^ expression (','! expression)* ';'!
 	|	'exit' ';'!
 	;
 	
 expressionList
-	:	expression (','! expression)*;
+	:	expression (',' expression)* -> ^(EXPRESSION_LIST expression+)
+	|	-> EXPRESSION_LIST
+	;
 
 variableAssignment
 	:	VariableId assignmentOperator^ expression
@@ -415,12 +419,17 @@ assignmentOperator
 	|	'>>='
 	;
 	
-postIncrementDecrement
-	:	variableMemberStaticMember ('++'|'--') -> ^(POST_INCREMENT_DECREMENT[$variableMemberStaticMember.start, "post increment/decrement"] variableMemberStaticMember)
+postIncrementDecrement 
+	:	variableMemberStaticMember plusPlusOrMinusMinus -> ^(POST_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember)
+	;
+	
+plusPlusOrMinusMinus
+	:	'++'
+	|	'--'
 	;
 	
 preIncrementDecrement
-	:	pre = ('++'|'--') variableMemberStaticMember -> ^(PRE_INCREMENT_DECREMENT[$pre, "pre increment/decrement"] variableMemberStaticMember)
+	:	plusPlusOrMinusMinus variableMemberStaticMember -> ^(PRE_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember)
 	;
 	
 	
@@ -490,7 +499,6 @@ logicNot:	'!'^ logicNot
 	|	instanceOf
 	;
 
-
 instanceOf
 	:	castOrBitwiseNotOrAt ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
 
@@ -535,7 +543,8 @@ arrayAccess
 	
 
 newObject
-	:	'new' classInterfaceTypeWithoutObject ('(' expressionList? ')')? -> ^('new' classInterfaceTypeWithoutObject expressionList?)
+	:	'new' classInterfaceTypeWithoutObject '(' expressionList ')' -> ^('new' classInterfaceTypeWithoutObject expressionList)
+	|	'new' classInterfaceTypeWithoutObject -> ^('new' classInterfaceTypeWithoutObject EXPRESSION_LIST)
 	;
 
 unaryPrimary
@@ -559,7 +568,7 @@ functionCallFluentWithoutAccessAtTheEnd
 	;
 
 functionCall
-	:	classInterfaceTypeWithoutObject '(' expressionList? ')'
+	:	classInterfaceTypeWithoutObject '(' expressionList ')'
 	;
 
 callOrAccess
@@ -567,7 +576,7 @@ callOrAccess
 	|	call
 	;	
 	
-call	:	('->' Identifier '(' expressionList?')');
+call	:	('->' Identifier '(' expressionList')');
 	
 methodCallFluentInclAccessAtTheEnd
 	:	methodCallFluentWithoutAccessAtTheEnd memberAccessOrArrayAccess?
@@ -578,7 +587,7 @@ methodCallFluentWithoutAccessAtTheEnd
 	|	methodCall call*
 	;
 methodCall
-	:	( (variableMemberStaticMember '->') | staticAccessOrParent) Identifier '(' expressionList?')'
+	:	( (variableMemberStaticMember '->') | staticAccessOrParent) Identifier '(' expressionList')'
 	;
 
 atom	:	'(' expression ')' -> expression
@@ -710,11 +719,19 @@ caseLabel
 defaultLabel
 	:	'default' ':'!;
 	
-forLoop	:	'for' '(' forInit? ';' expressionList?  ';' forUpdate? ')' instructionInclBreakContinue;
+forLoop	:	'for' '(' forInit ';' expressionList  ';' expressionList ')' instructionInclBreakContinue -> ^('for' forInit expressionList expressionList instructionInclBreakContinue);
 
-forInit	:	(variableDeclaration||expression) (',' expression)*;
-forUpdate
-	:	expressionList?;
+forInit	:	varListOrExprList
+	;
+
+varListOrExprList
+	:	variableDeclarationList -> ^(VARIABLE_DECLARATION_LIST variableDeclarationList)
+	|	expressionList
+	;
+
+variableDeclarationList
+	:	variableDeclaration (','! variableAssignment)* 
+	;
 
 foreachLoop
 	:	'foreach' '(' (VariableId|array) 'as' VariableId ('=>' VariableId)? ')' instructionInclBreakContinue;

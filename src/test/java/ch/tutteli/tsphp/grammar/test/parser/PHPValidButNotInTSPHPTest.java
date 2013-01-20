@@ -46,7 +46,7 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> testStrings() {
+    public static Collection<Object[]> testStrings() {        
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
                     //empty statement
@@ -70,6 +70,9 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     //empty for block
                     {"for(;;){}", TSPHPParser.RightCurlyBrace, 8},
                     {"for(;;);", TSPHPParser.Semicolon, 7},
+                    //for init - variable declaration and expressions mixed
+                    {"for(int $a,1+1;;);", TSPHPParser.Int, 11},
+                    {"for($a=1,1+1,int $b;;);", TSPHPParser.TypeInt, 13},
                     
                     //empty foreach block
                     {"foreach($a as $k);", TSPHPParser.Semicolon, 17},

@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.AstHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -59,6 +60,7 @@ public class VariableAssignmentTest extends AAstTest
             collection.add(new Object[]{"$a <<= " + expression[0] + ";", "(<<= $a " + expression[1] + ")"});
             collection.add(new Object[]{"$a >>= " + expression[0] + ";", "(>>= $a " + expression[1] + ")"});
         }
+        AstHelper.addToCollection(collection, NewClassTest.testStrings(), "$a = ", "", "(= $a ", ")", 10);
         return collection;
     }
 }

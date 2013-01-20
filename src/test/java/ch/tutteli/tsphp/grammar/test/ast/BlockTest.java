@@ -17,8 +17,8 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.AstHelper;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -50,18 +50,12 @@ public class BlockTest extends AAstTest
         addToCollection(collection, VariableAssignmentTest.testStrings());
         addToCollection(collection, IfTest.testStrings());
         addToCollection(collection, SwitchTest.testStrings());
+        addToCollection(collection, ForTest.testStrings());
 
         return collection;
     }
 
     private static void addToCollection(List<Object[]> collection, Collection<Object[]> testStrings) {
-        int count = 0;
-        for (Object[] testString : testStrings) {
-            ++count;
-            collection.add(new Object[]{"{" + testString[0] + "}", "(block " + testString[1] + ")"});
-            if (count >= 10) {
-                break;
-            }
-        }
+        AstHelper.addToCollection(collection, testStrings, "{", "}", "(block ", ")", 10);
     }
 }
