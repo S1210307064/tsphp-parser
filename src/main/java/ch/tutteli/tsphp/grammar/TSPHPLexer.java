@@ -1,4 +1,4 @@
-// $ANTLR 3.x D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2013-01-20 10:09:58
+// $ANTLR 3.x D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2013-01-20 10:53:34
 
 /*
  * Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
@@ -134,36 +134,35 @@ public class TSPHPLexer extends Lexer {
 	public static final int STRING_SINGLE_QUOTED=106;
 	public static final int SWITCH_CASES=107;
 	public static final int SWITCH_GROUP=108;
-	public static final int SWITCH_INSTRUCTIONS=109;
-	public static final int Self=110;
-	public static final int Semicolon=111;
-	public static final int ShiftLeft=112;
-	public static final int ShiftLeftEqual=113;
-	public static final int ShiftRight=114;
-	public static final int ShiftRightEqual=115;
-	public static final int Static=116;
-	public static final int String=117;
-	public static final int Switch=118;
-	public static final int This=119;
-	public static final int Throw=120;
-	public static final int Try=121;
-	public static final int TypeArray=122;
-	public static final int TypeBool=123;
-	public static final int TypeBoolean=124;
-	public static final int TypeFloat=125;
-	public static final int TypeInt=126;
-	public static final int TypeObject=127;
-	public static final int TypeResource=128;
-	public static final int TypeString=129;
-	public static final int UMINUS=130;
-	public static final int UPLUS=131;
-	public static final int Use=132;
-	public static final int VARIABLE_DECLARATION=133;
-	public static final int VARIABLE_DECLARATION_LIST=134;
-	public static final int VariableId=135;
-	public static final int Void=136;
-	public static final int While=137;
-	public static final int Whitespace=138;
+	public static final int Self=109;
+	public static final int Semicolon=110;
+	public static final int ShiftLeft=111;
+	public static final int ShiftLeftEqual=112;
+	public static final int ShiftRight=113;
+	public static final int ShiftRightEqual=114;
+	public static final int Static=115;
+	public static final int String=116;
+	public static final int Switch=117;
+	public static final int This=118;
+	public static final int Throw=119;
+	public static final int Try=120;
+	public static final int TypeArray=121;
+	public static final int TypeBool=122;
+	public static final int TypeBoolean=123;
+	public static final int TypeFloat=124;
+	public static final int TypeInt=125;
+	public static final int TypeObject=126;
+	public static final int TypeResource=127;
+	public static final int TypeString=128;
+	public static final int UMINUS=129;
+	public static final int UPLUS=130;
+	public static final int Use=131;
+	public static final int VARIABLE_DECLARATION=132;
+	public static final int VARIABLE_DECLARATION_LIST=133;
+	public static final int VariableId=134;
+	public static final int Void=135;
+	public static final int While=136;
+	public static final int Whitespace=137;
 
 	// delegates
 	// delegators
@@ -3476,16 +3475,16 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Comment;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:752:2: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:753:2: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt25=3;
 			alt25 = dfa25.predict(input);
 			switch (alt25) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:752:4: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:753:4: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); if (state.failed) return ;
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:752:9: (~ ( '\\n' | '\\r' ) )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:753:9: (~ ( '\\n' | '\\r' ) )*
 					loop21:
 					do {
 						int alt21=2;
@@ -3516,7 +3515,7 @@ public class TSPHPLexer extends Lexer {
 						}
 					} while (true);
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:752:23: ( '\\r' )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:753:23: ( '\\r' )?
 					int alt22=2;
 					int LA22_0 = input.LA(1);
 					if ( (LA22_0=='\r') ) {
@@ -3524,7 +3523,7 @@ public class TSPHPLexer extends Lexer {
 					}
 					switch (alt22) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:752:23: '\\r'
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:753:23: '\\r'
 							{
 							match('\r'); if (state.failed) return ;
 							}
@@ -3537,11 +3536,11 @@ public class TSPHPLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:754:6: '//' (~ ( '\\n' | '\\r' ) )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:755:6: '//' (~ ( '\\n' | '\\r' ) )*
 					{
 					match("//"); if (state.failed) return ;
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:754:11: (~ ( '\\n' | '\\r' ) )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:755:11: (~ ( '\\n' | '\\r' ) )*
 					loop23:
 					do {
 						int alt23=2;
@@ -3576,11 +3575,11 @@ public class TSPHPLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:755:8: '/*' ( options {greedy=false; } : . )* '*/'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:756:8: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); if (state.failed) return ;
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:755:13: ( options {greedy=false; } : . )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:756:13: ( options {greedy=false; } : . )*
 					loop24:
 					do {
 						int alt24=2;
@@ -3601,7 +3600,7 @@ public class TSPHPLexer extends Lexer {
 
 						switch (alt24) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:755:41: .
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:756:41: .
 							{
 							matchAny(); if (state.failed) return ;
 							}
@@ -3633,8 +3632,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Whitespace;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:759:2: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:759:4: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:760:2: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:760:4: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -4723,7 +4722,7 @@ public class TSPHPLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "751:1: Comment : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' );";
+			return "752:1: Comment : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' );";
 		}
 		@Override
 		public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {

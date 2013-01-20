@@ -14,9 +14,9 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.test.parser;
+package ch.tutteli.tsphp.grammar.test.ast;
 
-import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
+import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -31,40 +31,34 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ForeachTest extends AParserTest
+public class WhileTest extends AAstTest
 {
 
-    public ForeachTest(String testString) {
-        super(testString);
+    public WhileTest(String testString, String expectedResult) {
+        super(testString, expectedResult);
     }
 
     @Test
     public void test() throws RecognitionException {
-        parseAndCheckForException();
+        compareAst();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"foreach($a as int $k => MyClass $v)$a=1;"},
-                    {"foreach($a as float $v) $a=1;"},
-                    {"foreach($a as string $k => string $v){$a=1;}"},
-                    {"foreach($a as bool $v) {$a=1;}"},
-                    {"foreach($a as boolean $k=> array $v){$a=1; $b=1;}"},
-                    {"foreach($a as int $v) {$a=1; $b=3;}"},
-                    
-        }));
-        
-        String[] arrayTestStrings = ArrayDeclarationTest.getArrayTestStrings();
-        for (String string : arrayTestStrings) {
-            collection.add(new Object[]{"foreach(" + string + " as int $v) $a=1;"});
-            collection.add(new Object[]{"foreach(" + string + " as float $k => MyClass $v) $a=1;"});
-            collection.add(new Object[]{"foreach(" + string + " as bool $v) {$a=1;}"});
-            collection.add(new Object[]{"foreach(" + string + " as string $k => string $v) {$a=1;}"});
-            
+                    {"while( true  ) $a=1;", "(while true (= $a 1))"},
+                    {"while( true  ){$a=1;}", "(while true (block (= $a 1)))"},
+                    {"while( true  ){$a=1;int $b=2;}", "(while true (block (= $a 1) (variable declaration int $b 2)))"},
+                    {"do $a=1; while( true  );", "(do (= $a 1) true)"},
+                    {"do {$a=1;} while( true  );", "(do (block (= $a 1)) true)"},
+                    {"do {$a=1;$b=2;}while( true  );", "(do (block (= $a 1) (= $b 2)) true)"}
+                }));
+         String[][] expressions = ExpressionTest.getExpressions();
+        for (Object[] expression : expressions) {
+            collection.add(new Object[]{"while("+expression[0]+") $a=1;","(while "+expression[1]+" (= $a 1))"});
+            collection.add(new Object[]{"do $a=1; while("+expression[0]+");","(do (= $a 1) "+expression[1]+")"});
         }
-        
         return collection;
     }
 }

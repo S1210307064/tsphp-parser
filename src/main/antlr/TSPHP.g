@@ -139,12 +139,12 @@ tokens{
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
 	SWITCH_GROUP;
-	SWITCH_INSTRUCTIONS;
 	SWITCH_CASES;
 	VARIABLE_DECLARATION;
 	VARIABLE_DECLARATION_LIST;
 	UMINUS;
 	UPLUS;
+	
 }
 
 
@@ -735,13 +735,14 @@ variableDeclarationList
 	;
 
 foreachLoop
-	:	'foreach' '(' expression 'as' primitiveTypes VariableId ('=>' allTypesWithoutResource VariableId)? ')' instructionInclBreakContinue;
+	:	'foreach' '(' expression 'as' (keyType=primitiveTypes keyVarId=VariableId '=>')? valueType=allTypesWithoutResource valueVarId=VariableId ')' instructionInclBreakContinue 
+		-> ^('foreach' expression $keyType? $keyVarId? $valueType $valueVarId instructionInclBreakContinue);
 
 whileLoop
-	:	'while' '(' expression ')' instructionInclBreakContinue;
+	:	'while' '(' expression ')' instructionInclBreakContinue -> ^('while' expression instructionInclBreakContinue);
 	
 doWhileLoop
-	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';';
+	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';' -> ^('do' instructionInclBreakContinue expression);
 
 tryCatch:	'try' '{' instructionInclBreakContinue+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')''{' instructionInclBreakContinue* '}';
 

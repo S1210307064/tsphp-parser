@@ -75,10 +75,10 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     {"for($a=1,1+1,int $b;;);", TSPHPParser.TypeInt, 13},
                     
                     //empty foreach block
-                    {"foreach($a as $k);", TSPHPParser.Semicolon, 17},
-                    {"foreach($a as $k){}", TSPHPParser.RightCurlyBrace, 18},
-                    {"foreach($a as $k => $v);", TSPHPParser.Semicolon, 23},
-                    {"foreach($a as $k => $v){}", TSPHPParser.RightCurlyBrace, 24},
+                    {"foreach($a as int $k);", TSPHPParser.Semicolon, 21},
+                    {"foreach($a as int $k){}", TSPHPParser.RightCurlyBrace, 22},
+                    {"foreach($a as int $k => int $v);", TSPHPParser.Semicolon, 31},
+                    {"foreach($a as int $k => int $v){}", TSPHPParser.RightCurlyBrace, 32},
                     //empty while block
                     {"while(true){}", TSPHPParser.RightCurlyBrace, 12},
                     {"while(true);", TSPHPParser.Semicolon, 11},

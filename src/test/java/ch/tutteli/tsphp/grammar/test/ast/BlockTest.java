@@ -51,6 +51,8 @@ public class BlockTest extends AAstTest
         addToCollection(collection, IfTest.testStrings());
         addToCollection(collection, SwitchTest.testStrings());
         addToCollection(collection, ForTest.testStrings());
+        addToCollection(collection, ForeachTest.testStrings());
+        addToCollection(collection, WhileTest.testStrings());
 
         return collection;
     }

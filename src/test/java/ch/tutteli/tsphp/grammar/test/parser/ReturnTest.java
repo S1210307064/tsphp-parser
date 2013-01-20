@@ -58,8 +58,8 @@ public class ReturnTest extends AParserTest
         return Arrays.asList(new Object[][]{
                     {"for(;;) " + instruction + ";"},
                     {"for(;;){ " + instruction + ";}"},
-                    {"foreach([] as $k)" + instruction + ";"},
-                    {"foreach([] as $k){" + instruction + ";}"},
+                    {"foreach([] as int $k)" + instruction + ";"},
+                    {"foreach([] as int $k){" + instruction + ";}"},
                     {"while(true)" + instruction + ";"},
                     {"while(true){" + instruction + ";}"},
                     {"do break; while(true);"},

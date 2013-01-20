@@ -45,14 +45,14 @@ public class ForeachTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-       List<Object[]> collection = new ArrayList<>();
+        List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"foreach($a as $k=>$v)$a=1;", "(foreach $a $key"},
-                    {"foreach($a as $k) $a=1;"},
-                    {"foreach($a as $k=>$v){$a=1;}"},
-                    {"foreach($a as $k) {$a=1;}"},
-                    {"foreach($a as $k=>$v){$a=1; $b=1;}"},
-                    {"foreach($a as $k) {$a=1; $b=3;}"},
+                    {"foreach($a as int $k => MyClass $v)$a=1;", "(foreach $a int $k MyClass $v (= $a 1))"},
+                    {"foreach($a as float $v) $a=1;", "(foreach $a float $v (= $a 1))"},
+                    {"foreach($a as string $k => string $v){$a=1;}", "(foreach $a string $k string $v (block (= $a 1)))"},
+                    {"foreach($a as bool $v) {$a=1;}", "(foreach $a bool $v (block (= $a 1)))"},
+                    {"foreach($a as boolean $k=> array $v){$a=1; $b=2;}", "(foreach $a bool $k array $v (block (= $a 1) (= $b 2)))"},
+                    {"foreach($a as int $v) {$a=1; $b=3;}", "(foreach $a int $v (block (= $a 1) (= $b 3)))"},
                     
         }));
 
