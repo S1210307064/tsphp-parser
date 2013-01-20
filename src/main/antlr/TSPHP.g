@@ -400,7 +400,7 @@ instruction
 	|	throwException
 	|	functionCallFluentWithoutAccessAtTheEnd ';'!
 	|	methodCallFluentWithoutAccessAtTheEnd ';'!	
-	|	'return' expression? ';'!
+	|	'return'^ expression? ';'!
 	|	'echo'^ expression (','! expression)* ';'!
 	|	'exit' ';'!
 	;

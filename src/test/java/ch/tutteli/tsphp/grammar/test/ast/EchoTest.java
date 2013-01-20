@@ -17,7 +17,6 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
-import ch.tutteli.tsphp.grammar.test.utils.AstHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -31,10 +30,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class BlockTest extends AAstTest
+public class EchoTest extends AAstTest
 {
 
-    public BlockTest(String testString, String expectedResult) {
+    public EchoTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -45,24 +44,13 @@ public class BlockTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-        addToCollection(collection, VariableDeclarationTest.testStrings());
-        addToCollection(collection, VariableAssignmentTest.testStrings());
-        addToCollection(collection, IfTest.testStrings());
-        addToCollection(collection, SwitchTest.testStrings());
-        addToCollection(collection, ForTest.testStrings());
-        addToCollection(collection, ForeachTest.testStrings());
-        addToCollection(collection, WhileTest.testStrings());
-        addToCollection(collection, TryCatchTest.testStrings());
-        addToCollection(collection, ThrowTest.testStrings());
-        addToCollection(collection, ReturnTest.testStrings());
-        addToCollection(collection, EchoTest.testStrings());
-        addToCollection(collection, ExitTest.testStrings());
-
-        return collection;
-    }
-
-    private static void addToCollection(List<Object[]> collection, Collection<Object[]> testStrings) {
-        AstHelper.addToCollection(collection, testStrings, "{", "}", "(block ", ")", 10);
+         List<Object[]> collection = new ArrayList<>();
+         String[][] expressions = ExpressionTest.getExpressions();
+         
+         for(String[] expression:expressions){
+             collection.add(new Object[]{"echo "+expression[0]+";","(echo "+expression[1]+")"});
+             collection.add(new Object[]{"echo "+expression[0]+","+expression[0]+";","(echo "+expression[1]+" "+expression[1]+")"});
+         }
+         return collection;
     }
 }
