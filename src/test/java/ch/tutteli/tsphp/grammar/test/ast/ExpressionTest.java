@@ -166,6 +166,12 @@ public class ExpressionTest extends AAstTest
                     {"+$a + $b", "(+ (unary plus $a) $b)"},
                     {"-$a - $b", "(- (unary minus $a) $b)"},
                     //
+                    {"clone $a","(clone $a)"},
+                    {"new Type","(new (class/interface type Type) EXPRESSION_LIST)"},
+                    //
+                    {"foo()","(function call (class/interface type foo) EXPRESSION_LIST)"},
+                    {"\\foo(1,1+2,3)","(function call (class/interface type \\ foo) (EXPRESSION_LIST 1 (+ 1 2) 3))"},
+                    //
                     {"($a)", "$a"},
                     //
                     {"(int) clone $a + $b", "(+ (cast int (clone $a)) $b)"},

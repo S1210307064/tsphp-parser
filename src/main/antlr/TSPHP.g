@@ -133,10 +133,12 @@ tokens{
 	While = 'while';
 
 	// Imaginary tokens
+	ARRAY_ACCESS;
 	BLOCK;
 	CAST;
 	CLASS_INTERFACE_TYPE;
 	EXPRESSION_LIST;
+	FUNCTION_CALL;
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
 	SWITCH_CASES;
@@ -208,7 +210,7 @@ Identifier
 	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*;
 
 namespaceId
-	:	Identifier ('\\' Identifier)*
+	:	Identifier ('\\' Identifier)* -> Identifier+
 	;
 
 
@@ -350,8 +352,9 @@ primitiveTypesExtended
 	;
 
 classInterfaceTypeWithoutObject
-	:	start='\\'? id=Identifier ('\\' subId=Identifier)* ->  ^(CLASS_INTERFACE_TYPE[$classInterfaceTypeWithoutObject.start,"class/interface type"] $start? $id $subId*)
+	:	root='\\'? namespaceId ->  ^(CLASS_INTERFACE_TYPE[$classInterfaceTypeWithoutObject.start,"class/interface type"] $root? namespaceId)
 	;
+
 	
 classInterfaceTypeInclObject
 	:	TypeObject	
@@ -544,16 +547,9 @@ staticAccessOrParent
 	;
 
 memberAccessOrArrayAccess
-	:	memberAccess
-	|	arrayAccess
-	;
-memberAccess
-	:	'->' Identifier
-	;
-arrayAccess
-	:	'[' expression ']'
-	;
-	
+	:	'->' Identifier -> ^('->' Identifier)
+	|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"array access"] expression)
+	;	
 
 newObject
 	:	'new' classInterfaceTypeWithoutObject '(' expressionList ')' -> ^('new' classInterfaceTypeWithoutObject expressionList)
@@ -581,7 +577,8 @@ functionCallFluentWithoutAccessAtTheEnd
 	;
 
 functionCall
-	:	classInterfaceTypeWithoutObject '(' expressionList ')'
+	:	classInterfaceTypeWithoutObject '(' expressionList ')' 
+		-> ^(FUNCTION_CALL[$classInterfaceTypeWithoutObject.start,"function call"] classInterfaceTypeWithoutObject expressionList)
 	;
 
 callOrAccess
@@ -589,7 +586,7 @@ callOrAccess
 	|	call
 	;	
 	
-call	:	('->' Identifier '(' expressionList')');
+call	:	('->' Identifier '(' expressionList')') -> ^('->' Identifier expressionList);
 	
 methodCallFluentInclAccessAtTheEnd
 	:	methodCallFluentWithoutAccessAtTheEnd memberAccessOrArrayAccess?
@@ -764,7 +761,7 @@ catchBlock
 	;
 
 throwException
-	:	'throw' newObject ';';
+	:	'throw'^ newObject ';'!;
 
 Comment
 	:	'//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}
