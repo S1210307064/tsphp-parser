@@ -133,6 +133,7 @@ tokens{
 	While = 'while';
 
 	// Imaginary tokens
+	BLOCK;
 	CAST;
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
@@ -355,14 +356,14 @@ VariableId
 	:	'$' Identifier;
 
 instructionWithoutBreakContinue	
-	:	'{' instructionWithoutBreakContinue+  '}'
+	:	block = '{' instructionWithoutBreakContinue+  '}' -> ^(BLOCK[$block,"block"] instructionWithoutBreakContinue+)
 	|	instruction
 	;
 
 instructionInclBreakContinue
-	:	'{' instructionInclBreakContinue+  '}'
+	:	block =  '{' instructionInclBreakContinue+  '}' -> ^(BLOCK[$block,"block"] instructionInclBreakContinue+)
 	|	instruction
-	|	('break'|'continue') Int? ';'
+	|	('break'|'continue')^ Int? ';'!
 	;	
 
 instruction
