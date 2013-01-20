@@ -744,7 +744,9 @@ whileLoop
 doWhileLoop
 	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';' -> ^('do' instructionInclBreakContinue expression);
 
-tryCatch:	'try' '{' instructionInclBreakContinue+ '}' 'catch' '(' classInterfaceTypeInclObject VariableId ')''{' instructionInclBreakContinue* '}';
+tryCatch
+	:	'try' '{' instructionInclBreakContinue+ '}' ('catch' '(' classInterfaceTypeInclObject VariableId ')''{' instructionInclBreakContinue* '}')+
+	;
 
 throwException
 	:	'throw' newObject ';';

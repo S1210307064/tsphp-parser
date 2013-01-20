@@ -46,9 +46,11 @@ public class TryCatchTest extends AParserTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList();
         List<String> types = VariableDeclarationTest.getClassInterfaceTypes();
-        for(String type: types){
-            collection.add(new Object[]{"try{$a=1;}catch("+type+" $e){}"});
+        for (String type : types) {
+            collection.add(new Object[]{"try{$a=1;}catch(" + type + " $e){}"});
         }
+        collection.add(new Object[]{"try{$a=1;}catch(\\Exception $e){}catch(MyException $e){}"});
+        collection.add(new Object[]{"try{$a=1;}catch(\\Exception $e){}catch(MyException $e){}catch(\\a\\MyException $e){}"});
         return collection;
     }
 }
