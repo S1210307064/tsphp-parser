@@ -97,13 +97,10 @@ public class ExpressionTest extends AParserTest
                     "self::foo()",
                     "self::$a->foo()",
                     "parent::foo()",
-                    "parent::$a->foo()",
-                    
-                    
-        };
+                    "parent::$a->foo()",};
     }
-    
-    public static String[] getExpressionsWithoutAssignment() { 
+
+    public static String[] getExpressionsWithoutAssignment() {
         return new String[]{
                     "true or false",
                     "true xor false",
@@ -167,6 +164,9 @@ public class ExpressionTest extends AParserTest
                     "$a",
                     "$a->a",
                     "$a[0]",
+                    "$this",
+                    "$this->a",
+                    "$this[0]",
                     "foo()->a",
                     "$a[0]->a",
                     "$a->foo()->a",

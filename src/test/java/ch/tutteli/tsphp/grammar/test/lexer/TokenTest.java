@@ -120,14 +120,13 @@ public class TokenTest extends ALexerTest
                     {"mNotEqualAlternative", "<>", TSPHPLexer.NotEqualAlternative},
                     {"mNotIdentical", "!==", TSPHPLexer.NotIdentical},
                     {"mObjectOperator", "->", TSPHPLexer.ObjectOperator},
-                    {"mParent", "parent::", TSPHPLexer.Parent},
+                    {"mParent", "parent", TSPHPLexer.Parent},
+                    {"mParentColonColon", "parent::", TSPHPLexer.ParentColonColon},
                     {"mPlus", "+", TSPHPLexer.Plus},
                     {"mPlusEqual", "+=", TSPHPLexer.PlusEqual},
                     {"mPlusPlus", "++", TSPHPLexer.PlusPlus},
                     {"mPrivate", "private", TSPHPLexer.Private},
                     {"mProtected", "protected", TSPHPLexer.Protected},
-                    {"mProtectParent", "parent", TSPHPLexer.ProtectParent},
-                    {"mProtectSelf", "self", TSPHPLexer.ProtectSelf},
                     {"mProtectThis", "this", TSPHPLexer.ProtectThis},
                     {"mPublic", "public", TSPHPLexer.Public},
                     {"mQuestionMark", "?", TSPHPLexer.QuestionMark},
@@ -135,12 +134,15 @@ public class TokenTest extends ALexerTest
                     {"mRightCurlyBrace", "}", TSPHPLexer.RightCurlyBrace},
                     {"mRightParanthesis", ")", TSPHPLexer.RightParanthesis},
                     {"mRightSquareBrace", "]", TSPHPLexer.RightSquareBrace},
-                    {"mSelf", "self::", TSPHPLexer.Self},
+                    {"mSelf", "self", TSPHPLexer.Self},
+                    {"mSelfColonColon", "self::", TSPHPLexer.SelfColonColon},
+                    {"mSemicolon", ";", TSPHPLexer.Semicolon},
                     {"mShiftLeft", "<<", TSPHPLexer.ShiftLeft},
                     {"mShiftLeftEqual", "<<=", TSPHPLexer.ShiftLeftEqual},
                     {"mShiftRight", ">>", TSPHPLexer.ShiftRight},
                     {"mShiftRightEqual", ">>=", TSPHPLexer.ShiftRightEqual},
                     {"mStatic", "static", TSPHPLexer.Static},
+                    {"mSwitch", "switch", TSPHPLexer.Switch},
                     {"mThis", "$this", TSPHPLexer.This},
                     {"mThrow", "throw", TSPHPLexer.Throw},
                     {"mTry", "try", TSPHPLexer.Try},
@@ -152,8 +154,6 @@ public class TokenTest extends ALexerTest
                     {"mTypeObject", "object", TSPHPLexer.TypeObject},
                     {"mTypeResource", "resource", TSPHPLexer.TypeResource},
                     {"mTypeString", "string", TSPHPLexer.TypeString},
-                    {"mSemicolon", ";", TSPHPLexer.Semicolon},
-                    {"mSwitch", "switch", TSPHPLexer.Switch},
                     {"mUse", "use", TSPHPLexer.Use},
                     {"mVoid", "void", TSPHPLexer.Void},
                     {"mWhile", "while", TSPHPLexer.While}
@@ -180,13 +180,13 @@ public class TokenTest extends ALexerTest
         }
 
         String[] nullCombinations = VariationHelper.getUppercaseCombinations("null");
-        for(String combination:nullCombinations){
-            collection.add(new Object[]{"mNull",combination,TSPHPLexer.Null});
+        for (String combination : nullCombinations) {
+            collection.add(new Object[]{"mNull", combination, TSPHPLexer.Null});
         }
-        
+
         return collection;
     }
-    
+
     public static String[] getFloatTestStrings() {
         return new String[]{
                     "5867491023e7845120963",

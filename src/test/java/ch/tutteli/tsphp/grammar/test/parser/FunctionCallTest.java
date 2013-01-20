@@ -55,6 +55,10 @@ public class FunctionCallTest extends AParserTest
         collection.add(new Object[]{"\\a\\foo();"});
         collection.add(new Object[]{"\\a\\b\\foo();"});
         collection.add(new Object[]{"\\a\\b\\c\\foo();"});
+        collection.add(new Object[]{"foo()->bar();"});
+        collection.add(new Object[]{"foo()->bar()->asdf();"});
+        collection.add(new Object[]{"foo()->a->bar()[0]->asdf();"});
+        collection.add(new Object[]{"foo()->bar()[0]->a->asdf();"});
         
         //Fluent
         collection.addAll(MethodCallTest.getCalls(""));

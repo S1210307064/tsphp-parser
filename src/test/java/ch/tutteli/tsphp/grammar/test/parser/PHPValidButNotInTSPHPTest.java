@@ -121,8 +121,6 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     {"use a\\a; namespace a;",TSPHPParser.Namespace, 9},
                     //clone a new instance directly
                     {"Foo $foo = clone new Foo();",TSPHPParser.VariableId,4},
-                    //clone a return value directly
-                    {"Foo $foo = clone createFoo();",TSPHPParser.VariableId,4},
                     //clone without assignment
                     {"clone $foo;", TSPHPParser.Clone,0},
                 }));

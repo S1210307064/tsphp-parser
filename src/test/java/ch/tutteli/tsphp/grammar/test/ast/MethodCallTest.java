@@ -31,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class FunctionCallTest extends AAstTest
+public class MethodCallTest extends AAstTest
 {
 
-    public FunctionCallTest(String testString, String expectedResult) {
+    public MethodCallTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -47,36 +47,26 @@ public class FunctionCallTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"foo();", "(function call (class/interface type foo) EXPRESSION_LIST)"},
-                    {"\\foo();", "(function call (class/interface type \\ foo) EXPRESSION_LIST)"},
-                    {"a\\foo();", "(function call (class/interface type a foo) EXPRESSION_LIST)"},
-                    {"a\\a\\foo();", "(function call (class/interface type a a foo) EXPRESSION_LIST)"},
-                    {"a\\a\\b\\foo();", "(function call (class/interface type a a b foo) EXPRESSION_LIST)"},
-                    {"\\a\\foo();", "(function call (class/interface type \\ a foo) EXPRESSION_LIST)"},
-                    {"\\a\\b\\foo();", "(function call (class/interface type \\ a b foo) EXPRESSION_LIST)"},
-                    {"\\a\\b\\c\\foo();", "(function call (class/interface type \\ a b c foo) EXPRESSION_LIST)"},
                     {
-                        "foo()->bar(2,2);", 
-                        "(method call "
-                            + "(function call (class/interface type foo) EXPRESSION_LIST)"
-                        + " bar (EXPRESSION_LIST 2 2))"
+                        "$a->foo()->bar(2,2);", 
+                        "(method call (method call $a foo EXPRESSION_LIST) bar (EXPRESSION_LIST 2 2))"
                     },
                     {
-                        "foo()->bar(2,2)->asdf(1);", 
+                        "$a->foo()->bar(2,2)->asdf(1);", 
                         "(method call (method call "
-                            + "(function call (class/interface type foo) EXPRESSION_LIST)"
+                            + "(method call $a foo EXPRESSION_LIST)"
                         + " bar (EXPRESSION_LIST 2 2)) asdf (EXPRESSION_LIST 1))"
                     },
                 }));
         String[][] expressions = ExpressionTest.getExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
-                        "foo("+expression[0]+");", 
-                        "(function call (class/interface type foo) (EXPRESSION_LIST "+expression[1]+"))"
+                        "$a->foo("+expression[0]+");", 
+                        "(method call $a foo (EXPRESSION_LIST "+expression[1]+"))"
             });
             collection.add(new Object[]{
-                        "foo("+expression[0]+","+expression[0]+","+expression[0]+");",
-                        "(function call (class/interface type foo) (EXPRESSION_LIST "
+                        "$a->foo("+expression[0]+","+expression[0]+","+expression[0]+");",
+                        "(method call $a foo (EXPRESSION_LIST "
                         + ""+expression[1]+" "+expression[1]+" "+expression[1]+""
                         + "))"
                     });

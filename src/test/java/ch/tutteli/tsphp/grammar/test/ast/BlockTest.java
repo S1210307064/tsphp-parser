@@ -46,19 +46,22 @@ public class BlockTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        addToCollection(collection, VariableDeclarationTest.testStrings());
-        addToCollection(collection, VariableAssignmentTest.testStrings());
-        addToCollection(collection, IfTest.testStrings());
-        addToCollection(collection, SwitchTest.testStrings());
-        addToCollection(collection, ForTest.testStrings());
-        addToCollection(collection, ForeachTest.testStrings());
-        addToCollection(collection, WhileTest.testStrings());
-        addToCollection(collection, TryCatchTest.testStrings());
-        addToCollection(collection, ThrowTest.testStrings());
-        addToCollection(collection, ReturnTest.testStrings());
+        addToCollection(collection, ArrayAccessTest.testStrings());
+        addToCollection(collection, CloneTest.testStrings());
         addToCollection(collection, EchoTest.testStrings());
         addToCollection(collection, ExitTest.testStrings());
-
+        addToCollection(collection, ForTest.testStrings());
+        addToCollection(collection, ForeachTest.testStrings());
+        addToCollection(collection, FunctionCallTest.testStrings());
+        addToCollection(collection, IfTest.testStrings());
+        addToCollection(collection, MethodCallTest.testStrings());
+        addToCollection(collection, VariableDeclarationTest.testStrings());
+        addToCollection(collection, VariableAssignmentTest.testStrings());
+        addToCollection(collection, ReturnTest.testStrings());
+        addToCollection(collection, TryCatchTest.testStrings());
+        addToCollection(collection, ThrowTest.testStrings());
+        addToCollection(collection, SwitchTest.testStrings());
+        addToCollection(collection, WhileTest.testStrings());
         return collection;
     }
 

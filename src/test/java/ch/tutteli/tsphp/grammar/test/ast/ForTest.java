@@ -52,7 +52,7 @@ public class ForTest extends AAstTest
                         "(for "
                             + "(EXPRESSION_LIST (= $a 1)) "
                             + "(EXPRESSION_LIST true) "
-                            + "(EXPRESSION_LIST (PRE_INCREMENT_DECREMENT ++ $i)) "
+                            + "(EXPRESSION_LIST (pre increment/decrement ++ $i)) "
                             + "(= $a 1)"
                         + ")"
                     },
@@ -61,7 +61,7 @@ public class ForTest extends AAstTest
                         "(for "
                             + "EXPRESSION_LIST "
                             + "(EXPRESSION_LIST true) "
-                            + "(EXPRESSION_LIST (PRE_INCREMENT_DECREMENT ++ $i)) "
+                            + "(EXPRESSION_LIST (pre increment/decrement ++ $i)) "
                             + "(= $a 1)"
                         + ")"
                     },
@@ -94,6 +94,14 @@ public class ForTest extends AAstTest
                         "for(         ;      ;       ) $a=1;",
                         "(for "
                             + "EXPRESSION_LIST "
+                            + "EXPRESSION_LIST "
+                            + "EXPRESSION_LIST "
+                            + "(= $a 1)"
+                        + ")"},
+                    {
+                        "for(int $a,$b=1,$c; ; ) $a=1;",
+                        "(for "
+                            + "(VARIABLE_DECLARATION_LIST (variable declaration int $a) (= $b 1) $c) "
                             + "EXPRESSION_LIST "
                             + "EXPRESSION_LIST "
                             + "(= $a 1)"

@@ -94,14 +94,13 @@ tokens{
 	NotEqualAlternative = '<>';
 	NotIdentical = '!==';
 	ObjectOperator = '->';
-	Parent = 'parent::';
+	Parent = 'parent';
+	ParentColonColon = 'parent::';
 	Plus = '+';
 	PlusEqual = '+=';
 	PlusPlus = '++';
 	Private = 'private';
 	Protected = 'protected';
-	ProtectParent = 'parent';
-	ProtectSelf = 'self';
 	ProtectThis = 'this';
 	Public = 'public';
 	QuestionMark = '?';
@@ -125,7 +124,8 @@ tokens{
 	TypeArray = 'array';
 	TypeResource = 'resource';
 	TypeObject = 'object';
-	Self = 'self::';
+	Self = 'self';
+	SelfColonColon = 'self::';
 	Semicolon = ';';
 	Switch = 'switch';
 	Use = 'use';
@@ -139,6 +139,9 @@ tokens{
 	CLASS_INTERFACE_TYPE;
 	EXPRESSION_LIST;
 	FUNCTION_CALL;
+	MEMBER_ACCESS;
+	MEMBER_ACCESS_STATIC;
+	METHOD_CALL;
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
 	SWITCH_CASES;
@@ -228,8 +231,8 @@ useDeclarationList
 	
 useDeclaration
 	:	( (Identifier '\\' namespaceId)
-			| ('\\'namespaceId)
-			) 
+		  | ('\\'namespaceId)
+		) 
 		('as' Identifier)? 
 	;
 definition
@@ -282,7 +285,7 @@ accessorWithoutPrivate
 	;
 
 variableDeclarationListInclVariableId
-	:	variableDeclaration (',' (variableAssignment|VariableId) )*
+	:	variableDeclaration (','! (variableAssignment|VariableId) )*
 	;
 
 
@@ -390,6 +393,7 @@ instructionInclBreakContinue
 instruction
 	:	variableAssignment ';'!
 	|	variableDeclaration ';'!
+	|	incrementDecrement ';'!
 	|	ifCondition
 	|	switchCondition
 	|	forLoop
@@ -398,8 +402,8 @@ instruction
 	|	doWhileLoop
 	|	tryCatch
 	|	throwException
-	|	functionCallFluentWithoutAccessAtTheEnd ';'!
-	|	methodCallFluentWithoutAccessAtTheEnd ';'!	
+	|	postFixCallWithoutAccesAtTheEnd ';'!
+	|	postFixMethodCallWithoutAccessAtTheEnd ';'!
 	|	'return'^ expression? ';'!
 	|	'echo'^ expression (','! expression)* ';'!
 	|	'exit' ';'!
@@ -407,12 +411,11 @@ instruction
 	
 expressionList
 	:	expression (',' expression)* -> ^(EXPRESSION_LIST expression+)
-	|	-> EXPRESSION_LIST
+	|	/* empty */ -> EXPRESSION_LIST
 	;
 
 variableAssignment
 	:	VariableId assignmentOperator^ expression
-	|	incrementDecrement
 	;
 	
 incrementDecrement
@@ -436,7 +439,8 @@ assignmentOperator
 	;
 	
 postIncrementDecrement 
-	:	variableMemberStaticMember plusPlusOrMinusMinus -> ^(POST_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember)
+	:	postFixVariableWithoutCall plusPlusOrMinusMinus 
+		-> ^(POST_INCREMENT_DECREMENT[$postFixVariableWithoutCall.start, "post increment/decrement"] plusPlusOrMinusMinus postFixVariableWithoutCall)
 	;
 	
 plusPlusOrMinusMinus
@@ -445,9 +449,9 @@ plusPlusOrMinusMinus
 	;
 	
 preIncrementDecrement
-	:	plusPlusOrMinusMinus variableMemberStaticMember -> ^(PRE_INCREMENT_DECREMENT plusPlusOrMinusMinus variableMemberStaticMember)
-	;
-	
+	:	plusPlusOrMinusMinus postFixVariableWithoutCall 
+		-> ^(PRE_INCREMENT_DECREMENT[$plusPlusOrMinusMinus.start,"pre increment/decrement"] plusPlusOrMinusMinus postFixVariableWithoutCall)
+	;	
 	
 variableDeclaration
 	:	 allTypes VariableId ('=' expression)? -> ^(VARIABLE_DECLARATION[$allTypes.start,"variable declaration"] allTypes VariableId expression?) ;
@@ -522,28 +526,26 @@ castOrBitwiseNotOrAt
 	:	cast = '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt -> ^(CAST[$cast,"cast"] allTypesWithoutResource castOrBitwiseNotOrAt)
 	|	'~'^ castOrBitwiseNotOrAt
 	|	'@'^ castOrBitwiseNotOrAt 
-	|	newOrClone
+	|	cloneOrNew
 	;
 
-newOrClone
-	:	'clone'^ variableMemberStaticMember
+cloneOrNew
+	:	'clone'^ (postFixCallInclAccesAtTheEnd|postFixVariableInclCall)
 	|	newObject
 	|	unaryPrimary
 	;
 
 	
-variableMemberStaticMember
-	:	staticAccessOrParent VariableId	memberAccessOrArrayAccess*
-	|	'$this' memberAccessOrArrayAccess+
-	|	VariableId memberAccessOrArrayAccess+
+variableOrMemberOrStaticMember
+	:	staticAccessOrParent VariableId -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"static member access"] staticAccessOrParent VariableId)
 	|	'$this'
-	|	VariableId
+	|	VariableId 
 	;
 
 staticAccessOrParent
-	:	'self::'
-	|	'parent::'
-	|	classInterfaceTypeWithoutObject'::'
+	:	'self::' -> 'self'
+	|	'parent::' -> 'parent'
+	|	classInterfaceTypeWithoutObject '::'!
 	;
 
 memberAccessOrArrayAccess
@@ -562,18 +564,27 @@ unaryPrimary
 	|	primary
 	;
 primary
-	:	functionCallFluentInclAccessAtTheEnd
-	|	methodCallFluentInclAccessAtTheEnd
+	:	postFixCallInclAccesAtTheEnd
 	|	atom
 	;	
-
-functionCallFluentInclAccessAtTheEnd
-	:	functionCallFluentWithoutAccessAtTheEnd memberAccessOrArrayAccess?
+	
+postFixCallInclAccesAtTheEnd
+	:	(postFixCallWithoutAccesAtTheEnd -> postFixCallWithoutAccesAtTheEnd)
+		(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"member access"] $postFixCallInclAccesAtTheEnd Identifier)
+		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"array access"] $postFixCallInclAccesAtTheEnd expression)
+		)*
 	;
-
-functionCallFluentWithoutAccessAtTheEnd
-	:	functionCall callOrAccess* call
-	|	functionCall call*
+	
+postFixCallWithoutAccesAtTheEnd
+	:	(	functionCall -> functionCall
+		|	methodCall -> methodCall
+		)
+		(
+			(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"member access"] $postFixCallWithoutAccesAtTheEnd Identifier)
+			|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"array access"] $postFixCallWithoutAccesAtTheEnd expression)
+			)*
+			call -> ^(METHOD_CALL[$call.start,"method call"] $postFixCallWithoutAccesAtTheEnd call)
+		)*
 	;
 
 functionCall
@@ -586,27 +597,51 @@ callOrAccess
 	|	call
 	;	
 	
-call	:	('->' Identifier '(' expressionList')') -> ^('->' Identifier expressionList);
-	
-methodCallFluentInclAccessAtTheEnd
-	:	methodCallFluentWithoutAccessAtTheEnd memberAccessOrArrayAccess?
+call	:	'->'! Identifier '('! expressionList ')'!
 	;
 	
-methodCallFluentWithoutAccessAtTheEnd
-	: 	methodCall callOrAccess* call
-	|	methodCall call*
-	;
 methodCall
-	:	( (variableMemberStaticMember '->') | staticAccessOrParent) Identifier '(' expressionList')'
+	:	callee Identifier '(' expressionList')'
+		-> ^(METHOD_CALL[$callee.start,"method call"] callee Identifier expressionList)
+	;
+	
+callee	:	variableOrMemberOrStaticMember '->'!
+	|	staticAccessOrParent
 	;
 
 atom	:	'(' expression ')' -> expression
 	|	incrementDecrement
-	|	variableMemberStaticMember
+	|	postFixVariableInclCall
 	|	classConstant
 	|	globalConstant
 	|	array
 	|	primitiveAtom
+	;
+
+postFixVariableWithoutCall
+	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
+		(
+			memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"member access"] $postFixVariableWithoutCall Identifier)
+		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"array access"] $postFixVariableWithoutCall expression)	
+		)*
+	;
+	
+postFixVariableInclCall
+	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
+		(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"member access"] $postFixVariableInclCall Identifier)
+		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"array access"] $postFixVariableInclCall expression)
+		|	call -> ^(METHOD_CALL[$call.start,"method call"] $postFixVariableInclCall call)
+		)*
+	;
+	
+postFixMethodCallWithoutAccessAtTheEnd
+	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
+		(
+			(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"member access"] $postFixMethodCallWithoutAccessAtTheEnd Identifier)
+			|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"array access"] $postFixMethodCallWithoutAccessAtTheEnd expression)
+			)*
+			call -> ^(METHOD_CALL[$call.start,"method call"] $postFixMethodCallWithoutAccessAtTheEnd call)
+		)+
 	;
 	
 globalConstant
@@ -730,12 +765,8 @@ forInit	:	varListOrExprList
 	;
 
 varListOrExprList
-	:	variableDeclarationList -> ^(VARIABLE_DECLARATION_LIST variableDeclarationList)
+	:	variableDeclarationListInclVariableId -> ^(VARIABLE_DECLARATION_LIST variableDeclarationListInclVariableId)
 	|	expressionList
-	;
-
-variableDeclarationList
-	:	variableDeclaration (','! variableAssignment)* 
 	;
 
 foreachLoop

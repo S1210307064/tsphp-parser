@@ -50,7 +50,6 @@ public class ArrayAccess extends AParserTest
         for (String expression : expressions) {
             collection.add(new Object[]{"array $d = $a[" + expression + "];"});
             collection.add(new Object[]{"array $d = $a[" + expression + "][" + expression + "];"});
-            collection.add(new Object[]{"array $d = $a[" + expression + "][" + expression + "];"});
             collection.add(new Object[]{"array $d = foo()[" + expression + "][" + expression + "];"});
             collection.add(new Object[]{"array $d = $a->foo()[" + expression + "][" + expression + "];"});
             collection.add(new Object[]{"array $d = self::foo()[" + expression + "][" + expression + "];"});

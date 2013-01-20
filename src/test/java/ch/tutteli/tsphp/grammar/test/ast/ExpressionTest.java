@@ -167,12 +167,22 @@ public class ExpressionTest extends AAstTest
                     {"-$a - $b", "(- (unary minus $a) $b)"},
                     //
                     {"clone $a","(clone $a)"},
+                    {"clone $a->a","(clone (member access $a a))"},
                     {"new Type","(new (class/interface type Type) EXPRESSION_LIST)"},
                     //
                     {"foo()","(function call (class/interface type foo) EXPRESSION_LIST)"},
                     {"\\foo(1,1+2,3)","(function call (class/interface type \\ foo) (EXPRESSION_LIST 1 (+ 1 2) 3))"},
+                    {"$a->foo()","(method call $a foo EXPRESSION_LIST)"},
+                    {"$a->foo(true || false,123*9)","(method call $a foo (EXPRESSION_LIST (|| true false) (* 123 9)))"},
                     //
                     {"($a)", "$a"},
+                    {"$a++","(post increment/decrement ++ $a)"},
+                    {"$a--","(post increment/decrement -- $a)"},
+                    {"++$a","(pre increment/decrement ++ $a)"},
+                    {"--$a","(pre increment/decrement -- $a)"},
+                    {"$a","$a"},
+                    {"$a->a","(member access $a a)"},
+                    
                     //
                     {"(int) clone $a + $b", "(+ (cast int (clone $a)) $b)"},
                     {"(-$a + $b) * $c", "(* (+ (unary minus $a) $b) $c)"},

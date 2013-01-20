@@ -55,14 +55,16 @@ public class IncrementDecrementErrorTest extends AParserParserExceptionTest
                     //increment or decrement from call
                     {"++foo();", TSPHPParser.LeftParanthesis, 5},
                     {"--foo();", TSPHPParser.LeftParanthesis, 5},
-                    {"++$a->foo();", TSPHPParser.ObjectOperator, 4},
-                    {"--$a->foo();", TSPHPParser.ObjectOperator, 4},
-                    {"++$this->foo();", TSPHPParser.ObjectOperator, 7},
-                    {"--$this->foo();", TSPHPParser.ObjectOperator, 7},
-                    {"++self::$a->foo();", TSPHPParser.ObjectOperator, 10},
-                    {"--self::$a->foo();", TSPHPParser.ObjectOperator, 10},
-                    {"++parent::$a->foo();", TSPHPParser.ObjectOperator, 12},
-                    {"--parent::$a->foo();", TSPHPParser.ObjectOperator, 12}
+                    {"++$a->foo();", TSPHPParser.LeftParanthesis, 9},
+                    {"--$a->foo();", TSPHPParser.LeftParanthesis, 9},
+                    {"++$this->foo();", TSPHPParser.LeftParanthesis, 12},
+                    {"--$this->foo();", TSPHPParser.LeftParanthesis, 12},
+                    {"++self::$a->foo();", TSPHPParser.LeftParanthesis, 15},
+                    {"--self::$a->foo();", TSPHPParser.LeftParanthesis, 15},
+                    {"++parent::$a->foo();", TSPHPParser.LeftParanthesis, 17},
+                    {"--parent::$a->foo();", TSPHPParser.LeftParanthesis, 17},
+                    {"++Asdf::$a->foo();", TSPHPParser.LeftParanthesis, 15},
+                    {"--Asdf::$a->foo();", TSPHPParser.LeftParanthesis, 15}
                 });
     }
 }
