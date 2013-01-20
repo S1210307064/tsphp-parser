@@ -49,6 +49,7 @@ public class BlockTest extends AAstTest
         addToCollection(collection, VariableDeclarationTest.testStrings());
         addToCollection(collection, VariableAssignmentTest.testStrings());
         addToCollection(collection, IfTest.testStrings());
+        addToCollection(collection, SwitchTest.testStrings());
 
         return collection;
     }
@@ -58,7 +59,7 @@ public class BlockTest extends AAstTest
         for (Object[] testString : testStrings) {
             ++count;
             collection.add(new Object[]{"{" + testString[0] + "}", "(block " + testString[1] + ")"});
-            if (count > 10) {
+            if (count >= 10) {
                 break;
             }
         }

@@ -137,6 +137,9 @@ tokens{
 	CAST;
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
+	SWITCH_GROUP;
+	SWITCH_INSTRUCTIONS;
+	SWITCH_CASES;
 	VARIABLE_DECLARATION;
 	UMINUS;
 	UPLUS;
@@ -679,19 +682,33 @@ ifCondition
 
 
 switchCondition	
-	:	'switch' '(' VariableId ')' '{' 
-		(
-			(caseLabel+ instructionInclBreakContinue+)+ defaultLabel instructionInclBreakContinue+ (caseLabel+ instructionInclBreakContinue+)+
-		|	(caseLabel+ instructionInclBreakContinue+)+ (defaultLabel instructionInclBreakContinue+)?
+	:	'switch' '(' VariableId ')' '{' switchContent '}'  -> ^('switch' VariableId switchContent)
+	;
+switchContent
+	:	normalCase+ defaultCase normalCase+ 
+	|	normalCase+ defaultCase?
+	;
+
+normalCase
+	:	caseLabel+ instructionInclBreakContinue+ 
+		-> ^(SWITCH_GROUP 
+			^(SWITCH_CASES[$normalCase.start,"switch cases"] caseLabel+) 
+			instructionInclBreakContinue+
 		)
-		'}'
+	;	
+defaultCase
+	:	defaultLabel instructionInclBreakContinue+ 
+		-> ^(SWITCH_GROUP 
+			^(SWITCH_CASES[$defaultCase.start,"switch cases"] defaultLabel) 
+			instructionInclBreakContinue+
+		)
 	;
 
 caseLabel	
-	:	'case' expression ':';
+	:	'case'! expression ':'!;
 
 defaultLabel
-	:	'default' ':';
+	:	'default' ':'!;
 	
 forLoop	:	'for' '(' forInit? ';' expressionList?  ';' forUpdate? ')' instructionInclBreakContinue;
 
