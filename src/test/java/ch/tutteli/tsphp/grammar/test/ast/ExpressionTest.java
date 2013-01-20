@@ -145,16 +145,16 @@ public class ExpressionTest extends AAstTest
                     {"!!$a", "(! (! $a))"},
                     {"!!! $a", "(! (! (! $a)))"},
                     //
-                    {"$a instanceof MyClass", "(instanceof $a MyClass)"},
+                    {"$a instanceof MyClass", "(instanceof $a (class/interface type MyClass))"},
                     {"$a instanceof $b", "(instanceof $a $b)"},
                     //
-                    {"(Type) $a", "(cast Type $a)"},
+                    {"(Type) $a", "(cast (class/interface type Type) $a)"},
                     {"~$a", "(~ $a)"},
                     {"@$a", "(@ $a)"},
-                    {"(Type) (MyClass) $a", "(cast Type (cast MyClass $a))"},
+                    {"(Type) (MyClass) $a", "(cast (class/interface type Type) (cast (class/interface type MyClass) $a))"},
                     {"~~$a", "(~ (~ $a))"},
                     {"@@$a", "(@ (@ $a))"},
-                    {"@(Type) ~$a", "(@ (cast Type (~ $a)))"},
+                    {"@(Type) ~$a", "(@ (cast (class/interface type Type) (~ $a)))"},
                     //
                     {"clone $a", "(clone $a)"},
                     //
@@ -170,7 +170,7 @@ public class ExpressionTest extends AAstTest
                     //
                     {"(int) clone $a + $b", "(+ (cast int (clone $a)) $b)"},
                     {"(-$a + $b) * $c", "(* (+ (unary minus $a) $b) $c)"},
-                    {"!($a instanceof Type) || $a < $b+$c == ~(1 | 3 & 12)", "(|| (! (instanceof $a Type)) (== (< $a (+ $b $c)) (~ (| 1 (& 3 12)))))"}
+                    {"!($a instanceof Type) || $a < $b+$c == ~(1 | 3 & 12)", "(|| (! (instanceof $a (class/interface type Type))) (== (< $a (+ $b $c)) (~ (| 1 (& 3 12)))))"}
                 };
     }
 }

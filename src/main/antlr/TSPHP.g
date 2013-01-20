@@ -135,10 +135,10 @@ tokens{
 	// Imaginary tokens
 	BLOCK;
 	CAST;
+	CLASS_INTERFACE_TYPE;
 	EXPRESSION_LIST;
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
-	SWITCH_GROUP;
 	SWITCH_CASES;
 	VARIABLE_DECLARATION;
 	VARIABLE_DECLARATION_LIST;
@@ -208,7 +208,8 @@ Identifier
 	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*;
 
 namespaceId
-	:	Identifier ('\\' Identifier)*;
+	:	Identifier ('\\' Identifier)*
+	;
 
 
 withoutNamespace 
@@ -244,13 +245,16 @@ classDeclaration
 	;
 	
 extendsDeclaration	
-	:	'extends' identifierList;
+	:	'extends' identifierList
+	;
 
 identifierList
-	:	Identifier (',' Identifier)*;
+	:	Identifier (',' Identifier)*
+	;
 
 implementsDeclaration
-	:	'implements' identifierList;
+	:	'implements' identifierList
+	;
 	
 classBody
 	:	constDeclarationList
@@ -272,10 +276,12 @@ accessor:	accessorWithoutPrivate
 	;
 	
 accessorWithoutPrivate
-	:	'protected'|'public';
+	:	'protected'|'public'
+	;
 
 variableDeclarationListInclVariableId
-	:	variableDeclaration (',' (variableAssignment|VariableId) )*;
+	:	variableDeclaration (',' (variableAssignment|VariableId) )*
+	;
 
 
 methodDeclaration	
@@ -285,10 +291,12 @@ methodDeclaration
 			|	'final' 'static'?
 			|	//empty
 			) accessor?
-		) functionDeclaration;	
+		) functionDeclaration
+	;	
 
 interfaceDeclaration
-	:	'interface' Identifier implementsDeclaration? '{' interfaceBody* '}';
+	:	'interface' Identifier implementsDeclaration? '{' interfaceBody* '}'
+	;
 
 interfaceBody
 	:	constDeclarationList
@@ -296,22 +304,27 @@ interfaceBody
 	;
 
 interfaceMethodDeclaration
-	:	'public'? functionDeclarationWithoutBody ';';
+	:	'public'? functionDeclarationWithoutBody ';'
+	;
 
 
 
 /******* Procedural related - is also be used by OOP ************/
 //***************************************************************/
 functionDeclaration	
-	:	 functionDeclarationWithoutBody '{' instructionWithoutBreakContinue* '}';
+	:	 functionDeclarationWithoutBody '{' instructionWithoutBreakContinue* '}'
+	;
 	
 functionDeclarationWithoutBody
-	:	'function' returnType Identifier '(' paramList? ')';
+	:	'function' returnType Identifier '(' paramList? ')'
+	;
 	
 returnType
-	:	allTypes | 'void';
+	:	allTypes | 'void'
+	;
 
-allTypes:	primitiveTypesExtended | classInterfaceTypeInclObject;
+allTypes:	primitiveTypesExtended | classInterfaceTypeInclObject
+	;
 
 allTypesWithoutResource
 	:	primitiveTypesInclArray
@@ -337,8 +350,7 @@ primitiveTypesExtended
 	;
 
 classInterfaceTypeWithoutObject
-		//namespaceId already contains Identifier at the end
-	:	'\\'? namespaceId 
+	:	start='\\'? id=Identifier ('\\' subId=Identifier)* ->  ^(CLASS_INTERFACE_TYPE[$classInterfaceTypeWithoutObject.start,"class/interface type"] $start? $id $subId*)
 	;
 	
 classInterfaceTypeInclObject
@@ -701,17 +713,12 @@ switchContent
 
 normalCase
 	:	caseLabel+ instructionInclBreakContinue+ 
-		-> ^(SWITCH_GROUP 
-			^(SWITCH_CASES[$normalCase.start,"switch cases"] caseLabel+) 
-			instructionInclBreakContinue+
-		)
+		-> ^(SWITCH_CASES[$normalCase.start,"switch cases"] caseLabel+) instructionInclBreakContinue+
+		
 	;	
 defaultCase
 	:	defaultLabel instructionInclBreakContinue+ 
-		-> ^(SWITCH_GROUP 
-			^(SWITCH_CASES[$defaultCase.start,"switch cases"] defaultLabel) 
-			instructionInclBreakContinue+
-		)
+		-> ^(SWITCH_CASES[$defaultCase.start,"switch cases"] defaultLabel) instructionInclBreakContinue+
 	;
 
 caseLabel	
@@ -745,7 +752,15 @@ doWhileLoop
 	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';' -> ^('do' instructionInclBreakContinue expression);
 
 tryCatch
-	:	'try' '{' instructionInclBreakContinue+ '}' ('catch' '(' classInterfaceTypeInclObject VariableId ')''{' instructionInclBreakContinue* '}')+
+	:	'try' tryBegin='{' instructionInclBreakContinue+ '}' catchBlock+
+		-> ^('try' ^(BLOCK[$tryBegin,"block"] instructionInclBreakContinue+) catchBlock+)
+	;
+catchBlock
+	:	'catch' '(' classInterfaceTypeWithoutObject VariableId ')' catchBegin='{' instructionInclBreakContinue* '}'
+		-> ^(VARIABLE_DECLARATION_LIST 
+			^(VARIABLE_DECLARATION[$classInterfaceTypeWithoutObject.start,"variable declaration"] classInterfaceTypeWithoutObject VariableId)
+		) 
+		^(BLOCK[$catchBegin,"block"] instructionInclBreakContinue*)
 	;
 
 throwException

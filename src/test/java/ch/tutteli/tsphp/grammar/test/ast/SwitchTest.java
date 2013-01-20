@@ -44,56 +44,53 @@ public class SwitchTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"switch($a){ case 1: $a=1; }", "(switch $a (SWITCH_GROUP (switch cases 1) (= $a 1)))"},
+                    {"switch($a){ case 1: $a=1; }", "(switch $a (switch cases 1) (= $a 1))"},
                     {
                         "switch($a){ case 1: case 2: $a=1; break; }",
-                        "(switch $a (SWITCH_GROUP (switch cases 1 2) (= $a 1) break))"
+                        "(switch $a (switch cases 1 2) (= $a 1) break)"
                     },
                     {
                         "switch($a){ case 1: $a=1; case 2: $c=1;}",
-                        "(switch $a (SWITCH_GROUP (switch cases 1) (= $a 1)) (SWITCH_GROUP (switch cases 2) (= $c 1)))"
+                        "(switch $a (switch cases 1) (= $a 1) (switch cases 2) (= $c 1))"
                     },
                     {
                         "switch($a){ case 1: $a=1; case 2: case 3: $a=1; }",
-                        "(switch $a "
-                            + "(SWITCH_GROUP (switch cases 1) (= $a 1)) "
-                            + "(SWITCH_GROUP (switch cases 2 3) (= $a 1))"
-                        + ")"
+                        "(switch $a (switch cases 1) (= $a 1) (switch cases 2 3) (= $a 1))"
                     },
                     {
                         "switch($a){ case 1: $a=1; $b=2; }",
-                        "(switch $a (SWITCH_GROUP (switch cases 1) (= $a 1) (= $b 2)))"
+                        "(switch $a (switch cases 1) (= $a 1) (= $b 2))"
                     },
                     {
                         "switch($a){ case 1: $a=1; case 2: case 3: $a=2; default: $c=2; }",
                         "(switch $a "
-                            + "(SWITCH_GROUP (switch cases 1) (= $a 1)) "
-                            + "(SWITCH_GROUP (switch cases 2 3) (= $a 2)) "
-                            + "(SWITCH_GROUP (switch cases default) (= $c 2))"
+                            + "(switch cases 1) (= $a 1) "
+                            + "(switch cases 2 3) (= $a 2) "
+                            + "(switch cases default) (= $c 2)"
                         + ")"
                     },
                     {
                         "switch($a){ case 1: $a=1; case 2: $a=1; default: $c=2; case 3: $a=2; }", 
                         "(switch $a "
-                            + "(SWITCH_GROUP (switch cases 1) (= $a 1)) "
-                            + "(SWITCH_GROUP (switch cases 2) (= $a 1)) "
-                            + "(SWITCH_GROUP (switch cases default) (= $c 2)) "
-                            + "(SWITCH_GROUP (switch cases 3) (= $a 2))"
+                            + "(switch cases 1) (= $a 1) "
+                            + "(switch cases 2) (= $a 1) "
+                            + "(switch cases default) (= $c 2) "
+                            + "(switch cases 3) (= $a 2)"
                         + ")"
                     },
                     {
                         "switch($a){ case 1: {$a=1; $b=2; } case 2: case 3: {$a=1;} }",
                         "(switch $a "
-                            + "(SWITCH_GROUP (switch cases 1) (block (= $a 1) (= $b 2))) "
-                            + "(SWITCH_GROUP (switch cases 2 3) (block (= $a 1)))"
+                            + "(switch cases 1) (block (= $a 1) (= $b 2)) "
+                            + "(switch cases 2 3) (block (= $a 1))"
                         + ")"
                     },
                     
                     {
                         "switch($a){ case 1: {$a=1; $b=2; } {$a=1;} case 2: case 3: {$a=1;} }",
                         "(switch $a "
-                            + "(SWITCH_GROUP (switch cases 1) (block (= $a 1) (= $b 2)) (block (= $a 1))) "
-                            + "(SWITCH_GROUP (switch cases 2 3) (block (= $a 1)))"
+                            + "(switch cases 1) (block (= $a 1) (= $b 2)) (block (= $a 1)) "
+                            + "(switch cases 2 3) (block (= $a 1))"
                         + ")"
                     }
         });

@@ -47,7 +47,10 @@ public class VariableDeclarationTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"Type $a;", "(variable declaration Type $a)"},
+                    {"Type $a;", "(variable declaration (class/interface type Type) $a)"},
+                    {"\\Type $a;", "(variable declaration (class/interface type \\ Type) $a)"},
+                    {"a\\Type $a;", "(variable declaration (class/interface type a Type) $a)"},
+                    {"\\a\\Type $a;", "(variable declaration (class/interface type \\ a Type) $a)"},
                     {"bool $a;", "(variable declaration bool $a)"},
                     {"boolean $a;", "(variable declaration bool $a)"},
                     {"int $a;", "(variable declaration int $a)"},
@@ -58,7 +61,7 @@ public class VariableDeclarationTest extends AAstTest
                 }));
         String[][] expressions = ExpressionTest.getExpressions();
         for (Object[] expression : expressions) {
-            collection.add(new Object[]{"Type $a = " + expression[0] + ";", "(variable declaration Type $a " + expression[1] + ")"});
+            collection.add(new Object[]{"int $a = " + expression[0] + ";", "(variable declaration int $a " + expression[1] + ")"});
         }
         return collection;
     }

@@ -47,7 +47,7 @@ public class ForeachTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"foreach($a as int $k => MyClass $v)$a=1;", "(foreach $a int $k MyClass $v (= $a 1))"},
+                    {"foreach($a as int $k => MyClass $v)$a=1;", "(foreach $a int $k (class/interface type MyClass) $v (= $a 1))"},
                     {"foreach($a as float $v) $a=1;", "(foreach $a float $v (= $a 1))"},
                     {"foreach($a as string $k => string $v){$a=1;}", "(foreach $a string $k string $v (block (= $a 1)))"},
                     {"foreach($a as bool $v) {$a=1;}", "(foreach $a bool $v (block (= $a 1)))"},

@@ -47,12 +47,59 @@ public class ForTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"for($a=1     ; true ; ++$i  ) $a=1;", "(for (EXPRESSION_LIST (= $a 1)) (EXPRESSION_LIST true) (EXPRESSION_LIST (PRE_INCREMENT_DECREMENT ++ $i)) (= $a 1))"},
-                    {"for(         ; true ; ++$i  ) $a=1;", "(for EXPRESSION_LIST (EXPRESSION_LIST true) (EXPRESSION_LIST (PRE_INCREMENT_DECREMENT ++ $i)) (= $a 1))"},
-                    {"for(         ;      ; $i+=1 ) $a=1;", "(for EXPRESSION_LIST EXPRESSION_LIST (EXPRESSION_LIST (+= $i 1)) (= $a 1))"},
-                    {"for(         ; true ;       ) $a=1;", "(for EXPRESSION_LIST (EXPRESSION_LIST true) EXPRESSION_LIST (= $a 1))"},
-                    {"for(         ;      ;       ) $a=1;", "(for EXPRESSION_LIST EXPRESSION_LIST EXPRESSION_LIST (= $a 1))"},}));
-        
+                    {
+                        "for($a=1     ; true ; ++$i  ) $a=1;",
+                        "(for "
+                            + "(EXPRESSION_LIST (= $a 1)) "
+                            + "(EXPRESSION_LIST true) "
+                            + "(EXPRESSION_LIST (PRE_INCREMENT_DECREMENT ++ $i)) "
+                            + "(= $a 1)"
+                        + ")"
+                    },
+                    {
+                        "for(         ; true ; ++$i  ) $a=1;",
+                        "(for "
+                            + "EXPRESSION_LIST "
+                            + "(EXPRESSION_LIST true) "
+                            + "(EXPRESSION_LIST (PRE_INCREMENT_DECREMENT ++ $i)) "
+                            + "(= $a 1)"
+                        + ")"
+                    },
+                    {
+                        "for(         ;      ; $i+=1 ) $a=1;",
+                        "(for "
+                            + "EXPRESSION_LIST "
+                            + "EXPRESSION_LIST "
+                            + "(EXPRESSION_LIST (+= $i 1)) "
+                            + "(= $a 1)"
+                        + ")"
+                    },
+                    {
+                        "for(         ; true ;       ) $a=1;",
+                        "(for "
+                            + "EXPRESSION_LIST "
+                            + "(EXPRESSION_LIST true) "
+                            + "EXPRESSION_LIST "
+                            + "(= $a 1)"
+                        + ")"},
+                    {
+                        "for(         ;      ;       ) $a=1;",
+                        "(for "
+                            + "EXPRESSION_LIST "
+                            + "EXPRESSION_LIST "
+                            + "EXPRESSION_LIST "
+                            + "(= $a 1)"
+                        + ")"},
+                    {
+                        "for(         ;      ;       ) $a=1;",
+                        "(for "
+                            + "EXPRESSION_LIST "
+                            + "EXPRESSION_LIST "
+                            + "EXPRESSION_LIST "
+                            + "(= $a 1)"
+                        + ")"}
+                }));
+
         String[][] expressions = ExpressionTest.getExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
@@ -60,20 +107,22 @@ public class ForTest extends AAstTest
                         "(for "
                             + "(EXPRESSION_LIST " + expression[1] + ") "
                             + "(EXPRESSION_LIST " + expression[1] + ") "
-                            + "(EXPRESSION_LIST " + expression[1] + ")"
-                        + " (= $a 1))"
+                            + "(EXPRESSION_LIST " + expression[1] + ") "
+                            + "(= $a 1)"
+                        + ")"
                     });
             collection.add(new Object[]{
                         "for("
-                            + expression[0] + "," + expression[0] + ";"
-                            + expression[0] + "," + expression[0] + ";"
-                            + expression[0] + "," + expression[0] + " "
+                        + expression[0] + "," + expression[0] + ";"
+                        + expression[0] + "," + expression[0] + ";"
+                        + expression[0] + "," + expression[0] + " "
                         + ") $a^=1;",
                         "(for "
                             + "(EXPRESSION_LIST " + expression[1] + " " + expression[1] + ") "
                             + "(EXPRESSION_LIST " + expression[1] + " " + expression[1] + ") "
-                            + "(EXPRESSION_LIST " + expression[1] + " " + expression[1] + ")"
-                        + " (^= $a 1))"
+                            + "(EXPRESSION_LIST " + expression[1] + " " + expression[1] + ") "
+                            + "(^= $a 1)"
+                        + ")"
                     });
         }
 
