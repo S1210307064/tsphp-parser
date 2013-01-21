@@ -54,7 +54,6 @@ public class ExpressionErrorTest extends AParserParserExceptionTest
                     {"$a ! instanceof $b;", TSPHPParser.LogicNot, 3},
                     //not yet possible in PHP
                     {"new Foo()[0];", TSPHPParser.LeftSquareBrace, 9},
-                    
                     //expressions with only two operands
                     {"1 < 2 < 3;", TSPHPParser.LessThan, 6},
                     {"1 < 2 <= 3;", TSPHPParser.LessEqualThan, 6},
@@ -106,6 +105,27 @@ public class ExpressionErrorTest extends AParserParserExceptionTest
                     {"--1.0;", TSPHPParser.Float, 2},
                     {"1.1++;", TSPHPParser.PlusPlus, 3},
                     {"1.1--;", TSPHPParser.MinusMinus, 3},
+                    {"++'a';", TSPHPParser.String, 2},
+                    {"--'a';", TSPHPParser.String, 2},
+                    {"'a'++;", TSPHPParser.PlusPlus, 3},
+                    {"'a'--;", TSPHPParser.MinusMinus, 3},
+                    //semicolon is exprected because the parser thinks its a static member access
+                    {"++E_ALL;", TSPHPParser.Semicolon, 7},
+                    {"--E_ALL;", TSPHPParser.Semicolon, 7},
+                    {"E_ALL++;", TSPHPParser.PlusPlus, 5},
+                    {"E_ALL--;", TSPHPParser.MinusMinus, 5},
+                    //not allowed casts
+                    {"(object) $a;", TSPHPParser.TypeObject, 1},
+                    {"(resource) $a;", TSPHPParser.TypeResource, 1},
+                    //misuse instanceof operator
+                    {"$a instanceof bool;", TSPHPParser.TypeBool, 14},
+                    {"$a instanceof boolean;", TSPHPParser.TypeBoolean, 14},
+                    {"$a instanceof int;", TSPHPParser.TypeInt, 14},
+                    {"$a instanceof float;", TSPHPParser.TypeFloat, 14},
+                    {"$a instanceof string;", TSPHPParser.TypeString, 14},
+                    {"$a instanceof array;", TSPHPParser.TypeArray, 14},
+                    {"$a instanceof resource;", TSPHPParser.TypeResource, 14},
+                    {"$a instanceof object;", TSPHPParser.TypeObject, 14}
                 });
     }
 }

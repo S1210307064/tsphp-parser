@@ -352,9 +352,9 @@ returnType
 allTypes:	primitiveTypesExtended | classInterfaceTypeInclObject
 	;
 
-allTypesWithoutResource
+allTypesWithoutObjectAndResource
 	:	primitiveTypesInclArray
-	| 	classInterfaceTypeInclObject
+	| 	classInterfaceTypeWithoutObject
 	;
 
 primitiveTypes
@@ -542,7 +542,7 @@ instanceOf
 	:	castOrBitwiseNotOrAt ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
 
 castOrBitwiseNotOrAt
-	:	cast = '(' allTypesWithoutResource ')' castOrBitwiseNotOrAt -> ^(CAST[$cast,"cast"] allTypesWithoutResource castOrBitwiseNotOrAt)
+	:	cast = '(' allTypesWithoutObjectAndResource ')' castOrBitwiseNotOrAt -> ^(CAST[$cast,"cast"] allTypesWithoutObjectAndResource castOrBitwiseNotOrAt)
 	|	'~'^ castOrBitwiseNotOrAt
 	|	'@'^ castOrBitwiseNotOrAt 
 	|	cloneOrNew
@@ -566,11 +566,6 @@ staticAccessOrParent
 	|	p='parent::' -> Parent[$p,"parent"]
 	|	classInterfaceTypeWithoutObject '::'!
 	;
-
-memberAccessOrArrayAccess
-	:	'->' Identifier -> ^('->' Identifier)
-	|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"array access"] expression)
-	;	
 
 newObject 
 	:	'new' classInterfaceTypeWithoutObject actualParameters -> ^('new' classInterfaceTypeWithoutObject actualParameters)
@@ -615,12 +610,6 @@ functionCall
 	:	classInterfaceTypeWithoutObject actualParameters
 		-> ^(FUNCTION_CALL[$classInterfaceTypeWithoutObject.start,"function call"] classInterfaceTypeWithoutObject actualParameters)
 	;
-
-
-callOrAccess
-	:	memberAccessOrArrayAccess
-	|	call
-	;	
 	
 call	:	'->'! Identifier actualParameters
 	;
@@ -820,7 +809,7 @@ forUpdate
 	;
 
 foreachLoop
-	:	'foreach' '(' expression 'as' (keyType=primitiveTypes keyVarId=VariableId '=>')? valueType=allTypesWithoutResource valueVarId=VariableId ')' instructionInclBreakContinue 
+	:	'foreach' '(' expression 'as' (keyType=primitiveTypes keyVarId=VariableId '=>')? valueType=allTypesWithoutObjectAndResource valueVarId=VariableId ')' instructionInclBreakContinue 
 		-> ^('foreach' expression $keyType? $keyVarId? $valueType $valueVarId instructionInclBreakContinue)
 	;
 
