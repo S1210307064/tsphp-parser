@@ -182,6 +182,18 @@ public class ExpressionTest extends AAstTest
                     {"--$a","(pre increment/decrement -- $a)"},
                     {"$a","$a"},
                     {"$a->a","(member access $a a)"},
+                    {"self::$a","(static member access self $a)"},
+                    {"self::a","(static member access self a)"},
+                    {"Foo::a","(static member access (class/interface type Foo) a)"},
+                    //
+                    {"true", "true"},
+                    {"false", "false"},
+                    {"1", "1"},
+                    {"2.123", "2.123"},
+                    {"'a'", "'a'"},
+                    {"\"asdf\"", "\"asdf\""},
+                    {"[1,2,a=>3]", "(array 1 2 (=> a 3))"},
+                    {"null", "null"},
                     
                     //
                     {"(int) clone $a + $b", "(+ (cast int (clone $a)) $b)"},

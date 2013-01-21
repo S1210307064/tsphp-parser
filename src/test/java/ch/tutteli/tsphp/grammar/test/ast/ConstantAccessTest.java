@@ -17,8 +17,11 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.VariationHelper;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,10 +32,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class CloneTest extends AAstTest
+public class ConstantAccessTest extends AAstTest
 {
 
-    public CloneTest(String testString, String expectedResult) {
+    public ConstantAccessTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -44,28 +47,25 @@ public class CloneTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"$a = clone $b;","(= $a (clone $b))"},
-                    {"$a = clone $b->a;","(= $a (clone (member access $b a)))"},
-                    {"$a = clone $b->a[0];","(= $a (clone (array access (member access $b a) 0)))"},
-                    {"$a = clone self::$a;","(= $a (clone (static member access self $a)))"},
+                    {"int $a = a;", "(variable declaration int $a a)"},
+                    {"int $a = self::a;", "(variable declaration int $a (static member access self a))"},
+                    {"int $a = parent::a;", "(variable declaration int $a (static member access parent a))"},
                     {
-                        "$a = clone self::$a[0];",
-                        "(= $a (clone (array access (static member access self $a) 0)))"
-                    },
-                    {"$a = clone parent::$a;","(= $a (clone (static member access parent $a)))"},
-                    {
-                        "$a = clone parent::$a[0];",
-                        "(= $a (clone (array access (static member access parent $a) 0)))"
+                        "int $a = Foo::a;",
+                        "(variable declaration int $a (static member access (class/interface type Foo) a))"
                     },
                     {
-                        "$a = clone Foo::$a;",
-                        "(= $a (clone (static member access (class/interface type Foo) $a)))"
+                        "int $a = \\Foo::a;",
+                        "(variable declaration int $a (static member access (class/interface type \\ Foo) a))"
                     },
                     {
-                        "$a = clone a\\Foo::$a[0];",
-                         "(= $a (clone (array access (static member access (class/interface type a Foo) $a) 0)))"
-                    }
+                        "int $a = a\\Foo::a;",
+                        "(variable declaration int $a (static member access (class/interface type a Foo) a))"
+                    },
+                    {
+                        "int $a = \\a\\b\\Foo::a;",
+                        "(variable declaration int $a (static member access (class/interface type \\ a b Foo) a))"
+                    },
                 });
-
     }
 }

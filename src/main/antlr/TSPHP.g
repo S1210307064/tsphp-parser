@@ -562,8 +562,8 @@ variableOrMemberOrStaticMember
 	;
 
 staticAccessOrParent
-	:	'self::' -> 'self'
-	|	'parent::' -> 'parent'
+	:	s='self::' -> Self[$s,"self"]
+	|	p='parent::' -> Parent[$p,"parent"]
 	|	classInterfaceTypeWithoutObject '::'!
 	;
 
@@ -668,13 +668,13 @@ postFixMethodCallWithoutAccessAtTheEnd
 			call -> ^(METHOD_CALL[$call.start,"method call"] $postFixMethodCallWithoutAccessAtTheEnd call)
 		)+
 	;
+
+classConstant
+	:	staticAccessOrParent Identifier -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"static member access"] staticAccessOrParent Identifier)
+	;
 	
 globalConstant
 	:	Identifier
-	;
-
-classConstant
-	:	staticAccessOrParent Identifier
 	;
 	
 unaryPrimitiveAtom
@@ -754,12 +754,16 @@ STRING_DOUBLE_QUOTED
 			| ~ ('"' | '$')
   		)* '"';
 	
-array	:	'[' array_content? ']' 
-	|	TypeArray '(' array_content? ')'
+array	:	arr='[' arrayContent? ']'  -> ^(TypeArray[$arr,"array"] arrayContent?)
+	|	TypeArray '(' arrayContent? ')' -> ^(TypeArray arrayContent?)
 	;
 	
-array_content
-	:	(expression '=>')? expression  (',' (expression '=>')? expression)*
+arrayContent
+	:	arrayKeyValue (','! arrayKeyValue)*
+	;
+arrayKeyValue
+	:	key=expression '=>' value=expression -> ^('=>' $key $value)
+	|	expression 
 	;
 
 

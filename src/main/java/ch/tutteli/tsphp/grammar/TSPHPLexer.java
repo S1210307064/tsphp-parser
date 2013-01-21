@@ -1,4 +1,4 @@
-// $ANTLR 3.x D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2013-01-21 01:36:03
+// $ANTLR 3.x D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g 2013-01-21 02:13:16
 
 /*
  * Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
@@ -3507,16 +3507,16 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Comment;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:849:2: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:853:2: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt25=3;
 			alt25 = dfa25.predict(input);
 			switch (alt25) {
 				case 1 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:849:4: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:853:4: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); if (state.failed) return ;
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:849:9: (~ ( '\\n' | '\\r' ) )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:853:9: (~ ( '\\n' | '\\r' ) )*
 					loop21:
 					do {
 						int alt21=2;
@@ -3547,7 +3547,7 @@ public class TSPHPLexer extends Lexer {
 						}
 					} while (true);
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:849:23: ( '\\r' )?
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:853:23: ( '\\r' )?
 					int alt22=2;
 					int LA22_0 = input.LA(1);
 					if ( (LA22_0=='\r') ) {
@@ -3555,7 +3555,7 @@ public class TSPHPLexer extends Lexer {
 					}
 					switch (alt22) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:849:23: '\\r'
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:853:23: '\\r'
 							{
 							match('\r'); if (state.failed) return ;
 							}
@@ -3568,11 +3568,11 @@ public class TSPHPLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:851:6: '//' (~ ( '\\n' | '\\r' ) )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:855:6: '//' (~ ( '\\n' | '\\r' ) )*
 					{
 					match("//"); if (state.failed) return ;
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:851:11: (~ ( '\\n' | '\\r' ) )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:855:11: (~ ( '\\n' | '\\r' ) )*
 					loop23:
 					do {
 						int alt23=2;
@@ -3607,11 +3607,11 @@ public class TSPHPLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:852:8: '/*' ( options {greedy=false; } : . )* '*/'
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:856:8: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); if (state.failed) return ;
 
-					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:852:13: ( options {greedy=false; } : . )*
+					// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:856:13: ( options {greedy=false; } : . )*
 					loop24:
 					do {
 						int alt24=2;
@@ -3632,7 +3632,7 @@ public class TSPHPLexer extends Lexer {
 
 						switch (alt24) {
 						case 1 :
-							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:852:41: .
+							// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:856:41: .
 							{
 							matchAny(); if (state.failed) return ;
 							}
@@ -3664,8 +3664,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Whitespace;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:856:2: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:856:4: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:860:2: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// D:\\TSPHP-grammar\\src\\main\\antlr\\TSPHP.g:860:4: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -4761,7 +4761,7 @@ public class TSPHPLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "848:1: Comment : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' );";
+			return "852:1: Comment : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' );";
 		}
 		@Override
 		public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {

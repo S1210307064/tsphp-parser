@@ -130,7 +130,7 @@ public class ArrayAccessTest extends AAstTest
                         "array $d = self::foo()[" + expression[0] + "][" + expression[0] + "];",
                         "(variable declaration array $d "
                             + "(array access (array access "
-                                + "(method call Self foo expressions)"
+                                + "(method call self foo expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + ")"
                      });
@@ -138,7 +138,7 @@ public class ArrayAccessTest extends AAstTest
                         "array $d = parent::foo()[" + expression[0] + "][" + expression[0] + "];",
                         "(variable declaration array $d "
                             + "(array access (array access "
-                                + "(method call Parent foo expressions)"
+                                + "(method call parent foo expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + ")"
                     });
