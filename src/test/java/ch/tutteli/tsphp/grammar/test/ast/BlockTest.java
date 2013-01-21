@@ -47,6 +47,7 @@ public class BlockTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         addToCollection(collection, ArrayAccessTest.testStrings());
+        addToCollection(collection, BreakContinueTest.testStrings());
         addToCollection(collection, CloneTest.testStrings());
         addToCollection(collection, EchoTest.testStrings());
         addToCollection(collection, ExitTest.testStrings());
@@ -55,12 +56,12 @@ public class BlockTest extends AAstTest
         addToCollection(collection, FunctionCallTest.testStrings());
         addToCollection(collection, IfTest.testStrings());
         addToCollection(collection, MethodCallTest.testStrings());
+        addToCollection(collection, ReturnTest.testStrings());
+        addToCollection(collection, ThrowTest.testStrings());
+        addToCollection(collection, TryCatchTest.testStrings());
+        addToCollection(collection, SwitchTest.testStrings());
         addToCollection(collection, VariableDeclarationTest.testStrings());
         addToCollection(collection, VariableAssignmentTest.testStrings());
-        addToCollection(collection, ReturnTest.testStrings());
-        addToCollection(collection, TryCatchTest.testStrings());
-        addToCollection(collection, ThrowTest.testStrings());
-        addToCollection(collection, SwitchTest.testStrings());
         addToCollection(collection, WhileTest.testStrings());
         return collection;
     }

@@ -16,11 +16,9 @@
  */
 package ch.tutteli.tsphp.grammar.test.utils;
 
-import ch.tutteli.tsphp.grammar.TSPHPLexer;
 import ch.tutteli.tsphp.grammar.TSPHPParser;
 import java.util.ArrayList;
 import java.util.List;
-import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.TokenStream;

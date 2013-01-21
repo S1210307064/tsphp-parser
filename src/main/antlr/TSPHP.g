@@ -93,6 +93,7 @@ tokens{
 	NotEqual = '!=';
 	NotEqualAlternative = '<>';
 	NotIdentical = '!==';
+	Null = 'null';
 	ObjectOperator = '->';
 	Parent = 'parent';
 	ParentColonColon = 'parent::';
@@ -137,6 +138,8 @@ tokens{
 	BLOCK;
 	CAST;
 	CLASS_INTERFACE_TYPE;
+	CONSTANT_DECLARATION;
+	CONSTANT_DECLARATION_LIST;
 	EXPRESSION_LIST;
 	FUNCTION_CALL;
 	FUNCTION_DECLARATION;
@@ -208,12 +211,16 @@ namespaceBracket
 	:	('namespace' namespaceId? '{' statement+ '}');
 
 //Must before Id otherwise Id match true and false
-Bool	:	'true'|'false';
+Bool	:	'true'|'false'
+	;
 
-Null	:	('N'|'n') ('U'|'u') ('L'|'l') ('L'|'l');
+NullVariations
+	:	('N'|'n') ('U'|'u') ('L'|'l') ('L'|'l')
+	;
 
 Identifier	
-	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*;
+	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*
+	;
 
 namespaceId
 	:	Identifier ('\\' Identifier)* -> Identifier+
@@ -221,7 +228,8 @@ namespaceId
 
 
 withoutNamespace 
-	:	statement+;
+	:	statement+
+	;
 
 statement	
 	:	useDeclarationList
@@ -230,7 +238,8 @@ statement
 	;
 	
 useDeclarationList
-	:	'use' useDeclaration (',' useDeclaration)* ';';
+	:	'use' useDeclaration (',' useDeclaration)* ';'
+	;
 	
 useDeclaration
 	:	(	(Identifier '\\' namespaceId)
@@ -271,13 +280,17 @@ classBody
 	;
 
 constDeclarationList
-	:	 'const' primitiveTypes constantAssignment (',' constantAssignment)* ';';
+	:	 begin='const' primitiveTypes constantAssignment (',' constantAssignment)* ';'
+		-> ^(CONSTANT_DECLARATION_LIST[$begin,"constant declarations"] primitiveTypes constantAssignment+)
+	;
 	
 constantAssignment
-	:	Identifier  '=' unaryPrimitiveAtom;
+	:	Identifier '='^ unaryPrimitiveAtom
+	;
 
 attributeDeclaration	
-	:	'static'? accessor variableDeclarationListInclVariableId ';';
+	:	'static'? accessor variableDeclarationListInclVariableId ';'
+	;
 
 accessor:	accessorWithoutPrivate
 	|	'private'
@@ -573,6 +586,7 @@ unaryPrimary
 	|	uminus = '-' primary -> ^(UMINUS[$uminus,"unary minus"] primary)
 	|	primary
 	;
+	
 primary
 	:	postFixCallInclAccesAtTheEnd
 	|	atom
@@ -674,7 +688,7 @@ primitiveAtom
 	|	Int
 	|	Float
 	|	String
-	|	Null
+	|	n=(Null|NullVariations) -> Null[$n,"null"]
 	|	Identifier
 	;
 	
@@ -692,14 +706,19 @@ DECIMAL
         
 fragment          
 HEXADECIMAL 
-	:	'0' ('x'|'X') ('0'..'9'|'a'..'f'|'A'..'F')+;
+	:	'0' ('x'|'X') ('0'..'9'|'a'..'f'|'A'..'F')+
+	;
 
 fragment
-OCTAL	:	'0' ('0'..'7')+;
+OCTAL	
+	:	'0' ('0'..'7')+
+	;
 
 
 fragment
-BINARY	:	'0b'('0'|'1')+;
+BINARY	
+	:	'0b'('0'|'1')+
+	;
 
 
 Float
@@ -709,11 +728,14 @@ Float
     	;
     
 fragment
-EXPONENT : ('e'|'E') ('+'|'-')? ('0'..'9')+ ;
+EXPONENT 
+	: ('e'|'E') ('+'|'-')? ('0'..'9')+ 
+	;
 	
-String	:	STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED ;
-
-
+String	
+	:	STRING_SINGLE_QUOTED 
+	|	STRING_DOUBLE_QUOTED 
+	;
 
 fragment
 STRING_SINGLE_QUOTED
@@ -737,7 +759,8 @@ array	:	'[' array_content? ']'
 	;
 	
 array_content
-	:	(expression '=>')? expression  (',' (expression '=>')? expression)*;
+	:	(expression '=>')? expression  (',' (expression '=>')? expression)*
+	;
 
 
 ifCondition
@@ -749,6 +772,7 @@ ifCondition
 switchCondition	
 	:	'switch' '(' VariableId ')' '{' switchContent '}'  -> ^('switch' VariableId switchContent)
 	;
+	
 switchContent
 	:	normalCase+ defaultCase normalCase+ 
 	|	normalCase+ defaultCase?
@@ -765,20 +789,24 @@ defaultCase
 	;
 
 caseLabel	
-	:	'case'! expression ':'!;
+	:	'case'! expression ':'!
+	;
 
 defaultLabel
-	:	'default' ':'!;
+	:	'default' ':'!
+	;
 	
 forLoop	
 	:	'for'^ forInit forCondition forUpdate instructionInclBreakContinue
 	;
+	
 forInit	
 	:	init='(' 
 		(	variableDeclarationListInclVariableId -> ^(VARIABLE_DECLARATION_LIST[$init,"variable declarations"] variableDeclarationListInclVariableId)
 		|	expressionList? -> ^(EXPRESSION_LIST[$init,"expressions"] expressionList?)
 		)	
 	;
+	
 forCondition
 	:	condition=';' expressionList? -> ^(EXPRESSION_LIST[$condition,"expressions"] expressionList?)
 	;	
@@ -804,6 +832,7 @@ tryCatch
 	:	'try' tryBegin='{' instructionInclBreakContinue+ '}' catchBlock+
 		-> ^('try' ^(BLOCK[$tryBegin,"block"] instructionInclBreakContinue+) catchBlock+)
 	;
+	
 catchBlock
 	:	'catch' list='(' classInterfaceTypeWithoutObject VariableId ')' catchBegin='{' instructionInclBreakContinue* '}'
 		-> ^(VARIABLE_DECLARATION_LIST[$list,"variable declarations"]

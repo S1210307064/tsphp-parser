@@ -119,6 +119,7 @@ public class TokenTest extends ALexerTest
                     {"mNotEqual", "!=", TSPHPLexer.NotEqual},
                     {"mNotEqualAlternative", "<>", TSPHPLexer.NotEqualAlternative},
                     {"mNotIdentical", "!==", TSPHPLexer.NotIdentical},
+                    {"mNull","null",TSPHPLexer.Null},
                     {"mObjectOperator", "->", TSPHPLexer.ObjectOperator},
                     {"mParent", "parent", TSPHPLexer.Parent},
                     {"mParentColonColon", "parent::", TSPHPLexer.ParentColonColon},
@@ -181,7 +182,7 @@ public class TokenTest extends ALexerTest
 
         String[] nullCombinations = VariationHelper.getUppercaseCombinations("null");
         for (String combination : nullCombinations) {
-            collection.add(new Object[]{"mNull", combination, TSPHPLexer.Null});
+            collection.add(new Object[]{"mNullVariations", combination, TSPHPLexer.NullVariations});
         }
 
         return collection;
