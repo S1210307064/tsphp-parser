@@ -52,19 +52,19 @@ public class NewClassTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"new Type;", "(new (class/interface type Type) EXPRESSION_LIST)"},
-                    {"new Type();", "(new (class/interface type Type) EXPRESSION_LIST)"}
+                    {"new Type;", "(new (class/interface type Type) expressions)"},
+                    {"new Type();", "(new (class/interface type Type) expressions)"}
                 }));
         String[][] expressions = ExpressionTest.getExpressions();
         for (Object[] expression : expressions) {
-            collection.add(new Object[]{"new Type(" + expression[0] + ");", "(new (class/interface type Type) (EXPRESSION_LIST " + expression[1] + "))"});
+            collection.add(new Object[]{"new Type(" + expression[0] + ");", "(new (class/interface type Type) (expressions " + expression[1] + "))"});
             collection.add(new Object[]{
                         "new Type(" + expression[0] + "," + expression[0] + ");",
-                        "(new (class/interface type Type) (EXPRESSION_LIST " + expression[1] + " " + expression[1] + "))"
+                        "(new (class/interface type Type) (expressions " + expression[1] + " " + expression[1] + "))"
                     });
             collection.add(new Object[]{
                         "new Type(" + expression[0] + "," + expression[0] + "," + expression[0] + ");",
-                        "(new (class/interface type Type) (EXPRESSION_LIST " + expression[1] + " " + expression[1] + " " + expression[1] + "))"
+                        "(new (class/interface type Type) (expressions " + expression[1] + " " + expression[1] + " " + expression[1] + "))"
                     });
         }
         return collection;

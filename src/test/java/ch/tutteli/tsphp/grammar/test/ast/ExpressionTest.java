@@ -168,12 +168,12 @@ public class ExpressionTest extends AAstTest
                     //
                     {"clone $a","(clone $a)"},
                     {"clone $a->a","(clone (member access $a a))"},
-                    {"new Type","(new (class/interface type Type) EXPRESSION_LIST)"},
+                    {"new Type","(new (class/interface type Type) expressions)"},
                     //
-                    {"foo()","(function call (class/interface type foo) EXPRESSION_LIST)"},
-                    {"\\foo(1,1+2,3)","(function call (class/interface type \\ foo) (EXPRESSION_LIST 1 (+ 1 2) 3))"},
-                    {"$a->foo()","(method call $a foo EXPRESSION_LIST)"},
-                    {"$a->foo(true || false,123*9)","(method call $a foo (EXPRESSION_LIST (|| true false) (* 123 9)))"},
+                    {"foo()","(function call (class/interface type foo) expressions)"},
+                    {"\\foo(1,1+2,3)","(function call (class/interface type \\ foo) (expressions 1 (+ 1 2) 3))"},
+                    {"$a->foo()","(method call $a foo expressions)"},
+                    {"$a->foo(true || false,123*9)","(method call $a foo (expressions (|| true false) (* 123 9)))"},
                     //
                     {"($a)", "$a"},
                     {"$a++","(post increment/decrement ++ $a)"},

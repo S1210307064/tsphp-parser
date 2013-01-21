@@ -50,60 +50,60 @@ public class ForTest extends AAstTest
                     {
                         "for($a=1     ; true ; ++$i  ) $a=1;",
                         "(for "
-                            + "(EXPRESSION_LIST (= $a 1)) "
-                            + "(EXPRESSION_LIST true) "
-                            + "(EXPRESSION_LIST (pre increment/decrement ++ $i)) "
+                            + "(expressions (= $a 1)) "
+                            + "(expressions true) "
+                            + "(expressions (pre increment/decrement ++ $i)) "
                             + "(= $a 1)"
                         + ")"
                     },
                     {
                         "for(         ; true ; ++$i  ) $a=1;",
                         "(for "
-                            + "EXPRESSION_LIST "
-                            + "(EXPRESSION_LIST true) "
-                            + "(EXPRESSION_LIST (pre increment/decrement ++ $i)) "
+                            + "expressions "
+                            + "(expressions true) "
+                            + "(expressions (pre increment/decrement ++ $i)) "
                             + "(= $a 1)"
                         + ")"
                     },
                     {
                         "for(         ;      ; $i+=1 ) $a=1;",
                         "(for "
-                            + "EXPRESSION_LIST "
-                            + "EXPRESSION_LIST "
-                            + "(EXPRESSION_LIST (+= $i 1)) "
+                            + "expressions "
+                            + "expressions "
+                            + "(expressions (+= $i 1)) "
                             + "(= $a 1)"
                         + ")"
                     },
                     {
                         "for(         ; true ;       ) $a=1;",
                         "(for "
-                            + "EXPRESSION_LIST "
-                            + "(EXPRESSION_LIST true) "
-                            + "EXPRESSION_LIST "
+                            + "expressions "
+                            + "(expressions true) "
+                            + "expressions "
                             + "(= $a 1)"
                         + ")"},
                     {
                         "for(         ;      ;       ) $a=1;",
                         "(for "
-                            + "EXPRESSION_LIST "
-                            + "EXPRESSION_LIST "
-                            + "EXPRESSION_LIST "
+                            + "expressions "
+                            + "expressions "
+                            + "expressions "
                             + "(= $a 1)"
                         + ")"},
                     {
                         "for(         ;      ;       ) $a=1;",
                         "(for "
-                            + "EXPRESSION_LIST "
-                            + "EXPRESSION_LIST "
-                            + "EXPRESSION_LIST "
+                            + "expressions "
+                            + "expressions "
+                            + "expressions "
                             + "(= $a 1)"
                         + ")"},
                     {
                         "for(int $a,$b=1,$c; ; ) $a=1;",
                         "(for "
-                            + "(VARIABLE_DECLARATION_LIST (variable declaration int $a) (= $b 1) $c) "
-                            + "EXPRESSION_LIST "
-                            + "EXPRESSION_LIST "
+                            + "(variable declarations (variable declaration int $a) (= $b 1) $c) "
+                            + "expressions "
+                            + "expressions "
                             + "(= $a 1)"
                         + ")"}
                 }));
@@ -113,9 +113,9 @@ public class ForTest extends AAstTest
             collection.add(new Object[]{
                         "for(" + expression[0] + ";" + expression[0] + ";" + expression[0] + ") $a=1;",
                         "(for "
-                            + "(EXPRESSION_LIST " + expression[1] + ") "
-                            + "(EXPRESSION_LIST " + expression[1] + ") "
-                            + "(EXPRESSION_LIST " + expression[1] + ") "
+                            + "(expressions " + expression[1] + ") "
+                            + "(expressions " + expression[1] + ") "
+                            + "(expressions " + expression[1] + ") "
                             + "(= $a 1)"
                         + ")"
                     });
@@ -126,9 +126,9 @@ public class ForTest extends AAstTest
                         + expression[0] + "," + expression[0] + " "
                         + ") $a^=1;",
                         "(for "
-                            + "(EXPRESSION_LIST " + expression[1] + " " + expression[1] + ") "
-                            + "(EXPRESSION_LIST " + expression[1] + " " + expression[1] + ") "
-                            + "(EXPRESSION_LIST " + expression[1] + " " + expression[1] + ") "
+                            + "(expressions " + expression[1] + " " + expression[1] + ") "
+                            + "(expressions " + expression[1] + " " + expression[1] + ") "
+                            + "(expressions " + expression[1] + " " + expression[1] + ") "
                             + "(^= $a 1)"
                         + ")"
                     });

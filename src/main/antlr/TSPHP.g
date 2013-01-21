@@ -320,12 +320,16 @@ interfaceMethodDeclaration
 /******* Procedural related - is also be used by OOP ************/
 //***************************************************************/
 functionDeclaration	
-	:	functionDeclarationWithoutBody '{' instructionWithoutBreakContinue* '}' 
-		-> ^(FUNCTION_DECLARATION[$functionDeclarationWithoutBody.start,"function declaration"] functionDeclarationWithoutBody ^(BLOCK instructionWithoutBreakContinue*))
+	:	functionDeclarationWithoutBody block='{' instructionWithoutBreakContinue* '}' 
+		-> ^(FUNCTION_DECLARATION[$functionDeclarationWithoutBody.start,"function declaration"] functionDeclarationWithoutBody ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))
 	;
 	
 functionDeclarationWithoutBody
-	:	'function'! returnType Identifier '('! paramList ')'!
+	:	'function'! returnType Identifier formalParameters
+	;
+	
+formalParameters
+	:	params='(' paramList? ')' -> ^(PARAM_LIST[$params,"parameters"] paramList?)
 	;
 	
 returnType
@@ -369,16 +373,15 @@ classInterfaceTypeInclObject
 	;
 	
 paramList
-	:	paramDeclarationOptional (',' paramDeclarationOptional)* -> ^(PARAM_LIST paramDeclarationOptional+)
-	|	paramDeclaration (',' paramDeclaration)* (',' paramDeclarationOptional)* ->^(PARAM_LIST paramDeclaration+ paramDeclarationOptional*)
-	|	/*empty*/ -> PARAM_LIST
+	:	paramDeclarationOptional (','! paramDeclarationOptional)* 
+	|	paramDeclaration (','! paramDeclaration)* (','! paramDeclarationOptional)*
 	;
 	
 paramDeclaration
 	:	allTypes VariableId -> ^(PARAM_DECLARATION[$allTypes.start,"parameter declaration"] allTypes VariableId);
 	
 paramDeclarationOptional
-	:	paramDeclaration  '=' unaryPrimitiveAtom;
+	:	allTypes VariableId  '=' unaryPrimitiveAtom -> ^(PARAM_DECLARATION[$allTypes.start,"parameter declaration"] allTypes VariableId unaryPrimitiveAtom);
 
 VariableId	
 	:	'$' Identifier;
@@ -409,13 +412,12 @@ instruction
 	|	postFixCallWithoutAccesAtTheEnd ';'!
 	|	postFixMethodCallWithoutAccessAtTheEnd ';'!
 	|	'return'^ expression? ';'!
-	|	'echo'^ expression (','! expression)* ';'!
+	|	'echo'^ expressionList ';'!
 	|	'exit' ';'!
 	;
 	
 expressionList
-	:	expression (',' expression)* -> ^(EXPRESSION_LIST expression+)
-	|	/* empty */ -> EXPRESSION_LIST
+	:	expression (','! expression)*
 	;
 
 variableAssignment
@@ -557,9 +559,13 @@ memberAccessOrArrayAccess
 	|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"array access"] expression)
 	;	
 
-newObject
-	:	'new' classInterfaceTypeWithoutObject '(' expressionList ')' -> ^('new' classInterfaceTypeWithoutObject expressionList)
-	|	'new' classInterfaceTypeWithoutObject -> ^('new' classInterfaceTypeWithoutObject EXPRESSION_LIST)
+newObject 
+	:	'new' classInterfaceTypeWithoutObject actualParameters -> ^('new' classInterfaceTypeWithoutObject actualParameters)
+	|	'new' classInterfaceTypeWithoutObject -> ^('new' classInterfaceTypeWithoutObject EXPRESSION_LIST[$classInterfaceTypeWithoutObject.stop,"expressions"])
+	;
+
+actualParameters
+	:	list='(' expressionList? ')' -> ^(EXPRESSION_LIST[$list,"expressions"] expressionList?)
 	;
 
 unaryPrimary
@@ -592,21 +598,22 @@ postFixCallWithoutAccesAtTheEnd
 	;
 
 functionCall
-	:	classInterfaceTypeWithoutObject '(' expressionList ')' 
-		-> ^(FUNCTION_CALL[$classInterfaceTypeWithoutObject.start,"function call"] classInterfaceTypeWithoutObject expressionList)
+	:	classInterfaceTypeWithoutObject actualParameters
+		-> ^(FUNCTION_CALL[$classInterfaceTypeWithoutObject.start,"function call"] classInterfaceTypeWithoutObject actualParameters)
 	;
+
 
 callOrAccess
 	:	memberAccessOrArrayAccess
 	|	call
 	;	
 	
-call	:	'->'! Identifier '('! expressionList ')'!
+call	:	'->'! Identifier actualParameters
 	;
 	
 methodCall
-	:	callee Identifier '(' expressionList')'
-		-> ^(METHOD_CALL[$callee.start,"method call"] callee Identifier expressionList)
+	:	callee Identifier actualParameters
+		-> ^(METHOD_CALL[$callee.start,"method call"] callee Identifier actualParameters)
 	;
 	
 callee	:	variableOrMemberOrStaticMember '->'!
@@ -657,8 +664,8 @@ classConstant
 	;
 	
 unaryPrimitiveAtom
-	:	'+' primitiveAtom
-	|	'-' primitiveAtom
+	:	uplus = '+' primitiveAtom -> ^(UPLUS[$uplus,"unary plus"] primitiveAtom)
+	|	uminus = '-' primitiveAtom -> ^(UMINUS[$uminus,"unary minus"] primitiveAtom)
 	|	primitiveAtom
 	;
 
@@ -763,40 +770,51 @@ caseLabel
 defaultLabel
 	:	'default' ':'!;
 	
-forLoop	:	'for' '(' forInit ';' expressionList  ';' expressionList ')' instructionInclBreakContinue -> ^('for' forInit expressionList expressionList instructionInclBreakContinue);
-
-forInit	:	varListOrExprList
+forLoop	
+	:	'for'^ forInit forCondition forUpdate instructionInclBreakContinue
 	;
-
-varListOrExprList
-	:	variableDeclarationListInclVariableId -> ^(VARIABLE_DECLARATION_LIST variableDeclarationListInclVariableId)
-	|	expressionList
+forInit	
+	:	init='(' 
+		(	variableDeclarationListInclVariableId -> ^(VARIABLE_DECLARATION_LIST[$init,"variable declarations"] variableDeclarationListInclVariableId)
+		|	expressionList? -> ^(EXPRESSION_LIST[$init,"expressions"] expressionList?)
+		)	
+	;
+forCondition
+	:	condition=';' expressionList? -> ^(EXPRESSION_LIST[$condition,"expressions"] expressionList?)
+	;	
+	
+forUpdate
+	:	update=';' expressionList? ')' -> ^(EXPRESSION_LIST[$update,"expressions"] expressionList?)
 	;
 
 foreachLoop
 	:	'foreach' '(' expression 'as' (keyType=primitiveTypes keyVarId=VariableId '=>')? valueType=allTypesWithoutResource valueVarId=VariableId ')' instructionInclBreakContinue 
-		-> ^('foreach' expression $keyType? $keyVarId? $valueType $valueVarId instructionInclBreakContinue);
+		-> ^('foreach' expression $keyType? $keyVarId? $valueType $valueVarId instructionInclBreakContinue)
+	;
 
 whileLoop
-	:	'while' '(' expression ')' instructionInclBreakContinue -> ^('while' expression instructionInclBreakContinue);
+	:	'while' '(' expression ')' instructionInclBreakContinue -> ^('while' expression instructionInclBreakContinue)
+	;
 	
 doWhileLoop
-	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';' -> ^('do' instructionInclBreakContinue expression);
+	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';' -> ^('do' instructionInclBreakContinue expression)
+	;
 
 tryCatch
 	:	'try' tryBegin='{' instructionInclBreakContinue+ '}' catchBlock+
 		-> ^('try' ^(BLOCK[$tryBegin,"block"] instructionInclBreakContinue+) catchBlock+)
 	;
 catchBlock
-	:	'catch' '(' classInterfaceTypeWithoutObject VariableId ')' catchBegin='{' instructionInclBreakContinue* '}'
-		-> ^(VARIABLE_DECLARATION_LIST 
+	:	'catch' list='(' classInterfaceTypeWithoutObject VariableId ')' catchBegin='{' instructionInclBreakContinue* '}'
+		-> ^(VARIABLE_DECLARATION_LIST[$list,"variable declarations"]
 			^(VARIABLE_DECLARATION[$classInterfaceTypeWithoutObject.start,"variable declaration"] classInterfaceTypeWithoutObject VariableId)
 		) 
 		^(BLOCK[$catchBegin,"block"] instructionInclBreakContinue*)
 	;
 
 throwException
-	:	'throw'^ newObject ';'!;
+	:	'throw'^ newObject ';'!
+	;
 
 Comment
 	:	'//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}

@@ -52,16 +52,16 @@ public class ArrayAccessTest extends AAstTest
                         "int $d = $a->foo()[0]->foo('hallo')->bar()[2][3];",
                         "(variable declaration int $d "
                             + "(array access (array access (method call (method call (array access "
-                                + "(method call $a foo EXPRESSION_LIST)"
-                            + " 0) foo (EXPRESSION_LIST 'hallo')) bar EXPRESSION_LIST) 2) 3)"
+                                + "(method call $a foo expressions)"
+                            + " 0) foo (expressions 'hallo')) bar expressions) 2) 3)"
                         + ")"
                     },
                     {
                         "int $d = foo()[0]->foo('hallo')->bar()[2][3];",
                         "(variable declaration int $d "
                             + "(array access (array access (method call (method call (array access "
-                                + "(function call (class/interface type foo) EXPRESSION_LIST)"
-                            + " 0) foo (EXPRESSION_LIST 'hallo')) bar EXPRESSION_LIST) 2) 3)"
+                                + "(function call (class/interface type foo) expressions)"
+                            + " 0) foo (expressions 'hallo')) bar expressions) 2) 3)"
                         + ")"
                     },
                     {
@@ -69,9 +69,9 @@ public class ArrayAccessTest extends AAstTest
                         "(variable declaration int $d "
                             + "(array access (array access (method call "
                                 + "(array access (array access (method call (method call (array access "
-                                    + "(function call (class/interface type foo) EXPRESSION_LIST)"
-                                + " 0) foo (EXPRESSION_LIST 'hallo')) bar EXPRESSION_LIST) 2) 3)"
-                            + " fo EXPRESSION_LIST) 2) (+ 3 1))"
+                                    + "(function call (class/interface type foo) expressions)"
+                                + " 0) foo (expressions 'hallo')) bar expressions) 2) 3)"
+                            + " fo expressions) 2) (+ 3 1))"
                         + ")"
                     },
                     {
@@ -80,10 +80,10 @@ public class ArrayAccessTest extends AAstTest
                             + "(method call (array access (array access (method call "
                                 + "(array access (method call "
                                     + "(array access (array access (method call (member access (array access "
-                                        + "(function call (class/interface type foo) EXPRESSION_LIST)"
-                                + " 0) a) foo (EXPRESSION_LIST 'hallo')) 0) $a)"
-                                + " bar EXPRESSION_LIST) 2)"
-                            + " foo EXPRESSION_LIST) 3) 5) foo EXPRESSION_LIST)"
+                                        + "(function call (class/interface type foo) expressions)"
+                                + " 0) a) foo (expressions 'hallo')) 0) $a)"
+                                + " bar expressions) 2)"
+                            + " foo expressions) 3) 5) foo expressions)"
                         + ")"
                             
                     },
@@ -93,8 +93,8 @@ public class ArrayAccessTest extends AAstTest
                             +"(method call (array access (array access (method call "
                                 + "(array access (method call (method call (array access (array access (member access "
                                     + "(array access (member access $a a) 0)"
-                                + " b) 0) 1) foo EXPRESSION_LIST) bar EXPRESSION_LIST) 2)"
-                            + " foo EXPRESSION_LIST) 3) 5) foo EXPRESSION_LIST)"
+                                + " b) 0) 1) foo expressions) bar expressions) 2)"
+                            + " foo expressions) 3) 5) foo expressions)"
                         + ")"
                     }
                 }));
@@ -114,7 +114,7 @@ public class ArrayAccessTest extends AAstTest
                         "array $d = foo()[" + expression[0] + "][" + expression[0] + "];",
                         "(variable declaration array $d "
                             + "(array access (array access "
-                                + "(function call (class/interface type foo) EXPRESSION_LIST)"
+                                + "(function call (class/interface type foo) expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + ")"
                     });
@@ -122,7 +122,7 @@ public class ArrayAccessTest extends AAstTest
                         "array $d = $a->foo()[" + expression[0] + "][" + expression[0] + "];",
                         "(variable declaration array $d "
                             + "(array access (array access "
-                                + "(method call $a foo EXPRESSION_LIST)"
+                                + "(method call $a foo expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + ")"
                     });
@@ -130,7 +130,7 @@ public class ArrayAccessTest extends AAstTest
                         "array $d = self::foo()[" + expression[0] + "][" + expression[0] + "];",
                         "(variable declaration array $d "
                             + "(array access (array access "
-                                + "(method call Self foo EXPRESSION_LIST)"
+                                + "(method call Self foo expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + ")"
                      });
@@ -138,7 +138,7 @@ public class ArrayAccessTest extends AAstTest
                         "array $d = parent::foo()[" + expression[0] + "][" + expression[0] + "];",
                         "(variable declaration array $d "
                             + "(array access (array access "
-                                + "(method call Parent foo EXPRESSION_LIST)"
+                                + "(method call Parent foo expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + ")"
                     });
@@ -146,7 +146,7 @@ public class ArrayAccessTest extends AAstTest
                         "array $d = Foo::foo()[" + expression[0] + "][" + expression[0] + "];",
                         "(variable declaration array $d "
                             + "(array access (array access "
-                                + "(method call (class/interface type Foo) foo EXPRESSION_LIST)"
+                                + "(method call (class/interface type Foo) foo expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + ")"
                     });
