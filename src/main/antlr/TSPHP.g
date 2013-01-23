@@ -205,11 +205,11 @@ prog	:	namespaceSemicolon+ EOF!
 	;
 	
 namespaceSemicolon
-	:	('namespace' namespaceId ';' statement+ )
+	:	('namespace' namespaceId ';' statement* )
 	;
 
 namespaceBracket
-	:	('namespace' namespaceId? '{' statement+ '}')
+	:	('namespace' namespaceId? '{' statement* '}')
 	;
 
 //Must before Id otherwise Id match true and false
@@ -260,7 +260,7 @@ definition
 //************************************************************************************************/
 
 classDeclaration
-	:	('abstract'|'final')? 'class' Identifier extendsDeclaration? implementsDeclaration? '{' classBody+ '}'	
+	:	('abstract'|'final')? 'class' Identifier extendsDeclaration? implementsDeclaration? '{' classBody* '}'	
 	;
 	
 extendsDeclaration	
@@ -407,12 +407,12 @@ VariableId
 	;
 
 instructionWithoutBreakContinue	
-	:	block = '{' instructionWithoutBreakContinue+  '}' -> ^(BLOCK[$block,"block"] instructionWithoutBreakContinue+)
+	:	block = '{' instructionWithoutBreakContinue* '}' -> ^(BLOCK[$block,"block"]  instructionWithoutBreakContinue*)
 	|	instruction
 	;
 
 instructionInclBreakContinue
-	:	block =  '{' instructionInclBreakContinue+  '}' -> ^(BLOCK[$block,"block"] instructionInclBreakContinue+)
+	:	block =  '{' instructionInclBreakContinue*  '}' -> ^(BLOCK[$block,"block"] instructionInclBreakContinue*)
 	|	instruction
 	|	('break'|'continue')^ Int? ';'!
 	;	
@@ -432,6 +432,7 @@ instruction
 	|	'return'^ expression? ';'!
 	|	'echo'^ expressionList ';'!
 	|	'exit' ';'!
+	|	semi=';' -> BLOCK[$semi,"block"]
 	;
 	
 expressionList
@@ -775,7 +776,7 @@ ifCondition
 
 
 switchCondition	
-	:	'switch' '(' VariableId ')' '{' switchContent '}'  -> ^('switch' VariableId switchContent)
+	:	'switch' '(' VariableId ')' '{' switchContent? '}'  -> ^('switch' VariableId switchContent?)
 	;
 	
 switchContent
@@ -834,8 +835,8 @@ doWhileLoop
 	;
 
 tryCatch
-	:	'try' tryBegin='{' instructionInclBreakContinue+ '}' catchBlock+
-		-> ^('try' ^(BLOCK[$tryBegin,"block"] instructionInclBreakContinue+) catchBlock+)
+	:	'try' tryBegin='{' instructionInclBreakContinue* '}' catchBlock+
+		-> ^('try' ^(BLOCK[$tryBegin,"block"] instructionInclBreakContinue*) catchBlock+)
 	;
 	
 catchBlock

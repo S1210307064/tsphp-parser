@@ -48,10 +48,51 @@ public class NotSoNiceButValidTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.add(new Object[]{
+        collection.addAll(Arrays.asList(new Object[][]{
+                    //empty statement
+                    {";"},
+                    {"; ;;"},
+                    //empty block
+                    {"{}"},
+                    {"{{}}"},
+                    {"{;;}"},
                     //clone without assignment
-                    "clone $foo;"
-                });
+                    {"clone $foo;"},
+                    //empty if or else blocks
+                    {"if($a){}"},
+                    {"if($a);"},
+                    {"if($a)$a=1; else;"},
+                    {"if($a)$a=1; else{}"},
+                    {"if($a){$a=1;} else;"},
+                    {"if($a){$a=1;} else{}"},
+                    {"if($a){$a=1;} else if($a);"},
+                    {"if($a){$a=1;} else if($a){}"},
+                    {"if($a){$a=1;} else if($a){$a=1;} else;"},
+                    {"if($a){$a=1;} else if($a){$a=1;} else{}"},
+                    //empty for block
+                    {"for(;;){}"},
+                    {"for(;;);"},
+                    //empty foreach block
+                    {"foreach($a as int $k);"},
+                    {"foreach($a as int $k){}"},
+                    {"foreach($a as int $k => int $v);"},
+                    {"foreach($a as int $k => int $v){}"},
+                    //empty while block
+                    {"while(true){}"},
+                    {"while(true);"},
+                    //empty do while block
+                    {"do ; while(true);"},
+                    {"do{}while(true);"},
+                    //empty switch block
+                    {"switch($a){}"},
+                    //empty try block
+                    {"try{}catch(\\Exception $e){}"},
+                    //empty class    
+                    {"class a{}"},
+                    //empty namespace
+                    {"namespace a;"},
+                    {"namespace a{}"},
+                    {"namespace {}"},}));
 
         String[] expressions = ExpressionTest.getAllExpressions();
         for (String expression : expressions) {
