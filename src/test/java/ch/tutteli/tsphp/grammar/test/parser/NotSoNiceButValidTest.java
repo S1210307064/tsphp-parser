@@ -58,6 +58,10 @@ public class NotSoNiceButValidTest extends AParserTest
                     {"{;;}"},
                     //clone without assignment
                     {"clone $foo;"},
+                    //clone new instance
+                    {"clone new Foo();"},
+                    //multiple clones new instance
+                    {"clone clone clone new Foo();"},
                     //empty if or else blocks
                     {"if($a){}"},
                     {"if($a);"},
@@ -92,7 +96,28 @@ public class NotSoNiceButValidTest extends AParserTest
                     //empty namespace
                     {"namespace a;"},
                     {"namespace a{}"},
-                    {"namespace {}"},}));
+                    {"namespace {}"},
+                    //switch with case label but without command => same as an empty block
+                    {"switch($a){case 1:}"},
+                    //switch with case labels but without command => same as an empty block
+                    {"switch($a){case 1: case 2:}"},
+                    //switch case label without command
+                    {"switch($a){case 1: $a=1; case 2:}"},
+                    //switch case label without command
+                    {"switch($a){case 1: $a=1; case 2: case 3:}"},
+                    //switch default label without command
+                    {"switch($a){case 1: $a=1; default:}"},
+                    //switch only with default block
+                    {"switch($a){default: $a=1;}"},
+                    //switch with case label do nothing more than default
+                    {"switch($a){ case 1: default: $a=1;}"},
+                    //switch with case label do nothing more than default
+                    {"switch($a){ case 1: $a=1; case 1+1: default: case 2: $a=1;}"},
+                    //switch with case labels do nothing more than default
+                    {"switch($a){ case 1: case 2: default: $a=1;}"},
+                    //switch with case labels do nothing more than default
+                    {"switch($a){ case 0: $a=1; case 1: case 2: default: $a=1;}"}
+                }));
 
         String[] expressions = ExpressionTest.getAllExpressions();
         for (String expression : expressions) {

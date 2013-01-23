@@ -577,7 +577,7 @@ castOrBitwiseNotOrAt
 	;
 
 cloneOrNew
-	:	'clone'^ (postFixCall|postFixVariableInclCallAtTheEnd)
+	:	'clone'^ cloneOrNew
 	|	newObject
 	|	unaryPrimary
 	;
@@ -780,20 +780,33 @@ switchCondition
 	;
 	
 switchContent
-	:	normalCase+ defaultCase normalCase+ 
-	|	normalCase+ defaultCase?
+	:	normalCaseInstructionMandatory* defaultCaseInstructionMandatory? normalCaseInstructionOptional*
+	|	normalCaseInstructionMandatory* defaultCaseInstructionOptional?
 	;
-
-normalCase
-	:	caseLabel+ instructionInclBreakContinue+ 
-		-> ^(SWITCH_CASES[$normalCase.start,"switch cases"] caseLabel+) instructionInclBreakContinue+
+	
+normalCaseInstructionMandatory
+	:	caseLabel+ instructionInclBreakContinue+
+		-> 	^(SWITCH_CASES[$normalCaseInstructionMandatory.start,"switch cases"] caseLabel+)
+		 	^(BLOCK[$instructionInclBreakContinue.start,"block"] instructionInclBreakContinue+)
+	;
+	
+normalCaseInstructionOptional
+	:	caseLabel+ instructionInclBreakContinue*
+		-> 	^(SWITCH_CASES[$normalCaseInstructionOptional.start,"switch cases"] caseLabel+) 
+			^(BLOCK[$instructionInclBreakContinue.start,"block"] instructionInclBreakContinue*)
 		
 	;	
-defaultCase
-	:	defaultLabel instructionInclBreakContinue+ 
-		-> ^(SWITCH_CASES[$defaultCase.start,"switch cases"] defaultLabel) instructionInclBreakContinue+
+defaultCaseInstructionMandatory
+	:	caseLabel* defaultLabel caseLabel* instructionInclBreakContinue+
+		-> 	^(SWITCH_CASES[$defaultCaseInstructionMandatory.start,"switch cases"] caseLabel* defaultLabel) 
+			^(BLOCK[$instructionInclBreakContinue.start,"block"] instructionInclBreakContinue+)
 	;
-
+defaultCaseInstructionOptional
+	:	caseLabel* defaultLabel caseLabel* instructionInclBreakContinue*
+		-> 	^(SWITCH_CASES[$defaultCaseInstructionOptional.start,"switch cases"] caseLabel* defaultLabel) 
+			^(BLOCK[$instructionInclBreakContinue.start,"block"] instructionInclBreakContinue*)
+	;
+	
 caseLabel	
 	:	'case'! expression ':'!
 	;

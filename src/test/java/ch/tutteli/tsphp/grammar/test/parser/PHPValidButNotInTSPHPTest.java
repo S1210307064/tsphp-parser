@@ -46,32 +46,13 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    //switch with case label but without command => same as an empty block
-                    {"switch($a){case 1:}", TSPHPParser.RightCurlyBrace, 18},
-                    //switch with case labels but without command => same as an empty block
-                    {"switch($a){case 1: case 2:}", TSPHPParser.RightCurlyBrace, 26},
-                    //switch case label without command
-                    {"switch($a){case 1: $a=1; case 2:}", TSPHPParser.RightCurlyBrace, 32},
-                    //switch case label without command
-                    {"switch($a){case 1: $a=1; case 2: case 3:}", TSPHPParser.RightCurlyBrace, 40},
-                    //switch default label without command
-                    {"switch($a){case 1: $a=1; default:}", TSPHPParser.RightCurlyBrace, 33},
-                    //switch only with default block
-                    {"switch($a){default: $a=1;}", TSPHPParser.Default, 11},
-                    //switch with case label do nothing more than default
-                    {"switch($a){ case 1: default: $a=1;}", TSPHPParser.Default, 20},
-                    //switch with case labels do nothing more than default
-                    {"switch($a){ case 1: case 2: default: $a=1;}", TSPHPParser.Default, 28},
-                    //switch with case labels do nothing more than default
-                    {"switch($a){ case 0: $a=1; case 1: case 2: default: $a=1;}", TSPHPParser.Default, 42},
                     //switch with multiple default blocks
-                    {"switch($a){case 1: default: $a=1; break; case 2: default: $a=2; break;}", TSPHPParser.Default, 19},
+                    {"switch($a){case 1: default: $a=1; break; case 2: default: $a=2; break;}", TSPHPParser.Default, 49},
                     //function with pseudo optional parameter
                     {"function a ($a,$b=1,$c){$a=1;}", TSPHPParser.LeftParanthesis, 11},
                     //use outside of semicolon namespace
                     {"use a\\a; namespace a;", TSPHPParser.Namespace, 9},
-                    //clone a new instance directly
-                    {"Foo $foo = clone new Foo();", TSPHPParser.VariableId, 4}
                 });
+        //See TokenExceptionTest for misuse of keywords
     }
 }
