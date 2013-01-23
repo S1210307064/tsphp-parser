@@ -343,10 +343,6 @@ functionDeclarationWithoutBody
 	:	'function'! returnType Identifier formalParameters
 	;
 	
-formalParameters
-	:	params='(' paramList? ')' -> ^(PARAM_LIST[$params,"parameters"] paramList?)
-	;
-	
 returnType
 	:	allTypes | 'void'
 	;
@@ -387,14 +383,18 @@ classInterfaceTypeInclObject
 	:	TypeObject	
 	|	classInterfaceTypeWithoutObject
 	;
-	
+
+formalParameters
+	:	params='(' paramList? ')' -> ^(PARAM_LIST[$params,"parameters"] paramList?)
+	;
+
 paramList
 	:	paramDeclarationOptional (','! paramDeclarationOptional)* 
 	|	paramDeclaration (','! paramDeclaration)* (','! paramDeclarationOptional)*
 	;
 	
 paramDeclaration
-	:	allTypes VariableId -> ^(PARAM_DECLARATION[$allTypes.start,"parameter declaration"] allTypes VariableId)
+	:	allTypes VariableId ('=' Null)? -> ^(PARAM_DECLARATION[$allTypes.start,"parameter declaration"] allTypes VariableId Null?)
 	;
 	
 paramDeclarationOptional
