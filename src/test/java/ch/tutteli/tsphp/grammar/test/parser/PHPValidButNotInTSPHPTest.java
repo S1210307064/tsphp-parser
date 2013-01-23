@@ -46,13 +46,10 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> testStrings() {        
-        List<Object[]> collection = new ArrayList<>();
-        collection.addAll(Arrays.asList(new Object[][]{
+    public static Collection<Object[]> testStrings() {
+        return Arrays.asList(new Object[][]{
                     //empty statement
                     {";", TSPHPParser.Semicolon, 0},
-                    //statment without assignment
-                    {"$a;", TSPHPParser.Semicolon, 2},
                     //empty block
                     {"{}", TSPHPParser.RightCurlyBrace, 1},
                     {"{{}}", TSPHPParser.RightCurlyBrace, 2},
@@ -73,7 +70,6 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     //for init - variable declaration and expressions mixed
                     {"for(int $a,1+1;;);", TSPHPParser.Int, 11},
                     {"for($a=1,1+1,int $b;;);", TSPHPParser.TypeInt, 13},
-                    
                     //empty foreach block
                     {"foreach($a as int $k);", TSPHPParser.Semicolon, 21},
                     {"foreach($a as int $k){}", TSPHPParser.RightCurlyBrace, 22},
@@ -108,23 +104,19 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                     //switch with multiple default blocks
                     {"switch($a){case 1: default: $a=1; break; case 2: default: $a=2; break;}", TSPHPParser.Default, 19},
                     //function with pseudo optional parameter
-                    {"function a ($a,$b=1,$c){$a=1;}",TSPHPParser.LeftParanthesis,11},
+                    {"function a ($a,$b=1,$c){$a=1;}", TSPHPParser.LeftParanthesis, 11},
                     //empty try block
-                    {"try{}catch(\\Exception $e){}",TSPHPParser.RightCurlyBrace,4},
+                    {"try{}catch(\\Exception $e){}", TSPHPParser.RightCurlyBrace, 4},
                     //empty class    
                     {"class a{}", TSPHPParser.RightCurlyBrace, 8},
                     //empty namespace
-                    {"namespace a;",-1, 12},
-                    {"namespace a{}",TSPHPParser.RightCurlyBrace, 12},
-                    {"namespace {}",TSPHPParser.RightCurlyBrace, 11},
+                    {"namespace a;", -1, 12},
+                    {"namespace a{}", TSPHPParser.RightCurlyBrace, 12},
+                    {"namespace {}", TSPHPParser.RightCurlyBrace, 11},
                     //use outside of semicolon namespace
-                    {"use a\\a; namespace a;",TSPHPParser.Namespace, 9},
+                    {"use a\\a; namespace a;", TSPHPParser.Namespace, 9},
                     //clone a new instance directly
-                    {"Foo $foo = clone new Foo();",TSPHPParser.VariableId,4},
-                    //clone without assignment
-                    {"clone $foo;", TSPHPParser.Clone,0},
-                }));
-        //expressions without assignments - see ExpressionWithoutAssignmentTest
-        return collection;
+                    {"Foo $foo = clone new Foo();", TSPHPParser.VariableId, 4}
+                });
     }
 }

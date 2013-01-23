@@ -47,7 +47,7 @@ public class ExpressionTest extends AParserTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
 
-        Collection<String> expressions = getAllExpressions();
+        String[] expressions = getAllExpressions();
         for (String expression : expressions) {
             collection.add(new Object[]{"bool $a = " + expression + ";"});
             collection.add(new Object[]{"boolean $a = " + expression + ";"});
@@ -63,44 +63,7 @@ public class ExpressionTest extends AParserTest
         return collection;
     }
 
-    public static List<String> getAllExpressions() {
-        List<String> expressions = new ArrayList<>();
-        expressions.addAll(Arrays.asList(getExpressionsWithoutAssignment()));
-        expressions.addAll(Arrays.asList(getInstructionExpressions()));
-        return expressions;
-    }
-
-    private static String[] getInstructionExpressions() {
-        return new String[]{
-                    "$b = 1",
-                    "$b += 1",
-                    "$b -= 1",
-                    "$b *= 1",
-                    "$b /= 1",
-                    "$b %= 1",
-                    "$b .= 1",
-                    "$b &= 1",
-                    "$b |= 1",
-                    "$b ^= 1",
-                    "$b <<= 1",
-                    "$b >>= 1",
-                    "$b >>= 1",
-                    "$a++",
-                    "++$a",
-                    "--$a",
-                    "$a--",
-                    "foo()",
-                    "$a->foo()",
-                    "$a->a->foo()",
-                    "$a[0]->foo()",
-                    "$a[0][1]->foo()",
-                    "self::foo()",
-                    "self::$a->foo()",
-                    "parent::foo()",
-                    "parent::$a->foo()",};
-    }
-
-    public static String[] getExpressionsWithoutAssignment() {
+    public static String[] getAllExpressions() {
         return new String[]{
                     "true or false",
                     "true xor false",
@@ -116,6 +79,19 @@ public class ExpressionTest extends AParserTest
                     "14 ^ 2",
                     "14 & 2",
                     "9 | 9 ^ 12 & 3",
+                    "$b = 1",
+                    "$b += 1",
+                    "$b -= 1",
+                    "$b *= 1",
+                    "$b /= 1",
+                    "$b %= 1",
+                    "$b .= 1",
+                    "$b &= 1",
+                    "$b |= 1",
+                    "$b ^= 1",
+                    "$b <<= 1",
+                    "$b >>= 1",
+                    "$b >>= 1",
                     "$b==$c",
                     "$b!=$c",
                     "$b===$c",
@@ -175,6 +151,19 @@ public class ExpressionTest extends AParserTest
                     "+$a->foo()",
                     "-$a->foo()",
                     "(1+1)",
+                    "$a++",
+                    "++$a",
+                    "--$a",
+                    "$a--",
+                    "foo()",
+                    "$a->foo()",
+                    "$a->a->foo()",
+                    "$a[0]->foo()",
+                    "$a[0][1]->foo()",
+                    "self::foo()",
+                    "self::$a->foo()",
+                    "parent::foo()",
+                    "parent::$a->foo()",
                     //constant
                     "a",
                     "A::a"

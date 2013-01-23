@@ -16,12 +16,14 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
+import ch.tutteli.tsphp.grammar.TSPHPParser;
+import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -31,31 +33,31 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ExpressionWithoutAssignmentTest extends AParserTest
+public class NotSoNiceButValidTest extends AParserTest
 {
 
-    public ExpressionWithoutAssignmentTest(String testString) {
+    public NotSoNiceButValidTest(String testString) {
         super(testString);
     }
 
     @Test
     public void test() throws RecognitionException {
-        isErrorReportingOn=false;
-        parse();
-        
-        Assert.assertTrue(testString + " failed, lexer threw exception(s) - see output", lexer.getExceptions().isEmpty());
-        Assert.assertFalse(testString + " failed, parser threw exception(s) - see output", parser.getExceptions().isEmpty());
+        parseAndCheckForException();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
+        collection.add(new Object[]{
+                    //clone without assignment
+                    "clone $foo;"
+                });
 
-        String[] expressions = ExpressionTest.getExpressionsWithoutAssignment();
+        String[] expressions = ExpressionTest.getAllExpressions();
         for (String expression : expressions) {
             collection.add(new Object[]{expression + ";"});
         }
-        
+
         return collection;
     }
 }

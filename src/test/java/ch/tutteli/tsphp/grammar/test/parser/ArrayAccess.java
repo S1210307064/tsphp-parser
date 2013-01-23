@@ -45,7 +45,7 @@ public class ArrayAccess extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList();
-        List<String> expressions = ExpressionTest.getAllExpressions();
+        String[] expressions = ExpressionTest.getAllExpressions();
 
         for (String expression : expressions) {
             collection.add(new Object[]{"array $d = $a[" + expression + "];"});

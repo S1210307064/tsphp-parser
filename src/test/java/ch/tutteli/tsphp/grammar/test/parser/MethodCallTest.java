@@ -51,7 +51,7 @@ public class MethodCallTest extends AParserTest
         collection.add(new Object[]{"$a->foo(1,1);"});
         collection.add(new Object[]{"$a->foo(true || false,1,1+1,'hello'.'world');"});
 
-        String[] expressions = ExpressionTest.getExpressionsWithoutAssignment();
+        String[] expressions = ExpressionTest.getAllExpressions();
         for (String expression : expressions) {
             collection.add(new Object[]{"$a->foo(" + expression + ");"});
         }

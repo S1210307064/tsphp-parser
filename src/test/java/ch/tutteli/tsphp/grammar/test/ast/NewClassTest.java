@@ -43,11 +43,6 @@ public class NewClassTest extends AAstTest
         compareAst();
     }
 
-    @Override
-    protected void run() throws RecognitionException {
-        result = parser.expressionForTest();
-    }
-
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();

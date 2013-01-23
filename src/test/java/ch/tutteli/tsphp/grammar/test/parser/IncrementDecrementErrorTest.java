@@ -55,16 +55,17 @@ public class IncrementDecrementErrorTest extends AParserParserExceptionTest
                     //increment or decrement from call
                     {"++foo();", TSPHPParser.LeftParanthesis, 5},
                     {"--foo();", TSPHPParser.LeftParanthesis, 5},
-                    {"++$a->foo();", TSPHPParser.LeftParanthesis, 9},
-                    {"--$a->foo();", TSPHPParser.LeftParanthesis, 9},
-                    {"++$this->foo();", TSPHPParser.LeftParanthesis, 12},
-                    {"--$this->foo();", TSPHPParser.LeftParanthesis, 12},
-                    {"++self::$a->foo();", TSPHPParser.LeftParanthesis, 15},
-                    {"--self::$a->foo();", TSPHPParser.LeftParanthesis, 15},
-                    {"++parent::$a->foo();", TSPHPParser.LeftParanthesis, 17},
-                    {"--parent::$a->foo();", TSPHPParser.LeftParanthesis, 17},
-                    {"++Asdf::$a->foo();", TSPHPParser.LeftParanthesis, 15},
-                    {"--Asdf::$a->foo();", TSPHPParser.LeftParanthesis, 15}
+                    //semicolon is wrong since it expects a member access after a method call
+                    {"++$a->foo();", TSPHPParser.Semicolon, 11},
+                    {"--$a->foo();", TSPHPParser.Semicolon, 11},
+                    {"++$this->foo();", TSPHPParser.Semicolon, 14},
+                    {"--$this->foo();", TSPHPParser.Semicolon, 14},
+                    {"++self::$a->foo();", TSPHPParser.Semicolon, 17},
+                    {"--self::$a->foo();", TSPHPParser.Semicolon, 17},
+                    {"++parent::$a->foo();", TSPHPParser.Semicolon, 19},
+                    {"--parent::$a->foo();", TSPHPParser.Semicolon, 19},
+                    {"++Asdf::$a->foo();", TSPHPParser.Semicolon, 17},
+                    {"--Asdf::$a->foo();", TSPHPParser.Semicolon, 17}
                 });
     }
 }

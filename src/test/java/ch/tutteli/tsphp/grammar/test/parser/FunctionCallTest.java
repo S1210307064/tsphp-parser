@@ -63,7 +63,7 @@ public class FunctionCallTest extends AParserTest
         //Fluent
         collection.addAll(MethodCallTest.getCalls(""));
         
-        String[] expressions = ExpressionTest.getExpressionsWithoutAssignment();
+        String[] expressions = ExpressionTest.getAllExpressions();
         for(String expression:expressions){
             collection.add(new Object[]{"foo("+expression+");"});
         }

@@ -41,11 +41,6 @@ public class ExpressionTest extends AAstTest
         compareAst();
     }
 
-    @Override
-    protected void run() throws RecognitionException {
-        result = parser.expressionForTest();
-    }
-
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         String[][] expressions = getExpressions();
@@ -54,7 +49,6 @@ public class ExpressionTest extends AAstTest
         }
         return Arrays.asList((Object[][]) expressions);
     }
-
     public static String[][] getExpressions() {
         return new String[][]{
                     {"$a or $b", "(or $a $b)"},
