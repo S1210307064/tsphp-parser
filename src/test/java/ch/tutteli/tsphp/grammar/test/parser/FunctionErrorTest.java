@@ -48,6 +48,7 @@ public class FunctionErrorTest extends AParserParserExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
+        collection.add(new Object[]{"function void a();",TSPHPParser.Semicolon,17});
 
 
         String fixture = "function void a (int $a, int $b=";

@@ -68,6 +68,7 @@ public class KeywordErrorTest extends AParserParserExceptionTest
                     {"boolean", TSPHPParser.TypeBoolean},
                     {"break", TSPHPParser.Break},
                     {"case", TSPHPParser.Case},
+                    {"cast",TSPHPParser.Cast},
                     {"catch", TSPHPParser.Catch},
                     {"class", TSPHPParser.Class},
                     {"clone", TSPHPParser.Clone},

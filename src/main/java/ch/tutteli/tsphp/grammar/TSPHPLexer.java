@@ -1,4 +1,4 @@
-// $ANTLR 3.x D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g 2013-01-23 23:32:07
+// $ANTLR 3.x D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g 2013-01-24 17:12:25
 
 /*
  * Copyright 2012 Robert Stoll <rstoll@tutteli.ch>
@@ -52,129 +52,130 @@ public class TSPHPLexer extends Lexer {
 	public static final int CONSTANT_DECLARATION=24;
 	public static final int CONSTANT_DECLARATION_LIST=25;
 	public static final int Case=26;
-	public static final int Catch=27;
-	public static final int Class=28;
-	public static final int Clone=29;
-	public static final int Colon=30;
-	public static final int Comma=31;
-	public static final int Comment=32;
-	public static final int Const=33;
-	public static final int Continue=34;
-	public static final int DECIMAL=35;
-	public static final int Default=36;
-	public static final int Divide=37;
-	public static final int DivideEqual=38;
-	public static final int Do=39;
-	public static final int Dolar=40;
-	public static final int Dot=41;
-	public static final int DotEqual=42;
-	public static final int DoubleColon=43;
-	public static final int EXPONENT=44;
-	public static final int EXPRESSION_LIST=45;
-	public static final int Echo=46;
-	public static final int Else=47;
-	public static final int Equal=48;
-	public static final int Exit=49;
-	public static final int Extends=50;
-	public static final int FUNCTION_CALL=51;
-	public static final int FUNCTION_DECLARATION=52;
-	public static final int Final=53;
-	public static final int Float=54;
-	public static final int For=55;
-	public static final int Foreach=56;
-	public static final int Function=57;
-	public static final int GreaterEqualThan=58;
-	public static final int GreaterThan=59;
-	public static final int HEXADECIMAL=60;
-	public static final int Identical=61;
-	public static final int Identifier=62;
-	public static final int If=63;
-	public static final int Implements=64;
-	public static final int Instanceof=65;
-	public static final int Int=66;
-	public static final int Interface=67;
-	public static final int LeftCurlyBrace=68;
-	public static final int LeftParanthesis=69;
-	public static final int LeftSquareBrace=70;
-	public static final int LessEqualThan=71;
-	public static final int LessThan=72;
-	public static final int LogicAnd=73;
-	public static final int LogicAndWeak=74;
-	public static final int LogicNot=75;
-	public static final int LogicOr=76;
-	public static final int LogicOrWeak=77;
-	public static final int LogicXorWeak=78;
-	public static final int MEMBER_ACCESS=79;
-	public static final int MEMBER_ACCESS_STATIC=80;
-	public static final int METHOD_CALL=81;
-	public static final int Minus=82;
-	public static final int MinusEqual=83;
-	public static final int MinusMinus=84;
-	public static final int Modulo=85;
-	public static final int ModuloEqual=86;
-	public static final int Multiply=87;
-	public static final int MultiplyEqual=88;
-	public static final int Namespace=89;
-	public static final int New=90;
-	public static final int NotEqual=91;
-	public static final int NotEqualAlternative=92;
-	public static final int NotIdentical=93;
-	public static final int Null=94;
-	public static final int OCTAL=95;
-	public static final int ObjectOperator=96;
-	public static final int PARAM_DECLARATION=97;
-	public static final int PARAM_LIST=98;
-	public static final int POST_INCREMENT_DECREMENT=99;
-	public static final int PRE_INCREMENT_DECREMENT=100;
-	public static final int Parent=101;
-	public static final int ParentColonColon=102;
-	public static final int Plus=103;
-	public static final int PlusEqual=104;
-	public static final int PlusPlus=105;
-	public static final int Private=106;
-	public static final int ProtectThis=107;
-	public static final int Protected=108;
-	public static final int Public=109;
-	public static final int QuestionMark=110;
-	public static final int Return=111;
-	public static final int RightCurlyBrace=112;
-	public static final int RightParanthesis=113;
-	public static final int RightSquareBrace=114;
-	public static final int STRING_DOUBLE_QUOTED=115;
-	public static final int STRING_SINGLE_QUOTED=116;
-	public static final int SWITCH_CASES=117;
-	public static final int Self=118;
-	public static final int SelfColonColon=119;
-	public static final int Semicolon=120;
-	public static final int ShiftLeft=121;
-	public static final int ShiftLeftEqual=122;
-	public static final int ShiftRight=123;
-	public static final int ShiftRightEqual=124;
-	public static final int Static=125;
-	public static final int String=126;
-	public static final int Switch=127;
-	public static final int This=128;
-	public static final int Throw=129;
-	public static final int Try=130;
-	public static final int TypeArray=131;
-	public static final int TypeBool=132;
-	public static final int TypeBoolean=133;
-	public static final int TypeDouble=134;
-	public static final int TypeFloat=135;
-	public static final int TypeInt=136;
-	public static final int TypeInteger=137;
-	public static final int TypeObject=138;
-	public static final int TypeResource=139;
-	public static final int TypeString=140;
-	public static final int UMINUS=141;
-	public static final int UPLUS=142;
-	public static final int Use=143;
-	public static final int VARIABLE_DECLARATION=144;
-	public static final int VARIABLE_DECLARATION_LIST=145;
-	public static final int VariableId=146;
-	public static final int Void=147;
-	public static final int While=148;
-	public static final int Whitespace=149;
+	public static final int Cast=27;
+	public static final int Catch=28;
+	public static final int Class=29;
+	public static final int Clone=30;
+	public static final int Colon=31;
+	public static final int Comma=32;
+	public static final int Comment=33;
+	public static final int Const=34;
+	public static final int Continue=35;
+	public static final int DECIMAL=36;
+	public static final int Default=37;
+	public static final int Divide=38;
+	public static final int DivideEqual=39;
+	public static final int Do=40;
+	public static final int Dolar=41;
+	public static final int Dot=42;
+	public static final int DotEqual=43;
+	public static final int DoubleColon=44;
+	public static final int EXPONENT=45;
+	public static final int EXPRESSION_LIST=46;
+	public static final int Echo=47;
+	public static final int Else=48;
+	public static final int Equal=49;
+	public static final int Exit=50;
+	public static final int Extends=51;
+	public static final int FUNCTION_CALL=52;
+	public static final int FUNCTION_DECLARATION=53;
+	public static final int Final=54;
+	public static final int Float=55;
+	public static final int For=56;
+	public static final int Foreach=57;
+	public static final int Function=58;
+	public static final int GreaterEqualThan=59;
+	public static final int GreaterThan=60;
+	public static final int HEXADECIMAL=61;
+	public static final int Identical=62;
+	public static final int Identifier=63;
+	public static final int If=64;
+	public static final int Implements=65;
+	public static final int Instanceof=66;
+	public static final int Int=67;
+	public static final int Interface=68;
+	public static final int LeftCurlyBrace=69;
+	public static final int LeftParanthesis=70;
+	public static final int LeftSquareBrace=71;
+	public static final int LessEqualThan=72;
+	public static final int LessThan=73;
+	public static final int LogicAnd=74;
+	public static final int LogicAndWeak=75;
+	public static final int LogicNot=76;
+	public static final int LogicOr=77;
+	public static final int LogicOrWeak=78;
+	public static final int LogicXorWeak=79;
+	public static final int MEMBER_ACCESS=80;
+	public static final int MEMBER_ACCESS_STATIC=81;
+	public static final int METHOD_CALL=82;
+	public static final int Minus=83;
+	public static final int MinusEqual=84;
+	public static final int MinusMinus=85;
+	public static final int Modulo=86;
+	public static final int ModuloEqual=87;
+	public static final int Multiply=88;
+	public static final int MultiplyEqual=89;
+	public static final int Namespace=90;
+	public static final int New=91;
+	public static final int NotEqual=92;
+	public static final int NotEqualAlternative=93;
+	public static final int NotIdentical=94;
+	public static final int Null=95;
+	public static final int OCTAL=96;
+	public static final int ObjectOperator=97;
+	public static final int PARAM_DECLARATION=98;
+	public static final int PARAM_LIST=99;
+	public static final int POST_INCREMENT_DECREMENT=100;
+	public static final int PRE_INCREMENT_DECREMENT=101;
+	public static final int Parent=102;
+	public static final int ParentColonColon=103;
+	public static final int Plus=104;
+	public static final int PlusEqual=105;
+	public static final int PlusPlus=106;
+	public static final int Private=107;
+	public static final int ProtectThis=108;
+	public static final int Protected=109;
+	public static final int Public=110;
+	public static final int QuestionMark=111;
+	public static final int Return=112;
+	public static final int RightCurlyBrace=113;
+	public static final int RightParanthesis=114;
+	public static final int RightSquareBrace=115;
+	public static final int STRING_DOUBLE_QUOTED=116;
+	public static final int STRING_SINGLE_QUOTED=117;
+	public static final int SWITCH_CASES=118;
+	public static final int Self=119;
+	public static final int SelfColonColon=120;
+	public static final int Semicolon=121;
+	public static final int ShiftLeft=122;
+	public static final int ShiftLeftEqual=123;
+	public static final int ShiftRight=124;
+	public static final int ShiftRightEqual=125;
+	public static final int Static=126;
+	public static final int String=127;
+	public static final int Switch=128;
+	public static final int This=129;
+	public static final int Throw=130;
+	public static final int Try=131;
+	public static final int TypeArray=132;
+	public static final int TypeBool=133;
+	public static final int TypeBoolean=134;
+	public static final int TypeDouble=135;
+	public static final int TypeFloat=136;
+	public static final int TypeInt=137;
+	public static final int TypeInteger=138;
+	public static final int TypeObject=139;
+	public static final int TypeResource=140;
+	public static final int TypeString=141;
+	public static final int UMINUS=142;
+	public static final int UPLUS=143;
+	public static final int Use=144;
+	public static final int VARIABLE_DECLARATION=145;
+	public static final int VARIABLE_DECLARATION_LIST=146;
+	public static final int VariableId=147;
+	public static final int Void=148;
+	public static final int While=149;
+	public static final int Whitespace=150;
 
 	// delegates
 	// delegators
@@ -499,13 +500,34 @@ public class TSPHPLexer extends Lexer {
 	}
 	// $ANTLR end "Case"
 
+	// $ANTLR start "Cast"
+	public final void mCast() throws RecognitionException {
+		try {
+			int _type = Cast;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:37:6: ( 'cast' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:37:8: 'cast'
+			{
+			match("cast"); if (state.failed) return ;
+
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "Cast"
+
 	// $ANTLR start "Catch"
 	public final void mCatch() throws RecognitionException {
 		try {
 			int _type = Catch;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:37:7: ( 'catch' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:37:9: 'catch'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:38:7: ( 'catch' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:38:9: 'catch'
 			{
 			match("catch"); if (state.failed) return ;
 
@@ -525,8 +547,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Class;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:38:7: ( 'class' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:38:9: 'class'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:39:7: ( 'class' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:39:9: 'class'
 			{
 			match("class"); if (state.failed) return ;
 
@@ -546,8 +568,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Clone;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:39:7: ( 'clone' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:39:9: 'clone'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:40:7: ( 'clone' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:40:9: 'clone'
 			{
 			match("clone"); if (state.failed) return ;
 
@@ -567,8 +589,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Colon;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:40:7: ( ':' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:40:9: ':'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:41:7: ( ':' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:41:9: ':'
 			{
 			match(':'); if (state.failed) return ;
 			}
@@ -587,8 +609,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Comma;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:41:7: ( ',' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:41:9: ','
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:42:7: ( ',' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:42:9: ','
 			{
 			match(','); if (state.failed) return ;
 			}
@@ -607,8 +629,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Const;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:42:7: ( 'const' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:42:9: 'const'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:43:7: ( 'const' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:43:9: 'const'
 			{
 			match("const"); if (state.failed) return ;
 
@@ -628,8 +650,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Continue;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:43:10: ( 'continue' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:43:12: 'continue'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:44:10: ( 'continue' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:44:12: 'continue'
 			{
 			match("continue"); if (state.failed) return ;
 
@@ -649,8 +671,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Default;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:44:9: ( 'default' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:44:11: 'default'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:45:9: ( 'default' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:45:11: 'default'
 			{
 			match("default"); if (state.failed) return ;
 
@@ -670,8 +692,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Divide;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:45:8: ( '/' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:45:10: '/'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:46:8: ( '/' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:46:10: '/'
 			{
 			match('/'); if (state.failed) return ;
 			}
@@ -690,8 +712,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = DivideEqual;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:46:13: ( '/=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:46:15: '/='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:47:13: ( '/=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:47:15: '/='
 			{
 			match("/="); if (state.failed) return ;
 
@@ -711,8 +733,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Do;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:47:4: ( 'do' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:47:6: 'do'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:48:4: ( 'do' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:48:6: 'do'
 			{
 			match("do"); if (state.failed) return ;
 
@@ -732,8 +754,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Dolar;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:48:7: ( '$' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:48:9: '$'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:49:7: ( '$' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:49:9: '$'
 			{
 			match('$'); if (state.failed) return ;
 			}
@@ -752,8 +774,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Dot;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:49:5: ( '.' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:49:7: '.'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:50:5: ( '.' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:50:7: '.'
 			{
 			match('.'); if (state.failed) return ;
 			}
@@ -772,8 +794,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = DotEqual;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:50:10: ( '.=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:50:12: '.='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:51:10: ( '.=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:51:12: '.='
 			{
 			match(".="); if (state.failed) return ;
 
@@ -793,8 +815,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = DoubleColon;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:51:13: ( '::' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:51:15: '::'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:52:13: ( '::' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:52:15: '::'
 			{
 			match("::"); if (state.failed) return ;
 
@@ -814,8 +836,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Echo;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:52:6: ( 'echo' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:52:8: 'echo'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:53:6: ( 'echo' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:53:8: 'echo'
 			{
 			match("echo"); if (state.failed) return ;
 
@@ -835,8 +857,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Else;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:53:6: ( 'else' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:53:8: 'else'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:54:6: ( 'else' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:54:8: 'else'
 			{
 			match("else"); if (state.failed) return ;
 
@@ -856,8 +878,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Equal;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:54:7: ( '==' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:54:9: '=='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:55:7: ( '==' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:55:9: '=='
 			{
 			match("=="); if (state.failed) return ;
 
@@ -877,8 +899,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Exit;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:55:6: ( 'exit' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:55:8: 'exit'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:56:6: ( 'exit' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:56:8: 'exit'
 			{
 			match("exit"); if (state.failed) return ;
 
@@ -898,8 +920,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Extends;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:56:9: ( 'extends' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:56:11: 'extends'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:57:9: ( 'extends' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:57:11: 'extends'
 			{
 			match("extends"); if (state.failed) return ;
 
@@ -919,8 +941,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Final;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:57:7: ( 'final' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:57:9: 'final'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:58:7: ( 'final' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:58:9: 'final'
 			{
 			match("final"); if (state.failed) return ;
 
@@ -940,8 +962,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = For;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:58:5: ( 'for' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:58:7: 'for'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:59:5: ( 'for' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:59:7: 'for'
 			{
 			match("for"); if (state.failed) return ;
 
@@ -961,8 +983,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Foreach;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:59:9: ( 'foreach' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:59:11: 'foreach'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:60:9: ( 'foreach' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:60:11: 'foreach'
 			{
 			match("foreach"); if (state.failed) return ;
 
@@ -982,8 +1004,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Function;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:60:10: ( 'function' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:60:12: 'function'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:61:10: ( 'function' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:61:12: 'function'
 			{
 			match("function"); if (state.failed) return ;
 
@@ -1003,8 +1025,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = GreaterEqualThan;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:61:18: ( '>=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:61:20: '>='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:62:18: ( '>=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:62:20: '>='
 			{
 			match(">="); if (state.failed) return ;
 
@@ -1024,8 +1046,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = GreaterThan;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:62:13: ( '>' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:62:15: '>'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:63:13: ( '>' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:63:15: '>'
 			{
 			match('>'); if (state.failed) return ;
 			}
@@ -1044,8 +1066,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Identical;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:63:11: ( '===' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:63:13: '==='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:64:11: ( '===' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:64:13: '==='
 			{
 			match("==="); if (state.failed) return ;
 
@@ -1065,8 +1087,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = If;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:64:4: ( 'if' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:64:6: 'if'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:65:4: ( 'if' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:65:6: 'if'
 			{
 			match("if"); if (state.failed) return ;
 
@@ -1086,8 +1108,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Implements;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:65:12: ( 'implements' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:65:14: 'implements'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:66:12: ( 'implements' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:66:14: 'implements'
 			{
 			match("implements"); if (state.failed) return ;
 
@@ -1107,8 +1129,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Instanceof;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:66:12: ( 'instanceof' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:66:14: 'instanceof'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:67:12: ( 'instanceof' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:67:14: 'instanceof'
 			{
 			match("instanceof"); if (state.failed) return ;
 
@@ -1128,8 +1150,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Interface;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:67:11: ( 'interface' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:67:13: 'interface'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:68:11: ( 'interface' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:68:13: 'interface'
 			{
 			match("interface"); if (state.failed) return ;
 
@@ -1149,8 +1171,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LeftCurlyBrace;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:68:16: ( '{' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:68:18: '{'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:69:16: ( '{' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:69:18: '{'
 			{
 			match('{'); if (state.failed) return ;
 			}
@@ -1169,8 +1191,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LeftParanthesis;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:69:17: ( '(' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:69:19: '('
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:70:17: ( '(' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:70:19: '('
 			{
 			match('('); if (state.failed) return ;
 			}
@@ -1189,8 +1211,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LeftSquareBrace;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:70:17: ( '[' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:70:19: '['
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:71:17: ( '[' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:71:19: '['
 			{
 			match('['); if (state.failed) return ;
 			}
@@ -1209,8 +1231,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LessEqualThan;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:71:15: ( '<=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:71:17: '<='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:72:15: ( '<=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:72:17: '<='
 			{
 			match("<="); if (state.failed) return ;
 
@@ -1230,8 +1252,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LessThan;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:72:10: ( '<' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:72:12: '<'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:73:10: ( '<' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:73:12: '<'
 			{
 			match('<'); if (state.failed) return ;
 			}
@@ -1250,8 +1272,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LogicAnd;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:73:10: ( '&&' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:73:12: '&&'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:74:10: ( '&&' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:74:12: '&&'
 			{
 			match("&&"); if (state.failed) return ;
 
@@ -1271,8 +1293,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LogicAndWeak;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:74:14: ( 'and' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:74:16: 'and'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:75:14: ( 'and' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:75:16: 'and'
 			{
 			match("and"); if (state.failed) return ;
 
@@ -1292,8 +1314,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LogicNot;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:75:10: ( '!' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:75:12: '!'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:76:10: ( '!' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:76:12: '!'
 			{
 			match('!'); if (state.failed) return ;
 			}
@@ -1312,8 +1334,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LogicOr;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:76:9: ( '||' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:76:11: '||'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:77:9: ( '||' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:77:11: '||'
 			{
 			match("||"); if (state.failed) return ;
 
@@ -1333,8 +1355,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LogicOrWeak;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:77:13: ( 'or' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:77:15: 'or'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:78:13: ( 'or' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:78:15: 'or'
 			{
 			match("or"); if (state.failed) return ;
 
@@ -1354,8 +1376,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = LogicXorWeak;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:78:14: ( 'xor' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:78:16: 'xor'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:79:14: ( 'xor' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:79:16: 'xor'
 			{
 			match("xor"); if (state.failed) return ;
 
@@ -1375,8 +1397,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Minus;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:79:7: ( '-' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:79:9: '-'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:80:7: ( '-' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:80:9: '-'
 			{
 			match('-'); if (state.failed) return ;
 			}
@@ -1395,8 +1417,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = MinusEqual;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:80:12: ( '-=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:80:14: '-='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:81:12: ( '-=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:81:14: '-='
 			{
 			match("-="); if (state.failed) return ;
 
@@ -1416,8 +1438,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = MinusMinus;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:81:12: ( '--' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:81:14: '--'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:82:12: ( '--' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:82:14: '--'
 			{
 			match("--"); if (state.failed) return ;
 
@@ -1437,8 +1459,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Modulo;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:82:8: ( '%' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:82:10: '%'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:83:8: ( '%' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:83:10: '%'
 			{
 			match('%'); if (state.failed) return ;
 			}
@@ -1457,8 +1479,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = ModuloEqual;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:83:13: ( '%=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:83:15: '%='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:84:13: ( '%=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:84:15: '%='
 			{
 			match("%="); if (state.failed) return ;
 
@@ -1478,8 +1500,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Multiply;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:84:10: ( '*' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:84:12: '*'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:85:10: ( '*' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:85:12: '*'
 			{
 			match('*'); if (state.failed) return ;
 			}
@@ -1498,8 +1520,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = MultiplyEqual;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:85:15: ( '*=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:85:17: '*='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:86:15: ( '*=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:86:17: '*='
 			{
 			match("*="); if (state.failed) return ;
 
@@ -1519,8 +1541,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Namespace;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:86:11: ( 'namespace' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:86:13: 'namespace'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:87:11: ( 'namespace' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:87:13: 'namespace'
 			{
 			match("namespace"); if (state.failed) return ;
 
@@ -1540,8 +1562,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = New;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:87:5: ( 'new' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:87:7: 'new'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:88:5: ( 'new' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:88:7: 'new'
 			{
 			match("new"); if (state.failed) return ;
 
@@ -1561,8 +1583,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = NotEqual;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:88:10: ( '!=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:88:12: '!='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:89:10: ( '!=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:89:12: '!='
 			{
 			match("!="); if (state.failed) return ;
 
@@ -1582,8 +1604,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = NotEqualAlternative;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:89:21: ( '<>' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:89:23: '<>'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:90:21: ( '<>' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:90:23: '<>'
 			{
 			match("<>"); if (state.failed) return ;
 
@@ -1603,8 +1625,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = NotIdentical;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:90:14: ( '!==' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:90:16: '!=='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:91:14: ( '!==' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:91:16: '!=='
 			{
 			match("!=="); if (state.failed) return ;
 
@@ -1624,8 +1646,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Null;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:91:6: ( 'null' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:91:8: 'null'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:92:6: ( 'null' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:92:8: 'null'
 			{
 			match("null"); if (state.failed) return ;
 
@@ -1645,8 +1667,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = ObjectOperator;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:92:16: ( '->' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:92:18: '->'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:93:16: ( '->' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:93:18: '->'
 			{
 			match("->"); if (state.failed) return ;
 
@@ -1666,8 +1688,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Parent;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:93:8: ( 'parent' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:93:10: 'parent'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:94:8: ( 'parent' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:94:10: 'parent'
 			{
 			match("parent"); if (state.failed) return ;
 
@@ -1687,8 +1709,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = ParentColonColon;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:94:18: ( 'parent::' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:94:20: 'parent::'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:95:18: ( 'parent::' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:95:20: 'parent::'
 			{
 			match("parent::"); if (state.failed) return ;
 
@@ -1708,8 +1730,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Plus;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:95:6: ( '+' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:95:8: '+'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:96:6: ( '+' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:96:8: '+'
 			{
 			match('+'); if (state.failed) return ;
 			}
@@ -1728,8 +1750,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = PlusEqual;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:96:11: ( '+=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:96:13: '+='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:97:11: ( '+=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:97:13: '+='
 			{
 			match("+="); if (state.failed) return ;
 
@@ -1749,8 +1771,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = PlusPlus;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:97:10: ( '++' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:97:12: '++'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:98:10: ( '++' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:98:12: '++'
 			{
 			match("++"); if (state.failed) return ;
 
@@ -1770,8 +1792,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Private;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:98:9: ( 'private' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:98:11: 'private'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:99:9: ( 'private' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:99:11: 'private'
 			{
 			match("private"); if (state.failed) return ;
 
@@ -1791,8 +1813,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = ProtectThis;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:99:13: ( 'this' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:99:15: 'this'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:100:13: ( 'this' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:100:15: 'this'
 			{
 			match("this"); if (state.failed) return ;
 
@@ -1812,8 +1834,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Protected;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:100:11: ( 'protected' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:100:13: 'protected'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:101:11: ( 'protected' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:101:13: 'protected'
 			{
 			match("protected"); if (state.failed) return ;
 
@@ -1833,8 +1855,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Public;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:101:8: ( 'public' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:101:10: 'public'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:102:8: ( 'public' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:102:10: 'public'
 			{
 			match("public"); if (state.failed) return ;
 
@@ -1854,8 +1876,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = QuestionMark;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:102:14: ( '?' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:102:16: '?'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:103:14: ( '?' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:103:16: '?'
 			{
 			match('?'); if (state.failed) return ;
 			}
@@ -1874,8 +1896,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Return;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:103:8: ( 'return' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:103:10: 'return'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:104:8: ( 'return' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:104:10: 'return'
 			{
 			match("return"); if (state.failed) return ;
 
@@ -1895,8 +1917,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = RightCurlyBrace;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:104:17: ( '}' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:104:19: '}'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:105:17: ( '}' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:105:19: '}'
 			{
 			match('}'); if (state.failed) return ;
 			}
@@ -1915,8 +1937,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = RightParanthesis;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:105:18: ( ')' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:105:20: ')'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:106:18: ( ')' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:106:20: ')'
 			{
 			match(')'); if (state.failed) return ;
 			}
@@ -1935,8 +1957,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = RightSquareBrace;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:106:18: ( ']' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:106:20: ']'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:107:18: ( ']' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:107:20: ']'
 			{
 			match(']'); if (state.failed) return ;
 			}
@@ -1955,8 +1977,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Self;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:107:6: ( 'self' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:107:8: 'self'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:108:6: ( 'self' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:108:8: 'self'
 			{
 			match("self"); if (state.failed) return ;
 
@@ -1976,8 +1998,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = SelfColonColon;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:108:16: ( 'self::' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:108:18: 'self::'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:109:16: ( 'self::' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:109:18: 'self::'
 			{
 			match("self::"); if (state.failed) return ;
 
@@ -1997,8 +2019,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Semicolon;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:109:11: ( ';' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:109:13: ';'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:110:11: ( ';' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:110:13: ';'
 			{
 			match(';'); if (state.failed) return ;
 			}
@@ -2017,8 +2039,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = ShiftLeft;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:110:11: ( '<<' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:110:13: '<<'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:111:11: ( '<<' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:111:13: '<<'
 			{
 			match("<<"); if (state.failed) return ;
 
@@ -2038,8 +2060,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = ShiftLeftEqual;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:111:16: ( '<<=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:111:18: '<<='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:112:16: ( '<<=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:112:18: '<<='
 			{
 			match("<<="); if (state.failed) return ;
 
@@ -2059,8 +2081,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = ShiftRight;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:112:12: ( '>>' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:112:14: '>>'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:113:12: ( '>>' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:113:14: '>>'
 			{
 			match(">>"); if (state.failed) return ;
 
@@ -2080,8 +2102,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = ShiftRightEqual;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:113:17: ( '>>=' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:113:19: '>>='
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:114:17: ( '>>=' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:114:19: '>>='
 			{
 			match(">>="); if (state.failed) return ;
 
@@ -2101,8 +2123,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Static;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:114:8: ( 'static' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:114:10: 'static'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:115:8: ( 'static' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:115:10: 'static'
 			{
 			match("static"); if (state.failed) return ;
 
@@ -2122,8 +2144,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Switch;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:115:8: ( 'switch' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:115:10: 'switch'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:116:8: ( 'switch' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:116:10: 'switch'
 			{
 			match("switch"); if (state.failed) return ;
 
@@ -2143,8 +2165,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = This;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:116:6: ( '$this' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:116:8: '$this'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:117:6: ( '$this' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:117:8: '$this'
 			{
 			match("$this"); if (state.failed) return ;
 
@@ -2164,8 +2186,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Throw;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:117:7: ( 'throw' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:117:9: 'throw'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:118:7: ( 'throw' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:118:9: 'throw'
 			{
 			match("throw"); if (state.failed) return ;
 
@@ -2185,8 +2207,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Try;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:118:5: ( 'try' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:118:7: 'try'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:119:5: ( 'try' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:119:7: 'try'
 			{
 			match("try"); if (state.failed) return ;
 
@@ -2206,8 +2228,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = TypeArray;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:119:11: ( 'array' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:119:13: 'array'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:120:11: ( 'array' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:120:13: 'array'
 			{
 			match("array"); if (state.failed) return ;
 
@@ -2227,8 +2249,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = TypeBool;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:120:10: ( 'bool' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:120:12: 'bool'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:121:10: ( 'bool' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:121:12: 'bool'
 			{
 			match("bool"); if (state.failed) return ;
 
@@ -2248,8 +2270,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = TypeBoolean;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:121:13: ( 'boolean' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:121:15: 'boolean'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:122:13: ( 'boolean' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:122:15: 'boolean'
 			{
 			match("boolean"); if (state.failed) return ;
 
@@ -2269,8 +2291,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = TypeDouble;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:122:12: ( 'double' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:122:14: 'double'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:123:12: ( 'double' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:123:14: 'double'
 			{
 			match("double"); if (state.failed) return ;
 
@@ -2290,8 +2312,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = TypeFloat;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:123:11: ( 'float' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:123:13: 'float'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:124:11: ( 'float' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:124:13: 'float'
 			{
 			match("float"); if (state.failed) return ;
 
@@ -2311,8 +2333,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = TypeInt;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:124:9: ( 'int' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:124:11: 'int'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:125:9: ( 'int' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:125:11: 'int'
 			{
 			match("int"); if (state.failed) return ;
 
@@ -2332,8 +2354,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = TypeInteger;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:125:13: ( 'integer' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:125:15: 'integer'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:126:13: ( 'integer' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:126:15: 'integer'
 			{
 			match("integer"); if (state.failed) return ;
 
@@ -2353,8 +2375,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = TypeObject;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:126:12: ( 'object' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:126:14: 'object'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:127:12: ( 'object' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:127:14: 'object'
 			{
 			match("object"); if (state.failed) return ;
 
@@ -2374,8 +2396,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = TypeResource;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:127:14: ( 'resource' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:127:16: 'resource'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:128:14: ( 'resource' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:128:16: 'resource'
 			{
 			match("resource"); if (state.failed) return ;
 
@@ -2395,8 +2417,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = TypeString;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:128:12: ( 'string' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:128:14: 'string'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:129:12: ( 'string' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:129:14: 'string'
 			{
 			match("string"); if (state.failed) return ;
 
@@ -2416,8 +2438,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Use;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:129:5: ( 'use' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:129:7: 'use'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:130:5: ( 'use' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:130:7: 'use'
 			{
 			match("use"); if (state.failed) return ;
 
@@ -2437,8 +2459,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Void;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:130:6: ( 'void' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:130:8: 'void'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:131:6: ( 'void' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:131:8: 'void'
 			{
 			match("void"); if (state.failed) return ;
 
@@ -2458,8 +2480,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = While;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:131:7: ( 'while' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:131:9: 'while'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:132:7: ( 'while' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:132:9: 'while'
 			{
 			match("while"); if (state.failed) return ;
 
@@ -2479,7 +2501,7 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Bool;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:218:6: ( 'true' | 'false' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:219:6: ( 'true' | 'false' )
 			int alt1=2;
 			int LA1_0 = input.LA(1);
 			if ( (LA1_0=='t') ) {
@@ -2496,14 +2518,14 @@ public class TSPHPLexer extends Lexer {
 			}
 			switch (alt1) {
 				case 1 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:218:8: 'true'
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:219:8: 'true'
 					{
 					match("true"); if (state.failed) return ;
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:218:15: 'false'
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:219:15: 'false'
 					{
 					match("false"); if (state.failed) return ;
 
@@ -2525,8 +2547,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Identifier;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:222:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '\\u007f' .. '\\u00ff' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '\\u007f' .. '\\u00ff' )* )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:222:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '\\u007f' .. '\\u00ff' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '\\u007f' .. '\\u00ff' )*
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:223:2: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '\\u007f' .. '\\u00ff' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '\\u007f' .. '\\u00ff' )* )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:223:4: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '\\u007f' .. '\\u00ff' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '\\u007f' .. '\\u00ff' )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||input.LA(1)=='_'||(input.LA(1) >= 'a' && input.LA(1) <= 'z')||(input.LA(1) >= '\u007F' && input.LA(1) <= '\u00FF') ) {
 				input.consume();
@@ -2538,7 +2560,7 @@ public class TSPHPLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:222:47: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '\\u007f' .. '\\u00ff' )*
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:223:47: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' | '\\u007f' .. '\\u00ff' )*
 			loop2:
 			do {
 				int alt2=2;
@@ -2585,8 +2607,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = VariableId;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:403:2: ( '$' Identifier )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:403:4: '$' Identifier
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:408:2: ( '$' Identifier )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:408:4: '$' Identifier
 			{
 			match('$'); if (state.failed) return ;
 			mIdentifier(); if (state.failed) return ;
@@ -2607,7 +2629,7 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Int;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:694:9: ( DECIMAL | HEXADECIMAL | OCTAL | BINARY )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:699:9: ( DECIMAL | HEXADECIMAL | OCTAL | BINARY )
 			int alt3=4;
 			int LA3_0 = input.LA(1);
 			if ( ((LA3_0 >= '1' && LA3_0 <= '9')) ) {
@@ -2650,28 +2672,28 @@ public class TSPHPLexer extends Lexer {
 			}
 			switch (alt3) {
 				case 1 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:694:12: DECIMAL
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:699:12: DECIMAL
 					{
 					mDECIMAL(); if (state.failed) return ;
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:695:12: HEXADECIMAL
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:700:12: HEXADECIMAL
 					{
 					mHEXADECIMAL(); if (state.failed) return ;
 
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:696:12: OCTAL
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:701:12: OCTAL
 					{
 					mOCTAL(); if (state.failed) return ;
 
 					}
 					break;
 				case 4 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:697:12: BINARY
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:702:12: BINARY
 					{
 					mBINARY(); if (state.failed) return ;
 
@@ -2691,7 +2713,7 @@ public class TSPHPLexer extends Lexer {
 	// $ANTLR start "DECIMAL"
 	public final void mDECIMAL() throws RecognitionException {
 		try {
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:703:2: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:708:2: ( ( '1' .. '9' ) ( '0' .. '9' )* | '0' )
 			int alt5=2;
 			int LA5_0 = input.LA(1);
 			if ( ((LA5_0 >= '1' && LA5_0 <= '9')) ) {
@@ -2708,7 +2730,7 @@ public class TSPHPLexer extends Lexer {
 			}
 			switch (alt5) {
 				case 1 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:703:4: ( '1' .. '9' ) ( '0' .. '9' )*
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:708:4: ( '1' .. '9' ) ( '0' .. '9' )*
 					{
 					if ( (input.LA(1) >= '1' && input.LA(1) <= '9') ) {
 						input.consume();
@@ -2720,7 +2742,7 @@ public class TSPHPLexer extends Lexer {
 						recover(mse);
 						throw mse;
 					}
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:703:15: ( '0' .. '9' )*
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:708:15: ( '0' .. '9' )*
 					loop4:
 					do {
 						int alt4=2;
@@ -2754,7 +2776,7 @@ public class TSPHPLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:704:12: '0'
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:709:12: '0'
 					{
 					match('0'); if (state.failed) return ;
 					}
@@ -2771,8 +2793,8 @@ public class TSPHPLexer extends Lexer {
 	// $ANTLR start "HEXADECIMAL"
 	public final void mHEXADECIMAL() throws RecognitionException {
 		try {
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:709:2: ( '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:709:4: '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:714:2: ( '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:714:4: '0' ( 'x' | 'X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
 			{
 			match('0'); if (state.failed) return ;
 			if ( input.LA(1)=='X'||input.LA(1)=='x' ) {
@@ -2785,7 +2807,7 @@ public class TSPHPLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:709:18: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:714:18: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
 			int cnt6=0;
 			loop6:
 			do {
@@ -2834,11 +2856,11 @@ public class TSPHPLexer extends Lexer {
 	// $ANTLR start "OCTAL"
 	public final void mOCTAL() throws RecognitionException {
 		try {
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:714:2: ( '0' ( '0' .. '7' )+ )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:714:4: '0' ( '0' .. '7' )+
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:719:2: ( '0' ( '0' .. '7' )+ )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:719:4: '0' ( '0' .. '7' )+
 			{
 			match('0'); if (state.failed) return ;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:714:8: ( '0' .. '7' )+
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:719:8: ( '0' .. '7' )+
 			int cnt7=0;
 			loop7:
 			do {
@@ -2887,12 +2909,12 @@ public class TSPHPLexer extends Lexer {
 	// $ANTLR start "BINARY"
 	public final void mBINARY() throws RecognitionException {
 		try {
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:720:2: ( '0b' ( '0' | '1' )+ )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:720:4: '0b' ( '0' | '1' )+
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:725:2: ( '0b' ( '0' | '1' )+ )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:725:4: '0b' ( '0' | '1' )+
 			{
 			match("0b"); if (state.failed) return ;
 
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:720:8: ( '0' | '1' )+
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:725:8: ( '0' | '1' )+
 			int cnt8=0;
 			loop8:
 			do {
@@ -2943,14 +2965,14 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Float;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:724:6: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:729:6: ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT )
 			int alt15=3;
 			alt15 = dfa15.predict(input);
 			switch (alt15) {
 				case 1 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:724:8: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:729:8: ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )?
 					{
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:724:8: ( '0' .. '9' )+
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:729:8: ( '0' .. '9' )+
 					int cnt9=0;
 					loop9:
 					do {
@@ -2988,7 +3010,7 @@ public class TSPHPLexer extends Lexer {
 					} while (true);
 
 					match('.'); if (state.failed) return ;
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:724:24: ( '0' .. '9' )*
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:729:24: ( '0' .. '9' )*
 					loop10:
 					do {
 						int alt10=2;
@@ -3019,7 +3041,7 @@ public class TSPHPLexer extends Lexer {
 						}
 					} while (true);
 
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:724:36: ( EXPONENT )?
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:729:36: ( EXPONENT )?
 					int alt11=2;
 					int LA11_0 = input.LA(1);
 					if ( (LA11_0=='E'||LA11_0=='e') ) {
@@ -3027,7 +3049,7 @@ public class TSPHPLexer extends Lexer {
 					}
 					switch (alt11) {
 						case 1 :
-							// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:724:36: EXPONENT
+							// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:729:36: EXPONENT
 							{
 							mEXPONENT(); if (state.failed) return ;
 
@@ -3039,10 +3061,10 @@ public class TSPHPLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:725:8: '.' ( '0' .. '9' )+ ( EXPONENT )?
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:730:8: '.' ( '0' .. '9' )+ ( EXPONENT )?
 					{
 					match('.'); if (state.failed) return ;
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:725:12: ( '0' .. '9' )+
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:730:12: ( '0' .. '9' )+
 					int cnt12=0;
 					loop12:
 					do {
@@ -3079,7 +3101,7 @@ public class TSPHPLexer extends Lexer {
 						cnt12++;
 					} while (true);
 
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:725:24: ( EXPONENT )?
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:730:24: ( EXPONENT )?
 					int alt13=2;
 					int LA13_0 = input.LA(1);
 					if ( (LA13_0=='E'||LA13_0=='e') ) {
@@ -3087,7 +3109,7 @@ public class TSPHPLexer extends Lexer {
 					}
 					switch (alt13) {
 						case 1 :
-							// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:725:24: EXPONENT
+							// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:730:24: EXPONENT
 							{
 							mEXPONENT(); if (state.failed) return ;
 
@@ -3099,9 +3121,9 @@ public class TSPHPLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:726:8: ( '0' .. '9' )+ EXPONENT
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:731:8: ( '0' .. '9' )+ EXPONENT
 					{
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:726:8: ( '0' .. '9' )+
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:731:8: ( '0' .. '9' )+
 					int cnt14=0;
 					loop14:
 					do {
@@ -3156,8 +3178,8 @@ public class TSPHPLexer extends Lexer {
 	// $ANTLR start "EXPONENT"
 	public final void mEXPONENT() throws RecognitionException {
 		try {
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:732:2: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:732:4: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:737:2: ( ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+ )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:737:4: ( 'e' | 'E' ) ( '+' | '-' )? ( '0' .. '9' )+
 			{
 			if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
 				input.consume();
@@ -3169,7 +3191,7 @@ public class TSPHPLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:732:14: ( '+' | '-' )?
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:737:14: ( '+' | '-' )?
 			int alt16=2;
 			int LA16_0 = input.LA(1);
 			if ( (LA16_0=='+'||LA16_0=='-') ) {
@@ -3194,7 +3216,7 @@ public class TSPHPLexer extends Lexer {
 
 			}
 
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:732:25: ( '0' .. '9' )+
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:737:25: ( '0' .. '9' )+
 			int cnt17=0;
 			loop17:
 			do {
@@ -3245,7 +3267,7 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = String;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:735:2: ( STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:740:2: ( STRING_SINGLE_QUOTED | STRING_DOUBLE_QUOTED )
 			int alt18=2;
 			int LA18_0 = input.LA(1);
 			if ( (LA18_0=='\'') ) {
@@ -3262,14 +3284,14 @@ public class TSPHPLexer extends Lexer {
 			}
 			switch (alt18) {
 				case 1 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:735:4: STRING_SINGLE_QUOTED
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:740:4: STRING_SINGLE_QUOTED
 					{
 					mSTRING_SINGLE_QUOTED(); if (state.failed) return ;
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:736:4: STRING_DOUBLE_QUOTED
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:741:4: STRING_DOUBLE_QUOTED
 					{
 					mSTRING_DOUBLE_QUOTED(); if (state.failed) return ;
 
@@ -3289,11 +3311,11 @@ public class TSPHPLexer extends Lexer {
 	// $ANTLR start "STRING_SINGLE_QUOTED"
 	public final void mSTRING_SINGLE_QUOTED() throws RecognitionException {
 		try {
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:742:2: ( '\\'' ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\\'' )=> '\\\\\\'' |~ ( '\\'' ) )* '\\'' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:742:4: '\\'' ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\\'' )=> '\\\\\\'' |~ ( '\\'' ) )* '\\''
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:747:2: ( '\\'' ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\\'' )=> '\\\\\\'' |~ ( '\\'' ) )* '\\'' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:747:4: '\\'' ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\\'' )=> '\\\\\\'' |~ ( '\\'' ) )* '\\''
 			{
 			match('\''); if (state.failed) return ;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:742:9: ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\\'' )=> '\\\\\\'' |~ ( '\\'' ) )*
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:747:9: ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\\'' )=> '\\\\\\'' |~ ( '\\'' ) )*
 			loop19:
 			do {
 				int alt19=4;
@@ -3337,21 +3359,21 @@ public class TSPHPLexer extends Lexer {
 
 				switch (alt19) {
 				case 1 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:743:6: ( '\\\\\\\\' )=> '\\\\\\\\'
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:748:6: ( '\\\\\\\\' )=> '\\\\\\\\'
 					{
 					match("\\\\"); if (state.failed) return ;
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:744:7: ( '\\\\\\'' )=> '\\\\\\''
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:749:7: ( '\\\\\\'' )=> '\\\\\\''
 					{
 					match("\\'"); if (state.failed) return ;
 
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:745:6: ~ ( '\\'' )
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:750:6: ~ ( '\\'' )
 					{
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '\uFFFF') ) {
 						input.consume();
@@ -3384,11 +3406,11 @@ public class TSPHPLexer extends Lexer {
 	// $ANTLR start "STRING_DOUBLE_QUOTED"
 	public final void mSTRING_DOUBLE_QUOTED() throws RecognitionException {
 		try {
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:750:6: ( '\"' ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\"' )=> '\\\\\"' | ( '\\\\$' )=> '\\\\$' |~ ( '\"' | '$' ) )* '\"' )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:750:8: '\"' ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\"' )=> '\\\\\"' | ( '\\\\$' )=> '\\\\$' |~ ( '\"' | '$' ) )* '\"'
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:755:6: ( '\"' ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\"' )=> '\\\\\"' | ( '\\\\$' )=> '\\\\$' |~ ( '\"' | '$' ) )* '\"' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:755:8: '\"' ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\"' )=> '\\\\\"' | ( '\\\\$' )=> '\\\\$' |~ ( '\"' | '$' ) )* '\"'
 			{
 			match('\"'); if (state.failed) return ;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:750:12: ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\"' )=> '\\\\\"' | ( '\\\\$' )=> '\\\\$' |~ ( '\"' | '$' ) )*
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:755:12: ( ( '\\\\\\\\' )=> '\\\\\\\\' | ( '\\\\\"' )=> '\\\\\"' | ( '\\\\$' )=> '\\\\$' |~ ( '\"' | '$' ) )*
 			loop20:
 			do {
 				int alt20=5;
@@ -3435,28 +3457,28 @@ public class TSPHPLexer extends Lexer {
 
 				switch (alt20) {
 				case 1 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:751:6: ( '\\\\\\\\' )=> '\\\\\\\\'
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:756:6: ( '\\\\\\\\' )=> '\\\\\\\\'
 					{
 					match("\\\\"); if (state.failed) return ;
 
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:752:7: ( '\\\\\"' )=> '\\\\\"'
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:757:7: ( '\\\\\"' )=> '\\\\\"'
 					{
 					match("\\\""); if (state.failed) return ;
 
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:753:6: ( '\\\\$' )=> '\\\\$'
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:758:6: ( '\\\\$' )=> '\\\\$'
 					{
 					match("\\$"); if (state.failed) return ;
 
 					}
 					break;
 				case 4 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:754:6: ~ ( '\"' | '$' )
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:759:6: ~ ( '\"' | '$' )
 					{
 					if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '!')||input.LA(1)=='#'||(input.LA(1) >= '%' && input.LA(1) <= '\uFFFF') ) {
 						input.consume();
@@ -3491,16 +3513,16 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Comment;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:865:2: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:870:2: ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' )
 			int alt25=3;
 			alt25 = dfa25.predict(input);
 			switch (alt25) {
 				case 1 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:865:4: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:870:4: '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n'
 					{
 					match("//"); if (state.failed) return ;
 
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:865:9: (~ ( '\\n' | '\\r' ) )*
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:870:9: (~ ( '\\n' | '\\r' ) )*
 					loop21:
 					do {
 						int alt21=2;
@@ -3531,7 +3553,7 @@ public class TSPHPLexer extends Lexer {
 						}
 					} while (true);
 
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:865:23: ( '\\r' )?
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:870:23: ( '\\r' )?
 					int alt22=2;
 					int LA22_0 = input.LA(1);
 					if ( (LA22_0=='\r') ) {
@@ -3539,7 +3561,7 @@ public class TSPHPLexer extends Lexer {
 					}
 					switch (alt22) {
 						case 1 :
-							// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:865:23: '\\r'
+							// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:870:23: '\\r'
 							{
 							match('\r'); if (state.failed) return ;
 							}
@@ -3552,11 +3574,11 @@ public class TSPHPLexer extends Lexer {
 					}
 					break;
 				case 2 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:867:6: '//' (~ ( '\\n' | '\\r' ) )*
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:872:6: '//' (~ ( '\\n' | '\\r' ) )*
 					{
 					match("//"); if (state.failed) return ;
 
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:867:11: (~ ( '\\n' | '\\r' ) )*
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:872:11: (~ ( '\\n' | '\\r' ) )*
 					loop23:
 					do {
 						int alt23=2;
@@ -3591,11 +3613,11 @@ public class TSPHPLexer extends Lexer {
 					}
 					break;
 				case 3 :
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:868:8: '/*' ( options {greedy=false; } : . )* '*/'
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:873:8: '/*' ( options {greedy=false; } : . )* '*/'
 					{
 					match("/*"); if (state.failed) return ;
 
-					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:868:13: ( options {greedy=false; } : . )*
+					// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:873:13: ( options {greedy=false; } : . )*
 					loop24:
 					do {
 						int alt24=2;
@@ -3616,7 +3638,7 @@ public class TSPHPLexer extends Lexer {
 
 						switch (alt24) {
 						case 1 :
-							// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:868:41: .
+							// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:873:41: .
 							{
 							matchAny(); if (state.failed) return ;
 							}
@@ -3648,8 +3670,8 @@ public class TSPHPLexer extends Lexer {
 		try {
 			int _type = Whitespace;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:872:2: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
-			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:872:4: ( ' ' | '\\t' | '\\r' | '\\n' )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:877:2: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+			// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:877:4: ( ' ' | '\\t' | '\\r' | '\\n' )
 			{
 			if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
 				input.consume();
@@ -3675,8 +3697,8 @@ public class TSPHPLexer extends Lexer {
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:8: ( Abstract | Arrow | As | Assign | At | Backslash | BitwiseAnd | BitwiseAndEqual | BitwiseNot | BitwiseOr | BitwiseOrEqual | BitwiseXor | BitwiseXorEqual | Break | Case | Catch | Class | Clone | Colon | Comma | Const | Continue | Default | Divide | DivideEqual | Do | Dolar | Dot | DotEqual | DoubleColon | Echo | Else | Equal | Exit | Extends | Final | For | Foreach | Function | GreaterEqualThan | GreaterThan | Identical | If | Implements | Instanceof | Interface | LeftCurlyBrace | LeftParanthesis | LeftSquareBrace | LessEqualThan | LessThan | LogicAnd | LogicAndWeak | LogicNot | LogicOr | LogicOrWeak | LogicXorWeak | Minus | MinusEqual | MinusMinus | Modulo | ModuloEqual | Multiply | MultiplyEqual | Namespace | New | NotEqual | NotEqualAlternative | NotIdentical | Null | ObjectOperator | Parent | ParentColonColon | Plus | PlusEqual | PlusPlus | Private | ProtectThis | Protected | Public | QuestionMark | Return | RightCurlyBrace | RightParanthesis | RightSquareBrace | Self | SelfColonColon | Semicolon | ShiftLeft | ShiftLeftEqual | ShiftRight | ShiftRightEqual | Static | Switch | This | Throw | Try | TypeArray | TypeBool | TypeBoolean | TypeDouble | TypeFloat | TypeInt | TypeInteger | TypeObject | TypeResource | TypeString | Use | Void | While | Bool | Identifier | VariableId | Int | Float | String | Comment | Whitespace )
-		int alt26=118;
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:8: ( Abstract | Arrow | As | Assign | At | Backslash | BitwiseAnd | BitwiseAndEqual | BitwiseNot | BitwiseOr | BitwiseOrEqual | BitwiseXor | BitwiseXorEqual | Break | Case | Cast | Catch | Class | Clone | Colon | Comma | Const | Continue | Default | Divide | DivideEqual | Do | Dolar | Dot | DotEqual | DoubleColon | Echo | Else | Equal | Exit | Extends | Final | For | Foreach | Function | GreaterEqualThan | GreaterThan | Identical | If | Implements | Instanceof | Interface | LeftCurlyBrace | LeftParanthesis | LeftSquareBrace | LessEqualThan | LessThan | LogicAnd | LogicAndWeak | LogicNot | LogicOr | LogicOrWeak | LogicXorWeak | Minus | MinusEqual | MinusMinus | Modulo | ModuloEqual | Multiply | MultiplyEqual | Namespace | New | NotEqual | NotEqualAlternative | NotIdentical | Null | ObjectOperator | Parent | ParentColonColon | Plus | PlusEqual | PlusPlus | Private | ProtectThis | Protected | Public | QuestionMark | Return | RightCurlyBrace | RightParanthesis | RightSquareBrace | Self | SelfColonColon | Semicolon | ShiftLeft | ShiftLeftEqual | ShiftRight | ShiftRightEqual | Static | Switch | This | Throw | Try | TypeArray | TypeBool | TypeBoolean | TypeDouble | TypeFloat | TypeInt | TypeInteger | TypeObject | TypeResource | TypeString | Use | Void | While | Bool | Identifier | VariableId | Int | Float | String | Comment | Whitespace )
+		int alt26=119;
 		alt26 = dfa26.predict(input);
 		switch (alt26) {
 			case 1 :
@@ -3785,721 +3807,728 @@ public class TSPHPLexer extends Lexer {
 				}
 				break;
 			case 16 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:149: Catch
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:149: Cast
+				{
+				mCast(); if (state.failed) return ;
+
+				}
+				break;
+			case 17 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:154: Catch
 				{
 				mCatch(); if (state.failed) return ;
 
 				}
 				break;
-			case 17 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:155: Class
+			case 18 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:160: Class
 				{
 				mClass(); if (state.failed) return ;
 
 				}
 				break;
-			case 18 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:161: Clone
+			case 19 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:166: Clone
 				{
 				mClone(); if (state.failed) return ;
 
 				}
 				break;
-			case 19 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:167: Colon
+			case 20 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:172: Colon
 				{
 				mColon(); if (state.failed) return ;
 
 				}
 				break;
-			case 20 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:173: Comma
+			case 21 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:178: Comma
 				{
 				mComma(); if (state.failed) return ;
 
 				}
 				break;
-			case 21 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:179: Const
+			case 22 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:184: Const
 				{
 				mConst(); if (state.failed) return ;
 
 				}
 				break;
-			case 22 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:185: Continue
+			case 23 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:190: Continue
 				{
 				mContinue(); if (state.failed) return ;
 
 				}
 				break;
-			case 23 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:194: Default
+			case 24 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:199: Default
 				{
 				mDefault(); if (state.failed) return ;
 
 				}
 				break;
-			case 24 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:202: Divide
+			case 25 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:207: Divide
 				{
 				mDivide(); if (state.failed) return ;
 
 				}
 				break;
-			case 25 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:209: DivideEqual
+			case 26 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:214: DivideEqual
 				{
 				mDivideEqual(); if (state.failed) return ;
 
 				}
 				break;
-			case 26 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:221: Do
+			case 27 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:226: Do
 				{
 				mDo(); if (state.failed) return ;
 
 				}
 				break;
-			case 27 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:224: Dolar
+			case 28 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:229: Dolar
 				{
 				mDolar(); if (state.failed) return ;
 
 				}
 				break;
-			case 28 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:230: Dot
+			case 29 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:235: Dot
 				{
 				mDot(); if (state.failed) return ;
 
 				}
 				break;
-			case 29 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:234: DotEqual
+			case 30 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:239: DotEqual
 				{
 				mDotEqual(); if (state.failed) return ;
 
 				}
 				break;
-			case 30 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:243: DoubleColon
+			case 31 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:248: DoubleColon
 				{
 				mDoubleColon(); if (state.failed) return ;
 
 				}
 				break;
-			case 31 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:255: Echo
+			case 32 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:260: Echo
 				{
 				mEcho(); if (state.failed) return ;
 
 				}
 				break;
-			case 32 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:260: Else
+			case 33 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:265: Else
 				{
 				mElse(); if (state.failed) return ;
 
 				}
 				break;
-			case 33 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:265: Equal
+			case 34 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:270: Equal
 				{
 				mEqual(); if (state.failed) return ;
 
 				}
 				break;
-			case 34 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:271: Exit
+			case 35 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:276: Exit
 				{
 				mExit(); if (state.failed) return ;
 
 				}
 				break;
-			case 35 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:276: Extends
+			case 36 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:281: Extends
 				{
 				mExtends(); if (state.failed) return ;
 
 				}
 				break;
-			case 36 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:284: Final
+			case 37 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:289: Final
 				{
 				mFinal(); if (state.failed) return ;
 
 				}
 				break;
-			case 37 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:290: For
+			case 38 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:295: For
 				{
 				mFor(); if (state.failed) return ;
 
 				}
 				break;
-			case 38 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:294: Foreach
+			case 39 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:299: Foreach
 				{
 				mForeach(); if (state.failed) return ;
 
 				}
 				break;
-			case 39 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:302: Function
+			case 40 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:307: Function
 				{
 				mFunction(); if (state.failed) return ;
 
 				}
 				break;
-			case 40 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:311: GreaterEqualThan
+			case 41 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:316: GreaterEqualThan
 				{
 				mGreaterEqualThan(); if (state.failed) return ;
 
 				}
 				break;
-			case 41 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:328: GreaterThan
+			case 42 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:333: GreaterThan
 				{
 				mGreaterThan(); if (state.failed) return ;
 
 				}
 				break;
-			case 42 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:340: Identical
+			case 43 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:345: Identical
 				{
 				mIdentical(); if (state.failed) return ;
 
 				}
 				break;
-			case 43 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:350: If
+			case 44 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:355: If
 				{
 				mIf(); if (state.failed) return ;
 
 				}
 				break;
-			case 44 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:353: Implements
+			case 45 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:358: Implements
 				{
 				mImplements(); if (state.failed) return ;
 
 				}
 				break;
-			case 45 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:364: Instanceof
+			case 46 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:369: Instanceof
 				{
 				mInstanceof(); if (state.failed) return ;
 
 				}
 				break;
-			case 46 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:375: Interface
+			case 47 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:380: Interface
 				{
 				mInterface(); if (state.failed) return ;
 
 				}
 				break;
-			case 47 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:385: LeftCurlyBrace
+			case 48 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:390: LeftCurlyBrace
 				{
 				mLeftCurlyBrace(); if (state.failed) return ;
 
 				}
 				break;
-			case 48 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:400: LeftParanthesis
+			case 49 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:405: LeftParanthesis
 				{
 				mLeftParanthesis(); if (state.failed) return ;
 
 				}
 				break;
-			case 49 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:416: LeftSquareBrace
+			case 50 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:421: LeftSquareBrace
 				{
 				mLeftSquareBrace(); if (state.failed) return ;
 
 				}
 				break;
-			case 50 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:432: LessEqualThan
+			case 51 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:437: LessEqualThan
 				{
 				mLessEqualThan(); if (state.failed) return ;
 
 				}
 				break;
-			case 51 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:446: LessThan
+			case 52 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:451: LessThan
 				{
 				mLessThan(); if (state.failed) return ;
 
 				}
 				break;
-			case 52 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:455: LogicAnd
+			case 53 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:460: LogicAnd
 				{
 				mLogicAnd(); if (state.failed) return ;
 
 				}
 				break;
-			case 53 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:464: LogicAndWeak
+			case 54 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:469: LogicAndWeak
 				{
 				mLogicAndWeak(); if (state.failed) return ;
 
 				}
 				break;
-			case 54 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:477: LogicNot
+			case 55 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:482: LogicNot
 				{
 				mLogicNot(); if (state.failed) return ;
 
 				}
 				break;
-			case 55 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:486: LogicOr
+			case 56 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:491: LogicOr
 				{
 				mLogicOr(); if (state.failed) return ;
 
 				}
 				break;
-			case 56 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:494: LogicOrWeak
+			case 57 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:499: LogicOrWeak
 				{
 				mLogicOrWeak(); if (state.failed) return ;
 
 				}
 				break;
-			case 57 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:506: LogicXorWeak
+			case 58 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:511: LogicXorWeak
 				{
 				mLogicXorWeak(); if (state.failed) return ;
 
 				}
 				break;
-			case 58 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:519: Minus
+			case 59 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:524: Minus
 				{
 				mMinus(); if (state.failed) return ;
 
 				}
 				break;
-			case 59 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:525: MinusEqual
+			case 60 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:530: MinusEqual
 				{
 				mMinusEqual(); if (state.failed) return ;
 
 				}
 				break;
-			case 60 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:536: MinusMinus
+			case 61 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:541: MinusMinus
 				{
 				mMinusMinus(); if (state.failed) return ;
 
 				}
 				break;
-			case 61 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:547: Modulo
+			case 62 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:552: Modulo
 				{
 				mModulo(); if (state.failed) return ;
 
 				}
 				break;
-			case 62 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:554: ModuloEqual
+			case 63 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:559: ModuloEqual
 				{
 				mModuloEqual(); if (state.failed) return ;
 
 				}
 				break;
-			case 63 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:566: Multiply
+			case 64 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:571: Multiply
 				{
 				mMultiply(); if (state.failed) return ;
 
 				}
 				break;
-			case 64 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:575: MultiplyEqual
+			case 65 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:580: MultiplyEqual
 				{
 				mMultiplyEqual(); if (state.failed) return ;
 
 				}
 				break;
-			case 65 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:589: Namespace
+			case 66 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:594: Namespace
 				{
 				mNamespace(); if (state.failed) return ;
 
 				}
 				break;
-			case 66 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:599: New
+			case 67 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:604: New
 				{
 				mNew(); if (state.failed) return ;
 
 				}
 				break;
-			case 67 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:603: NotEqual
+			case 68 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:608: NotEqual
 				{
 				mNotEqual(); if (state.failed) return ;
 
 				}
 				break;
-			case 68 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:612: NotEqualAlternative
+			case 69 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:617: NotEqualAlternative
 				{
 				mNotEqualAlternative(); if (state.failed) return ;
 
 				}
 				break;
-			case 69 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:632: NotIdentical
+			case 70 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:637: NotIdentical
 				{
 				mNotIdentical(); if (state.failed) return ;
 
 				}
 				break;
-			case 70 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:645: Null
+			case 71 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:650: Null
 				{
 				mNull(); if (state.failed) return ;
 
 				}
 				break;
-			case 71 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:650: ObjectOperator
+			case 72 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:655: ObjectOperator
 				{
 				mObjectOperator(); if (state.failed) return ;
 
 				}
 				break;
-			case 72 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:665: Parent
+			case 73 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:670: Parent
 				{
 				mParent(); if (state.failed) return ;
 
 				}
 				break;
-			case 73 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:672: ParentColonColon
+			case 74 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:677: ParentColonColon
 				{
 				mParentColonColon(); if (state.failed) return ;
 
 				}
 				break;
-			case 74 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:689: Plus
+			case 75 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:694: Plus
 				{
 				mPlus(); if (state.failed) return ;
 
 				}
 				break;
-			case 75 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:694: PlusEqual
+			case 76 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:699: PlusEqual
 				{
 				mPlusEqual(); if (state.failed) return ;
 
 				}
 				break;
-			case 76 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:704: PlusPlus
+			case 77 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:709: PlusPlus
 				{
 				mPlusPlus(); if (state.failed) return ;
 
 				}
 				break;
-			case 77 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:713: Private
+			case 78 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:718: Private
 				{
 				mPrivate(); if (state.failed) return ;
 
 				}
 				break;
-			case 78 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:721: ProtectThis
+			case 79 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:726: ProtectThis
 				{
 				mProtectThis(); if (state.failed) return ;
 
 				}
 				break;
-			case 79 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:733: Protected
+			case 80 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:738: Protected
 				{
 				mProtected(); if (state.failed) return ;
 
 				}
 				break;
-			case 80 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:743: Public
+			case 81 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:748: Public
 				{
 				mPublic(); if (state.failed) return ;
 
 				}
 				break;
-			case 81 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:750: QuestionMark
+			case 82 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:755: QuestionMark
 				{
 				mQuestionMark(); if (state.failed) return ;
 
 				}
 				break;
-			case 82 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:763: Return
+			case 83 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:768: Return
 				{
 				mReturn(); if (state.failed) return ;
 
 				}
 				break;
-			case 83 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:770: RightCurlyBrace
+			case 84 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:775: RightCurlyBrace
 				{
 				mRightCurlyBrace(); if (state.failed) return ;
 
 				}
 				break;
-			case 84 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:786: RightParanthesis
+			case 85 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:791: RightParanthesis
 				{
 				mRightParanthesis(); if (state.failed) return ;
 
 				}
 				break;
-			case 85 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:803: RightSquareBrace
+			case 86 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:808: RightSquareBrace
 				{
 				mRightSquareBrace(); if (state.failed) return ;
 
 				}
 				break;
-			case 86 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:820: Self
+			case 87 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:825: Self
 				{
 				mSelf(); if (state.failed) return ;
 
 				}
 				break;
-			case 87 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:825: SelfColonColon
+			case 88 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:830: SelfColonColon
 				{
 				mSelfColonColon(); if (state.failed) return ;
 
 				}
 				break;
-			case 88 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:840: Semicolon
+			case 89 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:845: Semicolon
 				{
 				mSemicolon(); if (state.failed) return ;
 
 				}
 				break;
-			case 89 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:850: ShiftLeft
+			case 90 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:855: ShiftLeft
 				{
 				mShiftLeft(); if (state.failed) return ;
 
 				}
 				break;
-			case 90 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:860: ShiftLeftEqual
+			case 91 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:865: ShiftLeftEqual
 				{
 				mShiftLeftEqual(); if (state.failed) return ;
 
 				}
 				break;
-			case 91 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:875: ShiftRight
+			case 92 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:880: ShiftRight
 				{
 				mShiftRight(); if (state.failed) return ;
 
 				}
 				break;
-			case 92 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:886: ShiftRightEqual
+			case 93 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:891: ShiftRightEqual
 				{
 				mShiftRightEqual(); if (state.failed) return ;
 
 				}
 				break;
-			case 93 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:902: Static
+			case 94 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:907: Static
 				{
 				mStatic(); if (state.failed) return ;
 
 				}
 				break;
-			case 94 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:909: Switch
+			case 95 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:914: Switch
 				{
 				mSwitch(); if (state.failed) return ;
 
 				}
 				break;
-			case 95 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:916: This
+			case 96 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:921: This
 				{
 				mThis(); if (state.failed) return ;
 
 				}
 				break;
-			case 96 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:921: Throw
+			case 97 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:926: Throw
 				{
 				mThrow(); if (state.failed) return ;
 
 				}
 				break;
-			case 97 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:927: Try
+			case 98 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:932: Try
 				{
 				mTry(); if (state.failed) return ;
 
 				}
 				break;
-			case 98 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:931: TypeArray
+			case 99 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:936: TypeArray
 				{
 				mTypeArray(); if (state.failed) return ;
 
 				}
 				break;
-			case 99 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:941: TypeBool
+			case 100 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:946: TypeBool
 				{
 				mTypeBool(); if (state.failed) return ;
 
 				}
 				break;
-			case 100 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:950: TypeBoolean
+			case 101 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:955: TypeBoolean
 				{
 				mTypeBoolean(); if (state.failed) return ;
 
 				}
 				break;
-			case 101 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:962: TypeDouble
+			case 102 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:967: TypeDouble
 				{
 				mTypeDouble(); if (state.failed) return ;
 
 				}
 				break;
-			case 102 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:973: TypeFloat
+			case 103 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:978: TypeFloat
 				{
 				mTypeFloat(); if (state.failed) return ;
 
 				}
 				break;
-			case 103 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:983: TypeInt
+			case 104 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:988: TypeInt
 				{
 				mTypeInt(); if (state.failed) return ;
 
 				}
 				break;
-			case 104 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:991: TypeInteger
+			case 105 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:996: TypeInteger
 				{
 				mTypeInteger(); if (state.failed) return ;
 
 				}
 				break;
-			case 105 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1003: TypeObject
+			case 106 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1008: TypeObject
 				{
 				mTypeObject(); if (state.failed) return ;
 
 				}
 				break;
-			case 106 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1014: TypeResource
+			case 107 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1019: TypeResource
 				{
 				mTypeResource(); if (state.failed) return ;
 
 				}
 				break;
-			case 107 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1027: TypeString
+			case 108 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1032: TypeString
 				{
 				mTypeString(); if (state.failed) return ;
 
 				}
 				break;
-			case 108 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1038: Use
+			case 109 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1043: Use
 				{
 				mUse(); if (state.failed) return ;
 
 				}
 				break;
-			case 109 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1042: Void
+			case 110 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1047: Void
 				{
 				mVoid(); if (state.failed) return ;
 
 				}
 				break;
-			case 110 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1047: While
+			case 111 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1052: While
 				{
 				mWhile(); if (state.failed) return ;
 
 				}
 				break;
-			case 111 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1053: Bool
+			case 112 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1058: Bool
 				{
 				mBool(); if (state.failed) return ;
 
 				}
 				break;
-			case 112 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1058: Identifier
+			case 113 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1063: Identifier
 				{
 				mIdentifier(); if (state.failed) return ;
 
 				}
 				break;
-			case 113 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1069: VariableId
+			case 114 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1074: VariableId
 				{
 				mVariableId(); if (state.failed) return ;
 
 				}
 				break;
-			case 114 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1080: Int
+			case 115 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1085: Int
 				{
 				mInt(); if (state.failed) return ;
 
 				}
 				break;
-			case 115 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1084: Float
+			case 116 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1089: Float
 				{
 				mFloat(); if (state.failed) return ;
 
 				}
 				break;
-			case 116 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1090: String
+			case 117 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1095: String
 				{
 				mString(); if (state.failed) return ;
 
 				}
 				break;
-			case 117 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1097: Comment
+			case 118 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1102: Comment
 				{
 				mComment(); if (state.failed) return ;
 
 				}
 				break;
-			case 118 :
-				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1105: Whitespace
+			case 119 :
+				// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:1:1110: Whitespace
 				{
 				mWhitespace(); if (state.failed) return ;
 
@@ -4511,8 +4540,8 @@ public class TSPHPLexer extends Lexer {
 
 	// $ANTLR start synpred1_TSPHP
 	public final void synpred1_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:743:6: ( '\\\\\\\\' )
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:743:7: '\\\\\\\\'
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:748:6: ( '\\\\\\\\' )
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:748:7: '\\\\\\\\'
 		{
 		match("\\\\"); if (state.failed) return ;
 
@@ -4523,8 +4552,8 @@ public class TSPHPLexer extends Lexer {
 
 	// $ANTLR start synpred2_TSPHP
 	public final void synpred2_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:744:7: ( '\\\\\\'' )
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:744:8: '\\\\\\''
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:749:7: ( '\\\\\\'' )
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:749:8: '\\\\\\''
 		{
 		match("\\'"); if (state.failed) return ;
 
@@ -4535,8 +4564,8 @@ public class TSPHPLexer extends Lexer {
 
 	// $ANTLR start synpred3_TSPHP
 	public final void synpred3_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:751:6: ( '\\\\\\\\' )
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:751:7: '\\\\\\\\'
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:756:6: ( '\\\\\\\\' )
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:756:7: '\\\\\\\\'
 		{
 		match("\\\\"); if (state.failed) return ;
 
@@ -4547,8 +4576,8 @@ public class TSPHPLexer extends Lexer {
 
 	// $ANTLR start synpred4_TSPHP
 	public final void synpred4_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:752:7: ( '\\\\\"' )
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:752:8: '\\\\\"'
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:757:7: ( '\\\\\"' )
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:757:8: '\\\\\"'
 		{
 		match("\\\""); if (state.failed) return ;
 
@@ -4559,8 +4588,8 @@ public class TSPHPLexer extends Lexer {
 
 	// $ANTLR start synpred5_TSPHP
 	public final void synpred5_TSPHP_fragment() throws RecognitionException {
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:753:6: ( '\\\\$' )
-		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:753:7: '\\\\$'
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:758:6: ( '\\\\$' )
+		// D:\\TSPHP-parser\\src\\main\\antlr\\TSPHP.g:758:7: '\\\\$'
 		{
 		match("\\$"); if (state.failed) return ;
 
@@ -4695,7 +4724,7 @@ public class TSPHPLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "723:1: Float : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
+			return "728:1: Float : ( ( '0' .. '9' )+ '.' ( '0' .. '9' )* ( EXPONENT )? | '.' ( '0' .. '9' )+ ( EXPONENT )? | ( '0' .. '9' )+ EXPONENT );";
 		}
 	}
 
@@ -4752,7 +4781,7 @@ public class TSPHPLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "864:1: Comment : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' );";
+			return "869:1: Comment : ( '//' (~ ( '\\n' | '\\r' ) )* ( '\\r' )? '\\n' | '//' (~ ( '\\n' | '\\r' ) )* | '/*' ( options {greedy=false; } : . )* '*/' );";
 		}
 		@Override
 		public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
@@ -4793,22 +4822,22 @@ public class TSPHPLexer extends Lexer {
 		"\2\uffff\1\55\1\u0096\3\uffff\1\117\5\uffff\10\55\1\uffff\1\u00a2\1\uffff"+
 		"\1\u00a3\2\55\2\uffff\1\u00a8\1\uffff\1\u00aa\1\uffff\1\u00ab\2\55\10"+
 		"\uffff\6\55\3\uffff\11\55\1\u0085\1\uffff\1\u0085\1\55\1\uffff\1\u00c3"+
-		"\1\55\2\uffff\11\55\1\uffff\1\117\5\55\1\u00d6\3\55\3\uffff\2\55\1\u00dd"+
-		"\5\uffff\1\55\1\u00df\1\55\1\u00e1\7\55\1\u00e9\7\55\1\u00f1\3\55\1\uffff"+
-		"\2\55\1\u00f8\1\u00f9\7\55\1\117\1\u0102\1\u0103\1\u0104\3\55\1\uffff"+
-		"\6\55\1\uffff\1\55\1\uffff\1\55\1\uffff\1\u0111\4\55\1\u0116\1\55\1\uffff"+
-		"\1\u0118\2\55\1\u011c\3\55\1\uffff\1\u0120\2\55\1\u0123\1\u0124\1\55\2"+
-		"\uffff\1\u0126\1\u0127\1\u0128\1\u0129\3\55\1\u012d\3\uffff\1\55\1\u012f"+
-		"\2\55\1\u0132\1\u0118\6\55\1\uffff\4\55\1\uffff\1\u013d\1\uffff\2\55\2"+
-		"\uffff\3\55\1\uffff\1\u0143\1\55\2\uffff\1\55\4\uffff\2\55\1\u0148\1\uffff"+
-		"\1\55\1\uffff\2\55\1\uffff\4\55\1\u0150\1\55\1\u0153\2\55\1\u0156\1\uffff"+
-		"\1\u0157\1\55\1\u0159\1\u015a\1\u015b\1\uffff\1\55\1\u015d\1\55\1\u015f"+
-		"\1\uffff\1\u0160\1\u0161\4\55\1\u0166\1\uffff\1\55\2\uffff\1\u0168\1\55"+
-		"\2\uffff\1\55\3\uffff\1\u016b\1\uffff\1\u016c\3\uffff\1\u016d\3\55\1\uffff"+
-		"\1\55\1\uffff\1\55\1\u0173\3\uffff\2\55\1\u0176\1\u0177\1\u0178\1\uffff"+
-		"\1\u0179\1\u017a\5\uffff";
+		"\1\55\2\uffff\11\55\1\uffff\1\117\5\55\1\u00d7\3\55\3\uffff\2\55\1\u00de"+
+		"\5\uffff\1\55\1\u00e0\1\55\1\u00e2\7\55\1\u00ea\7\55\1\u00f2\3\55\1\uffff"+
+		"\2\55\1\u00f9\1\u00fa\1\u00fb\7\55\1\117\1\u0104\1\u0105\1\u0106\3\55"+
+		"\1\uffff\6\55\1\uffff\1\55\1\uffff\1\55\1\uffff\1\u0113\4\55\1\u0118\1"+
+		"\55\1\uffff\1\u011a\2\55\1\u011e\3\55\1\uffff\1\u0122\2\55\1\u0125\1\u0126"+
+		"\1\55\3\uffff\1\u0128\1\u0129\1\u012a\1\u012b\3\55\1\u012f\3\uffff\1\55"+
+		"\1\u0131\2\55\1\u0134\1\u011a\6\55\1\uffff\4\55\1\uffff\1\u013f\1\uffff"+
+		"\2\55\2\uffff\3\55\1\uffff\1\u0145\1\55\2\uffff\1\55\4\uffff\2\55\1\u014a"+
+		"\1\uffff\1\55\1\uffff\2\55\1\uffff\4\55\1\u0152\1\55\1\u0155\2\55\1\u0158"+
+		"\1\uffff\1\u0159\1\55\1\u015b\1\u015c\1\u015d\1\uffff\1\55\1\u015f\1\55"+
+		"\1\u0161\1\uffff\1\u0162\1\u0163\4\55\1\u0168\1\uffff\1\55\2\uffff\1\u016a"+
+		"\1\55\2\uffff\1\55\3\uffff\1\u016d\1\uffff\1\u016e\3\uffff\1\u016f\3\55"+
+		"\1\uffff\1\55\1\uffff\1\55\1\u0175\3\uffff\2\55\1\u0178\1\u0179\1\u017a"+
+		"\1\uffff\1\u017b\1\u017c\5\uffff";
 	static final String DFA26_eofS =
-		"\u017b\uffff";
+		"\u017d\uffff";
 	static final String DFA26_minS =
 		"\1\11\1\142\1\75\2\uffff\1\46\1\uffff\2\75\1\157\1\141\1\72\1\uffff\1"+
 		"\145\1\52\1\101\1\60\1\143\1\141\1\75\1\146\3\uffff\1\74\1\75\1\142\1"+
@@ -4823,11 +4852,11 @@ public class TSPHPLexer extends Lexer {
 		"\142\1\uffff\1\151\1\157\1\145\1\164\1\145\1\141\1\60\1\143\1\141\1\163"+
 		"\3\uffff\1\154\1\164\1\60\5\uffff\1\145\1\60\1\145\1\60\1\154\1\145\1"+
 		"\166\1\164\1\154\1\163\1\157\1\60\1\145\1\165\1\157\1\146\1\164\1\151"+
-		"\1\164\1\60\1\144\1\154\1\162\1\uffff\1\171\1\153\2\60\1\150\1\163\1\145"+
+		"\1\164\1\60\1\144\1\154\1\162\1\uffff\1\171\1\153\3\60\1\150\1\163\1\145"+
 		"\1\164\1\151\1\165\1\154\1\163\3\60\1\156\1\154\1\141\1\uffff\2\164\2"+
 		"\145\1\141\1\147\1\uffff\1\143\1\uffff\1\163\1\uffff\1\60\1\156\1\141"+
 		"\1\145\1\151\1\60\1\167\1\uffff\1\60\1\162\1\165\1\60\1\151\1\156\1\143"+
-		"\1\uffff\1\60\1\145\1\141\2\60\1\141\2\uffff\4\60\1\156\1\154\1\145\1"+
+		"\1\uffff\1\60\1\145\1\141\2\60\1\141\3\uffff\4\60\1\156\1\154\1\145\1"+
 		"\60\3\uffff\1\144\1\60\1\143\1\151\2\60\1\155\1\156\1\146\1\145\1\164"+
 		"\1\160\1\uffff\2\164\2\143\1\uffff\1\60\1\uffff\1\156\1\162\2\uffff\1"+
 		"\143\1\147\1\150\1\uffff\1\60\1\143\2\uffff\1\156\4\uffff\1\165\1\164"+
@@ -4847,16 +4876,16 @@ public class TSPHPLexer extends Lexer {
 		"\1\uffff\1\75\1\uffff\1\u00ff\1\160\1\164\2\uffff\1\75\1\uffff\1\75\1"+
 		"\uffff\1\u00ff\1\152\1\162\10\uffff\1\155\1\167\1\154\1\162\1\157\1\142"+
 		"\3\uffff\1\162\1\171\1\164\1\154\1\162\1\151\1\145\2\151\1\145\1\uffff"+
-		"\1\145\1\164\1\uffff\1\u00ff\1\141\2\uffff\1\141\1\154\1\145\1\143\1\163"+
+		"\1\145\1\164\1\uffff\1\u00ff\1\141\2\uffff\1\141\1\154\1\164\1\143\1\163"+
 		"\1\156\1\164\1\141\1\142\1\uffff\1\151\1\157\1\145\1\164\1\145\1\141\1"+
 		"\u00ff\1\143\1\141\1\163\3\uffff\1\154\1\164\1\u00ff\5\uffff\1\145\1\u00ff"+
 		"\1\145\1\u00ff\1\154\1\145\1\166\1\164\1\154\1\163\1\157\1\u00ff\1\145"+
 		"\1\165\1\157\1\146\1\164\1\151\1\164\1\u00ff\1\144\1\154\1\162\1\uffff"+
-		"\1\171\1\153\2\u00ff\1\150\1\163\1\145\1\164\1\151\1\165\1\154\1\163\3"+
+		"\1\171\1\153\3\u00ff\1\150\1\163\1\145\1\164\1\151\1\165\1\154\1\163\3"+
 		"\u00ff\1\156\1\154\1\141\1\uffff\2\164\2\145\1\141\1\162\1\uffff\1\143"+
 		"\1\uffff\1\163\1\uffff\1\u00ff\1\156\1\141\1\145\1\151\1\u00ff\1\167\1"+
 		"\uffff\1\u00ff\1\162\1\165\1\u00ff\1\151\1\156\1\143\1\uffff\1\u00ff\1"+
-		"\145\1\141\2\u00ff\1\141\2\uffff\4\u00ff\1\156\1\154\1\145\1\u00ff\3\uffff"+
+		"\145\1\141\2\u00ff\1\141\3\uffff\4\u00ff\1\156\1\154\1\145\1\u00ff\3\uffff"+
 		"\1\144\1\u00ff\1\143\1\151\2\u00ff\1\155\1\156\1\146\1\145\1\164\1\160"+
 		"\1\uffff\2\164\2\143\1\uffff\1\u00ff\1\uffff\1\156\1\162\2\uffff\1\143"+
 		"\1\147\1\150\1\uffff\1\u00ff\1\143\2\uffff\1\156\4\uffff\1\165\1\164\1"+
@@ -4867,24 +4896,24 @@ public class TSPHPLexer extends Lexer {
 		"\1\uffff\1\u00ff\3\uffff\1\u00ff\1\164\1\157\1\145\1\uffff\1\145\1\uffff"+
 		"\1\144\1\u00ff\3\uffff\1\163\1\146\3\u00ff\1\uffff\2\u00ff\5\uffff";
 	static final String DFA26_acceptS =
-		"\3\uffff\1\5\1\6\1\uffff\1\11\5\uffff\1\24\10\uffff\1\57\1\60\1\61\13"+
-		"\uffff\1\121\1\uffff\1\123\1\124\1\125\1\uffff\1\130\3\uffff\1\160\2\uffff"+
-		"\1\164\1\166\4\uffff\1\2\1\uffff\1\4\1\10\1\64\1\7\1\13\1\67\1\12\1\15"+
-		"\1\14\5\uffff\1\36\1\23\2\uffff\1\31\1\165\1\30\1\uffff\1\33\1\161\1\35"+
-		"\1\34\1\163\10\uffff\1\50\1\uffff\1\51\3\uffff\1\62\1\104\1\uffff\1\63"+
-		"\1\uffff\1\66\3\uffff\1\73\1\74\1\107\1\72\1\76\1\75\1\100\1\77\6\uffff"+
-		"\1\113\1\114\1\112\12\uffff\1\162\2\uffff\1\3\2\uffff\1\52\1\41\11\uffff"+
-		"\1\32\12\uffff\1\134\1\133\1\53\3\uffff\1\132\1\131\1\105\1\103\1\70\27"+
-		"\uffff\1\65\22\uffff\1\45\6\uffff\1\147\1\uffff\1\71\1\uffff\1\102\7\uffff"+
-		"\1\141\7\uffff\1\154\6\uffff\1\143\1\17\10\uffff\1\37\1\40\1\42\14\uffff"+
-		"\1\106\4\uffff\1\116\1\uffff\1\157\2\uffff\1\127\1\126\3\uffff\1\155\2"+
-		"\uffff\1\142\1\16\1\uffff\1\20\1\21\1\22\1\25\3\uffff\1\137\1\uffff\1"+
-		"\44\2\uffff\1\146\12\uffff\1\140\5\uffff\1\156\4\uffff\1\145\7\uffff\1"+
-		"\151\1\uffff\1\111\1\110\2\uffff\1\120\1\122\1\uffff\1\135\1\153\1\136"+
-		"\1\uffff\1\144\1\uffff\1\27\1\43\1\46\4\uffff\1\150\1\uffff\1\115\2\uffff"+
-		"\1\1\1\26\1\47\5\uffff\1\152\2\uffff\1\56\1\101\1\117\1\54\1\55";
+		"\3\uffff\1\5\1\6\1\uffff\1\11\5\uffff\1\25\10\uffff\1\60\1\61\1\62\13"+
+		"\uffff\1\122\1\uffff\1\124\1\125\1\126\1\uffff\1\131\3\uffff\1\161\2\uffff"+
+		"\1\165\1\167\4\uffff\1\2\1\uffff\1\4\1\10\1\65\1\7\1\13\1\70\1\12\1\15"+
+		"\1\14\5\uffff\1\37\1\24\2\uffff\1\32\1\166\1\31\1\uffff\1\34\1\162\1\36"+
+		"\1\35\1\164\10\uffff\1\51\1\uffff\1\52\3\uffff\1\63\1\105\1\uffff\1\64"+
+		"\1\uffff\1\67\3\uffff\1\74\1\75\1\110\1\73\1\77\1\76\1\101\1\100\6\uffff"+
+		"\1\114\1\115\1\113\12\uffff\1\163\2\uffff\1\3\2\uffff\1\53\1\42\11\uffff"+
+		"\1\33\12\uffff\1\135\1\134\1\54\3\uffff\1\133\1\132\1\106\1\104\1\71\27"+
+		"\uffff\1\66\23\uffff\1\46\6\uffff\1\150\1\uffff\1\72\1\uffff\1\103\7\uffff"+
+		"\1\142\7\uffff\1\155\6\uffff\1\144\1\17\1\20\10\uffff\1\40\1\41\1\43\14"+
+		"\uffff\1\107\4\uffff\1\117\1\uffff\1\160\2\uffff\1\130\1\127\3\uffff\1"+
+		"\156\2\uffff\1\143\1\16\1\uffff\1\21\1\22\1\23\1\26\3\uffff\1\140\1\uffff"+
+		"\1\45\2\uffff\1\147\12\uffff\1\141\5\uffff\1\157\4\uffff\1\146\7\uffff"+
+		"\1\152\1\uffff\1\112\1\111\2\uffff\1\121\1\123\1\uffff\1\136\1\154\1\137"+
+		"\1\uffff\1\145\1\uffff\1\30\1\44\1\47\4\uffff\1\151\1\uffff\1\116\2\uffff"+
+		"\1\1\1\27\1\50\5\uffff\1\153\2\uffff\1\57\1\102\1\120\1\55\1\56";
 	static final String DFA26_specialS =
-		"\u017b\uffff}>";
+		"\u017d\uffff}>";
 	static final String[] DFA26_transitionS = {
 			"\2\61\2\uffff\1\61\22\uffff\1\61\1\31\1\60\1\uffff\1\17\1\35\1\5\1\60"+
 			"\1\26\1\46\1\36\1\41\1\14\1\34\1\20\1\16\1\57\11\56\1\13\1\51\1\30\1"+
@@ -5034,213 +5063,215 @@ public class TSPHPLexer extends Lexer {
 			"",
 			"\1\u00c5",
 			"\1\u00c6",
-			"\1\u00c7",
-			"\1\u00c8",
+			"\1\u00c7\16\uffff\1\u00c8",
 			"\1\u00c9",
 			"\1\u00ca",
-			"\1\u00cb\1\u00cc",
-			"\1\u00cd",
+			"\1\u00cb",
+			"\1\u00cc\1\u00cd",
 			"\1\u00ce",
-			"",
 			"\1\u00cf",
+			"",
 			"\1\u00d0",
 			"\1\u00d1",
 			"\1\u00d2",
 			"\1\u00d3",
 			"\1\u00d4",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\4\55\1\u00d5\25\55\4\uffff"+
+			"\1\u00d5",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\4\55\1\u00d6\25\55\4\uffff"+
 			"\u0081\55",
-			"\1\u00d7",
 			"\1\u00d8",
 			"\1\u00d9",
-			"",
-			"",
-			"",
 			"\1\u00da",
+			"",
+			"",
+			"",
 			"\1\u00db",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\4\55\1\u00dc\25\55\4\uffff"+
+			"\1\u00dc",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\4\55\1\u00dd\25\55\4\uffff"+
 			"\u0081\55",
 			"",
 			"",
 			"",
 			"",
 			"",
-			"\1\u00de",
+			"\1\u00df",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u00e0",
+			"\1\u00e1",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u00e2",
 			"\1\u00e3",
 			"\1\u00e4",
 			"\1\u00e5",
 			"\1\u00e6",
 			"\1\u00e7",
 			"\1\u00e8",
+			"\1\u00e9",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u00ea",
 			"\1\u00eb",
 			"\1\u00ec",
 			"\1\u00ed",
 			"\1\u00ee",
 			"\1\u00ef",
 			"\1\u00f0",
+			"\1\u00f1",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u00f2",
 			"\1\u00f3",
 			"\1\u00f4",
-			"",
 			"\1\u00f5",
+			"",
 			"\1\u00f6",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\4\55\1\u00f7\25\55\4\uffff"+
+			"\1\u00f7",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\4\55\1\u00f8\25\55\4\uffff"+
 			"\u0081\55",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u00fa",
-			"\1\u00fb",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\1\u00fc",
 			"\1\u00fd",
 			"\1\u00fe",
 			"\1\u00ff",
 			"\1\u0100",
 			"\1\u0101",
+			"\1\u0102",
+			"\1\u0103",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u0105",
-			"\1\u0106",
 			"\1\u0107",
-			"",
 			"\1\u0108",
 			"\1\u0109",
+			"",
 			"\1\u010a",
 			"\1\u010b",
 			"\1\u010c",
-			"\1\u010e\12\uffff\1\u010d",
+			"\1\u010d",
+			"\1\u010e",
+			"\1\u0110\12\uffff\1\u010f",
 			"",
-			"\1\u010f",
+			"\1\u0111",
 			"",
-			"\1\u0110",
+			"\1\u0112",
 			"",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u0112",
-			"\1\u0113",
 			"\1\u0114",
 			"\1\u0115",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\1\u0116",
 			"\1\u0117",
-			"",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\1\u0119",
-			"\1\u011a",
-			"\12\55\1\u011b\6\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081"+
+			"",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\1\u011b",
+			"\1\u011c",
+			"\12\55\1\u011d\6\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081"+
 			"\55",
-			"\1\u011d",
-			"\1\u011e",
 			"\1\u011f",
-			"",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\1\u0120",
 			"\1\u0121",
-			"\1\u0122",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u0125",
-			"",
 			"",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\1\u0123",
+			"\1\u0124",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\1\u0127",
+			"",
+			"",
+			"",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u012a",
-			"\1\u012b",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\1\u012c",
+			"\1\u012d",
+			"\1\u012e",
 			"\12\117\7\uffff\32\117\4\uffff\1\117\1\uffff\32\117\4\uffff\u0081\117",
 			"",
 			"",
 			"",
-			"\1\u012e",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\1\u0130",
-			"\1\u0131",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\1\u0132",
 			"\1\u0133",
-			"\1\u0134",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\1\u0135",
 			"\1\u0136",
 			"\1\u0137",
 			"\1\u0138",
-			"",
 			"\1\u0139",
 			"\1\u013a",
+			"",
 			"\1\u013b",
 			"\1\u013c",
+			"\1\u013d",
+			"\1\u013e",
 			"",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"",
-			"\1\u013e",
-			"\1\u013f",
-			"",
 			"",
 			"\1\u0140",
 			"\1\u0141",
-			"\1\u0142",
 			"",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"",
+			"\1\u0142",
+			"\1\u0143",
 			"\1\u0144",
 			"",
-			"",
-			"\1\u0145",
-			"",
-			"",
-			"",
-			"",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\1\u0146",
+			"",
+			"",
 			"\1\u0147",
+			"",
+			"",
+			"",
+			"",
+			"\1\u0148",
+			"\1\u0149",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"",
-			"\1\u0149",
-			"",
-			"\1\u014a",
 			"\1\u014b",
 			"",
 			"\1\u014c",
 			"\1\u014d",
+			"",
 			"\1\u014e",
 			"\1\u014f",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\1\u0150",
 			"\1\u0151",
-			"\12\55\1\u0152\6\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081"+
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\1\u0153",
+			"\12\55\1\u0154\6\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081"+
 			"\55",
-			"\1\u0154",
-			"\1\u0155",
+			"\1\u0156",
+			"\1\u0157",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u0158",
+			"\1\u015a",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"",
-			"\1\u015c",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\1\u015e",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\1\u0160",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u0162",
-			"\1\u0163",
 			"\1\u0164",
 			"\1\u0165",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"",
+			"\1\u0166",
 			"\1\u0167",
-			"",
-			"",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"",
 			"\1\u0169",
 			"",
 			"",
-			"\1\u016a",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"\1\u016b",
+			"",
+			"",
+			"\1\u016c",
 			"",
 			"",
 			"",
@@ -5251,19 +5282,19 @@ public class TSPHPLexer extends Lexer {
 			"",
 			"",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
-			"\1\u016e",
-			"\1\u016f",
 			"\1\u0170",
-			"",
 			"\1\u0171",
-			"",
 			"\1\u0172",
-			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"",
-			"",
+			"\1\u0173",
 			"",
 			"\1\u0174",
-			"\1\u0175",
+			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
+			"",
+			"",
+			"",
+			"\1\u0176",
+			"\1\u0177",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
 			"\12\55\7\uffff\32\55\4\uffff\1\55\1\uffff\32\55\4\uffff\u0081\55",
@@ -5308,7 +5339,7 @@ public class TSPHPLexer extends Lexer {
 		}
 		@Override
 		public String getDescription() {
-			return "1:1: Tokens : ( Abstract | Arrow | As | Assign | At | Backslash | BitwiseAnd | BitwiseAndEqual | BitwiseNot | BitwiseOr | BitwiseOrEqual | BitwiseXor | BitwiseXorEqual | Break | Case | Catch | Class | Clone | Colon | Comma | Const | Continue | Default | Divide | DivideEqual | Do | Dolar | Dot | DotEqual | DoubleColon | Echo | Else | Equal | Exit | Extends | Final | For | Foreach | Function | GreaterEqualThan | GreaterThan | Identical | If | Implements | Instanceof | Interface | LeftCurlyBrace | LeftParanthesis | LeftSquareBrace | LessEqualThan | LessThan | LogicAnd | LogicAndWeak | LogicNot | LogicOr | LogicOrWeak | LogicXorWeak | Minus | MinusEqual | MinusMinus | Modulo | ModuloEqual | Multiply | MultiplyEqual | Namespace | New | NotEqual | NotEqualAlternative | NotIdentical | Null | ObjectOperator | Parent | ParentColonColon | Plus | PlusEqual | PlusPlus | Private | ProtectThis | Protected | Public | QuestionMark | Return | RightCurlyBrace | RightParanthesis | RightSquareBrace | Self | SelfColonColon | Semicolon | ShiftLeft | ShiftLeftEqual | ShiftRight | ShiftRightEqual | Static | Switch | This | Throw | Try | TypeArray | TypeBool | TypeBoolean | TypeDouble | TypeFloat | TypeInt | TypeInteger | TypeObject | TypeResource | TypeString | Use | Void | While | Bool | Identifier | VariableId | Int | Float | String | Comment | Whitespace );";
+			return "1:1: Tokens : ( Abstract | Arrow | As | Assign | At | Backslash | BitwiseAnd | BitwiseAndEqual | BitwiseNot | BitwiseOr | BitwiseOrEqual | BitwiseXor | BitwiseXorEqual | Break | Case | Cast | Catch | Class | Clone | Colon | Comma | Const | Continue | Default | Divide | DivideEqual | Do | Dolar | Dot | DotEqual | DoubleColon | Echo | Else | Equal | Exit | Extends | Final | For | Foreach | Function | GreaterEqualThan | GreaterThan | Identical | If | Implements | Instanceof | Interface | LeftCurlyBrace | LeftParanthesis | LeftSquareBrace | LessEqualThan | LessThan | LogicAnd | LogicAndWeak | LogicNot | LogicOr | LogicOrWeak | LogicXorWeak | Minus | MinusEqual | MinusMinus | Modulo | ModuloEqual | Multiply | MultiplyEqual | Namespace | New | NotEqual | NotEqualAlternative | NotIdentical | Null | ObjectOperator | Parent | ParentColonColon | Plus | PlusEqual | PlusPlus | Private | ProtectThis | Protected | Public | QuestionMark | Return | RightCurlyBrace | RightParanthesis | RightSquareBrace | Self | SelfColonColon | Semicolon | ShiftLeft | ShiftLeftEqual | ShiftRight | ShiftRightEqual | Static | Switch | This | Throw | Try | TypeArray | TypeBool | TypeBoolean | TypeDouble | TypeFloat | TypeInt | TypeInteger | TypeObject | TypeResource | TypeString | Use | Void | While | Bool | Identifier | VariableId | Int | Float | String | Comment | Whitespace );";
 		}
 	}
 

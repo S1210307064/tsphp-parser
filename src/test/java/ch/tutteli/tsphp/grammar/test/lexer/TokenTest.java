@@ -48,7 +48,7 @@ public class TokenTest extends ALexerTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList();
-        /*collection.addAll(Arrays.asList(new Object[][]{
+        collection.addAll(Arrays.asList(new Object[][]{
                     {"mAbstract", "abstract", TSPHPLexer.Abstract},
                     {"mArrow", "=>", TSPHPLexer.Arrow},
                     {"mAs", "as", TSPHPLexer.As},
@@ -66,6 +66,7 @@ public class TokenTest extends ALexerTest
                     {"mBool", "false", TSPHPLexer.Bool},
                     {"mBreak", "break", TSPHPLexer.Break},
                     {"mCase", "case", TSPHPLexer.Case},
+                    {"mCast", "cast", TSPHPLexer.Cast},
                     {"mCatch", "catch", TSPHPLexer.Catch},
                     {"mClass", "class", TSPHPLexer.Class},
                     {"mClone", "clone", TSPHPLexer.Clone},
@@ -181,10 +182,20 @@ public class TokenTest extends ALexerTest
         for (Object[] obj : ids) {
             collection.add(new Object[]{"mVariableId", "$" + obj[1], TSPHPLexer.VariableId});
         }
-*/
+
         String[] nullCombinations = VariationHelper.getUppercaseCombinations("null");
         for (String combination : nullCombinations) {
             collection.add(new Object[]{"mNull", combination, TSPHPLexer.Null});
+        }
+        
+        String[] trueCombinations = VariationHelper.getUppercaseCombinations("true");
+        for (String combination : trueCombinations) {
+            collection.add(new Object[]{"mBool", combination, TSPHPLexer.Bool});
+        }
+        
+        String[] falseCombinations = VariationHelper.getUppercaseCombinations("false");
+        for (String combination : falseCombinations) {
+            collection.add(new Object[]{"mBool", combination, TSPHPLexer.Bool});
         }
 
         return collection;

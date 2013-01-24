@@ -17,10 +17,8 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -102,6 +100,22 @@ public class FunctionTest extends AAstTest
                             + "(parameter declaration bool $a true) "
                             + "(parameter declaration object $d null)"
                         + ") (block (= $a $b)))"
+                    } ,
+                    {
+                        "function void foo(string $a=null, bool $a, object $d=true){$a=$b;}",
+                         "(function declaration void foo (parameters "
+                            + "(parameter declaration string $a null) "
+                            + "(parameter declaration bool $a) "
+                            + "(parameter declaration object $d true)"
+                        + ") (block (= $a $b)))"
+                    }, 
+                    {
+                        "function void foo(cast int $a, bool $a, cast object $d){}",
+                         "(function declaration void foo (parameters "
+                            + "(parameter declaration (int cast) $a) "
+                            + "(parameter declaration bool $a) "
+                            + "(parameter declaration (object cast) $d)"
+                        + ") block)"
                     } 
                 });
     }

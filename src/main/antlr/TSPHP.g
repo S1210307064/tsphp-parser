@@ -39,6 +39,7 @@ tokens{
 	BitwiseXorEqual = '^=';
 	Break = 'break';
 	Case = 'case';
+	Cast = 'cast';
 	Catch = 'catch';
 	Class = 'class';
 	Clone = 'clone';
@@ -386,17 +387,21 @@ formalParameters
 	;
 
 paramList
-	:	paramDeclarationOptional (','! paramDeclarationOptional)* 
-	|	paramDeclaration (','! paramDeclaration)* (','! paramDeclarationOptional)*
+	:	paramDeclarationOptional (','! paramDeclarationOptional)*
+	|	paramDeclarationInclNull (','! paramDeclarationInclNull)* (','! paramDeclarationOptional)*	
 	;
 	
-paramDeclaration
-	:	allTypes VariableId ('=' Null)? -> ^(PARAM_DECLARATION[$allTypes.start,"parameter declaration"] allTypes VariableId Null?)
+paramDeclarationInclNull
+	:	paramDeclarationWithoutNull ('=' Null)? -> ^(PARAM_DECLARATION[$paramDeclarationInclNull.start,"parameter declaration"] paramDeclarationWithoutNull Null?)
+	;
+
+paramDeclarationWithoutNull
+	:	Cast? allTypes VariableId -> ^(allTypes Cast?) VariableId		
 	;
 	
 paramDeclarationOptional
-	:	allTypes VariableId  '=' unaryPrimitiveAtom 
-		-> ^(PARAM_DECLARATION[$allTypes.start,"parameter declaration"] allTypes VariableId unaryPrimitiveAtom)
+	:	paramDeclarationWithoutNull  '=' unaryPrimitiveAtom 
+		-> ^(PARAM_DECLARATION[$paramDeclarationOptional.start,"parameter declaration"] paramDeclarationWithoutNull unaryPrimitiveAtom)
 	;
 
 VariableId	
@@ -871,7 +876,7 @@ Comment
 Whitespace	
 	:	( ' '
         	| '\t'
-	        | '\r'
+        		        | '\r'
         	| '\n'
 	        ) {$channel=HIDDEN;}
 	;
