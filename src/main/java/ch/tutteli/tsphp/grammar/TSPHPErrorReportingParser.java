@@ -14,10 +14,8 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.test.utils;
+package ch.tutteli.tsphp.grammar;
 
-import ch.tutteli.tsphp.grammar.TSPHPErrorReportingParser;
-import ch.tutteli.tsphp.grammar.TSPHPParser;
 import java.util.ArrayList;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -25,33 +23,23 @@ import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.TokenStream;
 
 /**
- * Overwrite reportError methods in order that unit tests with parser errors fails at the end
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-public class TestTSPHPParser extends TSPHPErrorReportingParser
+public class TSPHPErrorReportingParser extends TSPHPParser
 {
 
-    private boolean isErrorReportingOn = true;
+    protected List<RecognitionException> exceptions = new ArrayList<>();
 
-    public TestTSPHPParser(TokenStream input) {
-        this(input, new RecognizerSharedState());
+    public TSPHPErrorReportingParser(TokenStream input) {
+        super(input);
     }
 
-    public TestTSPHPParser(TokenStream input, RecognizerSharedState state) {
+    public TSPHPErrorReportingParser(TokenStream input, RecognizerSharedState state) {
         super(input, state);
     }
 
-    public void setErrorReporting(boolean isOn) {
-        isErrorReportingOn = isOn;
-    }
-
-    @Override
-    public void reportError(RecognitionException e) {
-        if (isErrorReportingOn) {
-            super.reportError(e);
-        } else {
-            exceptions.add(e);
-        }
+    public List<RecognitionException> getExceptions() {
+        return exceptions;
     }
 }

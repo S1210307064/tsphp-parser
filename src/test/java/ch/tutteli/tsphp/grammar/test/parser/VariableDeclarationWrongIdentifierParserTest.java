@@ -16,9 +16,13 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
+import ch.tutteli.tsphp.grammar.TSPHPParser;
 import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
-import ch.tutteli.tsphp.grammar.test.utils.KeywordHelper;
+import ch.tutteli.tsphp.grammar.test.utils.VariationHelper;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,10 +33,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ClassErrorTest extends AParserParserExceptionTest
+public class VariableDeclarationWrongIdentifierParserTest extends AParserParserExceptionTest
 {
 
-    public ClassErrorTest(String testString, int token, int position) {
+    public VariableDeclarationWrongIdentifierParserTest(String testString, int token, int position) {
         super(testString, RecognitionException.class, token, position);
 
     }
@@ -44,8 +48,19 @@ public class ClassErrorTest extends AParserParserExceptionTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> variables() {
-        return KeywordHelper.getKeywords("class ", "{private int $a=1;}");
+        return Arrays.asList(new Object[][]{
+                    {"int $1;", TSPHPParser.Dolar, 4},
+                    {"bool $2a;", TSPHPParser.Dolar, 5},
+                    {"bool $3_;", TSPHPParser.Dolar, 5},
+                    {"float $4£;", TSPHPParser.Dolar, 6},
+                    {"string $5ééé;", TSPHPParser.Dolar, 7},
+                    {"resource $6AAAA;", TSPHPParser.Dolar, 9},
+                    {"array $7aA;", TSPHPParser.Dolar, 6},
+                    {"int $8_A;", TSPHPParser.Dolar, 4},
+                    {"bool $9££;", TSPHPParser.Dolar, 5},
+                    {"bool $0a;", TSPHPParser.Dolar, 5},
+                    {"string $(;", TSPHPParser.Dolar, 7},
+                    {"int $);", TSPHPParser.Dolar, 4}
+                });
     }
-
-   
 }

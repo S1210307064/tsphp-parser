@@ -51,7 +51,7 @@ public class ForeachTest extends AParserTest
                     {"foreach($a as float $v) $a=1;"},
                     {"foreach($a as string $k => string $v){$a=1;}"},
                     {"foreach($a as bool $v) {$a=1;}"},
-                    {"foreach($a as boolean $k=> array $v){$a=1; $b=1;}"},
+                    {"foreach($a as bool $k=> array $v){$a=1; $b=1;}"},
                     {"foreach($a as int $v) {$a=1; $b=3;}"},
                     
         }));

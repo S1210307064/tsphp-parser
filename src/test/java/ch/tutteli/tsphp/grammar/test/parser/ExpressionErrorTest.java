@@ -114,7 +114,6 @@ public class ExpressionErrorTest extends AParserParserExceptionTest
                     {"(resource) $a;", TSPHPParser.TypeResource, 1},
                     //misuse instanceof operator - instanceof is wrong since ; is expected
                     {"$a instanceof bool;", TSPHPParser.Instanceof, 3},
-                    {"$a instanceof boolean;", TSPHPParser.Instanceof, 3},
                     {"$a instanceof int;", TSPHPParser.Instanceof, 3},
                     {"$a instanceof float;", TSPHPParser.Instanceof, 3},
                     {"$a instanceof string;", TSPHPParser.Instanceof, 3},

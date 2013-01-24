@@ -48,7 +48,12 @@ public class VariableDeclarationParserErrorTest extends AParserParserExceptionTe
                     {"int $a int $b;", TSPHPParser.TypeInt, 7},
                     {"int $a 1", TSPHPParser.Int, 7},
                     {"int a;", TSPHPParser.Identifier, 4},
-                    {"int $a", -1, 6}
+                    {"int $a", -1, 6},
+                    //alias can not be used
+                    {"boolean $a;",TSPHPParser.TypeBoolean,0},
+                    {"integer $a;",TSPHPParser.TypeInteger,0},
+                    {"double $a;",TSPHPParser.TypeDouble,0},
+                
                 });
     }
 }

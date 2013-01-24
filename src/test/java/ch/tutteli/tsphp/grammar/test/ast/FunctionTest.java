@@ -96,7 +96,7 @@ public class FunctionTest extends AAstTest
                         + ") (block (= $a $b)))"
                     },
                     {
-                        "function void foo(string $a, boolean $a=true, object $d=null){$a=$b;}",
+                        "function void foo(string $a, bool $a=true, object $d=null){$a=$b;}",
                          "(function declaration void foo (parameters "
                             + "(parameter declaration string $a) "
                             + "(parameter declaration bool $a true) "

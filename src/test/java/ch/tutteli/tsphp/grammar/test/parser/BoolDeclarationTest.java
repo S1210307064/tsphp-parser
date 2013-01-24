@@ -50,8 +50,6 @@ public class BoolDeclarationTest extends AParserTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {"bool $a = true;"},
                     {"bool $b = false;"},
-                    {"boolean $a = true;"},
-                    {"boolean $b = false;"}
                 }));
         
         Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();

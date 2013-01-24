@@ -52,13 +52,7 @@ public class ConstantTest extends AAstTest
                     {"const int a=1,b=2;", "(constant declarations int (= a 1) (= b 2))"},
                     {"const int a=1,b=2,c=null;", "(constant declarations int (= a 1) (= b 2) (= c null))"},
                 }));
-        
-        String[] nullCombinations = VariationHelper.getUppercaseCombinations("null");
-        for (String combination : nullCombinations) {
-            collection.add(new Object[]{"const int i=" + combination + ";", "(constant declarations int (= i null))"});
-        }
-
-        
+                
         return collection;
 
     }

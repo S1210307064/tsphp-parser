@@ -51,7 +51,7 @@ public class ForeachTest extends AAstTest
                     {"foreach($a as float $v) $a=1;", "(foreach $a float $v (= $a 1))"},
                     {"foreach($a as string $k => string $v){$a=1;}", "(foreach $a string $k string $v (block (= $a 1)))"},
                     {"foreach($a as bool $v) {$a=1;}", "(foreach $a bool $v (block (= $a 1)))"},
-                    {"foreach($a as boolean $k=> array $v){$a=1; $b=2;}", "(foreach $a bool $k array $v (block (= $a 1) (= $b 2)))"},
+                    {"foreach($a as bool $k=> array $v){$a=1; $b=2;}", "(foreach $a bool $k array $v (block (= $a 1) (= $b 2)))"},
                     {"foreach($a as int $v) {$a=1; $b=3;}", "(foreach $a int $v (block (= $a 1) (= $b 3)))"},
                     
         }));

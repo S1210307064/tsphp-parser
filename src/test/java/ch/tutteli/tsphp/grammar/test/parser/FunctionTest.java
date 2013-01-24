@@ -52,7 +52,7 @@ public class FunctionTest extends AParserTest
                     {"function void foo(string $a, int $i, int $b=+1){$a=$b;}"},
                     {"function void foo(string $a, int $i, int $b=-10, float $d=2.0){$a=$b;}"},
                     {"function void foo(string $a, int $b=E_ALL){$a=$b;}"},
-                    {"function void foo(string $a, boolean $a=true, object $d=null){$a=$b;}"},
+                    {"function void foo(string $a, bool $a=true, object $d=null){$a=$b;}"},
                     {"function void foo(string $a=null, bool $b, object $d=null){$a=$b;}"} 
                 });
     }

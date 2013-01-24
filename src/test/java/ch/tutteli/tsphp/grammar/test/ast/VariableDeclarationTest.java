@@ -52,12 +52,12 @@ public class VariableDeclarationTest extends AAstTest
                     {"a\\Type $a;", "(variable declaration (class/interface type a Type) $a)"},
                     {"\\a\\Type $a;", "(variable declaration (class/interface type \\ a Type) $a)"},
                     {"bool $a;", "(variable declaration bool $a)"},
-                    {"boolean $a;", "(variable declaration bool $a)"},
                     {"int $a;", "(variable declaration int $a)"},
                     {"float $a;", "(variable declaration float $a)"},
                     {"string $a;", "(variable declaration string $a)"},
                     {"array $a;", "(variable declaration array $a)"},
-                    {"resource $a;", "(variable declaration resource $a)"}
+                    {"resource $a;", "(variable declaration resource $a)"},
+                    {"object $a;", "(variable declaration object $a)"}
                 }));
         String[][] expressions = ExpressionTest.getExpressions();
         for (Object[] expression : expressions) {

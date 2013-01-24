@@ -18,13 +18,11 @@ package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.TSPHPParser;
 import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
-import ch.tutteli.tsphp.grammar.test.utils.KeywordHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -68,7 +66,6 @@ public class FunctionErrorTest extends AParserParserExceptionTest
                     {fixture + "1 instanceof 2" + "){}", TSPHPParser.Instanceof, fixtureLength + 2},
                     {fixture + "~1" + "){}", TSPHPParser.BitwiseNot, fixtureLength},
                     {fixture + "(bool) 1" + "){}", TSPHPParser.LeftParanthesis, fixtureLength},
-                    {fixture + "(boolean) 1" + "){}", TSPHPParser.LeftParanthesis, fixtureLength},
                     {fixture + "(int) 1" + "){}", TSPHPParser.LeftParanthesis, fixtureLength},
                     {fixture + "(string) 1" + "){}", TSPHPParser.LeftParanthesis, fixtureLength},
                     {fixture + "(array) 1" + "){}", TSPHPParser.LeftParanthesis, fixtureLength},
@@ -81,9 +78,6 @@ public class FunctionErrorTest extends AParserParserExceptionTest
                     {fixture + "$a[0]" + "){}", TSPHPParser.VariableId, fixtureLength},
                     {fixture + "$a->a" + "){}", TSPHPParser.VariableId, fixtureLength}
                 }));
-
-
-        collection.addAll(KeywordHelper.getKeywords("function void ", "(){}"));
 
         return collection;
     }

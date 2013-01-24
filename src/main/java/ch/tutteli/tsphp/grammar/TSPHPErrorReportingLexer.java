@@ -14,10 +14,8 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.test.utils;
+package ch.tutteli.tsphp.grammar;
 
-import ch.tutteli.tsphp.grammar.TSPHPErrorReportingLexer;
-import ch.tutteli.tsphp.grammar.TSPHPLexer;
 import java.util.ArrayList;
 import java.util.List;
 import org.antlr.runtime.CharStream;
@@ -25,40 +23,32 @@ import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 
 /**
- * Overwrite reportError methods in order that unit tests with lexer errors fails at the end
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-public class TestTSPHPLexer extends TSPHPErrorReportingLexer
+public class TSPHPErrorReportingLexer extends TSPHPLexer
 {
 
-    private boolean isErrorReportingOn = true;
+    protected List<RecognitionException> exceptions = new ArrayList<>();
 
-    public TestTSPHPLexer() {
+    public TSPHPErrorReportingLexer() {
     }
 
-    public TestTSPHPLexer(CharStream input) {
-        this(input, new RecognizerSharedState());
+    public TSPHPErrorReportingLexer(CharStream input) {
+        super(input);
     }
 
-    public TestTSPHPLexer(CharStream input, RecognizerSharedState state) {
+    public TSPHPErrorReportingLexer(CharStream input, RecognizerSharedState state) {
         super(input, state);
     }
 
-    public void setErrorReporting(boolean isOn) {
-        isErrorReportingOn = isOn;
+    public List<RecognitionException> getExceptions() {
+        return exceptions;
     }
 
     @Override
     public void reportError(RecognitionException e) {
-        if (isErrorReportingOn) {
-            super.reportError(e);
-        } else {
-            exceptions.add(e);
-        }
-    }
-
-    public RecognizerSharedState getState() {
-        return state;
+        super.reportError(e);
+        exceptions.add(e);
     }
 }

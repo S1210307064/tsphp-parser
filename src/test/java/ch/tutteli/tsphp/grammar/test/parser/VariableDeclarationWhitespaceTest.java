@@ -49,17 +49,17 @@ public class VariableDeclarationWhitespaceTest extends AParserTest
                     {"int      $a;"}, //testWhitespaceAfterType
                     {"float \t \t $a;"}, //testTabAfterType
                     {"bool \n \r \n $a;"}, //testNewLineAfterType
-                    {"boolean \n \r \t   \n \t \t\t  \r\n\n $a;"}, //testAllAfterType
+                    {"bool \n \r \t   \n \t \t\t  \r\n\n $a;"}, //testAllAfterType
 
                     {"int $a    ;"}, //testWhitespaceAfterID
                     {"float $a\t \t ;"}, //testTabAfterID
                     {"bool$a \n \r \n ;"}, //testNewLineAfterID
-                    {"boolean$a \n \r \t   \n \t \t\t  \r\n\n ;"}, //testAllAfterID
+                    {"bool$a \n \r \t   \n \t \t\t  \r\n\n ;"}, //testAllAfterID
 
                     {"int $a =      1;"}, //testWhitespaceAfterEqual
                     {"float $a = \t \t 1.012;"}, //testTabAfterEqual
                     {"bool $a =  \n \r \n true;"}, //testNewLineAfterEqual
-                    {"boolean $a = \n \r \t   \n \t \t\t  \r\n\n false;"}, //testAllAfterEqual
+                    {"bool $a = \n \r \t   \n \t \t\t  \r\n\n false;"}, //testAllAfterEqual
 
                     {" \n \r \t   \n \t  int  \n \r \t   \n \t \t\t  \r\n\n $a \n \r \t   \n \t \t\t  \r\n\n =   \n \r \t\t 1;"
                             + " string \n\n\r $b \n\n\r\t = 'test' \n \r\t; "} // testEverythingMultipleVars

@@ -48,7 +48,7 @@ public class TokenTest extends ALexerTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList();
-        collection.addAll(Arrays.asList(new Object[][]{
+        /*collection.addAll(Arrays.asList(new Object[][]{
                     {"mAbstract", "abstract", TSPHPLexer.Abstract},
                     {"mArrow", "=>", TSPHPLexer.Arrow},
                     {"mAs", "as", TSPHPLexer.As},
@@ -150,8 +150,10 @@ public class TokenTest extends ALexerTest
                     {"mTypeArray", "array", TSPHPLexer.TypeArray},
                     {"mTypeBool", "bool", TSPHPLexer.TypeBool},
                     {"mTypeBoolean", "boolean", TSPHPLexer.TypeBoolean},
+                    {"mTypeDouble", "double", TSPHPLexer.TypeDouble},
                     {"mTypeFloat", "float", TSPHPLexer.TypeFloat},
                     {"mTypeInt", "int", TSPHPLexer.TypeInt},
+                    {"mTypeInteger", "integer", TSPHPLexer.TypeInteger},
                     {"mTypeObject", "object", TSPHPLexer.TypeObject},
                     {"mTypeResource", "resource", TSPHPLexer.TypeResource},
                     {"mTypeString", "string", TSPHPLexer.TypeString},
@@ -179,10 +181,10 @@ public class TokenTest extends ALexerTest
         for (Object[] obj : ids) {
             collection.add(new Object[]{"mVariableId", "$" + obj[1], TSPHPLexer.VariableId});
         }
-
+*/
         String[] nullCombinations = VariationHelper.getUppercaseCombinations("null");
         for (String combination : nullCombinations) {
-            collection.add(new Object[]{"mNullVariations", combination, TSPHPLexer.NullVariations});
+            collection.add(new Object[]{"mNull", combination, TSPHPLexer.Null});
         }
 
         return collection;

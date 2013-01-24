@@ -78,6 +78,6 @@ public class VariableDeclarationTest extends AParserTest
     }
 
     public static String[] getPrimitiveTypes() {
-        return new String[]{"bool", "boolean", "int", "float", "string", "array", "resource", "object"};
+        return new String[]{"bool", "int", "float", "string", "array", "resource", "object"};
     }
 }

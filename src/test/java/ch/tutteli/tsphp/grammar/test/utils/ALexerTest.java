@@ -16,11 +16,11 @@
  */
 package ch.tutteli.tsphp.grammar.test.utils;
 
+import ch.tutteli.tsphp.grammar.ANTLRNoCaseStringStream;
 import ch.tutteli.tsphp.grammar.TSPHPLexer;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import junit.framework.Assert;
-import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
@@ -96,7 +96,7 @@ public abstract class ALexerTest extends ATest
     }
 
     protected void analyseToken() throws Exception {
-        CharStream stream = new ANTLRStringStream(testString);
+        CharStream stream = new ANTLRNoCaseStringStream(testString);
         lexer = new TestTSPHPLexer(stream);
         lexer.setErrorReporting(isErrorReportingOn);
 

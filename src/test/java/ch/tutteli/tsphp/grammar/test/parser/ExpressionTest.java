@@ -50,7 +50,6 @@ public class ExpressionTest extends AParserTest
         String[] expressions = getAllExpressions();
         for (String expression : expressions) {
             collection.add(new Object[]{"bool $a = " + expression + ";"});
-            collection.add(new Object[]{"boolean $a = " + expression + ";"});
             collection.add(new Object[]{"int $a = " + expression + ";"});
             collection.add(new Object[]{"float $a = " + expression + ";"});
             collection.add(new Object[]{"string $a = " + expression + ";"});
@@ -122,7 +121,6 @@ public class ExpressionTest extends AParserTest
                     "~$a",
                     "~~$a",
                     "(bool) $a",
-                    "(boolean) $a",
                     "(int) $a",
                     "(float) $a",
                     "(string) $a",

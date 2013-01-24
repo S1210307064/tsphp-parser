@@ -119,7 +119,9 @@ tokens{
 	Try = 'try';
 	TypeBool = 'bool';
 	TypeBoolean = 'boolean';
+	TypeDouble = 'double';
 	TypeInt = 'int';
+	TypeInteger = 'integer';
 	TypeFloat = 'float';
 	TypeString = 'string';
 	TypeArray = 'array';
@@ -214,10 +216,6 @@ namespaceBracket
 
 //Must before Id otherwise Id match true and false
 Bool	:	'true'|'false'
-	;
-
-NullVariations
-	:	('N'|'n') ('U'|'u') ('L'|'l') ('L'|'l')
 	;
 
 Identifier	
@@ -358,7 +356,6 @@ allTypesWithoutObjectAndResource
 
 primitiveTypes
 	:	TypeBool
-	|	bool = TypeBoolean -> TypeBool[$bool,"bool"]
 	|	TypeInt
 	|	TypeFloat
 	|	TypeString
@@ -690,7 +687,7 @@ primitiveAtom
 	|	Int
 	|	Float
 	|	String
-	|	n=(Null|NullVariations) -> Null[$n,"null"]
+	|	Null
 	|	Identifier
 	;
 	

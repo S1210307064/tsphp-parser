@@ -16,7 +16,7 @@
  */
 package ch.tutteli.tsphp.grammar.test.utils;
 
-import org.antlr.runtime.ANTLRStringStream;
+import ch.tutteli.tsphp.grammar.ANTLRNoCaseStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.ParserRuleReturnScope;
@@ -51,7 +51,7 @@ public abstract class AParserTest extends ATest
     }
 
     protected void parse() throws RecognitionException {
-        CharStream stream = new ANTLRStringStream(testString);
+        CharStream stream = new ANTLRNoCaseStringStream(testString);
         lexer = new TestTSPHPLexer(stream);
         lexer.setErrorReporting(isErrorReportingOn);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
