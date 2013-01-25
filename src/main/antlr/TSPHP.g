@@ -158,11 +158,11 @@ tokens{
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
 	SWITCH_CASES;
-	VARIABLE_DECLARATION;
-	VARIABLE_DECLARATION_LIST;
 	UMINUS;
 	UPLUS;
-	
+	USE_DECLRATARION;
+	VARIABLE_DECLARATION;
+	VARIABLE_DECLARATION_LIST;	
 }
 
 
@@ -232,14 +232,13 @@ namespaceIdOrEmpty
 Bool	:	'true'|'false'
 	;
 
-Identifier	
-	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*
-	;
-
 namespaceId
 	:	Identifier ('\\' Identifier)* -> Identifier+
 	;
 
+Identifier	
+	:	('a'..'z'|'A'..'Z'|'_'|'\u007f'..'\u00ff') ('a'..'z'|'A'..'Z'|'0'..'9'|'_'|'\u007f'..'\u00ff')*
+	;
 
 withoutNamespace 
 	:	(statement+) -> ^(Namespace[$statement.start,"namespace"]
@@ -255,14 +254,17 @@ statement
 	;
 	
 useDeclarationList
-	:	'use' useDeclaration (',' useDeclaration)* ';'
+	:	'use' first=useDeclaration (',' other=useDeclaration)* ';' 
+		-> ^('use' ^(USE_DECLRATARION[$first.start,"use declaration"] useDeclaration) (^(USE_DECLRATARION[$other.start,"use declaration"] useDeclaration))* )
 	;
 	
 useDeclaration
-	:	(	(Identifier '\\' namespaceId)
-		|	('\\' namespaceId)
-		) 
-		('as' Identifier)? 
+	:	useDeclarationWithoutAs ('as'! Identifier)?
+	;
+	
+useDeclarationWithoutAs
+	:	root=Identifier '\\' namespaceId -> ^(CLASS_INTERFACE_TYPE[$root,"class/interface type"] $root namespaceId)
+	|	root='\\' namespaceId ->  ^(CLASS_INTERFACE_TYPE[$root,"class/interface type"] $root namespaceId)
 	;
 definition
 	:	classDeclaration
