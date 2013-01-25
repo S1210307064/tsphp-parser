@@ -31,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ClassAttributeTest extends AParserTest
+public class ClassMemberTest extends AParserTest
 {
 
-    public ClassAttributeTest(String testString) {
+    public ClassMemberTest(String testString) {
         super(testString);
     }
 

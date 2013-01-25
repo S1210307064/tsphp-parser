@@ -50,7 +50,6 @@ public class FunctionErrorTest extends AParserParserExceptionTest
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{"function void a();",TSPHPParser.Semicolon,17});
 
-
         String fixture = "function void a (int $a, int $b=";
         int fixtureLength = fixture.length();
         collection.addAll(Arrays.asList(new Object[][]{

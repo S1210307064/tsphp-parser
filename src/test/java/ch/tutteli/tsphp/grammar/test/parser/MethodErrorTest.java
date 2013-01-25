@@ -14,9 +14,10 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.test.ast;
+package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.TSPHPParser;
+import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -31,28 +32,28 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ExitTest extends AAstTest
+public class MethodErrorTest extends AParserParserExceptionTest
 {
 
-    public ExitTest(String testString, String expectedResult) {
-        super(testString, expectedResult);
+    public MethodErrorTest(String testString, int character, int position) {
+        super(testString, RecognitionException.class, character, position);
+
     }
 
     @Test
     public void test() throws RecognitionException {
-        compareAst();
+        parseExpectingException();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-
-        collection.addAll(Arrays.asList(new Object[][]{
-                    {"exit;", "exit"},}));
-        String[][] expressions = ExpressionTest.getExpressions();
-        for (Object[] expression : expressions) {
-            collection.add(new Object[]{"exit(" + expression[0] + ");", "(exit " + expression[1] + ")"});
-        }
-        return collection;
+        return Arrays.asList(new Object[][]{
+                    //forgot to add type
+                    {"class A{function void a(int $a=null,$b}",TSPHPParser.VariableId,36},
+                    //wrong construct / destruct
+                    {"class A{function void __construct(){}}", TSPHPParser.Construct, 22},
+                    {"class A{function void __deconstruct(){}}", TSPHPParser.Deconstruct, 22},
+                    {"class A{function __deconstruct($a=1){}}", TSPHPParser.VariableId, 31}
+                });
     }
 }

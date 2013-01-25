@@ -46,8 +46,10 @@ tokens{
 	Colon = ':';
 	Comma = ',';
 	Const = 'const';
+	Construct = '__construct';
 	Continue = 'continue';
 	Default = 'default';
+	Deconstruct = '__deconstruct';
 	Divide = '/';
 	DivideEqual = '/=';
 	Do = 'do';
@@ -278,6 +280,7 @@ implementsDeclaration
 classBody
 	:	constDeclarationList
 	|	attributeDeclaration	
+	|	specialMethods
 	|	methodDeclaration
 	;
 
@@ -316,6 +319,22 @@ methodDeclaration
 			) accessor?
 		) functionDeclaration
 	;	
+specialMethods
+	:	('public'?)! 'function'! 
+		(	construct 
+		|	deconstruct
+		)
+	;
+	
+construct
+	:	'__construct' formalParameters block='{' instructionWithoutBreakContinue* '}' 
+		-> ^('__construct' formalParameters ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))
+	;
+	
+deconstruct
+	:	'__deconstruct' '('')' block='{' instructionWithoutBreakContinue* '}' 
+		-> ^('__deconstruct' ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))	
+	;
 
 interfaceDeclaration
 	:	'interface' Identifier implementsDeclaration? '{' interfaceBody* '}'
@@ -434,7 +453,7 @@ instruction
 	|	expression ';'!
 	|	'return'^ expression? ';'!
 	|	'echo'^ expressionList ';'!
-	|	'exit' ';'!
+	|	'exit' ('(' expression ')')? ';' -> ^('exit' expression?)
 	|	semi=';' -> BLOCK[$semi,"block"]
 	;
 	

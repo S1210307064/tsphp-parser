@@ -50,6 +50,7 @@ public class ReturnTest extends AParserTest
     public static List<Object[]> getPossiblePlacesForInstructionsWithInstruction(String instruction){
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{instruction+";"});
+        collection.add(new Object[]{"{"+instruction+";}"});
         collection.add(new Object[]{"function void setName(){"+instruction+";}"});
         collection.addAll( getControllStructuresWithInstruction(instruction));
         return collection;

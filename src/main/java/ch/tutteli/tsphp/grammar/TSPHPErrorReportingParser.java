@@ -42,4 +42,10 @@ public class TSPHPErrorReportingParser extends TSPHPParser
     public List<RecognitionException> getExceptions() {
         return exceptions;
     }
+
+    @Override
+    public void reportError(RecognitionException e) {
+        super.reportError(e);
+        exceptions.add(e);
+    }
 }
