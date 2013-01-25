@@ -52,7 +52,7 @@ public class ForTest extends AAstTest
                         "(for "
                             + "(expressions (= $a 1)) "
                             + "(expressions true) "
-                            + "(expressions (pre increment/decrement ++ $i)) "
+                            + "(expressions (preIncrementDecrement ++ $i)) "
                             + "(= $a 1)"
                         + ")"
                     },
@@ -61,7 +61,7 @@ public class ForTest extends AAstTest
                         "(for "
                             + "expressions "
                             + "(expressions true) "
-                            + "(expressions (pre increment/decrement ++ $i)) "
+                            + "(expressions (preIncrementDecrement ++ $i)) "
                             + "(= $a 1)"
                         + ")"
                     },
@@ -101,7 +101,7 @@ public class ForTest extends AAstTest
                     {
                         "for(int $a,$b=1,$c; ; ) $a=1;",
                         "(for "
-                            + "(variable declarations (variable declaration int $a) (= $b 1) $c) "
+                            + "(variables (variableDeclaration int $a) (= $b 1) $c) "
                             + "expressions "
                             + "expressions "
                             + "(= $a 1)"

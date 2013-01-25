@@ -47,24 +47,24 @@ public class FunctionCallTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"foo();", "(function call (class/interface type foo) expressions)"},
-                    {"\\foo();", "(function call (class/interface type \\ foo) expressions)"},
-                    {"a\\foo();", "(function call (class/interface type a foo) expressions)"},
-                    {"a\\a\\foo();", "(function call (class/interface type a a foo) expressions)"},
-                    {"a\\a\\b\\foo();", "(function call (class/interface type a a b foo) expressions)"},
-                    {"\\a\\foo();", "(function call (class/interface type \\ a foo) expressions)"},
-                    {"\\a\\b\\foo();", "(function call (class/interface type \\ a b foo) expressions)"},
-                    {"\\a\\b\\c\\foo();", "(function call (class/interface type \\ a b c foo) expressions)"},
+                    {"foo();", "(functionCall (type foo) expressions)"},
+                    {"\\foo();", "(functionCall (type \\ foo) expressions)"},
+                    {"a\\foo();", "(functionCall (type a foo) expressions)"},
+                    {"a\\a\\foo();", "(functionCall (type a a foo) expressions)"},
+                    {"a\\a\\b\\foo();", "(functionCall (type a a b foo) expressions)"},
+                    {"\\a\\foo();", "(functionCall (type \\ a foo) expressions)"},
+                    {"\\a\\b\\foo();", "(functionCall (type \\ a b foo) expressions)"},
+                    {"\\a\\b\\c\\foo();", "(functionCall (type \\ a b c foo) expressions)"},
                     {
                         "foo()->bar(2,2);", 
-                        "(method call "
-                            + "(function call (class/interface type foo) expressions)"
+                        "(methodCall "
+                            + "(functionCall (type foo) expressions)"
                         + " bar (expressions 2 2))"
                     },
                     {
                         "foo()->bar(2,2)->asdf(1);", 
-                        "(method call (method call "
-                            + "(function call (class/interface type foo) expressions)"
+                        "(methodCall (methodCall "
+                            + "(functionCall (type foo) expressions)"
                         + " bar (expressions 2 2)) asdf (expressions 1))"
                     },
                 }));
@@ -72,11 +72,11 @@ public class FunctionCallTest extends AAstTest
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "foo("+expression[0]+");", 
-                        "(function call (class/interface type foo) (expressions "+expression[1]+"))"
+                        "(functionCall (type foo) (expressions "+expression[1]+"))"
             });
             collection.add(new Object[]{
                         "foo("+expression[0]+","+expression[0]+","+expression[0]+");",
-                        "(function call (class/interface type foo) (expressions "
+                        "(functionCall (type foo) (expressions "
                         + ""+expression[1]+" "+expression[1]+" "+expression[1]+""
                         + "))"
                     });

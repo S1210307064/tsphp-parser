@@ -44,74 +44,74 @@ public class UseTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"use \\Exception;","(use (use declaration (class/interface type \\ Exception)))"},
-                    {"use \\a\\a;","(use (use declaration (class/interface type \\ a a)))"},
-                    {"use a\\a;","(use (use declaration (class/interface type a a)))"},
-                    {"use a\\a\\b;","(use (use declaration (class/interface type a a b)))"},
+                    {"use \\Exception;","(use (useDeclaration (type \\ Exception)))"},
+                    {"use \\a\\a;","(use (useDeclaration (type \\ a a)))"},
+                    {"use a\\a;","(use (useDeclaration (type a a)))"},
+                    {"use a\\a\\b;","(use (useDeclaration (type a a b)))"},
                     {
                         "use \\Exception as MyException;", 
-                        "(use (use declaration (class/interface type \\ Exception) MyException))"
+                        "(use (useDeclaration (type \\ Exception) MyException))"
                     },
-                    {"use \\a\\a as b;","(use (use declaration (class/interface type \\ a a) b))"},
-                    {"use a\\a as b;","(use (use declaration (class/interface type a a) b))"},
-                    {"use a\\a\\b as c;","(use (use declaration (class/interface type a a b) c))"},
+                    {"use \\a\\a as b;","(use (useDeclaration (type \\ a a) b))"},
+                    {"use a\\a as b;","(use (useDeclaration (type a a) b))"},
+                    {"use a\\a\\b as c;","(use (useDeclaration (type a a b) c))"},
                     //comma initialisation
                     {
                         "use \\Exception, a\\a;", 
                         "(use "
-                            + "(use declaration (class/interface type \\ Exception)) "
-                            + "(use declaration (class/interface type a a))"
+                            + "(useDeclaration (type \\ Exception)) "
+                            + "(useDeclaration (type a a))"
                         + ")"
                     },
                     {
                         "use \\a\\a, \\Exception;", 
                         "(use "
-                            + "(use declaration (class/interface type \\ a a)) "
-                            + "(use declaration (class/interface type \\ Exception))"
+                            + "(useDeclaration (type \\ a a)) "
+                            + "(useDeclaration (type \\ Exception))"
                         + ")"
                     },
                     {
                         "use a\\a, \\Exception as b;",
                          "(use "
-                            + "(use declaration (class/interface type a a)) "
-                            + "(use declaration (class/interface type \\ Exception) b)"
+                            + "(useDeclaration (type a a)) "
+                            + "(useDeclaration (type \\ Exception) b)"
                         + ")"
                     },
                     {
                         "use a\\a\\b, \\a\\b\\c as d;",
                          "(use "
-                            + "(use declaration (class/interface type a a b)) "
-                            + "(use declaration (class/interface type \\ a b c) d)"
+                            + "(useDeclaration (type a a b)) "
+                            + "(useDeclaration (type \\ a b c) d)"
                         + ")"
                     },
                     {
                         "use \\Exception as MyException, \\a\\b;",
                          "(use "
-                            + "(use declaration (class/interface type \\ Exception) MyException) "
-                            + "(use declaration (class/interface type \\ a b))"
+                            + "(useDeclaration (type \\ Exception) MyException) "
+                            + "(useDeclaration (type \\ a b))"
                         + ")"
                     },
                     {
                         "use a\\a as b, a\\b;",
                           "(use "
-                            + "(use declaration (class/interface type a a) b) "
-                            + "(use declaration (class/interface type a b))"
+                            + "(useDeclaration (type a a) b) "
+                            + "(useDeclaration (type a b))"
                         + ")"
                     },
                     {
                         "use a\\a\\b as c, a\\a, \\Exception;",
                         "(use "
-                            + "(use declaration (class/interface type a a b) c) "
-                            + "(use declaration (class/interface type a a)) "
-                            + "(use declaration (class/interface type \\ Exception))"
+                            + "(useDeclaration (type a a b) c) "
+                            + "(useDeclaration (type a a)) "
+                            + "(useDeclaration (type \\ Exception))"
                         + ")"
                     },
                      {
                         "use a\\a\\b as c, a\\a, \\Exception as d;",
                         "(use "
-                            + "(use declaration (class/interface type a a b) c) "
-                            + "(use declaration (class/interface type a a)) "
-                            + "(use declaration (class/interface type \\ Exception) d)"
+                            + "(useDeclaration (type a a b) c) "
+                            + "(useDeclaration (type a a)) "
+                            + "(useDeclaration (type \\ Exception) d)"
                         + ")"
                     }
                 });

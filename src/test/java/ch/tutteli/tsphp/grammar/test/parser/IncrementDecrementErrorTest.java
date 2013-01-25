@@ -55,7 +55,7 @@ public class IncrementDecrementErrorTest extends AParserParserExceptionTest
                     //increment or decrement from call
                     {"++foo();", TSPHPParser.LeftParanthesis, 5},
                     {"--foo();", TSPHPParser.LeftParanthesis, 5},
-                    //semicolon is wrong since it expects a member access after a method call
+                    //semicolon is wrong since it expects a memberAccess after a methodCall
                     {"++$a->foo();", TSPHPParser.Semicolon, 11},
                     {"--$a->foo();", TSPHPParser.Semicolon, 11},
                     {"++$this->foo();", TSPHPParser.Semicolon, 14},

@@ -48,9 +48,9 @@ public class ConstantTest extends AAstTest
     public static Collection<Object[]> testStrings() {
          List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"const int a=1;", "(constant declarations int (= a 1))"},
-                    {"const int a=1,b=2;", "(constant declarations int (= a 1) (= b 2))"},
-                    {"const int a=1,b=2,c=null;", "(constant declarations int (= a 1) (= b 2) (= c null))"},
+                    {"const int a=1;", "(constants int (= a 1))"},
+                    {"const int a=1,b=2;", "(constants int (= a 1) (= b 2))"},
+                    {"const int a=1,b=2,c=null;", "(constants int (= a 1) (= b 2) (= c null))"},
                 }));
                 
         return collection;

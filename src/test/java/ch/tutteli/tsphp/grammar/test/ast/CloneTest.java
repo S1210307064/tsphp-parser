@@ -45,25 +45,25 @@ public class CloneTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
                     {"$a = clone $b;","(= $a (clone $b))"},
-                    {"$a = clone $b->a;","(= $a (clone (member access $b a)))"},
-                    {"$a = clone $b->a[0];","(= $a (clone (array access (member access $b a) 0)))"},
-                    {"$a = clone self::$a;","(= $a (clone (static member access self $a)))"},
+                    {"$a = clone $b->a;","(= $a (clone (memberAccess $b a)))"},
+                    {"$a = clone $b->a[0];","(= $a (clone (arrayAccess (memberAccess $b a) 0)))"},
+                    {"$a = clone self::$a;","(= $a (clone (static memberAccess self $a)))"},
                     {
                         "$a = clone self::$a[0];",
-                        "(= $a (clone (array access (static member access self $a) 0)))"
+                        "(= $a (clone (arrayAccess (static memberAccess self $a) 0)))"
                     },
-                    {"$a = clone parent::$a;","(= $a (clone (static member access parent $a)))"},
+                    {"$a = clone parent::$a;","(= $a (clone (static memberAccess parent $a)))"},
                     {
                         "$a = clone parent::$a[0];",
-                        "(= $a (clone (array access (static member access parent $a) 0)))"
+                        "(= $a (clone (arrayAccess (static memberAccess parent $a) 0)))"
                     },
                     {
                         "$a = clone Foo::$a;",
-                        "(= $a (clone (static member access (class/interface type Foo) $a)))"
+                        "(= $a (clone (static memberAccess (type Foo) $a)))"
                     },
                     {
                         "$a = clone a\\Foo::$a[0];",
-                         "(= $a (clone (array access (static member access (class/interface type a Foo) $a) 0)))"
+                         "(= $a (clone (arrayAccess (static memberAccess (type a Foo) $a) 0)))"
                     }
                 });
 

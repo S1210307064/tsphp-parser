@@ -46,75 +46,75 @@ public class FunctionTest extends AAstTest
         return Arrays.asList(new Object[][]{
                     {
                         "function void setName(string $name){}",
-                        "(function declaration void setName (parameters (parameter declaration string $name)) block)"
+                        "(functionDeclaration void setName (parameters (parameterDeclaration string $name)) block)"
                     },
                     {
                         "function void setName(string $name){int $a=1;}",
-                        "(function declaration void setName (parameters (parameter declaration string $name)) "
-                            + "(block (variable declaration int $a 1)))"
+                        "(functionDeclaration void setName (parameters (parameterDeclaration string $name)) "
+                            + "(block (variableDeclaration int $a 1)))"
                             
                     },
                     {
                         "function void setName(string $firstname,string $lastname){int $a=1;}",
-                        "(function declaration void setName (parameters "
-                            + "(parameter declaration string $firstname) (parameter declaration string $lastname)"
-                            + ") (block (variable declaration int $a 1)))"
+                        "(functionDeclaration void setName (parameters "
+                            + "(parameterDeclaration string $firstname) (parameterDeclaration string $lastname)"
+                            + ") (block (variableDeclaration int $a 1)))"
                     },
                     {
                         "function string getName(){return \"Robert\";}",
-                        "(function declaration string getName parameters (block (return \"Robert\")))"
+                        "(functionDeclaration string getName parameters (block (return \"Robert\")))"
                     },
                     {
                         "function void foo(string $a, string $b='hallo'){$a=$b;}",
-                        "(function declaration void foo (parameters "
-                            + "(parameter declaration string $a) (parameter declaration string $b 'hallo')"
+                        "(functionDeclaration void foo (parameters "
+                            + "(parameterDeclaration string $a) (parameterDeclaration string $b 'hallo')"
                         + ") (block (= $a $b)))"
                     },
                     {
                         "function void foo(string $a, int $i, int $b=+1){$a=$b;}",
-                       "(function declaration void foo (parameters "
-                            + "(parameter declaration string $a) "
-                            + "(parameter declaration int $i) "
-                            + "(parameter declaration int $b (unary plus 1))"
+                       "(functionDeclaration void foo (parameters "
+                            + "(parameterDeclaration string $a) "
+                            + "(parameterDeclaration int $i) "
+                            + "(parameterDeclaration int $b (unaryPlus 1))"
                         + ") (block (= $a $b)))"
                     },
                     {
                         "function void foo(string $a, int $i, int $b=-10, float $d=2.0){$a=$b;}",
-                        "(function declaration void foo (parameters "
-                            + "(parameter declaration string $a) "
-                            + "(parameter declaration int $i) "
-                            + "(parameter declaration int $b (unary minus 10)) "
-                            + "(parameter declaration float $d 2.0)"
+                        "(functionDeclaration void foo (parameters "
+                            + "(parameterDeclaration string $a) "
+                            + "(parameterDeclaration int $i) "
+                            + "(parameterDeclaration int $b (unaryMinus 10)) "
+                            + "(parameterDeclaration float $d 2.0)"
                         + ") (block (= $a $b)))"
                     },
                     {
                         "function void foo(string $a, string $b=E_ALL){$a=$b;}",
-                        "(function declaration void foo (parameters "
-                            + "(parameter declaration string $a) (parameter declaration string $b E_ALL)"
+                        "(functionDeclaration void foo (parameters "
+                            + "(parameterDeclaration string $a) (parameterDeclaration string $b E_ALL)"
                         + ") (block (= $a $b)))"
                     },
                     {
                         "function void foo(string $a, bool $a=true, object $d=null){$a=$b;}",
-                         "(function declaration void foo (parameters "
-                            + "(parameter declaration string $a) "
-                            + "(parameter declaration bool $a true) "
-                            + "(parameter declaration object $d null)"
+                         "(functionDeclaration void foo (parameters "
+                            + "(parameterDeclaration string $a) "
+                            + "(parameterDeclaration bool $a true) "
+                            + "(parameterDeclaration object $d null)"
                         + ") (block (= $a $b)))"
                     } ,
                     {
                         "function void foo(string $a=null, bool $a, object $d=true){$a=$b;}",
-                         "(function declaration void foo (parameters "
-                            + "(parameter declaration string $a null) "
-                            + "(parameter declaration bool $a) "
-                            + "(parameter declaration object $d true)"
+                         "(functionDeclaration void foo (parameters "
+                            + "(parameterDeclaration string $a null) "
+                            + "(parameterDeclaration bool $a) "
+                            + "(parameterDeclaration object $d true)"
                         + ") (block (= $a $b)))"
                     }, 
                     {
                         "function void foo(cast int $a, bool $a, cast object $d){}",
-                         "(function declaration void foo (parameters "
-                            + "(parameter declaration (int cast) $a) "
-                            + "(parameter declaration bool $a) "
-                            + "(parameter declaration (object cast) $d)"
+                         "(functionDeclaration void foo (parameters "
+                            + "(parameterDeclaration (int cast) $a) "
+                            + "(parameterDeclaration bool $a) "
+                            + "(parameterDeclaration (object cast) $d)"
                         + ") block)"
                     } 
                 });

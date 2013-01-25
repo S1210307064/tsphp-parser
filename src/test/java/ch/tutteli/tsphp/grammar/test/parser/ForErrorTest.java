@@ -46,7 +46,7 @@ public class ForErrorTest extends AParserParserExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                     //for init - variable declaration and expressions mixed
+                     //for init - variableDeclaration and expressions mixed
                     {"for(int $a,1+1;;);", TSPHPParser.Int, 11},
                     {"for($a=1,1+1,int $b;;);", TSPHPParser.TypeInt, 13},
                 });

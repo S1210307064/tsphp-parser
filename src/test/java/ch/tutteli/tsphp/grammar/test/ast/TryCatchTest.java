@@ -48,7 +48,7 @@ public class TryCatchTest extends AAstTest
                         "try{$a=1;}catch(\\Exception $e){}",
                         "(try "
                             + "(block (= $a 1)) "
-                            + "(variable declarations (variable declaration (class/interface type \\ Exception) $e)) "
+                            + "(variables (variableDeclaration (type \\ Exception) $e)) "
                             + "block"
                         + ")"
                     },
@@ -56,9 +56,9 @@ public class TryCatchTest extends AAstTest
                         "try{$a=1;}catch(\\Exception $e){} catch(\\a\\MyException $e){$a=1;$b=2;}",
                         "(try "
                             + "(block (= $a 1)) "
-                            + "(variable declarations (variable declaration (class/interface type \\ Exception) $e)) "
+                            + "(variables (variableDeclaration (type \\ Exception) $e)) "
                             + "block "
-                            + "(variable declarations (variable declaration (class/interface type \\ a MyException) $e)) "
+                            + "(variables (variableDeclaration (type \\ a MyException) $e)) "
                             + "(block (= $a 1) (= $b 2))"
                         + ")"
                     },
@@ -66,11 +66,11 @@ public class TryCatchTest extends AAstTest
                         "try{$a=1;}catch(a $e){} catch(b $e){$a=1;$b=2;}catch(c $e){}",
                         "(try "
                             + "(block (= $a 1)) "
-                            + "(variable declarations (variable declaration (class/interface type a) $e)) "
+                            + "(variables (variableDeclaration (type a) $e)) "
                             + "block "
-                            + "(variable declarations (variable declaration (class/interface type b) $e)) "
+                            + "(variables (variableDeclaration (type b) $e)) "
                             + "(block (= $a 1) (= $b 2)) "
-                            + "(variable declarations (variable declaration (class/interface type c) $e)) "
+                            + "(variables (variableDeclaration (type c) $e)) "
                             + "block"
                         + ")"
                     },

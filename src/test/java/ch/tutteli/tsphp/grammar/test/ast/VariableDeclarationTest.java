@@ -47,21 +47,21 @@ public class VariableDeclarationTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"Type $a;", "(variable declaration (class/interface type Type) $a)"},
-                    {"\\Type $a;", "(variable declaration (class/interface type \\ Type) $a)"},
-                    {"a\\Type $a;", "(variable declaration (class/interface type a Type) $a)"},
-                    {"\\a\\Type $a;", "(variable declaration (class/interface type \\ a Type) $a)"},
-                    {"bool $a;", "(variable declaration bool $a)"},
-                    {"int $a;", "(variable declaration int $a)"},
-                    {"float $a;", "(variable declaration float $a)"},
-                    {"string $a;", "(variable declaration string $a)"},
-                    {"array $a;", "(variable declaration array $a)"},
-                    {"resource $a;", "(variable declaration resource $a)"},
-                    {"object $a;", "(variable declaration object $a)"}
+                    {"Type $a;", "(variableDeclaration (type Type) $a)"},
+                    {"\\Type $a;", "(variableDeclaration (type \\ Type) $a)"},
+                    {"a\\Type $a;", "(variableDeclaration (type a Type) $a)"},
+                    {"\\a\\Type $a;", "(variableDeclaration (type \\ a Type) $a)"},
+                    {"bool $a;", "(variableDeclaration bool $a)"},
+                    {"int $a;", "(variableDeclaration int $a)"},
+                    {"float $a;", "(variableDeclaration float $a)"},
+                    {"string $a;", "(variableDeclaration string $a)"},
+                    {"array $a;", "(variableDeclaration array $a)"},
+                    {"resource $a;", "(variableDeclaration resource $a)"},
+                    {"object $a;", "(variableDeclaration object $a)"}
                 }));
         String[][] expressions = ExpressionTest.getExpressions();
         for (Object[] expression : expressions) {
-            collection.add(new Object[]{"int $a = " + expression[0] + ";", "(variable declaration int $a " + expression[1] + ")"});
+            collection.add(new Object[]{"int $a = " + expression[0] + ";", "(variableDeclaration int $a " + expression[1] + ")"});
         }
         return collection;
     }

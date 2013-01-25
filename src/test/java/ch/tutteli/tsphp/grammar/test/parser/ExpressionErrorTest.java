@@ -104,7 +104,7 @@ public class ExpressionErrorTest extends AParserParserExceptionTest
                     {"--'a';", TSPHPParser.String, 2},
                     {"'a'++;", TSPHPParser.PlusPlus, 3},
                     {"'a'--;", TSPHPParser.MinusMinus, 3},
-                    //semicolon is exprected because the parser thinks its a static member access
+                    //semicolon is exprected because the parser thinks its a static memberAccess
                     {"++E_ALL;", TSPHPParser.Semicolon, 7},
                     {"--E_ALL;", TSPHPParser.Semicolon, 7},
                     {"E_ALL++;", TSPHPParser.PlusPlus, 5},

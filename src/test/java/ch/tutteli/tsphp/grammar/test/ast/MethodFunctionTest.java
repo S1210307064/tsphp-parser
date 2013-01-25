@@ -17,7 +17,6 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
-import ch.tutteli.tsphp.grammar.test.utils.VariationHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -32,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ConstantAccessTest extends AAstTest
+public class MethodFunctionTest extends AAstTest
 {
 
-    public ConstantAccessTest(String testString, String expectedResult) {
+    public MethodFunctionTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -43,29 +42,24 @@ public class ConstantAccessTest extends AAstTest
     public void test() throws RecognitionException {
         compareAst();
     }
+    
+    @Override
+    protected void run() throws RecognitionException {
+        result = parser.prog();
+    }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"int $a = a;", "(variableDeclaration int $a a)"},
-                    {"int $a = self::a;", "(variableDeclaration int $a (static memberAccess self a))"},
-                    {"int $a = parent::a;", "(variableDeclaration int $a (static memberAccess parent a))"},
                     {
-                        "int $a = Foo::a;",
-                        "(variableDeclaration int $a (static memberAccess (type Foo) a))"
-                    },
-                    {
-                        "int $a = \\Foo::a;",
-                        "(variableDeclaration int $a (static memberAccess (type \\ Foo) a))"
-                    },
-                    {
-                        "int $a = a\\Foo::a;",
-                        "(variableDeclaration int $a (static memberAccess (type a Foo) a))"
-                    },
-                    {
-                        "int $a = \\a\\b\\Foo::a;",
-                        "(variableDeclaration int $a (static memberAccess (type \\ a b Foo) a))"
-                    },
+                        "class a {  function void getName(){ $a=1; } }  function void getName(){ $a=1; }",
+                        "(namespace (type default) (block "
+                            + "(class classModifier a extends implements (classBody "
+                                + "(functionDeclaration void getName parameters (block (= $a 1)))"
+                            + ")) "
+                            + "(functionDeclaration void getName parameters (block (= $a 1)))"
+                        + "))"
+                    }
                 });
     }
 }

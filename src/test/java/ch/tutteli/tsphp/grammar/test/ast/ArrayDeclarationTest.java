@@ -45,25 +45,25 @@ public class ArrayDeclarationTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.add(new Object[]{"array $d = [];", "(variable declaration array $d array)"});
-        collection.add(new Object[]{"array $d = array();", "(variable declaration array $d array)"});
+        collection.add(new Object[]{"array $d = [];", "(variableDeclaration array $d array)"});
+        collection.add(new Object[]{"array $d = array();", "(variableDeclaration array $d array)"});
         String[][] expressions = ExpressionTest.getExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "array $d = [" + expression[0] + "];",
-                        "(variable declaration array $d (array " + expression[1] + "))"
+                        "(variableDeclaration array $d (array " + expression[1] + "))"
                     });
            collection.add(new Object[]{
                         "array $d = [" + expression[0] + ","+expression[0]+"];",
-                        "(variable declaration array $d (array " + expression[1] + " "+expression[1]+"))"
+                        "(variableDeclaration array $d (array " + expression[1] + " "+expression[1]+"))"
                     });
             collection.add(new Object[]{
                         "array $d = [1 => " + expression[0] + ", $a=>" + expression[0] + "];",
-                        "(variable declaration array $d (array (=> 1 " + expression[1] + ") (=> $a " + expression[1] + ")))"
+                        "(variableDeclaration array $d (array (=> 1 " + expression[1] + ") (=> $a " + expression[1] + ")))"
                     });
             collection.add(new Object[]{
                         "array $d = array( 'a' => array(" + expression[0] + "), " + expression[0] + "=> 1, 2,3 );",
-                        "(variable declaration array $d (array (=> 'a' (array " + expression[1] + ")) (=> " + expression[1] + " 1) 2 3))"
+                        "(variableDeclaration array $d (array (=> 'a' (array " + expression[1] + ")) (=> " + expression[1] + " 1) 2 3))"
                     });
 
 

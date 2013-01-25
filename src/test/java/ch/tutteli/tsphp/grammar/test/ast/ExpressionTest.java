@@ -140,46 +140,46 @@ public class ExpressionTest extends AAstTest
                     {"!!$a", "(! (! $a))"},
                     {"!!! $a", "(! (! (! $a)))"},
                     //
-                    {"$a instanceof MyClass", "(instanceof $a (class/interface type MyClass))"},
+                    {"$a instanceof MyClass", "(instanceof $a (type MyClass))"},
                     {"$a instanceof $b", "(instanceof $a $b)"},
                     //
-                    {"(Type) $a", "(cast (class/interface type Type) $a)"},
+                    {"(Type) $a", "(cast (type Type) $a)"},
                     {"~$a", "(~ $a)"},
                     {"@$a", "(@ $a)"},
-                    {"(Type) (MyClass) $a", "(cast (class/interface type Type) (cast (class/interface type MyClass) $a))"},
+                    {"(Type) (MyClass) $a", "(cast (type Type) (cast (type MyClass) $a))"},
                     {"~~$a", "(~ (~ $a))"},
                     {"@@$a", "(@ (@ $a))"},
-                    {"@(Type) ~$a", "(@ (cast (class/interface type Type) (~ $a)))"},
+                    {"@(Type) ~$a", "(@ (cast (type Type) (~ $a)))"},
                     //
                     {"clone $a", "(clone $a)"},
                     //
-                    {"+$a", "(unary plus $a)"},
-                    {"+1", "(unary plus 1)"},
-                    {"-$a", "(unary minus $a)"},
-                    {"-2", "(unary minus 2)"},
+                    {"+$a", "(unaryPlus $a)"},
+                    {"+1", "(unaryPlus 1)"},
+                    {"-$a", "(unaryMinus $a)"},
+                    {"-2", "(unaryMinus 2)"},
                     //
-                    {"+$a + $b", "(+ (unary plus $a) $b)"},
-                    {"-$a - $b", "(- (unary minus $a) $b)"},
+                    {"+$a + $b", "(+ (unaryPlus $a) $b)"},
+                    {"-$a - $b", "(- (unaryMinus $a) $b)"},
                     //
                     {"clone $a","(clone $a)"},
-                    {"clone $a->a","(clone (member access $a a))"},
-                    {"new Type","(new (class/interface type Type) expressions)"},
+                    {"clone $a->a","(clone (memberAccess $a a))"},
+                    {"new Type","(new (type Type) expressions)"},
                     //
-                    {"foo()","(function call (class/interface type foo) expressions)"},
-                    {"\\foo(1,1+2,3)","(function call (class/interface type \\ foo) (expressions 1 (+ 1 2) 3))"},
-                    {"$a->foo()","(method call $a foo expressions)"},
-                    {"$a->foo(true || false,123*9)","(method call $a foo (expressions (|| true false) (* 123 9)))"},
+                    {"foo()","(functionCall (type foo) expressions)"},
+                    {"\\foo(1,1+2,3)","(functionCall (type \\ foo) (expressions 1 (+ 1 2) 3))"},
+                    {"$a->foo()","(methodCall $a foo expressions)"},
+                    {"$a->foo(true || false,123*9)","(methodCall $a foo (expressions (|| true false) (* 123 9)))"},
                     //
                     {"($a)", "$a"},
-                    {"$a++","(post increment/decrement ++ $a)"},
-                    {"$a--","(post increment/decrement -- $a)"},
-                    {"++$a","(pre increment/decrement ++ $a)"},
-                    {"--$a","(pre increment/decrement -- $a)"},
+                    {"$a++","(postIncrementDecrement ++ $a)"},
+                    {"$a--","(postIncrementDecrement -- $a)"},
+                    {"++$a","(preIncrementDecrement ++ $a)"},
+                    {"--$a","(preIncrementDecrement -- $a)"},
                     {"$a","$a"},
-                    {"$a->a","(member access $a a)"},
-                    {"self::$a","(static member access self $a)"},
-                    {"self::a","(static member access self a)"},
-                    {"Foo::a","(static member access (class/interface type Foo) a)"},
+                    {"$a->a","(memberAccess $a a)"},
+                    {"self::$a","(static memberAccess self $a)"},
+                    {"self::a","(static memberAccess self a)"},
+                    {"Foo::a","(static memberAccess (type Foo) a)"},
                     //
                     {"true", "true"},
                     {"false", "false"},
@@ -192,8 +192,8 @@ public class ExpressionTest extends AAstTest
                     
                     //
                     {"(int) clone $a + $b", "(+ (cast int (clone $a)) $b)"},
-                    {"(-$a + $b) * $c", "(* (+ (unary minus $a) $b) $c)"},
-                    {"!($a instanceof Type) || $a < $b+$c == ~(1 | 3 & 12)", "(|| (! (instanceof $a (class/interface type Type))) (== (< $a (+ $b $c)) (~ (| 1 (& 3 12)))))"}
+                    {"(-$a + $b) * $c", "(* (+ (unaryMinus $a) $b) $c)"},
+                    {"!($a instanceof Type) || $a < $b+$c == ~(1 | 3 & 12)", "(|| (! (instanceof $a (type Type))) (== (< $a (+ $b $c)) (~ (| 1 (& 3 12)))))"}
                 };
     }
 }
