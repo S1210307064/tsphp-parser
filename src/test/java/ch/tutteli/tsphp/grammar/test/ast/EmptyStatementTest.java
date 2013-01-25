@@ -17,11 +17,8 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
-import ch.tutteli.tsphp.grammar.test.utils.AstHelper;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,7 +46,6 @@ public class EmptyStatementTest extends AAstTest
         return Arrays.asList(new Object[][]{
                      //empty statement
                     {";","block"},
-                    {"; ;","block block"},
                     //empty block
                     {"{}","block"},
                     {"{{}}","(block block)"},

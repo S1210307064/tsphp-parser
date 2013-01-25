@@ -146,6 +146,7 @@ tokens{
 	CLASS_INTERFACE_TYPE;
 	CONSTANT_DECLARATION;
 	CONSTANT_DECLARATION_LIST;
+	DEFAULT_NAMESPACE;
 	EXPRESSION_LIST;
 	FUNCTION_CALL;
 	FUNCTION_DECLARATION;
@@ -211,11 +212,20 @@ prog	:	namespaceSemicolon+ EOF!
 	;
 	
 namespaceSemicolon
-	:	('namespace' namespaceId ';' statement* )
+	:	'namespace' namespaceId block=';' statement* 
+		-> ^('namespace' ^(CLASS_INTERFACE_TYPE[$namespaceId.start,"class/interface type"] namespaceId) ^(BLOCK[$block,"block"] statement*))
 	;
 
 namespaceBracket
-	:	('namespace' namespaceId? '{' statement* '}')
+	:	'namespace' namespaceIdOrEmpty  block='{' statement* '}' 
+		-> 	^('namespace' 
+				^(CLASS_INTERFACE_TYPE[$namespaceIdOrEmpty.start,"class/interface type"] namespaceIdOrEmpty) 
+				^(BLOCK[$block,"block"] statement*)
+			)
+	;
+namespaceIdOrEmpty
+	:	namespaceId
+	|	/* empty */ -> DEFAULT_NAMESPACE[$namespaceIdOrEmpty.start,"default namespace"]
 	;
 
 //Must before Id otherwise Id match true and false
@@ -232,7 +242,10 @@ namespaceId
 
 
 withoutNamespace 
-	:	statement+
+	:	(statement+) -> ^(Namespace[$statement.start,"namespace"]
+					^(CLASS_INTERFACE_TYPE[$statement.start,"class/interface type"] DEFAULT_NAMESPACE[$statement.start,"default namespace"]) 
+					^(BLOCK[$statement.start,"block"] statement+)
+				) 
 	;
 
 statement	
@@ -393,7 +406,7 @@ primitiveTypesExtended
 	;
 
 classInterfaceTypeWithoutObject
-	:	root='\\'? namespaceId ->  ^(CLASS_INTERFACE_TYPE[$classInterfaceTypeWithoutObject.start,"class/interface type"] $root? namespaceId)
+	:	root='\\'? namespaceId -> ^(CLASS_INTERFACE_TYPE[$classInterfaceTypeWithoutObject.start,"class/interface type"] $root? namespaceId)
 	;
 
 	

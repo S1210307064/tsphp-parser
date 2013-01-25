@@ -39,11 +39,15 @@ public class AAstTest extends AParserTest
     public void compareAst() throws RecognitionException {
         parseAndCheckForException();
         Object tree = result.getTree();
-        if(tree!=null){
+        if (tree != null) {
             Assert.assertEquals(testString + " failed.", expectedResult, ((CommonTree) result.getTree()).toStringTree());
-        }else{
+        } else {
             Assert.assertNull(expectedResult);
         }
+    }
 
+    @Override
+    protected void run() throws RecognitionException {
+        result = parser.statement();
     }
 }
