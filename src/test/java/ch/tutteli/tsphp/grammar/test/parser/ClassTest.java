@@ -44,32 +44,33 @@ public class ClassTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"class a{ private int $a;}"},        
-                    {"final class a{ private int $a;}"},        
-                    {"abstract class a{ private int $a;}"},        
+                    {"class a{}"},
+                    {"class a{ }"},        
+                    {"final class a{ }"},        
+                    {"abstract class a{ }"},        
                     //extends
-                    {"class a extends b{ private int $a;}"},        
-                    {"final class a extends b{ private int $a;}"},        
-                    {"abstract class a extends b{ private int $a;}"},  
-                    {"class a extends b,c{ private int $a;}"},        
-                    {"final class a extends b,c,d{ private int $a;}"},        
-                    {"abstract class a extends b,c,d,e{ private int $a;}"},  
+                    {"class a extends b{ }"},        
+                    {"final class a extends b{ }"},        
+                    {"abstract class a extends b{ }"},  
+                    {"class a extends b,c{ }"},        
+                    {"final class a extends b,c,d{ }"},        
+                    {"abstract class a extends b,c,d,e{ }"},  
                     //implements
-                    {"class a implements b{ private int $a;}"},        
-                    {"final class a implements b{ private int $a;}"},        
-                    {"abstract class a implements b{ private int $a;}"},   
-                     {"class a implements b,c{ private int $a;}"},        
-                    {"final class a implements b,c,d{ private int $a;}"},        
-                    {"abstract class a implements b,c,d,e{ private int $a;}"},  
+                    {"class a implements b{ }"},        
+                    {"final class a implements b{ }"},        
+                    {"abstract class a implements b{ }"},   
+                     {"class a implements b,c{ }"},        
+                    {"final class a implements b,c,d{ }"},        
+                    {"abstract class a implements b,c,d,e{ }"},  
                     //extends implements
-                    {"class a extends b implements c{ private int $a;}"},        
-                    {"final class a extends b implements c{ private int $a;}"},        
-                    {"abstract class a extends b implements c{ private int $a;}"},  
-                    {"class a extends b,c implements f,g,h,i{ private int $a;}"},        
-                    {"final class a extends b,c,d implements f,g,h{ private int $a;}"},        
-                    {"abstract class a extends b,c,d,e implements f,g{ private int $a;}"},  
+                    {"class a extends b implements c{ }"},        
+                    {"final class a extends b implements c{ }"},        
+                    {"abstract class a extends b implements c{ }"},  
+                    {"class a extends b,c implements f,g,h,i{ }"},        
+                    {"final class a extends b,c,d implements f,g,h{ }"},        
+                    {"abstract class a extends b,c,d,e implements f,g{ }"},  
                     //
-                    {"class a { private int $a; function void getName(){ $a=1; } private int $a;}  function void getName(){ $a=1; }"},
+                    {"class a {  function void getName(){ $a=1; } }  function void getName(){ $a=1; }"},
                 });
     }
 }

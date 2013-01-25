@@ -16,8 +16,6 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.TSPHPParser;
-import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -91,8 +89,6 @@ public class NotSoNiceButValidTest extends AParserTest
                     {"switch($a){}"},
                     //empty try block
                     {"try{}catch(\\Exception $e){}"},
-                    //empty class    
-                    {"class a{}"},
                     //empty namespace
                     {"namespace a;"},
                     {"namespace a{}"},

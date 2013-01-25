@@ -449,9 +449,9 @@ instruction
 	|	whileLoop
 	|	doWhileLoop
 	|	tryCatch
-	|	throwException
 	|	expression ';'!
 	|	'return'^ expression? ';'!
+	|	'throw'^ expression ';'!
 	|	'echo'^ expressionList ';'!
 	|	'exit' ('(' expression ')')? ';' -> ^('exit' expression?)
 	|	semi=';' -> BLOCK[$semi,"block"]
@@ -887,10 +887,6 @@ catchBlock
 			^(VARIABLE_DECLARATION[$classInterfaceTypeWithoutObject.start,"variable declaration"] classInterfaceTypeWithoutObject VariableId)
 		) 
 		^(BLOCK[$catchBegin,"block"] instructionInclBreakContinue*)
-	;
-
-throwException
-	:	'throw'^ newObject ';'!
 	;
 
 Comment
