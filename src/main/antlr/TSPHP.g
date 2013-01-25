@@ -140,6 +140,7 @@ tokens{
 	ARRAY_ACCESS;
 	BLOCK;
 	CAST;
+	CAST_ASSIGN;
 	CLASS_INTERFACE_TYPE;
 	CONSTANT_DECLARATION;
 	CONSTANT_DECLARATION_LIST;
@@ -463,6 +464,7 @@ assignmentOperator
 	|	'.='
 	|	'<<='
 	|	'>>='
+	|	cast='=''('')' -> CAST_ASSIGN[$cast,"cast assign"]
 	;
 	
 postIncrementDecrement 
@@ -481,7 +483,13 @@ preIncrementDecrement
 	;	
 	
 variableDeclaration
-	:	allTypes VariableId ('=' expression)? -> ^(VARIABLE_DECLARATION[$allTypes.start,"variable declaration"] allTypes VariableId expression?)
+	:	variableDeclarationVariants -> ^(VARIABLE_DECLARATION[$variableDeclarationVariants.start,"variable declaration"] variableDeclarationVariants)
+	;
+variableDeclarationVariants
+	:	allTypesWithoutObjectAndResource VariableId cast='=''('')' expression 
+		->  allTypesWithoutObjectAndResource VariableId ^(CAST[$cast,"cast"] allTypesWithoutObjectAndResource expression)
+		
+	|	allTypes VariableId ('=' expression)? -> allTypes VariableId expression?
 	;
 
 expression

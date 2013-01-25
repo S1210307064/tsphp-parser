@@ -47,6 +47,7 @@ public class VariableDeclarationTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList();
+        collection.add(new Object[]{"int $a =(int) $b;"});
         List<String> types = getAllTypes();
         for (String type : types) {
             collection.add(new Object[]{type + " $d = 1;"});

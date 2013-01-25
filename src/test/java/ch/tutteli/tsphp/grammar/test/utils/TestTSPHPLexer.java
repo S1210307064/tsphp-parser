@@ -17,9 +17,6 @@
 package ch.tutteli.tsphp.grammar.test.utils;
 
 import ch.tutteli.tsphp.grammar.TSPHPErrorReportingLexer;
-import ch.tutteli.tsphp.grammar.TSPHPLexer;
-import java.util.ArrayList;
-import java.util.List;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
@@ -34,15 +31,8 @@ public class TestTSPHPLexer extends TSPHPErrorReportingLexer
 
     private boolean isErrorReportingOn = true;
 
-    public TestTSPHPLexer() {
-    }
-
     public TestTSPHPLexer(CharStream input) {
-        this(input, new RecognizerSharedState());
-    }
-
-    public TestTSPHPLexer(CharStream input, RecognizerSharedState state) {
-        super(input, state);
+        super(input);
     }
 
     public void setErrorReporting(boolean isOn) {

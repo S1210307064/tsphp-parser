@@ -17,11 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.utils;
 
 import ch.tutteli.tsphp.grammar.TSPHPErrorReportingParser;
-import ch.tutteli.tsphp.grammar.TSPHPParser;
-import java.util.ArrayList;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
-import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.TokenStream;
 
 /**
@@ -35,11 +31,7 @@ public class TestTSPHPParser extends TSPHPErrorReportingParser
     private boolean isErrorReportingOn = true;
 
     public TestTSPHPParser(TokenStream input) {
-        this(input, new RecognizerSharedState());
-    }
-
-    public TestTSPHPParser(TokenStream input, RecognizerSharedState state) {
-        super(input, state);
+        super(input);
     }
 
     public void setErrorReporting(boolean isOn) {

@@ -76,6 +76,7 @@ public class ExpressionTest extends AAstTest
                     {"$a .= $b", "(.= $a $b)"},
                     {"$a <<= $b", "(<<= $a $b)"},
                     {"$a >>= $b", "(>>= $a $b)"},
+                    {"$a =() $b", "(cast assign $a $b)"},
                     //
                     {"true ? $a : $b", "(? true $a $b)"},
                     {"true ? $a ? $b : $c : $d", "(? true (? $a $b $c) $d)"},
