@@ -47,6 +47,7 @@
     <property name="src" location="${basedir}/src" />
     <property name="src.main" location="${src}/main/java" />
     <property name="src.test" location="${src}/test/java" />
+    <property name="antlr" location="${src}/main/antlr" />
     <property name="antlr.output" location="${src}/main/antlr/output" />
 
     <!-- setting target locations -->
@@ -119,6 +120,18 @@
             <fileset dir="${antlr.output}" includes="TSPHPLexer.java, TSPHPParser.java"/>
         </copy>
     </target>
+    
+    <target name="antlr">
+        <java classname="org.antlr.Tool" fork="true" failonerror="true">
+            <arg value="-verbose"/>
+            <arg value="-o"/>
+            <arg path="${src.main}/ch/tutteli/tsphp/grammar"/>
+            <arg path="${antlr}/TSPHP.g"/>
+             <classpath>
+                <path refid="libset" />
+            </classpath>
+        </java>
+    </target>
    
     <!-- ================================================================== -->
     <!-- Target: init -->
@@ -132,7 +145,7 @@
     <!-- ================================================================== -->
     <!-- Target: generate -->
     <!-- ================================================================== -->
-    <target name="generate" depends="init" description="generate source code">
+    <target name="generate" depends="init, antlr" description="generate source code">
     </target>
 
     <!-- ================================================================== -->
