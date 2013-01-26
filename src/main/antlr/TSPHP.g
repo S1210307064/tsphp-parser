@@ -121,10 +121,10 @@ tokens{
 	Throw = 'throw';
 	Try = 'try';
 	TypeBool = 'bool';
-	TypeBoolean = 'boolean';
-	TypeDouble = 'double';
+	TypeAliasBool = 'boolean';
+	TypeAliasFloat = 'double';
 	TypeInt = 'int';
-	TypeInteger = 'integer';
+	TypeAliasInt = 'integer';
 	TypeFloat = 'float';
 	TypeString = 'string';
 	TypeArray = 'array';
@@ -150,6 +150,7 @@ tokens{
 	EXPRESSION_LIST;
 	FUNCTION_CALL;
 	FUNCTION_DECLARATION;
+	INTERFACE_BODY;	
 	MEMBER_ACCESS;
 	MEMBER_ACCESS_STATIC;
 	METHOD_CALL;
@@ -361,7 +362,8 @@ deconstruct
 	;
 
 interfaceDeclaration
-	:	'interface' Identifier ('implements' identifierList)? '{' interfaceBody* '}'
+	:	'interface' Identifier (impl='implements' identifierList)? block='{' interfaceBody* '}'
+		-> ^('interface' Identifier ^(Implements[$impl,"implements"] identifierList?) ^(INTERFACE_BODY[$block,"interfaceBody"] interfaceBody*))
 	;
 
 interfaceBody

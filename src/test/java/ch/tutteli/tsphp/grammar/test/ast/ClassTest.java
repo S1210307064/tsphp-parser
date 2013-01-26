@@ -17,8 +17,11 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.TypeHelper;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,75 +46,45 @@ public class ClassTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
+        List<Object[]> collection = new ArrayList<>();
+        String[][] types = TypeHelper.getClassInterfaceTypes();
+        
+        for(String[] type:types){
+            //extends
+            collection.add(new Object[]{
+                        "class a extends "+type[0]+"{}",
+                        "(class classModifier a (extends "+type[1]+") implements classBody)"
+                    });
+            collection.add(new Object[]{
+                        "final class a extends "+type[0]+","+type[0]+"{}",
+                        "(class (classModifier final) a (extends "+type[1]+" "+type[1]+") implements classBody)"
+                    });
+            collection.add(new Object[]{
+                        "abstract class a extends "+type[0]+","+type[0]+","+type[0]+"{}",
+                        "(class (classModifier abstract) a "
+                            + "(extends "+type[1]+" "+type[1]+" "+type[1]+") implements classBody)"
+                    });
+            //implements
+            collection.add(new Object[]{
+                        "class a implements "+type[0]+", "+type[0]+"{}",
+                        "(class classModifier a extends (implements "+type[1]+" "+type[1]+") classBody)"
+                    });
+            collection.add(new Object[]{
+                        "final class a implements "+type[0]+", "+type[0]+","+type[0]+"{}",
+                        "(class (classModifier final) a extends "
+                            + "(implements "+type[1]+" "+type[1]+" "+type[1]+") classBody)"
+                    });
+            collection.add(new Object[]{
+                        "abstract class a implements "+type[0]+"{}",
+                        "(class (classModifier abstract) a extends (implements "+type[1]+") classBody)"
+                    });
+        }
+        
+        collection.addAll(Arrays.asList(new Object[][]{
                     {"class a{}", "(class classModifier a extends implements classBody)"},
                     {"class a{ }", "(class classModifier a extends implements classBody)"},
                     {"final class a{}", "(class (classModifier final) a extends implements classBody)"},
                     {"abstract class a{}", "(class (classModifier abstract) a extends implements classBody)"},
-                    //extends
-                    {
-                        "class a extends b{}",
-                        "(class classModifier a (extends (type b)) implements classBody)"
-                    },
-                    {
-                        "final class a extends b{}",
-                        "(class (classModifier final) a (extends (type b)) implements classBody)"
-                    },
-                    {
-                        "abstract class a extends b{}",
-                        "(class (classModifier abstract) a (extends (type b)) implements classBody)"
-                    },
-                    {
-                        "class a extends \\b,c{}",
-                        "(class classModifier a (extends "
-                            + "(type \\ b) (type c)"
-                        + ") implements classBody)"
-                    },
-                    {
-                        "final class a extends \\b,c,a\\d{}",
-                        "(class (classModifier final) a (extends "
-                            + "(type \\ b) (type c) (type a d)"
-                        + ") implements classBody)"
-                    },
-                    {
-                        "abstract class a extends \\b,c,a\\d,\\a\\e{}",
-                        "(class (classModifier abstract) a (extends "
-                            + "(type \\ b) (type c) "
-                            + "(type a d) (type \\ a e)"
-                        + ") implements classBody)"
-                    },
-                    //implements
-                    {
-                        "class a implements b{}",
-                        "(class classModifier a extends (implements (type b)) classBody)"
-                    },
-                    {
-                        "final class a implements b{}",
-                        "(class (classModifier final) a extends (implements (type b)) classBody)"
-                    },
-                    {
-                        "abstract class a implements b{}",
-                        "(class (classModifier abstract) a extends (implements (type b)) classBody)"
-                    },
-                    {
-                        "class a implements b,\\c{}",
-                        "(class classModifier a extends (implements "
-                            + "(type b) (type \\ c)"
-                        + ") classBody)"
-                    },
-                    {
-                        "final class a implements b,\\c,\\a\\d{}",
-                         "(class (classModifier final) a extends (implements "
-                            + "(type b) (type \\ c) (type \\ a d)"
-                        + ") classBody)"
-                    },
-                    {
-                        "abstract class a implements b,\\c,\\a\\d,a\\e{}",
-                        "(class (classModifier abstract) a extends (implements "
-                            + "(type b) (type \\ c) "
-                            + "(type \\ a d) (type a e)"
-                        + ") classBody)"
-                    },
                     //extends implements
                     {
                         "class a extends b implements c{}",
@@ -166,6 +139,7 @@ public class ClassTest extends AAstTest
                             + ")"
                         + " classBody)"
                     },
-                });
+                }));
+        return collection;
     }
 }
