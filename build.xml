@@ -145,7 +145,7 @@
     <!-- ================================================================== -->
     <!-- Target: generate -->
     <!-- ================================================================== -->
-    <target name="generate" depends="init, antlr" description="generate source code">
+    <target name="generate" depends="init" description="generate source code">
     </target>
 
     <!-- ================================================================== -->
@@ -379,7 +379,7 @@
     <!--          werden, wenn Fehler vorhanden sind (compile, test etc.) -->
     <!-- ================================================================== -->
     <target name="dist"
-            depends="clean, jar,javadoc, build"
+            depends="clean,antlr, jar,javadoc, build"
             description="create distributions">
         <mkdir dir="${target}/dist" />
         <zip destfile="${target}/dist/${distname}-bin.zip">
@@ -445,7 +445,7 @@
     <!-- ================================================================== -->
     <!-- Target: build -->
     <!-- ================================================================== -->
-    <target name="build" depends="jar, test" description="complete build">
+    <target name="build" depends="antlr, jar, test" description="complete build">
     </target>
    
     <!-- ================================================================== -->

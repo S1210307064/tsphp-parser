@@ -181,10 +181,19 @@ public class TokenTest extends ALexerTest
         }
 
         Collection<Object[]> ids = getIDTestStrings();
+        
         for (Object[] obj : ids) {
             collection.add(new Object[]{"mVariableId", "$" + obj[1], TSPHPLexer.VariableId});
+            collection.add(new Object[]{obj[0], obj[1]+""+obj[1], TSPHPLexer.Identifier});
+            collection.add(new Object[]{obj[0], obj[1]+""+obj[1]+""+obj[1], TSPHPLexer.Identifier});
         }
-
+        collection.addAll(Arrays.asList(new Object[][]{
+                    {"mIdentifier", IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllDigits() + IdentifierHelper.getAllSpecialCharacters() + "_", TSPHPLexer.Identifier},
+                    {"mIdentifier", IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits() + IdentifierHelper.getAllSpecialCharacters() + "_", TSPHPLexer.Identifier},
+                    {"mIdentifier", IdentifierHelper.getAllSpecialCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits() + "_", TSPHPLexer.Identifier},
+                    {"mIdentifier", "_" + IdentifierHelper.getAllSpecialCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits(), TSPHPLexer.Identifier}
+                }));
+        
         String[] nullCombinations = VariationHelper.getUppercaseCombinations("null");
         for (String combination : nullCombinations) {
             collection.add(new Object[]{"mNull", combination, TSPHPLexer.Null});
@@ -227,21 +236,15 @@ public class TokenTest extends ALexerTest
     public static Collection<Object[]> getIDTestStrings() {
         List<Object[]> collection = new ArrayList<>();
         for (int i = 'a'; i < 'z'; ++i) {
-            collection.add(new Object[]{"mIdetifier", IdentifierHelper.asciiToString(i), TSPHPLexer.Identifier});
+            collection.add(new Object[]{"mIdentifier", IdentifierHelper.asciiToString(i), TSPHPLexer.Identifier});
         }
         for (int i = 'A'; i < 'Z'; ++i) {
-            collection.add(new Object[]{"mIdetifier", IdentifierHelper.asciiToString(i), TSPHPLexer.Identifier});
+            collection.add(new Object[]{"mIdentifier", IdentifierHelper.asciiToString(i), TSPHPLexer.Identifier});
         }
         for (int i = 127; i <= 255; ++i) {
-            collection.add(new Object[]{"mIdetifier", IdentifierHelper.asciiToString(i), TSPHPLexer.Identifier});
+            collection.add(new Object[]{"mIdentifier", IdentifierHelper.asciiToString(i), TSPHPLexer.Identifier});
         }
-        collection.add(new Object[]{"mIdetifier", "_", TSPHPLexer.Identifier});
-        collection.addAll(Arrays.asList(new Object[][]{
-                    {"mIdetifier", IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllDigits() + IdentifierHelper.getAllSpecialCharacters() + "_", TSPHPLexer.Identifier},
-                    {"mIdetifier", IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits() + IdentifierHelper.getAllSpecialCharacters() + "_", TSPHPLexer.Identifier},
-                    {"mIdetifier", IdentifierHelper.getAllSpecialCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits() + "_", TSPHPLexer.Identifier},
-                    {"mIdetifier", "_" + IdentifierHelper.getAllSpecialCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits(), TSPHPLexer.Identifier}
-                }));
+        collection.add(new Object[]{"mIdentifier", "_", TSPHPLexer.Identifier});
         return collection;
     }
 }

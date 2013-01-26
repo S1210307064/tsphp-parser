@@ -16,12 +16,8 @@
  */
 package ch.tutteli.tsphp.grammar.test.lexer;
 
-import ch.tutteli.tsphp.grammar.TSPHPLexer;
 import ch.tutteli.tsphp.grammar.test.utils.ALexerStateFailedTest;
-import java.lang.reflect.Method;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

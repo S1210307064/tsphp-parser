@@ -156,6 +156,7 @@ tokens{
 	MODIFIER;
 	PARAM_DECLARATION;
 	PARAM_LIST;
+	PARAM_TYPE;
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
 	SWITCH_CASES;
@@ -439,7 +440,7 @@ paramDeclarationInclNull
 	;
 
 paramDeclarationWithoutNull
-	:	Cast? allTypes VariableId -> ^(allTypes Cast?) VariableId		
+	:	Cast? allTypes VariableId -> ^(PARAM_TYPE[$paramDeclarationWithoutNull.start,"parameterType"] allTypes Cast?) VariableId		
 	;
 	
 paramDeclarationOptional

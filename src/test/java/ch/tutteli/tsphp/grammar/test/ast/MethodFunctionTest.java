@@ -59,7 +59,15 @@ public class MethodFunctionTest extends AAstTest
                             + ")) "
                             + "(functionDeclaration void getName parameters (block (= $a 1)))"
                         + "))"
-                    }
+                    },
+                    {
+                        "/** this is my lovely function */ \n function void foo(int $a=true,int $b=2,cast int $c=3){}",
+                        "(namespace (type default) (block (functionDeclaration void foo (parameters "
+                            + "(parameterDeclaration (parameterType int) $a true) "
+                            + "(parameterDeclaration (parameterType int) $b 2) "
+                            + "(parameterDeclaration (parameterType int cast) $c 3)"
+                        + ") block)))"
+                     }
                 });
     }
 }

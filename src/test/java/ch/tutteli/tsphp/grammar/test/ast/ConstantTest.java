@@ -17,7 +17,6 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
-import ch.tutteli.tsphp.grammar.test.utils.VariationHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -48,9 +47,11 @@ public class ConstantTest extends AAstTest
     public static Collection<Object[]> testStrings() {
          List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"const int a=1;", "(constants int (= a 1))"},
+                    {"const bool a=true;", "(constants bool (= a true))"},
+                    {"const bool a=true, b=false;", "(constants bool (= a true) (= b false))"},
                     {"const int a=1,b=2;", "(constants int (= a 1) (= b 2))"},
-                    {"const int a=1,b=2,c=null;", "(constants int (= a 1) (= b 2) (= c null))"},
+                    {"const float a=1.0,b=2.0,c=null;", "(constants float (= a 1.0) (= b 2.0) (= c null))"},
+                    {"const string a=1,b=\"2\",c=null,d='2';", "(constants string (= a 1) (= b \"2\") (= c null) (= d '2'))"},
                 }));
                 
         return collection;

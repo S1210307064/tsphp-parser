@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.lexer;
 
 import ch.tutteli.tsphp.grammar.test.utils.ALexerTest;
+import ch.tutteli.tsphp.grammar.test.utils.IdentifierHelper;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -59,6 +60,15 @@ public class TokenExceptionTest extends ALexerTest
         return Arrays.asList(new Object[][]{
             {"mBool","t#"},
             {"mBool","f#"},
+            {"mIdentifier",IdentifierHelper.asciiToString('A'-1)},
+            {"mIdentifier",IdentifierHelper.asciiToString('Z'+1)},
+            {"mIdentifier",IdentifierHelper.asciiToString('a'-1)},
+            {"mIdentifier",IdentifierHelper.asciiToString('z'+1)},
+            {"mIdentifier",IdentifierHelper.asciiToString('_'-1)},
+            {"mIdentifier",IdentifierHelper.asciiToString('_'+1)},
+            {"mIdentifier",IdentifierHelper.asciiToString(126)},
+            {"mIdentifier",IdentifierHelper.asciiToString(256)},          
+            {"mVariableId","$"+IdentifierHelper.asciiToString('A'-1)},
         });
     }
 }
