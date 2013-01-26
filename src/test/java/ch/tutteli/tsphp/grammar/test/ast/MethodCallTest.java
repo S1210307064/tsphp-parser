@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -58,7 +59,7 @@ public class MethodCallTest extends AAstTest
                         + " bar (expressions 2 2)) asdf (expressions 1))"
                     },
                 }));
-        String[][] expressions = ExpressionTest.getExpressions();
+        String[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "$a->foo("+expression[0]+");", 

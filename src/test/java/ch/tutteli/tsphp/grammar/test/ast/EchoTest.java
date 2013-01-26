@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -45,7 +46,7 @@ public class EchoTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
          List<Object[]> collection = new ArrayList<>();
-         String[][] expressions = ExpressionTest.getExpressions();
+         String[][] expressions = ExpressionHelper.getAstExpressions();
          
          for(String[] expression:expressions){
              collection.add(new Object[]{"echo "+expression[0]+";","(echo "+expression[1]+")"});

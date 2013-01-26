@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -50,7 +51,7 @@ public class NewClassTest extends AAstTest
                     {"new Type;", "(new (type Type) expressions)"},
                     {"new Type();", "(new (type Type) expressions)"}
                 }));
-        String[][] expressions = ExpressionTest.getExpressions();
+        String[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{"new Type(" + expression[0] + ");", "(new (type Type) (expressions " + expression[1] + "))"});
             collection.add(new Object[]{

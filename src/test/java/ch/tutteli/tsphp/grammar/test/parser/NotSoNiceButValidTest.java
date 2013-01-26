@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
+import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -115,7 +116,7 @@ public class NotSoNiceButValidTest extends AParserTest
                     {"switch($a){ case 0: $a=1; case 1: case 2: default: $a=1;}"}
                 }));
 
-        String[] expressions = ExpressionTest.getAllExpressions();
+        String[] expressions = ExpressionHelper.getParserExpressions();
         for (String expression : expressions) {
             collection.add(new Object[]{expression + ";"});
         }

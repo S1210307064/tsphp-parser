@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -49,12 +50,12 @@ public class WhileTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {"while( true  ) $a=1;", "(while true (= $a 1))"},
                     {"while( true  ){$a=1;}", "(while true (block (= $a 1)))"},
-                    {"while( true  ){$a=1;int $b=2;}", "(while true (block (= $a 1) (variableDeclaration int $b 2)))"},
+                    {"while( true  ){$a=1;int $b=2;}", "(while true (block (= $a 1) (variableDeclaration int ($b 2))))"},
                     {"do $a=1; while( true  );", "(do (= $a 1) true)"},
                     {"do {$a=1;} while( true  );", "(do (block (= $a 1)) true)"},
                     {"do {$a=1;$b=2;}while( true  );", "(do (block (= $a 1) (= $b 2)) true)"}
                 }));
-         String[][] expressions = ExpressionTest.getExpressions();
+         String[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{"while("+expression[0]+") $a=1;","(while "+expression[1]+" (= $a 1))"});
             collection.add(new Object[]{"do $a=1; while("+expression[0]+");","(do (= $a 1) "+expression[1]+")"});

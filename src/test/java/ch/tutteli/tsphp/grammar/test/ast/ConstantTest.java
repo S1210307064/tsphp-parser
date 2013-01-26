@@ -47,13 +47,12 @@ public class ConstantTest extends AAstTest
     public static Collection<Object[]> testStrings() {
          List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"const bool a=true;", "(constants bool (= a true))"},
-                    {"const bool a=true, b=false;", "(constants bool (= a true) (= b false))"},
-                    {"const int a=1,b=2;", "(constants int (= a 1) (= b 2))"},
-                    {"const float a=1.0,b=2.0,c=null;", "(constants float (= a 1.0) (= b 2.0) (= c null))"},
-                    {"const string a=1,b=\"2\",c=null,d='2';", "(constants string (= a 1) (= b \"2\") (= c null) (= d '2'))"},
-                }));
-                
+                    {"const bool a=true;", "(constants bool (a true))"},
+                    {"const bool a=true, b=false;", "(constants bool (a true) (b false))"},
+                    {"const int a=1,b=2;", "(constants int (a 1) (b 2))"},
+                    {"const float a=1.0,b=2.0,c=null;", "(constants float (a 1.0) (b 2.0) (c null))"},
+                    {"const string a=1,b=\"2\",c=null,d='2';", "(constants string (a 1) (b \"2\") (c null) (d '2'))"},
+                }));                
         return collection;
 
     }

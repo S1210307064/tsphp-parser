@@ -50,9 +50,6 @@ public class ConstantTest extends AParserTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"const string a='a';"},
-                    {"const string a='a',b=1;"},
-                    {"const string a='a',b=1.0,c='hallo';"},
                     {"class a{ const string a='a';}"},
                     {"class a{ const string a='a',b=1;}"},
                     {"class a{ const string a='a',b=1,c='hallo';}"},

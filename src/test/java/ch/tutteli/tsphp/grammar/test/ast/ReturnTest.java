@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -46,10 +47,10 @@ public class ReturnTest extends AAstTest
     public static Collection<Object[]> testStrings() {
          List<Object[]> collection = new ArrayList<>();
          collection.add(new Object[]{"return;","return"});
-         Collection<Object[]> expressions = ExpressionTest.testStrings();
+         String[][] expressions = ExpressionHelper.getAstExpressions();
          
-         for(Object[] expression:expressions){
-             collection.add(new Object[]{"return "+expression[0],"(return "+expression[1]+")"});
+         for(String[] expression:expressions){
+             collection.add(new Object[]{"return "+expression[0]+";","(return "+expression[1]+")"});
          }
          return collection;
     }

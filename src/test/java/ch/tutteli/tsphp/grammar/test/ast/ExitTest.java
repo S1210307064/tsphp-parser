@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -49,7 +50,7 @@ public class ExitTest extends AAstTest
 
         collection.addAll(Arrays.asList(new Object[][]{
                     {"exit;", "exit"},}));
-        String[][] expressions = ExpressionTest.getExpressions();
+        String[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{"exit(" + expression[0] + ");", "(exit " + expression[1] + ")"});
         }

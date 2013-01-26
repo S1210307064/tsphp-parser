@@ -144,6 +144,7 @@ tokens{
 	CAST;
 	CAST_ASSIGN;
 	CLASS_BODY;
+	CLASS_MEMBER;
 	CONSTANT_DECLARATION;
 	CONSTANT_DECLARATION_LIST;
 	DEFAULT_NAMESPACE;
@@ -304,7 +305,7 @@ identifierList
 	
 classBody
 	:	constDeclarationList
-	|	attributeDeclaration	
+	|	memberDeclaration	
 	|	specialMethods
 	|	methodDeclaration
 	;
@@ -315,11 +316,14 @@ constDeclarationList
 	;
 	
 constantAssignment
-	:	Identifier '='^ unaryPrimitiveAtom
+	:	Identifier^ '='! unaryPrimitiveAtom
 	;
 
-attributeDeclaration	
-	:	'static'? accessor variableDeclarationListInclVariableId ';'
+memberDeclaration	
+	:	st='static'? accessor variableDeclarationList ';' 
+		-> ^(CLASS_MEMBER[$memberDeclaration.start,"classMember"] ^(MODIFIER[$memberDeclaration.start,"modifier"] $st?) accessor 
+			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"variables"] variableDeclarationList)
+		)
 	;
 
 accessor:	accessorWithoutPrivate
@@ -330,8 +334,28 @@ accessorWithoutPrivate
 	:	'protected'|'public'
 	;
 
-variableDeclarationListInclVariableId
-	:	variableDeclaration (','! (variableAssignment|VariableId) )*
+variableDeclarationList
+	:	allTypesWithoutObjectAndResource 
+		(	castAssign[$allTypesWithoutObjectAndResource.tree]
+		|	assign
+		)
+		(','!	(	castAssign[$allTypesWithoutObjectAndResource.tree]
+			|	assign
+			)
+		)*		
+	|	objectOrResource assign (','! assign)*
+	;
+	
+castAssign[Tree tree]
+	:	VariableId cast='=''('')' expression -> ^(VariableId ^(CAST[$cast,"cast"] {$tree} expression))
+	;
+
+assign	
+	:	VariableId^ ('='! expression)?
+	;
+objectOrResource
+	:	'object'
+	|	'resource'
 	;
 
 
@@ -509,7 +533,7 @@ assignmentOperator
 	|	'.='
 	|	'<<='
 	|	'>>='
-	|	cast='=''('')' -> CAST_ASSIGN[$cast,"cast assign"]
+	|	cast='=''('')' -> CAST_ASSIGN[$cast,"castAssign"]
 	;
 	
 postIncrementDecrement 
@@ -530,11 +554,13 @@ preIncrementDecrement
 variableDeclaration
 	:	variableDeclarationVariants -> ^(VARIABLE_DECLARATION[$variableDeclarationVariants.start,"variableDeclaration"] variableDeclarationVariants)
 	;
+	
 variableDeclarationVariants
 	:	allTypesWithoutObjectAndResource VariableId cast='=''('')' expression 
-		->  allTypesWithoutObjectAndResource VariableId ^(CAST[$cast,"cast"] allTypesWithoutObjectAndResource expression)
-		
-	|	allTypes VariableId ('=' expression)? -> allTypes VariableId expression?
+		-> allTypesWithoutObjectAndResource ^(VariableId ^(CAST[$cast,"cast"] allTypesWithoutObjectAndResource expression))
+				
+	|	allTypes VariableId ('=' expression)? 
+		-> allTypes ^(VariableId expression?)
 	;
 
 expression
@@ -876,7 +902,7 @@ forLoop
 	
 forInit	
 	:	init='(' 
-		(	variableDeclarationListInclVariableId -> ^(VARIABLE_DECLARATION_LIST[$init,"variables"] variableDeclarationListInclVariableId)
+		(	variableDeclarationList -> ^(VARIABLE_DECLARATION_LIST[$init,"variables"] variableDeclarationList)
 		|	expressionList? -> ^(EXPRESSION_LIST[$init,"expressions"] expressionList?)
 		)	
 	;

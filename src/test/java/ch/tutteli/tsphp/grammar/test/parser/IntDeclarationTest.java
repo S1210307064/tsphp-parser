@@ -20,7 +20,6 @@ import ch.tutteli.tsphp.grammar.test.lexer.FragmentsTest;
 import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -54,12 +53,7 @@ public class IntDeclarationTest extends AParserTest
             collection.add(new Object[]{"int $a = +" + obj[1] + ";"});
             collection.add(new Object[]{"int $a = -" + obj[1] + ";"});
         }
-        
-        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
-        for (Object[] obj : idTestStrings) {
-            collection.add(new Object[]{"int $d = $" + obj[1] + ";"});
-        }
-        
+                
         return collection;
     }
 }

@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -50,33 +51,33 @@ public class ArrayAccessTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "int $d = $a->foo()[0]->foo('hallo')->bar()[2][3];",
-                        "(variableDeclaration int $d "
+                        "(variableDeclaration int ($d "
                             + "(arrayAccess (arrayAccess (methodCall (methodCall (arrayAccess "
                                 + "(methodCall $a foo expressions)"
                             + " 0) foo (expressions 'hallo')) bar expressions) 2) 3)"
-                        + ")"
+                        + "))"
                     },
                     {
                         "int $d = foo()[0]->foo('hallo')->bar()[2][3];",
-                        "(variableDeclaration int $d "
+                        "(variableDeclaration int ($d "
                             + "(arrayAccess (arrayAccess (methodCall (methodCall (arrayAccess "
                                 + "(functionCall (type foo) expressions)"
                             + " 0) foo (expressions 'hallo')) bar expressions) 2) 3)"
-                        + ")"
+                        + "))"
                     },
                     {
                         "int $d = foo()[0]->foo('hallo')->bar()[2][3]->fo()[2][3+1];",
-                        "(variableDeclaration int $d "
+                        "(variableDeclaration int ($d "
                             + "(arrayAccess (arrayAccess (methodCall "
                                 + "(arrayAccess (arrayAccess (methodCall (methodCall (arrayAccess "
                                     + "(functionCall (type foo) expressions)"
                                 + " 0) foo (expressions 'hallo')) bar expressions) 2) 3)"
                             + " fo expressions) 2) (+ 3 1))"
-                        + ")"
+                        + "))"
                     },
                     {
                         "int $d = foo()[0]->a->foo('hallo')[0][$a]->bar()[2]->foo()[3][5]->foo();",
-                        "(variableDeclaration int $d "
+                        "(variableDeclaration int ($d "
                             + "(methodCall (arrayAccess (arrayAccess (methodCall "
                                 + "(arrayAccess (methodCall "
                                     + "(arrayAccess (arrayAccess (methodCall (memberAccess (arrayAccess "
@@ -84,71 +85,71 @@ public class ArrayAccessTest extends AAstTest
                                 + " 0) a) foo (expressions 'hallo')) 0) $a)"
                                 + " bar expressions) 2)"
                             + " foo expressions) 3) 5) foo expressions)"
-                        + ")"
+                        + "))"
                             
                     },
                     {
                         "int $d = $a->a[0]->b[0][1]->foo()->bar()[2]->foo()[3][5]->foo();",
-                         "(variableDeclaration int $d "
+                         "(variableDeclaration int ($d "
                             +"(methodCall (arrayAccess (arrayAccess (methodCall "
                                 + "(arrayAccess (methodCall (methodCall (arrayAccess (arrayAccess (memberAccess "
                                     + "(arrayAccess (memberAccess $a a) 0)"
                                 + " b) 0) 1) foo expressions) bar expressions) 2)"
                             + " foo expressions) 3) 5) foo expressions)"
-                        + ")"
+                        + "))"
                     }
                 }));
-        String[][] expressions = ExpressionTest.getExpressions();
+        String[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "array $d = $a[" + expression[0] + "];",
-                        "(variableDeclaration array $d (arrayAccess $a " + expression[1] + "))"
+                        "(variableDeclaration array ($d (arrayAccess $a " + expression[1] + ")))"
                     });
             collection.add(new Object[]{
                         "array $d = $a[" + expression[0] + "][" + expression[0] + "];",
-                        "(variableDeclaration array $d "
+                        "(variableDeclaration array ($d "
                             + "(arrayAccess (arrayAccess $a " + expression[1] + ") " + expression[1] + ")"
-                        + ")"
+                        + "))"
                     });
             collection.add(new Object[]{
                         "array $d = foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(variableDeclaration array $d "
+                        "(variableDeclaration array ($d "
                             + "(arrayAccess (arrayAccess "
                                 + "(functionCall (type foo) expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
-                        + ")"
+                        + "))"
                     });
             collection.add(new Object[]{
                         "array $d = $a->foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(variableDeclaration array $d "
+                        "(variableDeclaration array ($d "
                             + "(arrayAccess (arrayAccess "
                                 + "(methodCall $a foo expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
-                        + ")"
+                        + "))"
                     });
             collection.add(new Object[]{
                         "array $d = self::foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(variableDeclaration array $d "
+                        "(variableDeclaration array ($d "
                             + "(arrayAccess (arrayAccess "
                                 + "(methodCall self foo expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
-                        + ")"
+                        + "))"
                      });
             collection.add(new Object[]{
                         "array $d = parent::foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(variableDeclaration array $d "
+                        "(variableDeclaration array ($d "
                             + "(arrayAccess (arrayAccess "
                                 + "(methodCall parent foo expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
-                        + ")"
+                        + "))"
                     });
             collection.add(new Object[]{
                         "array $d = Foo::foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(variableDeclaration array $d "
+                        "(variableDeclaration array ($d "
                             + "(arrayAccess (arrayAccess "
                                 + "(methodCall (type Foo) foo expressions)"
                             + " " + expression[1] + ") " + expression[1] + ")"
-                        + ")"
+                        + "))"
                     });
 
         }

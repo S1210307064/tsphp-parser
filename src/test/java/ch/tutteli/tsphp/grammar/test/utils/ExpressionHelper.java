@@ -14,56 +14,26 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar.test.ast;
-
-import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
-import java.util.Arrays;
-import java.util.Collection;
-import org.antlr.runtime.RecognitionException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
+package ch.tutteli.tsphp.grammar.test.utils;
 
 /**
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-@RunWith(Parameterized.class)
-public class ExpressionTest extends AAstTest
+public class ExpressionHelper
 {
 
-    public ExpressionTest(String testString, String expectedResult) {
-        super(testString, expectedResult);
-    }
-
-    @Test
-    public void test() throws RecognitionException {
-        compareAst();
-    }
-
-    @Parameterized.Parameters
-    public static Collection<Object[]> testStrings() {
-        String[][] expressions = getExpressions();
-        for (String[] expression : expressions) {
-            expression[0] = expression[0] + ";";
-        }
-        return Arrays.asList((Object[][]) expressions);
-    }
-    public static String[][] getExpressions() {
+    public static String[][] getAstExpressions() {
         return new String[][]{
                     {"$a or $b", "(or $a $b)"},
                     {"$a or $b or $c", "(or (or $a $b) $c)"},
-                    //
                     {"$a xor $b", "(xor $a $b)"},
                     {"$a xor $b xor $c", "(xor (xor $a $b) $c)"},
-                    //
                     {"$a and $b", "(and $a $b)"},
                     {"$a and $b and $c", "(and (and $a $b) $c)"},
-                    //
                     {"$a and $b or $c xor $d", "(or (and $a $b) (xor $c $d))"},
                     {"$a or $b and $c xor $d", "(or $a (xor (and $b $c) $d))"},
                     {"$a or $b and $c xor $d", "(or $a (xor (and $b $c) $d))"},
-                    //
                     {"$a = $b", "(= $a $b)"},
                     {"$a += $b", "(+= $a $b)"},
                     {"$a -= $b", "(-= $a $b)"},
@@ -76,73 +46,54 @@ public class ExpressionTest extends AAstTest
                     {"$a .= $b", "(.= $a $b)"},
                     {"$a <<= $b", "(<<= $a $b)"},
                     {"$a >>= $b", "(>>= $a $b)"},
-                    {"$a =() $b", "(cast assign $a $b)"},
-                    //
+                    {"$a =() $b", "(castAssign $a $b)"},
                     {"true ? $a : $b", "(? true $a $b)"},
                     {"true ? $a ? $b : $c : $d", "(? true (? $a $b $c) $d)"},
                     {"true ? $a : $b ? $c : $d", "(? true $a (? $b $c $d))"},
-                    //
                     {"$a = true ? $c += $d : $e -= $f", "(= $a (? true (+= $c $d) (-= $e $f)))"},
                     {"$a *= true ? $c /= $d ? $e &= $f : $g |= $h : $i ^= $j", "(*= $a (? true (/= $c (? $d (&= $e $f) (|= $g $h))) (^= $i $j)))"},
                     {"$a %= true ? $c .= $d ? $e <<= $f : $g >>= $h : $i = $j", "(%= $a (? true (.= $c (? $d (<<= $e $f) (>>= $g $h))) (= $i $j)))"},
-                    //
                     {"$a || $b", "(|| $a $b)"},
                     {"$a || $b || $c", "(|| (|| $a $b) $c)"},
-                    //
                     {"$a && $b", "(&& $a $b)"},
                     {"$a && $b && $c", "(&& (&& $a $b) $c)"},
-                    //
                     {"$a && $b || $c", "(|| (&& $a $b) $c)"},
                     {"$a || $b && $c", "(|| $a (&& $b $c))"},
                     {"$a || $b && $c ? $d : $e", "(? (|| $a (&& $b $c)) $d $e)"},
-                    //
                     {"$a | $b", "(| $a $b)"},
                     {"$a | $b | $c", "(| (| $a $b) $c)"},
-                    //
                     {"$a ^ $b", "(^ $a $b)"},
                     {"$a ^ $b ^ $c", "(^ (^ $a $b) $c)"},
-                    //
                     {"$a & $b", "(& $a $b)"},
                     {"$a & $b & $c", "(& (& $a $b) $c)"},
-                    //
                     {"$a & $b | $c ^ $d", "(| (& $a $b) (^ $c $d))"},
                     {"$a | $b & $c ^ $d", "(| $a (^ (& $b $c) $d))"},
                     {"$a | $b & $c ^ $d", "(| $a (^ (& $b $c) $d))"},
-                    //
                     {"$a == $b", "(== $a $b)"},
                     {"$a === $b", "(=== $a $b)"},
                     {"$a != $b", "(!= $a $b)"},
                     {"$a !== $b", "(!== $a $b)"},
                     {"$a <> $b", "(<> $a $b)"},
-                    //
                     {"$a < $b", "(< $a $b)"},
                     {"$a <= $b", "(<= $a $b)"},
                     {"$a > $b", "(> $a $b)"},
                     {"$a >= $b", "(>= $a $b)"},
-                    //
                     {"$a == $b | $c < $d & $e ? $f != $g : $h === $i", "(? (| (== $a $b) (& (< $c $d) $e)) (!= $f $g) (=== $h $i))"},
-                    //
                     {"1 << 2", "(<< 1 2)"},
                     {"1 >> 2", "(>> 1 2)"},
                     {"1 >> 2 << 3 >> 5", "(>> (<< (>> 1 2) 3) 5)"},
-                    //
                     {"1 + 2", "(+ 1 2)"},
                     {"1 - 2", "(- 1 2)"},
                     {"$a . $b", "(. $a $b)"},
-                    //
                     {"1 + 2", "(+ 1 2)"},
                     {"1 - 2", "(- 1 2)"},
                     {"$a . $b", "(. $a $b)"},
-                    //
                     {"$a << $b >> $c + $d * $e - $f", "(>> (<< $a $b) (- (+ $c (* $d $e)) $f))"},
-                    //
                     {"!$a", "(! $a)"},
                     {"!!$a", "(! (! $a))"},
                     {"!!! $a", "(! (! (! $a)))"},
-                    //
                     {"$a instanceof MyClass", "(instanceof $a (type MyClass))"},
                     {"$a instanceof $b", "(instanceof $a $b)"},
-                    //
                     {"(Type) $a", "(cast (type Type) $a)"},
                     {"~$a", "(~ $a)"},
                     {"@$a", "(@ $a)"},
@@ -150,37 +101,30 @@ public class ExpressionTest extends AAstTest
                     {"~~$a", "(~ (~ $a))"},
                     {"@@$a", "(@ (@ $a))"},
                     {"@(Type) ~$a", "(@ (cast (type Type) (~ $a)))"},
-                    //
                     {"clone $a", "(clone $a)"},
-                    //
                     {"+$a", "(unaryPlus $a)"},
                     {"+1", "(unaryPlus 1)"},
                     {"-$a", "(unaryMinus $a)"},
                     {"-2", "(unaryMinus 2)"},
-                    //
                     {"+$a + $b", "(+ (unaryPlus $a) $b)"},
                     {"-$a - $b", "(- (unaryMinus $a) $b)"},
-                    //
-                    {"clone $a","(clone $a)"},
-                    {"clone $a->a","(clone (memberAccess $a a))"},
-                    {"new Type","(new (type Type) expressions)"},
-                    //
-                    {"foo()","(functionCall (type foo) expressions)"},
-                    {"\\foo(1,1+2,3)","(functionCall (type \\ foo) (expressions 1 (+ 1 2) 3))"},
-                    {"$a->foo()","(methodCall $a foo expressions)"},
-                    {"$a->foo(true || false,123*9)","(methodCall $a foo (expressions (|| true false) (* 123 9)))"},
-                    //
+                    {"clone $a", "(clone $a)"},
+                    {"clone $a->a", "(clone (memberAccess $a a))"},
+                    {"new Type", "(new (type Type) expressions)"},
+                    {"foo()", "(functionCall (type foo) expressions)"},
+                    {"\\foo(1,1+2,3)", "(functionCall (type \\ foo) (expressions 1 (+ 1 2) 3))"},
+                    {"$a->foo()", "(methodCall $a foo expressions)"},
+                    {"$a->foo(true || false,123*9)", "(methodCall $a foo (expressions (|| true false) (* 123 9)))"},
                     {"($a)", "$a"},
-                    {"$a++","(postIncrementDecrement ++ $a)"},
-                    {"$a--","(postIncrementDecrement -- $a)"},
-                    {"++$a","(preIncrementDecrement ++ $a)"},
-                    {"--$a","(preIncrementDecrement -- $a)"},
-                    {"$a","$a"},
-                    {"$a->a","(memberAccess $a a)"},
-                    {"self::$a","(static memberAccess self $a)"},
-                    {"self::a","(static memberAccess self a)"},
-                    {"Foo::a","(static memberAccess (type Foo) a)"},
-                    //
+                    {"$a++", "(postIncrementDecrement ++ $a)"},
+                    {"$a--", "(postIncrementDecrement -- $a)"},
+                    {"++$a", "(preIncrementDecrement ++ $a)"},
+                    {"--$a", "(preIncrementDecrement -- $a)"},
+                    {"$a", "$a"},
+                    {"$a->a", "(memberAccess $a a)"},
+                    {"self::$a", "(static memberAccess self $a)"},
+                    {"self::a", "(static memberAccess self a)"},
+                    {"Foo::a", "(static memberAccess (type Foo) a)"},
                     {"true", "true"},
                     {"false", "false"},
                     {"1", "1"},
@@ -189,11 +133,114 @@ public class ExpressionTest extends AAstTest
                     {"\"asdf\"", "\"asdf\""},
                     {"[1,2,a=>3]", "(array 1 2 (=> a 3))"},
                     {"null", "null"},
-                    
-                    //
                     {"(int) clone $a + $b", "(+ (cast int (clone $a)) $b)"},
                     {"(-$a + $b) * $c", "(* (+ (unaryMinus $a) $b) $c)"},
                     {"!($a instanceof Type) || $a < $b+$c == ~(1 | 3 & 12)", "(|| (! (instanceof $a (type Type))) (== (< $a (+ $b $c)) (~ (| 1 (& 3 12)))))"}
+                };
+    }
+
+    public static String[] getParserExpressions() {
+        return new String[]{
+                    "true or false",
+                    "true xor false",
+                    "true and false",
+                    "true or false xor true and false",
+                    "true ? 1:2",
+                    "true ? $a<$b ? 1:2:2",
+                    "true ? $a<$b ? 1:2:2+3-4",
+                    "true || false",
+                    "true && false",
+                    "true || false && true ? true:false",
+                    "14 | 2",
+                    "14 ^ 2",
+                    "14 & 2",
+                    "9 | 9 ^ 12 & 3",
+                    "$b = 1",
+                    "$b += 1",
+                    "$b -= 1",
+                    "$b *= 1",
+                    "$b /= 1",
+                    "$b %= 1",
+                    "$b .= 1",
+                    "$b &= 1",
+                    "$b |= 1",
+                    "$b ^= 1",
+                    "$b <<= 1",
+                    "$b >>= 1",
+                    "$b >>= 1",
+                    "$b==$c",
+                    "$b!=$c",
+                    "$b===$c",
+                    "$b!==$c",
+                    "$b<>$c",
+                    "$a == $b && $c != $c || $c === $d && $a !== $e || $a <> $f",
+                    "$a < $b",
+                    "$a <= $b",
+                    "$a > $b",
+                    "$a >= $b",
+                    "$a < 4 && 2 <= 7 || 1 > 10 && 2 >= $d",
+                    "1 << 4",
+                    "16 >> 4",
+                    "$a << 2 >> 5",
+                    "1+1",
+                    "2-3",
+                    "4*5",
+                    "6/7",
+                    "6%7",
+                    "6+7-5*5/(2+1)",
+                    "6 % 3 + 7-5*5/(2+1)",
+                    "'hallo'.'welt'",
+                    "'hallo'.'welt'.\"blabla bla\".$a",
+                    "!$a",
+                    "!!$a",
+                    "$a instanceof Foo",
+                    "$a instanceof $a",
+                    "~$a",
+                    "~~$a",
+                    "(bool) $a",
+                    "(int) $a",
+                    "(float) $a",
+                    "(string) $a",
+                    "(array) $a",
+                    "(Foo) $a",
+                    "(int) ((bool) $a && $b) + 1",
+                    "@$a",
+                    "+1",
+                    "-1",
+                    "new a",
+                    "new a()",
+                    "clone $a",
+                    "clone $a->a",
+                    "clone $a[0]",
+                    "$a",
+                    "$a->a",
+                    "$a[0]",
+                    "$this",
+                    "$this->a",
+                    "$this[0]",
+                    "foo()->a",
+                    "$a[0]->a",
+                    "$a->foo()->a",
+                    "+foo()",
+                    "-foo()",
+                    "+$a->foo()",
+                    "-$a->foo()",
+                    "(1+1)",
+                    "$a++",
+                    "++$a",
+                    "--$a",
+                    "$a--",
+                    "foo()",
+                    "$a->foo()",
+                    "$a->a->foo()",
+                    "$a[0]->foo()",
+                    "$a[0][1]->foo()",
+                    "self::foo()",
+                    "self::$a->foo()",
+                    "parent::foo()",
+                    "parent::$a->foo()",
+                    "a",
+                    "A::a"
                 };
     }
 }

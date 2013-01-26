@@ -17,7 +17,8 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
-import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
+import ch.tutteli.tsphp.grammar.test.utils.TypeHelper;
+import ch.tutteli.tsphp.grammar.test.utils.VariableDeclarationListHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -32,10 +33,9 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class IfTest extends AAstTest
+public class ClassMemberTest extends AAstTest
 {
-
-    public IfTest(String testString, String expectedResult) {
+    public ClassMemberTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -43,20 +43,29 @@ public class IfTest extends AAstTest
     public void test() throws RecognitionException {
         compareAst();
     }
+    protected void run() throws RecognitionException{
+        result = parser.classBody();
+    }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        
-        String[][] expressions = ExpressionHelper.getAstExpressions();
-        for (Object[] expression : expressions) {
-            collection.add(new Object[]{"if(" + expression[0] + ") $a=1; else $a+=1;", "(if "+expression[1]+" (= $a 1) (+= $a 1))"});
+        Collection<Object[]> variableLists = VariableDeclarationListHelper.testStrings();
+        for(Object[] variableList : variableLists){
+            collection.add(new Object[]{
+                "private " + variableList[0],"(classMember modifier private (variables "+variableList[1]+"))"
+            });
         }
-        collection.addAll(Arrays.asList(new Object[][]{
-                    {"if(true) $a=1; else if(false) $b=1; else $c=2;", "(if true (= $a 1) (if false (= $b 1) (= $c 2)))"},
-                    {"if(true) $a=1; else if(false) $b=1; else if($a<1) $c=2; else $d*=1;", "(if true (= $a 1) (if false (= $b 1) (if (< $a 1) (= $c 2) (*= $d 1))))"},
-                }));
+        collection.addAll(getVariations("","modifier"));
+        collection.addAll(getVariations("static","(modifier static)"));
         
         return collection;
+    }
+    private static Collection<Object[]> getVariations(String modifier, String modifierExpected){
+        return Arrays.asList(new Object[][]{
+                    {modifier+" private int $a;","(classMember "+modifierExpected+" private (variables int $a))"},
+                    {modifier+" protected int $a;","(classMember "+modifierExpected+" protected (variables int $a))"},
+                    {modifier+" public int $a;","(classMember "+modifierExpected+" public (variables int $a))"},
+        });
     }
 }

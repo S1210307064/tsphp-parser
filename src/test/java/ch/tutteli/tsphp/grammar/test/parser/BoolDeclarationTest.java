@@ -52,11 +52,6 @@ public class BoolDeclarationTest extends AParserTest
                     {"bool $b = false;"},
                 }));
         
-        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
-        for (Object[] obj : idTestStrings) {
-            collection.add(new Object[]{"bool $b = $" + obj[1] + ";"});
-        }
-        
         return collection;
     }
 }

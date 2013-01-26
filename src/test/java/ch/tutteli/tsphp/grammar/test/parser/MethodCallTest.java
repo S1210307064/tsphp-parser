@@ -18,6 +18,7 @@ package ch.tutteli.tsphp.grammar.test.parser;
 
 import ch.tutteli.tsphp.grammar.test.lexer.TokenTest;
 import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
+import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -51,7 +52,7 @@ public class MethodCallTest extends AParserTest
         collection.add(new Object[]{"$a->foo(1,1);"});
         collection.add(new Object[]{"$a->foo(true || false,1,1+1,'hello'.'world');"});
 
-        String[] expressions = ExpressionTest.getAllExpressions();
+        String[] expressions = ExpressionHelper.getParserExpressions();
         for (String expression : expressions) {
             collection.add(new Object[]{"$a->foo(" + expression + ");"});
         }

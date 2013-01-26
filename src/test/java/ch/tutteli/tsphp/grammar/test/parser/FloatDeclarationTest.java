@@ -52,11 +52,6 @@ public class FloatDeclarationTest extends AParserTest
             collection.add(new Object[]{"float $a = +" + floatString + ";"});
             collection.add(new Object[]{"float $a = -" + floatString + ";"});
         }
-
-        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
-        for (Object[] obj : idTestStrings) {
-            collection.add(new Object[]{"float $d = $" + obj[1] + ";"});
-        }
         return collection;
     }
 }

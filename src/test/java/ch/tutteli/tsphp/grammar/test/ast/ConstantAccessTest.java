@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.TypeHelper;
 import ch.tutteli.tsphp.grammar.test.utils.VariationHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,26 +47,19 @@ public class ConstantAccessTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                    {"int $a = a;", "(variableDeclaration int $a a)"},
-                    {"int $a = self::a;", "(variableDeclaration int $a (static memberAccess self a))"},
-                    {"int $a = parent::a;", "(variableDeclaration int $a (static memberAccess parent a))"},
-                    {
-                        "int $a = Foo::a;",
-                        "(variableDeclaration int $a (static memberAccess (type Foo) a))"
-                    },
-                    {
-                        "int $a = \\Foo::a;",
-                        "(variableDeclaration int $a (static memberAccess (type \\ Foo) a))"
-                    },
-                    {
-                        "int $a = a\\Foo::a;",
-                        "(variableDeclaration int $a (static memberAccess (type a Foo) a))"
-                    },
-                    {
-                        "int $a = \\a\\b\\Foo::a;",
-                        "(variableDeclaration int $a (static memberAccess (type \\ a b Foo) a))"
-                    },
-                });
+        List<Object[]> collection = new ArrayList<>();
+        String[][] types = TypeHelper.getClassInterfaceTypes();
+        for(String[] type: types){
+            collection.add(new Object[]{
+                "int $a = "+type[0]+"::a;", 
+                "(variableDeclaration int ($a (static memberAccess "+type[1]+" a)))"
+            });
+        }
+        collection.addAll(Arrays.asList(new Object[][]{
+                    {"int $a = a;","(variableDeclaration int ($a a))"},
+                    {"int $a = self::a;", "(variableDeclaration int ($a (static memberAccess self a)))"},
+                    {"int $a = parent::a;", "(variableDeclaration int ($a (static memberAccess parent a)))"},
+                }));
+        return collection;
     }
 }

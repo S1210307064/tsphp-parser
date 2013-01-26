@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
+import ch.tutteli.tsphp.grammar.test.utils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -57,11 +58,11 @@ public class VariableDeclarationTest extends AAstTest
                     {"string $a;", "(variableDeclaration string $a)"},
                     {"array $a;", "(variableDeclaration array $a)"},
                     {"resource $a;", "(variableDeclaration resource $a)"},
-                    {"object $a;", "(variableDeclaration object $a)"}
+                    {"object $a;", "(variableDeclaration object $a)"},
                 }));
-        String[][] expressions = ExpressionTest.getExpressions();
+        String[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
-            collection.add(new Object[]{"int $a = " + expression[0] + ";", "(variableDeclaration int $a " + expression[1] + ")"});
+            collection.add(new Object[]{"int $a = " + expression[0] + ";", "(variableDeclaration int ($a " + expression[1] + "))"});
         }
         return collection;
     }

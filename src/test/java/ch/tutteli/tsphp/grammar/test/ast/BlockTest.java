@@ -53,7 +53,6 @@ public class BlockTest extends AAstTest
         addToCollection(collection, ConstantAccessTest.testStrings());
         addToCollection(collection, EchoTest.testStrings());
         addToCollection(collection, ExitTest.testStrings());
-        addToCollection(collection, ExpressionTest.testStrings());
         addToCollection(collection, ForTest.testStrings());
         addToCollection(collection, ForeachTest.testStrings());
         addToCollection(collection, FunctionCallTest.testStrings());

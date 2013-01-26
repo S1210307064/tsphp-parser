@@ -50,11 +50,6 @@ public class ArrayDeclarationTest extends AParserTest
         for (String string : strings) {
             collection.add(new Object[]{"array $a = " + string + ";"});
         }
-
-        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
-        for (Object[] obj : idTestStrings) {
-            collection.add(new Object[]{"array $d = $" + obj[1] + ";"});
-        }
         
         //Expressions are covered in ch.tutteli.tsphp.grammar.test.ast.ArrayDeclarationTest
         
