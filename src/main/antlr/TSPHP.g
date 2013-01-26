@@ -503,7 +503,6 @@ instruction
 	|	'return'^ expression? ';'!
 	|	'throw'^ expression ';'!
 	|	'echo'^ expressionList ';'!
-	|	'exit' ('(' expression ')')? ';' -> ^('exit' expression?)
 	|	semi=';' -> BLOCK[$semi,"block"]
 	;
 	
@@ -678,11 +677,11 @@ staticAccessOrParent
 
 newObject 
 	:	'new' classInterfaceTypeWithoutObject actualParameters -> ^('new' classInterfaceTypeWithoutObject actualParameters)
-	|	'new' classInterfaceTypeWithoutObject -> ^('new' classInterfaceTypeWithoutObject EXPRESSION_LIST[$classInterfaceTypeWithoutObject.stop,"expressions"])
+	|	'new' classInterfaceTypeWithoutObject -> ^('new' classInterfaceTypeWithoutObject PARAM_LIST[$classInterfaceTypeWithoutObject.stop,"parameters"])
 	;
 
 actualParameters
-	:	list='(' expressionList? ')' -> ^(EXPRESSION_LIST[$list,"expressions"] expressionList?)
+	:	list='(' expressionList? ')' -> ^(EXPRESSION_LIST[$list,"parameters"] expressionList?)
 	;
 
 unaryPrimary
@@ -694,6 +693,7 @@ unaryPrimary
 primary
 	:	postFixCall
 	|	atom
+	|	'exit' ('(' expression ')')? -> ^('exit' expression?)
 	;	
 	
 postFixCall

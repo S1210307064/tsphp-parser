@@ -50,24 +50,24 @@ public class MethodCallTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "$a->foo()->bar(2,2);", 
-                        "(methodCall (methodCall $a foo expressions) bar (expressions 2 2))"
+                        "(methodCall (methodCall $a foo parameters) bar (parameters 2 2))"
                     },
                     {
                         "$a->foo()->bar(2,2)->asdf(1);", 
                         "(methodCall (methodCall "
-                            + "(methodCall $a foo expressions)"
-                        + " bar (expressions 2 2)) asdf (expressions 1))"
+                            + "(methodCall $a foo parameters)"
+                        + " bar (parameters 2 2)) asdf (parameters 1))"
                     },
                 }));
         String[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "$a->foo("+expression[0]+");", 
-                        "(methodCall $a foo (expressions "+expression[1]+"))"
+                        "(methodCall $a foo (parameters "+expression[1]+"))"
             });
             collection.add(new Object[]{
                         "$a->foo("+expression[0]+","+expression[0]+","+expression[0]+");",
-                        "(methodCall $a foo (expressions "
+                        "(methodCall $a foo (parameters "
                         + ""+expression[1]+" "+expression[1]+" "+expression[1]+""
                         + "))"
                     });
