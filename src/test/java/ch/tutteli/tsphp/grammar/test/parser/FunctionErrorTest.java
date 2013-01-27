@@ -49,6 +49,7 @@ public class FunctionErrorTest extends AParserParserExceptionTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{"function void a();",TSPHPParser.Semicolon,17});
+        collection.add(new Object[]{"function void a(int $a=null, int $b){}", TSPHPParser.RightParanthesis, 35});
 
         String fixture = "function void a (int $a, int $b=";
         int fixtureLength = fixture.length();

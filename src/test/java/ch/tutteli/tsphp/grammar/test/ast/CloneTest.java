@@ -47,23 +47,23 @@ public class CloneTest extends AAstTest
                     {"$a = clone $b;","(= $a (clone $b))"},
                     {"$a = clone $b->a;","(= $a (clone (memberAccess $b a)))"},
                     {"$a = clone $b->a[0];","(= $a (clone (arrayAccess (memberAccess $b a) 0)))"},
-                    {"$a = clone self::$a;","(= $a (clone (static memberAccess self $a)))"},
+                    {"$a = clone self::$a;","(= $a (clone (staticMemberAccess self $a)))"},
                     {
                         "$a = clone self::$a[0];",
-                        "(= $a (clone (arrayAccess (static memberAccess self $a) 0)))"
+                        "(= $a (clone (arrayAccess (staticMemberAccess self $a) 0)))"
                     },
-                    {"$a = clone parent::$a;","(= $a (clone (static memberAccess parent $a)))"},
+                    {"$a = clone parent::$a;","(= $a (clone (staticMemberAccess parent $a)))"},
                     {
                         "$a = clone parent::$a[0];",
-                        "(= $a (clone (arrayAccess (static memberAccess parent $a) 0)))"
+                        "(= $a (clone (arrayAccess (staticMemberAccess parent $a) 0)))"
                     },
                     {
                         "$a = clone Foo::$a;",
-                        "(= $a (clone (static memberAccess (type Foo) $a)))"
+                        "(= $a (clone (staticMemberAccess (type Foo) $a)))"
                     },
                     {
                         "$a = clone a\\Foo::$a[0];",
-                         "(= $a (clone (arrayAccess (static memberAccess (type a Foo) $a) 0)))"
+                         "(= $a (clone (arrayAccess (staticMemberAccess (type a Foo) $a) 0)))"
                     }
                 });
 

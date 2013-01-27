@@ -458,12 +458,12 @@ formalParameters
 
 paramList
 	:	paramDeclarationOptional (','! paramDeclarationOptional)*
-	|	paramDeclarationInclNull (','! paramDeclarationInclNull)* (','! paramDeclarationOptional)*	
+	|	paramDeclarationNormal (','! paramDeclarationNormal)* (','! paramDeclarationOptional)*	
 	;
 	
-paramDeclarationInclNull
-	:	Cast? allTypes VariableId ('=' Null)? 
-		-> ^(PARAM_DECLARATION[$paramDeclarationInclNull.start,"parameterDeclaration"] allTypes ^(VariableId Null?) Cast?)
+paramDeclarationNormal
+	:	Cast? allTypes VariableId 
+		-> ^(PARAM_DECLARATION[$paramDeclarationNormal.start,"parameterDeclaration"] allTypes VariableId Cast?)
 	;
 	
 paramDeclarationOptional
@@ -677,7 +677,7 @@ cloneOrNew
 
 	
 variableOrMemberOrStaticMember
-	:	staticAccessOrParent VariableId -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"static memberAccess"] staticAccessOrParent VariableId)
+	:	staticAccessOrParent VariableId -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"staticMemberAccess"] staticAccessOrParent VariableId)
 	|	'$this'
 	|	VariableId 
 	;
@@ -739,10 +739,8 @@ callee	:	variableOrMemberOrStaticMember '->'!
 atom	:	'(' expression ')' -> expression
 	|	incrementDecrement
 	|	postFixVariableInclCallAtTheEnd
-	|	classConstant
-	|	globalConstant
 	|	array
-	|	primitiveAtom
+	|	primitiveAtomWithConstant
 	;
 
 postFixVariableWithoutCallAtTheEnd
@@ -766,26 +764,26 @@ postFixVariableInclCallAtTheEnd
 	;
 
 classConstant
-	:	staticAccessOrParent Identifier -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"static memberAccess"] staticAccessOrParent Identifier)
+	:	staticAccessOrParent Identifier -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"staticMemberAccess"] staticAccessOrParent Identifier)
 	;
 	
-globalConstant
-	:	Identifier
-	;
+
 	
 unaryPrimitiveAtom
-	:	uplus = '+' primitiveAtom -> ^(UPLUS[$uplus,"unaryPlus"] primitiveAtom)
-	|	uminus = '-' primitiveAtom -> ^(UMINUS[$uminus,"unaryMinus"] primitiveAtom)
-	|	primitiveAtom
+	:	uplus = '+' primitiveAtomWithConstant -> ^(UPLUS[$uplus,"unaryPlus"] primitiveAtomWithConstant)
+	|	uminus = '-' primitiveAtomWithConstant -> ^(UMINUS[$uminus,"unaryMinus"] primitiveAtomWithConstant)
+	|	primitiveAtomWithConstant
 	;
 
-primitiveAtom
+primitiveAtomWithConstant
 	:	Bool
 	|	Int
 	|	Float
 	|	String
 	|	Null
-	|	Identifier
+	//global constant
+	|	classConstant
+	|	Identifier 
 	;
 	
 Int     : 	DECIMAL

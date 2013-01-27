@@ -16,8 +16,10 @@
  */
 package ch.tutteli.tsphp.grammar.test.utils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -96,14 +98,15 @@ public class ParameterListHelper
 
     public static Collection<Object[]> getVariationsForOptional(String prefix, String appendix,
             String prefixExpect, String appendixExpect) {
-        return Arrays.asList(new Object[][]{
+        List<Object[]> collection = new ArrayList<>();
+        collection.addAll(Arrays.asList(new Object[][]{
                     //optional parameter
                     {
                         prefix + "int $a, int $b='hallo'" + appendix,
                         prefixExpect + "(parameters "
                         + "(parameterDeclaration int $a) "
                         + "(parameterDeclaration int ($b 'hallo'))"
-                        + ")"+appendixExpect
+                        + ")" + appendixExpect
                     },
                     {
                         prefix + "int $a, int $i, int $b=+1" + appendix,
@@ -139,9 +142,9 @@ public class ParameterListHelper
                         + ")" + appendixExpect
                     },
                     {
-                        prefix + "int $a=null, int $b, int $d=true" + appendix,
+                        prefix + "int $a, int $b, int $d=true" + appendix,
                         prefixExpect + "(parameters "
-                        + "(parameterDeclaration int ($a null)) "
+                        + "(parameterDeclaration int $a) "
                         + "(parameterDeclaration int $b) "
                         + "(parameterDeclaration int ($d true))"
                         + ")" + appendixExpect
@@ -161,6 +164,20 @@ public class ParameterListHelper
                         + "(parameterDeclaration int ($b 2)) "
                         + "(parameterDeclaration int ($d 3) cast)"
                         + ")" + appendixExpect
-                    },});
+                    }
+                }));
+
+
+        String[][] types = TypeHelper.getClassInterfaceTypes();
+
+        for (String[] type : types) {
+            collection.add(new Object[]{
+                        prefix + "int $a=" + type[0] + "::a" + appendix,
+                        prefixExpect + 
+                            "(parameters (parameterDeclaration int ($a (staticMemberAccess " + type[1] + " a))))"
+                        + appendixExpect
+                    });
+        }
+        return collection;
     }
 }

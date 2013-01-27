@@ -68,10 +68,10 @@ public class ConstructDestructTest extends AAstTest
                         + ") block)"
                     },
                     {
-                        "function __construct(int $a=null,bool $b){}",
+                        "function __construct(int $a,bool $b=2){}",
                         "(__construct public (parameters "
-                        + "(parameterDeclaration int ($a null)) "
-                        + "(parameterDeclaration bool $b)"
+                        + "(parameterDeclaration int $a) "
+                        + "(parameterDeclaration bool ($b 2))"
                         + ") block)"
                     }
                 }));

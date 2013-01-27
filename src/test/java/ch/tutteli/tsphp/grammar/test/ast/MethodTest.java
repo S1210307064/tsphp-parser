@@ -68,10 +68,6 @@ public class MethodTest extends AAstTest
         collection.addAll(getTuples("int $a", "int $a"));
         //cast 
         collection.addAll(getTuples("cast int $a", "int $a cast"));
-        //null
-        collection.addAll(getTuples("int $a=null", "int ($a null)"));
-        //cast and null
-        collection.addAll(getTuples("cast int $a=null", "int ($a null) cast"));
 
         collection.addAll(ParameterListHelper.getVariationsForOptional(
                 "function void foo(", "){$a=1;}", "(method modifier public void foo ", " (block (= $a 1)))"));
