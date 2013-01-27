@@ -40,7 +40,8 @@ public class MethodTest extends AParserTest
     public void test() throws RecognitionException {
         parseAndCheckForException();
     }
-
+    void a(){}
+    
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
@@ -73,19 +74,7 @@ public class MethodTest extends AParserTest
                     {"class a{ public function void getName(){ $a=1; }}"},
                     {"class a{ public function MyClass getName(){ $a=1; }}"},
                     {"class a{ public function a\\MyClass getName(){ $a=1; }}"},
-                    {"class a{ public function \\a\\MyClass getName(){ $a=1; }}"},
-                    //construct / destruct
-                    {"class a{ function __construct(){ $a=1; }}"},
-                    {"class a{ function __construct(int $a,bool $b){ $a=1; }}"},
-                    {"class a{ function __construct(int $a=1){ $a=1; }}"},
-                    {"class a{ function __construct(int $a=null,bool $b){ $a=1; }}"},
-                    {"class a{ function __deconstruct(){ $a=1; }}"},
-                    {"class a{ public function __construct(){ $a=1; }}"},
-                    {"class a{ public function __construct(int $a,bool $b){ $a=1; }}"},
-                    {"class a{ public function __construct(int $a=1){ $a=1; }}"},
-                    {"class a{ public function __construct(int $a=null,bool $b){ $a=1; }}"},
-                    {"class a{ public function __deconstruct(){ $a=1; }}"},
-                    
-        });
+                    {"class a{ public function \\a\\MyClass getName(){ $a=1; }}"}
+                });
     }
 }

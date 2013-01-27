@@ -52,53 +52,53 @@ public class ForTest extends AAstTest
                     {
                         "for($a=1     ; true ; ++$i  ) $a=1;",
                         "(for "
-                            + "(expressions (= $a 1)) "
-                            + "(expressions true) "
-                            + "(expressions (preIncrementDecrement ++ $i)) "
-                            + "(= $a 1)"
+                        + "(expressions (= $a 1)) "
+                        + "(expressions true) "
+                        + "(expressions (preIncrementDecrement ++ $i)) "
+                        + "(= $a 1)"
                         + ")"
                     },
                     {
                         "for(         ; true ; ++$i  ) $a=1;",
                         "(for "
-                            + "expressions "
-                            + "(expressions true) "
-                            + "(expressions (preIncrementDecrement ++ $i)) "
-                            + "(= $a 1)"
+                        + "expressions "
+                        + "(expressions true) "
+                        + "(expressions (preIncrementDecrement ++ $i)) "
+                        + "(= $a 1)"
                         + ")"
                     },
                     {
                         "for(         ;      ; $i+=1 ) $a=1;",
                         "(for "
-                            + "expressions "
-                            + "expressions "
-                            + "(expressions (+= $i 1)) "
-                            + "(= $a 1)"
+                        + "expressions "
+                        + "expressions "
+                        + "(expressions (+= $i 1)) "
+                        + "(= $a 1)"
                         + ")"
                     },
                     {
                         "for(         ; true ;       ) $a=1;",
                         "(for "
-                            + "expressions "
-                            + "(expressions true) "
-                            + "expressions "
-                            + "(= $a 1)"
+                        + "expressions "
+                        + "(expressions true) "
+                        + "expressions "
+                        + "(= $a 1)"
                         + ")"},
                     {
                         "for(         ;      ;       ) $a=1;",
                         "(for "
-                            + "expressions "
-                            + "expressions "
-                            + "expressions "
-                            + "(= $a 1)"
+                        + "expressions "
+                        + "expressions "
+                        + "expressions "
+                        + "(= $a 1)"
                         + ")"},
                     {
                         "for(         ;      ;       ) $a=1;",
                         "(for "
-                            + "expressions "
-                            + "expressions "
-                            + "expressions "
-                            + "(= $a 1)"
+                        + "expressions "
+                        + "expressions "
+                        + "expressions "
+                        + "(= $a 1)"
                         + ")"
                     }
                 }));
@@ -108,10 +108,10 @@ public class ForTest extends AAstTest
             collection.add(new Object[]{
                         "for(" + expression[0] + ";" + expression[0] + ";" + expression[0] + ") $a=1;",
                         "(for "
-                            + "(expressions " + expression[1] + ") "
-                            + "(expressions " + expression[1] + ") "
-                            + "(expressions " + expression[1] + ") "
-                            + "(= $a 1)"
+                        + "(expressions " + expression[1] + ") "
+                        + "(expressions " + expression[1] + ") "
+                        + "(expressions " + expression[1] + ") "
+                        + "(= $a 1)"
                         + ")"
                     });
             collection.add(new Object[]{
@@ -121,21 +121,16 @@ public class ForTest extends AAstTest
                         + expression[0] + "," + expression[0] + " "
                         + ") $a^=1;",
                         "(for "
-                            + "(expressions " + expression[1] + " " + expression[1] + ") "
-                            + "(expressions " + expression[1] + " " + expression[1] + ") "
-                            + "(expressions " + expression[1] + " " + expression[1] + ") "
-                            + "(^= $a 1)"
+                        + "(expressions " + expression[1] + " " + expression[1] + ") "
+                        + "(expressions " + expression[1] + " " + expression[1] + ") "
+                        + "(expressions " + expression[1] + " " + expression[1] + ") "
+                        + "(^= $a 1)"
                         + ")"
                     });
         }
-        Collection<Object[]> variableLists = VariableDeclarationListHelper.testStrings();
-        for(Object[] variableList : variableLists){
-            collection.add(new Object[]{
-                "for(" + variableList[0] + ";);","(for (variables "+variableList[1]+") expressions expressions block)"
-            });
-        }
-
-
+        Collection<Object[]> variableLists = VariableDeclarationListHelper.testStrings(
+                "for(", ";;);", "(for (variables ",
+                ") expressions expressions block)");
         return collection;
     }
 }

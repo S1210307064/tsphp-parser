@@ -148,6 +148,7 @@ tokens{
 	CONSTANT_DECLARATION;
 	CONSTANT_DECLARATION_LIST;
 	DEFAULT_NAMESPACE;
+	EXCEPTION_LIST;
 	EXPRESSION_LIST;
 	FUNCTION_CALL;
 	FUNCTION_DECLARATION;
@@ -155,6 +156,7 @@ tokens{
 	MEMBER_ACCESS;
 	MEMBER_ACCESS_STATIC;
 	METHOD_CALL;
+	METHOD_DECLARATION;
 	MODIFIER;
 	PARAM_DECLARATION;
 	PARAM_LIST;
@@ -306,7 +308,7 @@ identifierList
 classBody
 	:	constDeclarationList
 	|	memberDeclaration	
-	|	specialMethods
+	|	constructDeconstruct
 	|	methodDeclaration
 	;
 
@@ -320,69 +322,71 @@ constantAssignment
 	;
 
 memberDeclaration	
-	:	st='static'? accessor variableDeclarationList ';' 
-		-> ^(CLASS_MEMBER[$memberDeclaration.start,"classMember"] ^(MODIFIER[$memberDeclaration.start,"modifier"] $st?) accessor 
+	:	st='static'? accessModifier variableDeclarationList ';' 
+		-> ^(CLASS_MEMBER[$memberDeclaration.start,"classMember"] ^(MODIFIER[$memberDeclaration.start,"modifier"] $st?) accessModifier 
 			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"variables"] variableDeclarationList)
 		)
 	;
 
-accessor:	accessorWithoutPrivate
+accessModifier
+	:	accessModifierWithoutPrivate
 	|	'private'
 	;
 	
-accessorWithoutPrivate
+accessModifierWithoutPrivate
 	:	'protected'|'public'
 	;
-
-variableDeclarationList
-	:	allTypesWithoutObjectAndResource 
-		(	castAssign[$allTypesWithoutObjectAndResource.tree]
-		|	assign
-		)
-		(','!	(	castAssign[$allTypesWithoutObjectAndResource.tree]
-			|	assign
-			)
-		)*		
-	|	objectOrResource assign (','! assign)*
+	
+accessModifierWithoutPrivateOrPublic
+	:	accessModifierWithoutPrivate
+	|	/* empty */ -> Public["public"]
 	;
 	
-castAssign[Tree tree]
-	:	VariableId cast='=''('')' expression -> ^(VariableId ^(CAST[$cast,"cast"] {$tree} expression))
-	;
-
-assign	
-	:	VariableId^ ('='! expression)?
-	;
-objectOrResource
-	:	'object'
-	|	'resource'
+accessModifierOrPublic
+	:	accessModifier
+	|	/* empty */ -> Public["public"]
 	;
 
 
 methodDeclaration	
-	:	(	'abstract' accessorWithoutPrivate?
-		| 	
-			(	'static' 'final'?
-			|	'final' 'static'?
-			|	//empty
-			) accessor?
-		) functionDeclaration
+	:	methodModifier
+		 functionDeclarationWithoutBody block='{' instructionWithoutBreakContinue* '}' 
+		-> ^(METHOD_DECLARATION[$methodModifier.start,"method"] 
+			methodModifier 
+			functionDeclarationWithoutBody 
+			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
+		) 
 	;	
-specialMethods
-	:	('public'?)! 'function'! 
-		(	construct 
-		|	deconstruct
+
+methodModifier
+	:	(	abstractAccessModifier
+		|	staticFinalAccessModifier
+		|	finalStaticAccessModifier
+		|	onlyAccessModifier
 		)
 	;
-	
-construct
-	:	'__construct' formalParameters block='{' instructionWithoutBreakContinue* '}' 
-		-> ^('__construct' formalParameters ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))
+abstractAccessModifier
+	:	abstr='abstract' accessModifierWithoutPrivateOrPublic? -> ^(MODIFIER[$abstr,"modifier"] $abstr) accessModifierWithoutPrivateOrPublic
 	;
-	
-deconstruct
-	:	'__deconstruct' '('')' block='{' instructionWithoutBreakContinue* '}' 
-		-> ^('__deconstruct' ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))	
+staticFinalAccessModifier
+	:	st='static' fin='final'? accessModifierOrPublic -> ^(MODIFIER[$st,"modifier"] $st $fin?) accessModifierOrPublic
+	;
+finalStaticAccessModifier
+	:	fin='final' st='static'? accessModifierOrPublic -> ^(MODIFIER[$fin,"modifier"] $fin $st?) accessModifierOrPublic
+	;
+onlyAccessModifier
+	:	accessModifierOrPublic -> ^(MODIFIER[$accessModifierOrPublic.start,"modifier"]) accessModifierOrPublic
+	;
+
+constructDeconstruct
+	:	accessModifierOrPublic 'function'
+		(	'__construct' formalParameters block='{' instructionWithoutBreakContinue* '}' 
+			-> ^('__construct' accessModifierOrPublic formalParameters ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))
+		
+		|	'__deconstruct' '('')' block='{' instructionWithoutBreakContinue* '}' 
+			-> ^('__deconstruct' accessModifierOrPublic ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))	
+		)
+		
 	;
 
 interfaceDeclaration
@@ -462,16 +466,13 @@ paramList
 	;
 	
 paramDeclarationInclNull
-	:	paramDeclarationWithoutNull ('=' Null)? -> ^(PARAM_DECLARATION[$paramDeclarationInclNull.start,"parameterDeclaration"] paramDeclarationWithoutNull Null?)
-	;
-
-paramDeclarationWithoutNull
-	:	Cast? allTypes VariableId -> ^(PARAM_TYPE[$paramDeclarationWithoutNull.start,"parameterType"] allTypes Cast?) VariableId		
+	:	Cast? allTypes VariableId ('=' Null)? 
+		-> ^(PARAM_DECLARATION[$paramDeclarationInclNull.start,"parameterDeclaration"] allTypes ^(VariableId Null?) Cast?)
 	;
 	
 paramDeclarationOptional
-	:	paramDeclarationWithoutNull  '=' unaryPrimitiveAtom 
-		-> ^(PARAM_DECLARATION[$paramDeclarationOptional.start,"parameterDeclaration"] paramDeclarationWithoutNull unaryPrimitiveAtom)
+	:	Cast? allTypes VariableId  '=' unaryPrimitiveAtom 
+		-> ^(PARAM_DECLARATION[$paramDeclarationOptional.start,"parameterDeclaration"] allTypes ^(VariableId unaryPrimitiveAtom) Cast?)
 	;
 
 VariableId	
@@ -491,7 +492,7 @@ instructionInclBreakContinue
 
 instruction
 	:	variableAssignment ';'!
-	|	variableDeclaration ';'!
+	|	localVariableDeclaration ';'!
 	|	ifCondition
 	|	switchCondition
 	|	forLoop
@@ -548,18 +549,34 @@ plusPlusOrMinusMinus
 preIncrementDecrement
 	:	plusPlusOrMinusMinus postFixVariableWithoutCallAtTheEnd 
 		-> ^(PRE_INCREMENT_DECREMENT[$plusPlusOrMinusMinus.start,"preIncrementDecrement"] plusPlusOrMinusMinus postFixVariableWithoutCallAtTheEnd)
-	;	
-	
-variableDeclaration
-	:	variableDeclarationVariants -> ^(VARIABLE_DECLARATION[$variableDeclarationVariants.start,"variableDeclaration"] variableDeclarationVariants)
+	;
+		
+localVariableDeclaration
+	:	variableDeclarationList -> ^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"variables"] variableDeclarationList)
 	;
 	
-variableDeclarationVariants
-	:	allTypesWithoutObjectAndResource VariableId cast='=''('')' expression 
-		-> allTypesWithoutObjectAndResource ^(VariableId ^(CAST[$cast,"cast"] allTypesWithoutObjectAndResource expression))
-				
-	|	allTypes VariableId ('=' expression)? 
-		-> allTypes ^(VariableId expression?)
+variableDeclarationList
+	:	allTypesWithoutObjectAndResource 
+		(	castAssign[$allTypesWithoutObjectAndResource.tree]
+		|	assign
+		)
+		(','!	(	castAssign[$allTypesWithoutObjectAndResource.tree]
+			|	assign
+			)
+		)*		
+	|	objectOrResource assign (','! assign)*
+	;
+	
+castAssign[Tree tree]
+	:	VariableId cast='=''('')' expression -> ^(VariableId ^(CAST[$cast,"cast"] {$tree} expression))
+	;
+
+assign	
+	:	VariableId^ ('='! expression)?
+	;
+objectOrResource
+	:	'object'
+	|	'resource'
 	;
 
 expression
@@ -934,11 +951,11 @@ tryCatch
 	;
 	
 catchBlock
-	:	'catch' list='(' classInterfaceTypeWithoutObject VariableId ')' catchBegin='{' instructionInclBreakContinue* '}'
-		-> ^(VARIABLE_DECLARATION_LIST[$list,"variables"]
-			^(VARIABLE_DECLARATION[$classInterfaceTypeWithoutObject.start,"variableDeclaration"] classInterfaceTypeWithoutObject VariableId)
-		) 
-		^(BLOCK[$catchBegin,"block"] instructionInclBreakContinue*)
+	:	catchBegin='catch' list='(' classInterfaceTypeWithoutObject VariableId ')' block='{' instructionInclBreakContinue* '}'
+		-> ^($catchBegin 
+			^(EXCEPTION_LIST[$list,"exceptions"] ^(VariableId classInterfaceTypeWithoutObject))
+			^(BLOCK[$block,"block"] instructionInclBreakContinue*)
+		)
 	;
 
 Comment

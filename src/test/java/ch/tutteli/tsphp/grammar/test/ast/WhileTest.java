@@ -50,7 +50,7 @@ public class WhileTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {"while( true  ) $a=1;", "(while true (= $a 1))"},
                     {"while( true  ){$a=1;}", "(while true (block (= $a 1)))"},
-                    {"while( true  ){$a=1;int $b=2;}", "(while true (block (= $a 1) (variableDeclaration int ($b 2))))"},
+                    {"while( true  ){$a=1;int $b=2;}", "(while true (block (= $a 1) (variables int ($b 2))))"},
                     {"do $a=1; while( true  );", "(do (= $a 1) true)"},
                     {"do {$a=1;} while( true  );", "(do (block (= $a 1)) true)"},
                     {"do {$a=1;$b=2;}while( true  );", "(do (block (= $a 1) (= $b 2)) true)"}

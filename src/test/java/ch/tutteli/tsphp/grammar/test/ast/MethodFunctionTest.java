@@ -17,10 +17,8 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -55,7 +53,7 @@ public class MethodFunctionTest extends AAstTest
                         "class a {  function void getName(){ $a=1; } }  function void getName(){ $a=1; }",
                         "(namespace (type default) (block "
                             + "(class classModifier a extends implements (classBody "
-                                + "(functionDeclaration void getName parameters (block (= $a 1)))"
+                                + "(method modifier public void getName parameters (block (= $a 1)))"
                             + ")) "
                             + "(functionDeclaration void getName parameters (block (= $a 1)))"
                         + "))"
@@ -63,9 +61,9 @@ public class MethodFunctionTest extends AAstTest
                     {
                         "/** this is my lovely function */ \n function void foo(int $a=true,int $b=2,cast int $c=3){}",
                         "(namespace (type default) (block (functionDeclaration void foo (parameters "
-                            + "(parameterDeclaration (parameterType int) $a true) "
-                            + "(parameterDeclaration (parameterType int) $b 2) "
-                            + "(parameterDeclaration (parameterType int cast) $c 3)"
+                            + "(parameterDeclaration int ($a true)) "
+                            + "(parameterDeclaration int ($b 2)) "
+                            + "(parameterDeclaration int ($c 3) cast)"
                         + ") block)))"
                      }
                 });

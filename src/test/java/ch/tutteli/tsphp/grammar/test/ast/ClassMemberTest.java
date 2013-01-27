@@ -17,7 +17,6 @@
 package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
-import ch.tutteli.tsphp.grammar.test.utils.TypeHelper;
 import ch.tutteli.tsphp.grammar.test.utils.VariableDeclarationListHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +34,7 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class ClassMemberTest extends AAstTest
 {
+
     public ClassMemberTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
@@ -43,29 +43,29 @@ public class ClassMemberTest extends AAstTest
     public void test() throws RecognitionException {
         compareAst();
     }
-    protected void run() throws RecognitionException{
+
+    @Override
+    protected void run() throws RecognitionException {
         result = parser.classBody();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        Collection<Object[]> variableLists = VariableDeclarationListHelper.testStrings();
-        for(Object[] variableList : variableLists){
-            collection.add(new Object[]{
-                "private " + variableList[0],"(classMember modifier private (variables "+variableList[1]+"))"
-            });
-        }
-        collection.addAll(getVariations("","modifier"));
-        collection.addAll(getVariations("static","(modifier static)"));
-        
+        Collection<Object[]> variableLists = VariableDeclarationListHelper.testStrings(
+                "private ", ";",
+                "(classMember modifier private (variables ", "))");
+        collection.addAll(getVariations("", "modifier"));
+        collection.addAll(getVariations("static", "(modifier static)"));
+
         return collection;
     }
-    private static Collection<Object[]> getVariations(String modifier, String modifierExpected){
+
+    private static Collection<Object[]> getVariations(String modifier, String modifierExpected) {
         return Arrays.asList(new Object[][]{
-                    {modifier+" private int $a;","(classMember "+modifierExpected+" private (variables int $a))"},
-                    {modifier+" protected int $a;","(classMember "+modifierExpected+" protected (variables int $a))"},
-                    {modifier+" public int $a;","(classMember "+modifierExpected+" public (variables int $a))"},
-        });
+                    {modifier + " private int $a;", "(classMember " + modifierExpected + " private (variables int $a))"},
+                    {modifier + " protected int $a;", "(classMember " + modifierExpected + " protected (variables int $a))"},
+                    {modifier + " public int $a;", "(classMember " + modifierExpected + " public (variables int $a))"}
+                });
     }
 }

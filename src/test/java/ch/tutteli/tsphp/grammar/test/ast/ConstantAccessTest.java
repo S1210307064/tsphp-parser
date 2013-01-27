@@ -18,7 +18,6 @@ package ch.tutteli.tsphp.grammar.test.ast;
 
 import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
 import ch.tutteli.tsphp.grammar.test.utils.TypeHelper;
-import ch.tutteli.tsphp.grammar.test.utils.VariationHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -52,13 +51,13 @@ public class ConstantAccessTest extends AAstTest
         for(String[] type: types){
             collection.add(new Object[]{
                 "int $a = "+type[0]+"::a;", 
-                "(variableDeclaration int ($a (static memberAccess "+type[1]+" a)))"
+                "(variables int ($a (static memberAccess "+type[1]+" a)))"
             });
         }
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"int $a = a;","(variableDeclaration int ($a a))"},
-                    {"int $a = self::a;", "(variableDeclaration int ($a (static memberAccess self a)))"},
-                    {"int $a = parent::a;", "(variableDeclaration int ($a (static memberAccess parent a)))"},
+                    {"int $a = a;","(variables int ($a a))"},
+                    {"int $a = self::a;", "(variables int ($a (static memberAccess self a)))"},
+                    {"int $a = parent::a;", "(variables int ($a (static memberAccess parent a)))"},
                 }));
         return collection;
     }

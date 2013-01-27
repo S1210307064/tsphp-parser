@@ -16,8 +16,7 @@
  */
 package ch.tutteli.tsphp.grammar.test.parser;
 
-import ch.tutteli.tsphp.grammar.TSPHPParser;
-import ch.tutteli.tsphp.grammar.test.utils.AParserParserExceptionTest;
+import ch.tutteli.tsphp.grammar.test.utils.AParserTest;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
@@ -30,28 +29,32 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class MethodErrorTest extends AParserParserExceptionTest
+public class ConstructDeconstructTest extends AParserTest
 {
 
-    public MethodErrorTest(String testString, int character, int position) {
-        super(testString, RecognitionException.class, character, position);
-
+    public ConstructDeconstructTest(String testString) {
+        super(testString);
     }
 
     @Test
     public void test() throws RecognitionException {
-        parseExpectingException();
+        parseAndCheckForException();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    //forgot to add type
-                    {"class A{function void a(int $a=null,$b){}}",TSPHPParser.VariableId,36},
-                     //forgot to add return type
-                    {"class A{function a(){}}",TSPHPParser.LeftParanthesis,18},
-                     //forgot to add function
-                    {"class A{public void a(){}}",TSPHPParser.Void,15},
-                });
+                    {"class a{ function __construct(){ $a=1; }}"},
+                    {"class a{ function __construct(int $a,bool $b){ $a=1; }}"},
+                    {"class a{ function __construct(int $a=1){ $a=1; }}"},
+                    {"class a{ function __construct(int $a=null,bool $b){ $a=1; }}"},
+                    {"class a{ function __deconstruct(){ $a=1; }}"},
+                    {"class a{ public function __construct(){ $a=1; }}"},
+                    {"class a{ public function __construct(int $a,bool $b){ $a=1; }}"},
+                    {"class a{ public function __construct(int $a=1){ $a=1; }}"},
+                    {"class a{ public function __construct(int $a=null,bool $b){ $a=1; }}"},
+                    {"class a{ public function __deconstruct(){ $a=1; }}"},
+                    
+        });
     }
 }

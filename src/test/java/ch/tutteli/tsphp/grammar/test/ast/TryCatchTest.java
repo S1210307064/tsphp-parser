@@ -48,30 +48,24 @@ public class TryCatchTest extends AAstTest
                         "try{$a=1;}catch(\\Exception $e){}",
                         "(try "
                             + "(block (= $a 1)) "
-                            + "(variables (variableDeclaration (type \\ Exception) $e)) "
-                            + "block"
+                            + "(catch (exceptions ($e (type \\ Exception))) block)"
                         + ")"
                     },
                     {
                         "try{$a=1;}catch(\\Exception $e){} catch(\\a\\MyException $e){$a=1;$b=2;}",
                         "(try "
                             + "(block (= $a 1)) "
-                            + "(variables (variableDeclaration (type \\ Exception) $e)) "
-                            + "block "
-                            + "(variables (variableDeclaration (type \\ a MyException) $e)) "
-                            + "(block (= $a 1) (= $b 2))"
+                            + "(catch (exceptions ($e (type \\ Exception))) block) "
+                            + "(catch (exceptions ($e (type \\ a MyException))) (block (= $a 1) (= $b 2)))"
                         + ")"
                     },
                     {
                         "try{$a=1;}catch(a $e){} catch(b $e){$a=1;$b=2;}catch(c $e){}",
                         "(try "
                             + "(block (= $a 1)) "
-                            + "(variables (variableDeclaration (type a) $e)) "
-                            + "block "
-                            + "(variables (variableDeclaration (type b) $e)) "
-                            + "(block (= $a 1) (= $b 2)) "
-                            + "(variables (variableDeclaration (type c) $e)) "
-                            + "block"
+                            + "(catch (exceptions ($e (type a))) block) "
+                            + "(catch (exceptions ($e (type b))) (block (= $a 1) (= $b 2))) "
+                            + "(catch (exceptions ($e (type c))) block)"
                         + ")"
                     },
         });

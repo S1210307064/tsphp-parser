@@ -56,83 +56,83 @@ public class FunctionTest extends AAstTest
             collection.add(new Object[]{
                                     "function void set("+type[0]+" $a){}",
                                     "(functionDeclaration void set (parameters "
-                                        + "(parameterDeclaration (parameterType "+type[1]+") $a)"
+                                        + "(parameterDeclaration "+type[1]+" $a)"
                                     + ") block)"
                                 });
         }
         //normal
-        collection.addAll(getTuples("int $a","(parameterType int) $a"));
+        collection.addAll(getTuples("int $a","int $a"));
         //cast 
-        collection.addAll(getTuples("cast int $a","(parameterType int cast) $a"));
+        collection.addAll(getTuples("cast int $a","int $a cast"));
         //null
-        collection.addAll(getTuples("int $a=null","(parameterType int) $a null"));
+        collection.addAll(getTuples("int $a=null","int ($a null)"));
          //cast and null
-        collection.addAll(getTuples("cast int $a=null","(parameterType int cast) $a null"));
+        collection.addAll(getTuples("cast int $a=null","int ($a null) cast"));
        
         collection.addAll(Arrays.asList(new Object[][]{   
                      //optional parameter
                     {
-                        "function void foo(int $a, int $b='hallo'){}",
+                        "function void foo(int $a, int $b='hallo'){$a=1;}",
                         "(functionDeclaration void foo (parameters "
-                            + "(parameterDeclaration (parameterType int) $a) "
-                            + "(parameterDeclaration (parameterType int) $b 'hallo')"
-                        + ") block)"
+                            + "(parameterDeclaration int $a) "
+                            + "(parameterDeclaration int ($b 'hallo'))"
+                        + ") (block (= $a 1)))"
                     },
                     {
                         "function void foo(int $a, int $i, int $b=+1){}",
                        "(functionDeclaration void foo (parameters "
-                            + "(parameterDeclaration (parameterType int) $a) "
-                            + "(parameterDeclaration (parameterType int) $i) "
-                            + "(parameterDeclaration (parameterType int) $b (unaryPlus 1))"
+                            + "(parameterDeclaration int $a) "
+                            + "(parameterDeclaration int $i) "
+                            + "(parameterDeclaration int ($b (unaryPlus 1)))"
                         + ") block)"
                     },
                     {
                         "function void foo(int $a, int $i, int $b=-10, int $d=2.0){}",
                         "(functionDeclaration void foo (parameters "
-                            + "(parameterDeclaration (parameterType int) $a) "
-                            + "(parameterDeclaration (parameterType int) $i) "
-                            + "(parameterDeclaration (parameterType int) $b (unaryMinus 10)) "
-                            + "(parameterDeclaration (parameterType int) $d 2.0)"
+                            + "(parameterDeclaration int $a) "
+                            + "(parameterDeclaration int $i) "
+                            + "(parameterDeclaration int ($b (unaryMinus 10))) "
+                            + "(parameterDeclaration int ($d 2.0))"
                         + ") block)"
                     },
                     {
                         "function void foo(int $a=null,int $b=true, int $c=E_ALL){}",
                         "(functionDeclaration void foo (parameters "
-                            + "(parameterDeclaration (parameterType int) $a null) "
-                            + "(parameterDeclaration (parameterType int) $b true) "
-                            + "(parameterDeclaration (parameterType int) $c E_ALL)"
+                            + "(parameterDeclaration int ($a null)) "
+                            + "(parameterDeclaration int ($b true)) "
+                            + "(parameterDeclaration int ($c E_ALL))"
                         + ") block)"
                     },
                     {
                         "function void foo(int $a, int $b=false, int $d=null){}",
                          "(functionDeclaration void foo (parameters "
-                            + "(parameterDeclaration (parameterType int) $a) "
-                            + "(parameterDeclaration (parameterType int) $b false) "
-                            + "(parameterDeclaration (parameterType int) $d null)"
+                            + "(parameterDeclaration int $a) "
+                            + "(parameterDeclaration int ($b false)) "
+                            + "(parameterDeclaration int ($d null))"
                         + ") block)"
                     } ,
                     {
                         "function void foo(int $a=null, int $b, int $d=true){}",
                          "(functionDeclaration void foo (parameters "
-                            + "(parameterDeclaration (parameterType int) $a null) "
-                            + "(parameterDeclaration (parameterType int) $b) "
-                            + "(parameterDeclaration (parameterType int) $d true)"
+                            + "(parameterDeclaration int ($a null)) "
+                            + "(parameterDeclaration int $b) "
+                            + "(parameterDeclaration int ($d true))"
                         + ") block)"
                     }, 
                     {
                         "function void foo(cast int $a, int $b, cast int $d){}",
                          "(functionDeclaration void foo (parameters "
-                            + "(parameterDeclaration (parameterType int cast) $a) "
-                            + "(parameterDeclaration (parameterType int) $b) "
-                            + "(parameterDeclaration (parameterType int cast) $d)"
+                            + "(parameterDeclaration int $a cast) "
+                            + "(parameterDeclaration int $b) "
+                            + "(parameterDeclaration int $d cast)"
                         + ") block)"
                     } ,
                     {
                     "function void foo(cast int $a=1, int $b=2, cast int $d=3){}",
                          "(functionDeclaration void foo (parameters "
-                            + "(parameterDeclaration (parameterType int cast) $a 1) "
-                            + "(parameterDeclaration (parameterType int) $b 2) "
-                            + "(parameterDeclaration (parameterType int cast) $d 3)"
+                            + "(parameterDeclaration int ($a 1) cast) "
+                            + "(parameterDeclaration int ($b 2)) "
+                            + "(parameterDeclaration int ($d 3) cast)"
                         + ") block)"
                     },
                 }));
@@ -158,8 +158,8 @@ public class FunctionTest extends AAstTest
                         "function void set("+param+", int $b, int $c){}",
                         "(functionDeclaration void set (parameters "
                             + "(parameterDeclaration "+paramExpect+") "
-                            + "(parameterDeclaration (parameterType int) $b) "
-                            + "(parameterDeclaration (parameterType int) $c)"
+                            + "(parameterDeclaration int $b) "
+                            + "(parameterDeclaration int $c)"
                         + ") block)"
                     },
                      {
@@ -167,29 +167,29 @@ public class FunctionTest extends AAstTest
                         "(functionDeclaration void set (parameters "
                             + "(parameterDeclaration "+paramExpect+") "
                             + "(parameterDeclaration "+paramExpect+") "
-                            + "(parameterDeclaration (parameterType int) $c)"
+                            + "(parameterDeclaration int $c)"
                         + ") block)"
                     },
                     {
                         "function void set("+param+", int $b,"+param+"){}",
                         "(functionDeclaration void set (parameters "
                             + "(parameterDeclaration "+paramExpect+") "
-                            + "(parameterDeclaration (parameterType int) $b) "
+                            + "(parameterDeclaration int $b) "
                             + "(parameterDeclaration "+paramExpect+")"
                         + ") block)"
                     },
                     {
                         "function void set(int $a, "+param+", int $c){}",
                         "(functionDeclaration void set (parameters "
-                            + "(parameterDeclaration (parameterType int) $a) "
+                            + "(parameterDeclaration int $a) "
                             + "(parameterDeclaration "+paramExpect+") "
-                            + "(parameterDeclaration (parameterType int) $c)"
+                            + "(parameterDeclaration int $c)"
                         + ") block)"
                     },
                     {
                         "function void set(int $a, "+param+", "+param+"){}",
                         "(functionDeclaration void set (parameters "
-                            + "(parameterDeclaration (parameterType int) $a) "
+                            + "(parameterDeclaration int $a) "
                             + "(parameterDeclaration "+paramExpect+") "
                             + "(parameterDeclaration "+paramExpect+")"
                         + ") block)"
