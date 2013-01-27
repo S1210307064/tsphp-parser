@@ -49,12 +49,22 @@ public class ConstructDeconstructTest extends AParserTest
                     {"class a{ function __construct(int $a=1){ $a=1; }}"},
                     {"class a{ function __construct(int $a=null,bool $b){ $a=1; }}"},
                     {"class a{ function __deconstruct(){ $a=1; }}"},
+                    {"class a{ private function __construct(){ $a=1; }}"},
+                    {"class a{ private function __construct(int $a,bool $b){ $a=1; }}"},
+                    {"class a{ private function __construct(int $a=1){ $a=1; }}"},
+                    {"class a{ private function __construct(int $a=null,bool $b){ $a=1; }}"},
+                    {"class a{ private function __deconstruct(){ $a=1; }}"},
+                    {"class a{ protected function __construct(){ $a=1; }}"},
+                    {"class a{ protected function __construct(int $a,bool $b){ $a=1; }}"},
+                    {"class a{ protected function __construct(int $a=1){ $a=1; }}"},
+                    {"class a{ protected function __construct(int $a=null,bool $b){ $a=1; }}"},
+                    {"class a{ protected function __deconstruct(){ $a=1; }}"},
                     {"class a{ public function __construct(){ $a=1; }}"},
                     {"class a{ public function __construct(int $a,bool $b){ $a=1; }}"},
                     {"class a{ public function __construct(int $a=1){ $a=1; }}"},
                     {"class a{ public function __construct(int $a=null,bool $b){ $a=1; }}"},
                     {"class a{ public function __deconstruct(){ $a=1; }}"},
-                    
+                   
         });
     }
 }

@@ -52,6 +52,12 @@ public class MethodErrorTest extends AParserParserExceptionTest
                     {"class A{function a(){}}",TSPHPParser.LeftParanthesis,18},
                      //forgot to add function
                     {"class A{public void a(){}}",TSPHPParser.Void,15},
+                    //Did not wrote the whole function - see TSPHP-322
+                    {"class A{function void a(int $a=null,int $b}",TSPHPParser.RightCurlyBrace,42},
+                    //abstract method with body
+                    {"class A{abstract function void foo(){}}",TSPHPParser.LeftCurlyBrace,36},
+                    //abstract wrong access modifier
+                    {"class A{abstract private function void foo();}",TSPHPParser.Private,17},
                 });
     }
 }

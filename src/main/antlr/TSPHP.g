@@ -309,6 +309,7 @@ classBody
 	:	constDeclarationList
 	|	memberDeclaration	
 	|	constructDeconstruct
+	|	abstractMethodDeclaration
 	|	methodDeclaration
 	;
 
@@ -338,45 +339,40 @@ accessModifierWithoutPrivate
 	;
 	
 accessModifierWithoutPrivateOrPublic
-	:	accessModifierWithoutPrivate
+	:	accessModifierWithoutPrivate 
 	|	/* empty */ -> Public["public"]
 	;
 	
 accessModifierOrPublic
-	:	accessModifier
+	:	accessModifier 
 	|	/* empty */ -> Public["public"]
 	;
 
 
+abstractMethodDeclaration
+	:	abstr='abstract' accessModifierWithoutPrivateOrPublic functionDeclarationWithoutBody ';'
+		-> ^(METHOD_DECLARATION[$abstractMethodDeclaration.start,"method"]  
+			^(MODIFIER[$abstr,"modifier"] $abstr) accessModifierWithoutPrivateOrPublic
+			functionDeclarationWithoutBody 
+		) 
+	;
+
 methodDeclaration	
-	:	methodModifier
-		 functionDeclarationWithoutBody block='{' instructionWithoutBreakContinue* '}' 
-		-> ^(METHOD_DECLARATION[$methodModifier.start,"method"] 
-			methodModifier 
+	:	methodModifier? accessModifierOrPublic functionDeclarationWithoutBody block='{' instructionWithoutBreakContinue* '}' 
+		-> ^(METHOD_DECLARATION[$methodDeclaration.start,"method"]  
+			^(MODIFIER[$methodModifier.start,"modifier"] methodModifier?)
+			accessModifierOrPublic
 			functionDeclarationWithoutBody 
 			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
 		) 
 	;	
+	
 
 methodModifier
-	:	(	abstractAccessModifier
-		|	staticFinalAccessModifier
-		|	finalStaticAccessModifier
-		|	onlyAccessModifier
-		)
+	:	'static' 'final'?  
+	|	'final' st='static'?
 	;
-abstractAccessModifier
-	:	abstr='abstract' accessModifierWithoutPrivateOrPublic? -> ^(MODIFIER[$abstr,"modifier"] $abstr) accessModifierWithoutPrivateOrPublic
-	;
-staticFinalAccessModifier
-	:	st='static' fin='final'? accessModifierOrPublic -> ^(MODIFIER[$st,"modifier"] $st $fin?) accessModifierOrPublic
-	;
-finalStaticAccessModifier
-	:	fin='final' st='static'? accessModifierOrPublic -> ^(MODIFIER[$fin,"modifier"] $fin $st?) accessModifierOrPublic
-	;
-onlyAccessModifier
-	:	accessModifierOrPublic -> ^(MODIFIER[$accessModifierOrPublic.start,"modifier"]) accessModifierOrPublic
-	;
+	
 
 constructDeconstruct
 	:	accessModifierOrPublic 'function'
