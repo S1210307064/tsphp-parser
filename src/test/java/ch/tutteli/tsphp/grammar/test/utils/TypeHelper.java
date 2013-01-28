@@ -36,29 +36,37 @@ public class TypeHelper
 
     public static String[][] getClassInterfaceTypes() {
         return new String[][]{
-                    {"a", "(type a)"},
-                    {"a\\A", "(type a A)"},
-                    {"a\\b\\A", "(type a b A)"},
-                    {"\\a", "(type \\ a)"},
-                    {"\\a\\A", "(type \\ a A)"},
-                    {"\\a\\b\\A", "(type \\ a b A)"}
+                    {"a", "(typeName a)"},
+                    {"a\\A", "(typeName a A)"},
+                    {"a\\b\\A", "(typeName a b A)"},
+                    {"\\a", "(typeName \\ a)"},
+                    {"\\a\\A", "(typeName \\ a A)"},
+                    {"\\a\\b\\A", "(typeName \\ a b A)"}
                 };
+    }
+
+    public static List<String[]> getAllTypesWithoutResourceAndObject() {
+        List<String[]> collection = new ArrayList<>(7);
+        collection.addAll(Arrays.asList(getScalarTypes()));
+        collection.addAll(Arrays.asList(getClassInterfaceTypes()));
+        return collection;
     }
 
     public static List<String[]> getPrimitiveTypes() {
         List<String[]> collection = new ArrayList<>(7);
-        collection.addAll(getScalarTypes());
+        collection.addAll(Arrays.asList(getScalarTypes()));
         collection.add(new String[]{"resource", "resource"});
         collection.add(new String[]{"object", "object"});
         return collection;
     }
 
-    public static List<String[]> getScalarTypes() {
-        return Arrays.asList(new String[][]{
+    public static String[][] getScalarTypes() {
+        return new String[][]{
                     {"bool", "bool"},
                     {"int", "int"},
                     {"float", "float"},
                     {"string", "string"},
-                    {"array", "array"},});
+                    {"array", "array"}
+                };
     }
 }

@@ -20,7 +20,6 @@ import ch.tutteli.tsphp.grammar.test.utils.AAstTest;
 import ch.tutteli.tsphp.grammar.test.utils.ParameterListHelper;
 import ch.tutteli.tsphp.grammar.test.utils.TypeHelper;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -54,28 +53,17 @@ public class FunctionTest extends AAstTest
                         "function " + type[0] + " get(){}",
                         "(functionDeclaration " + type[1] + " get parameters block)"
                     });
-            collection.add(new Object[]{
-                        "function void set(" + type[0] + " $a){}",
-                        "(functionDeclaration void set (parameters "
-                        + "(parameterDeclaration " + type[1] + " $a)"
-                        + ") block)"
-                    });
+
         }
-        //normal
-        collection.addAll(getTuples("int $a", "int $a"));
-        //cast 
-        collection.addAll(getTuples("cast int $a", "int $a cast"));
+
+        collection.addAll(ParameterListHelper.getTestStrings(
+                "function void set(", "){}",
+                "(functionDeclaration void set ", " block)"));
 
         collection.addAll(ParameterListHelper.getVariationsForOptional(
                 "function void foo(", "){$a=1;}",
                 "(functionDeclaration void foo ", " (block (= $a 1)))"));
-        
-        return collection;
-    }
 
-    public static Collection<Object[]> getTuples(String param, String paramExpect) {
-        return ParameterListHelper.getVariations(
-                "function void set(", param, "){}",
-                "(functionDeclaration void set ", paramExpect, " block)");
+        return collection;
     }
 }

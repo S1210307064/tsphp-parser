@@ -61,9 +61,9 @@ public class MethodFunctionTest extends AAstTest
                     {
                         "/** this is my lovely function */ \n function void foo(int $a=true,int $b=2,cast int $c=3){}",
                         "(namespace (type default) (block (functionDeclaration void foo (parameters "
-                            + "(parameterDeclaration int ($a true)) "
-                            + "(parameterDeclaration int ($b 2)) "
-                            + "(parameterDeclaration int ($c 3) cast)"
+                            + "(parameterDeclaration (type typeModifier int) ($a true)) "
+                            + "(parameterDeclaration (type typeModifier int) ($b 2)) "
+                            + "(parameterDeclaration (type (typeModifier cast) int) ($c 3))"
                         + ") block)))"
                      }
                 });

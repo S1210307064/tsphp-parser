@@ -165,6 +165,8 @@ tokens{
 	PRE_INCREMENT_DECREMENT;
 	SWITCH_CASES;
 	TYPE;
+	TYPE_MODIFIER;
+	TYPE_NAME;
 	UMINUS;
 	UPLUS;
 	USE_DECLRATARION;
@@ -314,8 +316,8 @@ classBody
 	;
 
 constDeclarationList
-	:	 begin='const' primitiveTypes constantAssignment (',' constantAssignment)* ';'
-		-> ^(CONSTANT_DECLARATION_LIST[$begin,"constants"] primitiveTypes constantAssignment+)
+	:	 begin='const' scalarTypes constantAssignment (',' constantAssignment)* ';'
+		-> ^(CONSTANT_DECLARATION_LIST[$begin,"constants"] scalarTypes constantAssignment+)
 	;
 	
 constantAssignment
@@ -417,39 +419,43 @@ returnType
 	;
 
 allTypes
-	:	primitiveTypesExtended | classInterfaceTypeInclObject
+	:	primitiveTypesInclResource | classInterfaceTypeInclObject
 	;
 
 allTypesWithoutObjectAndResource
-	:	primitiveTypesInclArray
+	:	primitiveTypesWithoutResource
 	| 	classInterfaceTypeWithoutObject
 	;
 
-primitiveTypes
+scalarTypes
 	:	TypeBool
 	|	TypeInt
 	|	TypeFloat
 	|	TypeString
 	;
 	
-primitiveTypesInclArray
-	:	primitiveTypes
+primitiveTypesWithoutResource
+	:	scalarTypes
 	|	TypeArray
 	;
 	
-primitiveTypesExtended
-	:	primitiveTypesInclArray
+primitiveTypesInclResource
+	:	primitiveTypesWithoutResource
 	|	TypeResource
 	;
 
 classInterfaceTypeWithoutObject
-	:	root='\\'? namespaceId -> ^(TYPE[$classInterfaceTypeWithoutObject.start,"type"] $root? namespaceId)
+	:	root='\\'? namespaceId -> ^(TYPE_NAME[$classInterfaceTypeWithoutObject.start,"typeName"] $root? namespaceId)
 	;
 
+classInterfaceTypeWithoutObjectInclArray
+	:	classInterfaceTypeWithoutObject
+	|	TypeArray
+	;
 	
 classInterfaceTypeInclObject
-	:	TypeObject	
-	|	classInterfaceTypeWithoutObject
+	:	classInterfaceTypeWithoutObject
+	|	TypeObject
 	;
 
 formalParameters
@@ -462,13 +468,27 @@ paramList
 	;
 	
 paramDeclarationNormal
-	:	Cast? allTypes VariableId 
-		-> ^(PARAM_DECLARATION[$paramDeclarationNormal.start,"parameterDeclaration"] allTypes VariableId Cast?)
+	:	allTypesInclModifierForParameter VariableId 
+		-> ^(PARAM_DECLARATION[$paramDeclarationNormal.start,"parameterDeclaration"] allTypesInclModifierForParameter ^(VariableId) )
 	;
 	
 paramDeclarationOptional
-	:	Cast? allTypes VariableId  '=' unaryPrimitiveAtom 
-		-> ^(PARAM_DECLARATION[$paramDeclarationOptional.start,"parameterDeclaration"] allTypes ^(VariableId unaryPrimitiveAtom) Cast?)
+	:	allTypesInclModifierForParameter VariableId '=' unaryPrimitiveAtom 
+		-> ^(PARAM_DECLARATION[$paramDeclarationOptional.start,"parameterDeclaration"] allTypesInclModifierForParameter ^(VariableId unaryPrimitiveAtom))
+	;
+
+
+allTypesInclModifierForParameter
+	:	Cast? allTypesWithoutObjectAndResource '?'?
+		-> ^(TYPE[$allTypesInclModifierForParameter.start,"type"] 
+			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"typeModifier"] Cast? '?'?) 
+			allTypesWithoutObjectAndResource
+		)
+	|	objectOrResource
+		-> ^(TYPE[$allTypesInclModifierForParameter.start,"type"] 
+			TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"typeModifier"] 
+			objectOrResource
+		)
 	;
 
 VariableId	
@@ -927,7 +947,7 @@ forUpdate
 	;
 
 foreachLoop
-	:	'foreach' '(' expression 'as' (keyType=primitiveTypes keyVarId=VariableId '=>')? valueType=allTypesWithoutObjectAndResource valueVarId=VariableId ')' instructionInclBreakContinue 
+	:	'foreach' '(' expression 'as' (keyType=scalarTypes keyVarId=VariableId '=>')? valueType=allTypesWithoutObjectAndResource valueVarId=VariableId ')' instructionInclBreakContinue 
 		-> ^('foreach' expression $keyType? $keyVarId? $valueType $valueVarId instructionInclBreakContinue)
 	;
 

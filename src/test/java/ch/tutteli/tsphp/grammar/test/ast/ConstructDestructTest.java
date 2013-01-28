@@ -57,21 +57,21 @@ public class ConstructDestructTest extends AAstTest
                     {
                         "function __construct(int $a,bool $b){ $a=1;}",
                         "(__construct public (parameters "
-                        + "(parameterDeclaration int $a) "
-                        + "(parameterDeclaration bool $b)"
+                        + "(parameterDeclaration (type typeModifier int) $a) "
+                        + "(parameterDeclaration (type typeModifier bool) $b)"
                         + ") (block (= $a 1)))"
                     },
                     {
                         "function __construct(cast int $a=1){}",
                         "(__construct public (parameters "
-                        + "(parameterDeclaration int ($a 1) cast)"
+                        + "(parameterDeclaration (type (typeModifier cast) int) ($a 1))"
                         + ") block)"
                     },
                     {
-                        "function __construct(int $a,bool $b=2){}",
+                        "function __construct(int $a,bool? $b=2){}",
                         "(__construct public (parameters "
-                        + "(parameterDeclaration int $a) "
-                        + "(parameterDeclaration bool ($b 2))"
+                        + "(parameterDeclaration (type typeModifier int) $a) "
+                        + "(parameterDeclaration (type (typeModifier ?) bool) ($b 2))"
                         + ") block)"
                     }
                 }));

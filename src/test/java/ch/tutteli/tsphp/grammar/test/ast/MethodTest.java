@@ -59,67 +59,57 @@ public class MethodTest extends AAstTest
                         "function " + type[0] + " get(){}",
                         "(method modifier public " + type[1] + " get parameters block)"
                     });
-            collection.add(new Object[]{
-                        "function void set(" + type[0] + " $a){}",
-                        "(method modifier public void set (parameters (parameterDeclaration " + type[1] + " $a)) block)"
-                    });
         }
         //normal
-        collection.addAll(getTuples("int $a", "int $a"));
-        //cast 
-        collection.addAll(getTuples("cast int $a", "int $a cast"));
+        collection.addAll(ParameterListHelper.getTestStrings(
+                "function void set(", "){}",
+                "(method modifier public void set ", " block)"));
 
         collection.addAll(ParameterListHelper.getVariationsForOptional(
                 "function void foo(", "){$a=1;}", "(method modifier public void foo ", " (block (= $a 1)))"));
 
         //modifiers
-        collection.addAll(getVariations("","modifier"));
-        collection.addAll(getVariations("static","(modifier static)"));
-        collection.addAll(getVariations("final","(modifier final)"));
-        collection.addAll(getVariations("static final","(modifier static final)"));
-        collection.addAll(getVariations("final static","(modifier final static)"));
+        collection.addAll(getVariations("", "modifier"));
+        collection.addAll(getVariations("static", "(modifier static)"));
+        collection.addAll(getVariations("final", "(modifier final)"));
+        collection.addAll(getVariations("static final", "(modifier static final)"));
+        collection.addAll(getVariations("final static", "(modifier final static)"));
         collection.addAll(Arrays.asList(new Object[][]{
                     {
-                        "abstract function void foo();", 
+                        "abstract function void foo();",
                         "(method (modifier abstract) public void foo parameters)"
                     },
                     {
-                        "abstract protected function void foo();", 
+                        "abstract protected function void foo();",
                         "(method (modifier abstract) protected void foo parameters)"
                     },
                     {
-                        "abstract public function void foo();", 
+                        "abstract public function void foo();",
                         "(method (modifier abstract) public void foo parameters)"
                     }
                 }));
-        
+
         return collection;
     }
 
     public static Collection<Object[]> getVariations(String modifier, String modifierExpected) {
         return Arrays.asList(new Object[][]{
                     {
-                        modifier + " function void foo(){}", 
+                        modifier + " function void foo(){}",
                         "(method " + modifierExpected + " public void foo parameters block)"
                     },
                     {
-                        modifier + " private function void foo(){}", 
+                        modifier + " private function void foo(){}",
                         "(method " + modifierExpected + " private void foo parameters block)"
                     },
                     {
-                        modifier + " protected function void foo(){}", 
+                        modifier + " protected function void foo(){}",
                         "(method " + modifierExpected + " protected void foo parameters block)"
                     },
                     {
-                        modifier + " public function void foo(){}", 
+                        modifier + " public function void foo(){}",
                         "(method " + modifierExpected + " public void foo parameters block)"
                     }
                 });
-    }
-
-    public static Collection<Object[]> getTuples(String param, String paramExpect) {
-        return ParameterListHelper.getVariations(
-                "function void set(", param, "){}",
-                "(method modifier public void set ", paramExpect, " block)");
     }
 }

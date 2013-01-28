@@ -59,11 +59,11 @@ public class CloneTest extends AAstTest
                     },
                     {
                         "$a = clone Foo::$a;",
-                        "(= $a (clone (staticMemberAccess (type Foo) $a)))"
+                        "(= $a (clone (staticMemberAccess (typeName Foo) $a)))"
                     },
                     {
                         "$a = clone a\\Foo::$a[0];",
-                         "(= $a (clone (arrayAccess (staticMemberAccess (type a Foo) $a) 0)))"
+                         "(= $a (clone (arrayAccess (staticMemberAccess (typeName a Foo) $a) 0)))"
                     }
                 });
 
