@@ -192,7 +192,7 @@ tokens{
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar;
+package ch.tutteli.tsphp.parser;
 }
 
 @lexer::header{
@@ -212,7 +212,7 @@ package ch.tutteli.tsphp.grammar;
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.grammar;
+package ch.tutteli.tsphp.parser;
 }
 
 prog	:	namespaceSemicolon+ EOF!

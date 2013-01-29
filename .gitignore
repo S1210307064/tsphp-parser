@@ -5,6 +5,6 @@ nbproject/*
 /lib/dev/checkstyle
 /lib/dev/classycle
 /lib/dev/findbugs
-/src/main/java/ch/tutteli/tsphp/grammar/TSPHPParser.java
-/src/main/java/ch/tutteli/tsphp/grammar/TSPHPLexer.java
-/src/main/java/ch/tutteli/tsphp/grammar/TSPHP.tokens
+/src/main/java/ch/tutteli/tsphp/parser/TSPHP.tokens
+/src/main/java/ch/tutteli/tsphp/parser/TSPHPLexer.java
+/src/main/java/ch/tutteli/tsphp/parser/TSPHPParser.java
