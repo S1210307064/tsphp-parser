@@ -29,10 +29,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class MethodFunctionTest extends AAstTest
+public class CompleteInterfaceTest extends AAstTest
 {
 
-    public MethodFunctionTest(String testString, String expectedResult) {
+    public CompleteInterfaceTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -40,32 +40,30 @@ public class MethodFunctionTest extends AAstTest
     public void test() throws RecognitionException {
         compareAst();
     }
-    
-    @Override
-    protected void run() throws RecognitionException {
-        result = parser.compilationUnit();
-    }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
                     {
-                        "class a {  function void getName(){ $a=1; } }  function void getName(){ $a=1; }",
-                        "(namespace (type default) (block "
-                            + "(class classModifier a extends implements (classBody "
-                                + "(method modifier public void getName parameters (block (= $a 1)))"
-                            + ")) "
-                            + "(function void getName parameters (block (= $a 1)))"
+                        "interface A extends B{\n"
+                            +"const bool A=true,B=null,C=false;\n"
+                            +"/*some comments \n"
+                            + "*/\n"
+                            +"public function __construct(int $number);\n"
+                            +"// a comment\n"
+                            + "function void set(int $b,cast float $c);\n"
+                        + "}\n",
+                        "(interface A (extends (typeName B)) (interfaceBody "
+                            +"(constants bool (A true) (B null) (C false)) "
+                            +"(__construct (parameters (parameterDeclaration (type typeModifier int) $number))) "
+                            +"(method void set (parameters "
+                                    + "(parameterDeclaration (type typeModifier int) $b) "
+                                    + "(parameterDeclaration (type (typeModifier cast) float) $c)"
+                            + "))"
                         + "))"
                     },
-                    {
-                        "/** this is my lovely function */ \n function void foo(int $a=true,int $b=2,cast int $c=3){}",
-                        "(namespace (type default) (block (function void foo (parameters "
-                            + "(parameterDeclaration (type typeModifier int) ($a true)) "
-                            + "(parameterDeclaration (type typeModifier int) ($b 2)) "
-                            + "(parameterDeclaration (type (typeModifier cast) int) ($c 3))"
-                        + ") block)))"
-                     }
+                    
                 });
+
     }
 }

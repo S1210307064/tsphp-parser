@@ -29,10 +29,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class ConstantTest extends AAstTest
+public class InterfaceConstantTest extends AAstTest
 {
 
-    public ConstantTest(String testString, String expectedResult) {
+    public InterfaceConstantTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -43,6 +43,6 @@ public class ConstantTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return ConstantHelper.testStrings("","","","");
+        return ConstantHelper.testStrings("interface B{","}","(interface B extends (interfaceBody ","))");
     }
 }

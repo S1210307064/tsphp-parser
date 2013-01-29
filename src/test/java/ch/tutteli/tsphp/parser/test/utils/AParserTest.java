@@ -62,6 +62,6 @@ public abstract class AParserTest extends ATest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.prog();
+        result = parser.compilationUnit();
     }
 }

@@ -32,10 +32,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class FunctionTest extends AAstTest
+public class InterfaceMethodTest extends AAstTest
 {
 
-    public FunctionTest(String testString, String expectedResult) {
+    public InterfaceMethodTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -44,25 +44,32 @@ public class FunctionTest extends AAstTest
         compareAst();
     }
 
+     @Override
+    protected void run() throws RecognitionException {
+        result = parser.interfaceBody();
+    }
+    
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
+        collection.add(new Object[]{"public function void foo();","(method void foo parameters)"});
+        collection.add(new Object[]{"function __construct();","(__construct parameters)"});
+        collection.add(new Object[]{"public function __construct();","(__construct parameters)"});
+        
         List<String[]> types = TypeHelper.getAllTypes();
         for (String[] type : types) {
             collection.add(new Object[]{
-                        "function " + type[0] + " get(){}",
-                        "(function " + type[1] + " get parameters block)"
+                        "function " + type[0] + " get();",
+                        "(method " + type[1] + " get parameters)"
                     });
         }
-
+        //normal
         collection.addAll(ParameterListHelper.getTestStrings(
-                "function void set(", "){}",
-                "(function void set ", " block)"));
+                "function void set(", ");",
+                "(method void set ", ")"));
 
         collection.addAll(ParameterListHelper.getVariationsForOptional(
-                "function void foo(", "){$a=1;}",
-                "(function void foo ", " (block (= $a 1)))"));
-
+                "function void foo(", ");", "(method void foo ", ")"));
         return collection;
     }
 }

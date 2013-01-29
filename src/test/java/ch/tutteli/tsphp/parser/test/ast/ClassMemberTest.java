@@ -52,9 +52,9 @@ public class ClassMemberTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        Collection<Object[]> variableLists = VariableDeclarationListHelper.testStrings(
+        collection.addAll(VariableDeclarationListHelper.testStrings(
                 "private ", ";",
-                "(classMember modifier private (variables ", "))");
+                "(classMember modifier private (variables ", "))"));
         collection.addAll(getVariations("", "modifier"));
         collection.addAll(getVariations("static", "(modifier static)"));
 

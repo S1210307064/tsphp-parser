@@ -43,7 +43,7 @@ public class NamespaceTest extends AAstTest
 
     @Override
     protected void run() throws RecognitionException {
-        result = parser.prog();
+        result = parser.compilationUnit();
     }
 
     @Parameterized.Parameters

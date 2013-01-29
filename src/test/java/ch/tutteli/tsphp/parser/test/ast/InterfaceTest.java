@@ -19,7 +19,6 @@ package ch.tutteli.tsphp.parser.test.ast;
 import ch.tutteli.tsphp.parser.test.utils.AAstTest;
 import ch.tutteli.tsphp.parser.test.utils.TypeHelper;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -47,22 +46,22 @@ public class InterfaceTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.add(new Object[]{"interface a{}","(interface a implements interfaceBody)"});
+        collection.add(new Object[]{"interface a{}","(interface a extends interfaceBody)"});
         
         String[][] types = TypeHelper.getClassInterfaceTypes();
         for(String[] type:types){
             
             collection.add(new Object[]{
-                "interface a implements "+type[0]+"{}",
-                "(interface a (implements "+type[1]+") interfaceBody)"
+                "interface a extends "+type[0]+"{}",
+                "(interface a (extends "+type[1]+") interfaceBody)"
             });
             collection.add(new Object[]{
-                "interface a implements "+type[0]+","+type[0]+"{}",
-                "(interface a (implements "+type[1]+" "+type[1]+") interfaceBody)"
+                "interface a extends "+type[0]+","+type[0]+"{}",
+                "(interface a (extends "+type[1]+" "+type[1]+") interfaceBody)"
             });
             collection.add(new Object[]{
-                "interface a implements "+type[0]+","+type[0]+", "+type[0]+"{}",
-                "(interface a (implements "+type[1]+" "+type[1]+" "+type[1]+") interfaceBody)"
+                "interface a extends "+type[0]+","+type[0]+", "+type[0]+"{}",
+                "(interface a (extends "+type[1]+" "+type[1]+" "+type[1]+") interfaceBody)"
             });
         }
         return collection;

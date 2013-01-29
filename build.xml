@@ -22,7 +22,7 @@
  * Original file was released under Apache License 2.0 as well
  *
 -->
-<project name="TSPHP-grammar" default="build" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
+<project name="TSPHP-parser" default="build" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
 
     <!-- Properties hierarchisch einlesen -->
     <property file="${basedir}/build.properties" />
@@ -49,6 +49,7 @@
     <property name="src.test" location="${src}/test/java" />
     <property name="antlr" location="${src}/main/antlr" />
     <property name="antlr.output" location="${src}/main/antlr/output" />
+    <property name="antlr.copyLocation" location="${src.main}/ch/tutteli/tsphp/parser" />
 
     <!-- setting target locations -->
     <property name="target" location="${basedir}/build" />
@@ -116,7 +117,7 @@
     </target>
 
     <target name="copyAntlr" depends="clean" description="copy antlr generated classes to src/java folder">
-        <copy todir="${src.main}/ch/tutteli/tsphp/grammar">
+        <copy todir="${antlr.copyLocation}">
             <fileset dir="${antlr.output}" includes="TSPHPLexer.java, TSPHPParser.java"/>
         </copy>
     </target>
@@ -125,7 +126,7 @@
         <java classname="org.antlr.Tool" fork="true" failonerror="true">
             <arg value="-verbose"/>
             <arg value="-o"/>
-            <arg path="${src.main}/ch/tutteli/tsphp/grammar"/>
+            <arg path="${antlr.copyLocation}"/>
             <arg path="${antlr}/TSPHP.g"/>
              <classpath>
                 <path refid="libset" />

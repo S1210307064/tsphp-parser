@@ -151,7 +151,6 @@ tokens{
 	EXCEPTION_LIST;
 	EXPRESSION_LIST;
 	FUNCTION_CALL;
-	FUNCTION_DECLARATION;
 	INTERFACE_BODY;	
 	MEMBER_ACCESS;
 	MEMBER_ACCESS_STATIC;
@@ -215,7 +214,8 @@ package ch.tutteli.tsphp.parser;
 package ch.tutteli.tsphp.parser;
 }
 
-prog	:	namespaceSemicolon+ EOF!
+compilationUnit	
+	:	namespaceSemicolon+ EOF!
 	|	namespaceBracket+ EOF!
 	|	withoutNamespace EOF!
 	;
@@ -352,19 +352,19 @@ accessModifierOrPublic
 
 
 abstractMethodDeclaration
-	:	abstr='abstract' accessModifierWithoutPrivateOrPublic functionDeclarationWithoutBody ';'
+	:	abstr='abstract' accessModifierWithoutPrivateOrPublic 'function' functionSignatureInclReturnType ';'
 		-> ^(METHOD_DECLARATION[$abstractMethodDeclaration.start,"method"]  
 			^(MODIFIER[$abstr,"modifier"] $abstr) accessModifierWithoutPrivateOrPublic
-			functionDeclarationWithoutBody 
+			functionSignatureInclReturnType 
 		) 
 	;
 
 methodDeclaration	
-	:	methodModifier? accessModifierOrPublic functionDeclarationWithoutBody block='{' instructionWithoutBreakContinue* '}' 
+	:	methodModifier? accessModifierOrPublic 'function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
 		-> ^(METHOD_DECLARATION[$methodDeclaration.start,"method"]  
 			^(MODIFIER[$methodModifier.start,"modifier"] methodModifier?)
 			accessModifierOrPublic
-			functionDeclarationWithoutBody 
+			functionSignatureInclReturnType 
 			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
 		) 
 	;	
@@ -388,17 +388,24 @@ constructDeconstruct
 	;
 
 interfaceDeclaration
-	:	'interface' Identifier (impl='implements' identifierList)? block='{' interfaceBody* '}'
-		-> ^('interface' Identifier ^(Implements[$impl,"implements"] identifierList?) ^(INTERFACE_BODY[$block,"interfaceBody"] interfaceBody*))
+	:	'interface' Identifier (ext='extends' identifierList)? block='{' interfaceBody* '}'
+		-> ^('interface' Identifier ^(Extends[$ext,"extends"] identifierList?) ^(INTERFACE_BODY[$block,"interfaceBody"] interfaceBody*))
 	;
 
 interfaceBody
 	:	constDeclarationList
 	|	interfaceMethodDeclaration
+	|	interfaceConstruct
 	;
 
 interfaceMethodDeclaration
-	:	'public'? functionDeclarationWithoutBody ';'
+	:	'public'? 'function' functionSignatureInclReturnType ';'
+		-> ^(METHOD_DECLARATION[$interfaceMethodDeclaration.start,"method"]  functionSignatureInclReturnType 
+		) 
+	;
+
+interfaceConstruct
+	:	 'public'? 'function' '__construct' formalParameters ';' -> ^('__construct' formalParameters)
 	;
 
 
@@ -406,12 +413,12 @@ interfaceMethodDeclaration
 /******* Procedural related - is also be used by OOP ************/
 //***************************************************************/
 functionDeclaration	
-	:	functionDeclarationWithoutBody block='{' instructionWithoutBreakContinue* '}' 
-		-> ^(FUNCTION_DECLARATION[$functionDeclarationWithoutBody.start,"functionDeclaration"] functionDeclarationWithoutBody ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))
+	:	'function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
+		-> ^('function' functionSignatureInclReturnType ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))
 	;
 	
-functionDeclarationWithoutBody
-	:	'function'! returnType Identifier formalParameters
+functionSignatureInclReturnType
+	:	returnType Identifier formalParameters
 	;
 	
 returnType
