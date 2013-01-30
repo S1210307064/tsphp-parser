@@ -1,7 +1,8 @@
 TSPHP Grammar
 =====
-| This repository contains the ANTLR v3 based grammar as well as the tree grammar for TSPHP.
-| Visit the `wiki <http://tsphp.tutteli.ch/>`_ for more information on the project and it's `repository <http://bitbucket.org/rstoll/tsphp>`_.
+| This repository contains the parser for TSPHP.
+| You will find a grammar definition of the parser written for ANTLR v3.5 in /src/main/antlr folder
+| Please visit the `project's homepage <http://tsphp.tutteli.ch/>`_ for more information.
 
 
 | 

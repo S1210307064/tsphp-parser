@@ -16,6 +16,7 @@
  */
 package ch.tutteli.tsphp.parser;
 
+import ch.tutteli.tsphp.common.IErrorReporter;
 import java.util.ArrayList;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -26,10 +27,10 @@ import org.antlr.runtime.TokenStream;
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-public class TSPHPErrorReportingParser extends TSPHPParser
+public class TSPHPErrorReportingParser extends TSPHPParser implements IErrorReporter
 {
 
-    protected List<RecognitionException> exceptions = new ArrayList<>();
+    protected List<Exception> exceptions = new ArrayList<>();
 
     public TSPHPErrorReportingParser(TokenStream input) {
         super(input);
@@ -39,7 +40,13 @@ public class TSPHPErrorReportingParser extends TSPHPParser
         super(input, state);
     }
 
-    public List<RecognitionException> getExceptions() {
+    @Override
+    public boolean hasFoundError() {
+        return !exceptions.isEmpty();
+    }
+
+    @Override
+    public List<Exception> getExceptions() {
         return exceptions;
     }
 

@@ -16,6 +16,7 @@
  */
 package ch.tutteli.tsphp.parser;
 
+import ch.tutteli.tsphp.common.IErrorReporter;
 import java.util.ArrayList;
 import java.util.List;
 import org.antlr.runtime.CharStream;
@@ -26,10 +27,10 @@ import org.antlr.runtime.RecognizerSharedState;
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-public class TSPHPErrorReportingLexer extends TSPHPLexer
+public class TSPHPErrorReportingLexer extends TSPHPLexer implements IErrorReporter
 {
 
-    protected List<RecognitionException> exceptions = new ArrayList<>();
+    protected List<Exception> exceptions = new ArrayList<>();
 
     public TSPHPErrorReportingLexer() {
     }
@@ -42,7 +43,13 @@ public class TSPHPErrorReportingLexer extends TSPHPLexer
         super(input, state);
     }
 
-    public List<RecognitionException> getExceptions() {
+    @Override
+    public boolean hasFoundError() {
+        return !exceptions.isEmpty();
+    }
+
+    @Override
+    public List<Exception> getExceptions() {
         return exceptions;
     }
 

@@ -17,24 +17,22 @@
  */
 package ch.tutteli.tsphp.parser;
 
-import org.antlr.runtime.ANTLRStringStream;
+import java.io.IOException;
+import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.CharStream;
 
 /**
  * @author Robert Stoll
  */
-public class ANTLRNoCaseStringStream extends ANTLRStringStream
+public class ANTLRNoCaseFileStream extends ANTLRFileStream
 {
 
-    public ANTLRNoCaseStringStream() {
+    public ANTLRNoCaseFileStream(String fileName) throws IOException {
+        super(fileName);
     }
 
-    public ANTLRNoCaseStringStream(String input) {
-        super(input);
-    }
-
-    public ANTLRNoCaseStringStream(char[] data, int numberOfActualCharsInArray) {
-        super(data, numberOfActualCharsInArray);
+    public ANTLRNoCaseFileStream(String fileName, String encoding) throws IOException {
+        super(fileName, encoding);
     }
 
     @Override
