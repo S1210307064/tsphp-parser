@@ -98,8 +98,8 @@ public class ParserFacade implements IParser
             return getAst(input);
         } catch (RecognitionException ex) {
             //should never happen, TSPHPParser catches it already. But just in case
-            
-            parseException = ex;            
+
+            parseException = ex;
             return getErrorAst(ex);
         }
     }

@@ -1,4 +1,4 @@
-TSPHP Grammar
+TSPHP-parser
 =====
 | This repository contains the parser for TSPHP.
 | You will find a grammar definition of the parser written for ANTLR v3.5 in /src/main/antlr folder
