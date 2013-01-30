@@ -61,7 +61,7 @@ public class ArrayAccessTest extends AAstTest
                         "int $d = foo()[0]->foo('hallo')->bar()[2][3];",
                         "(variables int ($d "
                             + "(arrayAccess (arrayAccess (methodCall (methodCall (arrayAccess "
-                                + "(functionCall (typeName foo) parameters)"
+                                + "(functionCall foo parameters)"
                             + " 0) foo (parameters 'hallo')) bar parameters) 2) 3)"
                         + "))"
                     },
@@ -70,7 +70,7 @@ public class ArrayAccessTest extends AAstTest
                         "(variables int ($d "
                             + "(arrayAccess (arrayAccess (methodCall "
                                 + "(arrayAccess (arrayAccess (methodCall (methodCall (arrayAccess "
-                                    + "(functionCall (typeName foo) parameters)"
+                                    + "(functionCall foo parameters)"
                                 + " 0) foo (parameters 'hallo')) bar parameters) 2) 3)"
                             + " fo parameters) 2) (+ 3 1))"
                         + "))"
@@ -81,7 +81,7 @@ public class ArrayAccessTest extends AAstTest
                             + "(methodCall (arrayAccess (arrayAccess (methodCall "
                                 + "(arrayAccess (methodCall "
                                     + "(arrayAccess (arrayAccess (methodCall (memberAccess (arrayAccess "
-                                        + "(functionCall (typeName foo) parameters)"
+                                        + "(functionCall foo parameters)"
                                 + " 0) a) foo (parameters 'hallo')) 0) $a)"
                                 + " bar parameters) 2)"
                             + " foo parameters) 3) 5) foo parameters)"
@@ -115,7 +115,7 @@ public class ArrayAccessTest extends AAstTest
                         "array $d = foo()[" + expression[0] + "][" + expression[0] + "];",
                         "(variables array ($d "
                             + "(arrayAccess (arrayAccess "
-                                + "(functionCall (typeName foo) parameters)"
+                                + "(functionCall foo parameters)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + "))"
                     });
@@ -147,7 +147,7 @@ public class ArrayAccessTest extends AAstTest
                         "array $d = Foo::foo()[" + expression[0] + "][" + expression[0] + "];",
                         "(variables array ($d "
                             + "(arrayAccess (arrayAccess "
-                                + "(methodCall (typeName Foo) foo parameters)"
+                                + "(methodCall Foo foo parameters)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + "))"
                     });

@@ -48,24 +48,24 @@ public class TryCatchTest extends AAstTest
                         "try{$a=1;}catch(\\Exception $e){}",
                         "(try "
                             + "(block (= $a 1)) "
-                            + "(catch (exceptions ($e (typeName \\ Exception))) block)"
+                            + "(catch (exceptions ($e \\Exception)) block)"
                         + ")"
                     },
                     {
                         "try{$a=1;}catch(\\Exception $e){} catch(\\a\\MyException $e){$a=1;$b=2;}",
                         "(try "
                             + "(block (= $a 1)) "
-                            + "(catch (exceptions ($e (typeName \\ Exception))) block) "
-                            + "(catch (exceptions ($e (typeName \\ a MyException))) (block (= $a 1) (= $b 2)))"
+                            + "(catch (exceptions ($e \\Exception)) block) "
+                            + "(catch (exceptions ($e \\a\\MyException)) (block (= $a 1) (= $b 2)))"
                         + ")"
                     },
                     {
                         "try{$a=1;}catch(a $e){} catch(b $e){$a=1;$b=2;}catch(c $e){}",
                         "(try "
                             + "(block (= $a 1)) "
-                            + "(catch (exceptions ($e (typeName a))) block) "
-                            + "(catch (exceptions ($e (typeName b))) (block (= $a 1) (= $b 2))) "
-                            + "(catch (exceptions ($e (typeName c))) block)"
+                            + "(catch (exceptions ($e a)) block) "
+                            + "(catch (exceptions ($e b)) (block (= $a 1) (= $b 2))) "
+                            + "(catch (exceptions ($e c)) block)"
                         + ")"
                     },
         });

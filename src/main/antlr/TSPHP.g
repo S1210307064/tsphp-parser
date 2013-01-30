@@ -157,6 +157,7 @@ tokens{
 	METHOD_CALL;
 	METHOD_DECLARATION;
 	MODIFIER;
+	NAMESPACE_BODY;
 	PARAM_DECLARATION;
 	PARAM_LIST;
 	PARAM_TYPE;
@@ -221,18 +222,18 @@ compilationUnit
 	
 namespaceSemicolon
 	:	'namespace' namespaceId block=';' statement* 
-		-> ^('namespace' ^(TYPE[$namespaceId.start,"type"] namespaceId) ^(BLOCK[$block,"block"] statement*))
+		-> ^('namespace' TYPE_NAME[$namespaceId.start,$namespaceId.text] ^(NAMESPACE_BODY[$block,"namespaceBody"] statement*))
 	;
 
 namespaceBracket
 	:	'namespace' namespaceIdOrEmpty  block='{' statement* '}' 
 		-> 	^('namespace' 
-				^(TYPE[$namespaceIdOrEmpty.start,"type"] namespaceIdOrEmpty) 
-				^(BLOCK[$block,"block"] statement*)
+				namespaceIdOrEmpty
+				^(NAMESPACE_BODY[$block,"namespaceBody"] statement*)
 			)
 	;
 namespaceIdOrEmpty
-	:	namespaceId
+	:	namespaceId -> TYPE_NAME[$namespaceId.start,$namespaceId.text] 
 	|	/* empty */ -> DEFAULT_NAMESPACE[$namespaceIdOrEmpty.start,"default"]
 	;
 
@@ -250,8 +251,8 @@ Identifier
 
 withoutNamespace 
 	:	(statement+) -> ^(Namespace[$statement.start,"namespace"]
-					^(TYPE[$statement.start,"type"] DEFAULT_NAMESPACE[$statement.start,"default"]) 
-					^(BLOCK[$statement.start,"block"] statement+)
+					DEFAULT_NAMESPACE[$statement.start,"default"] 
+					^(NAMESPACE_BODY[$statement.start,"namespaceBody"] statement+)
 				) 
 	;
 
@@ -267,12 +268,12 @@ useDeclarationList
 	;
 	
 useDeclaration
-	:	useDeclarationWithoutAs ('as'! Identifier)?
+	:	usingType ('as' Identifier)? -> TYPE_NAME[$usingType.start,$usingType.text] Identifier?
 	;
 	
-useDeclarationWithoutAs
-	:	root=Identifier '\\' namespaceId -> ^(TYPE[$root,"type"] $root namespaceId)
-	|	root='\\' namespaceId ->  ^(TYPE[$root,"type"] $root namespaceId)
+usingType
+	:	root=Identifier '\\' namespaceId 
+	|	root='\\' namespaceId
 	;
 definition
 	:	classDeclaration
@@ -427,7 +428,7 @@ allTypes
 allTypesWithoutObjectAndResource
 	:	primitiveTypesWithoutResource
 	| 	classInterfaceTypeWithoutObject
-	;
+		;
 
 scalarTypes
 	:	TypeBool
@@ -447,7 +448,7 @@ primitiveTypesInclResource
 	;
 
 classInterfaceTypeWithoutObject
-	:	root='\\'? namespaceId -> ^(TYPE_NAME[$classInterfaceTypeWithoutObject.start,"typeName"] $root? namespaceId)
+	:	root='\\'? namespaceId -> TYPE_NAME[$classInterfaceTypeWithoutObject.start, $classInterfaceTypeWithoutObject.text]
 	;
 	
 classInterfaceTypeInclObject

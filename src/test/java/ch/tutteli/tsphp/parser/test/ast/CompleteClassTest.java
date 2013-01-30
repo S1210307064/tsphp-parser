@@ -65,7 +65,7 @@ public class CompleteClassTest extends AAstTest
                                 + "}\n"
                             + "}\n"
                         + "}\n",
-                        "(class classModifier A (extends (typeName B)) (implements (typeName \\ A)) (classBody "
+                        "(class classModifier A (extends B) (implements \\A) (classBody "
                             +"(constants bool (A true) (B null) (C false)) "
                             +"(classMember modifier private (variables int $a ($b 1) ($c (cast int '1')))) "
                             +"(__construct public (parameters (parameterDeclaration (type typeModifier int) $number))"
@@ -75,7 +75,7 @@ public class CompleteClassTest extends AAstTest
                                 + ")"
                             + ") "
                             +"(classMember modifier protected "
-                                + "(variables (typeName C) ($a (new (typeName C) parameters)) $b ($c null))) "
+                                + "(variables C ($a (new C parameters)) $b ($c null))) "
                             +"(method modifier public void set (parameters "
                                     + "(parameterDeclaration (type typeModifier int) $b) "
                                     + "(parameterDeclaration (type (typeModifier cast) float) $c)"

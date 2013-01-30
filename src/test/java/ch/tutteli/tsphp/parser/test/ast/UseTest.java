@@ -17,8 +17,11 @@
 package ch.tutteli.tsphp.parser.test.ast;
 
 import ch.tutteli.tsphp.parser.test.utils.AAstTest;
+import ch.tutteli.tsphp.parser.test.utils.TypeHelper;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -43,77 +46,79 @@ public class UseTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                    {"use \\Exception;","(use (useDeclaration (type \\ Exception)))"},
-                    {"use \\a\\a;","(use (useDeclaration (type \\ a a)))"},
-                    {"use a\\a;","(use (useDeclaration (type a a)))"},
-                    {"use a\\a\\b;","(use (useDeclaration (type a a b)))"},
-                    {
-                        "use \\Exception as MyException;", 
-                        "(use (useDeclaration (type \\ Exception) MyException))"
-                    },
-                    {"use \\a\\a as b;","(use (useDeclaration (type \\ a a) b))"},
-                    {"use a\\a as b;","(use (useDeclaration (type a a) b))"},
-                    {"use a\\a\\b as c;","(use (useDeclaration (type a a b) c))"},
+        List<Object[]> collection = new ArrayList<>();
+        String[][] types = TypeHelper.getClassInterfaceTypes();
+        boolean isFirstEntry = true;
+        for (String[] type : types) {
+            if (!isFirstEntry) {
+                collection.add(new Object[]{"use " + type[0] + ";", "(use (useDeclaration " + type[1] + "))"});
+                collection.add(new Object[]{"use " + type[0] + " as MyClass;", "(use (useDeclaration " + type[1] + " MyClass))"});
+
+            }
+            isFirstEntry = false;
+        }
+
+        collection.addAll(Arrays.asList(new Object[][]{
                     //comma initialisation
                     {
-                        "use \\Exception, a\\a;", 
+                        "use \\Exception, a\\a;",
                         "(use "
-                            + "(useDeclaration (type \\ Exception)) "
-                            + "(useDeclaration (type a a))"
+                        + "(useDeclaration \\Exception) "
+                        + "(useDeclaration a\\a)"
                         + ")"
                     },
                     {
-                        "use \\a\\a, \\Exception;", 
+                        "use \\a\\a, \\Exception;",
                         "(use "
-                            + "(useDeclaration (type \\ a a)) "
-                            + "(useDeclaration (type \\ Exception))"
+                        + "(useDeclaration \\a\\a) "
+                        + "(useDeclaration \\Exception)"
                         + ")"
                     },
                     {
                         "use a\\a, \\Exception as b;",
-                         "(use "
-                            + "(useDeclaration (type a a)) "
-                            + "(useDeclaration (type \\ Exception) b)"
+                        "(use "
+                        + "(useDeclaration a\\a) "
+                        + "(useDeclaration \\Exception b)"
                         + ")"
                     },
                     {
                         "use a\\a\\b, \\a\\b\\c as d;",
-                         "(use "
-                            + "(useDeclaration (type a a b)) "
-                            + "(useDeclaration (type \\ a b c) d)"
+                        "(use "
+                        + "(useDeclaration a\\a\\b) "
+                        + "(useDeclaration \\a\\b\\c d)"
                         + ")"
                     },
                     {
                         "use \\Exception as MyException, \\a\\b;",
-                         "(use "
-                            + "(useDeclaration (type \\ Exception) MyException) "
-                            + "(useDeclaration (type \\ a b))"
+                        "(use "
+                        + "(useDeclaration \\Exception MyException) "
+                        + "(useDeclaration \\a\\b)"
                         + ")"
                     },
                     {
                         "use a\\a as b, a\\b;",
-                          "(use "
-                            + "(useDeclaration (type a a) b) "
-                            + "(useDeclaration (type a b))"
+                        "(use "
+                        + "(useDeclaration a\\a b) "
+                        + "(useDeclaration a\\b)"
                         + ")"
                     },
                     {
                         "use a\\a\\b as c, a\\a, \\Exception;",
                         "(use "
-                            + "(useDeclaration (type a a b) c) "
-                            + "(useDeclaration (type a a)) "
-                            + "(useDeclaration (type \\ Exception))"
+                        + "(useDeclaration a\\a\\b c) "
+                        + "(useDeclaration a\\a) "
+                        + "(useDeclaration \\Exception)"
                         + ")"
                     },
-                     {
+                    {
                         "use a\\a\\b as c, a\\a, \\Exception as d;",
                         "(use "
-                            + "(useDeclaration (type a a b) c) "
-                            + "(useDeclaration (type a a)) "
-                            + "(useDeclaration (type \\ Exception) d)"
+                        + "(useDeclaration a\\a\\b c) "
+                        + "(useDeclaration a\\a) "
+                        + "(useDeclaration \\Exception d)"
                         + ")"
                     }
-                });
+                }));
+        return collection;
     }
 }

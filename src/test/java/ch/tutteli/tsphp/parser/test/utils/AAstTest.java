@@ -26,7 +26,7 @@ import org.junit.Ignore;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @Ignore
-public class AAstTest extends AParserTest
+public abstract class AAstTest extends AParserTest
 {
 
     protected String expectedResult;

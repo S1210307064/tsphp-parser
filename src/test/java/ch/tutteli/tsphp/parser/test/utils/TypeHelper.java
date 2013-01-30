@@ -36,12 +36,12 @@ public class TypeHelper
 
     public static String[][] getClassInterfaceTypes() {
         return new String[][]{
-                    {"a", "(typeName a)"},
-                    {"a\\A", "(typeName a A)"},
-                    {"a\\b\\A", "(typeName a b A)"},
-                    {"\\a", "(typeName \\ a)"},
-                    {"\\a\\A", "(typeName \\ a A)"},
-                    {"\\a\\b\\A", "(typeName \\ a b A)"}
+                    {"a", "a"},
+                    {"a\\A", "a\\A"},
+                    {"a\\b\\A", "a\\b\\A"},
+                    {"\\a", "\\a"},
+                    {"\\a\\A", "\\a\\A"},
+                    {"\\a\\b\\A", "\\a\\b\\A"}
                 };
     }
 

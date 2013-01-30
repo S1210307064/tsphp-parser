@@ -53,7 +53,7 @@ public class CompleteInterfaceTest extends AAstTest
                             +"// a comment\n"
                             + "function void set(int $b,cast float $c);\n"
                         + "}\n",
-                        "(interface A (extends (typeName B)) (interfaceBody "
+                        "(interface A (extends B) (interfaceBody "
                             +"(constants bool (A true) (B null) (C false)) "
                             +"(__construct (parameters (parameterDeclaration (type typeModifier int) $number))) "
                             +"(method void set (parameters "

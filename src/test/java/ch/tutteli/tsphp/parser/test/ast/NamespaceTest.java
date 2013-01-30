@@ -49,40 +49,40 @@ public class NamespaceTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"namespace a; \n $a=1; $b=1;", "(namespace (type a) (block (= $a 1) (= $b 1)))"},
-                    {"namespace a { \n $a=1; $b=1;}", "(namespace (type a) (block (= $a 1) (= $b 1)))"},
+                    {"namespace a; \n $a=1; $b=1;", "(namespace a (namespaceBody (= $a 1) (= $b 1)))"},
+                    {"namespace a { \n $a=1; $b=1;}", "(namespace a (namespaceBody (= $a 1) (= $b 1)))"},
                     {
                         "namespace a; $a=1; namespace b; $b=1;",
-                        "(namespace (type a) (block (= $a 1))) "
-                        + "(namespace (type b) (block (= $b 1)))"
+                        "(namespace a (namespaceBody (= $a 1))) "
+                        + "(namespace b (namespaceBody (= $b 1)))"
                     },
                     {
                         "namespace a { $a=1;} namespace b{ $b=1;}",
-                        "(namespace (type a) (block (= $a 1))) "
-                        + "(namespace (type b) (block (= $b 1)))"
+                        "(namespace a (namespaceBody (= $a 1))) "
+                        + "(namespace b (namespaceBody (= $b 1)))"
                     },
                     {
                         "namespace a\\b; \n $a=1; $b=1;",
-                        "(namespace (type a b) (block (= $a 1) (= $b 1)))"
+                        "(namespace a\\b (namespaceBody (= $a 1) (= $b 1)))"
                     },
                     {
                         "namespace a\\b\\c { \n $a=1; $b=1;}",
-                        "(namespace (type a b c) (block (= $a 1) (= $b 1)))"
+                        "(namespace a\\b\\c (namespaceBody (= $a 1) (= $b 1)))"
                     },
                     {
                         "namespace a\\b\\c; $a=1; namespace d\\e; $b=1;",
-                        "(namespace (type a b c) (block (= $a 1))) "
-                        + "(namespace (type d e) (block (= $b 1)))"
+                        "(namespace a\\b\\c (namespaceBody (= $a 1))) "
+                        + "(namespace d\\e (namespaceBody (= $b 1)))"
                     },
                     {
                         "namespace a\\b { $a=1;} namespace c\\d\\e{ $b=1;}",
-                        "(namespace (type a b) (block (= $a 1))) "
-                        + "(namespace (type c d e) (block (= $b 1)))"
+                        "(namespace a\\b (namespaceBody (= $a 1))) "
+                        + "(namespace c\\d\\e (namespaceBody (= $b 1)))"
                     },
                     //default
-                    {"namespace{$a=1;}", "(namespace (type default) (block (= $a 1)))"},
+                    {"namespace{$a=1;}", "(namespace default (namespaceBody (= $a 1)))"},
                     //without namespace
-                    {"$a=1;", "(namespace (type default) (block (= $a 1)))"}
+                    {"$a=1;", "(namespace default (namespaceBody (= $a 1)))"}
                 });
     }
 }

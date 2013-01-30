@@ -48,24 +48,24 @@ public class FunctionCallTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"foo();", "(functionCall (typeName foo) parameters)"},
-                    {"\\foo();", "(functionCall (typeName \\ foo) parameters)"},
-                    {"a\\foo();", "(functionCall (typeName a foo) parameters)"},
-                    {"a\\a\\foo();", "(functionCall (typeName a a foo) parameters)"},
-                    {"a\\a\\b\\foo();", "(functionCall (typeName a a b foo) parameters)"},
-                    {"\\a\\foo();", "(functionCall (typeName \\ a foo) parameters)"},
-                    {"\\a\\b\\foo();", "(functionCall (typeName \\ a b foo) parameters)"},
-                    {"\\a\\b\\c\\foo();", "(functionCall (typeName \\ a b c foo) parameters)"},
+                    {"foo();", "(functionCall foo parameters)"},
+                    {"\\foo();", "(functionCall \\foo parameters)"},
+                    {"a\\foo();", "(functionCall a\\foo parameters)"},
+                    {"a\\a\\foo();", "(functionCall a\\a\\foo parameters)"},
+                    {"a\\a\\b\\foo();", "(functionCall a\\a\\b\\foo parameters)"},
+                    {"\\a\\foo();", "(functionCall \\a\\foo parameters)"},
+                    {"\\a\\b\\foo();", "(functionCall \\a\\b\\foo parameters)"},
+                    {"\\a\\b\\c\\foo();", "(functionCall \\a\\b\\c\\foo parameters)"},
                     {
                         "foo()->bar(2,2);", 
                         "(methodCall "
-                            + "(functionCall (typeName foo) parameters)"
+                            + "(functionCall foo parameters)"
                         + " bar (parameters 2 2))"
                     },
                     {
                         "foo()->bar(2,2)->asdf(1);", 
                         "(methodCall (methodCall "
-                            + "(functionCall (typeName foo) parameters)"
+                            + "(functionCall foo parameters)"
                         + " bar (parameters 2 2)) asdf (parameters 1))"
                     },
                 }));
@@ -73,11 +73,11 @@ public class FunctionCallTest extends AAstTest
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "foo("+expression[0]+");", 
-                        "(functionCall (typeName foo) (parameters "+expression[1]+"))"
+                        "(functionCall foo (parameters "+expression[1]+"))"
             });
             collection.add(new Object[]{
                         "foo("+expression[0]+","+expression[0]+","+expression[0]+");",
-                        "(functionCall (typeName foo) (parameters "
+                        "(functionCall foo (parameters "
                         + ""+expression[1]+" "+expression[1]+" "+expression[1]+""
                         + "))"
                     });

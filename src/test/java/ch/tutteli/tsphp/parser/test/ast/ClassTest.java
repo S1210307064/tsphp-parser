@@ -89,40 +89,40 @@ public class ClassTest extends AAstTest
                     {
                         "class a extends b implements c{}",
                         "(class classModifier a "
-                            + "(extends (typeName b)) "
-                            + "(implements (typeName c))"
+                            + "(extends b) "
+                            + "(implements c)"
                         + " classBody)"
                     },
                     {
                         "final class a extends b implements c{}",
                         "(class (classModifier final) a "
-                            + "(extends (typeName b)) "
-                            + "(implements (typeName c))"
+                            + "(extends b) "
+                            + "(implements c)"
                         + " classBody)"
                     },
                     {
                         "abstract class a extends b implements c{}",
                          "(class (classModifier abstract) a "
-                            + "(extends (typeName b)) "
-                            + "(implements (typeName c))"
+                            + "(extends b) "
+                            + "(implements c)"
                         + " classBody)"
                     },
                     {
                         "class a extends b,c implements f,g,h,i{}",
                         "(class classModifier a "
-                            + "(extends (typeName b) (typeName c)) "
+                            + "(extends b c) "
                             + "(implements "
-                                    + "(typeName f) (typeName g) "
-                                    + "(typeName h) (typeName i)"
+                                    + "f g "
+                                    + "h i"
                             + ")"
                         + " classBody)"
                     },
                     {
                         "final class a extends b,c,d implements f,g,h{}",
                         "(class (classModifier final) a "
-                            + "(extends (typeName b) (typeName c) (typeName d)) "
+                            + "(extends b c d) "
                             + "(implements "
-                                    + "(typeName f) (typeName g) (typeName h)"
+                                    + "f g h"
                             + ")"
                         + " classBody)"
                             
@@ -131,11 +131,11 @@ public class ClassTest extends AAstTest
                         "abstract class a extends b,c,d,e implements f,g{}",
                         "(class (classModifier abstract) a "
                             + "(extends "
-                                + "(typeName b) (typeName c) "
-                                + "(typeName d) (typeName e)"
+                                + "b c "
+                                + "d e"
                             + ") "
                             + "(implements "
-                                    + "(typeName f) (typeName g)"
+                                    + "f g"
                             + ")"
                         + " classBody)"
                     },
