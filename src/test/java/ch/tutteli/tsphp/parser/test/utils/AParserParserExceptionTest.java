@@ -41,9 +41,9 @@ public abstract class AParserParserExceptionTest extends AParserExceptionTest
 
         Assert.assertTrue(testString + " - lexer.exceptions is not empty ", lexer.getExceptions().isEmpty());
 
-        List<RecognitionException> exceptions = parser.getExceptions();;
+        List<Exception> exceptions = parser.getExceptions();;
         Assert.assertFalse(testString + " - exceptions is empty ", exceptions.isEmpty());
-        RecognitionException ex = exceptions.get(0);
+        RecognitionException ex = (RecognitionException) exceptions.get(0);
         Assert.assertTrue(testString + " - wrong type", exceptionType.isInstance(ex));
         Assert.assertEquals(testString + " - token wrong", token, ex.c);
         Assert.assertEquals(testString + " - position wrong", position, ex.charPositionInLine);

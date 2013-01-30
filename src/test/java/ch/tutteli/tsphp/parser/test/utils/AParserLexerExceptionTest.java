@@ -36,9 +36,9 @@ public abstract class AParserLexerExceptionTest extends AParserExceptionTest
     public void parseExpectingException() throws RecognitionException {
         parse();
 
-        List<RecognitionException> exceptions = lexer.getExceptions();;
+        List<Exception> exceptions = lexer.getExceptions();;
         Assert.assertFalse(testString + " - exceptions is empty ", exceptions.isEmpty());
-        RecognitionException ex = exceptions.get(0);
+        RecognitionException ex = (RecognitionException) exceptions.get(0);
         Assert.assertTrue(testString + " - wrong type", exceptionType.isInstance(ex));
         Assert.assertEquals(testString + " - wrong character", token, ex.c);
         Assert.assertEquals(testString + " - wrong position", position, ex.charPositionInLine);
