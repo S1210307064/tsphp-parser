@@ -51,7 +51,7 @@ public class NewClassTest extends AAstTest
                     {"new Type;", "(new Type parameters)"},
                     {"new Type();", "(new Type parameters)"}
                 }));
-        String[][] expressions = ExpressionHelper.getAstExpressions();
+        Object[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{"new Type(" + expression[0] + ");", "(new Type (parameters " + expression[1] + "))"});
             collection.add(new Object[]{

@@ -50,7 +50,7 @@ public class ExitTest extends AAstTest
 
         collection.addAll(Arrays.asList(new Object[][]{
                     {"exit;", "exit"},}));
-        String[][] expressions = ExpressionHelper.getAstExpressions();
+        Object[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{"exit(" + expression[0] + ");", "(exit " + expression[1] + ")"});
         }

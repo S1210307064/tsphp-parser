@@ -69,7 +69,7 @@ public class FunctionCallTest extends AAstTest
                         + " bar (parameters 2 2)) asdf (parameters 1))"
                     },
                 }));
-        String[][] expressions = ExpressionHelper.getAstExpressions();
+        Object[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "foo("+expression[0]+");", 

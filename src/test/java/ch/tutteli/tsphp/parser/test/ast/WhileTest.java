@@ -55,10 +55,10 @@ public class WhileTest extends AAstTest
                     {"do {$a=1;} while( true  );", "(do (block (= $a 1)) true)"},
                     {"do {$a=1;$b=2;}while( true  );", "(do (block (= $a 1) (= $b 2)) true)"}
                 }));
-         String[][] expressions = ExpressionHelper.getAstExpressions();
+        Object[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
-            collection.add(new Object[]{"while("+expression[0]+") $a=1;","(while "+expression[1]+" (= $a 1))"});
-            collection.add(new Object[]{"do $a=1; while("+expression[0]+");","(do (= $a 1) "+expression[1]+")"});
+            collection.add(new Object[]{"while(" + expression[0] + ") $a=1;", "(while " + expression[1] + " (= $a 1))"});
+            collection.add(new Object[]{"do $a=1; while(" + expression[0] + ");", "(do (= $a 1) " + expression[1] + ")"});
         }
         return collection;
     }

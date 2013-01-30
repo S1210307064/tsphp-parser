@@ -57,16 +57,16 @@ public class MethodTest extends AAstTest
         for (String[] type : types) {
             collection.add(new Object[]{
                         "function " + type[0] + " get(){}",
-                        "(method modifier public " + type[1] + " get parameters block)"
+                        "(methodDeclaration modifier public " + type[1] + " get parameters block)"
                     });
         }
         //normal
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", "){}",
-                "(method modifier public void set ", " block)"));
+                "(methodDeclaration modifier public void set ", " block)"));
 
         collection.addAll(ParameterListHelper.getVariationsForOptional(
-                "function void foo(", "){$a=1;}", "(method modifier public void foo ", " (block (= $a 1)))"));
+                "function void foo(", "){$a=1;}", "(methodDeclaration modifier public void foo ", " (block (= $a 1)))"));
 
         //modifiers
         collection.addAll(getVariations("", "modifier"));
@@ -77,15 +77,15 @@ public class MethodTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "abstract function void foo();",
-                        "(method (modifier abstract) public void foo parameters)"
+                        "(methodDeclaration (modifier abstract) public void foo parameters)"
                     },
                     {
                         "abstract protected function void foo();",
-                        "(method (modifier abstract) protected void foo parameters)"
+                        "(methodDeclaration (modifier abstract) protected void foo parameters)"
                     },
                     {
                         "abstract public function void foo();",
-                        "(method (modifier abstract) public void foo parameters)"
+                        "(methodDeclaration (modifier abstract) public void foo parameters)"
                     }
                 }));
 
@@ -96,19 +96,19 @@ public class MethodTest extends AAstTest
         return Arrays.asList(new Object[][]{
                     {
                         modifier + " function void foo(){}",
-                        "(method " + modifierExpected + " public void foo parameters block)"
+                        "(methodDeclaration " + modifierExpected + " public void foo parameters block)"
                     },
                     {
                         modifier + " private function void foo(){}",
-                        "(method " + modifierExpected + " private void foo parameters block)"
+                        "(methodDeclaration " + modifierExpected + " private void foo parameters block)"
                     },
                     {
                         modifier + " protected function void foo(){}",
-                        "(method " + modifierExpected + " protected void foo parameters block)"
+                        "(methodDeclaration " + modifierExpected + " protected void foo parameters block)"
                     },
                     {
                         modifier + " public function void foo(){}",
-                        "(method " + modifierExpected + " public void foo parameters block)"
+                        "(methodDeclaration " + modifierExpected + " public void foo parameters block)"
                     }
                 });
     }

@@ -48,7 +48,7 @@ public class ArrayDeclarationTest extends AAstTest
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{"array $d = [];", "(variables array ($d array))"});
         collection.add(new Object[]{"array $d = array();", "(variables array ($d array))"});
-        String[][] expressions = ExpressionHelper.getAstExpressions();
+        Object[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "array $d = [" + expression[0] + "];",

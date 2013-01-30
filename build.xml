@@ -50,7 +50,8 @@
     <property name="antlr" location="${src}/main/antlr" />
     <property name="antlr.output" location="${src}/main/antlr/output" />
     <property name="antlr.copyLocation" location="${src.main}/ch/tutteli/tsphp/parser" />
-
+    <property name="common.jar" location="${basedir}/../TSPHP-common/build/lib" />
+    
     <!-- setting target locations -->
     <property name="target" location="${basedir}/build" />
     <property name="classes" location="${target}/classes" />
@@ -128,10 +129,16 @@
             <arg value="-o"/>
             <arg path="${antlr.copyLocation}"/>
             <arg path="${antlr}/TSPHP.g"/>
-             <classpath>
+            <classpath>
                 <path refid="libset" />
             </classpath>
         </java>
+    </target>
+    
+    <target name="copyCommon" depends="" description="copy common library to the lib folder">
+        <copy todir="${lib}">
+            <fileset dir="${common.jar}" includes="*.jar"/>
+        </copy>
     </target>
    
     <!-- ================================================================== -->

@@ -53,7 +53,7 @@ public class MethodFunctionTest extends AAstTest
                         "class a {  function void getName(){ $a=1; } }  function void getName(){ $a=1; }",
                         "(namespace default (namespaceBody "
                             + "(class classModifier a extends implements (classBody "
-                                + "(method modifier public void getName parameters (block (= $a 1)))"
+                                + "(methodDeclaration modifier public void getName parameters (block (= $a 1)))"
                             + ")) "
                             + "(function void getName parameters (block (= $a 1)))"
                         + "))"

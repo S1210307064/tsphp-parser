@@ -17,15 +17,16 @@
 package ch.tutteli.tsphp.parser;
 
 import ch.tutteli.tsphp.common.IParser;
+import ch.tutteli.tsphp.common.TSPHPAst;
+import ch.tutteli.tsphp.common.TSPHPAstAdaptorRegistry;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.TokenStream;
 import org.antlr.runtime.tree.CommonErrorNode;
-import org.antlr.runtime.tree.CommonTree;
-import org.antlr.runtime.tree.Tree;
 
 /**
  *
@@ -36,50 +37,52 @@ public class ParserFacade implements IParser
 
     protected TSPHPErrorReportingParser parser;
     protected TSPHPErrorReportingLexer lexer;
+    protected TokenStream tokenStream;
     private Exception parseException;
+    
 
     @Override
-    public Tree parse(String inputStream) {
+    public TSPHPAst parse(String inputStream) {
         return getAstOrErrorAst(new ANTLRNoCaseStringStream(inputStream));
     }
 
     @Override
-    public Tree parse(char[] data, int numberOfActualCharsInArray) {
+    public TSPHPAst parse(char[] data, int numberOfActualCharsInArray) {
         return getAstOrErrorAst(new ANTLRNoCaseStringStream(data, numberOfActualCharsInArray));
     }
 
     @Override
-    public Tree parseInputStream(InputStream inputStream) throws IOException {
+    public TSPHPAst parseInputStream(InputStream inputStream) throws IOException {
         return getAstOrErrorAst(new ANTLRNoCaseInputStream(inputStream));
     }
 
     @Override
-    public Tree parseInputStream(InputStream inputStream, int size) throws IOException {
+    public TSPHPAst parseInputStream(InputStream inputStream, int size) throws IOException {
         return getAstOrErrorAst(new ANTLRNoCaseInputStream(inputStream, size));
     }
 
     @Override
-    public Tree parseInputStream(InputStream inputStream, String encoding) throws IOException {
+    public TSPHPAst parseInputStream(InputStream inputStream, String encoding) throws IOException {
         return getAstOrErrorAst(new ANTLRNoCaseInputStream(inputStream, encoding));
     }
 
     @Override
-    public Tree parseInputStream(InputStream inputStream, int size, String encoding) throws IOException {
+    public TSPHPAst parseInputStream(InputStream inputStream, int size, String encoding) throws IOException {
         return getAstOrErrorAst(new ANTLRNoCaseInputStream(inputStream, size, encoding));
     }
 
     @Override
-    public Tree parseInputStream(InputStream inputStream, int size, int readBufferSize, String encoding) throws IOException {
+    public TSPHPAst parseInputStream(InputStream inputStream, int size, int readBufferSize, String encoding) throws IOException {
         return getAstOrErrorAst(new ANTLRNoCaseInputStream(inputStream, size, readBufferSize, encoding));
     }
 
     @Override
-    public Tree parseFile(String fileName) throws IOException {
+    public TSPHPAst parseFile(String fileName) throws IOException {
         return getAstOrErrorAst(new ANTLRNoCaseFileStream(fileName));
     }
 
     @Override
-    public Tree parseFile(String fileName, String encoding) throws IOException {
+    public TSPHPAst parseFile(String fileName, String encoding) throws IOException {
         return getAstOrErrorAst(new ANTLRNoCaseFileStream(fileName, encoding));
     }
 
@@ -93,7 +96,7 @@ public class ParserFacade implements IParser
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    private Tree getAstOrErrorAst(CharStream input) {
+    private TSPHPAst getAstOrErrorAst(CharStream input) {
         try {
             return getAst(input);
         } catch (RecognitionException ex) {
@@ -104,18 +107,24 @@ public class ParserFacade implements IParser
         }
     }
 
-    private Tree getAst(CharStream input) throws RecognitionException {
+    private TSPHPAst getAst(CharStream input) throws RecognitionException {
         lexer = new TSPHPErrorReportingLexer(input);
 
-        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        tokenStream = new CommonTokenStream(lexer);
 
-        parser = new TSPHPErrorReportingParser(tokens);
-        return (Tree) parser.compilationUnit().getTree();
+        parser = new TSPHPErrorReportingParser(tokenStream);
+        parser.setTreeAdaptor(TSPHPAstAdaptorRegistry.get());
+        return (TSPHPAst) parser.compilationUnit().getTree();
     }
 
-    private Tree getErrorAst(RecognitionException ex) {
-        Tree tree = new CommonTree();
-        tree.addChild(new CommonErrorNode(new CommonTokenStream(lexer), ex.token, ex.token, ex));
-        return tree;
+    private TSPHPAst getErrorAst(RecognitionException ex) {
+        TSPHPAst ast = new TSPHPAst();
+        ast.addChild(new CommonErrorNode(new CommonTokenStream(lexer), ex.token, ex.token, ex));
+        return ast;
+    }
+
+    @Override
+    public TokenStream getTokenStream() {
+        return tokenStream;
     }
 }

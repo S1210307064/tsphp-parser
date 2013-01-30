@@ -56,7 +56,7 @@ public class CompleteInterfaceTest extends AAstTest
                         "(interface A (extends B) (interfaceBody "
                             +"(constants bool (A true) (B null) (C false)) "
                             +"(__construct (parameters (parameterDeclaration (type typeModifier int) $number))) "
-                            +"(method void set (parameters "
+                            +"(methodDeclaration void set (parameters "
                                     + "(parameterDeclaration (type typeModifier int) $b) "
                                     + "(parameterDeclaration (type (typeModifier cast) float) $c)"
                             + "))"

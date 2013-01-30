@@ -76,7 +76,7 @@ public class CompleteClassTest extends AAstTest
                             + ") "
                             +"(classMember modifier protected "
                                 + "(variables C ($a (new C parameters)) $b ($c null))) "
-                            +"(method modifier public void set (parameters "
+                            +"(methodDeclaration modifier public void set (parameters "
                                     + "(parameterDeclaration (type typeModifier int) $b) "
                                     + "(parameterDeclaration (type (typeModifier cast) float) $c)"
                                 + ") (block "

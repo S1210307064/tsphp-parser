@@ -20,7 +20,7 @@ options {
 	backtrack = true; 
 	memoize=true;
 	output=AST;
-	ASTLabelType=CommonTree;
+	ASTLabelType=TSPHPAst;
 }
 
 tokens{
@@ -31,12 +31,12 @@ tokens{
 	At = '@';
 	Backslash = '\\';
 	BitwiseAnd = '&';
-	BitwiseAndEqual = '&=';
+	BitwiseAndAssign = '&=';
 	BitwiseNot = '~';
 	BitwiseOr = '|';
-	BitwiseOrEqual = '|=';
+	BitwiseOrAssign = '|=';
 	BitwiseXor = '^';
-	BitwiseXorEqual = '^=';
+	BitwiseXorAssign = '^=';
 	Break = 'break';
 	Case = 'case';
 	Cast = 'cast';
@@ -51,11 +51,11 @@ tokens{
 	Default = 'default';
 	Deconstruct = '__deconstruct';
 	Divide = '/';
-	DivideEqual = '/=';
+	DivideAssign = '/=';
 	Do = 'do';
 	Dolar = '$';
 	Dot = '.';
-	DotEqual = '.=';
+	DotAssign = '.=';
 	DoubleColon = '::';
 	Echo = 'echo';
 	Else = 'else';
@@ -85,12 +85,12 @@ tokens{
 	LogicOrWeak = 'or';
 	LogicXorWeak = 'xor';
 	Minus = '-';
-	MinusEqual = '-=';
+	MinusAssign = '-=';
 	MinusMinus = '--';
 	Modulo = '%';
-	ModuloEqual = '%=';
+	ModuloAssign = '%=';
 	Multiply = '*';
-	MultiplyEqual = '*=';
+	MultiplyAssign = '*=';
 	Namespace = 'namespace';
 	New = 'new';
 	NotEqual = '!=';
@@ -101,7 +101,7 @@ tokens{
 	Parent = 'parent';
 	ParentColonColon = 'parent::';
 	Plus = '+';
-	PlusEqual = '+=';
+	PlusAssign = '+=';
 	PlusPlus = '++';
 	Private = 'private';
 	Protected = 'protected';
@@ -113,9 +113,9 @@ tokens{
 	RightParanthesis =')';
 	RightSquareBrace = ']';
 	ShiftLeft = '<<';
-	ShiftLeftEqual = '<<=';
+	ShiftLeftAssign = '<<=';
 	ShiftRight = '>>';
-	ShiftRightEqual = '>>=';
+	ShiftRightAssign = '>>=';
 	Static = 'static';
 	This = '$this';
 	Throw = 'throw';
@@ -139,36 +139,50 @@ tokens{
 	While = 'while';
 
 	// Imaginary tokens
+	ACTUAL_PARAMETERS;
 	ARRAY_ACCESS;
 	BLOCK;
 	CAST;
 	CAST_ASSIGN;
+	
 	CLASS_BODY;
 	CLASS_MEMBER;
+	CLASS_MODIFIER;
+	
 	CONSTANT_DECLARATION;
 	CONSTANT_DECLARATION_LIST;
+	
 	DEFAULT_NAMESPACE;
 	EXCEPTION_LIST;
 	EXPRESSION_LIST;
 	FUNCTION_CALL;
-	INTERFACE_BODY;	
+	INTERFACE_BODY;
+	
+	MEMBER_MODIFIER;	
 	MEMBER_ACCESS;
 	MEMBER_ACCESS_STATIC;
+	
 	METHOD_CALL;
 	METHOD_DECLARATION;
-	MODIFIER;
+	METHOD_MODIFIER;
+	
 	NAMESPACE_BODY;
+	
 	PARAM_DECLARATION;
 	PARAM_LIST;
 	PARAM_TYPE;
+	
 	POST_INCREMENT_DECREMENT;
 	PRE_INCREMENT_DECREMENT;
 	SWITCH_CASES;
+	
 	TYPE;
 	TYPE_MODIFIER;
 	TYPE_NAME;
+	
 	UNARY_MINUS;
 	USE_DECLRATARION;
+	
 	VARIABLE_DECLARATION;
 	VARIABLE_DECLARATION_LIST;	
 }
@@ -192,6 +206,8 @@ tokens{
  * 
  */
 package ch.tutteli.tsphp.parser;
+
+import ch.tutteli.tsphp.common.TSPHPAst;
 }
 
 @lexer::header{
@@ -288,7 +304,7 @@ definition
 classDeclaration
 	:	classModifier? 'class' Identifier (ex='extends' exIds=identifierList)? (impl='implements' implIds=identifierList)? block='{' classBody* '}'	
 		-> ^('class' 
-			^(MODIFIER[$classModifier.start,"classModifier"] classModifier?)
+			^(CLASS_MODIFIER[$classModifier.start,"classModifier"] classModifier?)
 			Identifier 
 			^(Extends[$ex,"extends"] $exIds?)
 			^(Implements[$impl,"implements"] $implIds?)
@@ -322,7 +338,7 @@ constantAssignment
 
 memberDeclaration	
 	:	st='static'? accessModifier variableDeclarationList ';' 
-		-> ^(CLASS_MEMBER[$memberDeclaration.start,"classMember"] ^(MODIFIER[$memberDeclaration.start,"modifier"] $st?) accessModifier 
+		-> ^(CLASS_MEMBER[$memberDeclaration.start,"classMember"] ^(MEMBER_MODIFIER[$memberDeclaration.start,"modifier"] $st?) accessModifier 
 			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"variables"] variableDeclarationList)
 		)
 	;
@@ -349,8 +365,8 @@ accessModifierOrPublic
 
 abstractMethodDeclaration
 	:	abstr='abstract' accessModifierWithoutPrivateOrPublic 'function' functionSignatureInclReturnType ';'
-		-> ^(METHOD_DECLARATION[$abstractMethodDeclaration.start,"method"]  
-			^(MODIFIER[$abstr,"modifier"] $abstr) accessModifierWithoutPrivateOrPublic
+		-> ^(METHOD_DECLARATION[$abstractMethodDeclaration.start,"methodDeclaration"]  
+			^(METHOD_MODIFIER[$abstr,"modifier"] $abstr) accessModifierWithoutPrivateOrPublic
 			functionSignatureInclReturnType 
 		) 
 	;
@@ -358,7 +374,7 @@ abstractMethodDeclaration
 methodDeclaration	
 	:	methodModifier? accessModifierOrPublic 'function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
 		-> ^(METHOD_DECLARATION[$methodDeclaration.start,"method"]  
-			^(MODIFIER[$methodModifier.start,"modifier"] methodModifier?)
+			^(METHOD_MODIFIER[$methodModifier.start,"modifier"] methodModifier?)
 			accessModifierOrPublic
 			functionSignatureInclReturnType 
 			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
@@ -712,7 +728,7 @@ newObject
 	;
 
 actualParameters
-	:	list='(' expressionList? ')' -> ^(EXPRESSION_LIST[$list,"parameters"] expressionList?)
+	:	list='(' expressionList? ')' -> ^(ACTUAL_PARAMETERS[$list,"parameters"] expressionList?)
 	;
 
 unaryPrimary

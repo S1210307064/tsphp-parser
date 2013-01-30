@@ -16,6 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.utils;
 
+import ch.tutteli.tsphp.common.TSPHPAstAdaptorRegistry;
 import ch.tutteli.tsphp.parser.ANTLRNoCaseStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -57,6 +58,7 @@ public abstract class AParserTest extends ATest
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 
         parser = new TestTSPHPParser(tokens);
+        parser.setTreeAdaptor(TSPHPAstAdaptorRegistry.get());
         parser.setErrorReporting(isErrorReportingOn);
         run();
     }

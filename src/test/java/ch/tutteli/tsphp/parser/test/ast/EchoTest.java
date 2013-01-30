@@ -46,9 +46,9 @@ public class EchoTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
          List<Object[]> collection = new ArrayList<>();
-         String[][] expressions = ExpressionHelper.getAstExpressions();
+         Object[][] expressions = ExpressionHelper.getAstExpressions();
          
-         for(String[] expression:expressions){
+         for(Object[] expression:expressions){
              collection.add(new Object[]{"echo "+expression[0]+";","(echo "+expression[1]+")"});
              collection.add(new Object[]{"echo "+expression[0]+","+expression[0]+";","(echo "+expression[1]+" "+expression[1]+")"});
          }

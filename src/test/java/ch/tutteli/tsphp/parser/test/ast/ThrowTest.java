@@ -46,8 +46,8 @@ public class ThrowTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
          List<Object[]> collection = new ArrayList<>();
-         String[][] expressions = ExpressionHelper.getAstExpressions();
-         for(String[] expression:expressions){
+         Object[][] expressions = ExpressionHelper.getAstExpressions();
+         for(Object[] expression:expressions){
              collection.add(new Object[]{"throw "+expression[0]+";","(throw "+expression[1]+")"});
          }
          return collection;

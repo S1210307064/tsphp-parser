@@ -47,9 +47,9 @@ public class ReturnTest extends AAstTest
     public static Collection<Object[]> testStrings() {
          List<Object[]> collection = new ArrayList<>();
          collection.add(new Object[]{"return;","return"});
-         String[][] expressions = ExpressionHelper.getAstExpressions();
+         Object[][] expressions = ExpressionHelper.getAstExpressions();
          
-         for(String[] expression:expressions){
+         for(Object[] expression:expressions){
              collection.add(new Object[]{"return "+expression[0]+";","(return "+expression[1]+")"});
          }
          return collection;

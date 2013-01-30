@@ -19,10 +19,7 @@ package ch.tutteli.tsphp.parser.test.ast;
 import ch.tutteli.tsphp.parser.test.utils.AAstTest;
 import ch.tutteli.tsphp.parser.test.utils.ExpressionHelper;
 import ch.tutteli.tsphp.parser.test.utils.VariableDeclarationListHelper;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -49,7 +46,7 @@ public class VariableDeclarationTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         Collection<Object[]> collection = VariableDeclarationListHelper.testStrings("", ";", "(variables ", ")");
 
-        String[][] expressions = ExpressionHelper.getAstExpressions();
+        Object[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "int $a = " + expression[0] + ";",
