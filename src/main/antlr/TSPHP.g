@@ -166,8 +166,7 @@ tokens{
 	TYPE;
 	TYPE_MODIFIER;
 	TYPE_NAME;
-	UMINUS;
-	UPLUS;
+	UNARY_MINUS;
 	USE_DECLRATARION;
 	VARIABLE_DECLARATION;
 	VARIABLE_DECLARATION_LIST;	
@@ -297,10 +296,6 @@ classDeclaration
 	;
 classModifier
 	:	('abstract'|'final')
-;
-	
-extendsDeclaration	
-	:	
 	;
 
 identifierList
@@ -453,11 +448,6 @@ primitiveTypesInclResource
 
 classInterfaceTypeWithoutObject
 	:	root='\\'? namespaceId -> ^(TYPE_NAME[$classInterfaceTypeWithoutObject.start,"typeName"] $root? namespaceId)
-	;
-
-classInterfaceTypeWithoutObjectInclArray
-	:	classInterfaceTypeWithoutObject
-	|	TypeArray
 	;
 	
 classInterfaceTypeInclObject
@@ -725,8 +715,8 @@ actualParameters
 	;
 
 unaryPrimary
-	:	uplus = '+' primary -> ^(UPLUS[$uplus,"unaryPlus"] primary)
-	|	uminus = '-' primary -> ^(UMINUS[$uminus,"unaryMinus"] primary)
+	:	uplus = '+' primary -> primary
+	|	uminus = '-' primary -> ^(UNARY_MINUS[$uminus,"unaryMinus"] primary)
 	|	primary
 	;
 	
@@ -797,8 +787,8 @@ classConstant
 
 	
 unaryPrimitiveAtom
-	:	uplus = '+' primitiveAtomWithConstant -> ^(UPLUS[$uplus,"unaryPlus"] primitiveAtomWithConstant)
-	|	uminus = '-' primitiveAtomWithConstant -> ^(UMINUS[$uminus,"unaryMinus"] primitiveAtomWithConstant)
+	:	uplus = '+' primitiveAtomWithConstant -> primitiveAtomWithConstant
+	|	uminus = '-' primitiveAtomWithConstant -> ^(UNARY_MINUS[$uminus,"unaryMinus"] primitiveAtomWithConstant)
 	|	primitiveAtomWithConstant
 	;
 

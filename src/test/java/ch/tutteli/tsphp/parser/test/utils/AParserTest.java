@@ -46,8 +46,8 @@ public abstract class AParserTest extends ATest
 
     public void parseAndCheckForException() throws RecognitionException {
         parse();
-        Assert.assertTrue(testString + " failed, lexer threw exception(s) - see output", lexer.getExceptions().isEmpty());
-        Assert.assertTrue(testString + " failed, parser threw exception(s) - see output", parser.getExceptions().isEmpty());
+        Assert.assertFalse(testString + " failed, lexer threw exception(s) - see output", lexer.hasFoundError());
+        Assert.assertFalse(testString + " failed, parser threw exception(s) - see output", parser.hasFoundError());
     }
 
     protected void parse() throws RecognitionException {

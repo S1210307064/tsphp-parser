@@ -110,7 +110,7 @@ public class ParserFacade implements IParser
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 
         parser = new TSPHPErrorReportingParser(tokens);
-        return parser.compilationUnit().getTree();
+        return (Tree) parser.compilationUnit().getTree();
     }
 
     private Tree getErrorAst(RecognitionException ex) {

@@ -153,7 +153,7 @@ public class ParameterListHelper
                         prefixExpect + "(parameters "
                         + "(parameterDeclaration (type typeModifier int) $a) "
                         + "(parameterDeclaration (type (typeModifier ?) int) $i) "
-                        + "(parameterDeclaration (type typeModifier int) ($b (unaryPlus 1)))"
+                        + "(parameterDeclaration (type typeModifier int) ($b 1))"
                         + ")" + appendixExpect
                     },
                     {
