@@ -20,11 +20,13 @@ import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
 import org.junit.Assert;
+import org.junit.Ignore;
 
 /**
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
+@Ignore
 public abstract class AAstTokenTest extends AParserTest
 {
 
