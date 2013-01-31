@@ -43,6 +43,6 @@ public class ClassConstantTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return ConstantHelper.testStrings("class B{","}","(class classModifier B extends implements (classBody ","))");
+        return ConstantHelper.testStrings("class B{","}","(class cMod B extends implements (cBody ","))");
     }
 }

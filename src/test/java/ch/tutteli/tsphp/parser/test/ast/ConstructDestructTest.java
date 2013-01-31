@@ -51,27 +51,27 @@ public class ConstructDestructTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(getVariations("__construct","","parameters "));
+        collection.addAll(getVariations("__construct","","params "));
         collection.addAll(getVariations("__deconstruct","",""));
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "function __construct(int $a,bool $b){ $a=1;}",
-                        "(__construct public (parameters "
-                        + "(parameterDeclaration (type typeModifier int) $a) "
-                        + "(parameterDeclaration (type typeModifier bool) $b)"
+                        "(__construct public (params "
+                        + "(pDecl (type tMod int) $a) "
+                        + "(pDecl (type tMod bool) $b)"
                         + ") (block (= $a 1)))"
                     },
                     {
                         "function __construct(cast int $a=1){}",
-                        "(__construct public (parameters "
-                        + "(parameterDeclaration (type (typeModifier cast) int) ($a 1))"
+                        "(__construct public (params "
+                        + "(pDecl (type (tMod cast) int) ($a 1))"
                         + ") block)"
                     },
                     {
                         "function __construct(int $a,bool? $b=2){}",
-                        "(__construct public (parameters "
-                        + "(parameterDeclaration (type typeModifier int) $a) "
-                        + "(parameterDeclaration (type (typeModifier ?) bool) ($b 2))"
+                        "(__construct public (params "
+                        + "(pDecl (type tMod int) $a) "
+                        + "(pDecl (type (tMod ?) bool) ($b 2))"
                         + ") block)"
                     }
                 }));
@@ -79,23 +79,23 @@ public class ConstructDestructTest extends AAstTest
 
     }
 
-    private static Collection<Object[]> getVariations(String what, String parameters, String parametersExpected) {
+    private static Collection<Object[]> getVariations(String what, String params, String paramsExpected) {
         return Arrays.asList(new Object[][]{
                     {
-                        "function " + what + "(" + parameters + "){}",
-                        "(" + what + " public " + parametersExpected + "block)"
+                        "function " + what + "(" + params + "){}",
+                        "(" + what + " public " + paramsExpected + "block)"
                     },
                     {
-                        "private function " + what + "(" + parameters + "){}",
-                        "(" + what + " private " + parametersExpected + "block)"
+                        "private function " + what + "(" + params + "){}",
+                        "(" + what + " private " + paramsExpected + "block)"
                     },
                     {
-                        "protected function " + what + "(" + parameters + "){}",
-                        "(" + what + " protected " + parametersExpected + "block)"
+                        "protected function " + what + "(" + params + "){}",
+                        "(" + what + " protected " + paramsExpected + "block)"
                     },
                     {
-                        "public function " + what + "(" + parameters + "){}",
-                        "(" + what + " public " + parametersExpected + "block)"
+                        "public function " + what + "(" + params + "){}",
+                        "(" + what + " public " + paramsExpected + "block)"
                     }
                 });
     }

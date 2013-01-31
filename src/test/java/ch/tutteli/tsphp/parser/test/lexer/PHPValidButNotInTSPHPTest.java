@@ -43,7 +43,7 @@ public class PHPValidButNotInTSPHPTest extends ALexerTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    // variables in quoted strings are not allowed in TSPHP - use ".$a." instead
+                    // vars in quoted strings are not allowed in TSPHP - use ".$a." instead
                     {"mSTRING_DOUBLE_QUOTED", "\"$a\""},
                     // single $ are allowed in PHP but not in TSPHP
                     {"mSTRING_DOUBLE_QUOTED", "\"10 $\""},

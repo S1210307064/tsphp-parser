@@ -45,11 +45,11 @@ public class EmptyStatementTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
                      //empty statement
-                    {";","block"},
+                    {";","expr"},
                     //empty block
-                    {"{}","block"},
-                    {"{{}}","(block block)"},
-                    {"{;;}","(block block block)"},
+                    {"{}","expr"},
+                    {"{{}}","expr"},
+                    {"{;;}","expr expr"},
                 });
 
     }

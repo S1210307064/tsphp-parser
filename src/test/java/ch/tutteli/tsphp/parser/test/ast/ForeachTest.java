@@ -47,12 +47,12 @@ public class ForeachTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"foreach($a as int $k => MyClass $v)$a=1;", "(foreach $a int $k MyClass $v (= $a 1))"},
-                    {"foreach($a as float $v) $a=1;", "(foreach $a float $v (= $a 1))"},
-                    {"foreach($a as string $k => string $v){$a=1;}", "(foreach $a string $k string $v (block (= $a 1)))"},
-                    {"foreach($a as bool $v) {$a=1;}", "(foreach $a bool $v (block (= $a 1)))"},
-                    {"foreach($a as bool $k=> array $v){$a=1; $b=2;}", "(foreach $a bool $k array $v (block (= $a 1) (= $b 2)))"},
-                    {"foreach($a as int $v) {$a=1; $b=3;}", "(foreach $a int $v (block (= $a 1) (= $b 3)))"},
+                    {"foreach($a as int $k => MyClass $v)$a=1;", "(foreach $a int $k MyClass $v (cBlock (= $a 1)))"},
+                    {"foreach($a as float $v) $a=1;", "(foreach $a float $v (cBlock (= $a 1)))"},
+                    {"foreach($a as string $k => string $v){$a=1;}", "(foreach $a string $k string $v (cBlock (= $a 1)))"},
+                    {"foreach($a as bool $v) {$a=1;}", "(foreach $a bool $v (cBlock (= $a 1)))"},
+                    {"foreach($a as bool $k=> array $v){$a=1; $b=2;}", "(foreach $a bool $k array $v (cBlock (= $a 1) (= $b 2)))"},
+                    {"foreach($a as int $v) {$a=1; $b=3;}", "(foreach $a int $v (cBlock (= $a 1) (= $b 3)))"},
                     
         }));
 

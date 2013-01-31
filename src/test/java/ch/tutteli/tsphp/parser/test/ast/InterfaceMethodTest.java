@@ -52,24 +52,24 @@ public class InterfaceMethodTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.add(new Object[]{"public function void foo();","(methodDeclaration void foo parameters)"});
-        collection.add(new Object[]{"function __construct();","(__construct parameters)"});
-        collection.add(new Object[]{"public function __construct();","(__construct parameters)"});
+        collection.add(new Object[]{"public function void foo();","(mDecl (mMod abstract) public void foo params)"});
+        collection.add(new Object[]{"function __construct();","(iCtor params)"});
+        collection.add(new Object[]{"public function __construct();","(iCtor params)"});
         
         List<String[]> types = TypeHelper.getAllTypes();
         for (String[] type : types) {
             collection.add(new Object[]{
                         "function " + type[0] + " get();",
-                        "(methodDeclaration " + type[1] + " get parameters)"
+                        "(mDecl (mMod abstract) public " + type[1] + " get params)"
                     });
         }
         //normal
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", ");",
-                "(methodDeclaration void set ", ")"));
+                "(mDecl (mMod abstract) public void set ", ")"));
 
         collection.addAll(ParameterListHelper.getVariationsForOptional(
-                "function void foo(", ");", "(methodDeclaration void foo ", ")"));
+                "function void foo(", ");", "(mDecl (mMod abstract) public void foo ", ")"));
         return collection;
     }
 }

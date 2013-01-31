@@ -46,25 +46,25 @@ public class ArrayDeclarationTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.add(new Object[]{"array $d = [];", "(variables array ($d array))"});
-        collection.add(new Object[]{"array $d = array();", "(variables array ($d array))"});
+        collection.add(new Object[]{"array $d = [];", "(vars array ($d array))"});
+        collection.add(new Object[]{"array $d = array();", "(vars array ($d array))"});
         Object[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "array $d = [" + expression[0] + "];",
-                        "(variables array ($d (array " + expression[1] + ")))"
+                        "(vars array ($d (array " + expression[1] + ")))"
                     });
            collection.add(new Object[]{
                         "array $d = [" + expression[0] + ","+expression[0]+"];",
-                        "(variables array ($d (array " + expression[1] + " "+expression[1]+")))"
+                        "(vars array ($d (array " + expression[1] + " "+expression[1]+")))"
                     });
             collection.add(new Object[]{
                         "array $d = [1 => " + expression[0] + ", $a=>" + expression[0] + "];",
-                        "(variables array ($d (array (=> 1 " + expression[1] + ") (=> $a " + expression[1] + "))))"
+                        "(vars array ($d (array (=> 1 " + expression[1] + ") (=> $a " + expression[1] + "))))"
                     });
             collection.add(new Object[]{
                         "array $d = array( 'a' => array(" + expression[0] + "), " + expression[0] + "=> 1, 2,3 );",
-                        "(variables array ($d (array (=> 'a' (array " + expression[1] + ")) (=> " + expression[1] + " 1) 2 3)))"
+                        "(vars array ($d (array (=> 'a' (array " + expression[1] + ")) (=> " + expression[1] + " 1) 2 3)))"
                     });
 
 

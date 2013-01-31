@@ -54,18 +54,18 @@ public class ClassMemberTest extends AAstTest
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(VariableDeclarationListHelper.testStrings(
                 "private ", ";",
-                "(classMember modifier private (variables ", "))"));
-        collection.addAll(getVariations("", "modifier"));
-        collection.addAll(getVariations("static", "(modifier static)"));
+                "(cMem private (vars ", "))"));
+        collection.addAll(getVariations("", "cMem"));
+        collection.addAll(getVariations("static", "cVar"));
 
         return collection;
     }
 
-    private static Collection<Object[]> getVariations(String modifier, String modifierExpected) {
+    private static Collection<Object[]> getVariations(String modifier, String memberOrClassVariable) {
         return Arrays.asList(new Object[][]{
-                    {modifier + " private int $a;", "(classMember " + modifierExpected + " private (variables int $a))"},
-                    {modifier + " protected int $a;", "(classMember " + modifierExpected + " protected (variables int $a))"},
-                    {modifier + " public int $a;", "(classMember " + modifierExpected + " public (variables int $a))"}
+                    {modifier + " private int $a;", "(" + memberOrClassVariable + " private (vars int $a))"},
+                    {modifier + " protected int $a;", "(" + memberOrClassVariable + " protected (vars int $a))"},
+                    {modifier + " public int $a;", "(" + memberOrClassVariable + " public (vars int $a))"}
                 });
     }
 }

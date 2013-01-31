@@ -57,58 +57,58 @@ public class MethodTest extends AAstTest
         for (String[] type : types) {
             collection.add(new Object[]{
                         "function " + type[0] + " get(){}",
-                        "(methodDeclaration modifier public " + type[1] + " get parameters block)"
+                        "(mDecl mMod public " + type[1] + " get params block)"
                     });
         }
         //normal
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", "){}",
-                "(methodDeclaration modifier public void set ", " block)"));
+                "(mDecl mMod public void set ", " block)"));
 
         collection.addAll(ParameterListHelper.getVariationsForOptional(
-                "function void foo(", "){$a=1;}", "(methodDeclaration modifier public void foo ", " (block (= $a 1)))"));
+                "function void foo(", "){$a=1;}", "(mDecl mMod public void foo ", " (block (= $a 1)))"));
 
-        //modifiers
-        collection.addAll(getVariations("", "modifier"));
-        collection.addAll(getVariations("static", "(modifier static)"));
-        collection.addAll(getVariations("final", "(modifier final)"));
-        collection.addAll(getVariations("static final", "(modifier static final)"));
-        collection.addAll(getVariations("final static", "(modifier final static)"));
+        //mMods
+        collection.addAll(getVariations("", "mMod"));
+        collection.addAll(getVariations("static", "(mMod static)"));
+        collection.addAll(getVariations("final", "(mMod final)"));
+        collection.addAll(getVariations("static final", "(mMod static final)"));
+        collection.addAll(getVariations("final static", "(mMod final static)"));
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "abstract function void foo();",
-                        "(methodDeclaration (modifier abstract) public void foo parameters)"
+                        "(mDecl (mMod abstract) public void foo params)"
                     },
                     {
                         "abstract protected function void foo();",
-                        "(methodDeclaration (modifier abstract) protected void foo parameters)"
+                        "(mDecl (mMod abstract) protected void foo params)"
                     },
                     {
                         "abstract public function void foo();",
-                        "(methodDeclaration (modifier abstract) public void foo parameters)"
+                        "(mDecl (mMod abstract) public void foo params)"
                     }
                 }));
 
         return collection;
     }
 
-    public static Collection<Object[]> getVariations(String modifier, String modifierExpected) {
+    public static Collection<Object[]> getVariations(String mMod, String mModExpected) {
         return Arrays.asList(new Object[][]{
                     {
-                        modifier + " function void foo(){}",
-                        "(methodDeclaration " + modifierExpected + " public void foo parameters block)"
+                        mMod + " function void foo(){}",
+                        "(mDecl " + mModExpected + " public void foo params block)"
                     },
                     {
-                        modifier + " private function void foo(){}",
-                        "(methodDeclaration " + modifierExpected + " private void foo parameters block)"
+                        mMod + " private function void foo(){}",
+                        "(mDecl " + mModExpected + " private void foo params block)"
                     },
                     {
-                        modifier + " protected function void foo(){}",
-                        "(methodDeclaration " + modifierExpected + " protected void foo parameters block)"
+                        mMod + " protected function void foo(){}",
+                        "(mDecl " + mModExpected + " protected void foo params block)"
                     },
                     {
-                        modifier + " public function void foo(){}",
-                        "(methodDeclaration " + modifierExpected + " public void foo parameters block)"
+                        mMod + " public function void foo(){}",
+                        "(mDecl " + mModExpected + " public void foo params block)"
                     }
                 });
     }

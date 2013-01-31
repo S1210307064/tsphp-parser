@@ -51,51 +51,51 @@ public class ArrayAccessTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "int $d = $a->foo()[0]->foo('hallo')->bar()[2][3];",
-                        "(variables int ($d "
-                            + "(arrayAccess (arrayAccess (methodCall (methodCall (arrayAccess "
-                                + "(methodCall $a foo parameters)"
-                            + " 0) foo (parameters 'hallo')) bar parameters) 2) 3)"
+                        "(vars int ($d "
+                            + "(arrAccess (arrAccess (mCall (mCall (arrAccess "
+                                + "(mCall $a foo args)"
+                            + " 0) foo (args 'hallo')) bar args) 2) 3)"
                         + "))"
                     },
                     {
                         "int $d = foo()[0]->foo('hallo')->bar()[2][3];",
-                        "(variables int ($d "
-                            + "(arrayAccess (arrayAccess (methodCall (methodCall (arrayAccess "
-                                + "(functionCall foo parameters)"
-                            + " 0) foo (parameters 'hallo')) bar parameters) 2) 3)"
+                        "(vars int ($d "
+                            + "(arrAccess (arrAccess (mCall (mCall (arrAccess "
+                                + "(fCall foo args)"
+                            + " 0) foo (args 'hallo')) bar args) 2) 3)"
                         + "))"
                     },
                     {
                         "int $d = foo()[0]->foo('hallo')->bar()[2][3]->fo()[2][3+1];",
-                        "(variables int ($d "
-                            + "(arrayAccess (arrayAccess (methodCall "
-                                + "(arrayAccess (arrayAccess (methodCall (methodCall (arrayAccess "
-                                    + "(functionCall foo parameters)"
-                                + " 0) foo (parameters 'hallo')) bar parameters) 2) 3)"
-                            + " fo parameters) 2) (+ 3 1))"
+                        "(vars int ($d "
+                            + "(arrAccess (arrAccess (mCall "
+                                + "(arrAccess (arrAccess (mCall (mCall (arrAccess "
+                                    + "(fCall foo args)"
+                                + " 0) foo (args 'hallo')) bar args) 2) 3)"
+                            + " fo args) 2) (+ 3 1))"
                         + "))"
                     },
                     {
                         "int $d = foo()[0]->a->foo('hallo')[0][$a]->bar()[2]->foo()[3][5]->foo();",
-                        "(variables int ($d "
-                            + "(methodCall (arrayAccess (arrayAccess (methodCall "
-                                + "(arrayAccess (methodCall "
-                                    + "(arrayAccess (arrayAccess (methodCall (memberAccess (arrayAccess "
-                                        + "(functionCall foo parameters)"
-                                + " 0) a) foo (parameters 'hallo')) 0) $a)"
-                                + " bar parameters) 2)"
-                            + " foo parameters) 3) 5) foo parameters)"
+                        "(vars int ($d "
+                            + "(mCall (arrAccess (arrAccess (mCall "
+                                + "(arrAccess (mCall "
+                                    + "(arrAccess (arrAccess (mCall (memAccess (arrAccess "
+                                        + "(fCall foo args)"
+                                + " 0) a) foo (args 'hallo')) 0) $a)"
+                                + " bar args) 2)"
+                            + " foo args) 3) 5) foo args)"
                         + "))"
                             
                     },
                     {
                         "int $d = $a->a[0]->b[0][1]->foo()->bar()[2]->foo()[3][5]->foo();",
-                         "(variables int ($d "
-                            +"(methodCall (arrayAccess (arrayAccess (methodCall "
-                                + "(arrayAccess (methodCall (methodCall (arrayAccess (arrayAccess (memberAccess "
-                                    + "(arrayAccess (memberAccess $a a) 0)"
-                                + " b) 0) 1) foo parameters) bar parameters) 2)"
-                            + " foo parameters) 3) 5) foo parameters)"
+                         "(vars int ($d "
+                            +"(mCall (arrAccess (arrAccess (mCall "
+                                + "(arrAccess (mCall (mCall (arrAccess (arrAccess (memAccess "
+                                    + "(arrAccess (memAccess $a a) 0)"
+                                + " b) 0) 1) foo args) bar args) 2)"
+                            + " foo args) 3) 5) foo args)"
                         + "))"
                     }
                 }));
@@ -103,51 +103,51 @@ public class ArrayAccessTest extends AAstTest
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "array $d = $a[" + expression[0] + "];",
-                        "(variables array ($d (arrayAccess $a " + expression[1] + ")))"
+                        "(vars array ($d (arrAccess $a " + expression[1] + ")))"
                     });
             collection.add(new Object[]{
                         "array $d = $a[" + expression[0] + "][" + expression[0] + "];",
-                        "(variables array ($d "
-                            + "(arrayAccess (arrayAccess $a " + expression[1] + ") " + expression[1] + ")"
+                        "(vars array ($d "
+                            + "(arrAccess (arrAccess $a " + expression[1] + ") " + expression[1] + ")"
                         + "))"
                     });
             collection.add(new Object[]{
                         "array $d = foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(variables array ($d "
-                            + "(arrayAccess (arrayAccess "
-                                + "(functionCall foo parameters)"
+                        "(vars array ($d "
+                            + "(arrAccess (arrAccess "
+                                + "(fCall foo args)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + "))"
                     });
             collection.add(new Object[]{
                         "array $d = $a->foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(variables array ($d "
-                            + "(arrayAccess (arrayAccess "
-                                + "(methodCall $a foo parameters)"
+                        "(vars array ($d "
+                            + "(arrAccess (arrAccess "
+                                + "(mCall $a foo args)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + "))"
                     });
             collection.add(new Object[]{
                         "array $d = self::foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(variables array ($d "
-                            + "(arrayAccess (arrayAccess "
-                                + "(methodCall self foo parameters)"
+                        "(vars array ($d "
+                            + "(arrAccess (arrAccess "
+                                + "(mCall self foo args)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + "))"
                      });
             collection.add(new Object[]{
                         "array $d = parent::foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(variables array ($d "
-                            + "(arrayAccess (arrayAccess "
-                                + "(methodCall parent foo parameters)"
+                        "(vars array ($d "
+                            + "(arrAccess (arrAccess "
+                                + "(mCall parent foo args)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + "))"
                     });
             collection.add(new Object[]{
                         "array $d = Foo::foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(variables array ($d "
-                            + "(arrayAccess (arrayAccess "
-                                + "(methodCall Foo foo parameters)"
+                        "(vars array ($d "
+                            + "(arrAccess (arrAccess "
+                                + "(mCall Foo foo args)"
                             + " " + expression[1] + ") " + expression[1] + ")"
                         + "))"
                     });

@@ -37,19 +37,19 @@ public class ParameterListHelper
         //normal
         collection.addAll(getVariations(
                 prefix, "int $a", appendix,
-                prefixExpect, "(type typeModifier int) $a", appendixExpect));
+                prefixExpect, "(type tMod int) $a", appendixExpect));
         //cast 
         collection.addAll(getVariations(
                 prefix, "cast int $a", appendix,
-                prefixExpect, "(type (typeModifier cast) int) $a", appendixExpect));
+                prefixExpect, "(type (tMod cast) int) $a", appendixExpect));
         //?
         collection.addAll(getVariations(
                 prefix, "int? $a", appendix,
-                prefixExpect, "(type (typeModifier ?) int) $a", appendixExpect));
+                prefixExpect, "(type (tMod ?) int) $a", appendixExpect));
         //cast and ? mixed
         collection.addAll(getVariations(
                 prefix, "cast int? $a", appendix,
-                prefixExpect, "(type (typeModifier cast ?) int) $a", appendixExpect));
+                prefixExpect, "(type (tMod cast ?) int) $a", appendixExpect));
 
          List<String[]> types = TypeHelper.getAllTypesWithoutResourceAndObject();
          for(String[] type:types){
@@ -57,14 +57,14 @@ public class ParameterListHelper
              collection.add(new Object[]{
                         prefix +"cast "+type[0]+" $a"+appendix,
                         prefixExpect
-                        + "(parameters (parameterDeclaration (type (typeModifier cast) "+type[1]+") $a))"
+                        + "(params (pDecl (type (tMod cast) "+type[1]+") $a))"
                         + appendixExpect
                     });
               //Test ? for all scalar types?
               collection.add(new Object[]{
                         prefix +type[0]+"? $a"+appendix,
                         prefixExpect
-                        + "(parameters (parameterDeclaration (type (typeModifier ?) "+type[1]+") $a))"
+                        + "(params (pDecl (type (tMod ?) "+type[1]+") $a))"
                         + appendixExpect
                     });
          }        
@@ -76,61 +76,61 @@ public class ParameterListHelper
         return Arrays.asList(new Object[][]{
                     {
                         prefix + param + appendix,
-                        prefixExpect + "(parameters (parameterDeclaration " + paramExpect + "))" + appendixExpect
+                        prefixExpect + "(params (pDecl " + paramExpect + "))" + appendixExpect
                     },
                     {
                         prefix + param + ", " + param + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration " + paramExpect + ") "
-                        + "(parameterDeclaration " + paramExpect + ")"
+                        prefixExpect + "(params "
+                        + "(pDecl " + paramExpect + ") "
+                        + "(pDecl " + paramExpect + ")"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + param + ", int $b, int $c" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration " + paramExpect + ") "
-                        + "(parameterDeclaration (type typeModifier int) $b) "
-                        + "(parameterDeclaration (type typeModifier int) $c)"
+                        prefixExpect + "(params "
+                        + "(pDecl " + paramExpect + ") "
+                        + "(pDecl (type tMod int) $b) "
+                        + "(pDecl (type tMod int) $c)"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + param + ", " + param + ", int $c" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration " + paramExpect + ") "
-                        + "(parameterDeclaration " + paramExpect + ") "
-                        + "(parameterDeclaration (type typeModifier int) $c)"
+                        prefixExpect + "(params "
+                        + "(pDecl " + paramExpect + ") "
+                        + "(pDecl " + paramExpect + ") "
+                        + "(pDecl (type tMod int) $c)"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + param + ", int $b," + param + "" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration " + paramExpect + ") "
-                        + "(parameterDeclaration (type typeModifier int) $b) "
-                        + "(parameterDeclaration " + paramExpect + ")"
+                        prefixExpect + "(params "
+                        + "(pDecl " + paramExpect + ") "
+                        + "(pDecl (type tMod int) $b) "
+                        + "(pDecl " + paramExpect + ")"
                         + ")" + appendixExpect
                     },
                     {
                         "function void set(int $a, " + param + ", int $c" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration (type typeModifier int) $a) "
-                        + "(parameterDeclaration " + paramExpect + ") "
-                        + "(parameterDeclaration (type typeModifier int) $c)"
+                        prefixExpect + "(params "
+                        + "(pDecl (type tMod int) $a) "
+                        + "(pDecl " + paramExpect + ") "
+                        + "(pDecl (type tMod int) $c)"
                         + ")" + appendixExpect
                     },
                     {
                         "function void set(int $a, " + param + ", " + param + "" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration (type typeModifier int) $a) "
-                        + "(parameterDeclaration " + paramExpect + ") "
-                        + "(parameterDeclaration " + paramExpect + ")"
+                        prefixExpect + "(params "
+                        + "(pDecl (type tMod int) $a) "
+                        + "(pDecl " + paramExpect + ") "
+                        + "(pDecl " + paramExpect + ")"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + param + ", " + param + ", " + param + "" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration " + paramExpect + ") "
-                        + "(parameterDeclaration " + paramExpect + ") "
-                        + "(parameterDeclaration " + paramExpect + ")"
+                        prefixExpect + "(params "
+                        + "(pDecl " + paramExpect + ") "
+                        + "(pDecl " + paramExpect + ") "
+                        + "(pDecl " + paramExpect + ")"
                         + ")" + appendixExpect
                     }
                 });
@@ -143,66 +143,66 @@ public class ParameterListHelper
                     //optional parameter
                     {
                         prefix + "int $a, int $b='hallo'" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration (type typeModifier int) $a) "
-                        + "(parameterDeclaration (type typeModifier int) ($b 'hallo'))"
+                        prefixExpect + "(params "
+                        + "(pDecl (type tMod int) $a) "
+                        + "(pDecl (type tMod int) ($b 'hallo'))"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + "int $a, int? $i, int $b=+1" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration (type typeModifier int) $a) "
-                        + "(parameterDeclaration (type (typeModifier ?) int) $i) "
-                        + "(parameterDeclaration (type typeModifier int) ($b 1))"
+                        prefixExpect + "(params "
+                        + "(pDecl (type tMod int) $a) "
+                        + "(pDecl (type (tMod ?) int) $i) "
+                        + "(pDecl (type tMod int) ($b 1))"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + "int $a,cast int? $i, int $b=-10, int $d=2.0" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration (type typeModifier int) $a) "
-                        + "(parameterDeclaration (type (typeModifier cast ?) int) $i) "
-                        + "(parameterDeclaration (type typeModifier int) ($b (unaryMinus 10))) "
-                        + "(parameterDeclaration (type typeModifier int) ($d 2.0))"
+                        prefixExpect + "(params "
+                        + "(pDecl (type tMod int) $a) "
+                        + "(pDecl (type (tMod cast ?) int) $i) "
+                        + "(pDecl (type tMod int) ($b (uMinus 10))) "
+                        + "(pDecl (type tMod int) ($d 2.0))"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + "int? $a=null,int $b=true, int $c=E_ALL" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration (type (typeModifier ?) int) ($a null)) "
-                        + "(parameterDeclaration (type typeModifier int) ($b true)) "
-                        + "(parameterDeclaration (type typeModifier int) ($c E_ALL))"
+                        prefixExpect + "(params "
+                        + "(pDecl (type (tMod ?) int) ($a null)) "
+                        + "(pDecl (type tMod int) ($b true)) "
+                        + "(pDecl (type tMod int) ($c E_ALL))"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + "int $a, int $b=false, int $d=null" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration (type typeModifier int) $a) "
-                        + "(parameterDeclaration (type typeModifier int) ($b false)) "
-                        + "(parameterDeclaration (type typeModifier int) ($d null))"
+                        prefixExpect + "(params "
+                        + "(pDecl (type tMod int) $a) "
+                        + "(pDecl (type tMod int) ($b false)) "
+                        + "(pDecl (type tMod int) ($d null))"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + "int $a, int $b, int $d=true" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration (type typeModifier int) $a) "
-                        + "(parameterDeclaration (type typeModifier int) $b) "
-                        + "(parameterDeclaration (type typeModifier int) ($d true))"
+                        prefixExpect + "(params "
+                        + "(pDecl (type tMod int) $a) "
+                        + "(pDecl (type tMod int) $b) "
+                        + "(pDecl (type tMod int) ($d true))"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + "cast int $a, int $b, cast int $d" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration (type (typeModifier cast) int) $a) "
-                        + "(parameterDeclaration (type typeModifier int) $b) "
-                        + "(parameterDeclaration (type (typeModifier cast) int) $d)"
+                        prefixExpect + "(params "
+                        + "(pDecl (type (tMod cast) int) $a) "
+                        + "(pDecl (type tMod int) $b) "
+                        + "(pDecl (type (tMod cast) int) $d)"
                         + ")" + appendixExpect
                     },
                     {
                         prefix + "cast int $a=1, int? $b=2, cast int $d=3" + appendix,
-                        prefixExpect + "(parameters "
-                        + "(parameterDeclaration (type (typeModifier cast) int) ($a 1)) "
-                        + "(parameterDeclaration (type (typeModifier ?) int) ($b 2)) "
-                        + "(parameterDeclaration (type (typeModifier cast) int) ($d 3))"
+                        prefixExpect + "(params "
+                        + "(pDecl (type (tMod cast) int) ($a 1)) "
+                        + "(pDecl (type (tMod ?) int) ($b 2)) "
+                        + "(pDecl (type (tMod cast) int) ($d 3))"
                         + ")" + appendixExpect
                     }
                 }));
@@ -214,7 +214,7 @@ public class ParameterListHelper
             collection.add(new Object[]{
                         prefix + "int $a=" + type[0] + "::a" + appendix,
                         prefixExpect
-                        + "(parameters (parameterDeclaration (type typeModifier int) ($a (staticMemberAccess " + type[1] + " a))))"
+                        + "(params (pDecl (type tMod int) ($a (sMemAccess " + type[1] + " a))))"
                         + appendixExpect
                     });
         }

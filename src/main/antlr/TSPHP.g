@@ -142,11 +142,13 @@ tokens{
 	ACTUAL_PARAMETERS;
 	ARRAY_ACCESS;
 	BLOCK;
+	BLOCK_CONDITIONAL;
 	CAST;
 	CAST_ASSIGN;
 	
 	CLASS_BODY;
 	CLASS_MEMBER;
+	CLASS_MEMBER_STATIC;
 	CLASS_MODIFIER;
 	
 	CONSTANT_DECLARATION;
@@ -154,9 +156,14 @@ tokens{
 	
 	DEFAULT_NAMESPACE;
 	EXCEPTION_LIST;
+	
+	EXPRESSION;
 	EXPRESSION_LIST;
+	
 	FUNCTION_CALL;
+	
 	INTERFACE_BODY;
+	INTERFACE_CONSTRUCT;
 	
 	MEMBER_MODIFIER;	
 	MEMBER_ACCESS;
@@ -164,6 +171,7 @@ tokens{
 	
 	METHOD_CALL;
 	METHOD_DECLARATION;
+
 	METHOD_MODIFIER;
 	
 	NAMESPACE_BODY;
@@ -172,8 +180,10 @@ tokens{
 	PARAM_LIST;
 	PARAM_TYPE;
 	
-	POST_INCREMENT_DECREMENT;
-	PRE_INCREMENT_DECREMENT;
+	POST_INCREMENT;
+	POST_DECREMENT;
+	PRE_INCREMENT;
+	PRE_DECREMENT;
 	SWITCH_CASES;
 	
 	TYPE;
@@ -237,15 +247,15 @@ compilationUnit
 	;
 	
 namespaceSemicolon
-	:	'namespace' namespaceId block=';' statement* 
-		-> ^('namespace' TYPE_NAME[$namespaceId.start,$namespaceId.text] ^(NAMESPACE_BODY[$block,"namespaceBody"] statement*))
+	:	'namespace' namespaceId namespaceBody=';' statement* 
+		-> ^('namespace' TYPE_NAME[$namespaceId.start,$namespaceId.text] ^(NAMESPACE_BODY[$namespaceBody,"nBody"] statement*))
 	;
 
 namespaceBracket
-	:	'namespace' namespaceIdOrEmpty  block='{' statement* '}' 
+	:	'namespace' namespaceIdOrEmpty  namespaceBody='{' statement* '}' 
 		-> 	^('namespace' 
 				namespaceIdOrEmpty
-				^(NAMESPACE_BODY[$block,"namespaceBody"] statement*)
+				^(NAMESPACE_BODY[$namespaceBody,"nBody"] statement*)
 			)
 	;
 namespaceIdOrEmpty
@@ -268,7 +278,7 @@ Identifier
 withoutNamespace 
 	:	(statement+) -> ^(Namespace[$statement.start,"namespace"]
 					DEFAULT_NAMESPACE[$statement.start,"default"] 
-					^(NAMESPACE_BODY[$statement.start,"namespaceBody"] statement+)
+					^(NAMESPACE_BODY[$statement.start,"nBody"] statement+)
 				) 
 	;
 
@@ -279,8 +289,8 @@ statement
 	;
 	
 useDeclarationList
-	:	'use' first=useDeclaration (',' other=useDeclaration)* ';' 
-		-> ^('use' ^(USE_DECLRATARION[$first.start,"useDeclaration"] useDeclaration) (^(USE_DECLRATARION[$other.start,"useDeclaration"] useDeclaration))* )
+	:	'use' firstUseDeclaration=useDeclaration (',' otherDeclaration=useDeclaration)* ';' 
+		-> ^('use' ^(USE_DECLRATARION[$firstUseDeclaration.start,"uDecl"] useDeclaration) (^(USE_DECLRATARION[$otherDeclaration.start,"uDecl"] useDeclaration))* )
 	;
 	
 useDeclaration
@@ -288,8 +298,8 @@ useDeclaration
 	;
 	
 usingType
-	:	root=Identifier '\\' namespaceId 
-	|	root='\\' namespaceId
+	:	Identifier '\\' namespaceId 
+	|	'\\' namespaceId
 	;
 definition
 	:	classDeclaration
@@ -304,11 +314,11 @@ definition
 classDeclaration
 	:	classModifier? 'class' Identifier (ex='extends' exIds=identifierList)? (impl='implements' implIds=identifierList)? block='{' classBody* '}'	
 		-> ^('class' 
-			^(CLASS_MODIFIER[$classModifier.start,"classModifier"] classModifier?)
+			^(CLASS_MODIFIER[$classModifier.start,"cMod"] classModifier?)
 			Identifier 
 			^(Extends[$ex,"extends"] $exIds?)
 			^(Implements[$impl,"implements"] $implIds?)
-			^(CLASS_BODY[$block,"classBody"] classBody*)
+			^(CLASS_BODY[$block,"cBody"] classBody*)
 		)
 	;
 classModifier
@@ -329,7 +339,7 @@ classBody
 
 constDeclarationList
 	:	 begin='const' scalarTypes constantAssignment (',' constantAssignment)* ';'
-		-> ^(CONSTANT_DECLARATION_LIST[$begin,"constants"] scalarTypes constantAssignment+)
+		-> ^(CONSTANT_DECLARATION_LIST[$begin,"consts"] scalarTypes constantAssignment+)
 	;
 	
 constantAssignment
@@ -337,9 +347,13 @@ constantAssignment
 	;
 
 memberDeclaration	
-	:	st='static'? accessModifier variableDeclarationList ';' 
-		-> ^(CLASS_MEMBER[$memberDeclaration.start,"classMember"] ^(MEMBER_MODIFIER[$memberDeclaration.start,"modifier"] $st?) accessModifier 
-			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"variables"] variableDeclarationList)
+	:	st='static' accessModifier variableDeclarationList ';' 
+		-> ^(CLASS_MEMBER_STATIC[$memberDeclaration.start,"cVar"] accessModifier 
+			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"vars"] variableDeclarationList)
+		)
+	|	accessModifier variableDeclarationList ';' 
+		-> ^(CLASS_MEMBER[$memberDeclaration.start,"cMem"] accessModifier 
+			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"vars"] variableDeclarationList)
 		)
 	;
 
@@ -365,16 +379,17 @@ accessModifierOrPublic
 
 abstractMethodDeclaration
 	:	abstr='abstract' accessModifierWithoutPrivateOrPublic 'function' functionSignatureInclReturnType ';'
-		-> ^(METHOD_DECLARATION[$abstractMethodDeclaration.start,"methodDeclaration"]  
-			^(METHOD_MODIFIER[$abstr,"modifier"] $abstr) accessModifierWithoutPrivateOrPublic
+		-> ^(METHOD_DECLARATION[$abstr,"mDecl"]  
+			^(METHOD_MODIFIER[$abstr,"mMod"] $abstr)
+			accessModifierWithoutPrivateOrPublic
 			functionSignatureInclReturnType 
 		) 
 	;
 
 methodDeclaration	
 	:	methodModifier? accessModifierOrPublic 'function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
-		-> ^(METHOD_DECLARATION[$methodDeclaration.start,"method"]  
-			^(METHOD_MODIFIER[$methodModifier.start,"modifier"] methodModifier?)
+		-> ^(METHOD_DECLARATION[$methodDeclaration.start,"mDecl"]  
+			^(METHOD_MODIFIER[$methodModifier.start,"mMod"] methodModifier?)
 			accessModifierOrPublic
 			functionSignatureInclReturnType 
 			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
@@ -401,7 +416,7 @@ constructDeconstruct
 
 interfaceDeclaration
 	:	'interface' Identifier (ext='extends' identifierList)? block='{' interfaceBody* '}'
-		-> ^('interface' Identifier ^(Extends[$ext,"extends"] identifierList?) ^(INTERFACE_BODY[$block,"interfaceBody"] interfaceBody*))
+		-> ^('interface' Identifier ^(Extends[$ext,"extends"] identifierList?) ^(INTERFACE_BODY[$block,"iBody"] interfaceBody*))
 	;
 
 interfaceBody
@@ -411,13 +426,16 @@ interfaceBody
 	;
 
 interfaceMethodDeclaration
-	:	'public'? 'function' functionSignatureInclReturnType ';'
-		-> ^(METHOD_DECLARATION[$interfaceMethodDeclaration.start,"method"]  functionSignatureInclReturnType 
+	:	'public'? 'function' functionSignatureInclReturnType block=';'
+		-> ^(METHOD_DECLARATION[$interfaceMethodDeclaration.start,"mDecl"]   
+			^(METHOD_MODIFIER[$interfaceMethodDeclaration.start,"mMod"] Abstract[$interfaceMethodDeclaration.start,"abstract"])
+			Public[$interfaceMethodDeclaration.start,"public"]
+			functionSignatureInclReturnType 
 		) 
 	;
 
 interfaceConstruct
-	:	 'public'? 'function' '__construct' formalParameters ';' -> ^('__construct' formalParameters)
+	:	 'public'? 'function' ctor='__construct' formalParameters ';' -> ^(INTERFACE_CONSTRUCT[$ctor,"iCtor"] formalParameters)
 	;
 
 
@@ -444,7 +462,7 @@ allTypes
 allTypesWithoutObjectAndResource
 	:	primitiveTypesWithoutResource
 	| 	classInterfaceTypeWithoutObject
-		;
+	;
 
 scalarTypes
 	:	TypeBool
@@ -473,7 +491,7 @@ classInterfaceTypeInclObject
 	;
 
 formalParameters
-	:	params='(' paramList? ')' -> ^(PARAM_LIST[$params,"parameters"] paramList?)
+	:	params='(' paramList? ')' -> ^(PARAM_LIST[$params,"params"] paramList?)
 	;
 
 paramList
@@ -483,24 +501,24 @@ paramList
 	
 paramDeclarationNormal
 	:	allTypesInclModifierForParameter VariableId 
-		-> ^(PARAM_DECLARATION[$paramDeclarationNormal.start,"parameterDeclaration"] allTypesInclModifierForParameter ^(VariableId) )
+		-> ^(PARAM_DECLARATION[$paramDeclarationNormal.start,"pDecl"] allTypesInclModifierForParameter ^(VariableId) )
 	;
 	
 paramDeclarationOptional
 	:	allTypesInclModifierForParameter VariableId '=' unaryPrimitiveAtom 
-		-> ^(PARAM_DECLARATION[$paramDeclarationOptional.start,"parameterDeclaration"] allTypesInclModifierForParameter ^(VariableId unaryPrimitiveAtom))
+		-> ^(PARAM_DECLARATION[$paramDeclarationOptional.start,"pDecl"] allTypesInclModifierForParameter ^(VariableId unaryPrimitiveAtom))
 	;
 
 
 allTypesInclModifierForParameter
 	:	Cast? allTypesWithoutObjectAndResource '?'?
 		-> ^(TYPE[$allTypesInclModifierForParameter.start,"type"] 
-			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"typeModifier"] Cast? '?'?) 
+			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] Cast? '?'?) 
 			allTypesWithoutObjectAndResource
 		)
 	|	objectOrResource
 		-> ^(TYPE[$allTypesInclModifierForParameter.start,"type"] 
-			TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"typeModifier"] 
+			TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] 
 			objectOrResource
 		)
 	;
@@ -510,12 +528,14 @@ VariableId
 	;
 
 instructionWithoutBreakContinue	
-	:	block = '{' instructionWithoutBreakContinue* '}' -> ^(BLOCK[$block,"block"]  instructionWithoutBreakContinue*)
+	:	block='{''}' -> ^(EXPRESSION[$block,"expr"])
+	|	'{'! instructionWithoutBreakContinue+ '}'!
 	|	instruction
 	;
 
 instructionInclBreakContinue
-	:	block =  '{' instructionInclBreakContinue*  '}' -> ^(BLOCK[$block,"block"] instructionInclBreakContinue*)
+	:	block='{''}' -> ^(EXPRESSION[$block,"expr"])
+	|	'{'! instructionInclBreakContinue*  '}'!
 	|	instruction
 	|	('break'|'continue')^ Int? ';'!
 	;	
@@ -530,11 +550,10 @@ instruction
 	|	whileLoop
 	|	doWhileLoop
 	|	tryCatch
-	|	expression ';'!
-	|	'return'^ expression? ';'!
+	|	expression? ';' -> ^(EXPRESSION[$expression.start,"expr"] expression?)
+	|	'return'^ expression? ';'! 
 	|	'throw'^ expression ';'!
 	|	'echo'^ expressionList ';'!
-	|	semi=';' -> BLOCK[$semi,"block"]
 	;
 	
 expressionList
@@ -563,26 +582,27 @@ assignmentOperator
 	|	'.='
 	|	'<<='
 	|	'>>='
-	|	cast='=''('')' -> CAST_ASSIGN[$cast,"castAssign"]
+	|	cast='=''('')' -> CAST_ASSIGN[$cast,"cAssign"]
 	;
 	
 postIncrementDecrement 
-	:	postFixVariableWithoutCallAtTheEnd plusPlusOrMinusMinus 
-		-> ^(POST_INCREMENT_DECREMENT[$postFixVariableWithoutCallAtTheEnd.start, "postIncrementDecrement"] plusPlusOrMinusMinus postFixVariableWithoutCallAtTheEnd)
-	;
-	
-plusPlusOrMinusMinus
-	:	'++'
-	|	'--'
+	:	postFixVariableWithoutCallAtTheEnd '++' 
+		-> ^(POST_INCREMENT[$postFixVariableWithoutCallAtTheEnd.start, "postIncr"] postFixVariableWithoutCallAtTheEnd)
+		
+	|	postFixVariableWithoutCallAtTheEnd '--'
+		-> ^(POST_DECREMENT[$postFixVariableWithoutCallAtTheEnd.start, "postDecr"] postFixVariableWithoutCallAtTheEnd)
 	;
 	
 preIncrementDecrement
-	:	plusPlusOrMinusMinus postFixVariableWithoutCallAtTheEnd 
-		-> ^(PRE_INCREMENT_DECREMENT[$plusPlusOrMinusMinus.start,"preIncrementDecrement"] plusPlusOrMinusMinus postFixVariableWithoutCallAtTheEnd)
+	:	plus='++' postFixVariableWithoutCallAtTheEnd
+		-> ^(PRE_INCREMENT[$plus,"preIncr"] postFixVariableWithoutCallAtTheEnd)
+
+	|	minus='--' postFixVariableWithoutCallAtTheEnd
+		-> ^(PRE_DECREMENT[$minus,"preDecr"] postFixVariableWithoutCallAtTheEnd)
 	;
 		
 localVariableDeclaration
-	:	variableDeclarationList -> ^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"variables"] variableDeclarationList)
+	:	variableDeclarationList -> ^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"vars"] variableDeclarationList)
 	;
 	
 variableDeclarationList
@@ -711,7 +731,7 @@ cloneOrNew
 
 	
 variableOrMemberOrStaticMember
-	:	staticAccessOrParent VariableId -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"staticMemberAccess"] staticAccessOrParent VariableId)
+	:	staticAccessOrParent VariableId -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent VariableId)
 	|	'$this'
 	|	VariableId 
 	;
@@ -724,16 +744,16 @@ staticAccessOrParent
 
 newObject 
 	:	'new' classInterfaceTypeWithoutObject actualParameters -> ^('new' classInterfaceTypeWithoutObject actualParameters)
-	|	'new' classInterfaceTypeWithoutObject -> ^('new' classInterfaceTypeWithoutObject PARAM_LIST[$classInterfaceTypeWithoutObject.stop,"parameters"])
+	|	'new' classInterfaceTypeWithoutObject -> ^('new' classInterfaceTypeWithoutObject ACTUAL_PARAMETERS[$classInterfaceTypeWithoutObject.stop,"args"])
 	;
 
 actualParameters
-	:	list='(' expressionList? ')' -> ^(ACTUAL_PARAMETERS[$list,"parameters"] expressionList?)
+	:	list='(' expressionList? ')' -> ^(ACTUAL_PARAMETERS[$list,"args"] expressionList?)
 	;
 
 unaryPrimary
 	:	uplus = '+' primary -> primary
-	|	uminus = '-' primary -> ^(UNARY_MINUS[$uminus,"unaryMinus"] primary)
+	|	uminus = '-' primary -> ^(UNARY_MINUS[$uminus,"uMinus"] primary)
 	|	primary
 	;
 	
@@ -747,15 +767,15 @@ postFixCall
 	:	(	functionCall -> functionCall
 		|	methodCall -> methodCall
 		)
-		(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"memberAccess"] $postFixCall Identifier)
-		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrayAccess"] $postFixCall expression)
-		|	call -> ^(METHOD_CALL[$call.start,"methodCall"] $postFixCall call)
+		(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixCall Identifier)
+		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixCall expression)
+		|	call -> ^(METHOD_CALL[$call.start,"mCall"] $postFixCall call)
 		)*
 	;
 
 functionCall
 	:	classInterfaceTypeWithoutObject actualParameters
-		-> ^(FUNCTION_CALL[$classInterfaceTypeWithoutObject.start,"functionCall"] classInterfaceTypeWithoutObject actualParameters)
+		-> ^(FUNCTION_CALL[$classInterfaceTypeWithoutObject.start,"fCall"] classInterfaceTypeWithoutObject actualParameters)
 	;
 	
 call	:	'->'! Identifier actualParameters
@@ -763,7 +783,7 @@ call	:	'->'! Identifier actualParameters
 	
 methodCall
 	:	callee Identifier actualParameters
-		-> ^(METHOD_CALL[$callee.start,"methodCall"] callee Identifier actualParameters)
+		-> ^(METHOD_CALL[$callee.start,"mCall"] callee Identifier actualParameters)
 	;
 	
 callee	:	variableOrMemberOrStaticMember '->'!
@@ -780,10 +800,10 @@ atom	:	'(' expression ')' -> expression
 postFixVariableWithoutCallAtTheEnd
 	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
 		(
-			(call* -> ^(METHOD_CALL[$call.start,"methodCall"] $postFixVariableWithoutCallAtTheEnd call*) )
+			(call* -> ^(METHOD_CALL[$call.start,"mCall"] $postFixVariableWithoutCallAtTheEnd call*) )
 			
-			(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"memberAccess"] $postFixVariableWithoutCallAtTheEnd Identifier)
-			|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrayAccess"] $postFixVariableWithoutCallAtTheEnd expression)
+			(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixVariableWithoutCallAtTheEnd Identifier)
+			|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableWithoutCallAtTheEnd expression)
 			)
 			
 		)*
@@ -791,21 +811,21 @@ postFixVariableWithoutCallAtTheEnd
 	
 postFixVariableInclCallAtTheEnd
 	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
-		(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"memberAccess"] $postFixVariableInclCallAtTheEnd Identifier)
-		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrayAccess"] $postFixVariableInclCallAtTheEnd expression)
-		|	call -> ^(METHOD_CALL[$call.start,"methodCall"] $postFixVariableInclCallAtTheEnd call)
+		(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixVariableInclCallAtTheEnd Identifier)
+		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableInclCallAtTheEnd expression)
+		|	call -> ^(METHOD_CALL[$call.start,"mCall"] $postFixVariableInclCallAtTheEnd call)
 		)*
 	;
 
 classConstant
-	:	staticAccessOrParent Identifier -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"staticMemberAccess"] staticAccessOrParent Identifier)
+	:	staticAccessOrParent Identifier -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent Identifier)
 	;
 	
 
 	
 unaryPrimitiveAtom
 	:	uplus = '+' primitiveAtomWithConstant -> primitiveAtomWithConstant
-	|	uminus = '-' primitiveAtomWithConstant -> ^(UNARY_MINUS[$uminus,"unaryMinus"] primitiveAtomWithConstant)
+	|	uminus = '-' primitiveAtomWithConstant -> ^(UNARY_MINUS[$uminus,"uMinus"] primitiveAtomWithConstant)
 	|	primitiveAtomWithConstant
 	;
 
@@ -896,8 +916,12 @@ arrayKeyValue
 
 
 ifCondition
-	:	'if' '(' expression ')' instructionThen =instructionInclBreakContinue	
-		( 'else' instructionElse =instructionInclBreakContinue )? -> ^('if' expression $instructionThen $instructionElse?)
+	:	'if' '(' expression ')' instructionThen=instructionInclBreakContinue ( 'else' instructionElse =instructionInclBreakContinue )? 
+		-> ^('if' 
+			expression 
+			^(BLOCK_CONDITIONAL[$instructionThen.start,"cBlock"] $instructionThen) 
+			^(BLOCK_CONDITIONAL[$instructionElse.start,"cBlock"] $instructionElse)?
+		)
 	;
 
 
@@ -912,25 +936,25 @@ switchContent
 	
 normalCaseInstructionMandatory
 	:	caseLabel+ instructionInclBreakContinue+
-		-> 	^(SWITCH_CASES[$normalCaseInstructionMandatory.start,"switchCases"] caseLabel+)
-		 	^(BLOCK[$instructionInclBreakContinue.start,"block"] instructionInclBreakContinue+)
+		-> 	^(SWITCH_CASES[$normalCaseInstructionMandatory.start,"cases"] caseLabel+)
+		 	^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue+)
 	;
 	
 normalCaseInstructionOptional
 	:	caseLabel+ instructionInclBreakContinue*
-		-> 	^(SWITCH_CASES[$normalCaseInstructionOptional.start,"switchCases"] caseLabel+) 
-			^(BLOCK[$instructionInclBreakContinue.start,"block"] instructionInclBreakContinue*)
+		-> 	^(SWITCH_CASES[$normalCaseInstructionOptional.start,"cases"] caseLabel+) 
+			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue*)
 		
 	;	
 defaultCaseInstructionMandatory
 	:	caseLabel* defaultLabel caseLabel* instructionInclBreakContinue+
-		-> 	^(SWITCH_CASES[$defaultCaseInstructionMandatory.start,"switchCases"] caseLabel* defaultLabel) 
-			^(BLOCK[$instructionInclBreakContinue.start,"block"] instructionInclBreakContinue+)
+		-> 	^(SWITCH_CASES[$defaultCaseInstructionMandatory.start,"cases"] caseLabel* defaultLabel) 
+			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue+)
 	;
 defaultCaseInstructionOptional
 	:	caseLabel* defaultLabel caseLabel* instructionInclBreakContinue*
-		-> 	^(SWITCH_CASES[$defaultCaseInstructionOptional.start,"switchCases"] caseLabel* defaultLabel) 
-			^(BLOCK[$instructionInclBreakContinue.start,"block"] instructionInclBreakContinue*)
+		-> 	^(SWITCH_CASES[$defaultCaseInstructionOptional.start,"cases"] caseLabel* defaultLabel) 
+			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue*)
 	;
 	
 caseLabel	
@@ -942,47 +966,58 @@ defaultLabel
 	;
 	
 forLoop	
-	:	'for'^ forInit forCondition forUpdate instructionInclBreakContinue
+	:	'for' forInit forCondition forUpdate instructionInclBreakContinue 
+		-> ^('for' 
+			forInit 
+			forCondition 
+			forUpdate 
+			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue)
+		)
 	;
 	
 forInit	
 	:	init='(' 
-		(	variableDeclarationList -> ^(VARIABLE_DECLARATION_LIST[$init,"variables"] variableDeclarationList)
-		|	expressionList? -> ^(EXPRESSION_LIST[$init,"expressions"] expressionList?)
+		(	variableDeclarationList -> ^(VARIABLE_DECLARATION_LIST[$init,"vars"] variableDeclarationList)
+		|	expressionList? -> ^(EXPRESSION_LIST[$init,"exprs"] expressionList?)
 		)	
 	;
 	
 forCondition
-	:	condition=';' expressionList? -> ^(EXPRESSION_LIST[$condition,"expressions"] expressionList?)
+	:	condition=';' expressionList? -> ^(EXPRESSION_LIST[$condition,"exprs"] expressionList?)
 	;	
 	
 forUpdate
-	:	update=';' expressionList? ')' -> ^(EXPRESSION_LIST[$update,"expressions"] expressionList?)
+	:	update=';' expressionList? ')' -> ^(EXPRESSION_LIST[$update,"exprs"] expressionList?)
 	;
 
 foreachLoop
 	:	'foreach' '(' expression 'as' (keyType=scalarTypes keyVarId=VariableId '=>')? valueType=allTypesWithoutObjectAndResource valueVarId=VariableId ')' instructionInclBreakContinue 
-		-> ^('foreach' expression $keyType? $keyVarId? $valueType $valueVarId instructionInclBreakContinue)
+		-> ^('foreach' 
+			expression $keyType? $keyVarId? $valueType $valueVarId 
+			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue)
+		)
 	;
 
 whileLoop
-	:	'while' '(' expression ')' instructionInclBreakContinue -> ^('while' expression instructionInclBreakContinue)
+	:	'while' '(' expression ')' instructionInclBreakContinue 
+		-> ^('while' expression ^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue))
 	;
 	
 doWhileLoop
-	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';' -> ^('do' instructionInclBreakContinue expression)
+	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';' 
+		-> ^('do' ^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue) expression)
 	;
 
 tryCatch
 	:	'try' tryBegin='{' instructionInclBreakContinue* '}' catchBlock+
-		-> ^('try' ^(BLOCK[$tryBegin,"block"] instructionInclBreakContinue*) catchBlock+)
+		-> ^('try' ^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue*) catchBlock+)
 	;
 	
 catchBlock
 	:	catchBegin='catch' list='(' classInterfaceTypeWithoutObject VariableId ')' block='{' instructionInclBreakContinue* '}'
 		-> ^($catchBegin 
 			^(EXCEPTION_LIST[$list,"exceptions"] ^(VariableId classInterfaceTypeWithoutObject))
-			^(BLOCK[$block,"block"] instructionInclBreakContinue*)
+			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue*)
 		)
 	;
 

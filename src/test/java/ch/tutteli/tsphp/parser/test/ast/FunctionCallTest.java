@@ -48,38 +48,38 @@ public class FunctionCallTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"foo();", "(functionCall foo parameters)"},
-                    {"\\foo();", "(functionCall \\foo parameters)"},
-                    {"a\\foo();", "(functionCall a\\foo parameters)"},
-                    {"a\\a\\foo();", "(functionCall a\\a\\foo parameters)"},
-                    {"a\\a\\b\\foo();", "(functionCall a\\a\\b\\foo parameters)"},
-                    {"\\a\\foo();", "(functionCall \\a\\foo parameters)"},
-                    {"\\a\\b\\foo();", "(functionCall \\a\\b\\foo parameters)"},
-                    {"\\a\\b\\c\\foo();", "(functionCall \\a\\b\\c\\foo parameters)"},
+                    {"foo();", "(expr (fCall foo args))"},
+                    {"\\foo();", "(expr (fCall \\foo args))"},
+                    {"a\\foo();", "(expr (fCall a\\foo args))"},
+                    {"a\\a\\foo();", "(expr (fCall a\\a\\foo args))"},
+                    {"a\\a\\b\\foo();", "(expr (fCall a\\a\\b\\foo args))"},
+                    {"\\a\\foo();", "(expr (fCall \\a\\foo args))"},
+                    {"\\a\\b\\foo();", "(expr (fCall \\a\\b\\foo args))"},
+                    {"\\a\\b\\c\\foo();", "(expr (fCall \\a\\b\\c\\foo args))"},
                     {
                         "foo()->bar(2,2);", 
-                        "(methodCall "
-                            + "(functionCall foo parameters)"
-                        + " bar (parameters 2 2))"
+                        "(expr (mCall "
+                            + "(fCall foo args)"
+                        + " bar (args 2 2)))"
                     },
                     {
                         "foo()->bar(2,2)->asdf(1);", 
-                        "(methodCall (methodCall "
-                            + "(functionCall foo parameters)"
-                        + " bar (parameters 2 2)) asdf (parameters 1))"
+                        "(expr (mCall (mCall "
+                            + "(fCall foo args)"
+                        + " bar (args 2 2)) asdf (args 1)))"
                     },
                 }));
         Object[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "foo("+expression[0]+");", 
-                        "(functionCall foo (parameters "+expression[1]+"))"
+                        "(expr (fCall foo (args "+expression[1]+")))"
             });
             collection.add(new Object[]{
                         "foo("+expression[0]+","+expression[0]+","+expression[0]+");",
-                        "(functionCall foo (parameters "
+                        "(expr (fCall foo (args "
                         + ""+expression[1]+" "+expression[1]+" "+expression[1]+""
-                        + "))"
+                        + ")))"
                     });
         }
         return collection;

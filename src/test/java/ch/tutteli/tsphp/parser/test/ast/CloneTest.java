@@ -45,25 +45,25 @@ public class CloneTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
                     {"$a = clone $b;","(= $a (clone $b))"},
-                    {"$a = clone $b->a;","(= $a (clone (memberAccess $b a)))"},
-                    {"$a = clone $b->a[0];","(= $a (clone (arrayAccess (memberAccess $b a) 0)))"},
-                    {"$a = clone self::$a;","(= $a (clone (staticMemberAccess self $a)))"},
+                    {"$a = clone $b->a;","(= $a (clone (memAccess $b a)))"},
+                    {"$a = clone $b->a[0];","(= $a (clone (arrAccess (memAccess $b a) 0)))"},
+                    {"$a = clone self::$a;","(= $a (clone (sMemAccess self $a)))"},
                     {
                         "$a = clone self::$a[0];",
-                        "(= $a (clone (arrayAccess (staticMemberAccess self $a) 0)))"
+                        "(= $a (clone (arrAccess (sMemAccess self $a) 0)))"
                     },
-                    {"$a = clone parent::$a;","(= $a (clone (staticMemberAccess parent $a)))"},
+                    {"$a = clone parent::$a;","(= $a (clone (sMemAccess parent $a)))"},
                     {
                         "$a = clone parent::$a[0];",
-                        "(= $a (clone (arrayAccess (staticMemberAccess parent $a) 0)))"
+                        "(= $a (clone (arrAccess (sMemAccess parent $a) 0)))"
                     },
                     {
                         "$a = clone Foo::$a;",
-                        "(= $a (clone (staticMemberAccess Foo $a)))"
+                        "(= $a (clone (sMemAccess Foo $a)))"
                     },
                     {
                         "$a = clone a\\Foo::$a[0];",
-                         "(= $a (clone (arrayAccess (staticMemberAccess a\\Foo $a) 0)))"
+                         "(= $a (clone (arrAccess (sMemAccess a\\Foo $a) 0)))"
                     }
                 });
 

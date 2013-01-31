@@ -53,83 +53,83 @@ public class ClassTest extends AAstTest
             //extends
             collection.add(new Object[]{
                         "class a extends "+type[0]+"{}",
-                        "(class classModifier a (extends "+type[1]+") implements classBody)"
+                        "(class cMod a (extends "+type[1]+") implements cBody)"
                     });
             collection.add(new Object[]{
                         "final class a extends "+type[0]+","+type[0]+"{}",
-                        "(class (classModifier final) a (extends "+type[1]+" "+type[1]+") implements classBody)"
+                        "(class (cMod final) a (extends "+type[1]+" "+type[1]+") implements cBody)"
                     });
             collection.add(new Object[]{
                         "abstract class a extends "+type[0]+","+type[0]+","+type[0]+"{}",
-                        "(class (classModifier abstract) a "
-                            + "(extends "+type[1]+" "+type[1]+" "+type[1]+") implements classBody)"
+                        "(class (cMod abstract) a "
+                            + "(extends "+type[1]+" "+type[1]+" "+type[1]+") implements cBody)"
                     });
             //implements
             collection.add(new Object[]{
                         "class a implements "+type[0]+", "+type[0]+"{}",
-                        "(class classModifier a extends (implements "+type[1]+" "+type[1]+") classBody)"
+                        "(class cMod a extends (implements "+type[1]+" "+type[1]+") cBody)"
                     });
             collection.add(new Object[]{
                         "final class a implements "+type[0]+", "+type[0]+","+type[0]+"{}",
-                        "(class (classModifier final) a extends "
-                            + "(implements "+type[1]+" "+type[1]+" "+type[1]+") classBody)"
+                        "(class (cMod final) a extends "
+                            + "(implements "+type[1]+" "+type[1]+" "+type[1]+") cBody)"
                     });
             collection.add(new Object[]{
                         "abstract class a implements "+type[0]+"{}",
-                        "(class (classModifier abstract) a extends (implements "+type[1]+") classBody)"
+                        "(class (cMod abstract) a extends (implements "+type[1]+") cBody)"
                     });
         }
         
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"class a{}", "(class classModifier a extends implements classBody)"},
-                    {"class a{ }", "(class classModifier a extends implements classBody)"},
-                    {"final class a{}", "(class (classModifier final) a extends implements classBody)"},
-                    {"abstract class a{}", "(class (classModifier abstract) a extends implements classBody)"},
+                    {"class a{}", "(class cMod a extends implements cBody)"},
+                    {"class a{ }", "(class cMod a extends implements cBody)"},
+                    {"final class a{}", "(class (cMod final) a extends implements cBody)"},
+                    {"abstract class a{}", "(class (cMod abstract) a extends implements cBody)"},
                     //extends implements
                     {
                         "class a extends b implements c{}",
-                        "(class classModifier a "
+                        "(class cMod a "
                             + "(extends b) "
                             + "(implements c)"
-                        + " classBody)"
+                        + " cBody)"
                     },
                     {
                         "final class a extends b implements c{}",
-                        "(class (classModifier final) a "
+                        "(class (cMod final) a "
                             + "(extends b) "
                             + "(implements c)"
-                        + " classBody)"
+                        + " cBody)"
                     },
                     {
                         "abstract class a extends b implements c{}",
-                         "(class (classModifier abstract) a "
+                         "(class (cMod abstract) a "
                             + "(extends b) "
                             + "(implements c)"
-                        + " classBody)"
+                        + " cBody)"
                     },
                     {
                         "class a extends b,c implements f,g,h,i{}",
-                        "(class classModifier a "
+                        "(class cMod a "
                             + "(extends b c) "
                             + "(implements "
                                     + "f g "
                                     + "h i"
                             + ")"
-                        + " classBody)"
+                        + " cBody)"
                     },
                     {
                         "final class a extends b,c,d implements f,g,h{}",
-                        "(class (classModifier final) a "
+                        "(class (cMod final) a "
                             + "(extends b c d) "
                             + "(implements "
                                     + "f g h"
                             + ")"
-                        + " classBody)"
+                        + " cBody)"
                             
                     },
                     {
                         "abstract class a extends b,c,d,e implements f,g{}",
-                        "(class (classModifier abstract) a "
+                        "(class (cMod abstract) a "
                             + "(extends "
                                 + "b c "
                                 + "d e"
@@ -137,7 +137,7 @@ public class ClassTest extends AAstTest
                             + "(implements "
                                     + "f g"
                             + ")"
-                        + " classBody)"
+                        + " cBody)"
                     },
                 }));
         return collection;

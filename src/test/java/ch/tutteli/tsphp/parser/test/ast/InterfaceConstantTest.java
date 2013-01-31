@@ -43,6 +43,6 @@ public class InterfaceConstantTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return ConstantHelper.testStrings("interface B{","}","(interface B extends (interfaceBody ","))");
+        return ConstantHelper.testStrings("interface B{","}","(interface B extends (iBody ","))");
     }
 }

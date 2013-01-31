@@ -35,23 +35,23 @@ public class ConstantHelper
         return Arrays.asList(new Object[][]{
                     {
                         prefix + "const bool a=true;" + appendix,
-                        prefixExpected + "(constants bool (a true))" + appendixExpected
+                        prefixExpected + "(consts bool (a true))" + appendixExpected
                     },
                     {
                         prefix + "const bool a=true, b=false;" + appendix,
-                        prefixExpected + "(constants bool (a true) (b false))" + appendixExpected
+                        prefixExpected + "(consts bool (a true) (b false))" + appendixExpected
                     },
                     {
                         prefix + "const int a=1,b=2;" + appendix,
-                        prefixExpected + "(constants int (a 1) (b 2))" + appendixExpected
+                        prefixExpected + "(consts int (a 1) (b 2))" + appendixExpected
                     },
                     {
                         prefix + "const float a=1.0,b=2.0,c=null;" + appendix,
-                        prefixExpected + "(constants float (a 1.0) (b 2.0) (c null))" + appendixExpected
+                        prefixExpected + "(consts float (a 1.0) (b 2.0) (c null))" + appendixExpected
                     },
                     {
                         prefix + "const string a=1,b=\"2\",c=null,d='2';" + appendix,
-                        prefixExpected + "(constants string (a 1) (b \"2\") (c null) (d '2'))" + appendixExpected
+                        prefixExpected + "(consts string (a 1) (b \"2\") (c null) (d '2'))" + appendixExpected
                     }
                 });
     }

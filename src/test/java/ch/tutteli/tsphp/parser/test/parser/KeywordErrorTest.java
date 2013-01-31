@@ -46,7 +46,7 @@ public class KeywordErrorTest extends AParserParserExceptionTest
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> variables() {
+    public static Collection<Object[]> vars() {
         List<Object[]> collection = new ArrayList<>(6200);
         Object[][] keywords = getKeywords();
         for (Object[] keyword : keywords) {

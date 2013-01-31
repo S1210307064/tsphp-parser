@@ -51,8 +51,8 @@ public class UseTest extends AAstTest
         boolean isFirstEntry = true;
         for (String[] type : types) {
             if (!isFirstEntry) {
-                collection.add(new Object[]{"use " + type[0] + ";", "(use (useDeclaration " + type[1] + "))"});
-                collection.add(new Object[]{"use " + type[0] + " as MyClass;", "(use (useDeclaration " + type[1] + " MyClass))"});
+                collection.add(new Object[]{"use " + type[0] + ";", "(use (uDecl " + type[1] + "))"});
+                collection.add(new Object[]{"use " + type[0] + " as MyClass;", "(use (uDecl " + type[1] + " MyClass))"});
 
             }
             isFirstEntry = false;
@@ -63,59 +63,59 @@ public class UseTest extends AAstTest
                     {
                         "use \\Exception, a\\a;",
                         "(use "
-                        + "(useDeclaration \\Exception) "
-                        + "(useDeclaration a\\a)"
+                        + "(uDecl \\Exception) "
+                        + "(uDecl a\\a)"
                         + ")"
                     },
                     {
                         "use \\a\\a, \\Exception;",
                         "(use "
-                        + "(useDeclaration \\a\\a) "
-                        + "(useDeclaration \\Exception)"
+                        + "(uDecl \\a\\a) "
+                        + "(uDecl \\Exception)"
                         + ")"
                     },
                     {
                         "use a\\a, \\Exception as b;",
                         "(use "
-                        + "(useDeclaration a\\a) "
-                        + "(useDeclaration \\Exception b)"
+                        + "(uDecl a\\a) "
+                        + "(uDecl \\Exception b)"
                         + ")"
                     },
                     {
                         "use a\\a\\b, \\a\\b\\c as d;",
                         "(use "
-                        + "(useDeclaration a\\a\\b) "
-                        + "(useDeclaration \\a\\b\\c d)"
+                        + "(uDecl a\\a\\b) "
+                        + "(uDecl \\a\\b\\c d)"
                         + ")"
                     },
                     {
                         "use \\Exception as MyException, \\a\\b;",
                         "(use "
-                        + "(useDeclaration \\Exception MyException) "
-                        + "(useDeclaration \\a\\b)"
+                        + "(uDecl \\Exception MyException) "
+                        + "(uDecl \\a\\b)"
                         + ")"
                     },
                     {
                         "use a\\a as b, a\\b;",
                         "(use "
-                        + "(useDeclaration a\\a b) "
-                        + "(useDeclaration a\\b)"
+                        + "(uDecl a\\a b) "
+                        + "(uDecl a\\b)"
                         + ")"
                     },
                     {
                         "use a\\a\\b as c, a\\a, \\Exception;",
                         "(use "
-                        + "(useDeclaration a\\a\\b c) "
-                        + "(useDeclaration a\\a) "
-                        + "(useDeclaration \\Exception)"
+                        + "(uDecl a\\a\\b c) "
+                        + "(uDecl a\\a) "
+                        + "(uDecl \\Exception)"
                         + ")"
                     },
                     {
                         "use a\\a\\b as c, a\\a, \\Exception as d;",
                         "(use "
-                        + "(useDeclaration a\\a\\b c) "
-                        + "(useDeclaration a\\a) "
-                        + "(useDeclaration \\Exception d)"
+                        + "(uDecl a\\a\\b c) "
+                        + "(uDecl a\\a) "
+                        + "(uDecl \\Exception d)"
                         + ")"
                     }
                 }));

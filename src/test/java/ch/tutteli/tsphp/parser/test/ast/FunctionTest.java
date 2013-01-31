@@ -51,7 +51,7 @@ public class FunctionTest extends AAstTest
         for (String[] type : types) {
             collection.add(new Object[]{
                         "function " + type[0] + " get(){}",
-                        "(function " + type[1] + " get parameters block)"
+                        "(function " + type[1] + " get params block)"
                     });
         }
 

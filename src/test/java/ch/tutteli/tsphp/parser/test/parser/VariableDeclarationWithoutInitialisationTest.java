@@ -44,7 +44,7 @@ public class VariableDeclarationWithoutInitialisationTest extends AParserTest
     }
 
     @Parameters
-    public static Collection<Object[]> variables() {
+    public static Collection<Object[]> vars() {
         return Arrays.asList(new Object[][]{
                     {"bool $a;"},
                     {"bool $A;"},

@@ -44,7 +44,7 @@ public class NamespaceErrorTest extends AParserParserExceptionTest
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> variables() {
+    public static Collection<Object[]> vars() {
         return Arrays.asList(new Object[][]{
                     //namespace afterwards
                     {"int $a; namespace a;", TSPHPParser.Namespace, 8},

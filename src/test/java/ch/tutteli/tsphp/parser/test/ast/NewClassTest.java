@@ -48,19 +48,19 @@ public class NewClassTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"new Type;", "(new Type parameters)"},
-                    {"new Type();", "(new Type parameters)"}
+                    {"new Type;", "(expr (new Type args))"},
+                    {"new Type();", "(expr (new Type args))"}
                 }));
         Object[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
-            collection.add(new Object[]{"new Type(" + expression[0] + ");", "(new Type (parameters " + expression[1] + "))"});
+            collection.add(new Object[]{"new Type(" + expression[0] + ");", "(expr (new Type (args " + expression[1] + ")))"});
             collection.add(new Object[]{
                         "new Type(" + expression[0] + "," + expression[0] + ");",
-                        "(new Type (parameters " + expression[1] + " " + expression[1] + "))"
+                        "(expr (new Type (args " + expression[1] + " " + expression[1] + ")))"
                     });
             collection.add(new Object[]{
                         "new Type(" + expression[0] + "," + expression[0] + "," + expression[0] + ");",
-                        "(new Type (parameters " + expression[1] + " " + expression[1] + " " + expression[1] + "))"
+                        "(expr (new Type (args " + expression[1] + " " + expression[1] + " " + expression[1] + ")))"
                     });
         }
         return collection;

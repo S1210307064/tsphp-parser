@@ -70,7 +70,7 @@ public class BlockTest extends AAstTest
     }
 
     private static void addToCollection(List<Object[]> collection, Collection<Object[]> testStrings) {
-        AstHelper.addToCollection(collection, testStrings, "{", "}", "(block ", ")", 5);
-        AstHelper.addToCollection(collection, testStrings, "{{", "}}", "(block (block ", "))", 5);
+        AstHelper.addToCollection(collection, testStrings, "{", "}", "", "", 5);
+        AstHelper.addToCollection(collection, testStrings, "{{", "}}", "", "", 5);
     }
 }

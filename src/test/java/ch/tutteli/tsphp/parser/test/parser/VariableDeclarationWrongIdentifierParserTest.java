@@ -44,7 +44,7 @@ public class VariableDeclarationWrongIdentifierParserTest extends AParserParserE
     }
 
     @Parameterized.Parameters
-    public static Collection<Object[]> variables() {
+    public static Collection<Object[]> vars() {
         return Arrays.asList(new Object[][]{
                     {"int $1;", TSPHPParser.Dolar, 4},
                     {"bool $2a;", TSPHPParser.Dolar, 5},

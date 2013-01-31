@@ -51,19 +51,19 @@ public class MethodFunctionTest extends AAstTest
         return Arrays.asList(new Object[][]{
                     {
                         "class a {  function void getName(){ $a=1; } }  function void getName(){ $a=1; }",
-                        "(namespace default (namespaceBody "
-                            + "(class classModifier a extends implements (classBody "
-                                + "(methodDeclaration modifier public void getName parameters (block (= $a 1)))"
+                        "(namespace default (nBody "
+                            + "(class cMod a extends implements (cBody "
+                                + "(mDecl mMod public void getName params (block (= $a 1)))"
                             + ")) "
-                            + "(function void getName parameters (block (= $a 1)))"
+                            + "(function void getName params (block (= $a 1)))"
                         + "))"
                     },
                     {
                         "/** this is my lovely function */ \n function void foo(int $a=true,int $b=2,cast int $c=3){}",
-                        "(namespace default (namespaceBody (function void foo (parameters "
-                            + "(parameterDeclaration (type typeModifier int) ($a true)) "
-                            + "(parameterDeclaration (type typeModifier int) ($b 2)) "
-                            + "(parameterDeclaration (type (typeModifier cast) int) ($c 3))"
+                        "(namespace default (nBody (function void foo (params "
+                            + "(pDecl (type tMod int) ($a true)) "
+                            + "(pDecl (type tMod int) ($b 2)) "
+                            + "(pDecl (type (tMod cast) int) ($c 3))"
                         + ") block)))"
                      }
                 });

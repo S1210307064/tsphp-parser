@@ -44,13 +44,13 @@ public class VariableDeclarationTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        Collection<Object[]> collection = VariableDeclarationListHelper.testStrings("", ";", "(variables ", ")");
+        Collection<Object[]> collection = VariableDeclarationListHelper.testStrings("", ";", "(vars ", ")");
 
         Object[][] expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "int $a = " + expression[0] + ";",
-                        "(variables int ($a " + expression[1] + "))"
+                        "(vars int ($a " + expression[1] + "))"
                     });
         }
         return collection;
