@@ -48,7 +48,7 @@ public class IfTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         
-        Object[][] expressions = ExpressionHelper.getAstExpressions();
+        List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{"if(" + expression[0] + ") $a=1; else $a+=1;", "(if "+expression[1]+" (cBlock (= $a 1)) (cBlock (+= $a 1)))"});
         }

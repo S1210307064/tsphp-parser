@@ -53,11 +53,11 @@ public class MethodTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        List<String[]> types = TypeHelper.getAllTypes();
-        for (String[] type : types) {
+        List<String> types = TypeHelper.getAllTypes();
+        for (String type : types) {
             collection.add(new Object[]{
-                        "function " + type[0] + " get(){}",
-                        "(mDecl mMod public " + type[1] + " get params block)"
+                        "function " + type + " get(){}",
+                        "(mDecl mMod public " + type + " get params block)"
                     });
         }
         //normal
@@ -65,8 +65,10 @@ public class MethodTest extends AAstTest
                 "function void set(", "){}",
                 "(mDecl mMod public void set ", " block)"));
 
-        collection.addAll(ParameterListHelper.getVariationsForOptional(
-                "function void foo(", "){$a=1;}", "(mDecl mMod public void foo ", " (block (= $a 1)))"));
+        collection.add(new Object[]{
+                    "function void set(){$a=1;}",
+                    "(mDecl mMod public void set params (block (= $a 1)))"
+                });
 
         //mMods
         collection.addAll(getVariations("", "mMod"));

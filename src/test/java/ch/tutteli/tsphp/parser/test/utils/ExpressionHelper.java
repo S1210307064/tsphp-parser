@@ -16,6 +16,10 @@
  */
 package ch.tutteli.tsphp.parser.test.utils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
@@ -23,17 +27,8 @@ package ch.tutteli.tsphp.parser.test.utils;
 public class ExpressionHelper
 {
 
-    public static String[][] getAstExpressions() {
+    public static String[][] getAstAssignmentExpression() {
         return new String[][]{
-                    {"$a or $b", "(or $a $b)"},
-                    {"$a or $b or $c", "(or (or $a $b) $c)"},
-                    {"$a xor $b", "(xor $a $b)"},
-                    {"$a xor $b xor $c", "(xor (xor $a $b) $c)"},
-                    {"$a and $b", "(and $a $b)"},
-                    {"$a and $b and $c", "(and (and $a $b) $c)"},
-                    {"$a and $b or $c xor $d", "(or (and $a $b) (xor $c $d))"},
-                    {"$a or $b and $c xor $d", "(or $a (xor (and $b $c) $d))"},
-                    {"$a or $b and $c xor $d", "(or $a (xor (and $b $c) $d))"},
                     {"$a = $b", "(= $a $b)"},
                     {"$a += $b", "(+= $a $b)"},
                     {"$a -= $b", "(-= $a $b)"},
@@ -46,7 +41,26 @@ public class ExpressionHelper
                     {"$a .= $b", "(.= $a $b)"},
                     {"$a <<= $b", "(<<= $a $b)"},
                     {"$a >>= $b", "(>>= $a $b)"},
-                    {"$a =() $b", "(cAssign $a $b)"},
+                    {"$a =() $b", "(cAssign $a $b)"}
+                };
+    }
+    public static List<String[]> getAstExpressions() {
+        List<String[]> collection = new ArrayList<>();
+        collection.addAll(Arrays.asList(getAstAssignmentExpression()));
+        collection.addAll(Arrays.asList(getAstExpressionsWihtoutAssignment()));
+        return collection;
+    }
+    public static String[][] getAstExpressionsWihtoutAssignment() {
+        return new String[][]{
+                    {"$a or $b", "(or $a $b)"},
+                    {"$a or $b or $c", "(or (or $a $b) $c)"},
+                    {"$a xor $b", "(xor $a $b)"},
+                    {"$a xor $b xor $c", "(xor (xor $a $b) $c)"},
+                    {"$a and $b", "(and $a $b)"},
+                    {"$a and $b and $c", "(and (and $a $b) $c)"},
+                    {"$a and $b or $c xor $d", "(or (and $a $b) (xor $c $d))"},
+                    {"$a or $b and $c xor $d", "(or $a (xor (and $b $c) $d))"},
+                    {"$a or $b and $c xor $d", "(or $a (xor (and $b $c) $d))"},
                     {"true ? $a : $b", "(? true $a $b)"},
                     {"true ? $a ? $b : $c : $d", "(? true (? $a $b $c) $d)"},
                     {"true ? $a : $b ? $c : $d", "(? true $a (? $b $c $d))"},
@@ -115,8 +129,8 @@ public class ExpressionHelper
                     {"\\foo(1,1+2,3)", "(fCall \\foo (args 1 (+ 1 2) 3))"},
                     {"$a->foo()", "(mCall $a foo args)"},
                     {"$a->foo(true || false,123*9)", "(mCall $a foo (args (|| true false) (* 123 9)))"},
-                    {"exit","exit"},
-                    {"exit(1)","(exit 1)"},
+                    {"exit", "exit"},
+                    {"exit(1)", "(exit 1)"},
                     {"($a)", "$a"},
                     {"$a++", "(postIncr $a)"},
                     {"$a--", "(postDecr $a)"},

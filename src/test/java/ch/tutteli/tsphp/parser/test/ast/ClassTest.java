@@ -47,36 +47,36 @@ public class ClassTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        String[][] types = TypeHelper.getClassInterfaceTypes();
+        String[] types = TypeHelper.getClassInterfaceTypes();
         
-        for(String[] type:types){
+        for(String type:types){
             //extends
             collection.add(new Object[]{
-                        "class a extends "+type[0]+"{}",
-                        "(class cMod a (extends "+type[1]+") implements cBody)"
+                        "class a extends "+type+"{}",
+                        "(class cMod a (extends "+type+") implements cBody)"
                     });
             collection.add(new Object[]{
-                        "final class a extends "+type[0]+","+type[0]+"{}",
-                        "(class (cMod final) a (extends "+type[1]+" "+type[1]+") implements cBody)"
+                        "final class a extends "+type+","+type+"{}",
+                        "(class (cMod final) a (extends "+type+" "+type+") implements cBody)"
                     });
             collection.add(new Object[]{
-                        "abstract class a extends "+type[0]+","+type[0]+","+type[0]+"{}",
+                        "abstract class a extends "+type+","+type+","+type+"{}",
                         "(class (cMod abstract) a "
-                            + "(extends "+type[1]+" "+type[1]+" "+type[1]+") implements cBody)"
+                            + "(extends "+type+" "+type+" "+type+") implements cBody)"
                     });
             //implements
             collection.add(new Object[]{
-                        "class a implements "+type[0]+", "+type[0]+"{}",
-                        "(class cMod a extends (implements "+type[1]+" "+type[1]+") cBody)"
+                        "class a implements "+type+", "+type+"{}",
+                        "(class cMod a extends (implements "+type+" "+type+") cBody)"
                     });
             collection.add(new Object[]{
-                        "final class a implements "+type[0]+", "+type[0]+","+type[0]+"{}",
+                        "final class a implements "+type+", "+type+","+type+"{}",
                         "(class (cMod final) a extends "
-                            + "(implements "+type[1]+" "+type[1]+" "+type[1]+") cBody)"
+                            + "(implements "+type+" "+type+" "+type+") cBody)"
                     });
             collection.add(new Object[]{
-                        "abstract class a implements "+type[0]+"{}",
-                        "(class (cMod abstract) a extends (implements "+type[1]+") cBody)"
+                        "abstract class a implements "+type+"{}",
+                        "(class (cMod abstract) a extends (implements "+type+") cBody)"
                     });
         }
         
@@ -111,32 +111,22 @@ public class ClassTest extends AAstTest
                         "class a extends b,c implements f,g,h,i{}",
                         "(class cMod a "
                             + "(extends b c) "
-                            + "(implements "
-                                    + "f g "
-                                    + "h i"
-                            + ")"
+                            + "(implements f g h i)"
                         + " cBody)"
                     },
                     {
                         "final class a extends b,c,d implements f,g,h{}",
                         "(class (cMod final) a "
                             + "(extends b c d) "
-                            + "(implements "
-                                    + "f g h"
-                            + ")"
+                            + "(implements f g h)"
                         + " cBody)"
                             
                     },
                     {
                         "abstract class a extends b,c,d,e implements f,g{}",
                         "(class (cMod abstract) a "
-                            + "(extends "
-                                + "b c "
-                                + "d e"
-                            + ") "
-                            + "(implements "
-                                    + "f g"
-                            + ")"
+                            + "(extends b c d e) "
+                            + "(implements f g)"
                         + " cBody)"
                     },
                 }));

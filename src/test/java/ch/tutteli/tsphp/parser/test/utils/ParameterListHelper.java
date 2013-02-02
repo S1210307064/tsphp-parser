@@ -33,7 +33,21 @@ public class ParameterListHelper
 
     public static Collection<Object[]> getTestStrings(String prefix, String appendix,
             String prefixExpect, String appendixExpect) {
-        List<Object[]> collection = new ArrayList<>();
+
+        //check all types
+        List<Object[]> collection = TypeHelper.getAllTypesInclModifier(
+                prefix, " $a" + appendix,
+                prefixExpect + "(params (pDecl ", " $a))" + appendixExpect);
+        List<String> types = TypeHelper.getAllTypesWithoutScalar();
+
+        //class / interfaceType can also have the ? modifier
+        for (String type : types) {
+            collection.add(new Object[]{
+                        prefix + type + "? $a" + appendix,
+                        prefixExpect + "(params (pDecl (type (tMod ?) " + type + ") $a))" + appendixExpect
+                    });
+        }
+
         //normal
         collection.addAll(getVariations(
                 prefix, "int $a", appendix,
@@ -51,27 +65,14 @@ public class ParameterListHelper
                 prefix, "cast int? $a", appendix,
                 prefixExpect, "(type (tMod cast ?) int) $a", appendixExpect));
 
-         List<String[]> types = TypeHelper.getAllTypesWithoutResourceAndObject();
-         for(String[] type:types){
-             //Test cast for all types excluding resource and object
-             collection.add(new Object[]{
-                        prefix +"cast "+type[0]+" $a"+appendix,
-                        prefixExpect
-                        + "(params (pDecl (type (tMod cast) "+type[1]+") $a))"
-                        + appendixExpect
-                    });
-              //Test ? for all scalar types?
-              collection.add(new Object[]{
-                        prefix +type[0]+"? $a"+appendix,
-                        prefixExpect
-                        + "(params (pDecl (type (tMod ?) "+type[1]+") $a))"
-                        + appendixExpect
-                    });
-         }        
+        collection.addAll(getVariationsForOptional(prefix, appendix, prefixExpect, appendixExpect));
+
+        //empty params
+        collection.add(new Object[]{prefix + appendix, prefixExpect + "params" + appendixExpect});
         return collection;
     }
 
-    public static Collection<Object[]> getVariations(String prefix, String param, String appendix,
+    private static Collection<Object[]> getVariations(String prefix, String param, String appendix,
             String prefixExpect, String paramExpect, String appendixExpect) {
         return Arrays.asList(new Object[][]{
                     {
@@ -136,7 +137,7 @@ public class ParameterListHelper
                 });
     }
 
-    public static Collection<Object[]> getVariationsForOptional(String prefix, String appendix,
+    private static Collection<Object[]> getVariationsForOptional(String prefix, String appendix,
             String prefixExpect, String appendixExpect) {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(new Object[][]{
@@ -208,13 +209,13 @@ public class ParameterListHelper
                 }));
 
 
-        String[][] types = TypeHelper.getClassInterfaceTypes();
+        String[] types = TypeHelper.getClassInterfaceTypes();
 
-        for (String[] type : types) {
+        for (String type : types) {
             collection.add(new Object[]{
-                        prefix + "int $a=" + type[0] + "::a" + appendix,
+                        prefix + "int $a=" + type + "::a" + appendix,
                         prefixExpect
-                        + "(params (pDecl (type tMod int) ($a (sMemAccess " + type[1] + " a))))"
+                        + "(params (pDecl (type tMod int) ($a (sMemAccess " + type + " a))))"
                         + appendixExpect
                     });
         }

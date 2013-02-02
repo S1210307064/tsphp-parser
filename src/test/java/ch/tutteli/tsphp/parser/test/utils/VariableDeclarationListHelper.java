@@ -33,42 +33,37 @@ public class VariableDeclarationListHelper
 
     public static Collection<Object[]> testStrings(String prefix, String appendix,
             String prefixExpected, String appendixExpected) {
-        List<Object[]> collection = new ArrayList<>();
-        String[][] types = TypeHelper.getClassInterfaceTypes();
-        for (String[] type : types) {
-            collection.add(new Object[]{
-                        prefix + type[0] + " $a=1" + appendix,
-                        prefixExpected + type[1] + " ($a 1)" + appendixExpected
-                    });
-        }
-        collection.addAll(getVariations(prefix + "int", "=", appendix, prefixExpected + "int", "1", appendixExpected));
-        collection.addAll(getVariations(prefix + "object", "=", appendix, prefixExpected + "object", "1", appendixExpected));
-        collection.addAll(getVariations(prefix + "float", "=()", appendix, prefixExpected + "float", "(cast float 1)", appendixExpected));
+        List<Object[]> collection = TypeHelper.getAllTypesInclModifier(
+                prefix, " $a=1" + appendix, prefixExpected, " ($a 1)" + appendixExpected);
+
+        collection.addAll(getVariations(prefix + "int", "=", appendix, prefixExpected + "(type tMod int)", "1", appendixExpected));
+        collection.addAll(getVariations(prefix + "object", "=", appendix, prefixExpected + "(type tMod object)", "1", appendixExpected));
+        collection.addAll(getVariations(prefix + "float", "=()", appendix, prefixExpected + "(type tMod float)", "(cast (type tMod float) 1)", appendixExpected));
         collection.addAll(Arrays.asList(new Object[][]{
-                    {prefix + "int $a                    " + appendix, prefixExpected + "int $a" + appendixExpected},
-                    {prefix + "int $a,     $b            " + appendix, prefixExpected + "int $a $b" + appendixExpected},
-                    {prefix + "int $a,     $b,     $c    " + appendix, prefixExpected + "int $a $b $c" + appendixExpected},
-                    {prefix + "int $a=()1, $b=1,   $c    " + appendix, prefixExpected + "int ($a (cast int 1)) ($b 1) $c" + appendixExpected},
-                    {prefix + "int $a=()1, $b,     $c=1  " + appendix, prefixExpected + "int ($a (cast int 1)) $b ($c 1)" + appendixExpected},
-                    {prefix + "int $a=()1, $b=1,   $c=1  " + appendix, prefixExpected + "int ($a (cast int 1)) ($b 1) ($c 1)" + appendixExpected},
-                    {prefix + "int $a=()1, $b=()1, $c    " + appendix, prefixExpected + "int ($a (cast int 1)) ($b (cast int 1)) $c" + appendixExpected},
-                    {prefix + "int $a=()1, $b=()1, $c=1  " + appendix, prefixExpected + "int ($a (cast int 1)) ($b (cast int 1)) ($c 1)" + appendixExpected},
-                    {prefix + "int $a=()1, $b,     $c=()1" + appendix, prefixExpected + "int ($a (cast int 1)) $b ($c (cast int 1))" + appendixExpected},
-                    {prefix + "int $a=()1, $b=1,   $c=()1" + appendix, prefixExpected + "int ($a (cast int 1)) ($b 1) ($c (cast int 1))" + appendixExpected},
-                    {prefix + "int $a=()1, $b=()1, $c=()1" + appendix, prefixExpected + "int ($a (cast int 1)) ($b (cast int 1)) ($c (cast int 1))" + appendixExpected},
-                    {prefix + "int $a,     $b=()1, $c    " + appendix, prefixExpected + "int $a ($b (cast int 1)) $c" + appendixExpected},
-                    {prefix + "int $a,     $b=()1, $c=1  " + appendix, prefixExpected + "int $a ($b (cast int 1)) ($c 1)" + appendixExpected},
-                    {prefix + "int $a,     $b=()1, $c=()1" + appendix, prefixExpected + "int $a ($b (cast int 1)) ($c (cast int 1))" + appendixExpected},
-                    {prefix + "int $a,     $b=1,   $c=()1" + appendix, prefixExpected + "int $a ($b 1) ($c (cast int 1))" + appendixExpected},
-                    {prefix + "int $a=1,   $b=()1, $c    " + appendix, prefixExpected + "int ($a 1) ($b (cast int 1)) $c" + appendixExpected},
-                    {prefix + "int $a=1,   $b=()1, $c=1  " + appendix, prefixExpected + "int ($a 1) ($b (cast int 1)) ($c 1)" + appendixExpected},
-                    {prefix + "int $a=1,   $b=()1, $c=()1" + appendix, prefixExpected + "int ($a 1) ($b (cast int 1)) ($c (cast int 1))" + appendixExpected},
-                    {prefix + "int $a=1,   $b=1,   $c=()1" + appendix, prefixExpected + "int ($a 1) ($b 1) ($c (cast int 1))" + appendixExpected}
+                    {prefix + "int $a                    " + appendix, prefixExpected + "(type tMod int) $a" + appendixExpected},
+                    {prefix + "int $a,     $b            " + appendix, prefixExpected + "(type tMod int) $a $b" + appendixExpected},
+                    {prefix + "int $a,     $b,     $c    " + appendix, prefixExpected + "(type tMod int) $a $b $c" + appendixExpected},
+                    {prefix + "int $a=()1, $b=1,   $c    " + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b 1) $c" + appendixExpected},
+                    {prefix + "int $a=()1, $b,     $c=1  " + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) $b ($c 1)" + appendixExpected},
+                    {prefix + "int $a=()1, $b=1,   $c=1  " + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b 1) ($c 1)" + appendixExpected},
+                    {prefix + "int $a=()1, $b=()1, $c    " + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b (cast (type tMod int) 1)) $c" + appendixExpected},
+                    {prefix + "int $a=()1, $b=()1, $c=1  " + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b (cast (type tMod int) 1)) ($c 1)" + appendixExpected},
+                    {prefix + "int $a=()1, $b,     $c=()1" + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) $b ($c (cast (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a=()1, $b=1,   $c=()1" + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b 1) ($c (cast (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a=()1, $b=()1, $c=()1" + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b (cast (type tMod int) 1)) ($c (cast (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a,     $b=()1, $c    " + appendix, prefixExpected + "(type tMod int) $a ($b (cast (type tMod int) 1)) $c" + appendixExpected},
+                    {prefix + "int $a,     $b=()1, $c=1  " + appendix, prefixExpected + "(type tMod int) $a ($b (cast (type tMod int) 1)) ($c 1)" + appendixExpected},
+                    {prefix + "int $a,     $b=()1, $c=()1" + appendix, prefixExpected + "(type tMod int) $a ($b (cast (type tMod int) 1)) ($c (cast (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a,     $b=1,   $c=()1" + appendix, prefixExpected + "(type tMod int) $a ($b 1) ($c (cast (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a=1,   $b=()1, $c    " + appendix, prefixExpected + "(type tMod int) ($a 1) ($b (cast (type tMod int) 1)) $c" + appendixExpected},
+                    {prefix + "int $a=1,   $b=()1, $c=1  " + appendix, prefixExpected + "(type tMod int) ($a 1) ($b (cast (type tMod int) 1)) ($c 1)" + appendixExpected},
+                    {prefix + "int $a=1,   $b=()1, $c=()1" + appendix, prefixExpected + "(type tMod int) ($a 1) ($b (cast (type tMod int) 1)) ($c (cast (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a=1,   $b=1,   $c=()1" + appendix, prefixExpected + "(type tMod int) ($a 1) ($b 1) ($c (cast (type tMod int) 1))" + appendixExpected}
                 }));
         return collection;
     }
 
-    static Collection<Object[]> getVariations(String prefix, String sign, String appendix,
+    private static Collection<Object[]> getVariations(String prefix, String operator, String appendix,
             String prefixExpected, String expectedExpression, String appendixExpected) {
         return Arrays.asList(new Object[][]{
                     {
@@ -76,35 +71,35 @@ public class VariableDeclarationListHelper
                         prefixExpected + " $a $b $c" + appendixExpected
                     },
                     {
-                        prefix + " $a" + sign + "1, $b, $c" + appendix,
+                        prefix + " $a" + operator + "1, $b, $c" + appendix,
                         prefixExpected + " ($a " + expectedExpression + ") $b $c" + appendixExpected
                     },
                     {
-                        prefix + " $a" + sign + "1, $b" + sign + "1, $c" + appendix,
+                        prefix + " $a" + operator + "1, $b" + operator + "1, $c" + appendix,
                         prefixExpected + " ($a " + expectedExpression + ") ($b " + expectedExpression + ") $c"
                         + appendixExpected
                     },
                     {
-                        prefix + " $a" + sign + "1, $b, $c" + sign + "1" + appendix,
+                        prefix + " $a" + operator + "1, $b, $c" + operator + "1" + appendix,
                         prefixExpected + " ($a " + expectedExpression + ") $b ($c " + expectedExpression + ")"
                         + appendixExpected
                     },
                     {
-                        prefix + " $a" + sign + "1, $b" + sign + "1, $c" + sign + "1" + appendix,
+                        prefix + " $a" + operator + "1, $b" + operator + "1, $c" + operator + "1" + appendix,
                         prefixExpected + " ($a " + expectedExpression + ") ($b " + expectedExpression + ") "
                         + "($c " + expectedExpression + ")" + appendixExpected
                     },
                     {
-                        prefix + " $a, $b" + sign + "1, $c" + appendix,
+                        prefix + " $a, $b" + operator + "1, $c" + appendix,
                         prefixExpected + " $a ($b " + expectedExpression + ") $c" + appendixExpected
                     },
                     {
-                        prefix + " $a, $b" + sign + "1, $c" + sign + "1" + appendix,
+                        prefix + " $a, $b" + operator + "1, $c" + operator + "1" + appendix,
                         prefixExpected + " $a ($b " + expectedExpression + ") ($c " + expectedExpression + ")"
                         + appendixExpected
                     },
                     {
-                        prefix + " $a, $b, $c" + sign + "1" + appendix,
+                        prefix + " $a, $b, $c" + operator + "1" + appendix,
                         prefixExpected + " $a $b ($c " + expectedExpression + ")" + appendixExpected
                     }
                 });

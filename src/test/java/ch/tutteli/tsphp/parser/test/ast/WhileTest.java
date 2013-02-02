@@ -50,12 +50,12 @@ public class WhileTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {"while( true  ) $a=1;", "(while true (cBlock (= $a 1)))"},
                     {"while( true  ){$a=1;}", "(while true (cBlock (= $a 1)))"},
-                    {"while( true  ){$a=1;int $b=2;}", "(while true (cBlock (= $a 1) (vars int ($b 2))))"},
+                    {"while( true  ){$a=1;int $b=2;}", "(while true (cBlock (= $a 1) (vars (type tMod int) ($b 2))))"},
                     {"do $a=1; while( true  );", "(do (cBlock (= $a 1)) true)"},
                     {"do {$a=1;} while( true  );", "(do (cBlock (= $a 1)) true)"},
                     {"do {$a=1;$b=2;}while( true  );", "(do (cBlock (= $a 1) (= $b 2)) true)"}
                 }));
-        Object[][] expressions = ExpressionHelper.getAstExpressions();
+        List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{"while(" + expression[0] + ") $a=1;", "(while " + expression[1] + " (cBlock (= $a 1)))"});
             collection.add(new Object[]{"do $a=1; while(" + expression[0] + ");", "(do (cBlock (= $a 1)) " + expression[1] + ")"});

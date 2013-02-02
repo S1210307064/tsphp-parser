@@ -75,7 +75,7 @@ public class ForTest extends AAstTest
                     }
                 }));
 
-        Object[][] expressions = ExpressionHelper.getAstExpressions();
+        List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "for(" + expression[0] + ";" + expression[0] + ";" + expression[0] + ") $a=1;",

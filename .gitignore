@@ -8,3 +8,5 @@ nbproject/*
 /src/main/java/ch/tutteli/tsphp/parser/TSPHP.tokens
 /src/main/java/ch/tutteli/tsphp/parser/TSPHPLexer.java
 /src/main/java/ch/tutteli/tsphp/parser/TSPHPParser.java
+
+/src/main/antlr/TSPHP__testrig.st

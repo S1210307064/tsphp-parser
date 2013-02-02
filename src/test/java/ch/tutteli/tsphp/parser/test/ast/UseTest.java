@@ -47,12 +47,12 @@ public class UseTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        String[][] types = TypeHelper.getClassInterfaceTypes();
+        String[] types = TypeHelper.getClassInterfaceTypes();
         boolean isFirstEntry = true;
-        for (String[] type : types) {
+        for (String type : types) {
             if (!isFirstEntry) {
-                collection.add(new Object[]{"use " + type[0] + ";", "(use (uDecl " + type[1] + "))"});
-                collection.add(new Object[]{"use " + type[0] + " as MyClass;", "(use (uDecl " + type[1] + " MyClass))"});
+                collection.add(new Object[]{"use " + type + ";", "(use (uDecl " + type + "))"});
+                collection.add(new Object[]{"use " + type + " as MyClass;", "(use (uDecl " + type + " MyClass))"});
 
             }
             isFirstEntry = false;

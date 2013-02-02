@@ -47,11 +47,11 @@ public class FunctionTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        List<String[]> types = TypeHelper.getAllTypes();
-        for (String[] type : types) {
+        List<String> types = TypeHelper.getAllTypes();
+        for (String type : types) {
             collection.add(new Object[]{
-                        "function " + type[0] + " get(){}",
-                        "(function " + type[1] + " get params block)"
+                        "function " + type + " get(){}",
+                        "(function " + type + " get params block)"
                     });
         }
 
@@ -59,9 +59,7 @@ public class FunctionTest extends AAstTest
                 "function void set(", "){}",
                 "(function void set ", " block)"));
 
-        collection.addAll(ParameterListHelper.getVariationsForOptional(
-                "function void foo(", "){$a=1;}",
-                "(function void foo ", " (block (= $a 1)))"));
+        collection.add(new Object[]{"function void foo(){$a=1;}","(function void foo params (block (= $a 1)))"});
 
         return collection;
     }

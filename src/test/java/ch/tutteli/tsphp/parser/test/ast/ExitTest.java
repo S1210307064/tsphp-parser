@@ -49,10 +49,10 @@ public class ExitTest extends AAstTest
         List<Object[]> collection = new ArrayList<>();
 
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"exit;", "(expr exit)"},}));
-        Object[][] expressions = ExpressionHelper.getAstExpressions();
+                    {"exit;", "exit"},}));
+        List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
-            collection.add(new Object[]{"exit(" + expression[0] + ");", "(expr (exit " + expression[1] + "))"});
+            collection.add(new Object[]{"exit(" + expression[0] + ");", "(exit " + expression[1] + ")"});
         }
         return collection;
     }

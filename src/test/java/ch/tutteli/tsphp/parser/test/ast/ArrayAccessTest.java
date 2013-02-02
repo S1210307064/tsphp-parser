@@ -51,7 +51,7 @@ public class ArrayAccessTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "int $d = $a->foo()[0]->foo('hallo')->bar()[2][3];",
-                        "(vars int ($d "
+                        "(vars (type tMod int) ($d "
                             + "(arrAccess (arrAccess (mCall (mCall (arrAccess "
                                 + "(mCall $a foo args)"
                             + " 0) foo (args 'hallo')) bar args) 2) 3)"
@@ -59,7 +59,7 @@ public class ArrayAccessTest extends AAstTest
                     },
                     {
                         "int $d = foo()[0]->foo('hallo')->bar()[2][3];",
-                        "(vars int ($d "
+                        "(vars (type tMod int) ($d "
                             + "(arrAccess (arrAccess (mCall (mCall (arrAccess "
                                 + "(fCall foo args)"
                             + " 0) foo (args 'hallo')) bar args) 2) 3)"
@@ -67,7 +67,7 @@ public class ArrayAccessTest extends AAstTest
                     },
                     {
                         "int $d = foo()[0]->foo('hallo')->bar()[2][3]->fo()[2][3+1];",
-                        "(vars int ($d "
+                        "(vars (type tMod int) ($d "
                             + "(arrAccess (arrAccess (mCall "
                                 + "(arrAccess (arrAccess (mCall (mCall (arrAccess "
                                     + "(fCall foo args)"
@@ -77,7 +77,7 @@ public class ArrayAccessTest extends AAstTest
                     },
                     {
                         "int $d = foo()[0]->a->foo('hallo')[0][$a]->bar()[2]->foo()[3][5]->foo();",
-                        "(vars int ($d "
+                        "(vars (type tMod int) ($d "
                             + "(mCall (arrAccess (arrAccess (mCall "
                                 + "(arrAccess (mCall "
                                     + "(arrAccess (arrAccess (mCall (memAccess (arrAccess "
@@ -90,7 +90,7 @@ public class ArrayAccessTest extends AAstTest
                     },
                     {
                         "int $d = $a->a[0]->b[0][1]->foo()->bar()[2]->foo()[3][5]->foo();",
-                         "(vars int ($d "
+                         "(vars (type tMod int) ($d "
                             +"(mCall (arrAccess (arrAccess (mCall "
                                 + "(arrAccess (mCall (mCall (arrAccess (arrAccess (memAccess "
                                     + "(arrAccess (memAccess $a a) 0)"
@@ -99,21 +99,21 @@ public class ArrayAccessTest extends AAstTest
                         + "))"
                     }
                 }));
-        String[][] expressions = ExpressionHelper.getAstExpressions();
+        List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
                         "array $d = $a[" + expression[0] + "];",
-                        "(vars array ($d (arrAccess $a " + expression[1] + ")))"
+                        "(vars (type tMod array) ($d (arrAccess $a " + expression[1] + ")))"
                     });
             collection.add(new Object[]{
                         "array $d = $a[" + expression[0] + "][" + expression[0] + "];",
-                        "(vars array ($d "
+                        "(vars (type tMod array) ($d "
                             + "(arrAccess (arrAccess $a " + expression[1] + ") " + expression[1] + ")"
                         + "))"
                     });
             collection.add(new Object[]{
                         "array $d = foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(vars array ($d "
+                        "(vars (type tMod array) ($d "
                             + "(arrAccess (arrAccess "
                                 + "(fCall foo args)"
                             + " " + expression[1] + ") " + expression[1] + ")"
@@ -121,7 +121,7 @@ public class ArrayAccessTest extends AAstTest
                     });
             collection.add(new Object[]{
                         "array $d = $a->foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(vars array ($d "
+                        "(vars (type tMod array) ($d "
                             + "(arrAccess (arrAccess "
                                 + "(mCall $a foo args)"
                             + " " + expression[1] + ") " + expression[1] + ")"
@@ -129,7 +129,7 @@ public class ArrayAccessTest extends AAstTest
                     });
             collection.add(new Object[]{
                         "array $d = self::foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(vars array ($d "
+                        "(vars (type tMod array) ($d "
                             + "(arrAccess (arrAccess "
                                 + "(mCall self foo args)"
                             + " " + expression[1] + ") " + expression[1] + ")"
@@ -137,7 +137,7 @@ public class ArrayAccessTest extends AAstTest
                      });
             collection.add(new Object[]{
                         "array $d = parent::foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(vars array ($d "
+                        "(vars (type tMod array) ($d "
                             + "(arrAccess (arrAccess "
                                 + "(mCall parent foo args)"
                             + " " + expression[1] + ") " + expression[1] + ")"
@@ -145,7 +145,7 @@ public class ArrayAccessTest extends AAstTest
                     });
             collection.add(new Object[]{
                         "array $d = Foo::foo()[" + expression[0] + "][" + expression[0] + "];",
-                        "(vars array ($d "
+                        "(vars (type tMod array) ($d "
                             + "(arrAccess (arrAccess "
                                 + "(mCall Foo foo args)"
                             + " " + expression[1] + ") " + expression[1] + ")"

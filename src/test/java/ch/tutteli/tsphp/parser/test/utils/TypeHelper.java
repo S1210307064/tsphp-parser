@@ -27,46 +27,111 @@ import java.util.List;
 public class TypeHelper
 {
 
-    public static List<String[]> getAllTypes() {
-        List<String[]> types = new ArrayList<>();
+    public static List<String> getAllTypes() {
+        List<String> types = new ArrayList<>();
         types.addAll(getPrimitiveTypes());
         types.addAll(Arrays.asList(getClassInterfaceTypes()));
         return types;
     }
 
-    public static String[][] getClassInterfaceTypes() {
-        return new String[][]{
-                    {"a", "a"},
-                    {"a\\A", "a\\A"},
-                    {"a\\b\\A", "a\\b\\A"},
-                    {"\\a", "\\a"},
-                    {"\\a\\A", "\\a\\A"},
-                    {"\\a\\b\\A", "\\a\\b\\A"}
+    public static String[] getClassInterfaceTypes() {
+        return new String[]{
+                    "a",
+                    "a\\A",
+                    "a\\b\\A",
+                    "\\a",
+                    "\\a\\A",
+                    "\\a\\b\\A"
                 };
     }
 
-    public static List<String[]> getAllTypesWithoutResourceAndObject() {
-        List<String[]> collection = new ArrayList<>(7);
+    public static List<String> getAllTypesWithoutResourceAndObject() {
+        List<String> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(getScalarTypes()));
+        collection.add("array");
         collection.addAll(Arrays.asList(getClassInterfaceTypes()));
         return collection;
     }
 
-    public static List<String[]> getPrimitiveTypes() {
-        List<String[]> collection = new ArrayList<>(7);
-        collection.addAll(Arrays.asList(getScalarTypes()));
-        collection.add(new String[]{"resource", "resource"});
-        collection.add(new String[]{"object", "object"});
+    public static List<String> getAllTypesWithoutScalar() {
+        List<String> collection = new ArrayList<>();
+        collection.addAll(Arrays.asList(getClassInterfaceTypes()));
+        collection.add("array");
+        collection.add("resource");
+        collection.add("object");
         return collection;
     }
 
-    public static String[][] getScalarTypes() {
-        return new String[][]{
-                    {"bool", "bool"},
-                    {"int", "int"},
-                    {"float", "float"},
-                    {"string", "string"},
-                    {"array", "array"}
+    public static List<String> getPrimitiveTypes() {
+        List<String> collection = new ArrayList<>(7);
+        collection.addAll(Arrays.asList(getScalarTypes()));
+        collection.add("array");
+        collection.add("resource");
+        collection.add("object");
+        return collection;
+    }
+
+    public static String[] getScalarTypes() {
+        return new String[]{
+                    "bool",
+                    "int",
+                    "float",
+                    "string"
                 };
+    }
+
+    public static List<Object[]> getAllTypesInclModifier(String prefix, String appendix,
+            String prefixExpect, String appendixExpect) {
+        List<Object[]> collection = new ArrayList<>();
+        String[] types = getScalarTypes();
+        for (String type : types) {
+            collection.add(new String[]{
+                        prefix + type + appendix, prefixExpect + "(type tMod " + type + ")" + appendixExpect
+                    });
+            collection.add(new String[]{
+                        prefix + "cast " + type + appendix,
+                        prefixExpect + "(type (tMod cast) " + type + ")" + appendixExpect
+                    });
+            collection.add(new String[]{
+                        prefix + type + "?" + appendix,
+                        prefixExpect + "(type (tMod ?) " + type + ")" + appendixExpect
+                    });
+            collection.add(new String[]{
+                        prefix + "cast " + type + "?" + appendix,
+                        prefixExpect + "(type (tMod cast ?) " + type + ")" + appendixExpect
+                    });
+        }
+
+        collection.add(new String[]{
+                    prefix + "array" + appendix,
+                    prefixExpect + "(type tMod array)" + appendixExpect
+                });
+        collection.add(new String[]{
+                    prefix + "cast array" + appendix,
+                    prefixExpect + "(type (tMod cast) array)" + appendixExpect
+                });
+
+        types = getClassInterfaceTypes();
+        for (String type : types) {
+            collection.add(new String[]{
+                        prefix + type + appendix,
+                        prefixExpect + "(type tMod " + type + ")" + appendixExpect
+                    });
+            collection.add(new String[]{
+                        prefix + "cast " + type + appendix,
+                        prefixExpect + "(type (tMod cast) " + type + ")" + appendixExpect
+                    });
+        }
+
+        collection.add(new String[]{
+                    prefix + "resource" + appendix,
+                    prefixExpect + "(type tMod resource)" + appendixExpect
+                });
+        collection.add(new String[]{
+                    prefix + "object" + appendix,
+                    prefixExpect + "(type tMod object)" + appendixExpect
+                });
+
+        return collection;
     }
 }

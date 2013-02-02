@@ -48,20 +48,20 @@ public class InterfaceTest extends AAstTest
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{"interface a{}","(interface a extends iBody)"});
         
-        String[][] types = TypeHelper.getClassInterfaceTypes();
-        for(String[] type:types){
+        String[] types = TypeHelper.getClassInterfaceTypes();
+        for(String type:types){
             
             collection.add(new Object[]{
-                "interface a extends "+type[0]+"{}",
-                "(interface a (extends "+type[1]+") iBody)"
+                "interface a extends "+type+"{}",
+                "(interface a (extends "+type+") iBody)"
             });
             collection.add(new Object[]{
-                "interface a extends "+type[0]+","+type[0]+"{}",
-                "(interface a (extends "+type[1]+" "+type[1]+") iBody)"
+                "interface a extends "+type+","+type+"{}",
+                "(interface a (extends "+type+" "+type+") iBody)"
             });
             collection.add(new Object[]{
-                "interface a extends "+type[0]+","+type[0]+", "+type[0]+"{}",
-                "(interface a (extends "+type[1]+" "+type[1]+" "+type[1]+") iBody)"
+                "interface a extends "+type+","+type+", "+type+"{}",
+                "(interface a (extends "+type+" "+type+" "+type+") iBody)"
             });
         }
         return collection;

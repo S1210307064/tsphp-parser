@@ -516,11 +516,11 @@ allTypesInclModifierForParameter
 			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] Cast? '?'?) 
 			allTypesWithoutObjectAndResource
 		)
-	|	objectOrResource
+	|	objectOrResource '?'?
 		-> ^(TYPE[$allTypesInclModifierForParameter.start,"type"] 
-			TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] 
+			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] '?'?)
 			objectOrResource
-		)
+		)	
 	;
 
 VariableId	
@@ -541,8 +541,7 @@ instructionInclBreakContinue
 	;	
 
 instruction
-	:	variableAssignment ';'!
-	|	localVariableDeclaration ';'!
+	:	localVariableDeclaration ';'!
 	|	ifCondition
 	|	switchCondition
 	|	forLoop
@@ -550,55 +549,15 @@ instruction
 	|	whileLoop
 	|	doWhileLoop
 	|	tryCatch
-	|	expression? ';' -> ^(EXPRESSION[$expression.start,"expr"] expression?)
+	|	expression ';'!
 	|	'return'^ expression? ';'! 
 	|	'throw'^ expression ';'!
 	|	'echo'^ expressionList ';'!
+	|	expr=';' -> ^(EXPRESSION[$expr,"expr"])
 	;
 	
 expressionList
 	:	expression (','! expression)*
-	;
-
-variableAssignment
-	:	VariableId assignmentOperator^ expression
-	;
-	
-incrementDecrement
-	:	postIncrementDecrement
-	|	preIncrementDecrement
-	;
-
-assignmentOperator
-	:	'='
-	|	'+='
-	|	'-='
-	|	'*='
-	|	'/='
-	|	'&='
-	|	'|='
-	|	'^='
-	|	'%='
-	|	'.='
-	|	'<<='
-	|	'>>='
-	|	cast='=''('')' -> CAST_ASSIGN[$cast,"cAssign"]
-	;
-	
-postIncrementDecrement 
-	:	postFixVariableWithoutCallAtTheEnd '++' 
-		-> ^(POST_INCREMENT[$postFixVariableWithoutCallAtTheEnd.start, "postIncr"] postFixVariableWithoutCallAtTheEnd)
-		
-	|	postFixVariableWithoutCallAtTheEnd '--'
-		-> ^(POST_DECREMENT[$postFixVariableWithoutCallAtTheEnd.start, "postDecr"] postFixVariableWithoutCallAtTheEnd)
-	;
-	
-preIncrementDecrement
-	:	plus='++' postFixVariableWithoutCallAtTheEnd
-		-> ^(PRE_INCREMENT[$plus,"preIncr"] postFixVariableWithoutCallAtTheEnd)
-
-	|	minus='--' postFixVariableWithoutCallAtTheEnd
-		-> ^(PRE_DECREMENT[$minus,"preDecr"] postFixVariableWithoutCallAtTheEnd)
 	;
 		
 localVariableDeclaration
@@ -606,24 +565,68 @@ localVariableDeclaration
 	;
 	
 variableDeclarationList
-	:	allTypesWithoutObjectAndResource 
-		(	castAssign[$allTypesWithoutObjectAndResource.tree]
+	:	variableDeclarationScalarList
+	|	variableDeclarationArrayOrClassInterfaceList		
+	|	objectOrResourceInclModifier  assign (','! assign)*
+	;
+	
+variableDeclarationScalarList
+	:	scalarTypeWithModifier castAssignOrAssignList[$scalarTypeWithModifier.tree]
+	;
+	
+scalarTypeWithModifier
+	:	Cast? scalarTypes '?'?			
+		-> ^(TYPE[$scalarTypeWithModifier.start,"type"] 
+			^(TYPE_MODIFIER[$scalarTypeWithModifier.start,"tMod"] Cast? '?'?) 
+			scalarTypes
+		)
+	;
+	
+castAssignOrAssignList[Tree tree]
+	:	(	castAssign[tree]
 		|	assign
 		)
-		(','!	(	castAssign[$allTypesWithoutObjectAndResource.tree]
+		(','!	(	castAssign[tree]
 			|	assign
 			)
-		)*		
-	|	objectOrResource assign (','! assign)*
+		)*			
 	;
 	
 castAssign[Tree tree]
-	:	VariableId cast='=''('')' expression -> ^(VariableId ^(CAST[$cast,"cast"] {$tree} expression))
+	:	VariableId cast='=''('')' expression 
+		-> ^(VariableId ^(CAST[$cast,"cast"] {$tree} expression))
 	;
 
 assign	
-	:	VariableId^ ('='! expression)?
+	:	VariableId (expr='=' expression)? 
+		-> ^(VariableId expression?)
 	;
+	
+variableDeclarationArrayOrClassInterfaceList
+	:	classInterfaceTypeWithoutObjectInclArrayWithModifier castAssignOrAssignList[$classInterfaceTypeWithoutObjectInclArrayWithModifier.tree]	
+	;
+	
+classInterfaceTypeWithoutObjectInclArrayWithModifier
+	:	Cast? classInterfaceTypeWithoutObjectInclArray		
+		-> ^(TYPE[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"type"] 
+			^(TYPE_MODIFIER[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"tMod"] Cast?) 
+			classInterfaceTypeWithoutObjectInclArray
+		)
+	;
+	
+classInterfaceTypeWithoutObjectInclArray
+	:	'array'
+	|	classInterfaceTypeWithoutObject
+	;
+	
+objectOrResourceInclModifier
+	:	objectOrResource
+		-> ^(TYPE[$objectOrResourceInclModifier.start,"type"] 
+			TYPE_MODIFIER[$objectOrResourceInclModifier.start,"tMod"] 
+			objectOrResource
+		)	
+	;
+
 objectOrResource
 	:	'object'
 	|	'resource'
@@ -647,7 +650,23 @@ logicAndWeak
 	;
 
 assignment
-	:	ternary (assignmentOperator^ ternary)*
+	:	ternary (assignmentOperator^ expression)*
+	;
+
+assignmentOperator
+	:	'='
+	|	'+='
+	|	'-='
+	|	'*='
+	|	'/='
+	|	'&='
+	|	'|='
+	|	'^='
+	|	'%='
+	|	'.='
+	|	'<<='
+	|	'>>='
+	|	cast='=''('')' -> CAST_ASSIGN[$cast,"cAssign"]
 	;
 
 ternary	
@@ -722,7 +741,12 @@ castOrBitwiseNotOrAt
 	|	'@'^ castOrBitwiseNotOrAt 
 	|	cloneOrNew
 	;
-
+	
+allTypesWithoutObjectAndResourceWithModifier
+	:	scalarTypeWithModifier
+	|	classInterfaceTypeWithoutObjectInclArrayWithModifier
+	;
+	
 cloneOrNew
 	:	'clone'^ cloneOrNew
 	|	newObject
@@ -795,6 +819,27 @@ atom	:	'(' expression ')' -> expression
 	|	postFixVariableInclCallAtTheEnd
 	|	array
 	|	primitiveAtomWithConstant
+	;
+
+incrementDecrement
+	:	postIncrementDecrement
+	|	preIncrementDecrement
+	;
+	
+postIncrementDecrement 
+	:	postFixVariableWithoutCallAtTheEnd '++' 
+		-> ^(POST_INCREMENT[$postFixVariableWithoutCallAtTheEnd.start, "postIncr"] postFixVariableWithoutCallAtTheEnd)
+		
+	|	postFixVariableWithoutCallAtTheEnd '--'
+		-> ^(POST_DECREMENT[$postFixVariableWithoutCallAtTheEnd.start, "postDecr"] postFixVariableWithoutCallAtTheEnd)
+	;
+	
+preIncrementDecrement
+	:	plus='++' postFixVariableWithoutCallAtTheEnd
+		-> ^(PRE_INCREMENT[$plus,"preIncr"] postFixVariableWithoutCallAtTheEnd)
+
+	|	minus='--' postFixVariableWithoutCallAtTheEnd
+		-> ^(PRE_DECREMENT[$minus,"preDecr"] postFixVariableWithoutCallAtTheEnd)
 	;
 
 postFixVariableWithoutCallAtTheEnd

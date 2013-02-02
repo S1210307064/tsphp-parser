@@ -63,9 +63,9 @@ public class ClassMemberTest extends AAstTest
 
     private static Collection<Object[]> getVariations(String modifier, String memberOrClassVariable) {
         return Arrays.asList(new Object[][]{
-                    {modifier + " private int $a;", "(" + memberOrClassVariable + " private (vars int $a))"},
-                    {modifier + " protected int $a;", "(" + memberOrClassVariable + " protected (vars int $a))"},
-                    {modifier + " public int $a;", "(" + memberOrClassVariable + " public (vars int $a))"}
+                    {modifier + " private int $a;", "(" + memberOrClassVariable + " private (vars (type tMod int) $a))"},
+                    {modifier + " protected int $a;", "(" + memberOrClassVariable + " protected (vars (type tMod int) $a))"},
+                    {modifier + " public int $a;", "(" + memberOrClassVariable + " public (vars (type tMod int) $a))"}
                 });
     }
 }

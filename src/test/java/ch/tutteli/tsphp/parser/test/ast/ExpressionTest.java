@@ -18,7 +18,7 @@ package ch.tutteli.tsphp.parser.test.ast;
 
 import ch.tutteli.tsphp.parser.test.utils.AAstTest;
 import ch.tutteli.tsphp.parser.test.utils.ExpressionHelper;
-import ch.tutteli.tsphp.parser.test.utils.VariableDeclarationListHelper;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -31,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class VariableDeclarationTest extends AAstTest
+public class ExpressionTest extends AAstTest
 {
 
-    public VariableDeclarationTest(String testString, String expectedResult) {
+    public ExpressionTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -45,15 +45,12 @@ public class VariableDeclarationTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        Collection<Object[]> collection = VariableDeclarationListHelper.testStrings("", ";", "(vars ", ")");
-
-        List<String[]> expressions = ExpressionHelper.getAstExpressions();
-        for (Object[] expression : expressions) {
-            collection.add(new Object[]{
-                        "int $a = " + expression[0] + ";",
-                        "(vars (type tMod int) ($a " + expression[1] + "))"
-                    });
-        }
-        return collection;
+         List<Object[]> collection = new ArrayList<>();
+         List<String[]> expressions = ExpressionHelper.getAstExpressions();
+         
+         for(Object[] expression:expressions){
+             collection.add(new Object[]{expression[0]+";",expression[1]});
+         }
+         return collection;
     }
 }
