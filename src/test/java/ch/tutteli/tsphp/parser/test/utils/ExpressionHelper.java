@@ -41,7 +41,13 @@ public class ExpressionHelper
                     {"$a .= $b", "(.= $a $b)"},
                     {"$a <<= $b", "(<<= $a $b)"},
                     {"$a >>= $b", "(>>= $a $b)"},
-                    {"$a =() $b", "(cAssign $a $b)"}
+                    {"$a =() $b", "(cAssign $a $b)"},
+                    {
+                        "$a = $b += $c -= $d *= $e /= $f &= $g |= $h ^= $i %= $j .= $k <<= $l >>= $m =() $n",
+                        "(= $a (+= $b (-= $c (*= $d (/= $e (&= $f "
+                            + "(|= $g (^= $h (%= $i (.= $j (<<= $k (>>= $l (cAssign $m $n)))))))"
+                        + "))))))"
+                    }
                 };
     }
     public static List<String[]> getAstExpressions() {

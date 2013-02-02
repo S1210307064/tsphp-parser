@@ -113,13 +113,13 @@ public class ExpressionErrorTest extends AParserParserExceptionTest
                     {"(object) $a;", TSPHPParser.TypeObject, 1},
                     {"(resource) $a;", TSPHPParser.TypeResource, 1},
                     //misuse instanceof operator - instanceof is wrong since ; is expected
-                    {"$a instanceof bool;", TSPHPParser.Instanceof, 3},
-                    {"$a instanceof int;", TSPHPParser.Instanceof, 3},
-                    {"$a instanceof float;", TSPHPParser.Instanceof, 3},
-                    {"$a instanceof string;", TSPHPParser.Instanceof, 3},
-                    {"$a instanceof array;", TSPHPParser.Instanceof, 3},
-                    {"$a instanceof resource;", TSPHPParser.Instanceof, 3},
-                    {"$a instanceof object;", TSPHPParser.Instanceof, 3}
+                    {"$a instanceof bool;", TSPHPParser.TypeBool, 14},
+                    {"$a instanceof int;", TSPHPParser.TypeInt, 14},
+                    {"$a instanceof float;", TSPHPParser.TypeFloat, 14},
+                    {"$a instanceof string;", TSPHPParser.TypeString, 14},
+                    {"$a instanceof array;", TSPHPParser.TypeArray, 14},
+                    {"$a instanceof resource;", TSPHPParser.TypeResource, 14},
+                    {"$a instanceof object;", TSPHPParser.TypeObject, 14}
                 });
     }
 }
