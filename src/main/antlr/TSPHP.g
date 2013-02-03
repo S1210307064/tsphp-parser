@@ -143,8 +143,8 @@ tokens{
 	ARRAY_ACCESS;
 	BLOCK;
 	BLOCK_CONDITIONAL;
-	CAST;
-	CAST_ASSIGN;
+	CASTING;
+	CASTING_ASSIGN;
 	
 	CLASS_BODY;
 	CLASS_MEMBER;
@@ -594,7 +594,7 @@ castAssignOrAssignList[Tree tree]
 	
 castAssign[Tree tree]
 	:	VariableId cast='=''('')' expression 
-		-> ^(VariableId ^(CAST[$cast,"cast"] {$tree} expression))
+		-> ^(VariableId ^(CASTING[$cast,"casting"] {$tree} expression))
 	;
 
 assign	
@@ -666,7 +666,7 @@ assignmentOperator
 	|	'.='
 	|	'<<='
 	|	'>>='
-	|	cast='=''('')' -> CAST_ASSIGN[$cast,"cAssign"]
+	|	cast='=''('')' -> CASTING_ASSIGN[$cast,"cAssign"]
 	;
 
 ternary	
@@ -736,7 +736,7 @@ instanceOf
 	:	castOrBitwiseNotOrAt ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
 
 castOrBitwiseNotOrAt
-	:	cast = '(' allTypesWithoutObjectAndResource ')' castOrBitwiseNotOrAt -> ^(CAST[$cast,"cast"] allTypesWithoutObjectAndResource castOrBitwiseNotOrAt)
+	:	cast = '(' allTypesWithoutObjectAndResource ')' castOrBitwiseNotOrAt -> ^(CASTING[$cast,"casting"] allTypesWithoutObjectAndResource castOrBitwiseNotOrAt)
 	|	'~'^ castOrBitwiseNotOrAt
 	|	'@'^ castOrBitwiseNotOrAt 
 	|	cloneOrNew

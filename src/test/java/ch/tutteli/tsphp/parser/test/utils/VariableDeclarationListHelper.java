@@ -16,7 +16,6 @@
  */
 package ch.tutteli.tsphp.parser.test.utils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -38,27 +37,27 @@ public class VariableDeclarationListHelper
 
         collection.addAll(getVariations(prefix + "int", "=", appendix, prefixExpected + "(type tMod int)", "1", appendixExpected));
         collection.addAll(getVariations(prefix + "object", "=", appendix, prefixExpected + "(type tMod object)", "1", appendixExpected));
-        collection.addAll(getVariations(prefix + "float", "=()", appendix, prefixExpected + "(type tMod float)", "(cast (type tMod float) 1)", appendixExpected));
+        collection.addAll(getVariations(prefix + "float", "=()", appendix, prefixExpected + "(type tMod float)", "(casting (type tMod float) 1)", appendixExpected));
         collection.addAll(Arrays.asList(new Object[][]{
                     {prefix + "int $a                    " + appendix, prefixExpected + "(type tMod int) $a" + appendixExpected},
                     {prefix + "int $a,     $b            " + appendix, prefixExpected + "(type tMod int) $a $b" + appendixExpected},
                     {prefix + "int $a,     $b,     $c    " + appendix, prefixExpected + "(type tMod int) $a $b $c" + appendixExpected},
-                    {prefix + "int $a=()1, $b=1,   $c    " + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b 1) $c" + appendixExpected},
-                    {prefix + "int $a=()1, $b,     $c=1  " + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) $b ($c 1)" + appendixExpected},
-                    {prefix + "int $a=()1, $b=1,   $c=1  " + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b 1) ($c 1)" + appendixExpected},
-                    {prefix + "int $a=()1, $b=()1, $c    " + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b (cast (type tMod int) 1)) $c" + appendixExpected},
-                    {prefix + "int $a=()1, $b=()1, $c=1  " + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b (cast (type tMod int) 1)) ($c 1)" + appendixExpected},
-                    {prefix + "int $a=()1, $b,     $c=()1" + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) $b ($c (cast (type tMod int) 1))" + appendixExpected},
-                    {prefix + "int $a=()1, $b=1,   $c=()1" + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b 1) ($c (cast (type tMod int) 1))" + appendixExpected},
-                    {prefix + "int $a=()1, $b=()1, $c=()1" + appendix, prefixExpected + "(type tMod int) ($a (cast (type tMod int) 1)) ($b (cast (type tMod int) 1)) ($c (cast (type tMod int) 1))" + appendixExpected},
-                    {prefix + "int $a,     $b=()1, $c    " + appendix, prefixExpected + "(type tMod int) $a ($b (cast (type tMod int) 1)) $c" + appendixExpected},
-                    {prefix + "int $a,     $b=()1, $c=1  " + appendix, prefixExpected + "(type tMod int) $a ($b (cast (type tMod int) 1)) ($c 1)" + appendixExpected},
-                    {prefix + "int $a,     $b=()1, $c=()1" + appendix, prefixExpected + "(type tMod int) $a ($b (cast (type tMod int) 1)) ($c (cast (type tMod int) 1))" + appendixExpected},
-                    {prefix + "int $a,     $b=1,   $c=()1" + appendix, prefixExpected + "(type tMod int) $a ($b 1) ($c (cast (type tMod int) 1))" + appendixExpected},
-                    {prefix + "int $a=1,   $b=()1, $c    " + appendix, prefixExpected + "(type tMod int) ($a 1) ($b (cast (type tMod int) 1)) $c" + appendixExpected},
-                    {prefix + "int $a=1,   $b=()1, $c=1  " + appendix, prefixExpected + "(type tMod int) ($a 1) ($b (cast (type tMod int) 1)) ($c 1)" + appendixExpected},
-                    {prefix + "int $a=1,   $b=()1, $c=()1" + appendix, prefixExpected + "(type tMod int) ($a 1) ($b (cast (type tMod int) 1)) ($c (cast (type tMod int) 1))" + appendixExpected},
-                    {prefix + "int $a=1,   $b=1,   $c=()1" + appendix, prefixExpected + "(type tMod int) ($a 1) ($b 1) ($c (cast (type tMod int) 1))" + appendixExpected}
+                    {prefix + "int $a=()1, $b=1,   $c    " + appendix, prefixExpected + "(type tMod int) ($a (casting (type tMod int) 1)) ($b 1) $c" + appendixExpected},
+                    {prefix + "int $a=()1, $b,     $c=1  " + appendix, prefixExpected + "(type tMod int) ($a (casting (type tMod int) 1)) $b ($c 1)" + appendixExpected},
+                    {prefix + "int $a=()1, $b=1,   $c=1  " + appendix, prefixExpected + "(type tMod int) ($a (casting (type tMod int) 1)) ($b 1) ($c 1)" + appendixExpected},
+                    {prefix + "int $a=()1, $b=()1, $c    " + appendix, prefixExpected + "(type tMod int) ($a (casting (type tMod int) 1)) ($b (casting (type tMod int) 1)) $c" + appendixExpected},
+                    {prefix + "int $a=()1, $b=()1, $c=1  " + appendix, prefixExpected + "(type tMod int) ($a (casting (type tMod int) 1)) ($b (casting (type tMod int) 1)) ($c 1)" + appendixExpected},
+                    {prefix + "int $a=()1, $b,     $c=()1" + appendix, prefixExpected + "(type tMod int) ($a (casting (type tMod int) 1)) $b ($c (casting (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a=()1, $b=1,   $c=()1" + appendix, prefixExpected + "(type tMod int) ($a (casting (type tMod int) 1)) ($b 1) ($c (casting (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a=()1, $b=()1, $c=()1" + appendix, prefixExpected + "(type tMod int) ($a (casting (type tMod int) 1)) ($b (casting (type tMod int) 1)) ($c (casting (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a,     $b=()1, $c    " + appendix, prefixExpected + "(type tMod int) $a ($b (casting (type tMod int) 1)) $c" + appendixExpected},
+                    {prefix + "int $a,     $b=()1, $c=1  " + appendix, prefixExpected + "(type tMod int) $a ($b (casting (type tMod int) 1)) ($c 1)" + appendixExpected},
+                    {prefix + "int $a,     $b=()1, $c=()1" + appendix, prefixExpected + "(type tMod int) $a ($b (casting (type tMod int) 1)) ($c (casting (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a,     $b=1,   $c=()1" + appendix, prefixExpected + "(type tMod int) $a ($b 1) ($c (casting (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a=1,   $b=()1, $c    " + appendix, prefixExpected + "(type tMod int) ($a 1) ($b (casting (type tMod int) 1)) $c" + appendixExpected},
+                    {prefix + "int $a=1,   $b=()1, $c=1  " + appendix, prefixExpected + "(type tMod int) ($a 1) ($b (casting (type tMod int) 1)) ($c 1)" + appendixExpected},
+                    {prefix + "int $a=1,   $b=()1, $c=()1" + appendix, prefixExpected + "(type tMod int) ($a 1) ($b (casting (type tMod int) 1)) ($c (casting (type tMod int) 1))" + appendixExpected},
+                    {prefix + "int $a=1,   $b=1,   $c=()1" + appendix, prefixExpected + "(type tMod int) ($a 1) ($b 1) ($c (casting (type tMod int) 1))" + appendixExpected}
                 }));
         return collection;
     }
