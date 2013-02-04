@@ -218,6 +218,7 @@ tokens{
 package ch.tutteli.tsphp.parser;
 
 import ch.tutteli.tsphp.common.TSPHPAst;
+import ch.tutteli.tsphp.parser.utils.AstHelper;
 }
 
 @lexer::header{
@@ -582,19 +583,19 @@ scalarTypeWithModifier
 		)
 	;
 	
-castAssignOrAssignList[Tree tree]
-	:	(	castAssign[tree]
+castAssignOrAssignList[TSPHPAst ast]
+	:	(	castAssign[AstHelper.copyAst(ast)]
 		|	assign
 		)
-		(','!	(	castAssign[tree]
+		(','!	(	castAssign[AstHelper.copyAst(ast)]
 			|	assign
 			)
 		)*			
 	;
 	
-castAssign[Tree tree]
+castAssign[TSPHPAst ast]
 	:	VariableId cast='=''('')' expression 
-		-> ^(VariableId ^(CASTING[$cast,"casting"] {$tree} expression))
+		-> ^(VariableId ^(CASTING[$cast,"casting"] {$ast} expression))
 	;
 
 assign	

@@ -135,6 +135,19 @@
         </java>
     </target>
     
+    <target name="antlrworks">
+        <java classname="org.antlr.Tool" fork="true" failonerror="true">
+            <arg value="-verbose"/>
+            <arg value="-debug"/>
+            <arg value="-o"/>
+            <arg path="${antlr.copyLocation}"/>
+            <arg path="${antlr}/TSPHP.g"/>
+            <classpath>
+                <path refid="libset" />
+            </classpath>
+        </java>
+    </target>
+    
     <target name="copyCommon" depends="" description="copy common library to the lib folder">
         <copy todir="${lib}">
             <fileset dir="${common.jar}" includes="*.jar"/>
