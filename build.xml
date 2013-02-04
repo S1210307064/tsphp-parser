@@ -149,6 +149,9 @@
     </target>
     
     <target name="copyCommon" depends="" description="copy common library to the lib folder">
+        <delete>
+            <fileset dir="${lib}" includes="TSPHP-common-*.jar"/>
+        </delete> 
         <copy todir="${lib}">
             <fileset dir="${common.jar}" includes="*.jar"/>
         </copy>
