@@ -111,7 +111,7 @@ public class ParameterListHelper
                         + ")" + appendixExpect
                     },
                     {
-                        "function void set(int $a, " + param + ", int $c" + appendix,
+                        prefix + "int $a, " + param + ", int $c" + appendix,
                         prefixExpect + "(params "
                         + "(pDecl (type tMod int) $a) "
                         + "(pDecl " + paramExpect + ") "
@@ -119,7 +119,7 @@ public class ParameterListHelper
                         + ")" + appendixExpect
                     },
                     {
-                        "function void set(int $a, " + param + ", " + param + "" + appendix,
+                        prefix + "int $a, " + param + ", " + param + "" + appendix,
                         prefixExpect + "(params "
                         + "(pDecl (type tMod int) $a) "
                         + "(pDecl " + paramExpect + ") "

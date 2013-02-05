@@ -147,9 +147,12 @@ tokens{
 	CASTING_ASSIGN;
 	
 	CLASS_BODY;
-	CLASS_MEMBER;
-	CLASS_MEMBER_STATIC;
 	CLASS_MODIFIER;
+	
+	CLASS_MEMBER;
+	CLASS_MEMBER_MODIFIER;
+	CLASS_MEMBER_ACCESS;
+	CLASS_MEMBER_ACCESS_STATIC;
 	
 	CONSTANT_DECLARATION;
 	CONSTANT_DECLARATION_LIST;
@@ -163,15 +166,10 @@ tokens{
 	FUNCTION_CALL;
 	
 	INTERFACE_BODY;
-	INTERFACE_CONSTRUCT;
-	
-	MEMBER_MODIFIER;	
-	MEMBER_ACCESS;
-	MEMBER_ACCESS_STATIC;
+	INTERFACE_CONSTRUCT;	
 	
 	METHOD_CALL;
 	METHOD_DECLARATION;
-
 	METHOD_MODIFIER;
 	
 	NAMESPACE_BODY;
@@ -342,7 +340,7 @@ identifierList
 	
 classBody
 	:	constDeclarationList
-	|	memberDeclaration	
+	|	classMemberDeclaration	
 	|	constructDeconstruct
 	|	abstractMethodDeclaration
 	|	methodDeclaration
@@ -357,13 +355,10 @@ constantAssignment
 	:	Identifier^ '='! unaryPrimitiveAtom
 	;
 
-memberDeclaration	
-	:	st='static' accessModifier variableDeclarationList ';' 
-		-> ^(CLASS_MEMBER_STATIC[$memberDeclaration.start,"cVar"] accessModifier 
-			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"vars"] variableDeclarationList)
-		)
-	|	accessModifier variableDeclarationList ';' 
-		-> ^(CLASS_MEMBER[$memberDeclaration.start,"cMem"] accessModifier 
+classMemberDeclaration	
+	:	stat='static'? accessModifier variableDeclarationList ';' 
+		-> ^(CLASS_MEMBER[$classMemberDeclaration.start,"cMem"]
+			^(CLASS_MEMBER_MODIFIER[$classMemberDeclaration.start,"cmMod"] accessModifier $stat?)
 			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"vars"] variableDeclarationList)
 		)
 	;
@@ -391,8 +386,7 @@ accessModifierOrPublic
 abstractMethodDeclaration
 	:	abstr='abstract' accessModifierWithoutPrivateOrPublic 'function' functionSignatureInclReturnType ';'
 		-> ^(METHOD_DECLARATION[$abstr,"mDecl"]  
-			^(METHOD_MODIFIER[$abstr,"mMod"] $abstr)
-			accessModifierWithoutPrivateOrPublic
+			^(METHOD_MODIFIER[$abstr,"mMod"] accessModifierWithoutPrivateOrPublic $abstr )
 			functionSignatureInclReturnType 
 		) 
 	;
@@ -400,8 +394,7 @@ abstractMethodDeclaration
 methodDeclaration	
 	:	methodModifier? accessModifierOrPublic 'function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
 		-> ^(METHOD_DECLARATION[$methodDeclaration.start,"mDecl"]  
-			^(METHOD_MODIFIER[$methodModifier.start,"mMod"] methodModifier?)
-			accessModifierOrPublic
+			^(METHOD_MODIFIER[$methodModifier.start,"mMod"] accessModifierOrPublic methodModifier?)
 			functionSignatureInclReturnType 
 			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
 		) 
@@ -439,8 +432,7 @@ interfaceBody
 interfaceMethodDeclaration
 	:	'public'? 'function' functionSignatureInclReturnType block=';'
 		-> ^(METHOD_DECLARATION[$interfaceMethodDeclaration.start,"mDecl"]   
-			^(METHOD_MODIFIER[$interfaceMethodDeclaration.start,"mMod"] Abstract[$interfaceMethodDeclaration.start,"abstract"])
-			Public[$interfaceMethodDeclaration.start,"public"]
+			^(METHOD_MODIFIER[$interfaceMethodDeclaration.start,"mMod"] Public[$interfaceMethodDeclaration.start,"public"] Abstract[$interfaceMethodDeclaration.start,"abstract"])
 			functionSignatureInclReturnType 
 		) 
 	;
@@ -766,7 +758,7 @@ cloneOrNew
 
 	
 variableOrMemberOrStaticMember
-	:	staticAccessOrParent VariableId -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent VariableId)
+	:	staticAccessOrParent VariableId -> ^(CLASS_MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent VariableId)
 	|	'$this'
 	|	VariableId 
 	;
@@ -802,7 +794,7 @@ postFixCall
 	:	(	functionCall -> functionCall
 		|	methodCall -> methodCall
 		)
-		(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixCall Identifier)
+		(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixCall Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixCall expression)
 		|	call -> ^(METHOD_CALL[$call.start,"mCall"] $postFixCall call)
 		)*
@@ -858,7 +850,7 @@ postFixVariableWithoutCallAtTheEnd
 		(
 			(call* -> ^(METHOD_CALL[$call.start,"mCall"] $postFixVariableWithoutCallAtTheEnd call*) )
 			
-			(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixVariableWithoutCallAtTheEnd Identifier)
+			(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixVariableWithoutCallAtTheEnd Identifier)
 			|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableWithoutCallAtTheEnd expression)
 			)
 			
@@ -867,14 +859,14 @@ postFixVariableWithoutCallAtTheEnd
 	
 postFixVariableInclCallAtTheEnd
 	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
-		(	memberAccess = '->' Identifier -> ^(MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixVariableInclCallAtTheEnd Identifier)
+		(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixVariableInclCallAtTheEnd Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableInclCallAtTheEnd expression)
 		|	call -> ^(METHOD_CALL[$call.start,"mCall"] $postFixVariableInclCallAtTheEnd call)
 		)*
 	;
 
 classConstant
-	:	staticAccessOrParent Identifier -> ^(MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent Identifier)
+	:	staticAccessOrParent Identifier -> ^(CLASS_MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent Identifier)
 	;
 	
 

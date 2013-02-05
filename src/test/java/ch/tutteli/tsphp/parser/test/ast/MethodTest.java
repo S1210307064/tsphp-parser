@@ -57,37 +57,37 @@ public class MethodTest extends AAstTest
         for (String type : types) {
             collection.add(new Object[]{
                         "function " + type + " get(){}",
-                        "(mDecl mMod public " + type + " get params block)"
+                        "(mDecl (mMod public) " + type + " get params block)"
                     });
         }
         //normal
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", "){}",
-                "(mDecl mMod public void set ", " block)"));
+                "(mDecl (mMod public) void set ", " block)"));
 
         collection.add(new Object[]{
                     "function void set(){$a=1;}",
-                    "(mDecl mMod public void set params (block (= $a 1)))"
+                    "(mDecl (mMod public) void set params (block (= $a 1)))"
                 });
 
         //mMods
-        collection.addAll(getVariations("", "mMod"));
-        collection.addAll(getVariations("static", "(mMod static)"));
-        collection.addAll(getVariations("final", "(mMod final)"));
-        collection.addAll(getVariations("static final", "(mMod static final)"));
-        collection.addAll(getVariations("final static", "(mMod final static)"));
+        collection.addAll(getVariations("", ""));
+        collection.addAll(getVariations("static", " static"));
+        collection.addAll(getVariations("final", " final"));
+        collection.addAll(getVariations("static final", " static final"));
+        collection.addAll(getVariations("final static", " final static"));
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "abstract function void foo();",
-                        "(mDecl (mMod abstract) public void foo params)"
+                        "(mDecl (mMod public abstract) void foo params)"
                     },
                     {
                         "abstract protected function void foo();",
-                        "(mDecl (mMod abstract) protected void foo params)"
+                        "(mDecl (mMod protected abstract) void foo params)"
                     },
                     {
                         "abstract public function void foo();",
-                        "(mDecl (mMod abstract) public void foo params)"
+                        "(mDecl (mMod public abstract) void foo params)"
                     }
                 }));
 
@@ -98,19 +98,19 @@ public class MethodTest extends AAstTest
         return Arrays.asList(new Object[][]{
                     {
                         mMod + " function void foo(){}",
-                        "(mDecl " + mModExpected + " public void foo params block)"
+                        "(mDecl (mMod public" + mModExpected + ") void foo params block)"
                     },
                     {
                         mMod + " private function void foo(){}",
-                        "(mDecl " + mModExpected + " private void foo params block)"
+                        "(mDecl (mMod private" + mModExpected + ") void foo params block)"
                     },
                     {
                         mMod + " protected function void foo(){}",
-                        "(mDecl " + mModExpected + " protected void foo params block)"
+                        "(mDecl (mMod protected" + mModExpected + ") void foo params block)"
                     },
                     {
                         mMod + " public function void foo(){}",
-                        "(mDecl " + mModExpected + " public void foo params block)"
+                        "(mDecl (mMod public" + mModExpected + ") void foo params block)"
                     }
                 });
     }

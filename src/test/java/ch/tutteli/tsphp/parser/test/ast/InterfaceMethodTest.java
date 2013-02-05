@@ -52,7 +52,7 @@ public class InterfaceMethodTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.add(new Object[]{"public function void foo();", "(mDecl (mMod abstract) public void foo params)"});
+        collection.add(new Object[]{"public function void foo();", "(mDecl (mMod public abstract) void foo params)"});
         collection.add(new Object[]{"function __construct();", "(iCtor params)"});
         collection.add(new Object[]{"public function __construct();", "(iCtor params)"});
 
@@ -61,15 +61,17 @@ public class InterfaceMethodTest extends AAstTest
         for (String type : types) {
             collection.add(new Object[]{
                         "function " + type + " get();",
-                        "(mDecl (mMod abstract) public " + type + " get params)"
+                        "(mDecl (mMod public abstract) " + type + " get params)"
                     });
         }
 
-        //normal
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", ");",
-                "(mDecl (mMod abstract) public void set ", ")"));
+                "(mDecl (mMod public abstract) void set ", ")"));
         
+        collection.addAll(ParameterListHelper.getTestStrings(
+                "function __construct(", ");",
+                "(iCtor ", ")"));
         
         return collection;
     }

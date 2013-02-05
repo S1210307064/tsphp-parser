@@ -54,18 +54,18 @@ public class ClassMemberTest extends AAstTest
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(VariableDeclarationListHelper.testStrings(
                 "private ", ";",
-                "(cMem private (vars ", "))"));
-        collection.addAll(getVariations("", "cMem"));
-        collection.addAll(getVariations("static", "cVar"));
+                "(cMem (cmMod private) (vars ", "))"));
+        collection.addAll(getVariations(""));
+        collection.addAll(getVariations(" static"));
 
         return collection;
     }
 
-    private static Collection<Object[]> getVariations(String modifier, String memberOrClassVariable) {
+    private static Collection<Object[]> getVariations(String modifier) {
         return Arrays.asList(new Object[][]{
-                    {modifier + " private int $a;", "(" + memberOrClassVariable + " private (vars (type tMod int) $a))"},
-                    {modifier + " protected int $a;", "(" + memberOrClassVariable + " protected (vars (type tMod int) $a))"},
-                    {modifier + " public int $a;", "(" + memberOrClassVariable + " public (vars (type tMod int) $a))"}
+                    {modifier + " private int $a;", "(cMem (cmMod private"+modifier + ") (vars (type tMod int) $a))"},
+                    {modifier + " protected int $a;", "(cMem (cmMod protected"+modifier + ") (vars (type tMod int) $a))"},
+                    {modifier + " public int $a;", "(cMem (cmMod public"+modifier + ") (vars (type tMod int) $a))"}
                 });
     }
 }
