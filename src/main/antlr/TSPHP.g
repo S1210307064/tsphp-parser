@@ -218,7 +218,17 @@ tokens{
 package ch.tutteli.tsphp.parser;
 
 import ch.tutteli.tsphp.common.TSPHPAst;
-import ch.tutteli.tsphp.parser.utils.AstHelper;
+import ch.tutteli.tsphp.common.IAstHelper;
+import ch.tutteli.tsphp.common.AstHelper;
+}
+
+@members{
+private IAstHelper astHelper = new AstHelper();
+
+public void setAstHelper(IAstHelper anAstHelper){
+    astHelper = anAstHelper;
+}
+
 }
 
 @lexer::header{
@@ -584,10 +594,10 @@ scalarTypeWithModifier
 	;
 	
 castAssignOrAssignList[TSPHPAst ast]
-	:	(	castAssign[AstHelper.copyAst(ast)]
+	:	(	castAssign[astHelper.copyAst(ast)]
 		|	assign
 		)
-		(','!	(	castAssign[AstHelper.copyAst(ast)]
+		(','!	(	castAssign[astHelper.copyAst(ast)]
 			|	assign
 			)
 		)*			

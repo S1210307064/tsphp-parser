@@ -19,6 +19,7 @@ package ch.tutteli.tsphp.parser;
 import ch.tutteli.tsphp.common.IParser;
 import ch.tutteli.tsphp.common.TSPHPAst;
 import ch.tutteli.tsphp.common.TSPHPAstAdaptorRegistry;
+import ch.tutteli.tsphp.common.TSPHPErrorNode;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -26,7 +27,6 @@ import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
-import org.antlr.runtime.tree.CommonErrorNode;
 
 /**
  *
@@ -39,7 +39,6 @@ public class ParserFacade implements IParser
     protected TSPHPErrorReportingLexer lexer;
     protected TokenStream tokenStream;
     private Exception parseException;
-    
 
     @Override
     public TSPHPAst parse(String inputStream) {
@@ -93,7 +92,9 @@ public class ParserFacade implements IParser
 
     @Override
     public List<Exception> getExceptions() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        List<Exception> exceptions = lexer.getExceptions();
+        exceptions.addAll(parser.getExceptions());
+        return exceptions;
     }
 
     private TSPHPAst getAstOrErrorAst(CharStream input) {
@@ -101,9 +102,8 @@ public class ParserFacade implements IParser
             return getAst(input);
         } catch (RecognitionException ex) {
             //should never happen, TSPHPParser catches it already. But just in case
-
             parseException = ex;
-            return getErrorAst(ex);
+            return new TSPHPErrorNode(new CommonTokenStream(lexer), ex.token, ex.token, ex);
         }
     }
 
@@ -115,12 +115,6 @@ public class ParserFacade implements IParser
         parser = new TSPHPErrorReportingParser(tokenStream);
         parser.setTreeAdaptor(TSPHPAstAdaptorRegistry.get());
         return (TSPHPAst) parser.compilationUnit().getTree();
-    }
-
-    private TSPHPAst getErrorAst(RecognitionException ex) {
-        TSPHPAst ast = new TSPHPAst();
-        ast.addChild(new CommonErrorNode(new CommonTokenStream(lexer), ex.token, ex.token, ex));
-        return ast;
     }
 
     @Override
