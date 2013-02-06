@@ -50,7 +50,7 @@ public class FunctionTest extends AAstTest
 
         collection.addAll(TypeHelper.getAllTypesInclModifier(
                 "function ", " get(){}",
-                "(function fMod ", " get params block)"));
+                "(function fMod ", " get params block)",""));
 
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", "){}",

@@ -16,8 +16,9 @@
  */
 package ch.tutteli.tsphp.parser.test.utils;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  *
@@ -31,28 +32,32 @@ public class ConstantHelper
 
     public static Collection<Object[]> testStrings(String prefix, String appendix,
             String prefixExpected, String appendixExpected) {
+        List<Object[]> collection = new ArrayList<>();
 
-        return Arrays.asList(new Object[][]{
-                    {
-                        prefix + "const bool a=true;" + appendix,
-                        prefixExpected + "(consts bool (a true))" + appendixExpected
-                    },
-                    {
-                        prefix + "const bool a=true, b=false;" + appendix,
-                        prefixExpected + "(consts bool (a true) (b false))" + appendixExpected
-                    },
-                    {
-                        prefix + "const int a=1,b=2;" + appendix,
-                        prefixExpected + "(consts int (a 1) (b 2))" + appendixExpected
-                    },
-                    {
-                        prefix + "const float a=1.0,b=2.0,c=null;" + appendix,
-                        prefixExpected + "(consts float (a 1.0) (b 2.0) (c null))" + appendixExpected
-                    },
-                    {
-                        prefix + "const string a=1,b=\"2\",c=null,d='2';" + appendix,
-                        prefixExpected + "(consts string (a 1) (b \"2\") (c null) (d '2'))" + appendixExpected
-                    }
-                });
+        String[] types = TypeHelper.getScalarTypes();
+        for (String type : types) {
+            collection.add(new Object[]{
+                        prefix + "const " + type + " a=true;" + appendix,
+                        prefixExpected + "(consts " + type + " (a true))" + appendixExpected
+                    });
+            collection.add(new Object[]{
+                        prefix + "const " + type + " a=true, b=false;" + appendix,
+                        prefixExpected + "(consts " + type + " (a true) (b false))" + appendixExpected
+                    });
+            collection.add(new Object[]{
+                        prefix + "const " + type + " a=1,b=2;" + appendix,
+                        prefixExpected + "(consts " + type + " (a 1) (b 2))" + appendixExpected
+                    });
+            collection.add(new Object[]{
+                        prefix + "const " + type + " a=1.0,b=2.0,c=null;" + appendix,
+                        prefixExpected + "(consts " + type + " (a 1.0) (b 2.0) (c null))" + appendixExpected
+                    });
+            collection.add(new Object[]{
+                        prefix + "const " + type + " a=1,b=\"2\",c=null,d='2';" + appendix,
+                        prefixExpected + "(consts " + type + " (a 1) (b \"2\") (c null) (d '2'))" + appendixExpected
+                    });
+        }
+        return collection;
+
     }
 }

@@ -19,7 +19,6 @@ package ch.tutteli.tsphp.parser.test.ast;
 import ch.tutteli.tsphp.parser.test.utils.AAstTest;
 import ch.tutteli.tsphp.parser.test.utils.VariableDeclarationListHelper;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -52,20 +51,27 @@ public class ClassMemberTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(VariableDeclarationListHelper.testStrings(
-                "private ", ";",
-                "(cMem (cmMod private) (vars ", "))"));
-        collection.addAll(getVariations(""));
-        collection.addAll(getVariations(" static"));
 
+
+        String[][] variations = new String[][]{
+            {"", "public"},
+            {"private", "private"},
+            {"private static", "private static"},
+            {"protected", "protected"},
+            {"protected static", "protected static"},
+            {"public", "public"},
+            {"public static", "public static"},
+            {"static", "static public"},
+            {"static private", "static private"},
+            {"static protected", "static protected"},
+            {"static public", "static public"}
+        };
+
+        for (String[] variation : variations) {
+            collection.addAll(VariableDeclarationListHelper.testStrings(
+                    variation[0] + " ", ";",
+                    "(cMem (vars ", "))", variation[1]));
+        }
         return collection;
-    }
-
-    private static Collection<Object[]> getVariations(String modifier) {
-        return Arrays.asList(new Object[][]{
-                    {modifier + " private int $a;", "(cMem (cmMod private"+modifier + ") (vars (type tMod int) $a))"},
-                    {modifier + " protected int $a;", "(cMem (cmMod protected"+modifier + ") (vars (type tMod int) $a))"},
-                    {modifier + " public int $a;", "(cMem (cmMod public"+modifier + ") (vars (type tMod int) $a))"}
-                });
     }
 }

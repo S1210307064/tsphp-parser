@@ -81,55 +81,62 @@ public class TypeHelper
     }
 
     public static List<Object[]> getAllTypesInclModifier(String prefix, String appendix,
-            String prefixExpect, String appendixExpect) {
+            String prefixExpect, String appendixExpect, String cmMod) {
+
+        String tMod = cmMod.isEmpty() ? "tMod" : "(tMod " + cmMod + ")";
+        String tModInclCast = cmMod.isEmpty() ? "(tMod cast)" : "(tMod cast " + cmMod + ")";
+        String tModInclNullable = cmMod.isEmpty() ? "(tMod ?)" : "(tMod ? " + cmMod + ")";
+        String tModInclCastNullable = cmMod.isEmpty() ? "(tMod cast ?)" : "(tMod cast ? " + cmMod + ")";
+
         List<Object[]> collection = new ArrayList<>();
         String[] types = getScalarTypes();
         for (String type : types) {
+
             collection.add(new String[]{
-                        prefix + type + appendix, prefixExpect + "(type tMod " + type + ")" + appendixExpect
+                        prefix + type + appendix, prefixExpect + "(type " + tMod + " " + type + ")" + appendixExpect
                     });
             collection.add(new String[]{
                         prefix + "cast " + type + appendix,
-                        prefixExpect + "(type (tMod cast) " + type + ")" + appendixExpect
+                        prefixExpect + "(type " + tModInclCast + " " + type + ")" + appendixExpect
                     });
             collection.add(new String[]{
                         prefix + type + "?" + appendix,
-                        prefixExpect + "(type (tMod ?) " + type + ")" + appendixExpect
+                        prefixExpect + "(type " + tModInclNullable + " " + type + ")" + appendixExpect
                     });
             collection.add(new String[]{
                         prefix + "cast " + type + "?" + appendix,
-                        prefixExpect + "(type (tMod cast ?) " + type + ")" + appendixExpect
+                        prefixExpect + "(type " + tModInclCastNullable + " " + type + ")" + appendixExpect
                     });
         }
 
         collection.add(new String[]{
                     prefix + "array" + appendix,
-                    prefixExpect + "(type tMod array)" + appendixExpect
+                    prefixExpect + "(type " + tMod + " array)" + appendixExpect
                 });
         collection.add(new String[]{
                     prefix + "cast array" + appendix,
-                    prefixExpect + "(type (tMod cast) array)" + appendixExpect
+                    prefixExpect + "(type " + tModInclCast + " array)" + appendixExpect
                 });
 
         types = getClassInterfaceTypes();
         for (String type : types) {
             collection.add(new String[]{
                         prefix + type + appendix,
-                        prefixExpect + "(type tMod " + type + ")" + appendixExpect
+                        prefixExpect + "(type " + tMod + " " + type + ")" + appendixExpect
                     });
             collection.add(new String[]{
                         prefix + "cast " + type + appendix,
-                        prefixExpect + "(type (tMod cast) " + type + ")" + appendixExpect
+                        prefixExpect + "(type " + tModInclCast + " " + type + ")" + appendixExpect
                     });
         }
 
         collection.add(new String[]{
                     prefix + "resource" + appendix,
-                    prefixExpect + "(type tMod resource)" + appendixExpect
+                    prefixExpect + "(type " + tMod + " resource)" + appendixExpect
                 });
         collection.add(new String[]{
                     prefix + "object" + appendix,
-                    prefixExpect + "(type tMod object)" + appendixExpect
+                    prefixExpect + "(type " + tMod + " object)" + appendixExpect
                 });
 
         return collection;

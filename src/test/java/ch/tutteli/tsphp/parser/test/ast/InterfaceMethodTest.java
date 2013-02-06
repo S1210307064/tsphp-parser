@@ -58,7 +58,7 @@ public class InterfaceMethodTest extends AAstTest
 
          collection.addAll(TypeHelper.getAllTypesInclModifier(
                 "function ", " get();",
-                "(mDecl (mMod public abstract) ", " get params)"));
+                "(mDecl (mMod public abstract) ", " get params)",""));
 
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", ");",

@@ -101,7 +101,7 @@ public class ForTest extends AAstTest
                     });
         }
         collection.addAll(
-                VariableDeclarationListHelper.testStrings("for(", ";;);", "(for (vars ", ") exprs exprs (cBlock expr))"));
+                VariableDeclarationListHelper.testStrings("for(", ";;);", "(for (vars ", ") exprs exprs (cBlock expr))",""));
         return collection;
     }
 }

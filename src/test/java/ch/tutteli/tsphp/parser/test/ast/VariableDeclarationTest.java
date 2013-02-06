@@ -45,7 +45,7 @@ public class VariableDeclarationTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        Collection<Object[]> collection = VariableDeclarationListHelper.testStrings("", ";", "(vars ", ")");
+        Collection<Object[]> collection = VariableDeclarationListHelper.testStrings("", ";", "(vars ", ")","");
 
         List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {

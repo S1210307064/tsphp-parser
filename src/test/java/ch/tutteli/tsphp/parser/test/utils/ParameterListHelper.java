@@ -37,7 +37,7 @@ public class ParameterListHelper
         //check all types
         List<Object[]> collection = TypeHelper.getAllTypesInclModifier(
                 prefix, " $a" + appendix,
-                prefixExpect + "(params (pDecl ", " $a))" + appendixExpect);
+                prefixExpect + "(params (pDecl ", " $a))" + appendixExpect,"");
         List<String> types = TypeHelper.getAllTypesWithoutScalar();
 
         //class / interfaceType can also have the ? modifier

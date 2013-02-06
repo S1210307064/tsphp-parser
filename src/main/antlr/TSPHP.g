@@ -225,6 +225,7 @@ import ch.tutteli.tsphp.common.TSPHPAst;
 
 @members{
 private IAstHelper astHelper = new AstHelper();
+private TSPHPAst classMemberModifiers;
 
 public void setAstHelper(IAstHelper anAstHelper){
     astHelper = anAstHelper;
@@ -358,12 +359,27 @@ constantAssignment
 	:	Identifier^ '='! unaryPrimitiveAtom
 	;
 
-classMemberDeclaration	
-	:	stat='static'? accessModifier variableDeclarationList ';' 
+classMemberDeclaration
+@after{
+	classMemberModifiers=null;
+}
+	:	classMemberModifier {classMemberModifiers = (TSPHPAst) $classMemberModifier.tree;}
+		variableDeclarationList ';' 
+		
 		-> ^(CLASS_MEMBER[$classMemberDeclaration.start,"cMem"]
-			^(CLASS_MEMBER_MODIFIER[$classMemberDeclaration.start,"cmMod"] accessModifier $stat?)
 			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"vars"] variableDeclarationList)
 		)
+	;
+	
+classMemberModifier
+	:	'static' accessModifier 
+	|	accessModifier 'static'
+	|	accessModifier
+	|	st='static' -> 'static' Public[$st,"public"]
+	|	/* etmpy */ -> Public["public"]
+	;
+	
+stat	:	'static'
 	;
 
 accessModifier
@@ -387,17 +403,23 @@ accessModifierOrPublic
 
 
 abstractMethodDeclaration
-	:	abstr='abstract' accessModifierWithoutPrivateOrPublic 'function' functionSignatureInclReturnType ';'
-		-> ^(METHOD_DECLARATION[$abstr,"mDecl"]  
-			^(METHOD_MODIFIER[$abstr,"mMod"] accessModifierWithoutPrivateOrPublic $abstr )
+	:	abstractMethodModifier 'function' functionSignatureInclReturnType ';'
+		-> ^(METHOD_DECLARATION[$abstractMethodModifier.start,"mDecl"]  
+			^(METHOD_MODIFIER[$abstractMethodModifier.start,"mMod"] abstractMethodModifier)
 			functionSignatureInclReturnType 
 		) 
 	;
+	
+abstractMethodModifier
+	:	abstr='abstract' accessModifierWithoutPrivate 
+	|	accessModifierWithoutPrivate abstr='abstract'
+	|	abstr='abstract' -> 'abstract' Public[$abstr,"public"]
+	;
 
 methodDeclaration	
-	:	methodModifier? accessModifierOrPublic 'function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
+	:	methodModifier 'function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
 		-> ^(METHOD_DECLARATION[$methodDeclaration.start,"mDecl"]  
-			^(METHOD_MODIFIER[$methodModifier.start,"mMod"] accessModifierOrPublic methodModifier?)
+			^(METHOD_MODIFIER[$methodModifier.start,"mMod"] methodModifier)
 			functionSignatureInclReturnType 
 			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
 		) 
@@ -405,8 +427,25 @@ methodDeclaration
 	
 
 methodModifier
-	:	'static' 'final'?  
-	|	'final' st='static'?
+	:	'static' 'final' accessModifier
+	|	'static' accessModifier 'final' 
+	|	'static' accessModifier
+	|	'static' fin='final' -> 'static' 'final' Public[$fin,"public"]
+	|	st='static' -> 'static' Public[$st,"public"]
+	
+	|	'final' 'static' accessModifier
+	|	'final' accessModifier 'static' 
+	|	'final' accessModifier
+	|	'final' st='static' -> 'final' 'static' Public[$st,"public"]
+	|	 fin='final' -> 'final' Public[$fin,"public"]
+	
+	|	accessModifier 'final' 'static' 
+	|	accessModifier 'static' 'final'
+	|	accessModifier 'static'
+	|	accessModifier 'final'
+	|	accessModifier
+	
+	|	/* empty */ -> Public["public"]
 	;
 	
 
@@ -474,25 +513,37 @@ allTypesWithModifier
 
 	
 scalarTypeWithModifier
+@after{
+	TSPHPAst ast = (TSPHPAst) retval.tree.getChild(0);
+	astHelper.addChildrenFromTo(classMemberModifiers,ast,adaptor);	
+}
 	:	Cast? scalarTypes '?'?			
 		-> ^(TYPE[$scalarTypeWithModifier.start,"type"] 
-			^(TYPE_MODIFIER[$scalarTypeWithModifier.start,"tMod"] Cast? '?'?) 
+			^(TYPE_MODIFIER[$scalarTypeWithModifier.start,"tMod"] Cast? '?'? ) 
 			scalarTypes
 		)
 	;
 
 classInterfaceTypeWithoutObjectInclArrayWithModifier
+@after{
+	TSPHPAst ast = (TSPHPAst) retval.tree.getChild(0);
+	astHelper.addChildrenFromTo(classMemberModifiers,ast,adaptor);	
+}
 	:	Cast? classInterfaceTypeWithoutObjectInclArray		
 		-> ^(TYPE[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"type"] 
-			^(TYPE_MODIFIER[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"tMod"] Cast?) 
+			^(TYPE_MODIFIER[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"tMod"] Cast? ) 
 			classInterfaceTypeWithoutObjectInclArray
 		)
 	;
 
 objectOrResourceInclModifier
+@after{
+	TSPHPAst ast = (TSPHPAst) retval.tree.getChild(0);
+	astHelper.addChildrenFromTo(classMemberModifiers,ast,adaptor);	
+}
 	:	objectOrResource
 		-> ^(TYPE[$objectOrResourceInclModifier.start,"type"] 
-			TYPE_MODIFIER[$objectOrResourceInclModifier.start,"tMod"] 
+			^(TYPE_MODIFIER[$objectOrResourceInclModifier.start,"tMod"])
 			objectOrResource
 		)	
 	;
@@ -991,7 +1042,7 @@ normalCaseInstructionOptional
 		-> 	^(SWITCH_CASES[$normalCaseInstructionOptional.start,"cases"] caseLabel+) 
 			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue*)
 		
-	;	
+			;	
 defaultCaseInstructionMandatory
 	:	caseLabel* defaultLabel caseLabel* instructionInclBreakContinue+
 		-> 	^(SWITCH_CASES[$defaultCaseInstructionMandatory.start,"cases"] caseLabel* defaultLabel) 
