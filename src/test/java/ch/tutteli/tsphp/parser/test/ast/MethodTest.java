@@ -53,64 +53,61 @@ public class MethodTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        List<String> types = TypeHelper.getAllTypes();
-        for (String type : types) {
-            collection.add(new Object[]{
-                        "function " + type + " get(){}",
-                        "(mDecl (mMod public) " + type + " get params block)"
-                    });
-        }
+        collection.addAll(TypeHelper.getAllTypesInclModifier(
+                "function ", " get(){}",
+                "(mDecl (mMod public) ", " get params block)"));
+
         //normal
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", "){}",
-                "(mDecl (mMod public) void set ", " block)"));
+                "(mDecl (mMod public) (type tMod void) set ", " block)"));
 
         collection.add(new Object[]{
                     "function void set(){$a=1;}",
-                    "(mDecl (mMod public) void set params (block (= $a 1)))"
+                    "(mDecl (mMod public) (type tMod void) set params (block (= $a 1)))"
                 });
 
         //mMods
-        collection.addAll(getVariations("", ""));
-        collection.addAll(getVariations("static", " static"));
-        collection.addAll(getVariations("final", " final"));
-        collection.addAll(getVariations("static final", " static final"));
-        collection.addAll(getVariations("final static", " final static"));
+        collection.addAll(getVariations(""));
+        collection.addAll(getVariations(" static"));
+        collection.addAll(getVariations(" final"));
+        collection.addAll(getVariations(" static final"));
+        collection.addAll(getVariations(" final static"));
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "abstract function void foo();",
-                        "(mDecl (mMod public abstract) void foo params)"
+                        "(mDecl (mMod public abstract) (type tMod void) foo params)"
                     },
                     {
                         "abstract protected function void foo();",
-                        "(mDecl (mMod protected abstract) void foo params)"
+                        "(mDecl (mMod protected abstract) (type tMod void) foo params)"
                     },
                     {
                         "abstract public function void foo();",
-                        "(mDecl (mMod public abstract) void foo params)"
+                        "(mDecl (mMod public abstract) (type tMod void) foo params)"
                     }
                 }));
 
         return collection;
     }
 
-    public static Collection<Object[]> getVariations(String mMod, String mModExpected) {
+    public static Collection<Object[]> getVariations(String modifier) {
         return Arrays.asList(new Object[][]{
                     {
-                        mMod + " function void foo(){}",
-                        "(mDecl (mMod public" + mModExpected + ") void foo params block)"
+                        modifier + " function void foo(){}",
+                        "(mDecl (mMod public" + modifier + ") (type tMod void) foo params block)"
                     },
                     {
-                        mMod + " private function void foo(){}",
-                        "(mDecl (mMod private" + mModExpected + ") void foo params block)"
+                        modifier + " private function void foo(){}",
+                        "(mDecl (mMod private" + modifier + ") (type tMod void) foo params block)"
                     },
                     {
-                        mMod + " protected function void foo(){}",
-                        "(mDecl (mMod protected" + mModExpected + ") void foo params block)"
+                        modifier + " protected function void foo(){}",
+                        "(mDecl (mMod protected" + modifier + ") (type tMod void) foo params block)"
                     },
                     {
-                        mMod + " public function void foo(){}",
-                        "(mDecl (mMod public" + mModExpected + ") void foo params block)"
+                        modifier + " public function void foo(){}",
+                        "(mDecl (mMod public" + modifier + ") (type tMod void) foo params block)"
                     }
                 });
     }

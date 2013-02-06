@@ -16,6 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.ast;
 
+import ch.tutteli.tsphp.common.IScope;
 import ch.tutteli.tsphp.parser.test.utils.AAstTest;
 import java.util.Arrays;
 import java.util.Collection;
@@ -40,7 +41,7 @@ public class MethodFunctionTest extends AAstTest
     public void test() throws RecognitionException {
         compareAst();
     }
-    
+
     @Override
     protected void run() throws RecognitionException {
         result = parser.compilationUnit();
@@ -51,21 +52,21 @@ public class MethodFunctionTest extends AAstTest
         return Arrays.asList(new Object[][]{
                     {
                         "class a {  function void getName(){ $a=1; } }  function void getName(){ $a=1; }",
-                        "(namespace default (nBody "
-                            + "(class cMod a extends implements (cBody "
-                                + "(mDecl (mMod public) void getName params (block (= $a 1)))"
-                            + ")) "
-                            + "(function void getName params (block (= $a 1)))"
+                        "(namespace " + IScope.DEFAULT_NAMESPACE + " (nBody "
+                        + "(class cMod a extends implements (cBody "
+                        + "(mDecl (mMod public) (type tMod void) getName params (block (= $a 1)))"
+                        + ")) "
+                        + "(function (type tMod void) getName params (block (= $a 1)))"
                         + "))"
                     },
                     {
                         "/** this is my lovely function */ \n function void foo(int $a=true,int $b=2,cast int $c=3){}",
-                        "(namespace default (nBody (function void foo (params "
-                            + "(pDecl (type tMod int) ($a true)) "
-                            + "(pDecl (type tMod int) ($b 2)) "
-                            + "(pDecl (type (tMod cast) int) ($c 3))"
+                        "(namespace " + IScope.DEFAULT_NAMESPACE + " (nBody (function (type tMod void) foo (params "
+                        + "(pDecl (type tMod int) ($a true)) "
+                        + "(pDecl (type tMod int) ($b 2)) "
+                        + "(pDecl (type (tMod cast) int) ($c 3))"
                         + ") block)))"
-                     }
+                    }
                 });
     }
 }

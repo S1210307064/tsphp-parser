@@ -16,6 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.ast;
 
+import ch.tutteli.tsphp.common.IScope;
 import ch.tutteli.tsphp.parser.test.utils.AAstTest;
 import java.util.Arrays;
 import java.util.Collection;
@@ -80,9 +81,9 @@ public class NamespaceTest extends AAstTest
                         + "(namespace c\\d\\e (nBody (= $b 1)))"
                     },
                     //default
-                    {"namespace{$a=1;}", "(namespace default (nBody (= $a 1)))"},
+                    {"namespace{$a=1;}", "(namespace "+IScope.DEFAULT_NAMESPACE+" (nBody (= $a 1)))"},
                     //without namespace
-                    {"$a=1;", "(namespace default (nBody (= $a 1)))"}
+                    {"$a=1;", "(namespace "+IScope.DEFAULT_NAMESPACE+" (nBody (= $a 1)))"}
                 });
     }
 }

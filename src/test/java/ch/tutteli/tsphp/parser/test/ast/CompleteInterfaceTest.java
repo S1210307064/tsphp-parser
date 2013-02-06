@@ -56,7 +56,7 @@ public class CompleteInterfaceTest extends AAstTest
                         "(interface A (extends B) (iBody "
                             +"(consts bool (A true) (B null) (C false)) "
                             +"(iCtor (params (pDecl (type tMod int) $number))) "
-                            +"(mDecl (mMod public abstract) void set (params "
+                            +"(mDecl (mMod public abstract) (type tMod void) set (params "
                                     + "(pDecl (type tMod int) $b) "
                                     + "(pDecl (type (tMod cast) float) $c)"
                             + "))"

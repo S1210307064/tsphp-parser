@@ -215,9 +215,11 @@ tokens{
  */
 package ch.tutteli.tsphp.parser;
 
-import ch.tutteli.tsphp.common.TSPHPAst;
-import ch.tutteli.tsphp.common.IAstHelper;
 import ch.tutteli.tsphp.common.AstHelper;
+import ch.tutteli.tsphp.common.IAstHelper;
+import ch.tutteli.tsphp.common.IScope;
+import ch.tutteli.tsphp.common.TSPHPAst;
+
 }
 
 @members{
@@ -269,7 +271,7 @@ namespaceBracket
 	;
 namespaceIdOrEmpty
 	:	namespaceId -> TYPE_NAME[$namespaceId.start,$namespaceId.text] 
-	|	/* empty */ -> DEFAULT_NAMESPACE[$namespaceIdOrEmpty.start,"default"]
+	|	/* empty */ -> DEFAULT_NAMESPACE[$namespaceIdOrEmpty.start,IScope.DEFAULT_NAMESPACE]
 	;
 
 //Must before Id otherwise Id match true and false
@@ -286,7 +288,7 @@ Identifier
 
 withoutNamespace 
 	:	(statement+) -> ^(Namespace[$statement.start,"namespace"]
-					DEFAULT_NAMESPACE[$statement.start,"default"] 
+					DEFAULT_NAMESPACE[$statement.start,IScope.DEFAULT_NAMESPACE] 
 					^(NAMESPACE_BODY[$statement.start,"nBody"] statement+)
 				) 
 	;
@@ -455,15 +457,49 @@ functionSignatureInclReturnType
 	;
 	
 returnType
-	:	allTypes | 'void'
+	:	allTypesWithModifier 
+	| 	v='void' -> ^(TYPE[$v,"type"] TYPE_MODIFIER[$v,"tMod"] $v)
+	;
+	
+allTypesWithModifier
+	:	scalarTypeWithModifier
+	|	classInterfaceTypeWithoutObjectInclArrayWithModifier
+	|	objectOrResourceInclModifier
+	;	
+
+	
+scalarTypeWithModifier
+	:	Cast? scalarTypes '?'?			
+		-> ^(TYPE[$scalarTypeWithModifier.start,"type"] 
+			^(TYPE_MODIFIER[$scalarTypeWithModifier.start,"tMod"] Cast? '?'?) 
+			scalarTypes
+		)
 	;
 
-allTypes
-	:	primitiveTypesInclResource | classInterfaceTypeInclObject
+classInterfaceTypeWithoutObjectInclArrayWithModifier
+	:	Cast? classInterfaceTypeWithoutObjectInclArray		
+		-> ^(TYPE[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"type"] 
+			^(TYPE_MODIFIER[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"tMod"] Cast?) 
+			classInterfaceTypeWithoutObjectInclArray
+		)
+	;
+
+objectOrResourceInclModifier
+	:	objectOrResource
+		-> ^(TYPE[$objectOrResourceInclModifier.start,"type"] 
+			TYPE_MODIFIER[$objectOrResourceInclModifier.start,"tMod"] 
+			objectOrResource
+		)	
+	;
+
+objectOrResource
+	:	'object'
+	|	'resource'
 	;
 
 allTypesWithoutObjectAndResource
-	:	primitiveTypesWithoutResource
+	:	scalarTypes
+	|	TypeArray
 	| 	classInterfaceTypeWithoutObject
 	;
 
@@ -474,23 +510,9 @@ scalarTypes
 	|	TypeString
 	;
 	
-primitiveTypesWithoutResource
-	:	scalarTypes
-	|	TypeArray
-	;
 	
-primitiveTypesInclResource
-	:	primitiveTypesWithoutResource
-	|	TypeResource
-	;
-
 classInterfaceTypeWithoutObject
 	:	root='\\'? namespaceId -> TYPE_NAME[$classInterfaceTypeWithoutObject.start, $classInterfaceTypeWithoutObject.text]
-	;
-	
-classInterfaceTypeInclObject
-	:	classInterfaceTypeWithoutObject
-	|	TypeObject
 	;
 
 formalParameters
@@ -576,14 +598,7 @@ variableDeclarationList
 variableDeclarationScalarList
 	:	scalarTypeWithModifier castAssignOrAssignList[$scalarTypeWithModifier.tree]
 	;
-	
-scalarTypeWithModifier
-	:	Cast? scalarTypes '?'?			
-		-> ^(TYPE[$scalarTypeWithModifier.start,"type"] 
-			^(TYPE_MODIFIER[$scalarTypeWithModifier.start,"tMod"] Cast? '?'?) 
-			scalarTypes
-		)
-	;
+
 	
 castAssignOrAssignList[TSPHPAst ast]
 	:	(	castAssign[astHelper.copyAst(ast)]
@@ -609,31 +624,13 @@ variableDeclarationArrayOrClassInterfaceList
 	:	classInterfaceTypeWithoutObjectInclArrayWithModifier castAssignOrAssignList[$classInterfaceTypeWithoutObjectInclArrayWithModifier.tree]	
 	;
 	
-classInterfaceTypeWithoutObjectInclArrayWithModifier
-	:	Cast? classInterfaceTypeWithoutObjectInclArray		
-		-> ^(TYPE[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"type"] 
-			^(TYPE_MODIFIER[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"tMod"] Cast?) 
-			classInterfaceTypeWithoutObjectInclArray
-		)
-	;
+
 	
 classInterfaceTypeWithoutObjectInclArray
 	:	'array'
 	|	classInterfaceTypeWithoutObject
 	;
 	
-objectOrResourceInclModifier
-	:	objectOrResource
-		-> ^(TYPE[$objectOrResourceInclModifier.start,"type"] 
-			TYPE_MODIFIER[$objectOrResourceInclModifier.start,"tMod"] 
-			objectOrResource
-		)	
-	;
-
-objectOrResource
-	:	'object'
-	|	'resource'
-	;
 
 expression
 	:	logicOrWeak
@@ -744,11 +741,7 @@ castOrBitwiseNotOrAt
 	|	'@'^ castOrBitwiseNotOrAt 
 	|	cloneOrNew
 	;
-	
-allTypesWithoutObjectAndResourceWithModifier
-	:	scalarTypeWithModifier
-	|	classInterfaceTypeWithoutObjectInclArrayWithModifier
-	;
+
 	
 cloneOrNew
 	:	'clone'^ cloneOrNew

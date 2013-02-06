@@ -76,7 +76,7 @@ public class CompleteClassTest extends AAstTest
                             + ") "
                             +"(cMem (cmMod protected static) "
                                 + "(vars (type tMod C) ($a (new C args)) $b ($c null))) "
-                            +"(mDecl (mMod public) void set (params "
+                            +"(mDecl (mMod public) (type tMod void) set (params "
                                     + "(pDecl (type tMod int) $b) "
                                     + "(pDecl (type (tMod cast) float) $c)"
                                 + ") (block "
