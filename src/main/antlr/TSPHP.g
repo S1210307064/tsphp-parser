@@ -164,6 +164,7 @@ tokens{
 	EXPRESSION_LIST;
 	
 	FUNCTION_CALL;
+	FUNCTION_MODIFIER;
 	
 	INTERFACE_BODY;
 	INTERFACE_CONSTRUCT;	
@@ -448,8 +449,12 @@ interfaceConstruct
 /******* Procedural related - is also be used by OOP ************/
 //***************************************************************/
 functionDeclaration	
-	:	'function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
-		-> ^('function' functionSignatureInclReturnType ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))
+	:	func='function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
+		-> ^($func 
+			FUNCTION_MODIFIER[func,"fMod"] 
+			functionSignatureInclReturnType
+			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
+		)
 	;
 	
 functionSignatureInclReturnType

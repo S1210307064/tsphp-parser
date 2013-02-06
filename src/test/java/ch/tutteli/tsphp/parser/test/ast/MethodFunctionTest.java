@@ -56,12 +56,12 @@ public class MethodFunctionTest extends AAstTest
                         + "(class cMod a extends implements (cBody "
                         + "(mDecl (mMod public) (type tMod void) getName params (block (= $a 1)))"
                         + ")) "
-                        + "(function (type tMod void) getName params (block (= $a 1)))"
+                        + "(function fMod (type tMod void) getName params (block (= $a 1)))"
                         + "))"
                     },
                     {
                         "/** this is my lovely function */ \n function void foo(int $a=true,int $b=2,cast int $c=3){}",
-                        "(namespace " + IScope.DEFAULT_NAMESPACE + " (nBody (function (type tMod void) foo (params "
+                        "(namespace " + IScope.DEFAULT_NAMESPACE + " (nBody (function fMod (type tMod void) foo (params "
                         + "(pDecl (type tMod int) ($a true)) "
                         + "(pDecl (type tMod int) ($b 2)) "
                         + "(pDecl (type (tMod cast) int) ($c 3))"
