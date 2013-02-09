@@ -154,6 +154,7 @@ tokens{
 	CLASS_MEMBER_ACCESS;
 	CLASS_MEMBER_ACCESS_STATIC;
 	
+	CONSTANT;
 	CONSTANT_DECLARATION;
 	CONSTANT_DECLARATION_LIST;
 	
@@ -379,9 +380,6 @@ classMemberModifier
 	|	/* etmpy */ -> Public["public"]
 	;
 	
-stat	:	'static'
-	;
-
 accessModifier
 	:	accessModifierWithoutPrivate
 	|	'private'
@@ -934,7 +932,7 @@ primitiveAtomWithConstant
 	|	Null
 	//global constant
 	|	classConstant
-	|	Identifier 
+	|	id=Identifier -> CONSTANT[$id,$id.text]
 	;
 	
 Int     : 	DECIMAL

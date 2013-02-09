@@ -70,7 +70,7 @@ public class ClassMemberTest extends AAstTest
         for (String[] variation : variations) {
             collection.addAll(VariableDeclarationListHelper.testStrings(
                     variation[0] + " ", ";",
-                    "(cMem (vars ", "))", variation[1]));
+                    "(cMem ", ")", variation[1]));
         }
         return collection;
     }

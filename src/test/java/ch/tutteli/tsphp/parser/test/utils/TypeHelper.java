@@ -95,6 +95,8 @@ public class TypeHelper
             collection.add(new String[]{
                         prefix + type + appendix, prefixExpect + "(type " + tMod + " " + type + ")" + appendixExpect
                     });
+            System.out.println(prefix + type + appendix);
+            System.out.println(prefixExpect + "(type " + tMod + " " + type + ")" + appendixExpect);
             collection.add(new String[]{
                         prefix + "cast " + type + appendix,
                         prefixExpect + "(type " + tModInclCast + " " + type + ")" + appendixExpect

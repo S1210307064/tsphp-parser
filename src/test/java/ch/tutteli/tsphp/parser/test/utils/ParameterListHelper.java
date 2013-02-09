@@ -191,14 +191,6 @@ public class ParameterListHelper
                         + ")" + appendixExpect
                     },
                     {
-                        prefix + "cast int $a, int $b, cast int $d" + appendix,
-                        prefixExpect + "(params "
-                        + "(pDecl (type (tMod cast) int) $a) "
-                        + "(pDecl (type tMod int) $b) "
-                        + "(pDecl (type (tMod cast) int) $d)"
-                        + ")" + appendixExpect
-                    },
-                    {
                         prefix + "cast int $a=1, int? $b=2, cast int $d=3" + appendix,
                         prefixExpect + "(params "
                         + "(pDecl (type (tMod cast) int) ($a 1)) "

@@ -34,7 +34,17 @@ public class ConstantHelper
             String prefixExpected, String appendixExpected) {
         List<Object[]> collection = new ArrayList<>();
 
-        String[] types = TypeHelper.getScalarTypes();
+        String[] types = TypeHelper.getClassInterfaceTypes();
+        for (String type : types) {
+            collection.add(new Object[]{
+                        prefix + "const int b=" + type + "::a" + ", c=" + type + "::d;" +  appendix,
+                        prefixExpected
+                        + "(consts int (b (sMemAccess " + type + " a)) (c (sMemAccess " + type + " d)))"
+                        + appendixExpected
+                    });
+        }
+
+        types = TypeHelper.getScalarTypes();
         for (String type : types) {
             collection.add(new Object[]{
                         prefix + "const " + type + " a=true;" + appendix,

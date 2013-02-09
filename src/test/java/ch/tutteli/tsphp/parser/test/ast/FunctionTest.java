@@ -57,8 +57,8 @@ public class FunctionTest extends AAstTest
                 "(function fMod (type tMod void) set ", " block)"));
 
         collection.add(new Object[]{
-                    "function void foo(){$a=1;}",
-                    "(function fMod (type tMod void) foo params (block (= $a 1)))"
+                    "function void foo(){$a=1; int $b=2;}",
+                    "(function fMod (type tMod void) foo params (block (= $a 1) (vars (type tMod int) ($b 2))))"
                 });
 
         return collection;
