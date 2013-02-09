@@ -18,9 +18,7 @@ package ch.tutteli.tsphp.parser.test.parser;
 
 import ch.tutteli.tsphp.parser.test.lexer.TokenTest;
 import ch.tutteli.tsphp.parser.test.utils.AParserTest;
-import ch.tutteli.tsphp.parser.test.utils.ExpressionHelper;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -33,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class MethodCallTest extends AParserTest
+public class ClassInterfaceTypeWithoutObjectTest extends AParserTest
 {
 
-    public MethodCallTest(String testString) {
+    public ClassInterfaceTypeWithoutObjectTest(String testString) {
         super(testString);
     }
 
@@ -45,36 +43,22 @@ public class MethodCallTest extends AParserTest
         parseAndCheckForException();
     }
 
+     protected void run() throws RecognitionException {
+        result = parser.classInterfaceTypeWithoutObject();
+    }
+    
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.add(new Object[]{"$a->foo();"});
-        collection.add(new Object[]{"$a->foo(1,1);"});
-        collection.add(new Object[]{"$a->foo(true || false,1,1+1,'hello'.'world');"});
-
-        String[] expressions = ExpressionHelper.getParserExpressions();
-        for (String expression : expressions) {
-            collection.add(new Object[]{"$a->foo(" + expression + ");"});
+        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
+        for (Object[] obj : idTestStrings) {
+            collection.add(new String[]{obj[1] + ""});
+            collection.add(new String[]{obj[1] + "\\" + obj[1]});
+            collection.add(new String[]{obj[1] + "\\" + obj[1] + "\\" + obj[1]});
+            collection.add(new String[]{"\\" + obj[1]});
+            collection.add(new String[]{"\\" + obj[1] + "\\" + obj[1]});
+            collection.add(new String[]{"\\" + obj[1] + "\\" + obj[1] + "\\" + obj[1]});
         }
-
-        collection.addAll(getCalls("$this->"));
-        collection.addAll(getCalls("$a->"));
-        collection.addAll(getCalls("self::"));
-        collection.addAll(getCalls("parent::"));
-        collection.addAll(getCalls("Foo::"));
-        collection.addAll(getCalls("$this->a->"));
-        collection.addAll(getCalls("self::$a->"));
-        collection.addAll(getCalls("parent::$a->"));
-        collection.addAll(getCalls("Bar::$a->"));
-
         return collection;
-    }
-
-    public static Collection<Object[]> getCalls(String prefix) {
-        return Arrays.asList(new Object[][]{
-                    {prefix + "a();"},
-                    {prefix + "b()->d();"},
-                    {prefix + "c()->e()->f();"}
-                });
     }
 }

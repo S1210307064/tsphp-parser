@@ -18,6 +18,7 @@ package ch.tutteli.tsphp.parser.test.parser;
 
 import ch.tutteli.tsphp.parser.test.lexer.TokenTest;
 import ch.tutteli.tsphp.parser.test.utils.AParserTest;
+import ch.tutteli.tsphp.parser.test.utils.TypeHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -48,37 +49,10 @@ public class VariableDeclarationTest extends AParserTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList();
         collection.add(new Object[]{"int $a =(int) $b;"});
-        List<String> types = getAllTypes();
+        List<String> types = TypeHelper.getAllTypes();
         for (String type : types) {
             collection.add(new Object[]{type + " $d = 1;"});
         }
         return collection;
-
-    }
-
-    public static List<String> getAllTypes() {
-        List<String> types = new ArrayList<>();
-        String[] primitiveTypes = getPrimitiveTypes();
-        types.addAll(Arrays.asList(primitiveTypes));
-        types.addAll(getClassInterfaceTypes());
-        return types;
-    }
-
-    public static List<String> getClassInterfaceTypes() {
-        List<String> types = new ArrayList<>();
-        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
-        for (Object[] obj : idTestStrings) {
-            types.add(obj[1] + "");
-            types.add(obj[1] + "\\" + obj[1]);
-            types.add(obj[1] + "\\" + obj[1] + "\\" + obj[1]);
-            types.add("\\" + obj[1]);
-            types.add("\\" + obj[1] + "\\" + obj[1] );
-            types.add("\\" + obj[1] + "\\" + obj[1] + "\\" + obj[1]);
-        }
-        return types;
-    }
-
-    public static String[] getPrimitiveTypes() {
-        return new String[]{"bool", "int", "float", "string", "array", "resource", "object"};
     }
 }

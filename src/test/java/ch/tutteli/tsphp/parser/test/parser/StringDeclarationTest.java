@@ -52,10 +52,6 @@ public class StringDeclarationTest extends AParserTest
             collection.add(new Object[]{"string $a = "+obj[1]+";"});
         }
         
-        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
-        for (Object[] obj : idTestStrings) {
-            collection.add(new Object[]{"string $d = $" + obj[1] + ";"});
-        }
         return collection;
     }
 }

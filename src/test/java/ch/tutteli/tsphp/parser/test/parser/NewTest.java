@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.parser.test.parser;
 
 import ch.tutteli.tsphp.parser.test.utils.AParserTest;
+import ch.tutteli.tsphp.parser.test.utils.TypeHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -45,7 +46,7 @@ public class NewTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        List<String> types = VariableDeclarationTest.getClassInterfaceTypes();
+        String[] types = TypeHelper.getClassInterfaceTypes();
         for(String type: types){
             collection.add(new Object[]{"$a = new "+type+"();"});
         }

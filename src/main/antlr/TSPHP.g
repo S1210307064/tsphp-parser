@@ -152,7 +152,7 @@ tokens{
 	CLASS_MEMBER;
 	CLASS_MEMBER_MODIFIER;
 	CLASS_MEMBER_ACCESS;
-	CLASS_MEMBER_ACCESS_STATIC;
+	CLASS_STATIC_ACCESS;
 	
 	CONSTANT;
 	CONSTANT_DECLARATION;
@@ -171,6 +171,7 @@ tokens{
 	INTERFACE_CONSTRUCT;	
 	
 	METHOD_CALL;
+	METHOD_CALL_STATIC;
 	METHOD_DECLARATION;
 	METHOD_MODIFIER;
 	
@@ -805,7 +806,7 @@ cloneOrNew
 
 	
 variableOrMemberOrStaticMember
-	:	staticAccessOrParent VariableId -> ^(CLASS_MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent VariableId)
+	:	staticAccessOrParent VariableId -> ^(CLASS_STATIC_ACCESS[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent VariableId)
 	|	'$this'
 	|	VariableId 
 	;
@@ -840,6 +841,7 @@ primary
 postFixCall
 	:	(	functionCall -> functionCall
 		|	methodCall -> methodCall
+		|	staticMethodCall -> staticMethodCall
 		)
 		(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixCall Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixCall expression)
@@ -851,18 +853,21 @@ functionCall
 	:	classInterfaceTypeWithoutObject actualParameters
 		-> ^(FUNCTION_CALL[$classInterfaceTypeWithoutObject.start,"fCall"] classInterfaceTypeWithoutObject actualParameters)
 	;
-	
-call	:	'->'! Identifier actualParameters
-	;
+
 	
 methodCall
-	:	callee Identifier actualParameters
-		-> ^(METHOD_CALL[$callee.start,"mCall"] callee Identifier actualParameters)
+	:	(callee='$this'|callee=VariableId) '->' Identifier actualParameters
+		 -> ^(METHOD_CALL[$callee,"mCall"] $callee Identifier actualParameters)	 
 	;
 	
-callee	:	variableOrMemberOrStaticMember '->'!
-	|	staticAccessOrParent
+staticMethodCall
+	:	staticAccessOrParent Identifier actualParameters
+		-> ^(METHOD_CALL_STATIC[$staticAccessOrParent.start,"smCall"] staticAccessOrParent Identifier actualParameters)
 	;
+
+call	:	'->'! Identifier actualParameters
+	;
+
 
 atom	:	'(' expression ')' -> expression
 	|	incrementDecrement
@@ -913,7 +918,7 @@ postFixVariableInclCallAtTheEnd
 	;
 
 classConstant
-	:	staticAccessOrParent Identifier -> ^(CLASS_MEMBER_ACCESS_STATIC[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent Identifier)
+	:	staticAccessOrParent Identifier -> ^(CLASS_STATIC_ACCESS[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent Identifier)
 	;
 	
 

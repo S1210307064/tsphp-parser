@@ -16,11 +16,10 @@
  */
 package ch.tutteli.tsphp.parser.test.parser;
 
-import ch.tutteli.tsphp.parser.test.utils.AParserTest;
-import ch.tutteli.tsphp.parser.test.utils.TypeHelper;
-import java.util.ArrayList;
+import ch.tutteli.tsphp.parser.TSPHPParser;
+import ch.tutteli.tsphp.parser.test.utils.AParserParserExceptionTest;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,27 +30,28 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class TryCatchTest extends AParserTest
+public class PostFixErrorTest extends AParserParserExceptionTest
 {
 
-    public TryCatchTest(String testString) {
-        super(testString);
+    public PostFixErrorTest(String testString, int character, int position) {
+        super(testString, RecognitionException.class, character, position);
+
     }
 
     @Test
     public void test() throws RecognitionException {
-        parseAndCheckForException();
+        super.parseExpectingException();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList();
-        String[] types = TypeHelper.getClassInterfaceTypes();
-        for (String type : types) {
-            collection.add(new Object[]{"try{$a=1;}catch(" + type + " $e){}"});
-        }
-        collection.add(new Object[]{"try{$a=1;}catch(\\Exception $e){}catch(MyException $e){}"});
-        collection.add(new Object[]{"try{$a=1;}catch(\\Exception $e){}catch(MyException $e){}catch(\\a\\MyException $e){}"});
-        return collection;
+        return Arrays.asList(new Object[][]{
+                    {"self[0];", TSPHPParser.Self, 0},
+                    {"parent[0]", TSPHPParser.Parent, 0},
+                    {"Foo[0]", TSPHPParser.LeftSquareBrace, 3},
+                    {"self::[0];", TSPHPParser.LeftSquareBrace, 6},
+                    {"parent::[0]", TSPHPParser.LeftSquareBrace, 8},
+                    {"Foo::[0]", TSPHPParser.DoubleColon, 3}
+                });
     }
 }

@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.parser.test.parser;
 
 import ch.tutteli.tsphp.parser.test.utils.AParserTest;
+import ch.tutteli.tsphp.parser.test.utils.TypeHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -66,14 +67,15 @@ public class ClassMemberTest extends AParserTest
                     {"class a{ public int $a=1,$b=2,$c;}"},
                     {"class a{ static private int $a=1,$b=2,$c;}"},
                     {"class a{ static protected int $a=1,$b=2,$c;}"},
-                    {"class a{ static public int $a=1,$b=2,$c;}"},
+                    {"class a{ static public int $a=1,$b=2,$c;}"}
                 }));
-        List<String> types = VariableDeclarationTest.getAllTypes();
-        for(String type : types){
-            collection.add(new Object[]{"class a{ private "+type+" $a=1;}"});
+
+        List<String> types = TypeHelper.getAllTypes();
+        for (String type : types) {
+            collection.add(new Object[]{"class a{ private " + type + " $a=1;}"});
         }
-        
+
         return collection;
-        
+
     }
 }
