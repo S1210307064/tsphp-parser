@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.parser.test.parser;
 
 import ch.tutteli.tsphp.parser.test.utils.AParserTest;
+import ch.tutteli.tsphp.parser.test.utils.TypeHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -46,6 +47,7 @@ public class ForeachTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
+        
         collection.addAll(Arrays.asList(new Object[][]{
                     {"foreach($a as int $k => MyClass $v)$a=1;"},
                     {"foreach($a as float $v) $a=1;"},
@@ -53,8 +55,12 @@ public class ForeachTest extends AParserTest
                     {"foreach($a as bool $v) {$a=1;}"},
                     {"foreach($a as bool $k=> array $v){$a=1; $b=1;}"},
                     {"foreach($a as int $v) {$a=1; $b=3;}"},
-                    
         }));
+        
+        List<String> types = TypeHelper.getAllTypes();
+        for(String type: types){
+             collection.add(new Object[]{"foreach($a as "+type+" $v) $a=1;"});
+        }
         
         String[] arrayTestStrings = ArrayDeclarationTest.getArrayTestStrings();
         for (String string : arrayTestStrings) {

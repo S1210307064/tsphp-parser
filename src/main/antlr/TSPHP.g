@@ -552,6 +552,10 @@ objectOrResource
 	|	'resource'
 	;
 
+allTypes:	allTypesWithoutObjectAndResource
+	|	objectOrResource
+	;
+	
 allTypesWithoutObjectAndResource
 	:	scalarTypes
 	|	TypeArray
@@ -1091,7 +1095,7 @@ forUpdate
 	;
 
 foreachLoop
-	:	'foreach' '(' expression 'as' (keyType=scalarTypes keyVarId=VariableId '=>')? valueType=allTypesWithoutObjectAndResource valueVarId=VariableId ')' instructionInclBreakContinue 
+	:	'foreach' '(' expression 'as' (keyType=scalarTypes keyVarId=VariableId '=>')? valueType=allTypes valueVarId=VariableId ')' instructionInclBreakContinue 
 		-> ^('foreach' 
 			expression $keyType? $keyVarId? $valueType $valueVarId 
 			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue)
