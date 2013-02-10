@@ -75,7 +75,7 @@ public class KeywordErrorTest extends AParserParserExceptionTest
                     {"const", TSPHPParser.Const},
                     {"__construct",TSPHPParser.Construct},
                     {"continue", TSPHPParser.Continue},
-                    {"__deconstruct",TSPHPParser.Deconstruct},
+                    {"__destruct",TSPHPParser.Destruct},
                     {"default", TSPHPParser.Default},
                     {"do", TSPHPParser.Do},
                     {"double", TSPHPParser.TypeAliasFloat},

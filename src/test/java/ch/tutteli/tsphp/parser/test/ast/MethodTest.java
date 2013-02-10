@@ -19,9 +19,7 @@ package ch.tutteli.tsphp.parser.test.ast;
 import ch.tutteli.tsphp.parser.test.utils.AAstTest;
 import ch.tutteli.tsphp.parser.test.utils.ParameterListHelper;
 import ch.tutteli.tsphp.parser.test.utils.TypeHelper;
-import ch.tutteli.tsphp.parser.test.utils.VariableDeclarationListHelper;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -36,6 +34,8 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class MethodTest extends AAstTest
 {
+
+    private static List<Object[]> collection;
 
     public MethodTest(String testString, String expectedResult) {
         super(testString, expectedResult);
@@ -53,20 +53,34 @@ public class MethodTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
+        collection = new ArrayList<>();
+
+        getModifiers();
+
+        //return values
         collection.addAll(TypeHelper.getAllTypesInclModifier(
                 "function ", " get(){}",
                 "(mDecl (mMod public) ", " get params block)", ""));
 
-        //normal
+        //parameters
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", "){}",
                 "(mDecl (mMod public) (type tMod void) set ", " block)"));
+        collection.addAll(ParameterListHelper.getTestStrings(
+                "abstract function void set(", ");",
+                "(mDecl (mMod abstract public) (type tMod void) set ", " block)"));
 
+        //method block
         collection.add(new Object[]{
                     "function void set(){$a=1;}",
                     "(mDecl (mMod public) (type tMod void) set params (block (= $a 1)))"
                 });
+
+
+        return collection;
+    }
+
+    private static void getModifiers() {
 
         String[][] variations = new String[][]{
             {"", "public"},
@@ -130,9 +144,8 @@ public class MethodTest extends AAstTest
         for (String[] variation : variations) {
             collection.add(new Object[]{
                         variation[0] + " function void foo();",
-                        "(mDecl (mMod " + variation[1] + ") (type tMod void) foo params)"
+                        "(mDecl (mMod " + variation[1] + ") (type tMod void) foo params block)"
                     });
         }
-        return collection;
     }
 }

@@ -76,7 +76,7 @@ public class TokenTest extends ALexerTest
                     {"mConstruct", "__construct", TSPHPLexer.Construct},
                     {"mContinue", "continue", TSPHPLexer.Continue},
                     {"mDefault", "default", TSPHPLexer.Default},
-                    {"mDeconstruct", "__deconstruct", TSPHPLexer.Deconstruct},
+                    {"mDestruct", "__destruct", TSPHPLexer.Destruct},
                     {"mDivide", "/", TSPHPLexer.Divide},
                     {"mDivideAssign", "/=", TSPHPLexer.DivideAssign},
                     {"mDo", "do", TSPHPLexer.Do},

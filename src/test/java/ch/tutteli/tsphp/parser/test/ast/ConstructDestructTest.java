@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.parser.test.ast;
 
 import ch.tutteli.tsphp.parser.test.utils.AAstTest;
+import ch.tutteli.tsphp.parser.test.utils.ParameterListHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -34,6 +35,8 @@ import org.junit.runners.Parameterized;
 public class ConstructDestructTest extends AAstTest
 {
 
+    private static List<Object[]> collection;
+
     public ConstructDestructTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
@@ -50,53 +53,75 @@ public class ConstructDestructTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-        collection.addAll(getVariations("__construct","","params "));
-        collection.addAll(getVariations("__deconstruct","",""));
-        collection.addAll(Arrays.asList(new Object[][]{
-                    {
-                        "function __construct(int $a,bool $b){ $a=1;}",
-                        "(__construct (mMod public) (params "
-                        + "(pDecl (type tMod int) $a) "
-                        + "(pDecl (type tMod bool) $b)"
-                        + ") (block (= $a 1)))"
-                    },
-                    {
-                        "function __construct(cast int $a=1){}",
-                        "(__construct (mMod public) (params "
-                        + "(pDecl (type (tMod cast) int) ($a 1))"
-                        + ") block)"
-                    },
-                    {
-                        "function __construct(int $a,bool? $b=2){}",
-                        "(__construct (mMod public) (params "
-                        + "(pDecl (type tMod int) $a) "
-                        + "(pDecl (type (tMod ?) bool) ($b 2))"
-                        + ") block)"
-                    }
-                }));
+        collection = new ArrayList<>();
+
+        getModifiers();
+
+        //parameters
+        collection.addAll(ParameterListHelper.getTestStrings(
+                "function __construct(", "){}",
+                "(__construct (mMod public) ", " block)"));
+        collection.addAll(ParameterListHelper.getTestStrings(
+                "abstract function __construct(", ");",
+                "(__construct (mMod abstract public) ", " block)"));
+
+        collection.add(new Object[]{
+                    "function __construct(int $a,bool $b){ $a=1;}",
+                    "(__construct (mMod public) (params "
+                    + "(pDecl (type tMod int) $a) "
+                    + "(pDecl (type tMod bool) $b)"
+                    + ") (block (= $a 1)))"
+                });
         return collection;
 
     }
 
-    private static Collection<Object[]> getVariations(String what, String params, String paramsExpected) {
-        return Arrays.asList(new Object[][]{
-                    {
-                        "function " + what + "(" + params + "){}",
-                        "(" + what + " (mMod public) " + paramsExpected + "block)"
-                    },
-                    {
-                        "private function " + what + "(" + params + "){}",
-                        "(" + what + " (mMod private) " + paramsExpected + "block)"
-                    },
-                    {
-                        "protected function " + what + "(" + params + "){}",
-                        "(" + what + " (mMod protected) " + paramsExpected + "block)"
-                    },
-                    {
-                        "public function " + what + "(" + params + "){}",
-                        "(" + what + " (mMod public) " + paramsExpected + "block)"
-                    }
-                });
+    private static void getModifiers() {
+        String[][] variations = new String[][]{
+            {"", "public"},
+            //
+            {"private", "private"},
+            {"private final", "private final"},
+            //
+            {"protected", "protected"},
+            {"protected final", "protected final"},
+            //
+            {"public", "public"},
+            {"public final", "public final"},
+            //
+            {"final", "final public"},
+            {"final private", "final private"},
+            {"final protected", "final protected"},
+            {"final public", "final public"},};
+
+        for (String[] variation : variations) {
+            collection.add(new Object[]{
+                        variation[0] + " function __construct(){}",
+                        "(__construct (mMod " + variation[1] + ") params block)"
+                    });
+            collection.add(new Object[]{
+                        variation[0] + " function __destruct(){}",
+                        "(mDecl (mMod " + variation[1] + ") (type tMod void) __destruct params block)"
+                    });
+        }
+
+        variations = new String[][]{
+            {"abstract", "abstract public"},
+            {"abstract protected", "abstract protected"},
+            {"abstract public", "abstract public"},
+            {"protected abstract", "protected abstract"},
+            {"public abstract", "public abstract"}
+        };
+
+        for (String[] variation : variations) {
+            collection.add(new Object[]{
+                        variation[0] + " function __construct();",
+                        "(__construct (mMod " + variation[1] + ") params block)"
+                    });
+            collection.add(new Object[]{
+                        variation[0] + " function __destruct();",
+                        "(mDecl (mMod " + variation[1] + ") (type tMod void) __destruct params block)"
+                    });
+        }
     }
 }

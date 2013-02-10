@@ -49,7 +49,7 @@ tokens{
 	Construct = '__construct';
 	Continue = 'continue';
 	Default = 'default';
-	Deconstruct = '__deconstruct';
+	Destruct = '__destruct';
 	Divide = '/';
 	DivideAssign = '/=';
 	Do = 'do';
@@ -168,7 +168,6 @@ tokens{
 	FUNCTION_MODIFIER;
 	
 	INTERFACE_BODY;
-	INTERFACE_CONSTRUCT;	
 	
 	METHOD_CALL;
 	METHOD_CALL_STATIC;
@@ -177,9 +176,9 @@ tokens{
 	
 	NAMESPACE_BODY;
 	
-	PARAM_DECLARATION;
-	PARAM_LIST;
-	PARAM_TYPE;
+	PARAMETER_DECLARATION;
+	PARAMETER_LIST;
+	PARAMETER_TYPE;
 	
 	POST_INCREMENT;
 	POST_DECREMENT;
@@ -347,7 +346,8 @@ identifierList
 classBody
 	:	constDeclarationList
 	|	classMemberDeclaration	
-	|	constructDeconstruct
+	|	abstractConstructDestructDeclaration
+	|	constructDestructDeclaration
 	|	abstractMethodDeclaration
 	|	methodDeclaration
 	;
@@ -448,23 +448,52 @@ methodModifier
 	|	/* empty */ -> Public["public"]
 	;
 	
+abstractConstructDestructDeclaration
+	:	abstractMethodModifier 'function' 
+		(	'__construct' formalParameters block=';'
+			-> ^('__construct' 
+				^(METHOD_MODIFIER[$abstractMethodModifier.start,"mMod"] abstractMethodModifier)
+				formalParameters 
+				BLOCK[$block,"block"]
+			) 
+		|	destr='__destruct' '('')'  block=';'
+			-> ^(METHOD_DECLARATION[$destr,"mDecl"] 
+				^(METHOD_MODIFIER[$abstractMethodModifier.start,"mMod"] abstractMethodModifier)
+				^(TYPE[$destr,"type"] TYPE_MODIFIER[$destr,"tMod"] Void[$destr,"void"])
+				$destr
+				PARAMETER_LIST[$destr,"params"]
+				BLOCK[$block,"block"]
+			)
+		)
+	;
 
-constructDeconstruct
-	:	accessModifierOrPublic 'function'
+constructDestructDeclaration
+	:	constructDestructModifier 'function'
 		(	'__construct' formalParameters block='{' instructionWithoutBreakContinue* '}' 
 			-> ^('__construct' 
-				^(METHOD_MODIFIER[$accessModifierOrPublic.start,"mMod"] accessModifierOrPublic)
+				^(METHOD_MODIFIER[$constructDestructModifier.start,"mMod"] constructDestructModifier)
 				formalParameters 
 				^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
 			)
 		
-		|	'__deconstruct' '('')' block='{' instructionWithoutBreakContinue* '}' 
-			-> ^('__deconstruct' 
-				^(METHOD_MODIFIER[$accessModifierOrPublic.start,"mMod"] accessModifierOrPublic)
-				 ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
+		|	destr='__destruct' '('')' block='{' instructionWithoutBreakContinue* '}' 
+			-> ^(METHOD_DECLARATION[$destr,"mDecl"]
+				^(METHOD_MODIFIER[$constructDestructModifier.start,"mMod"] constructDestructModifier)
+				^(TYPE[$destr,"type"] TYPE_MODIFIER[$destr,"tMod"] Void[$destr,"void"])
+				$destr
+				PARAMETER_LIST[$destr,"params"]
+				^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
 			)	
 		)
 		
+	;
+
+constructDestructModifier
+	:	'final' accessModifier
+	|	 fin='final' -> 'final' Public[$fin,"public"]
+	|	accessModifier 'final'
+	|	accessModifier
+	|	/* empty */ -> Public["public"]
 	;
 
 interfaceDeclaration
@@ -593,7 +622,7 @@ classInterfaceTypeWithoutObject
 	;
 
 formalParameters
-	:	params='(' paramList? ')' -> ^(PARAM_LIST[$params,"params"] paramList?)
+	:	params='(' paramList? ')' -> ^(PARAMETER_LIST[$params,"params"] paramList?)
 	;
 
 paramList
@@ -603,12 +632,12 @@ paramList
 	
 paramDeclarationNormal
 	:	allTypesInclModifierForParameter VariableId 
-		-> ^(PARAM_DECLARATION[$paramDeclarationNormal.start,"pDecl"] allTypesInclModifierForParameter ^(VariableId) )
+		-> ^(PARAMETER_DECLARATION[$paramDeclarationNormal.start,"pDecl"] allTypesInclModifierForParameter ^(VariableId) )
 	;
 	
 paramDeclarationOptional
 	:	allTypesInclModifierForParameter VariableId '=' unaryPrimitiveAtom 
-		-> ^(PARAM_DECLARATION[$paramDeclarationOptional.start,"pDecl"] allTypesInclModifierForParameter ^(VariableId unaryPrimitiveAtom))
+		-> ^(PARAMETER_DECLARATION[$paramDeclarationOptional.start,"pDecl"] allTypesInclModifierForParameter ^(VariableId unaryPrimitiveAtom))
 	;
 
 

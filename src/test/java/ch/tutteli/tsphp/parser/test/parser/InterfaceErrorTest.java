@@ -55,8 +55,8 @@ public class InterfaceErrorTest extends AParserParserExceptionTest
                     {"interface A{function void a(){}}",TSPHPParser.LeftCurlyBrace,29},
                     //interface methods are already abstract
                     {"interface A{ abstract function void a();}",TSPHPParser.Abstract,13},
-                    //deconstruct in interface
-                    {"interface A{ function __deconstruct();}",TSPHPParser.Deconstruct,22},
+                    //Destruct in interface
+                    {"interface A{ function __destruct();}",TSPHPParser.Destruct,22},
                 });
     }
 }
