@@ -402,10 +402,11 @@ accessModifierOrPublic
 
 
 abstractMethodDeclaration
-	:	abstractMethodModifier 'function' functionSignatureInclReturnType ';'
+	:	abstractMethodModifier 'function' functionSignatureInclReturnType block=';'
 		-> ^(METHOD_DECLARATION[$abstractMethodModifier.start,"mDecl"]  
 			^(METHOD_MODIFIER[$abstractMethodModifier.start,"mMod"] abstractMethodModifier)
 			functionSignatureInclReturnType 
+			BLOCK[$block,"block"]
 		) 
 	;
 	
@@ -451,17 +452,28 @@ methodModifier
 constructDeconstruct
 	:	accessModifierOrPublic 'function'
 		(	'__construct' formalParameters block='{' instructionWithoutBreakContinue* '}' 
-			-> ^('__construct' accessModifierOrPublic formalParameters ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))
+			-> ^('__construct' 
+				^(METHOD_MODIFIER[$accessModifierOrPublic.start,"mMod"] accessModifierOrPublic)
+				formalParameters 
+				^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
+			)
 		
 		|	'__deconstruct' '('')' block='{' instructionWithoutBreakContinue* '}' 
-			-> ^('__deconstruct' accessModifierOrPublic ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*))	
+			-> ^('__deconstruct' 
+				^(METHOD_MODIFIER[$accessModifierOrPublic.start,"mMod"] accessModifierOrPublic)
+				 ^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
+			)	
 		)
 		
 	;
 
 interfaceDeclaration
 	:	'interface' Identifier (ext='extends' identifierList)? block='{' interfaceBody* '}'
-		-> ^('interface' Identifier ^(Extends[$ext,"extends"] identifierList?) ^(INTERFACE_BODY[$block,"iBody"] interfaceBody*))
+		-> ^('interface' 
+			Identifier 
+			^(Extends[$ext,"extends"] identifierList?) 
+			^(INTERFACE_BODY[$block,"iBody"] interfaceBody*)
+		)
 	;
 
 interfaceBody
@@ -475,11 +487,17 @@ interfaceMethodDeclaration
 		-> ^(METHOD_DECLARATION[$interfaceMethodDeclaration.start,"mDecl"]   
 			^(METHOD_MODIFIER[$interfaceMethodDeclaration.start,"mMod"] Public[$interfaceMethodDeclaration.start,"public"] Abstract[$interfaceMethodDeclaration.start,"abstract"])
 			functionSignatureInclReturnType 
+			BLOCK[$block,"block"]
 		) 
 	;
 
 interfaceConstruct
-	:	 'public'? 'function' ctor='__construct' formalParameters ';' -> ^(INTERFACE_CONSTRUCT[$ctor,"iCtor"] formalParameters)
+	:	'public'? 'function' '__construct' formalParameters block=';' 
+		-> ^('__construct'
+			^(METHOD_MODIFIER[$interfaceConstruct.start,"mMod"] Public[$interfaceConstruct.start,"public"]  Abstract[$interfaceConstruct.start,"abstract"])
+			formalParameters
+			BLOCK[$block,"block"]
+		)
 	;
 
 

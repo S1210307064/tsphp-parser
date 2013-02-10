@@ -52,21 +52,24 @@ public class InterfaceMethodTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.add(new Object[]{"public function void foo();", "(mDecl (mMod public abstract) (type tMod void) foo params)"});
-        collection.add(new Object[]{"function __construct();", "(iCtor params)"});
-        collection.add(new Object[]{"public function __construct();", "(iCtor params)"});
+        collection.add(new Object[]{
+            "public function void foo();",
+            "(mDecl (mMod public abstract) (type tMod void) foo params block)"
+        });
+        collection.add(new Object[]{"function __construct();", "(__construct (mMod public abstract) params block)"});
+        collection.add(new Object[]{"public function __construct();", "(__construct (mMod public abstract) params block)"});
 
          collection.addAll(TypeHelper.getAllTypesInclModifier(
                 "function ", " get();",
-                "(mDecl (mMod public abstract) ", " get params)",""));
+                "(mDecl (mMod public abstract) ", " get params block)",""));
 
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", ");",
-                "(mDecl (mMod public abstract) (type tMod void) set ", ")"));
+                "(mDecl (mMod public abstract) (type tMod void) set ", " block)"));
         
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function __construct(", ");",
-                "(iCtor ", ")"));
+                "(__construct (mMod public abstract) ", " block)"));
         
         return collection;
     }

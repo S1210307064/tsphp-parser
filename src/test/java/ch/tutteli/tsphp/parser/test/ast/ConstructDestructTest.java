@@ -56,20 +56,20 @@ public class ConstructDestructTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "function __construct(int $a,bool $b){ $a=1;}",
-                        "(__construct public (params "
+                        "(__construct (mMod public) (params "
                         + "(pDecl (type tMod int) $a) "
                         + "(pDecl (type tMod bool) $b)"
                         + ") (block (= $a 1)))"
                     },
                     {
                         "function __construct(cast int $a=1){}",
-                        "(__construct public (params "
+                        "(__construct (mMod public) (params "
                         + "(pDecl (type (tMod cast) int) ($a 1))"
                         + ") block)"
                     },
                     {
                         "function __construct(int $a,bool? $b=2){}",
-                        "(__construct public (params "
+                        "(__construct (mMod public) (params "
                         + "(pDecl (type tMod int) $a) "
                         + "(pDecl (type (tMod ?) bool) ($b 2))"
                         + ") block)"
@@ -83,19 +83,19 @@ public class ConstructDestructTest extends AAstTest
         return Arrays.asList(new Object[][]{
                     {
                         "function " + what + "(" + params + "){}",
-                        "(" + what + " public " + paramsExpected + "block)"
+                        "(" + what + " (mMod public) " + paramsExpected + "block)"
                     },
                     {
                         "private function " + what + "(" + params + "){}",
-                        "(" + what + " private " + paramsExpected + "block)"
+                        "(" + what + " (mMod private) " + paramsExpected + "block)"
                     },
                     {
                         "protected function " + what + "(" + params + "){}",
-                        "(" + what + " protected " + paramsExpected + "block)"
+                        "(" + what + " (mMod protected) " + paramsExpected + "block)"
                     },
                     {
                         "public function " + what + "(" + params + "){}",
-                        "(" + what + " public " + paramsExpected + "block)"
+                        "(" + what + " (mMod public) " + paramsExpected + "block)"
                     }
                 });
     }
