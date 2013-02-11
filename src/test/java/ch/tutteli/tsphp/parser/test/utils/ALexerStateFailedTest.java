@@ -16,7 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.utils;
 
-import ch.tutteli.tsphp.parser.TSPHPLexer;
+import ch.tutteli.tsphp.parser.antlr.TSPHPLexer;
 import junit.framework.Assert;
 import org.antlr.runtime.RecognizerSharedState;
 import org.junit.Ignore;

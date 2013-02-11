@@ -215,7 +215,7 @@ tokens{
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.parser;
+package ch.tutteli.tsphp.parser.antlr;
 
 import ch.tutteli.tsphp.common.AstHelper;
 import ch.tutteli.tsphp.common.IAstHelper;
@@ -251,7 +251,7 @@ public void setAstHelper(IAstHelper anAstHelper){
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.parser;
+package ch.tutteli.tsphp.parser.antlr;
 }
 
 compilationUnit	

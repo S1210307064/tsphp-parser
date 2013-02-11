@@ -15,24 +15,40 @@
  * 
  * Idea by Jim Idle - see  http://www.antlr.org/wiki/pages/viewpage.action?pageId=1782
  */
-package ch.tutteli.tsphp.parser;
+package ch.tutteli.tsphp.parser.antlr;
 
 import java.io.IOException;
-import org.antlr.runtime.ANTLRFileStream;
+import java.io.InputStream;
+import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CharStream;
 
 /**
  * @author Robert Stoll
  */
-public class ANTLRNoCaseFileStream extends ANTLRFileStream
+public class ANTLRNoCaseInputStream extends ANTLRInputStream
 {
 
-    public ANTLRNoCaseFileStream(String fileName) throws IOException {
-        super(fileName);
+    public ANTLRNoCaseInputStream() {
     }
 
-    public ANTLRNoCaseFileStream(String fileName, String encoding) throws IOException {
-        super(fileName, encoding);
+    public ANTLRNoCaseInputStream(InputStream input) throws IOException {
+        super(input);
+    }
+
+    public ANTLRNoCaseInputStream(InputStream input, int size) throws IOException {
+        super(input, size);
+    }
+
+    public ANTLRNoCaseInputStream(InputStream input, String encoding) throws IOException {
+        super(input, encoding);
+    }
+
+    public ANTLRNoCaseInputStream(InputStream input, int size, String encoding) throws IOException {
+        super(input, size, encoding);
+    }
+
+    public ANTLRNoCaseInputStream(InputStream input, int size, int readBufferSize, String encoding) throws IOException {
+        super(input, size, readBufferSize, encoding);
     }
 
     @Override

@@ -16,7 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.utils;
 
-import ch.tutteli.tsphp.parser.TSPHPErrorReportingLexer;
+import ch.tutteli.tsphp.parser.antlr.TSPHPErrorReportingLexer;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;

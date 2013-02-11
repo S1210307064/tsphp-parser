@@ -16,8 +16,8 @@
  */
 package ch.tutteli.tsphp.parser.test.utils;
 
-import ch.tutteli.tsphp.parser.ANTLRNoCaseStringStream;
-import ch.tutteli.tsphp.parser.TSPHPLexer;
+import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseStringStream;
+import ch.tutteli.tsphp.parser.antlr.TSPHPLexer;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import junit.framework.Assert;

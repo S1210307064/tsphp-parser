@@ -14,29 +14,32 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.parser;
+package ch.tutteli.tsphp.parser.antlr;
 
 import ch.tutteli.tsphp.common.IErrorReporter;
 import java.util.ArrayList;
 import java.util.List;
+import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
-import org.antlr.runtime.TokenStream;
 
 /**
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-public class TSPHPErrorReportingParser extends TSPHPParser implements IErrorReporter
+public class TSPHPErrorReportingLexer extends TSPHPLexer implements IErrorReporter
 {
 
     protected List<Exception> exceptions = new ArrayList<>();
 
-    public TSPHPErrorReportingParser(TokenStream input) {
+    public TSPHPErrorReportingLexer() {
+    }
+
+    public TSPHPErrorReportingLexer(CharStream input) {
         super(input);
     }
 
-    public TSPHPErrorReportingParser(TokenStream input, RecognizerSharedState state) {
+    public TSPHPErrorReportingLexer(CharStream input, RecognizerSharedState state) {
         super(input, state);
     }
 

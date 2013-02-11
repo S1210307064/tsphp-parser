@@ -17,7 +17,7 @@
 package ch.tutteli.tsphp.parser.test.utils;
 
 import ch.tutteli.tsphp.common.TSPHPAstAdaptorRegistry;
-import ch.tutteli.tsphp.parser.ANTLRNoCaseStringStream;
+import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.ParserRuleReturnScope;

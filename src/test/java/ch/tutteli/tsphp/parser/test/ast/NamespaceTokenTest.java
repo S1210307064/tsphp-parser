@@ -16,17 +16,13 @@
  */
 package ch.tutteli.tsphp.parser.test.ast;
 
-import static ch.tutteli.tsphp.parser.TSPHPParser.*;
-import ch.tutteli.tsphp.parser.test.utils.AAstTest;
+import static ch.tutteli.tsphp.parser.antlr.TSPHPParser.*;
 import ch.tutteli.tsphp.parser.test.utils.AAstTokenTest;
-import ch.tutteli.tsphp.parser.test.utils.AstHelper;
 import static ch.tutteli.tsphp.parser.test.utils.AstHelper.*;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import junit.framework.Assert;
 import org.antlr.runtime.RecognitionException;
-import org.antlr.runtime.tree.CommonTree;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;

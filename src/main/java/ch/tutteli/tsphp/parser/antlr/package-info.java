@@ -15,7 +15,7 @@
  */
 
 /**
- * Contains the parser class (interface to the outside of the component)
+ * Contains the generated files from ANTLR v.3.5 as well as helper classes
  */
-package ch.tutteli.tsphp.parser;
+package ch.tutteli.tsphp.parser.antlr;
 

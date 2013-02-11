@@ -5,8 +5,9 @@ nbproject/*
 /lib/dev/checkstyle
 /lib/dev/classycle
 /lib/dev/findbugs
-/src/main/java/ch/tutteli/tsphp/parser/TSPHP.tokens
-/src/main/java/ch/tutteli/tsphp/parser/TSPHPLexer.java
-/src/main/java/ch/tutteli/tsphp/parser/TSPHPParser.java
 
 /src/main/antlr/TSPHP__testrig.st
+
+/src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHP.tokens
+/src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHPLexer.java
+/src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHPParser.java
