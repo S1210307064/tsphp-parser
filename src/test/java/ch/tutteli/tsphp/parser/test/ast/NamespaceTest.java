@@ -16,8 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.ast;
 
-import ch.tutteli.tsphp.common.IScope;
-import ch.tutteli.tsphp.parser.test.utils.AAstTest;
+import ch.tutteli.tsphp.parser.test.testutils.AAstTest;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
@@ -50,40 +49,40 @@ public class NamespaceTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"namespace a; \n $a=1; $b=1;", "(namespace a (nBody (= $a 1) (= $b 1)))"},
-                    {"namespace a { \n $a=1; $b=1;}", "(namespace a (nBody (= $a 1) (= $b 1)))"},
+                    {"namespace a; \n $a=1; $b=1;", "(namespace \\a\\ (nBody (= $a 1) (= $b 1)))"},
+                    {"namespace a { \n $a=1; $b=1;}", "(namespace \\a\\ (nBody (= $a 1) (= $b 1)))"},
                     {
                         "namespace a; $a=1; namespace b; $b=1;",
-                        "(namespace a (nBody (= $a 1))) "
-                        + "(namespace b (nBody (= $b 1)))"
+                        "(namespace \\a\\ (nBody (= $a 1))) "
+                        + "(namespace \\b\\ (nBody (= $b 1)))"
                     },
                     {
                         "namespace a { $a=1;} namespace b{ $b=1;}",
-                        "(namespace a (nBody (= $a 1))) "
-                        + "(namespace b (nBody (= $b 1)))"
+                        "(namespace \\a\\ (nBody (= $a 1))) "
+                        + "(namespace \\b\\ (nBody (= $b 1)))"
                     },
                     {
                         "namespace a\\b; \n $a=1; $b=1;",
-                        "(namespace a\\b (nBody (= $a 1) (= $b 1)))"
+                        "(namespace \\a\\b\\ (nBody (= $a 1) (= $b 1)))"
                     },
                     {
                         "namespace a\\b\\c { \n $a=1; $b=1;}",
-                        "(namespace a\\b\\c (nBody (= $a 1) (= $b 1)))"
+                        "(namespace \\a\\b\\c\\ (nBody (= $a 1) (= $b 1)))"
                     },
                     {
                         "namespace a\\b\\c; $a=1; namespace d\\e; $b=1;",
-                        "(namespace a\\b\\c (nBody (= $a 1))) "
-                        + "(namespace d\\e (nBody (= $b 1)))"
+                        "(namespace \\a\\b\\c\\ (nBody (= $a 1))) "
+                        + "(namespace \\d\\e\\ (nBody (= $b 1)))"
                     },
                     {
                         "namespace a\\b { $a=1;} namespace c\\d\\e{ $b=1;}",
-                        "(namespace a\\b (nBody (= $a 1))) "
-                        + "(namespace c\\d\\e (nBody (= $b 1)))"
+                        "(namespace \\a\\b\\ (nBody (= $a 1))) "
+                        + "(namespace \\c\\d\\e\\ (nBody (= $b 1)))"
                     },
                     //default
-                    {"namespace{$a=1;}", "(namespace "+IScope.DEFAULT_NAMESPACE+" (nBody (= $a 1)))"},
+                    {"namespace{$a=1;}", "(namespace \\ (nBody (= $a 1)))"},
                     //without namespace
-                    {"$a=1;", "(namespace "+IScope.DEFAULT_NAMESPACE+" (nBody (= $a 1)))"}
+                    {"$a=1;", "(namespace \\ (nBody (= $a 1)))"}
                 });
     }
 }

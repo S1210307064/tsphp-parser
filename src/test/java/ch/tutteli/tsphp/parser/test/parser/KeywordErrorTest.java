@@ -17,8 +17,8 @@
 package ch.tutteli.tsphp.parser.test.parser;
 
 import ch.tutteli.tsphp.parser.antlr.TSPHPParser;
-import ch.tutteli.tsphp.parser.test.utils.AParserParserExceptionTest;
-import ch.tutteli.tsphp.parser.test.utils.VariationHelper;
+import ch.tutteli.tsphp.parser.test.testutils.AParserParserExceptionTest;
+import ch.tutteli.tsphp.parser.test.testutils.VariationHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

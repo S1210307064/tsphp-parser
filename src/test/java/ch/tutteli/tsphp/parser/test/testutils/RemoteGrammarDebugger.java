@@ -14,7 +14,7 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.parser.test.utils;
+package ch.tutteli.tsphp.parser.test.testutils;
 
 import ch.tutteli.tsphp.common.IParser;
 import ch.tutteli.tsphp.common.TSPHPAst;

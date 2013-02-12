@@ -14,9 +14,11 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.parser.test.utils;
+package ch.tutteli.tsphp.parser.test.testutils;
 
 import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.tree.CommonTree;
+import org.junit.Assert;
 import org.junit.Ignore;
 
 /**
@@ -24,20 +26,28 @@ import org.junit.Ignore;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @Ignore
-public abstract class AParserExceptionTest extends AParserTest
+public abstract class AAstTest extends AParserTest
 {
-    protected int position;
-    protected int token;
-    protected Class<? extends RecognitionException> exceptionType;
 
-    public AParserExceptionTest() {
+    protected String expectedResult;
+
+    public AAstTest(String testString, String theExpectedResult) {
+        super(testString);
+        expectedResult = theExpectedResult;
     }
 
-    public AParserExceptionTest(String testString, Class<? extends RecognitionException> type, int aToken, int aPosition) {
-        super(testString);
-        noErrorsOnOutput();
-        position = aPosition;
-        token = aToken;
-        exceptionType = type;
+    public void compareAst() throws RecognitionException {
+        parseAndCheckForException();
+        CommonTree tree = (CommonTree) result.getTree();
+        if (tree != null) {
+            Assert.assertEquals(testString + " failed.", expectedResult, tree.toStringTree());
+        } else {
+            Assert.assertNull(expectedResult);
+        }
+    }
+
+    @Override
+    protected void run() throws RecognitionException {
+        result = parser.statement();
     }
 }

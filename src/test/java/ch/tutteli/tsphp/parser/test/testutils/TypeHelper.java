@@ -14,7 +14,7 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.parser.test.utils;
+package ch.tutteli.tsphp.parser.test.testutils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,11 +37,11 @@ public class TypeHelper
     public static String[] getClassInterfaceTypes() {
         return new String[]{
                     "a",
-                    "a\\A",
+                    "a\\C",
                     "a\\b\\A",
-                    "\\a",
-                    "\\a\\A",
-                    "\\a\\b\\A"
+                    "\\e",
+                    "\\f\\D",
+                    "\\g\\b\\A"
                 };
     }
 

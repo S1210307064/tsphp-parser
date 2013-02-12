@@ -16,8 +16,8 @@
  */
 package ch.tutteli.tsphp.parser.test.parser;
 
-import ch.tutteli.tsphp.parser.test.utils.AParserTest;
-import ch.tutteli.tsphp.parser.test.utils.IdentifierHelper;
+import ch.tutteli.tsphp.parser.test.testutils.AParserTest;
+import ch.tutteli.tsphp.parser.test.testutils.IdentifierHelper;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;

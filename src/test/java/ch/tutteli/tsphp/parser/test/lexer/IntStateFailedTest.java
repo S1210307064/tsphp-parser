@@ -16,7 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.lexer;
 
-import ch.tutteli.tsphp.parser.test.utils.ALexerStateFailedTest;
+import ch.tutteli.tsphp.parser.test.testutils.ALexerStateFailedTest;
 import java.util.Collection;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -16,8 +16,8 @@
  */
 package ch.tutteli.tsphp.parser.test.ast;
 
-import ch.tutteli.tsphp.parser.test.utils.AAstTest;
-import ch.tutteli.tsphp.parser.test.utils.AstHelper;
+import ch.tutteli.tsphp.parser.test.testutils.AAstTest;
+import ch.tutteli.tsphp.parser.test.testutils.AstHelper;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

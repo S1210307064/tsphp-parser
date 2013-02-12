@@ -18,8 +18,8 @@ package ch.tutteli.tsphp.parser.test.parser;
 
 import ch.tutteli.tsphp.parser.test.lexer.FragmentsTest;
 import ch.tutteli.tsphp.parser.test.lexer.TokenTest;
-import ch.tutteli.tsphp.parser.test.utils.AParserTest;
-import ch.tutteli.tsphp.parser.test.utils.VariationHelper;
+import ch.tutteli.tsphp.parser.test.testutils.AParserTest;
+import ch.tutteli.tsphp.parser.test.testutils.VariationHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;

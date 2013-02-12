@@ -14,8 +14,9 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.parser.test.utils;
+package ch.tutteli.tsphp.parser.test.testutils;
 
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
 import org.junit.Assert;
@@ -26,24 +27,20 @@ import org.junit.Ignore;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @Ignore
-public abstract class AAstTest extends AParserTest
+public abstract class AAstTokenTest extends AParserTest
 {
 
-    protected String expectedResult;
+    protected List<Integer> expectedTokens;
 
-    public AAstTest(String testString, String theExpectedResult) {
+    public AAstTokenTest(String testString, List<Integer> theExpectedTokens) {
         super(testString);
-        expectedResult = theExpectedResult;
+        expectedTokens = theExpectedTokens;
     }
 
     public void compareAst() throws RecognitionException {
         parseAndCheckForException();
-        CommonTree tree = (CommonTree) result.getTree();
-        if (tree != null) {
-            Assert.assertEquals(testString + " failed.", expectedResult, tree.toStringTree());
-        } else {
-            Assert.assertNull(expectedResult);
-        }
+        Assert.assertEquals(testString + " failed.", expectedTokens,
+                AstHelper.getTokenTypes((CommonTree) result.getTree()));
     }
 
     @Override

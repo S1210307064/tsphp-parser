@@ -16,8 +16,8 @@
  */
 package ch.tutteli.tsphp.parser.test.ast;
 
-import ch.tutteli.tsphp.parser.test.utils.AAstTest;
-import ch.tutteli.tsphp.parser.test.utils.ConstantHelper;
+import ch.tutteli.tsphp.parser.test.testutils.AAstTest;
+import ch.tutteli.tsphp.parser.test.testutils.ConstantHelper;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;

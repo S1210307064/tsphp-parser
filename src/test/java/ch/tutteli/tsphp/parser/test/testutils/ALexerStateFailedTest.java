@@ -14,7 +14,7 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.parser.test.utils;
+package ch.tutteli.tsphp.parser.test.testutils;
 
 import ch.tutteli.tsphp.parser.antlr.TSPHPLexer;
 import junit.framework.Assert;

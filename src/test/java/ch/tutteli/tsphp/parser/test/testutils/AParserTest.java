@@ -14,7 +14,7 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.parser.test.utils;
+package ch.tutteli.tsphp.parser.test.testutils;
 
 import ch.tutteli.tsphp.common.TSPHPAstAdaptorRegistry;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseStringStream;
@@ -37,9 +37,6 @@ public abstract class AParserTest extends ATest
     protected TestTSPHPParser parser;
     protected TestTSPHPLexer lexer;
     protected ParserRuleReturnScope result;
-
-    public AParserTest() {
-    }
 
     public AParserTest(String testString) {
         super(testString);

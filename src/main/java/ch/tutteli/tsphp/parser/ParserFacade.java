@@ -18,6 +18,7 @@ package ch.tutteli.tsphp.parser;
 
 import ch.tutteli.tsphp.common.IParser;
 import ch.tutteli.tsphp.common.TSPHPAst;
+import ch.tutteli.tsphp.common.TSPHPAstAdaptor;
 import ch.tutteli.tsphp.common.TSPHPAstAdaptorRegistry;
 import ch.tutteli.tsphp.common.TSPHPErrorNode;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseFileStream;
@@ -44,6 +45,10 @@ public class ParserFacade implements IParser
     protected TSPHPErrorReportingLexer lexer;
     protected TokenStream tokenStream;
     private Exception parseException;
+
+    public ParserFacade() {
+        TSPHPAstAdaptorRegistry.set(new TSPHPAstAdaptor());
+    }
 
     @Override
     public TSPHPAst parse(String inputStream) {
@@ -114,7 +119,6 @@ public class ParserFacade implements IParser
 
     private TSPHPAst getAst(CharStream input) throws RecognitionException {
         lexer = new TSPHPErrorReportingLexer(input);
-
         tokenStream = new CommonTokenStream(lexer);
 
         parser = new TSPHPErrorReportingParser(tokenStream);

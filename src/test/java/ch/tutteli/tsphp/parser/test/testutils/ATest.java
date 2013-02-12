@@ -14,8 +14,10 @@
  * limitations under the License.
  * 
  */
-package ch.tutteli.tsphp.parser.test.utils;
+package ch.tutteli.tsphp.parser.test.testutils;
 
+import ch.tutteli.tsphp.common.TSPHPAstAdaptor;
+import ch.tutteli.tsphp.common.TSPHPAstAdaptorRegistry;
 import org.junit.Ignore;
 
 /**
@@ -29,11 +31,9 @@ public abstract class ATest
     protected String testString;
     protected boolean isErrorReportingOn = true;
 
-    public ATest() {
-    }
-
     public ATest(String aTestString) {
         testString = aTestString;
+        TSPHPAstAdaptorRegistry.set(new TSPHPAstAdaptor());
     }
 
     public void noErrorsOnOutput() {

@@ -16,7 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.lexer;
 
-import ch.tutteli.tsphp.parser.test.utils.ALexerTest;
+import ch.tutteli.tsphp.parser.test.testutils.ALexerTest;
 import java.util.Arrays;
 import java.util.Collection;
 import org.junit.Test;

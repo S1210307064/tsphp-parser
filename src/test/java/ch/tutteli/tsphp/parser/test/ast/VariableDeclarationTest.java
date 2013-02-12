@@ -16,9 +16,9 @@
  */
 package ch.tutteli.tsphp.parser.test.ast;
 
-import ch.tutteli.tsphp.parser.test.utils.AAstTest;
-import ch.tutteli.tsphp.parser.test.utils.ExpressionHelper;
-import ch.tutteli.tsphp.parser.test.utils.VariableDeclarationListHelper;
+import ch.tutteli.tsphp.parser.test.testutils.AAstTest;
+import ch.tutteli.tsphp.parser.test.testutils.ExpressionHelper;
+import ch.tutteli.tsphp.parser.test.testutils.VariableDeclarationListHelper;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;

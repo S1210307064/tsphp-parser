@@ -16,8 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.ast;
 
-import ch.tutteli.tsphp.common.IScope;
-import ch.tutteli.tsphp.parser.test.utils.AAstTest;
+import ch.tutteli.tsphp.parser.test.testutils.AAstTest;
 import java.util.Arrays;
 import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
@@ -52,7 +51,7 @@ public class MethodFunctionTest extends AAstTest
         return Arrays.asList(new Object[][]{
                     {
                         "class a {  function void getName(){ $a=1; } }  function void getName(){ $a=1; }",
-                        "(namespace " + IScope.DEFAULT_NAMESPACE + " (nBody "
+                        "(namespace \\ (nBody "
                         + "(class cMod a extends implements (cBody "
                         + "(mDecl (mMod public) (type tMod void) getName params (block (= $a 1)))"
                         + ")) "
@@ -61,7 +60,7 @@ public class MethodFunctionTest extends AAstTest
                     },
                     {
                         "/** this is my lovely function */ \n function void foo(int $a=true,int $b=2,cast int $c=3){}",
-                        "(namespace " + IScope.DEFAULT_NAMESPACE + " (nBody (function fMod (type tMod void) foo (params "
+                        "(namespace \\ (nBody (function fMod (type tMod void) foo (params "
                         + "(pDecl (type tMod int) ($a true)) "
                         + "(pDecl (type tMod int) ($b 2)) "
                         + "(pDecl (type (tMod cast) int) ($c 3))"

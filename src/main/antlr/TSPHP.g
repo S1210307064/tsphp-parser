@@ -219,7 +219,6 @@ package ch.tutteli.tsphp.parser.antlr;
 
 import ch.tutteli.tsphp.common.AstHelper;
 import ch.tutteli.tsphp.common.IAstHelper;
-import ch.tutteli.tsphp.common.IScope;
 import ch.tutteli.tsphp.common.TSPHPAst;
 
 }
@@ -261,20 +260,25 @@ compilationUnit
 	;
 	
 namespaceSemicolon
+@init{ String backslash = "\\";}
 	:	'namespace' namespaceId namespaceBody=';' statement* 
-		-> ^('namespace' TYPE_NAME[$namespaceId.start,$namespaceId.text] ^(NAMESPACE_BODY[$namespaceBody,"nBody"] statement*))
+		-> ^('namespace' 
+			TYPE_NAME[$namespaceId.start,backslash+$namespaceId.text+backslash] 
+			^(NAMESPACE_BODY[$namespaceBody,"nBody"] statement*)
+		)
 	;
 
 namespaceBracket
 	:	'namespace' namespaceIdOrEmpty  namespaceBody='{' statement* '}' 
-		-> 	^('namespace' 
-				namespaceIdOrEmpty
-				^(NAMESPACE_BODY[$namespaceBody,"nBody"] statement*)
-			)
+		-> ^('namespace' 
+			namespaceIdOrEmpty
+			^(NAMESPACE_BODY[$namespaceBody,"nBody"] statement*)
+		)
 	;
 namespaceIdOrEmpty
-	:	namespaceId -> TYPE_NAME[$namespaceId.start,$namespaceId.text] 
-	|	/* empty */ -> DEFAULT_NAMESPACE[$namespaceIdOrEmpty.start,IScope.DEFAULT_NAMESPACE]
+@init{ String backslash = "\\";}
+	:	namespaceId -> TYPE_NAME[$namespaceId.start,backslash+$namespaceId.text+backslash] 
+	|	/* empty */ -> DEFAULT_NAMESPACE[$namespaceIdOrEmpty.start,backslash]
 	;
 
 //Must before Id otherwise Id match true and false
@@ -290,10 +294,12 @@ Identifier
 	;
 
 withoutNamespace 
-	:	(statement+) -> ^(Namespace[$statement.start,"namespace"]
-					DEFAULT_NAMESPACE[$statement.start,IScope.DEFAULT_NAMESPACE] 
-					^(NAMESPACE_BODY[$statement.start,"nBody"] statement+)
-				) 
+@init{ String backslash = "\\";}
+	:	(statement+) 
+		-> ^(Namespace[$statement.start,"namespace"]
+			DEFAULT_NAMESPACE[$statement.start,backslash] 
+			^(NAMESPACE_BODY[$statement.start,"nBody"] statement+)
+		) 
 	;
 
 statement	
