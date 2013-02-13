@@ -16,6 +16,8 @@
  */
 package ch.tutteli.tsphp.parser;
 
+import ch.tutteli.tsphp.common.AstHelper;
+import ch.tutteli.tsphp.common.AstHelperRegistry;
 import ch.tutteli.tsphp.common.IParser;
 import ch.tutteli.tsphp.common.TSPHPAst;
 import ch.tutteli.tsphp.common.TSPHPAstAdaptor;
@@ -47,6 +49,7 @@ public class ParserFacade implements IParser
     private Exception parseException;
 
     public ParserFacade() {
+        AstHelperRegistry.set(new AstHelper());
         TSPHPAstAdaptorRegistry.set(new TSPHPAstAdaptor());
     }
 

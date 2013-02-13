@@ -20,7 +20,7 @@ options {
 	backtrack = true; 
 	memoize=true;
 	output=AST;
-	ASTLabelType=TSPHPAst;
+	ASTLabelType=ITSPHPAst;
 }
 
 tokens{
@@ -219,12 +219,12 @@ package ch.tutteli.tsphp.parser.antlr;
 
 
 import ch.tutteli.tsphp.common.AstHelperRegistry;
-import ch.tutteli.tsphp.common.TSPHPAst;
+import ch.tutteli.tsphp.common.ITSPHPAst;
 
 }
 
 @members{
-private TSPHPAst classMemberModifiers;
+private ITSPHPAst classMemberModifiers;
 
 }
 
@@ -371,7 +371,7 @@ classMemberDeclaration
 @after{
 	classMemberModifiers=null;
 }
-	:	classMemberModifier {classMemberModifiers = (TSPHPAst) $classMemberModifier.tree;}
+	:	classMemberModifier {classMemberModifiers = (ITSPHPAst) $classMemberModifier.tree;}
 		variableDeclarationList ';' 
 		
 		-> ^(CLASS_MEMBER[$classMemberDeclaration.start,"cMem"]
@@ -566,7 +566,7 @@ allTypesWithModifier
 	
 scalarTypeWithModifier
 @after{
-	TSPHPAst ast = (TSPHPAst) retval.tree.getChild(0);
+	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
 	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast,adaptor);	
 }
 	:	Cast? scalarTypes '?'?			
@@ -578,7 +578,7 @@ scalarTypeWithModifier
 
 classInterfaceTypeWithoutObjectInclArrayWithModifier
 @after{
-	TSPHPAst ast = (TSPHPAst) retval.tree.getChild(0);
+	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
 	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast,adaptor);	
 }
 	:	Cast? classInterfaceTypeWithoutObjectInclArray		
@@ -590,7 +590,7 @@ classInterfaceTypeWithoutObjectInclArrayWithModifier
 
 objectOrResourceInclModifier
 @after{
-	TSPHPAst ast = (TSPHPAst) retval.tree.getChild(0);
+	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
 	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast,adaptor);	
 }
 	:	objectOrResource
@@ -712,7 +712,7 @@ variableDeclarationScalarList
 	;
 
 	
-castAssignOrAssignList[TSPHPAst ast]
+castAssignOrAssignList[ITSPHPAst ast]
 	:	(	castAssign[AstHelperRegistry.get().copyAst(ast)]
 		|	assign
 		)
@@ -722,7 +722,7 @@ castAssignOrAssignList[TSPHPAst ast]
 		)*			
 	;
 	
-castAssign[TSPHPAst ast]
+castAssign[ITSPHPAst ast]
 	:	VariableId cast='=''('')' expression 
 		-> ^(VariableId ^(CASTING[$cast,"casting"] {$ast} expression))
 	;
