@@ -16,6 +16,8 @@
  */
 package ch.tutteli.tsphp.parser.test.ast;
 
+import ch.tutteli.tsphp.common.AstHelperRegistry;
+import ch.tutteli.tsphp.common.TSPHPAst;
 import ch.tutteli.tsphp.parser.test.testutils.AAstTest;
 import ch.tutteli.tsphp.parser.test.testutils.TypeHelper;
 import java.util.ArrayList;
@@ -51,10 +53,11 @@ public class UseTest extends AAstTest
         boolean isFirstEntry = true;
         for (String type : types) {
             if (!isFirstEntry) {
-                collection.add(new Object[]{"use " + type + ";", "(use (uDecl " + type + "))"});
-                collection.add(new Object[]{"use " + type + " as MyClass;", "(use (uDecl " + type + " MyClass))"});
+                String alias = type.substring(type.lastIndexOf("\\")+1);
+                collection.add(new Object[]{"use " + type + ";", "(use (uDecl " + type + " " + alias + "))"});
 
             }
+            collection.add(new Object[]{"use " + type + " as MyClass;", "(use (uDecl " + type + " MyClass))"});
             isFirstEntry = false;
         }
 
@@ -63,28 +66,28 @@ public class UseTest extends AAstTest
                     {
                         "use \\Exception, a\\a;",
                         "(use "
-                        + "(uDecl \\Exception) "
-                        + "(uDecl a\\a)"
+                        + "(uDecl \\Exception Exception) "
+                        + "(uDecl a\\a a)"
                         + ")"
                     },
                     {
                         "use \\a\\a, \\Exception;",
                         "(use "
-                        + "(uDecl \\a\\a) "
-                        + "(uDecl \\Exception)"
+                        + "(uDecl \\a\\a a) "
+                        + "(uDecl \\Exception Exception)"
                         + ")"
                     },
                     {
                         "use a\\a, \\Exception as b;",
                         "(use "
-                        + "(uDecl a\\a) "
+                        + "(uDecl a\\a a) "
                         + "(uDecl \\Exception b)"
                         + ")"
                     },
                     {
                         "use a\\a\\b, \\a\\b\\c as d;",
                         "(use "
-                        + "(uDecl a\\a\\b) "
+                        + "(uDecl a\\a\\b b) "
                         + "(uDecl \\a\\b\\c d)"
                         + ")"
                     },
@@ -92,29 +95,29 @@ public class UseTest extends AAstTest
                         "use \\Exception as MyException, \\a\\b;",
                         "(use "
                         + "(uDecl \\Exception MyException) "
-                        + "(uDecl \\a\\b)"
+                        + "(uDecl \\a\\b b)"
                         + ")"
                     },
                     {
                         "use a\\a as b, a\\b;",
                         "(use "
                         + "(uDecl a\\a b) "
-                        + "(uDecl a\\b)"
+                        + "(uDecl a\\b b)"
                         + ")"
                     },
                     {
                         "use a\\a\\b as c, a\\a, \\Exception;",
                         "(use "
                         + "(uDecl a\\a\\b c) "
-                        + "(uDecl a\\a) "
-                        + "(uDecl \\Exception)"
+                        + "(uDecl a\\a a) "
+                        + "(uDecl \\Exception Exception)"
                         + ")"
                     },
                     {
                         "use a\\a\\b as c, a\\a, \\Exception as d;",
                         "(use "
                         + "(uDecl a\\a\\b c) "
-                        + "(uDecl a\\a) "
+                        + "(uDecl a\\a a) "
                         + "(uDecl \\Exception d)"
                         + ")"
                     }

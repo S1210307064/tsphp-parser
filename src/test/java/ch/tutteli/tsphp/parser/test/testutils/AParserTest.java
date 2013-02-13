@@ -16,6 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.testutils;
 
+import ch.tutteli.tsphp.common.AstHelperRegistry;
 import ch.tutteli.tsphp.common.TSPHPAstAdaptorRegistry;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseStringStream;
 import org.antlr.runtime.CharStream;
@@ -40,6 +41,7 @@ public abstract class AParserTest extends ATest
 
     public AParserTest(String testString) {
         super(testString);
+        AstHelperRegistry.set(new ch.tutteli.tsphp.common.AstHelper());
     }
 
     public void parseAndCheckForException() throws RecognitionException {

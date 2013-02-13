@@ -217,19 +217,14 @@ tokens{
  */
 package ch.tutteli.tsphp.parser.antlr;
 
-import ch.tutteli.tsphp.common.AstHelper;
-import ch.tutteli.tsphp.common.IAstHelper;
+
+import ch.tutteli.tsphp.common.AstHelperRegistry;
 import ch.tutteli.tsphp.common.TSPHPAst;
 
 }
 
 @members{
-private IAstHelper astHelper = new AstHelper();
 private TSPHPAst classMemberModifiers;
-
-public void setAstHelper(IAstHelper anAstHelper){
-    astHelper = anAstHelper;
-}
 
 }
 
@@ -314,12 +309,17 @@ useDeclarationList
 	;
 	
 useDeclaration
-	:	usingType ('as' Identifier)? -> TYPE_NAME[$usingType.start,$usingType.text] Identifier?
+@init{ String backslash = "\\";}
+	:	usingType 'as' Identifier -> usingType Identifier
+	|	Identifier 'as' Identifier -> Identifier Identifier
+
+	|	usingType
+		-> usingType Identifier[$usingType.start, $usingType.text.substring($usingType.text.lastIndexOf(backslash)+1)]
 	;
 	
 usingType
-	:	Identifier '\\' namespaceId 
-	|	'\\' namespaceId
+	:	Identifier '\\' namespaceId -> TYPE_NAME[$usingType.start, $usingType.text]
+	|	'\\' namespaceId -> TYPE_NAME[$usingType.start, $usingType.text]		
 	;
 definition
 	:	classDeclaration
@@ -567,7 +567,7 @@ allTypesWithModifier
 scalarTypeWithModifier
 @after{
 	TSPHPAst ast = (TSPHPAst) retval.tree.getChild(0);
-	astHelper.addChildrenFromTo(classMemberModifiers,ast,adaptor);	
+	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast,adaptor);	
 }
 	:	Cast? scalarTypes '?'?			
 		-> ^(TYPE[$scalarTypeWithModifier.start,"type"] 
@@ -579,7 +579,7 @@ scalarTypeWithModifier
 classInterfaceTypeWithoutObjectInclArrayWithModifier
 @after{
 	TSPHPAst ast = (TSPHPAst) retval.tree.getChild(0);
-	astHelper.addChildrenFromTo(classMemberModifiers,ast,adaptor);	
+	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast,adaptor);	
 }
 	:	Cast? classInterfaceTypeWithoutObjectInclArray		
 		-> ^(TYPE[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"type"] 
@@ -591,7 +591,7 @@ classInterfaceTypeWithoutObjectInclArrayWithModifier
 objectOrResourceInclModifier
 @after{
 	TSPHPAst ast = (TSPHPAst) retval.tree.getChild(0);
-	astHelper.addChildrenFromTo(classMemberModifiers,ast,adaptor);	
+	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast,adaptor);	
 }
 	:	objectOrResource
 		-> ^(TYPE[$objectOrResourceInclModifier.start,"type"] 
@@ -713,10 +713,10 @@ variableDeclarationScalarList
 
 	
 castAssignOrAssignList[TSPHPAst ast]
-	:	(	castAssign[astHelper.copyAst(ast)]
+	:	(	castAssign[AstHelperRegistry.get().copyAst(ast)]
 		|	assign
 		)
-		(','!	(	castAssign[astHelper.copyAst(ast)]
+		(','!	(	castAssign[AstHelperRegistry.get().copyAst(ast)]
 			|	assign
 			)
 		)*			
