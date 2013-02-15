@@ -311,7 +311,7 @@ useDeclarationList
 useDeclaration
 @init{ String backslash = "\\";}
 	:	usingType 'as' Identifier -> usingType Identifier
-	|	Identifier 'as' Identifier -> Identifier Identifier
+	|	type=Identifier 'as' alias=Identifier -> TYPE_NAME[$type,$type.text] $alias
 
 	|	usingType
 		-> usingType Identifier[$usingType.start, $usingType.text.substring($usingType.text.lastIndexOf(backslash)+1)]
@@ -360,7 +360,13 @@ classBody
 
 constDeclarationList
 	:	 begin='const' scalarTypes constantAssignment (',' constantAssignment)* ';'
-		-> ^(CONSTANT_DECLARATION_LIST[$begin,"consts"] scalarTypes constantAssignment+)
+		-> ^(CONSTANT_DECLARATION_LIST[$begin,"consts"] 
+			^(TYPE[$scalarTypes.start,"type"] 
+				^(TYPE_MODIFIER[$scalarTypes.start,"tMod"] Final[$scalarTypes.start,"final"]) 
+				scalarTypes
+			)
+			constantAssignment+
+		)
 	;
 	
 constantAssignment
@@ -456,9 +462,10 @@ methodModifier
 	
 abstractConstructDestructDeclaration
 	:	abstractMethodModifier 'function' 
-		(	'__construct' formalParameters block=';'
+		(	ctor='__construct' formalParameters block=';'
 			-> ^('__construct' 
 				^(METHOD_MODIFIER[$abstractMethodModifier.start,"mMod"] abstractMethodModifier)
+				^(TYPE[$ctor,"type"] TYPE_MODIFIER[$ctor,"tMod"] Void["void"])
 				formalParameters 
 				BLOCK[$block,"block"]
 			) 
@@ -475,9 +482,10 @@ abstractConstructDestructDeclaration
 
 constructDestructDeclaration
 	:	constructDestructModifier 'function'
-		(	'__construct' formalParameters block='{' instructionWithoutBreakContinue* '}' 
+		(	ctor='__construct' formalParameters block='{' instructionWithoutBreakContinue* '}' 
 			-> ^('__construct' 
 				^(METHOD_MODIFIER[$constructDestructModifier.start,"mMod"] constructDestructModifier)
+				^(TYPE[$ctor,"type"] TYPE_MODIFIER[$ctor,"tMod"] Void["void"])
 				formalParameters 
 				^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
 			)
@@ -503,8 +511,9 @@ constructDestructModifier
 	;
 
 interfaceDeclaration
-	:	'interface' Identifier (ext='extends' identifierList)? block='{' interfaceBody* '}'
+	:	inter='interface' Identifier (ext='extends' identifierList)? block='{' interfaceBody* '}'
 		-> ^('interface' 
+			^(CLASS_MODIFIER[$inter,"iMod"] Abstract[$inter,"abstract"])
 			Identifier 
 			^(Extends[$ext,"extends"] identifierList?) 
 			^(INTERFACE_BODY[$block,"iBody"] interfaceBody*)
@@ -527,9 +536,10 @@ interfaceMethodDeclaration
 	;
 
 interfaceConstruct
-	:	'public'? 'function' '__construct' formalParameters block=';' 
+	:	'public'? 'function' ctor='__construct' formalParameters block=';' 
 		-> ^('__construct'
 			^(METHOD_MODIFIER[$interfaceConstruct.start,"mMod"] Public[$interfaceConstruct.start,"public"]  Abstract[$interfaceConstruct.start,"abstract"])
+			^(TYPE[$ctor,"type"] TYPE_MODIFIER[$ctor,"tMod"] Void["void"])
 			formalParameters
 			BLOCK[$block,"block"]
 		)

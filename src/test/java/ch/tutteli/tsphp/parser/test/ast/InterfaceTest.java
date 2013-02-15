@@ -46,22 +46,22 @@ public class InterfaceTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.add(new Object[]{"interface a{}","(interface a extends iBody)"});
+        collection.add(new Object[]{"interface a{}","(interface (iMod abstract) a extends iBody)"});
         
         String[] types = TypeHelper.getClassInterfaceTypes();
         for(String type:types){
             
             collection.add(new Object[]{
                 "interface a extends "+type+"{}",
-                "(interface a (extends "+type+") iBody)"
+                "(interface (iMod abstract) a (extends "+type+") iBody)"
             });
             collection.add(new Object[]{
                 "interface a extends "+type+","+type+"{}",
-                "(interface a (extends "+type+" "+type+") iBody)"
+                "(interface (iMod abstract) a (extends "+type+" "+type+") iBody)"
             });
             collection.add(new Object[]{
                 "interface a extends "+type+","+type+", "+type+"{}",
-                "(interface a (extends "+type+" "+type+" "+type+") iBody)"
+                "(interface (iMod abstract) a (extends "+type+" "+type+" "+type+") iBody)"
             });
         }
         return collection;
