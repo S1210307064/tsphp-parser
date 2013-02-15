@@ -38,6 +38,9 @@ public class VariableDeclarationListHelper
 
         List<Object[]> collection = TypeHelper.getAllTypesInclModifier(
                 prefix, " $a=1" + appendix, prefixExpected, " ($a 1)" + appendixExpected, classMemberModifier);
+        
+        collection.addAll(TypeHelper.getAllTypesInclModifier(
+                prefix, " $a" + appendix, prefixExpected, " $a" + appendixExpected, classMemberModifier));
 
         String tMod = classMemberModifier.isEmpty() ? "tMod" : "(tMod " + classMemberModifier + ")";
 

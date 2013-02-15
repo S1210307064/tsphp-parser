@@ -36,7 +36,7 @@ public class TypeHelper
 
     public static String[] getClassInterfaceTypes() {
         return new String[]{
-                    "a",
+                    "B",
                     "a\\C",
                     "a\\b\\A",
                     "\\e",

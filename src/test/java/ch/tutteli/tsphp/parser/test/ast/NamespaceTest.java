@@ -82,7 +82,8 @@ public class NamespaceTest extends AAstTest
                     //default
                     {"namespace{$a=1;}", "(namespace \\ (nBody (= $a 1)))"},
                     //without namespace
-                    {"$a=1;", "(namespace \\ (nBody (= $a 1)))"}
+                    {"$a=1;", "(namespace \\ (nBody (= $a 1)))"},
+                    {"B $a;", "(namespace \\ (nBody (vars (type tMod B) $a)))"}
                 });
     }
 }
