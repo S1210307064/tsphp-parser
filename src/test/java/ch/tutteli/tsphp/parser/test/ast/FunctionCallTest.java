@@ -58,13 +58,13 @@ public class FunctionCallTest extends AAstTest
                     {"\\a\\b\\c\\foo();", "(fCall \\a\\b\\c\\foo args)"},
                     {
                         "foo()->bar(2,2);", 
-                        "(mCall "
+                        "(mpCall "
                             + "(fCall foo args)"
                         + " bar (args 2 2))"
                     },
                     {
                         "foo()->bar(2,2)->asdf(1);", 
-                        "(mCall (mCall "
+                        "(mpCall (mpCall "
                             + "(fCall foo args)"
                         + " bar (args 2 2)) asdf (args 1))"
                     },

@@ -153,6 +153,7 @@ tokens{
 	CLASS_MEMBER_MODIFIER;
 	CLASS_MEMBER_ACCESS;
 	CLASS_STATIC_ACCESS;
+	CLASS_STATIC_ACCESS_VARIABLE_ID;
 	
 	CONSTANT;
 	CONSTANT_DECLARATION;
@@ -874,7 +875,7 @@ cloneOrNew
 
 	
 variableOrMemberOrStaticMember
-	:	staticAccessOrParent VariableId -> ^(CLASS_STATIC_ACCESS[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent VariableId)
+	:	staticAccessOrParent varId=VariableId -> ^(CLASS_STATIC_ACCESS[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent CLASS_STATIC_ACCESS_VARIABLE_ID[$varId])
 	|	'$this'
 	|	VariableId 
 	;
