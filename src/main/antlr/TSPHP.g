@@ -170,6 +170,7 @@ tokens{
 	INTERFACE_BODY;
 	
 	METHOD_CALL;
+	METHOD_CALL_POSTFIX;
 	METHOD_CALL_STATIC;
 	METHOD_DECLARATION;
 	METHOD_MODIFIER;
@@ -912,7 +913,7 @@ postFixCall
 		)
 		(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixCall Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixCall expression)
-		|	call -> ^(METHOD_CALL[$call.start,"mCall"] $postFixCall call)
+		|	call -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixCall call)
 		)*
 	;
 
@@ -967,7 +968,7 @@ preIncrementDecrement
 postFixVariableWithoutCallAtTheEnd
 	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
 		(
-			(call* -> ^(METHOD_CALL[$call.start,"mCall"] $postFixVariableWithoutCallAtTheEnd call*) )
+			(call* -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixVariableWithoutCallAtTheEnd call*) )
 			
 			(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixVariableWithoutCallAtTheEnd Identifier)
 			|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableWithoutCallAtTheEnd expression)
@@ -980,7 +981,7 @@ postFixVariableInclCallAtTheEnd
 	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
 		(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixVariableInclCallAtTheEnd Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableInclCallAtTheEnd expression)
-		|	call -> ^(METHOD_CALL[$call.start,"mCall"] $postFixVariableInclCallAtTheEnd call)
+		|	call -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixVariableInclCallAtTheEnd call)
 		)*
 	;
 

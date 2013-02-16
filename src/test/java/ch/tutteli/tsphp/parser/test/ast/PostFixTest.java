@@ -17,9 +17,7 @@
 package ch.tutteli.tsphp.parser.test.ast;
 
 import ch.tutteli.tsphp.parser.test.testutils.AAstTest;
-import ch.tutteli.tsphp.parser.test.testutils.ExpressionHelper;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
@@ -69,7 +67,7 @@ public class PostFixTest extends AAstTest
             tmp2.add(new String[]{expression[0] + "[0]", "(arrAccess " + expression[1] + " 0)"});
             tmp2.add(new String[]{
                         expression[0] + "->foo('hello')",
-                        "(mCall " + expression[1] + " foo (args 'hello'))"
+                        "(mpCall " + expression[1] + " foo (args 'hello'))"
                     });
         }
 
@@ -79,7 +77,7 @@ public class PostFixTest extends AAstTest
             tmp3.add(new String[]{expression[0] + "[$i]", "(arrAccess " + expression[1] + " $i)"});
             tmp3.add(new String[]{
                         expression[0] + "->foo(1,2)",
-                        "(mCall " + expression[1] + " foo (args 1 2))"
+                        "(mpCall " + expression[1] + " foo (args 1 2))"
                     });
         }
 
@@ -88,7 +86,7 @@ public class PostFixTest extends AAstTest
             collection.add(new Object[]{expression[0] + "[$i+$j%2];", "(arrAccess " + expression[1] + " (+ $i (% $j 2)))"});
             collection.add(new Object[]{
                         expression[0] + "->foo($a + $b);",
-                        "(mCall " + expression[1] + " foo (args (+ $a $b)))"
+                        "(mpCall " + expression[1] + " foo (args (+ $a $b)))"
                     });
         }
 
