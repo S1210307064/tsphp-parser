@@ -19,9 +19,9 @@ package ch.tutteli.tsphp.parser;
 import ch.tutteli.tsphp.common.AstHelper;
 import ch.tutteli.tsphp.common.AstHelperRegistry;
 import ch.tutteli.tsphp.common.IParser;
+import ch.tutteli.tsphp.common.ITSPHPAstAdaptor;
 import ch.tutteli.tsphp.common.TSPHPAst;
 import ch.tutteli.tsphp.common.TSPHPAstAdaptor;
-import ch.tutteli.tsphp.common.TSPHPAstAdaptorRegistry;
 import ch.tutteli.tsphp.common.TSPHPErrorNode;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseFileStream;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseInputStream;
@@ -47,10 +47,15 @@ public class ParserFacade implements IParser
     protected TSPHPErrorReportingLexer lexer;
     protected TokenStream tokenStream;
     private Exception parseException;
+    private ITSPHPAstAdaptor astAdaptor;
 
     public ParserFacade() {
+        this(new TSPHPAstAdaptor());
+    }
+
+    public ParserFacade(ITSPHPAstAdaptor anAstAdaptor) {
         AstHelperRegistry.set(new AstHelper());
-        TSPHPAstAdaptorRegistry.set(new TSPHPAstAdaptor());
+        astAdaptor = anAstAdaptor;
     }
 
     @Override
@@ -125,7 +130,7 @@ public class ParserFacade implements IParser
         tokenStream = new CommonTokenStream(lexer);
 
         parser = new TSPHPErrorReportingParser(tokenStream);
-        parser.setTreeAdaptor(TSPHPAstAdaptorRegistry.get());
+        parser.setTreeAdaptor(astAdaptor);
         return (TSPHPAst) parser.compilationUnit().getTree();
     }
 
