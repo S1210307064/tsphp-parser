@@ -36,10 +36,10 @@ public class VariableDeclarationListHelper
         prefixExpected += "(vars ";
         appendixExpected = ")" + appendixExpected;
 
-        List<Object[]> collection = TypeHelper.getAllTypesInclModifier(
+        List<Object[]> collection = TypeHelper.getAllTypesWithModifier(
                 prefix, " $a=1" + appendix, prefixExpected, " ($a 1)" + appendixExpected, classMemberModifier);
         
-        collection.addAll(TypeHelper.getAllTypesInclModifier(
+        collection.addAll(TypeHelper.getAllTypesWithModifier(
                 prefix, " $a" + appendix, prefixExpected, " $a" + appendixExpected, classMemberModifier));
 
         String tMod = classMemberModifier.isEmpty() ? "tMod" : "(tMod " + classMemberModifier + ")";

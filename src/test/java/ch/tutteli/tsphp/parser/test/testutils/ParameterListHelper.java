@@ -35,7 +35,7 @@ public class ParameterListHelper
             String prefixExpect, String appendixExpect) {
 
         //check all types
-        List<Object[]> collection = TypeHelper.getAllTypesInclModifier(
+        List<Object[]> collection = TypeHelper.getAllTypesWithModifier(
                 prefix, " $a" + appendix,
                 prefixExpect + "(params (pDecl ", " $a))" + appendixExpect,"");
         List<String> types = TypeHelper.getAllTypesWithoutScalar();

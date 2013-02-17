@@ -160,7 +160,6 @@ tokens{
 	CONSTANT_DECLARATION_LIST;
 	
 	DEFAULT_NAMESPACE;
-	EXCEPTION_LIST;
 	
 	EXPRESSION;
 	EXPRESSION_LIST;
@@ -569,10 +568,14 @@ returnType
 	| 	v='void' -> ^(TYPE[$v,"type"] TYPE_MODIFIER[$v,"tMod"] $v)
 	;
 	
-allTypesWithModifier
+allTypesWithoutObjectAndResourceWithModifier
 	:	scalarTypeWithModifier
 	|	classInterfaceTypeWithoutObjectInclArrayWithModifier
-	|	objectOrResourceInclModifier
+	;
+	
+allTypesWithModifier
+	:	allTypesWithoutObjectAndResourceWithModifier
+	|	objectOrResourceWithModifier
 	;	
 
 	
@@ -600,14 +603,14 @@ classInterfaceTypeWithoutObjectInclArrayWithModifier
 		)
 	;
 
-objectOrResourceInclModifier
+objectOrResourceWithModifier
 @after{
 	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
 	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast,adaptor);	
 }
 	:	objectOrResource
-		-> ^(TYPE[$objectOrResourceInclModifier.start,"type"] 
-			^(TYPE_MODIFIER[$objectOrResourceInclModifier.start,"tMod"])
+		-> ^(TYPE[$objectOrResourceWithModifier.start,"type"] 
+			^(TYPE_MODIFIER[$objectOrResourceWithModifier.start,"tMod"])
 			objectOrResource
 		)	
 	;
@@ -716,7 +719,7 @@ localVariableDeclaration
 variableDeclarationList
 	:	variableDeclarationScalarList
 	|	variableDeclarationArrayOrClassInterfaceList		
-	|	objectOrResourceInclModifier  assign (','! assign)*
+	|	objectOrResourceWithModifier  assign (','! assign)*
 	;
 	
 variableDeclarationScalarList
@@ -860,7 +863,7 @@ instanceOf
 	:	castOrBitwiseNotOrAt ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
 
 castOrBitwiseNotOrAt
-	:	cast = '(' allTypesWithoutObjectAndResource ')' castOrBitwiseNotOrAt -> ^(CASTING[$cast,"casting"] allTypesWithoutObjectAndResource castOrBitwiseNotOrAt)
+	:	cast = '(' allTypesWithoutObjectAndResourceWithModifier ')' castOrBitwiseNotOrAt -> ^(CASTING[$cast,"casting"] allTypesWithoutObjectAndResourceWithModifier castOrBitwiseNotOrAt)
 	|	'~'^ castOrBitwiseNotOrAt
 	|	'@'^ castOrBitwiseNotOrAt 
 	|	cloneOrNew
@@ -1162,9 +1165,16 @@ forUpdate
 foreachLoop
 	:	'foreach' '(' expression 'as' (keyType=scalarTypes keyVarId=VariableId '=>')? valueType=allTypesWithModifier valueVarId=VariableId ')' instructionInclBreakContinue 
 		-> ^('foreach' 
-			expression 
-			(^(VARIABLE_DECLARATION_LIST[$keyType.start,"vars"] ^(TYPE[$keyType.start,"type"] TYPE_MODIFIER[$keyType.start,"tMod"] $keyType) $keyVarId))?
-			 ^(VARIABLE_DECLARATION_LIST[$valueType.start,"vars"] $valueType $valueVarId) 
+			expression
+			
+			//key 
+			(	^(VARIABLE_DECLARATION_LIST[$keyType.start,"vars"] 
+					^(TYPE[$keyType.start,"type"] TYPE_MODIFIER[$keyType.start,"tMod"] $keyType) 
+					$keyVarId
+				)
+			)?
+				
+			^(VARIABLE_DECLARATION_LIST[$valueType.start,"vars"] $valueType $valueVarId) 
 			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue)
 		)
 	;
@@ -1185,12 +1195,16 @@ tryCatch
 	;
 	
 catchBlock
-	:	catchBegin='catch' list='(' classInterfaceTypeWithoutObject VariableId ')' block='{' instructionInclBreakContinue* '}'
+	:	catchBegin='catch' '(' classInterfaceTypeWithoutObject VariableId ')' block='{' instructionInclBreakContinue* '}'
 		-> ^($catchBegin 
-			^(EXCEPTION_LIST[$list,"exceptions"] ^(VariableId classInterfaceTypeWithoutObject))
+			^(VARIABLE_DECLARATION_LIST[$classInterfaceTypeWithoutObject.start,"vars"] 
+				^(TYPE[$classInterfaceTypeWithoutObject.start,"type"] TYPE_MODIFIER[$classInterfaceTypeWithoutObject.start,"tMod"] classInterfaceTypeWithoutObject)
+				VariableId
+			)
 			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue*)
 		)
 	;
+
 
 Comment
 	:	'//' ~('\n'|'\r')* '\r'? '\n' {$channel=HIDDEN;}

@@ -80,9 +80,18 @@ public class TypeHelper
                 };
     }
 
-    public static List<Object[]> getAllTypesInclModifier(String prefix, String appendix,
+    public static List<Object[]> getAllTypesWithModifier(String prefix, String appendix,
             String prefixExpect, String appendixExpect, String cmMod) {
+        return getAllTypesWithModifier(prefix, appendix, prefixExpect, appendixExpect, cmMod, true);
+    }
 
+    public static List<Object[]> getAllTypesWithoutObjectAndResourceWithModifier(String prefix, String appendix,
+            String prefixExpect, String appendixExpect, String cmMod) {
+        return getAllTypesWithModifier(prefix, appendix, prefixExpect, appendixExpect, cmMod, false);
+    }
+
+    private static List<Object[]> getAllTypesWithModifier(String prefix, String appendix,
+            String prefixExpect, String appendixExpect, String cmMod, boolean withObjectAndResource) {
         String tMod = cmMod.isEmpty() ? "tMod" : "(tMod " + cmMod + ")";
         String tModInclCast = cmMod.isEmpty() ? "(tMod cast)" : "(tMod cast " + cmMod + ")";
         String tModInclNullable = cmMod.isEmpty() ? "(tMod ?)" : "(tMod ? " + cmMod + ")";
@@ -129,15 +138,16 @@ public class TypeHelper
                     });
         }
 
-        collection.add(new String[]{
-                    prefix + "resource" + appendix,
-                    prefixExpect + "(type " + tMod + " resource)" + appendixExpect
-                });
-        collection.add(new String[]{
-                    prefix + "object" + appendix,
-                    prefixExpect + "(type " + tMod + " object)" + appendixExpect
-                });
-
+        if (withObjectAndResource) {
+            collection.add(new String[]{
+                        prefix + "resource" + appendix,
+                        prefixExpect + "(type " + tMod + " resource)" + appendixExpect
+                    });
+            collection.add(new String[]{
+                        prefix + "object" + appendix,
+                        prefixExpect + "(type " + tMod + " object)" + appendixExpect
+                    });
+        }
         return collection;
     }
 }

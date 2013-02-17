@@ -48,7 +48,7 @@ public class FunctionTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
 
-        collection.addAll(TypeHelper.getAllTypesInclModifier(
+        collection.addAll(TypeHelper.getAllTypesWithModifier(
                 "function ", " get(){}",
                 "(function fMod ", " get params block)",""));
 

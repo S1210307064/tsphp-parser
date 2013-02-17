@@ -58,7 +58,7 @@ public class MethodTest extends AAstTest
         getModifiers();
 
         //return values
-        collection.addAll(TypeHelper.getAllTypesInclModifier(
+        collection.addAll(TypeHelper.getAllTypesWithModifier(
                 "function ", " get(){}",
                 "(mDecl (mMod public) ", " get params block)", ""));
 

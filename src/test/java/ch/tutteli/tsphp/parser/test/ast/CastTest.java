@@ -17,7 +17,6 @@
 package ch.tutteli.tsphp.parser.test.ast;
 
 import ch.tutteli.tsphp.parser.test.testutils.AAstTest;
-import ch.tutteli.tsphp.parser.test.testutils.ParameterListHelper;
 import ch.tutteli.tsphp.parser.test.testutils.TypeHelper;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,10 +31,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class InterfaceMethodTest extends AAstTest
+public class CastTest extends AAstTest
 {
 
-    public InterfaceMethodTest(String testString, String expectedResult) {
+    public CastTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -44,38 +43,11 @@ public class InterfaceMethodTest extends AAstTest
         compareAst();
     }
 
-    @Override
-    protected void run() throws RecognitionException {
-        result = parser.interfaceBody();
-    }
-
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.add(new Object[]{
-            "public function void foo();",
-            "(mDecl (mMod public abstract) (type tMod void) foo params block)"
-        });
-        collection.add(new Object[]{
-            "function __construct();", 
-            "(__construct (mMod public abstract) (type tMod void) params block)"});
-        collection.add(new Object[]{
-            "public function __construct();", 
-            "(__construct (mMod public abstract) (type tMod void) params block)"
-        });
-
-         collection.addAll(TypeHelper.getAllTypesWithModifier(
-                "function ", " get();",
-                "(mDecl (mMod public abstract) ", " get params block)",""));
-
-        collection.addAll(ParameterListHelper.getTestStrings(
-                "function void set(", ");",
-                "(mDecl (mMod public abstract) (type tMod void) set ", " block)"));
-        
-        collection.addAll(ParameterListHelper.getTestStrings(
-                "function __construct(", ");",
-                "(__construct (mMod public abstract) (type tMod void) ", " block)"));
-        
+        collection.addAll(TypeHelper.getAllTypesWithoutObjectAndResourceWithModifier(
+                "(", ") $a;", "(casting ", " $a)", ""));
         return collection;
     }
 }
