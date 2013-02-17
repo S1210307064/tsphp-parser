@@ -1006,7 +1006,7 @@ primitiveAtomWithConstant
 	|	Null
 	//global constant
 	|	classConstant
-	|	id=Identifier -> CONSTANT[$id,$id.text]
+	|	id=Identifier -> CONSTANT[$id]
 	;
 	
 Int     : 	DECIMAL
@@ -1160,9 +1160,11 @@ forUpdate
 	;
 
 foreachLoop
-	:	'foreach' '(' expression 'as' (keyType=scalarTypes keyVarId=VariableId '=>')? valueType=allTypes valueVarId=VariableId ')' instructionInclBreakContinue 
+	:	'foreach' '(' expression 'as' (keyType=scalarTypes keyVarId=VariableId '=>')? valueType=allTypesWithModifier valueVarId=VariableId ')' instructionInclBreakContinue 
 		-> ^('foreach' 
-			expression $keyType? $keyVarId? $valueType $valueVarId 
+			expression 
+			(^(VARIABLE_DECLARATION_LIST[$keyType.start,"vars"] ^(TYPE[$keyType.start,"type"] TYPE_MODIFIER[$keyType.start,"tMod"] $keyType) $keyVarId))?
+			 ^(VARIABLE_DECLARATION_LIST[$valueType.start,"vars"] $valueType $valueVarId) 
 			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue)
 		)
 	;

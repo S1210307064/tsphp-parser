@@ -41,7 +41,6 @@ public class VariableDeclarationTest extends AAstTest
     @Test
     public void test() throws RecognitionException {
         compareAst();
-        System.out.println(testString);
     }
 
     @Parameterized.Parameters
