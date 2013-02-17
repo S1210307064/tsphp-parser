@@ -11,3 +11,5 @@ nbproject/*
 /src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHP.tokens
 /src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHPLexer.java
 /src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHPParser.java
+/lib/dev/jacoco
+/lib/dev/sonar
