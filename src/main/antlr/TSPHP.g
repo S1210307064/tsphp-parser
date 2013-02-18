@@ -878,15 +878,23 @@ cloneOrNew
 
 	
 variableOrMemberOrStaticMember
-	:	staticAccessOrParent varId=VariableId -> ^(CLASS_STATIC_ACCESS[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent CLASS_STATIC_ACCESS_VARIABLE_ID[$varId])
+	:	staticAccess varId=VariableId -> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess CLASS_STATIC_ACCESS_VARIABLE_ID[$varId])
 	|	'$this'
 	|	VariableId 
 	;
 
-staticAccessOrParent
+staticAccess
+	:	selfOrParent
+	|	staticClassAccess	
+	;
+	
+selfOrParent
 	:	s='self::' -> Self[$s,"self"]
 	|	p='parent::' -> Parent[$p,"parent"]
-	|	classInterfaceTypeWithoutObject '::'!
+	;
+	
+staticClassAccess
+	:	classInterfaceTypeWithoutObject '::'!
 	;
 
 newObject 
@@ -913,6 +921,7 @@ primary
 postFixCall
 	:	(	functionCall -> functionCall
 		|	methodCall -> methodCall
+		|	selfOrParentMethodCall -> selfOrParentMethodCall
 		|	staticMethodCall -> staticMethodCall
 		)
 		(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixCall Identifier)
@@ -931,10 +940,16 @@ methodCall
 	:	(callee='$this'|callee=VariableId) '->' Identifier actualParameters
 		 -> ^(METHOD_CALL[$callee,"mCall"] $callee Identifier actualParameters)	 
 	;
+
+selfOrParentMethodCall
+	:	selfOrParent Identifier actualParameters
+		-> ^(METHOD_CALL[$selfOrParent.start,"mCall"] selfOrParent Identifier actualParameters)	
+	;	
+
 	
 staticMethodCall
-	:	staticAccessOrParent Identifier actualParameters
-		-> ^(METHOD_CALL_STATIC[$staticAccessOrParent.start,"smCall"] staticAccessOrParent Identifier actualParameters)
+	:	staticClassAccess Identifier actualParameters
+		-> ^(METHOD_CALL_STATIC[$staticClassAccess.start,"smCall"] staticClassAccess Identifier actualParameters)
 	;
 
 call	:	'->'! Identifier actualParameters
@@ -990,7 +1005,7 @@ postFixVariableInclCallAtTheEnd
 	;
 
 classConstant
-	:	staticAccessOrParent Identifier -> ^(CLASS_STATIC_ACCESS[$staticAccessOrParent.start,"sMemAccess"] staticAccessOrParent Identifier)
+	:	staticAccess Identifier -> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess Identifier)
 	;
 	
 

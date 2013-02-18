@@ -49,8 +49,8 @@ public class PostFixTest extends AAstTest
         String[][] tmp1 = new String[][]{
             {"$a->foo()", "(mCall $a foo args)"},
             {"$this->foo()", "(mCall $this foo args)"},
-            {"self::foo()", "(smCall self foo args)"},
-            {"parent::foo()", "(smCall parent foo args)"},
+            {"self::foo()", "(mCall self foo args)"},
+            {"parent::foo()", "(mCall parent foo args)"},
             {"Foo::foo()", "(smCall Foo foo args)"},
             //
             {"$a[0]", "(arrAccess $a 0)"},
