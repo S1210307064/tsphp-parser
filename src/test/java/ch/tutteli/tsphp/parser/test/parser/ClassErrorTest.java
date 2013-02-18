@@ -53,6 +53,8 @@ public class ClassErrorTest extends AParserParserExceptionTest
                     {"private class A{function void a(int $a=null,$b){}}", TSPHPParser.Private, 0},
                     {"protected class A{function void a(int $a=null,$b){}}", TSPHPParser.Protected, 0},
                     {"public class A{function void a(int $a=null,$b){}}", TSPHPParser.Public, 0},
+                    //classes do not support multiple inheritance
+                    {"class a extends b,c{}", TSPHPParser.Comma,17}
                     
         });
         

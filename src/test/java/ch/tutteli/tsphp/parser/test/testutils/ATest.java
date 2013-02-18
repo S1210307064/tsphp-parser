@@ -16,7 +16,6 @@
  */
 package ch.tutteli.tsphp.parser.test.testutils;
 
-import ch.tutteli.tsphp.common.TSPHPAstAdaptor;
 import org.junit.Ignore;
 
 /**

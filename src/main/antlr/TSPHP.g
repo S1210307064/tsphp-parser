@@ -192,7 +192,7 @@ tokens{
 	TYPE_NAME;
 	
 	UNARY_MINUS;
-	USE_DECLRATARION;
+	USE_DECLARATION;
 	
 	VARIABLE_DECLARATION;
 	VARIABLE_DECLARATION_LIST;	
@@ -306,7 +306,7 @@ statement
 	
 useDeclarationList
 	:	'use' firstUseDeclaration=useDeclaration (',' otherDeclaration=useDeclaration)* ';' 
-		-> ^('use' ^(USE_DECLRATARION[$firstUseDeclaration.start,"uDecl"] useDeclaration) (^(USE_DECLRATARION[$otherDeclaration.start,"uDecl"] useDeclaration))* )
+		-> ^('use' ^(USE_DECLARATION[$firstUseDeclaration.start,"uDecl"] useDeclaration) (^(USE_DECLARATION[$otherDeclaration.start,"uDecl"] useDeclaration))* )
 	;
 	
 useDeclaration
@@ -333,11 +333,11 @@ definition
 //************************************************************************************************/
 
 classDeclaration
-	:	classModifier? 'class' Identifier (ex='extends' exIds=identifierList)? (impl='implements' implIds=identifierList)? block='{' classBody* '}'	
+	:	classModifier? 'class' Identifier (ex='extends' exId=classInterfaceTypeWithoutObject)? (impl='implements' implIds=identifierList)? block='{' classBody* '}'	
 		-> ^('class' 
 			^(CLASS_MODIFIER[$classModifier.start,"cMod"] classModifier?)
 			Identifier 
-			^(Extends[$ex,"extends"] $exIds?)
+			^(Extends[$ex,"extends"] $exId?)
 			^(Implements[$impl,"implements"] $implIds?)
 			^(CLASS_BODY[$block,"cBody"] classBody*)
 		)

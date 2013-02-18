@@ -55,15 +55,6 @@ public class ClassTest extends AAstTest
                         "class a extends "+type+"{}",
                         "(class cMod a (extends "+type+") implements cBody)"
                     });
-            collection.add(new Object[]{
-                        "final class a extends "+type+","+type+"{}",
-                        "(class (cMod final) a (extends "+type+" "+type+") implements cBody)"
-                    });
-            collection.add(new Object[]{
-                        "abstract class a extends "+type+","+type+","+type+"{}",
-                        "(class (cMod abstract) a "
-                            + "(extends "+type+" "+type+" "+type+") implements cBody)"
-                    });
             //implements
             collection.add(new Object[]{
                         "class a implements "+type+", "+type+"{}",
@@ -108,24 +99,24 @@ public class ClassTest extends AAstTest
                         + " cBody)"
                     },
                     {
-                        "class a extends b,c implements f,g,h,i{}",
+                        "class a extends b implements f,g,h,i{}",
                         "(class cMod a "
-                            + "(extends b c) "
+                            + "(extends b) "
                             + "(implements f g h i)"
                         + " cBody)"
                     },
                     {
-                        "final class a extends b,c,d implements f,g,h{}",
+                        "final class a extends b implements f,g,h{}",
                         "(class (cMod final) a "
-                            + "(extends b c d) "
+                            + "(extends b) "
                             + "(implements f g h)"
                         + " cBody)"
                             
                     },
                     {
-                        "abstract class a extends b,c,d,e implements f,g{}",
+                        "abstract class a extends b implements f,g{}",
                         "(class (cMod abstract) a "
-                            + "(extends b c d e) "
+                            + "(extends b) "
                             + "(implements f g)"
                         + " cBody)"
                     },
