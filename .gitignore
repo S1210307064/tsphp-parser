@@ -1,15 +1,11 @@
 build/*
 nbproject/*
 /src/main/antlr/output
-/lib/dev/pmd
-/lib/dev/checkstyle
-/lib/dev/classycle
-/lib/dev/findbugs
 
-/src/main/antlr/TSPHP__testrig.st
 
 /src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHP.tokens
 /src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHPLexer.java
 /src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHPParser.java
-/lib/dev/jacoco
-/lib/dev/sonar
+
+
+/src/main/antlr/TSPHP__testrig.st

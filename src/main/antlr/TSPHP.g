@@ -291,10 +291,10 @@ Identifier
 
 withoutNamespace 
 @init{ String backslash = "\\";}
-	:	(statement+) 
+	:	(statement*) 
 		-> ^(Namespace[$statement.start,"namespace"]
 			DEFAULT_NAMESPACE[$statement.start,backslash] 
-			^(NAMESPACE_BODY[$statement.start,"nBody"] statement+)
+			^(NAMESPACE_BODY[$statement.start,"nBody"] statement*)
 		) 
 	;
 
