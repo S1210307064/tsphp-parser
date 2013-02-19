@@ -387,11 +387,17 @@ classMemberDeclaration
 	;
 	
 classMemberModifier
+@init{boolean isEmpty=false;}
+@after{
+if(isEmpty){ 
+	retval.tree.setTokenStopIndex(retval.tree.getTokenStartIndex());
+}
+}
 	:	'static' accessModifier 
 	|	accessModifier 'static'
 	|	accessModifier
 	|	st='static' -> 'static' Public[$st,"public"]
-	|	/* etmpy */ -> Public["public"]
+	|	/* etmpy */ {isEmpty=true;} -> Public[$classMemberModifier.start,"public"]
 	;
 	
 accessModifier
@@ -400,17 +406,30 @@ accessModifier
 	;
 	
 accessModifierWithoutPrivate
-	:	'protected'|'public'
+	:	'protected'
+	|	'public'
 	;
 	
 accessModifierWithoutPrivateOrPublic
+@init{boolean isEmpty=false;}
+@after{
+if(isEmpty){ 
+	retval.tree.setTokenStopIndex(retval.tree.getTokenStartIndex());
+}
+}
 	:	accessModifierWithoutPrivate 
-	|	/* empty */ -> Public["public"]
+	|	/* empty */  {isEmpty=true;} -> Public[$accessModifierWithoutPrivateOrPublic.start,"public"]
 	;
 	
 accessModifierOrPublic
+@init{boolean isEmpty=false;}
+@after{
+if(isEmpty){ 
+	retval.tree.setTokenStopIndex(retval.tree.getTokenStartIndex());
+}
+}
 	:	accessModifier 
-	|	/* empty */ -> Public["public"]
+	|	/* empty */ {isEmpty=true;} -> Public[$accessModifierOrPublic.start,"public"]
 	;
 
 
@@ -440,6 +459,12 @@ methodDeclaration
 	
 
 methodModifier
+@init{boolean isEmpty=false;}
+@after{
+if(isEmpty){ 
+	retval.tree.setTokenStopIndex(retval.tree.getTokenStartIndex());
+}
+}
 	:	'static' 'final' accessModifier
 	|	'static' accessModifier 'final' 
 	|	'static' accessModifier
@@ -458,7 +483,7 @@ methodModifier
 	|	accessModifier 'final'
 	|	accessModifier
 	
-	|	/* empty */ -> Public["public"]
+	|	/* empty */ {isEmpty=true;} -> Public[$methodModifier.start,"public"]
 	;
 	
 abstractConstructDestructDeclaration
@@ -504,11 +529,17 @@ constructDestructDeclaration
 	;
 
 constructDestructModifier
+@init{boolean isEmpty=false;}
+@after{
+if(isEmpty){ 
+	retval.tree.setTokenStopIndex(retval.tree.getTokenStartIndex());
+}
+}
 	:	'final' accessModifier
 	|	 fin='final' -> 'final' Public[$fin,"public"]
 	|	accessModifier 'final'
 	|	accessModifier
-	|	/* empty */ -> Public["public"]
+	|	/* empty */ {isEmpty=true;} -> Public[$constructDestructModifier.start,"public"]
 	;
 
 interfaceDeclaration
@@ -610,7 +641,7 @@ objectOrResourceWithModifier
 }
 	:	objectOrResource
 		-> ^(TYPE[$objectOrResourceWithModifier.start,"type"] 
-			^(TYPE_MODIFIER[$objectOrResourceWithModifier.start,"tMod"])
+			TYPE_MODIFIER[$objectOrResourceWithModifier.start,"tMod"]
 			objectOrResource
 		)	
 	;
