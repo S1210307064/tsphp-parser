@@ -45,17 +45,19 @@ public class ExpressionHelper
                     {
                         "$a = $b += $c -= $d *= $e /= $f &= $g |= $h ^= $i %= $j .= $k <<= $l >>= $m =() $n",
                         "(= $a (+= $b (-= $c (*= $d (/= $e (&= $f "
-                            + "(|= $g (^= $h (%= $i (.= $j (<<= $k (>>= $l (cAssign $m $n)))))))"
+                        + "(|= $g (^= $h (%= $i (.= $j (<<= $k (>>= $l (cAssign $m $n)))))))"
                         + "))))))"
                     }
                 };
     }
+
     public static List<String[]> getAstExpressions() {
         List<String[]> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(getAstAssignmentExpression()));
         collection.addAll(Arrays.asList(getAstExpressionsWihtoutAssignment()));
         return collection;
     }
+
     public static String[][] getAstExpressionsWihtoutAssignment() {
         return new String[][]{
                     {"$a or $b", "(or $a $b)"},
@@ -144,17 +146,20 @@ public class ExpressionHelper
                     {"--$a", "(preDecr $a)"},
                     {"$a", "$a"},
                     {"$a->a", "(memAccess $a a)"},
+                    {"foo()","(fCall foo args)"},
+                    {"\\a\\foo()","(fCall \\a\\foo args)"},
                     {"self::$a", "(sMemAccess self $a)"},
                     {"self::a", "(sMemAccess self a)"},
                     {"Foo::a", "(sMemAccess Foo a)"},
                     {"true", "true"},
                     {"false", "false"},
+                    {"null", "null"},
+                    {"a\\b", "a\\b"},
                     {"1", "1"},
                     {"2.123", "2.123"},
                     {"'a'", "'a'"},
                     {"\"asdf\"", "\"asdf\""},
                     {"[1,2,a=>3]", "(array 1 2 (=> a 3))"},
-                    {"null", "null"},
                     {"(int) clone $a + $b", "(+ (casting (type tMod int) (clone $a)) $b)"},
                     {"(-$a + $b) * $c", "(* (+ (uMinus $a) $b) $c)"},
                     {"!($a instanceof Type) || $a < $b+$c == ~(1 | 3 & 12)", "(|| (! (instanceof $a Type)) (== (< $a (+ $b $c)) (~ (| 1 (& 3 12)))))"}
@@ -253,6 +258,7 @@ public class ExpressionHelper
                     "--$a",
                     "$a--",
                     "foo()",
+                    "a\\foo()",
                     "$a->foo()",
                     "$a->a->foo()",
                     "$a[0]->foo()",
@@ -262,6 +268,7 @@ public class ExpressionHelper
                     "parent::foo()",
                     "parent::$a->foo()",
                     "a",
+                    "a\\a",
                     "A::a"
                 };
     }

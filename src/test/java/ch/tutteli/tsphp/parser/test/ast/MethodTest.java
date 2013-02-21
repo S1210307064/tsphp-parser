@@ -125,7 +125,8 @@ public class MethodTest extends AAstTest
             {"final public static", "final public static"},
             {"final static private", "final static private"},
             {"final static protected", "final static protected"},
-            {"final static public", "final static public"},};
+            {"final static public", "final static public"}
+        };
 
         for (String[] variation : variations) {
             collection.add(new Object[]{

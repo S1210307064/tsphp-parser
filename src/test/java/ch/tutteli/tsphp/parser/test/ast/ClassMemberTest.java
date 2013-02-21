@@ -52,7 +52,6 @@ public class ClassMemberTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
 
-
         String[][] variations = new String[][]{
             {"", "public"},
             {"private", "private"},

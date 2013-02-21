@@ -654,7 +654,7 @@ paramList
 	
 paramDeclarationNormal
 	:	allTypesInclModifierForParameter VariableId 
-		-> ^(PARAMETER_DECLARATION[$paramDeclarationNormal.start,"pDecl"] allTypesInclModifierForParameter ^(VariableId) )
+		-> ^(PARAMETER_DECLARATION[$paramDeclarationNormal.start,"pDecl"] allTypesInclModifierForParameter VariableId )
 	;
 	
 paramDeclarationOptional
@@ -1005,10 +1005,7 @@ postFixVariableInclCallAtTheEnd
 		)*
 	;
 
-classConstant
-	:	staticAccess Identifier -> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess Identifier)
-	;
-	
+
 
 	
 unaryPrimitiveAtom
@@ -1023,11 +1020,19 @@ primitiveAtomWithConstant
 	|	Float
 	|	String
 	|	Null
-	//global constant
 	|	classConstant
-	|	id=Identifier -> CONSTANT[$id]
+	|	globalConstant
 	;
-	
+
+classConstant
+	:	staticAccess Identifier -> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess Identifier)
+	;
+
+globalConstant
+	:	id=classInterfaceTypeWithoutObject -> CONSTANT[$id.start,$id.text]	
+	;
+		
+
 Int     : 	DECIMAL
         | 	HEXADECIMAL
         | 	OCTAL
