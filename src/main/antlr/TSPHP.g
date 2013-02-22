@@ -363,7 +363,11 @@ constDeclarationList
 	:	 begin='const' scalarTypes constantAssignment (',' constantAssignment)* ';'
 		-> ^(CONSTANT_DECLARATION_LIST[$begin,"consts"] 
 			^(TYPE[$scalarTypes.start,"type"] 
-				^(TYPE_MODIFIER[$scalarTypes.start,"tMod"] Final[$scalarTypes.start,"final"]) 
+				^(TYPE_MODIFIER[$scalarTypes.start,"tMod"] 
+					Public[$scalarTypes.start,"public"]
+					Static[$scalarTypes.start,"static"] 
+					Final[$scalarTypes.start,"final"] 
+				) 
 				scalarTypes
 			)
 			constantAssignment+
