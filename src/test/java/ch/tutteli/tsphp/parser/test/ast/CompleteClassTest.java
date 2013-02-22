@@ -66,7 +66,7 @@ public class CompleteClassTest extends AAstTest
                             + "}\n"
                         + "}\n",
                         "(class cMod A (extends B) (implements \\A) (cBody "
-                            +"(consts (type (tMod final) bool) (A true) (B null) (C false)) "
+                            +"(consts (type (tMod public static final) bool) (A true) (B null) (C false)) "
                             +"(cMem (vars (type (tMod private) int) $a ($b 1) ($c (casting (type (tMod private) int) '1')))) "
                             +"(__construct (mMod public) (type tMod void) (params (pDecl (type tMod int) $number))"
                                 + " (block "
