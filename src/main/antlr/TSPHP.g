@@ -681,13 +681,13 @@ VariableId
 	;
 
 instructionWithoutBreakContinue	
-	:	block='{''}' -> ^(EXPRESSION[$block,"expr"])
+	:	block='{''}' -> EXPRESSION[$block,"expr"]
 	|	'{'! instructionWithoutBreakContinue+ '}'!
 	|	instruction
 	;
 
 instructionInclBreakContinue
-	:	block='{''}' -> ^(EXPRESSION[$block,"expr"])
+	:	block='{''}' -> EXPRESSION[$block,"expr"]
 	|	'{'! instructionInclBreakContinue*  '}'!
 	|	instruction
 	|	('break'|'continue')^ Int? ';'!
@@ -703,10 +703,10 @@ instruction
 	|	doWhileLoop
 	|	tryCatch
 	|	expression ';'!
-	|	'return'^ expression? ';'! 
+	|	'return'^ expression? ';'!
 	|	'throw'^ expression ';'!
 	|	'echo'^ expressionList ';'!
-	|	expr=';' -> ^(EXPRESSION[$expr,"expr"])
+	|	expr=';' -> EXPRESSION[$expr,"expr"]
 	;
 	
 expressionList
@@ -1025,11 +1025,12 @@ primitiveAtomWithConstant
 	;
 
 classConstant
-	:	staticAccess Identifier -> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess Identifier)
+	:	staticAccess identifier=Identifier 
+		-> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess CONSTANT[$identifier,$identifier.text])
 	;
 
 globalConstant
-	:	id=classInterfaceTypeWithoutObject -> CONSTANT[$id.start,$id.text]	
+	:	identifier=classInterfaceTypeWithoutObject -> CONSTANT[$identifier.start,$identifier.text]	
 	;
 		
 
@@ -1104,7 +1105,7 @@ arrayContent
 	;
 arrayKeyValue
 	:	key=expression '=>' value=expression -> ^('=>' $key $value)
-	|	expression 
+	|	value=expression
 	;
 
 
