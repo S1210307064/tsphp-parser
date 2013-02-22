@@ -47,26 +47,29 @@ public class IfTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        
+
         List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
-            collection.add(new Object[]{"if(" + expression[0] + ") $a=1; else $a+=1;", "(if "+expression[1]+" (cBlock (= $a 1)) (cBlock (+= $a 1)))"});
+            collection.add(new Object[]{
+                        "if(" + expression[0] + ") $a=1; else $a+=1;",
+                        "(if " + expression[1] + " (cBlock (expr (= $a 1))) (cBlock (expr (+= $a 1))))"
+                    });
         }
         collection.addAll(Arrays.asList(new Object[][]{
                     {
-                        "if(true) $a=1; else if(false) $b=1; else $c=2;", 
-                        "(if true (cBlock (= $a 1)) (cBlock (if false (cBlock (= $b 1)) (cBlock (= $c 2)))))"
+                        "if(true) $a=1; else if(false) $b=1; else $c=2;",
+                        "(if true (cBlock (expr (= $a 1))) "
+                        + "(cBlock (if false (cBlock (expr (= $b 1))) (cBlock (expr (= $c 2))))))"
                     },
                     {
-                        "if(true) $a=1; else if(false) $b=1; else if($a<1) $c=2; else $d*=1;", 
-                        "(if true (cBlock (= $a 1)) (cBlock "
-                            + "(if false (cBlock (= $b 1)) (cBlock "
-                                + "(if (< $a 1) (cBlock (= $c 2)) (cBlock (*= $d 1)))"
-                            + "))"
+                        "if(true) $a=1; else if(false) $b=1; else if($a<1) $c=2; else $d*=1;",
+                        "(if true (cBlock (expr (= $a 1))) (cBlock "
+                        + "(if false (cBlock (expr (= $b 1))) (cBlock "
+                        + "(if (< $a 1) (cBlock (expr (= $c 2))) (cBlock (expr (*= $d 1))))"
                         + "))"
-                    },
-                }));
-        
+                        + "))"
+                    },}));
+
         return collection;
     }
 }

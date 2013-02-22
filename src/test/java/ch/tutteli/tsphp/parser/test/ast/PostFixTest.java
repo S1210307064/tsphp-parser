@@ -82,11 +82,13 @@ public class PostFixTest extends AAstTest
         }
 
         for (Object[] expression : tmp3) {
-            collection.add(new Object[]{expression[0] + ";", expression[1]});
-            collection.add(new Object[]{expression[0] + "[$i+$j%2];", "(arrAccess " + expression[1] + " (+ $i (% $j 2)))"});
+            collection.add(new Object[]{expression[0] + ";","(expr "+ expression[1]+")"});
+            collection.add(new Object[]{
+                expression[0] + "[$i+$j%2];", "(expr (arrAccess " + expression[1] + " (+ $i (% $j 2))))"
+            });
             collection.add(new Object[]{
                         expression[0] + "->foo($a + $b);",
-                        "(mpCall " + expression[1] + " foo (args (+ $a $b)))"
+                        "(expr (mpCall " + expression[1] + " foo (args (+ $a $b))))"
                     });
         }
 

@@ -706,7 +706,7 @@ instruction
 	|	whileLoop
 	|	doWhileLoop
 	|	tryCatch
-	|	expression ';'!
+	|	expression ';' -> ^(EXPRESSION[$expression.start,"expr"] expression)
 	|	'return'^ expression? ';'!
 	|	'throw'^ expression ';'!
 	|	'echo'^ expressionList ';'!
@@ -761,8 +761,7 @@ variableDeclarationArrayOrClassInterfaceList
 classInterfaceTypeWithoutObjectInclArray
 	:	'array'
 	|	classInterfaceTypeWithoutObject
-	;
-	
+	;	
 
 expression
 	:	logicOrWeak

@@ -73,7 +73,7 @@ public class MethodTest extends AAstTest
         //method block
         collection.add(new Object[]{
                     "function void set(){$a=1;}",
-                    "(mDecl (mMod public) (type tMod void) set params (block (= $a 1)))"
+                    "(mDecl (mMod public) (type tMod void) set params (block (expr (= $a 1))))"
                 });
 
 

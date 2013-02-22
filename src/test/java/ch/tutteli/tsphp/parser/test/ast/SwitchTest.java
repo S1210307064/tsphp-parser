@@ -44,61 +44,64 @@ public class SwitchTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"switch($a){ case 1: $a=1; }", "(switch $a (cases 1) (cBlock (= $a 1)))"},
+                    {
+                        "switch($a){ case 1: $a=1; }", 
+                        "(switch $a (cases 1) (cBlock (expr (= $a 1))))"
+                    },
                     {
                         "switch($a){ case 1: case 2: $a=1; break; }",
-                        "(switch $a (cases 1 2) (cBlock (= $a 1) break))"
+                        "(switch $a (cases 1 2) (cBlock (expr (= $a 1)) break))"
                     },
                     {
                         "switch($a){ case 1: $a=1; case 2: $c=1;}",
-                        "(switch $a (cases 1) (cBlock (= $a 1)) (cases 2) (cBlock (= $c 1)))"
+                        "(switch $a (cases 1) (cBlock (expr (= $a 1))) (cases 2) (cBlock (expr (= $c 1))))"
                     },
                     {
                         "switch($a){ case 1: $a=1; case 2: case 3: $a=1; }",
-                        "(switch $a (cases 1) (cBlock (= $a 1)) (cases 2 3) (cBlock (= $a 1)))"
+                        "(switch $a (cases 1) (cBlock (expr (= $a 1))) (cases 2 3) (cBlock (expr (= $a 1))))"
                     },
                     {
                         "switch($a){ case 1: $a=1; $b=2; }",
-                        "(switch $a (cases 1) (cBlock (= $a 1) (= $b 2)))"
+                        "(switch $a (cases 1) (cBlock (expr (= $a 1)) (expr (= $b 2))))"
                     },
                     {
                         "switch($a){ case 1: $a=1; case 2: case 3: $a=2; default: $c=2; }",
                         "(switch $a "
-                            + "(cases 1) (cBlock (= $a 1)) "
-                            + "(cases 2 3) (cBlock (= $a 2)) "
-                            + "(cases default) (cBlock (= $c 2))"
+                            + "(cases 1) (cBlock (expr (= $a 1))) "
+                            + "(cases 2 3) (cBlock (expr (= $a 2))) "
+                            + "(cases default) (cBlock (expr (= $c 2)))"
                         + ")"
                     },
                     {
                         "switch($a){ case 1: $a=1; case 2: $a=1; default: $c=2; case 3: $a=2; }", 
                         "(switch $a "
-                            + "(cases 1) (cBlock (= $a 1)) "
-                            + "(cases 2) (cBlock (= $a 1)) "
-                            + "(cases default) (cBlock (= $c 2)) "
-                            + "(cases 3) (cBlock (= $a 2))"
+                            + "(cases 1) (cBlock (expr (= $a 1))) "
+                            + "(cases 2) (cBlock (expr (= $a 1))) "
+                            + "(cases default) (cBlock (expr (= $c 2))) "
+                            + "(cases 3) (cBlock (expr (= $a 2)))"
                         + ")"
                     },
                     {
                         "switch($a){ case 1: {$a=1; $b=2; } case 2: case 3: {$a=1;} }",
                         "(switch $a "
-                            + "(cases 1) (cBlock (= $a 1) (= $b 2)) "
-                            + "(cases 2 3) (cBlock (= $a 1))"
+                            + "(cases 1) (cBlock (expr (= $a 1)) (expr (= $b 2))) "
+                            + "(cases 2 3) (cBlock (expr (= $a 1)))"
                         + ")"
                     },                    
                     {
                         "switch($a){ case 1: {$a=1; $b=2; } {$a=1;} case 2: case 3: {$a=1;} }",
                         "(switch $a "
-                            + "(cases 1) (cBlock (= $a 1) (= $b 2) (= $a 1)) "
-                            + "(cases 2 3) (cBlock (= $a 1))"
+                            + "(cases 1) (cBlock (expr (= $a 1)) (expr (= $b 2)) (expr (= $a 1))) "
+                            + "(cases 2 3) (cBlock (expr (= $a 1)))"
                         + ")"
                     },
                     //due to the design decision that empty cases are allowed
                     {
                         "switch($a){ case 1: $a=1; case 1+1: default: case 2: $b=2; case 2: case 3: {$a=1;} }",
                         "(switch $a "
-                            + "(cases 1) (cBlock (= $a 1)) "
-                            + "(cases (+ 1 1) 2 default) (cBlock (= $b 2)) "
-                            + "(cases 2 3) (cBlock (= $a 1))"
+                            + "(cases 1) (cBlock (expr (= $a 1))) "
+                            + "(cases (+ 1 1) 2 default) (cBlock (expr (= $b 2))) "
+                            + "(cases 2 3) (cBlock (expr (= $a 1)))"
                         + ")"
                     },
         });

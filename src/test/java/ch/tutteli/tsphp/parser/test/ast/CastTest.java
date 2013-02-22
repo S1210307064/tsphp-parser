@@ -47,7 +47,7 @@ public class CastTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.addAll(TypeHelper.getAllTypesWithoutObjectAndResourceWithModifier(
-                "(", ") $a;", "(casting ", " $a)", ""));
+                "(", ") $a;", "(expr (casting ", " $a))", ""));
         return collection;
     }
 }

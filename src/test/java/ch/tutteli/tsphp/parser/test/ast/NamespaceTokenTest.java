@@ -35,8 +35,6 @@ import org.junit.runners.Parameterized;
 public class NamespaceTokenTest extends AAstTokenTest
 {
 
-    
-
     public NamespaceTokenTest(String testString, List<Integer> expectedTokens) {
         super(testString, expectedTokens);
     }
@@ -54,20 +52,21 @@ public class NamespaceTokenTest extends AAstTokenTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"namespace a; ",Arrays.asList(new Integer[]{DOWN,Namespace,TYPE_NAME, NAMESPACE_BODY, UP})},
-                    {"namespace a {}",Arrays.asList(new Integer[]{DOWN,Namespace,TYPE_NAME, NAMESPACE_BODY, UP})},
-                  
+                    {"namespace a; ", Arrays.asList(new Integer[]{DOWN, Namespace, TYPE_NAME, NAMESPACE_BODY, UP})},
+                    {"namespace a {}", Arrays.asList(new Integer[]{DOWN, Namespace, TYPE_NAME, NAMESPACE_BODY, UP})},
                     //default
-                    {"namespace{}", Arrays.asList(new Integer[]{DOWN,Namespace,DEFAULT_NAMESPACE, NAMESPACE_BODY, UP})},
+                    {
+                        "namespace{}",
+                        Arrays.asList(new Integer[]{DOWN, Namespace, DEFAULT_NAMESPACE, NAMESPACE_BODY, UP})
+                    },
                     //without namespace
                     {
                         "$a=1;",
                         Arrays.asList(new Integer[]{
-                            DOWN,Namespace,DEFAULT_NAMESPACE,DOWN, NAMESPACE_BODY, 
-                                DOWN,Assign,VariableId, Int,UP,
+                            DOWN, Namespace, DEFAULT_NAMESPACE, DOWN, NAMESPACE_BODY,
+                            DOWN, EXPRESSION, DOWN, Assign, VariableId, Int, UP, UP,
                             UP, UP
                         })
-                    },
-                });
+                    },});
     }
 }

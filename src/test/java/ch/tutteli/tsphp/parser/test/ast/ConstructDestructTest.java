@@ -69,7 +69,7 @@ public class ConstructDestructTest extends AAstTest
                     "(__construct (mMod public) (type tMod void) (params "
                     + "(pDecl (type tMod int) $a) "
                     + "(pDecl (type tMod bool) $b)"
-                    + ") (block (= $a 1)))"
+                    + ") (block (expr (= $a 1))))"
                 });
         return collection;
 

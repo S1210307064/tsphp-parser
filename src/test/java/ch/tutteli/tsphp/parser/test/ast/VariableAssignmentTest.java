@@ -17,7 +17,6 @@
 package ch.tutteli.tsphp.parser.test.ast;
 
 import ch.tutteli.tsphp.parser.test.testutils.AAstTest;
-import ch.tutteli.tsphp.parser.test.testutils.AstHelper;
 import ch.tutteli.tsphp.parser.test.testutils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -49,17 +48,17 @@ public class VariableAssignmentTest extends AAstTest
         List<Object[]> collection = new ArrayList<>();
         List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
-            collection.add(new Object[]{"$a = " + expression[0] + ";", "(= $a " + expression[1] + ")"});
-            collection.add(new Object[]{"$a += " + expression[0] + ";", "(+= $a " + expression[1] + ")"});
-            collection.add(new Object[]{"$a -= " + expression[0] + ";", "(-= $a " + expression[1] + ")"});
-            collection.add(new Object[]{"$a *= " + expression[0] + ";", "(*= $a " + expression[1] + ")"});
-            collection.add(new Object[]{"$a /= " + expression[0] + ";", "(/= $a " + expression[1] + ")"});
-            collection.add(new Object[]{"$a &= " + expression[0] + ";", "(&= $a " + expression[1] + ")"});
-            collection.add(new Object[]{"$a |= " + expression[0] + ";", "(|= $a " + expression[1] + ")"});
-            collection.add(new Object[]{"$a %= " + expression[0] + ";", "(%= $a " + expression[1] + ")"});
-            collection.add(new Object[]{"$a .= " + expression[0] + ";", "(.= $a " + expression[1] + ")"});
-            collection.add(new Object[]{"$a <<= " + expression[0] + ";", "(<<= $a " + expression[1] + ")"});
-            collection.add(new Object[]{"$a >>= " + expression[0] + ";", "(>>= $a " + expression[1] + ")"});
+            collection.add(new Object[]{"$a = " + expression[0] + ";", "(expr (= $a " + expression[1] + "))"});
+            collection.add(new Object[]{"$a += " + expression[0] + ";", "(expr (+= $a " + expression[1] + "))"});
+            collection.add(new Object[]{"$a -= " + expression[0] + ";", "(expr (-= $a " + expression[1] + "))"});
+            collection.add(new Object[]{"$a *= " + expression[0] + ";", "(expr (*= $a " + expression[1] + "))"});
+            collection.add(new Object[]{"$a /= " + expression[0] + ";", "(expr (/= $a " + expression[1] + "))"});
+            collection.add(new Object[]{"$a &= " + expression[0] + ";", "(expr (&= $a " + expression[1] + "))"});
+            collection.add(new Object[]{"$a |= " + expression[0] + ";", "(expr (|= $a " + expression[1] + "))"});
+            collection.add(new Object[]{"$a %= " + expression[0] + ";", "(expr (%= $a " + expression[1] + "))"});
+            collection.add(new Object[]{"$a .= " + expression[0] + ";", "(expr (.= $a " + expression[1] + "))"});
+            collection.add(new Object[]{"$a <<= " + expression[0] + ";", "(expr (<<= $a " + expression[1] + "))"});
+            collection.add(new Object[]{"$a >>= " + expression[0] + ";", "(expr (>>= $a " + expression[1] + "))"});
         }
         return collection;
     }

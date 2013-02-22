@@ -49,26 +49,27 @@ public class ForeachTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "foreach($a as int $k => MyClass $v)$a=1;",
-                        "(foreach $a (vars (type tMod int) $k) (vars (type tMod MyClass) $v) (cBlock (= $a 1)))"
+                        "(foreach $a (vars (type tMod int) $k) (vars (type tMod MyClass) $v) (cBlock (expr (= $a 1))))"
                     },
                     {
                         "foreach($a as float $v) $a=1;",
-                        "(foreach $a (vars (type tMod float) $v) (cBlock (= $a 1)))"
+                        "(foreach $a (vars (type tMod float) $v) (cBlock (expr (= $a 1))))"
                     },
                     {
                         "foreach($a as string $k => string $v){$a=1;}",
-                        "(foreach $a (vars (type tMod string) $k) (vars (type tMod string) $v) (cBlock (= $a 1)))"},
+                        "(foreach $a (vars (type tMod string) $k) (vars (type tMod string) $v) (cBlock (expr (= $a 1))))"},
                     {
                         "foreach($a as bool $v) {$a=1;}",
-                        "(foreach $a (vars (type tMod bool) $v) (cBlock (= $a 1)))"
+                        "(foreach $a (vars (type tMod bool) $v) (cBlock (expr (= $a 1))))"
                     },
                     {
                         "foreach($a as bool $k=> array $v){$a=1; $b=2;}",
-                        "(foreach $a (vars (type tMod bool) $k) (vars (type tMod array) $v) (cBlock (= $a 1) (= $b 2)))"
+                        "(foreach $a (vars (type tMod bool) $k) (vars (type tMod array) $v) "
+                        + "(cBlock (expr (= $a 1)) (expr (= $b 2))))"
                     },
                     {
                         "foreach($a as int $v) {$a=1; $b=3;}",
-                        "(foreach $a (vars (type tMod int) $v) (cBlock (= $a 1) (= $b 3)))"
+                        "(foreach $a (vars (type tMod int) $v) (cBlock (expr (= $a 1)) (expr (= $b 3))))"
                     }
                 }));
 

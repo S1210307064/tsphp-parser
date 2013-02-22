@@ -51,27 +51,27 @@ public class ForTest extends AAstTest
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "for($a=1     ; true ; ++$i  ) $a=1;",
-                        "(for (exprs (= $a 1)) (exprs true) (exprs (preIncr $i)) (cBlock (= $a 1)))"
+                        "(for (exprs (= $a 1)) (exprs true) (exprs (preIncr $i)) (cBlock (expr (= $a 1))))"
                     },
                     {
                         "for(         ; true ; ++$i  ) $a=1;",
-                        "(for exprs (exprs true) (exprs (preIncr $i)) (cBlock (= $a 1)))"
+                        "(for exprs (exprs true) (exprs (preIncr $i)) (cBlock (expr (= $a 1))))"
                     },
                     {
                         "for(         ;      ; $i+=1 ) $a=1;",
-                        "(for exprs exprs (exprs (+= $i 1)) (cBlock (= $a 1)))"
+                        "(for exprs exprs (exprs (+= $i 1)) (cBlock (expr (= $a 1))))"
                     },
                     {
                         "for(         ; true ;       ) $a=1;",
-                        "(for exprs (exprs true) exprs (cBlock (= $a 1)))"
+                        "(for exprs (exprs true) exprs (cBlock (expr (= $a 1))))"
                     },
                     {
                         "for(         ;      ;       ) $a=1;",
-                        "(for exprs exprs exprs (cBlock (= $a 1)))"
+                        "(for exprs exprs exprs (cBlock (expr (= $a 1))))"
                     },
                     {
                         "for(         ;      ;       ) $a=1;",
-                        "(for exprs exprs exprs (cBlock (= $a 1)))"
+                        "(for exprs exprs exprs (cBlock (expr (= $a 1))))"
                     }
                 }));
 
@@ -83,7 +83,7 @@ public class ForTest extends AAstTest
                         + "(exprs " + expression[1] + ") "
                         + "(exprs " + expression[1] + ") "
                         + "(exprs " + expression[1] + ") "
-                        + "(cBlock (= $a 1))"
+                        + "(cBlock (expr (= $a 1)))"
                         + ")"
                     });
             collection.add(new Object[]{
@@ -96,7 +96,7 @@ public class ForTest extends AAstTest
                         + "(exprs " + expression[1] + " " + expression[1] + ") "
                         + "(exprs " + expression[1] + " " + expression[1] + ") "
                         + "(exprs " + expression[1] + " " + expression[1] + ") "
-                        + "(cBlock (^= $a 1))"
+                        + "(cBlock (expr (^= $a 1)))"
                         + ")"
                     });
         }

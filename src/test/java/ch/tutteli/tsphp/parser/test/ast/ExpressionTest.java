@@ -49,7 +49,7 @@ public class ExpressionTest extends AAstTest
          List<String[]> expressions = ExpressionHelper.getAstExpressions();
          
          for(Object[] expression:expressions){
-             collection.add(new Object[]{expression[0]+";",expression[1]});
+             collection.add(new Object[]{expression[0]+";","(expr "+expression[1]+")"});
          }
          return collection;
     }
