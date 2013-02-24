@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.parser.test.testutils;
 
 import ch.tutteli.tsphp.common.AstHelperRegistry;
+import ch.tutteli.tsphp.common.ITSPHPAstAdaptor;
 import ch.tutteli.tsphp.common.TSPHPAstAdaptor;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseStringStream;
 import org.antlr.runtime.CharStream;
@@ -38,10 +39,12 @@ public abstract class AParserTest extends ATest
     protected TestTSPHPParser parser;
     protected TestTSPHPLexer lexer;
     protected ParserRuleReturnScope result;
+    private ITSPHPAstAdaptor adaptor;
 
     public AParserTest(String testString) {
         super(testString);
-        AstHelperRegistry.set(new ch.tutteli.tsphp.common.AstHelper());
+        adaptor = new TSPHPAstAdaptor();
+        AstHelperRegistry.set(new ch.tutteli.tsphp.common.AstHelper(adaptor));
     }
 
     public void parseAndCheckForException() throws RecognitionException {
@@ -57,7 +60,7 @@ public abstract class AParserTest extends ATest
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 
         parser = new TestTSPHPParser(tokens);
-        parser.setTreeAdaptor(new TSPHPAstAdaptor());
+        parser.setTreeAdaptor(adaptor);
         parser.setErrorReporting(isErrorReportingOn);
         run();
     }

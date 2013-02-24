@@ -54,8 +54,8 @@ public class ParserFacade implements IParser
     }
 
     public ParserFacade(ITSPHPAstAdaptor anAstAdaptor) {
-        AstHelperRegistry.set(new AstHelper());
         astAdaptor = anAstAdaptor;
+        AstHelperRegistry.set(new AstHelper(astAdaptor));
     }
 
     @Override
