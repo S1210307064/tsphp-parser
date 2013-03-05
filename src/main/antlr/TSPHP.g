@@ -869,7 +869,7 @@ instanceOf
 castOrBitwiseNotOrAt
 	:	cast = '(' allTypesWithoutObjectAndResourceWithModifier ')' castOrBitwiseNotOrAt -> ^(CASTING[$cast,"casting"] allTypesWithoutObjectAndResourceWithModifier castOrBitwiseNotOrAt)
 	|	'~'^ castOrBitwiseNotOrAt
-	|	'@'^ castOrBitwiseNotOrAt 
+	|	'@'^ castOrBitwiseNotOrAt
 	|	cloneOrNew
 	;
 
