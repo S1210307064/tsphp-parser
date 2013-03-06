@@ -16,7 +16,7 @@
  */
 package ch.tutteli.tsphp.parser.test.testutils;
 
-import ch.tutteli.tsphp.parser.antlr.TSPHPErrorReportingLexer;
+import ch.tutteli.tsphp.parser.antlr.ErrorReportingTSPHPLexer;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
@@ -26,7 +26,7 @@ import org.antlr.runtime.RecognizerSharedState;
  *
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
-public class TestTSPHPLexer extends TSPHPErrorReportingLexer
+public class TestTSPHPLexer extends ErrorReportingTSPHPLexer
 {
 
     private boolean isErrorReportingOn = true;

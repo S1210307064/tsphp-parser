@@ -94,6 +94,8 @@ public class NotSoNiceButValidTest extends AParserTest
                     {"namespace a;"},
                     {"namespace a{}"},
                     {"namespace {}"},
+                    //empty switch
+                    {"switch($a){}"},
                     //switch with case label but without command => same as an empty block
                     {"switch($a){case 1:}"},
                     //switch with case labels but without command => same as an empty block

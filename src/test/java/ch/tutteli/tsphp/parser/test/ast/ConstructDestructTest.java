@@ -91,7 +91,8 @@ public class ConstructDestructTest extends AAstTest
             {"final", "final public"},
             {"final private", "final private"},
             {"final protected", "final protected"},
-            {"final public", "final public"},};
+            {"final public", "final public"}
+        };
 
         for (String[] variation : variations) {
             collection.add(new Object[]{

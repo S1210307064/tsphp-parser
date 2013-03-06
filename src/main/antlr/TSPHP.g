@@ -558,7 +558,7 @@ interfaceConstruct
 functionDeclaration	
 	:	func='function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
 		-> ^($func 
-			FUNCTION_MODIFIER[func,"fMod"] 
+			FUNCTION_MODIFIER[$func,"fMod"] 
 			functionSignatureInclReturnType
 			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
 		)
@@ -742,9 +742,9 @@ castAssignOrAssignList[ITSPHPAst ast]
 		)*			
 	;
 	
-castAssign[ITSPHPAst ast]
+castAssign[ITSPHPAst typeAst]
 	:	VariableId cast='=''('')' expression 
-		-> ^(VariableId ^(CASTING[$cast,"casting"] {$ast} expression))
+		-> ^(VariableId ^(CASTING[$cast,"casting"] {$typeAst} expression))
 	;
 
 assign	
@@ -872,14 +872,12 @@ castOrBitwiseNotOrAt
 	|	'@'^ castOrBitwiseNotOrAt
 	|	cloneOrNew
 	;
-
 	
 cloneOrNew
 	:	'clone'^ cloneOrNew
 	|	newObject
 	|	unaryPrimary
 	;
-
 	
 variableOrMemberOrStaticMember
 	:	staticAccess varId=VariableId -> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess CLASS_STATIC_ACCESS_VARIABLE_ID[$varId])
@@ -925,8 +923,8 @@ primary
 postFixCall
 	:	(	functionCall -> functionCall
 		|	methodCall -> methodCall
-		|	selfOrParentMethodCall -> selfOrParentMethodCall
-		|	staticMethodCall -> staticMethodCall
+		|	methodCallSelfOrParent -> methodCallSelfOrParent
+		|	methodCallStatic -> methodCallStatic
 		)
 		(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixCall Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixCall expression)
@@ -945,13 +943,13 @@ methodCall
 		 -> ^(METHOD_CALL[$callee,"mCall"] $callee Identifier actualParameters)	 
 	;
 
-selfOrParentMethodCall
+methodCallSelfOrParent
 	:	selfOrParent Identifier actualParameters
 		-> ^(METHOD_CALL[$selfOrParent.start,"mCall"] selfOrParent Identifier actualParameters)	
 	;	
 
 	
-staticMethodCall
+methodCallStatic
 	:	staticClassAccess Identifier actualParameters
 		-> ^(METHOD_CALL_STATIC[$staticClassAccess.start,"smCall"] staticClassAccess Identifier actualParameters)
 	;
@@ -1106,11 +1104,11 @@ array	:	arr='[' arrayContent? ']'  -> ^(TypeArray[$arr,"array"] arrayContent?)
 arrayContent
 	:	arrayKeyValue (','! arrayKeyValue)*
 	;
+	
 arrayKeyValue
 	:	key=expression '=>' value=expression -> ^('=>' $key $value)
 	|	value=expression
 	;
-
 
 ifCondition
 	:	'if' '(' expression ')' instructionThen=instructionInclBreakContinue ( 'else' instructionElse =instructionInclBreakContinue )? 
@@ -1121,9 +1119,8 @@ ifCondition
 		)
 	;
 
-
 switchCondition	
-	:	'switch' '(' VariableId ')' '{' switchContent? '}'  -> ^('switch' VariableId switchContent?)
+	:	'switch' '(' expression ')' '{' switchContent? '}'  -> ^('switch' expression switchContent?)
 	;
 	
 switchContent

@@ -26,8 +26,8 @@ import ch.tutteli.tsphp.common.TSPHPErrorNode;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseFileStream;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseInputStream;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseStringStream;
-import ch.tutteli.tsphp.parser.antlr.TSPHPErrorReportingLexer;
-import ch.tutteli.tsphp.parser.antlr.TSPHPErrorReportingParser;
+import ch.tutteli.tsphp.parser.antlr.ErrorReportingTSPHPLexer;
+import ch.tutteli.tsphp.parser.antlr.ErrorReportingTSPHPParser;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -43,8 +43,8 @@ import org.antlr.runtime.TokenStream;
 public class ParserFacade implements IParser
 {
 
-    protected TSPHPErrorReportingParser parser;
-    protected TSPHPErrorReportingLexer lexer;
+    protected ErrorReportingTSPHPParser parser;
+    protected ErrorReportingTSPHPLexer lexer;
     protected TokenStream tokenStream;
     private Exception parseException;
     private ITSPHPAstAdaptor astAdaptor;
@@ -126,10 +126,10 @@ public class ParserFacade implements IParser
     }
 
     private TSPHPAst getAst(CharStream input) throws RecognitionException {
-        lexer = new TSPHPErrorReportingLexer(input);
+        lexer = new ErrorReportingTSPHPLexer(input);
         tokenStream = new CommonTokenStream(lexer);
 
-        parser = new TSPHPErrorReportingParser(tokenStream);
+        parser = new ErrorReportingTSPHPParser(tokenStream);
         parser.setTreeAdaptor(astAdaptor);
         return (TSPHPAst) parser.compilationUnit().getTree();
     }
