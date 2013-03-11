@@ -227,6 +227,12 @@ import ch.tutteli.tsphp.common.ITSPHPAst;
 @members{
 private ITSPHPAst classMemberModifiers;
 
+/*public ITSPHPAst resolveCompoundAssignment(Token token, ITSPHPAst left, ITSPHPAst right){
+    ITSPHPAst copy = AstHelperRegistry.get().copyAst(left);
+    int childIndex = (ITSPHPAst) retval.tree.getChild(1).getChild(0).getChildIndex();	
+    parent.replaceChildren(childIndex, childIndex, copy);
+}*/
+
 }
 
 @lexer::header{
@@ -781,23 +787,41 @@ logicAndWeak
 	;
 
 assignment
-	:	(ternary -> ternary)
-		(	'=' expression -> ^('=' $assignment expression)
-		|	cast='=''('')' expression -> ^(CASTING_ASSIGN[$cast,"cAssign"] $assignment expression)
-		|	op='+='  expression -> ^(Assign[$op,"="] $assignment ^(Plus[$op,"+"] $assignment expression))
-		|	op='-='  expression -> ^(Assign[$op,"="] $assignment ^(Minus[$op,"-"] $assignment expression))
-		|	op='*='  expression -> ^(Assign[$op,"="] $assignment ^(Multiply[$op,"*"] $assignment expression))
-		|	op='/='  expression -> ^(Assign[$op,"="] $assignment ^(Divide[$op,"/"] $assignment expression))
-		|	op='&='  expression -> ^(Assign[$op,"="] $assignment ^(BitwiseAnd[$op,"&"] $assignment expression))
-		|	op='|='  expression -> ^(Assign[$op,"="] $assignment ^(BitwiseOr[$op,"|"] $assignment expression))
-		|	op='^='  expression -> ^(Assign[$op,"="] $assignment ^(BitwiseXor[$op,"^"] $assignment expression))
-		|	op='%='  expression -> ^(Assign[$op,"="] $assignment ^(Modulo[$op,"\%"] $assignment expression))
-		|	op='.='  expression -> ^(Assign[$op,"="] $assignment ^(Dot[$op,"."] $assignment expression))
-		|	op='<<=' expression -> ^(Assign[$op,"="] $assignment ^(ShiftLeft[$op,"<<"] $assignment expression))
-		|	op='>>=' expression -> ^(Assign[$op,"="] $assignment ^(ShiftRight[$op,">>"] $assignment expression))
-		)*
+	:	assignmentSimple
+	|	assignmentCompound
 	;
 	
+assignmentSimple
+	:	ternary assignOperator expression -> ^(assignOperator ternary expression)
+	;
+	
+assignOperator	
+	:	'='
+	|	cast='=''('')' -> CASTING_ASSIGN[$cast,"cAssign"]
+	;	
+
+assignmentCompound
+@init{
+    ITSPHPAst annexeOperator=null;
+}
+	:	(ternary -> ternary)
+		(	(	op='+=' {annexeOperator = (ITSPHPAst)adaptor.create(Plus, op, "+");}
+			|	op='-=' {annexeOperator = (ITSPHPAst)adaptor.create(Minus, op, "-");}
+			|	op='*=' {annexeOperator = (ITSPHPAst)adaptor.create(Multiply, op, "*");}
+			|	op='/=' {annexeOperator = (ITSPHPAst)adaptor.create(Divide, op, "/");}
+			|	op='&=' {annexeOperator = (ITSPHPAst)adaptor.create(BitwiseAnd, op, "&");}
+			|	op='|=' {annexeOperator = (ITSPHPAst)adaptor.create(BitwiseOr, op, "|");}
+			|	op='^=' {annexeOperator = (ITSPHPAst)adaptor.create(BitwiseXor, op, "^");}
+			|	op='%=' {annexeOperator = (ITSPHPAst)adaptor.create(Modulo, op, "\%");}
+			|	op='.=' {annexeOperator = (ITSPHPAst)adaptor.create(Dot, op, ".");}
+			|	op='<<=' {annexeOperator = (ITSPHPAst)adaptor.create(ShiftLeft, op, "<<");}
+			|	op='>>=' {annexeOperator = (ITSPHPAst)adaptor.create(ShiftRight, op, ">>");}
+			)
+			expression
+			 -> ^(Assign[$op,"="] $assignmentCompound ^({annexeOperator} {AstHelperRegistry.get().copyAst((ITSPHPAst)root_1.getChild(0))} expression))
+		)*
+	;
+
 ternary	
 	:	logicOr ('?'^ expression ':'! expression)?
 	;
