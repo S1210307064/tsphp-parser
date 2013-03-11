@@ -67,6 +67,7 @@ public class TryCatchTest extends AAstTest
                         + "(catch (vars (type tMod b) $e) (cBlock (expr (= $a 1)) (expr (= $b 2)))) "
                         + "(catch (vars (type tMod c) $e) cBlock)"
                         + ")"
-                    },});
+                    }
+                });
     }
 }

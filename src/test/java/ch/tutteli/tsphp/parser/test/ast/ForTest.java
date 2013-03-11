@@ -59,15 +59,11 @@ public class ForTest extends AAstTest
                     },
                     {
                         "for(         ;      ; $i+=1 ) $a=1;",
-                        "(for exprs exprs (exprs (+= $i 1)) (cBlock (expr (= $a 1))))"
+                        "(for exprs exprs (exprs (= $i (+ $i 1))) (cBlock (expr (= $a 1))))"
                     },
                     {
                         "for(         ; true ;       ) $a=1;",
                         "(for exprs (exprs true) exprs (cBlock (expr (= $a 1))))"
-                    },
-                    {
-                        "for(         ;      ;       ) $a=1;",
-                        "(for exprs exprs exprs (cBlock (expr (= $a 1))))"
                     },
                     {
                         "for(         ;      ;       ) $a=1;",
@@ -96,7 +92,7 @@ public class ForTest extends AAstTest
                         + "(exprs " + expression[1] + " " + expression[1] + ") "
                         + "(exprs " + expression[1] + " " + expression[1] + ") "
                         + "(exprs " + expression[1] + " " + expression[1] + ") "
-                        + "(cBlock (expr (^= $a 1)))"
+                        + "(cBlock (expr (= $a (^ $a 1))))"
                         + ")"
                     });
         }

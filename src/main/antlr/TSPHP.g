@@ -781,25 +781,23 @@ logicAndWeak
 	;
 
 assignment
-	:	ternary (assignmentOperator^ expression)*
+	:	(ternary -> ternary)
+		(	'=' expression -> ^('=' $assignment expression)
+		|	cast='=''('')' expression -> ^(CASTING_ASSIGN[$cast,"cAssign"] $assignment expression)
+		|	op='+='  expression -> ^(Assign[$op,"="] $assignment ^(Plus[$op,"+"] $assignment expression))
+		|	op='-='  expression -> ^(Assign[$op,"="] $assignment ^(Minus[$op,"-"] $assignment expression))
+		|	op='*='  expression -> ^(Assign[$op,"="] $assignment ^(Multiply[$op,"*"] $assignment expression))
+		|	op='/='  expression -> ^(Assign[$op,"="] $assignment ^(Divide[$op,"/"] $assignment expression))
+		|	op='&='  expression -> ^(Assign[$op,"="] $assignment ^(BitwiseAnd[$op,"&"] $assignment expression))
+		|	op='|='  expression -> ^(Assign[$op,"="] $assignment ^(BitwiseOr[$op,"|"] $assignment expression))
+		|	op='^='  expression -> ^(Assign[$op,"="] $assignment ^(BitwiseXor[$op,"^"] $assignment expression))
+		|	op='%='  expression -> ^(Assign[$op,"="] $assignment ^(Modulo[$op,"\%"] $assignment expression))
+		|	op='.='  expression -> ^(Assign[$op,"="] $assignment ^(Dot[$op,"."] $assignment expression))
+		|	op='<<=' expression -> ^(Assign[$op,"="] $assignment ^(ShiftLeft[$op,"<<"] $assignment expression))
+		|	op='>>=' expression -> ^(Assign[$op,"="] $assignment ^(ShiftRight[$op,">>"] $assignment expression))
+		)*
 	;
-
-assignmentOperator
-	:	'='
-	|	'+='
-	|	'-='
-	|	'*='
-	|	'/='
-	|	'&='
-	|	'|='
-	|	'^='
-	|	'%='
-	|	'.='
-	|	'<<='
-	|	'>>='
-	|	cast='=''('')' -> CASTING_ASSIGN[$cast,"cAssign"]
-	;
-
+	
 ternary	
 	:	logicOr ('?'^ expression ':'! expression)?
 	;

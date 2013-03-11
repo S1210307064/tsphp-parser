@@ -53,12 +53,6 @@ public class ArrayAccessTest extends AAstTest
                         "array $d = $a[" + expression[0] + "];",
                         "(vars (type tMod array) ($d (arrAccess $a " + expression[1] + ")))"
                     });
-            collection.add(new Object[]{
-                        "array $d = $a[" + expression[0] + "][" + expression[0] + "];",
-                        "(vars (type tMod array) ($d "
-                            + "(arrAccess (arrAccess $a " + expression[1] + ") " + expression[1] + ")"
-                        + "))"
-                    });
         }
         return collection;
     }

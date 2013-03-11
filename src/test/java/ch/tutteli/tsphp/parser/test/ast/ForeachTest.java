@@ -17,6 +17,7 @@
 package ch.tutteli.tsphp.parser.test.ast;
 
 import ch.tutteli.tsphp.parser.test.testutils.AAstTest;
+import ch.tutteli.tsphp.parser.test.testutils.ExpressionHelper;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -46,6 +47,13 @@ public class ForeachTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
+        List<String[]> expressions = ExpressionHelper.getAstExpressions();
+        for (Object[] expression : expressions) {
+            collection.add(new Object[]{
+                        "foreach(" + expression[0] + " as object $v);",
+                        "(foreach "+expression[1]+" (vars (type tMod object) $v) (cBlock expr))"
+                    });
+        }
         collection.addAll(Arrays.asList(new Object[][]{
                     {
                         "foreach($a as int $k => MyClass $v)$a=1;",
