@@ -46,8 +46,12 @@ public class CastTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(TypeHelper.getAllTypesWithoutObjectAndResourceWithModifier(
+        collection.addAll(TypeHelper.getAllTypesWithoutObjectWithModifier(
                 "(", ") $a;", "(expr (casting ", " $a))", ""));
+        List<String> allTypesWithoutObject = TypeHelper.getAllTypesWithoutObject();
+        for(String type : allTypesWithoutObject){
+            collection.add(new Object[]{type+" $a =() 1;","(vars (type tMod "+type+") ($a (casting (type tMod "+type+") 1)))"});
+        }
         return collection;
     }
 }

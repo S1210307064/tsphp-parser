@@ -50,9 +50,8 @@ public class FunctionErrorTest extends AParserParserExceptionTest
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{"function void a();",TSPHPParser.Semicolon,17});
         collection.add(new Object[]{"function void a(int $a=null, int $b){}", TSPHPParser.RightParanthesis, 35});
-        //cast not allowed for object and resource - see TSPHP-325
+        //cast not allowed for object - see TSPHP-325
         collection.add(new Object[]{"function void a(cast object $a){}", TSPHPParser.TypeObject, 21});
-        collection.add(new Object[]{"function void a(cast resource $a){}", TSPHPParser.TypeResource, 21});
 
         String fixture = "function void a (int $a, int $b=";
         int fixtureLength = fixture.length();

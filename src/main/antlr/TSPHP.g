@@ -579,14 +579,14 @@ returnType
 	| 	v='void' -> ^(TYPE[$v,"type"] TYPE_MODIFIER[$v,"tMod"] $v)
 	;
 	
-allTypesWithoutObjectAndResourceWithModifier
+allTypesWithoutObjectWithModifier
 	:	scalarTypeWithModifier
-	|	classInterfaceTypeWithoutObjectInclArrayWithModifier
+	|	typesWithoutScalarAndObjectWithModifier
 	;
 	
 allTypesWithModifier
-	:	allTypesWithoutObjectAndResourceWithModifier
-	|	objectOrResourceWithModifier
+	:	allTypesWithoutObjectWithModifier
+	|	objectWithModifier
 	;	
 
 	
@@ -602,42 +602,38 @@ scalarTypeWithModifier
 		)
 	;
 
-classInterfaceTypeWithoutObjectInclArrayWithModifier
+typesWithoutScalarAndObjectWithModifier
 @after{
 	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
 	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast,adaptor);	
 }
-	:	Cast? classInterfaceTypeWithoutObjectInclArray		
-		-> ^(TYPE[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"type"] 
-			^(TYPE_MODIFIER[$classInterfaceTypeWithoutObjectInclArrayWithModifier.start,"tMod"] Cast? ) 
-			classInterfaceTypeWithoutObjectInclArray
+	:	Cast? typesWithoutScalarAndObject		
+		-> ^(TYPE[$typesWithoutScalarAndObjectWithModifier.start,"type"] 
+			^(TYPE_MODIFIER[$typesWithoutScalarAndObjectWithModifier.start,"tMod"] Cast? ) 
+			typesWithoutScalarAndObject
 		)
 	;
 
-objectOrResourceWithModifier
+objectWithModifier
 @after{
 	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
 	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast,adaptor);	
 }
-	:	objectOrResource
-		-> ^(TYPE[$objectOrResourceWithModifier.start,"type"] 
-			TYPE_MODIFIER[$objectOrResourceWithModifier.start,"tMod"]
-			objectOrResource
+	:	obj='object'
+		-> ^(TYPE[$objectWithModifier.start,"type"] 
+			TYPE_MODIFIER[$objectWithModifier.start,"tMod"]
+			$obj
 		)	
 	;
 
-objectOrResource
-	:	'object'
-	|	'resource'
-	;
-
-allTypes:	allTypesWithoutObjectAndResource
-	|	objectOrResource
+allTypes:	allTypesWithoutObject
+	|	'object'
 	;
 	
-allTypesWithoutObjectAndResource
+allTypesWithoutObject
 	:	scalarTypes
 	|	TypeArray
+	|	TypeResource
 	| 	classInterfaceTypeWithoutObject
 	;
 
@@ -674,16 +670,16 @@ paramDeclarationOptional
 
 
 allTypesInclModifierForParameter
-	:	Cast? allTypesWithoutObjectAndResource '?'?
+	:	Cast? allTypesWithoutObject '?'?
 		-> ^(TYPE[$allTypesInclModifierForParameter.start,"type"] 
 			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] Cast? '?'?) 
-			allTypesWithoutObjectAndResource
+			allTypesWithoutObject
 		)
-	|	objectOrResource '?'?
+	|	obj='object' '?'?
 		-> ^(TYPE[$allTypesInclModifierForParameter.start,"type"] 
 			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] '?'?)
-			objectOrResource
-		)	
+			$obj
+		)
 	;
 
 VariableId	
@@ -729,8 +725,8 @@ localVariableDeclaration
 	
 variableDeclarationList
 	:	variableDeclarationScalarList
-	|	variableDeclarationArrayOrClassInterfaceList		
-	|	objectOrResourceWithModifier  assign (','! assign)*
+	|	variableDeclarationWihtoutScalarAndObjectList		
+	|	objectWithModifier  assign (','! assign)*
 	;
 	
 variableDeclarationScalarList
@@ -758,14 +754,15 @@ assign
 		-> ^(VariableId expression?)
 	;
 	
-variableDeclarationArrayOrClassInterfaceList
-	:	classInterfaceTypeWithoutObjectInclArrayWithModifier castAssignOrAssignList[$classInterfaceTypeWithoutObjectInclArrayWithModifier.tree]	
+variableDeclarationWihtoutScalarAndObjectList
+	:	typesWithoutScalarAndObjectWithModifier castAssignOrAssignList[$typesWithoutScalarAndObjectWithModifier.tree]	
 	;
 	
 
 	
-classInterfaceTypeWithoutObjectInclArray
+typesWithoutScalarAndObject
 	:	'array'
+	|	'resource'
 	|	classInterfaceTypeWithoutObject
 	;	
 
@@ -889,7 +886,7 @@ instanceOf
 	:	castOrBitwiseNotOrAt ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
 
 castOrBitwiseNotOrAt
-	:	cast = '(' allTypesWithoutObjectAndResourceWithModifier ')' castOrBitwiseNotOrAt -> ^(CASTING[$cast,"casting"] allTypesWithoutObjectAndResourceWithModifier castOrBitwiseNotOrAt)
+	:	cast = '(' allTypesWithoutObjectWithModifier ')' castOrBitwiseNotOrAt -> ^(CASTING[$cast,"casting"] allTypesWithoutObjectWithModifier castOrBitwiseNotOrAt)
 	|	'~'^ castOrBitwiseNotOrAt
 	|	'@'^ castOrBitwiseNotOrAt
 	|	cloneOrNew
