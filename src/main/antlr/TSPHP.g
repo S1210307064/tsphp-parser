@@ -192,6 +192,7 @@ tokens{
 	TYPE_NAME;
 	
 	UNARY_MINUS;
+	UNARY_PLUS;
 	USE_DECLARATION;
 	
 	VARIABLE_DECLARATION;
@@ -928,7 +929,7 @@ actualParameters
 	;
 
 unaryPrimary
-	:	uplus = '+' primary -> primary
+	:	uplus = '+' primary -> ^(UNARY_PLUS[uplus, "uPlus"] primary)
 	|	uminus = '-' primary -> ^(UNARY_MINUS[$uminus,"uMinus"] primary)
 	|	primary
 	;
@@ -1029,7 +1030,7 @@ postFixVariableInclCallAtTheEnd
 
 	
 unaryPrimitiveAtom
-	:	uplus = '+' primitiveAtomWithConstant -> primitiveAtomWithConstant
+	:	uplus = '+' primitiveAtomWithConstant -> ^(UNARY_PLUS[$uplus, "uPlus"] primitiveAtomWithConstant)
 	|	uminus = '-' primitiveAtomWithConstant -> ^(UNARY_MINUS[$uminus,"uMinus"] primitiveAtomWithConstant)
 	|	primitiveAtomWithConstant
 	;

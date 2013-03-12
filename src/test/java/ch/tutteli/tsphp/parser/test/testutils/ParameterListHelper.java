@@ -154,7 +154,7 @@ public class ParameterListHelper
                         prefixExpect + "(params "
                         + "(pDecl (type tMod int) $a) "
                         + "(pDecl (type (tMod ?) int) $i) "
-                        + "(pDecl (type tMod int) ($b 1))"
+                        + "(pDecl (type tMod int) ($b (uPlus 1)))"
                         + ")" + appendixExpect
                     },
                     {
