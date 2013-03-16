@@ -16,8 +16,12 @@
  */
 package ch.tutteli.tsphp.parser.antlr;
 
+import ch.tutteli.tsphp.common.IErrorLogger;
 import ch.tutteli.tsphp.common.IErrorReporter;
+import ch.tutteli.tsphp.common.exceptions.TSPHPException;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
@@ -31,6 +35,7 @@ public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorRepo
 {
 
     protected List<Exception> exceptions = new ArrayList<>();
+    private Collection<IErrorLogger> errorLoggers = new ArrayDeque<>();
 
     public ErrorReportingTSPHPParser(TokenStream input) {
         super(input);
@@ -51,8 +56,15 @@ public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorRepo
     }
 
     @Override
-    public void reportError(RecognitionException e) {
-        super.reportError(e);
-        exceptions.add(e);
+    public void reportError(RecognitionException exception) {
+        exceptions.add(exception);
+        for (IErrorLogger logger : errorLoggers) {
+            logger.log(new TSPHPException(exception));
+        }
+    }
+
+    @Override
+    public void addErrorLogger(IErrorLogger errorLogger) {
+        errorLoggers.add(errorLogger);
     }
 }

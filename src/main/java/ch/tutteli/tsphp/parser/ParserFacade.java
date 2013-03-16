@@ -18,11 +18,14 @@ package ch.tutteli.tsphp.parser;
 
 import ch.tutteli.tsphp.common.AstHelper;
 import ch.tutteli.tsphp.common.AstHelperRegistry;
+import ch.tutteli.tsphp.common.IErrorLogger;
 import ch.tutteli.tsphp.common.IParser;
 import ch.tutteli.tsphp.common.ITSPHPAstAdaptor;
 import ch.tutteli.tsphp.common.TSPHPAst;
 import ch.tutteli.tsphp.common.TSPHPAstAdaptor;
 import ch.tutteli.tsphp.common.TSPHPErrorNode;
+import ch.tutteli.tsphp.common.exceptions.TSPHPException;
+import ch.tutteli.tsphp.common.exceptions.TypeCheckerException;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseFileStream;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseInputStream;
 import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseStringStream;
@@ -30,6 +33,8 @@ import ch.tutteli.tsphp.parser.antlr.ErrorReportingTSPHPLexer;
 import ch.tutteli.tsphp.parser.antlr.ErrorReportingTSPHPParser;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayDeque;
+import java.util.Collection;
 import java.util.List;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -48,6 +53,7 @@ public class ParserFacade implements IParser
     protected TokenStream tokenStream;
     private Exception parseException;
     private ITSPHPAstAdaptor astAdaptor;
+    private Collection<IErrorLogger> errorLoggers = new ArrayDeque<>();
 
     public ParserFacade() {
         this(new TSPHPAstAdaptor());
@@ -137,5 +143,17 @@ public class ParserFacade implements IParser
     @Override
     public TokenStream getTokenStream() {
         return tokenStream;
+    }
+
+    @Override
+    public void addErrorLogger(IErrorLogger errorLogger) {
+        errorLoggers.add(errorLogger);
+    }
+
+    @Override
+    public void log(TSPHPException exception) {
+        for (IErrorLogger logger : errorLoggers) {
+            logger.log(exception);
+        }
     }
 }
