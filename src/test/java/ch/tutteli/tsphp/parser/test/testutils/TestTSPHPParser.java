@@ -17,6 +17,8 @@
 package ch.tutteli.tsphp.parser.test.testutils;
 
 import ch.tutteli.tsphp.parser.antlr.ErrorReportingTSPHPParser;
+import java.util.ArrayList;
+import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 
@@ -29,6 +31,7 @@ public class TestTSPHPParser extends ErrorReportingTSPHPParser
 {
 
     private boolean isErrorReportingOn = true;
+    protected List<Exception> exceptions = new ArrayList<>();
 
     public TestTSPHPParser(TokenStream input) {
         super(input);
@@ -40,10 +43,14 @@ public class TestTSPHPParser extends ErrorReportingTSPHPParser
 
     @Override
     public void reportError(RecognitionException e) {
+        super.reportError(e);
+        exceptions.add(e);
         if (isErrorReportingOn) {
-            super.reportError(e);
-        } else {
-            exceptions.add(e);
+            System.out.println(e.getMessage());
         }
+    }
+
+    public List<Exception> getExceptions() {
+        return exceptions;
     }
 }

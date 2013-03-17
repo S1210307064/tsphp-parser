@@ -17,6 +17,8 @@
 package ch.tutteli.tsphp.parser.test.testutils;
 
 import ch.tutteli.tsphp.parser.antlr.ErrorReportingTSPHPLexer;
+import java.util.ArrayList;
+import java.util.List;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
@@ -30,6 +32,7 @@ public class TestTSPHPLexer extends ErrorReportingTSPHPLexer
 {
 
     private boolean isErrorReportingOn = true;
+    protected List<Exception> exceptions = new ArrayList<>();
 
     public TestTSPHPLexer(CharStream input) {
         super(input);
@@ -41,11 +44,15 @@ public class TestTSPHPLexer extends ErrorReportingTSPHPLexer
 
     @Override
     public void reportError(RecognitionException e) {
+        super.reportError(e);
+        exceptions.add(e);
         if (isErrorReportingOn) {
-            super.reportError(e);
-        } else {
-            exceptions.add(e);
+            System.out.println(e.getMessage());
         }
+    }
+    
+    public List<Exception> getExceptions() {
+        return exceptions;
     }
 
     public RecognizerSharedState getState() {

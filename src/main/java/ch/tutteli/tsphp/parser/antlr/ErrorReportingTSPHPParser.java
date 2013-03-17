@@ -20,9 +20,7 @@ import ch.tutteli.tsphp.common.IErrorLogger;
 import ch.tutteli.tsphp.common.IErrorReporter;
 import ch.tutteli.tsphp.common.exceptions.TSPHPException;
 import java.util.ArrayDeque;
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.TokenStream;
@@ -34,8 +32,8 @@ import org.antlr.runtime.TokenStream;
 public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorReporter
 {
 
-    protected List<Exception> exceptions = new ArrayList<>();
     private Collection<IErrorLogger> errorLoggers = new ArrayDeque<>();
+    private boolean hasFoundError = false;
 
     public ErrorReportingTSPHPParser(TokenStream input) {
         super(input);
@@ -47,17 +45,12 @@ public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorRepo
 
     @Override
     public boolean hasFoundError() {
-        return !exceptions.isEmpty();
-    }
-
-    @Override
-    public List<Exception> getExceptions() {
-        return exceptions;
+        return hasFoundError;
     }
 
     @Override
     public void reportError(RecognitionException exception) {
-        exceptions.add(exception);
+        hasFoundError = true;
         for (IErrorLogger logger : errorLoggers) {
             logger.log(new TSPHPException(exception));
         }
@@ -66,5 +59,10 @@ public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorRepo
     @Override
     public void addErrorLogger(IErrorLogger errorLogger) {
         errorLoggers.add(errorLogger);
+    }
+
+    @Override
+    public void reset() {
+        hasFoundError = false;
     }
 }
