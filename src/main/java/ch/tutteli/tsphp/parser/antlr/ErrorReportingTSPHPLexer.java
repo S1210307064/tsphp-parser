@@ -55,7 +55,8 @@ public class ErrorReportingTSPHPLexer extends TSPHPLexer implements IErrorReport
     public void reportError(RecognitionException exception) {
         hasFoundError = true;
         for (IErrorLogger logger : errorLoggers) {
-            logger.log(new TSPHPException(exception));
+            logger.log(new TSPHPException("Line " + exception.line + "|" + exception.charPositionInLine
+                    + " lexer exception occured. Unexpected token: " + exception.token.getText(), exception));
         }
     }
 

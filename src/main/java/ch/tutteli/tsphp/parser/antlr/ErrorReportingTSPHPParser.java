@@ -21,6 +21,7 @@ import ch.tutteli.tsphp.common.IErrorReporter;
 import ch.tutteli.tsphp.common.exceptions.TSPHPException;
 import java.util.ArrayDeque;
 import java.util.Collection;
+import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.TokenStream;
@@ -52,7 +53,8 @@ public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorRepo
     public void reportError(RecognitionException exception) {
         hasFoundError = true;
         for (IErrorLogger logger : errorLoggers) {
-            logger.log(new TSPHPException(exception));
+            logger.log(new TSPHPException("Line " + exception.line + "|" + exception.charPositionInLine
+                    + " parser exception occured. Unexpected token: " + exception.token.getText(), exception));
         }
     }
 
