@@ -47,11 +47,11 @@ public class PostFixTest extends AAstTest
         List<Object[]> collection = new ArrayList<>();
 
         String[][] tmp1 = new String[][]{
-            {"$a->foo()", "(mCall $a foo args)"},
-            {"$this->foo()", "(mCall $this foo args)"},
-            {"self::foo()", "(mCall self foo args)"},
-            {"parent::foo()", "(mCall parent foo args)"},
-            {"Foo::foo()", "(smCall Foo foo args)"},
+            {"$a->foo()", "(mCall $a foo() args)"},
+            {"$this->foo()", "(mCall $this foo() args)"},
+            {"self::foo()", "(mCall self foo() args)"},
+            {"parent::foo()", "(mCall parent foo() args)"},
+            {"Foo::foo()", "(smCall Foo foo() args)"},
             //
             {"$a[0]", "(arrAccess $a 0)"},
             {"$this[0]", "(arrAccess $this 0)"},
@@ -67,7 +67,7 @@ public class PostFixTest extends AAstTest
             tmp2.add(new String[]{expression[0] + "[0]", "(arrAccess " + expression[1] + " 0)"});
             tmp2.add(new String[]{
                         expression[0] + "->foo('hello')",
-                        "(mpCall " + expression[1] + " foo (args 'hello'))"
+                        "(mpCall " + expression[1] + " foo() (args 'hello'))"
                     });
         }
 
@@ -77,7 +77,7 @@ public class PostFixTest extends AAstTest
             tmp3.add(new String[]{expression[0] + "[$i]", "(arrAccess " + expression[1] + " $i)"});
             tmp3.add(new String[]{
                         expression[0] + "->foo(1,2)",
-                        "(mpCall " + expression[1] + " foo (args 1 2))"
+                        "(mpCall " + expression[1] + " foo() (args 1 2))"
                     });
         }
 
@@ -88,7 +88,7 @@ public class PostFixTest extends AAstTest
             });
             collection.add(new Object[]{
                         expression[0] + "->foo($a + $b);",
-                        "(expr (mpCall " + expression[1] + " foo (args (+ $a $b))))"
+                        "(expr (mpCall " + expression[1] + " foo() (args (+ $a $b))))"
                     });
         }
 

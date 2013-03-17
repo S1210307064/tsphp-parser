@@ -39,7 +39,7 @@ public class ConstantHelper
             collection.add(new Object[]{
                         prefix + "const int b=" + type + "::a" + ", c=" + type + "::d;" +  appendix,
                         prefixExpected
-                        + "(consts (type (tMod public static final) int) (b (sMemAccess " + type + " a)) (c (sMemAccess " + type + " d)))"
+                        + "(consts (type (tMod public static final) int) (b (sMemAccess " + type + " a#)) (c (sMemAccess " + type + " d#)))"
                         + appendixExpected
                     });
         }

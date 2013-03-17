@@ -228,12 +228,6 @@ import ch.tutteli.tsphp.common.ITSPHPAst;
 @members{
 private ITSPHPAst classMemberModifiers;
 
-/*public ITSPHPAst resolveCompoundAssignment(Token token, ITSPHPAst left, ITSPHPAst right){
-    ITSPHPAst copy = AstHelperRegistry.get().copyAst(left);
-    int childIndex = (ITSPHPAst) retval.tree.getChild(1).getChild(0).getChildIndex();	
-    parent.replaceChildren(childIndex, childIndex, copy);
-}*/
-
 }
 
 @lexer::header{
@@ -476,7 +470,7 @@ methodModifier
 abstractConstructDestructDeclaration
 	:	abstractMethodModifier 'function' 
 		(	ctor='__construct' formalParameters block=';'
-			-> ^('__construct' 
+			-> ^(Construct[$ctor, $ctor.text+"()"] 
 				^(METHOD_MODIFIER[$abstractMethodModifier.start,"mMod"] abstractMethodModifier)
 				^(TYPE[$ctor,"type"] TYPE_MODIFIER[$ctor,"tMod"] Void["void"])
 				formalParameters 
@@ -486,7 +480,7 @@ abstractConstructDestructDeclaration
 			-> ^(METHOD_DECLARATION[$destr,"mDecl"] 
 				^(METHOD_MODIFIER[$abstractMethodModifier.start,"mMod"] abstractMethodModifier)
 				^(TYPE[$destr,"type"] TYPE_MODIFIER[$destr,"tMod"] Void[$destr,"void"])
-				$destr
+				Identifier[$destr,$destr.text+"()"]
 				PARAMETER_LIST[$destr,"params"]
 				BLOCK[$block,"block"]
 			)
@@ -496,7 +490,7 @@ abstractConstructDestructDeclaration
 constructDestructDeclaration
 	:	constructDestructModifier 'function'
 		(	ctor='__construct' formalParameters block='{' instructionWithoutBreakContinue* '}' 
-			-> ^('__construct' 
+			-> ^(Construct[$ctor, $ctor.text+"()"] 
 				^(METHOD_MODIFIER[$constructDestructModifier.start,"mMod"] constructDestructModifier)
 				^(TYPE[$ctor,"type"] TYPE_MODIFIER[$ctor,"tMod"] Void["void"])
 				formalParameters 
@@ -507,7 +501,7 @@ constructDestructDeclaration
 			-> ^(METHOD_DECLARATION[$destr,"mDecl"]
 				^(METHOD_MODIFIER[$constructDestructModifier.start,"mMod"] constructDestructModifier)
 				^(TYPE[$destr,"type"] TYPE_MODIFIER[$destr,"tMod"] Void[$destr,"void"])
-				$destr
+				Identifier[$destr, $destr.text+"()"]
 				PARAMETER_LIST[$destr,"params"]
 				^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
 			)	
@@ -550,7 +544,7 @@ interfaceMethodDeclaration
 
 interfaceConstruct
 	:	'public'? 'function' ctor='__construct' formalParameters block=';' 
-		-> ^('__construct'
+		-> ^(Construct[$ctor, $ctor.text+"()"]
 			^(METHOD_MODIFIER[$interfaceConstruct.start,"mMod"] Public[$interfaceConstruct.start,"public"]  Abstract[$interfaceConstruct.start,"abstract"])
 			^(TYPE[$ctor,"type"] TYPE_MODIFIER[$ctor,"tMod"] Void["void"])
 			formalParameters
@@ -572,7 +566,7 @@ functionDeclaration
 	;
 	
 functionSignatureInclReturnType
-	:	returnType Identifier formalParameters
+	:	returnType methodIdentifier formalParameters
 	;
 	
 returnType
@@ -944,7 +938,7 @@ postFixCall
 	:	(	functionCall -> functionCall
 		|	methodCall -> methodCall
 		|	methodCallSelfOrParent -> methodCallSelfOrParent
-		|	methodCallStatic -> methodCallStatic
+		|	methodCallStatic -> methodCallStatic 
 		)
 		(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixCall Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixCall expression)
@@ -953,28 +947,36 @@ postFixCall
 	;
 
 functionCall
-	:	classInterfaceTypeWithoutObject actualParameters
-		-> ^(FUNCTION_CALL[$classInterfaceTypeWithoutObject.start,"fCall"] classInterfaceTypeWithoutObject actualParameters)
+	:	functionIdentifier actualParameters
+		-> ^(FUNCTION_CALL[$functionIdentifier.start,"fCall"] functionIdentifier actualParameters)
 	;
 
-	
+functionIdentifier
+	:	classInterfaceTypeWithoutObject -> TYPE_NAME[$classInterfaceTypeWithoutObject.start,$classInterfaceTypeWithoutObject.text+"()"]
+	;
+
 methodCall
-	:	(callee='$this'|callee=VariableId) '->' Identifier actualParameters
-		 -> ^(METHOD_CALL[$callee,"mCall"] $callee Identifier actualParameters)	 
+	:	(callee='$this'|callee=VariableId) '->' methodIdentifier actualParameters
+
+		 -> ^(METHOD_CALL[$callee,"mCall"] $callee methodIdentifier actualParameters)	 
+	;
+
+methodIdentifier	
+	:	id=Identifier -> Identifier[$id,$id.text+"()"]
 	;
 
 methodCallSelfOrParent
-	:	selfOrParent Identifier actualParameters
-		-> ^(METHOD_CALL[$selfOrParent.start,"mCall"] selfOrParent Identifier actualParameters)	
+	:	selfOrParent methodIdentifier actualParameters
+		-> ^(METHOD_CALL[$selfOrParent.start,"mCall"] selfOrParent methodIdentifier actualParameters)	
 	;	
 
 	
 methodCallStatic
-	:	staticClassAccess Identifier actualParameters
-		-> ^(METHOD_CALL_STATIC[$staticClassAccess.start,"smCall"] staticClassAccess Identifier actualParameters)
+	:	staticClassAccess methodIdentifier actualParameters
+		-> ^(METHOD_CALL_STATIC[$staticClassAccess.start,"smCall"] staticClassAccess methodIdentifier actualParameters)
 	;
 
-call	:	'->'! Identifier actualParameters
+call	:	'->'! methodIdentifier actualParameters
 	;
 
 
@@ -1047,11 +1049,11 @@ primitiveAtomWithConstant
 
 classConstant
 	:	staticAccess identifier=Identifier 
-		-> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess CONSTANT[$identifier,$identifier.text])
+		-> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess CONSTANT[$identifier,$identifier.text+"#"])
 	;
 
 globalConstant
-	:	identifier=classInterfaceTypeWithoutObject -> CONSTANT[$identifier.start,$identifier.text]	
+	:	identifier=classInterfaceTypeWithoutObject -> CONSTANT[$identifier.start,$identifier.text+"#"]	
 	;
 		
 

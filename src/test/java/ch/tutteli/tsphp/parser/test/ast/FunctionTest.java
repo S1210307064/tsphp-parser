@@ -50,15 +50,15 @@ public class FunctionTest extends AAstTest
 
         collection.addAll(TypeHelper.getAllTypesWithModifier(
                 "function ", " get(){}",
-                "(function fMod ", " get params block)",""));
+                "(function fMod ", " get() params block)",""));
 
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", "){}",
-                "(function fMod (type tMod void) set ", " block)"));
+                "(function fMod (type tMod void) set() ", " block)"));
 
         collection.add(new Object[]{
                     "function void foo(){$a=1; int $b=2;}",
-                    "(function fMod (type tMod void) foo params (block (expr (= $a 1)) (vars (type tMod int) ($b 2))))"
+                    "(function fMod (type tMod void) foo() params (block (expr (= $a 1)) (vars (type tMod int) ($b 2))))"
                 });
 
         return collection;

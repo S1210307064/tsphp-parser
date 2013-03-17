@@ -59,14 +59,14 @@ public class ConstructDestructTest extends AAstTest
         //parameters
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function __construct(", "){}",
-                "(__construct (mMod public) (type tMod void) ", " block)"));
+                "(__construct() (mMod public) (type tMod void) ", " block)"));
         collection.addAll(ParameterListHelper.getTestStrings(
                 "abstract function __construct(", ");",
-                "(__construct (mMod abstract public) (type tMod void) ", " block)"));
+                "(__construct() (mMod abstract public) (type tMod void) ", " block)"));
 
         collection.add(new Object[]{
                     "function __construct(int $a,bool $b){ $a=1;}",
-                    "(__construct (mMod public) (type tMod void) (params "
+                    "(__construct() (mMod public) (type tMod void) (params "
                     + "(pDecl (type tMod int) $a) "
                     + "(pDecl (type tMod bool) $b)"
                     + ") (block (expr (= $a 1))))"
@@ -97,11 +97,11 @@ public class ConstructDestructTest extends AAstTest
         for (String[] variation : variations) {
             collection.add(new Object[]{
                         variation[0] + " function __construct(){}",
-                        "(__construct (mMod " + variation[1] + ") (type tMod void) params block)"
+                        "(__construct() (mMod " + variation[1] + ") (type tMod void) params block)"
                     });
             collection.add(new Object[]{
                         variation[0] + " function __destruct(){}",
-                        "(mDecl (mMod " + variation[1] + ") (type tMod void) __destruct params block)"
+                        "(mDecl (mMod " + variation[1] + ") (type tMod void) __destruct() params block)"
                     });
         }
 
@@ -116,11 +116,11 @@ public class ConstructDestructTest extends AAstTest
         for (String[] variation : variations) {
             collection.add(new Object[]{
                         variation[0] + " function __construct();",
-                        "(__construct (mMod " + variation[1] + ") (type tMod void) params block)"
+                        "(__construct() (mMod " + variation[1] + ") (type tMod void) params block)"
                     });
             collection.add(new Object[]{
                         variation[0] + " function __destruct();",
-                        "(mDecl (mMod " + variation[1] + ") (type tMod void) __destruct params block)"
+                        "(mDecl (mMod " + variation[1] + ") (type tMod void) __destruct() params block)"
                     });
         }
     }

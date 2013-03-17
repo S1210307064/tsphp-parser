@@ -54,28 +54,17 @@ public class InterfaceMethodTest extends AAstTest
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{
             "public function void foo();",
-            "(mDecl (mMod public abstract) (type tMod void) foo params block)"
-        });
-        collection.add(new Object[]{
-            "function __construct();", 
-            "(__construct (mMod public abstract) (type tMod void) params block)"});
-        collection.add(new Object[]{
-            "public function __construct();", 
-            "(__construct (mMod public abstract) (type tMod void) params block)"
+            "(mDecl (mMod public abstract) (type tMod void) foo() params block)"
         });
 
-         collection.addAll(TypeHelper.getAllTypesWithModifier(
+        collection.addAll(TypeHelper.getAllTypesWithModifier(
                 "function ", " get();",
-                "(mDecl (mMod public abstract) ", " get params block)",""));
+                "(mDecl (mMod public abstract) ", " get() params block)", ""));
 
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", ");",
-                "(mDecl (mMod public abstract) (type tMod void) set ", " block)"));
-        
-        collection.addAll(ParameterListHelper.getTestStrings(
-                "function __construct(", ");",
-                "(__construct (mMod public abstract) (type tMod void) ", " block)"));
-        
+                "(mDecl (mMod public abstract) (type tMod void) set() ", " block)"));
+
         return collection;
     }
 }

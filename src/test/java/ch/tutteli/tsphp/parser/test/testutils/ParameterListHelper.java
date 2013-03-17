@@ -171,7 +171,7 @@ public class ParameterListHelper
                         prefixExpect + "(params "
                         + "(pDecl (type (tMod ?) int) ($a null)) "
                         + "(pDecl (type tMod int) ($b true)) "
-                        + "(pDecl (type tMod int) ($c E_ALL))"
+                        + "(pDecl (type tMod int) ($c E_ALL#))"
                         + ")" + appendixExpect
                     },
                     {
@@ -207,7 +207,7 @@ public class ParameterListHelper
             collection.add(new Object[]{
                         prefix + "int $a=" + type + "::a" + appendix,
                         prefixExpect
-                        + "(params (pDecl (type tMod int) ($a (sMemAccess " + type + " a))))"
+                        + "(params (pDecl (type tMod int) ($a (sMemAccess " + type + " a#))))"
                         + appendixExpect
                     });
         }

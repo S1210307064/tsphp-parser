@@ -57,14 +57,14 @@ public class InterfaceConstructTest extends AAstTest
         //parameters
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function __construct(", ");",
-                "(__construct (mMod public abstract) (type tMod void) ", " block)"));
+                "(__construct() (mMod public abstract) (type tMod void) ", " block)"));
         collection.addAll(ParameterListHelper.getTestStrings(
                 "public function __construct(", ");",
-                "(__construct (mMod public abstract) (type tMod void) ", " block)"));
+                "(__construct() (mMod public abstract) (type tMod void) ", " block)"));
 
         collection.add(new Object[]{
                     "function __construct(int $a,bool $b);",
-                    "(__construct (mMod public abstract) (type tMod void) (params "
+                    "(__construct() (mMod public abstract) (type tMod void) (params "
                     + "(pDecl (type tMod int) $a) "
                     + "(pDecl (type tMod bool) $b)"
                     + ") block)"

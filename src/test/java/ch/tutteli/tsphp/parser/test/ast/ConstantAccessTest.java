@@ -51,13 +51,13 @@ public class ConstantAccessTest extends AAstTest
         for(String type: types){
             collection.add(new Object[]{
                 "int $a = "+type+"::a;", 
-                "(vars (type tMod int) ($a (sMemAccess "+type+" a)))"
+                "(vars (type tMod int) ($a (sMemAccess "+type+" a#)))"
             });
         }
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"int $a = a;","(vars (type tMod int) ($a a))"},
-                    {"int $a = self::a;", "(vars (type tMod int) ($a (sMemAccess self a)))"},
-                    {"int $a = parent::a;", "(vars (type tMod int) ($a (sMemAccess parent a)))"},
+                    {"int $a = a;","(vars (type tMod int) ($a a#))"},
+                    {"int $a = self::a;", "(vars (type tMod int) ($a (sMemAccess self a#)))"},
+                    {"int $a = parent::a;", "(vars (type tMod int) ($a (sMemAccess parent a#)))"},
                 }));
         return collection;
     }

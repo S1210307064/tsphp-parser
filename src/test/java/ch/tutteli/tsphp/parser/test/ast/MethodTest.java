@@ -60,20 +60,20 @@ public class MethodTest extends AAstTest
         //return values
         collection.addAll(TypeHelper.getAllTypesWithModifier(
                 "function ", " get(){}",
-                "(mDecl (mMod public) ", " get params block)", ""));
+                "(mDecl (mMod public) ", " get() params block)", ""));
 
         //parameters
         collection.addAll(ParameterListHelper.getTestStrings(
                 "function void set(", "){}",
-                "(mDecl (mMod public) (type tMod void) set ", " block)"));
+                "(mDecl (mMod public) (type tMod void) set() ", " block)"));
         collection.addAll(ParameterListHelper.getTestStrings(
                 "abstract function void set(", ");",
-                "(mDecl (mMod abstract public) (type tMod void) set ", " block)"));
+                "(mDecl (mMod abstract public) (type tMod void) set() ", " block)"));
 
         //method block
         collection.add(new Object[]{
                     "function void set(){$a=1;}",
-                    "(mDecl (mMod public) (type tMod void) set params (block (expr (= $a 1))))"
+                    "(mDecl (mMod public) (type tMod void) set() params (block (expr (= $a 1))))"
                 });
 
 
@@ -131,7 +131,7 @@ public class MethodTest extends AAstTest
         for (String[] variation : variations) {
             collection.add(new Object[]{
                         variation[0] + " function void foo(){}",
-                        "(mDecl (mMod " + variation[1] + ") (type tMod void) foo params block)"
+                        "(mDecl (mMod " + variation[1] + ") (type tMod void) foo() params block)"
                     });
         }
 
@@ -145,7 +145,7 @@ public class MethodTest extends AAstTest
         for (String[] variation : variations) {
             collection.add(new Object[]{
                         variation[0] + " function void foo();",
-                        "(mDecl (mMod " + variation[1] + ") (type tMod void) foo params block)"
+                        "(mDecl (mMod " + variation[1] + ") (type tMod void) foo() params block)"
                     });
         }
     }

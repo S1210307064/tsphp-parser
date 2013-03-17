@@ -55,10 +55,10 @@ public class CompleteInterfaceTest extends AAstTest
                         + "}\n",
                         "(interface (iMod abstract) A (extends B) (iBody "
                             +"(consts (type (tMod public static final) bool) (A true) (B null) (C false)) "
-                            +"(__construct (mMod public abstract) (type tMod void) "
+                            +"(__construct() (mMod public abstract) (type tMod void) "
                                 + "(params (pDecl (type tMod int) $number)) block"
                             + ") "
-                            +"(mDecl (mMod public abstract) (type tMod void) set (params "
+                            +"(mDecl (mMod public abstract) (type tMod void) set() (params "
                                     + "(pDecl (type tMod int) $b) "
                                     + "(pDecl (type (tMod cast) float) $c)"
                             + ") block)"
