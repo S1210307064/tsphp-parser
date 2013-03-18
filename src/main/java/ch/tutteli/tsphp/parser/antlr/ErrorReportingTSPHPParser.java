@@ -52,9 +52,12 @@ public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorRepo
     @Override
     public void reportError(RecognitionException exception) {
         hasFoundError = true;
+        String tokenText = exception.token != null
+                ? "Unexpected token: " + exception.token.getText()
+                : "Unknown token";
         for (IErrorLogger logger : errorLoggers) {
             logger.log(new TSPHPException("Line " + exception.line + "|" + exception.charPositionInLine
-                    + " parser exception occured. Unexpected token: " + exception.token.getText(), exception));
+                    + " parser exception occured. " + tokenText, exception));
         }
     }
 

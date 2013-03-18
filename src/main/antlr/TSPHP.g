@@ -376,7 +376,8 @@ constDeclarationList
 	;
 	
 constantAssignment
-	:	Identifier^ '='! unaryPrimitiveAtom
+	:	id=Identifier '=' unaryPrimitiveAtom
+		->^(Identifier[$id,$id.text+"#"] unaryPrimitiveAtom)
 	;
 
 classMemberDeclaration
