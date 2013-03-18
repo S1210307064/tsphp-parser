@@ -660,7 +660,7 @@ paramDeclarationNormal
 	;
 	
 paramDeclarationOptional
-	:	allTypesInclModifierForParameter VariableId '=' unaryPrimitiveAtom 
+	:	allTypesInclModifierForParameter VariableId '=' unaryPrimitiveAtom
 		-> ^(PARAMETER_DECLARATION[$paramDeclarationOptional.start,"pDecl"] allTypesInclModifierForParameter ^(VariableId unaryPrimitiveAtom))
 	;
 
@@ -1044,6 +1044,7 @@ primitiveAtomWithConstant
 	|	Float
 	|	String
 	|	Null
+	|	array
 	|	classConstant
 	|	globalConstant
 	;

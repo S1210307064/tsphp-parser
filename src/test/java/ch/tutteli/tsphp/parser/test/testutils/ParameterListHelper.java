@@ -197,6 +197,14 @@ public class ParameterListHelper
                         + "(pDecl (type (tMod ?) int) ($b 2)) "
                         + "(pDecl (type (tMod cast) int) ($d 3))"
                         + ")" + appendixExpect
+                    },
+                    //See TSPHP-418
+                    {
+                        prefix + "array $a= [2,2], array? $b=array(1,'a'=>2)" + appendix,
+                        prefixExpect + "(params "
+                        + "(pDecl (type tMod array) ($a (array 2 2))) "
+                        + "(pDecl (type (tMod ?) array) ($b (array 1 (=> 'a' 2))))"
+                        + ")" + appendixExpect
                     }
                 }));
 
