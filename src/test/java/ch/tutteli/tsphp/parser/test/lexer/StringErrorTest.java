@@ -28,10 +28,10 @@ import org.junit.runners.Parameterized;
  * @author Robert Stoll <rstoll@tutteli.ch>
  */
 @RunWith(Parameterized.class)
-public class IntErrorTest extends ALexerTest
+public class StringErrorTest extends ALexerTest
 {
 
-    public IntErrorTest(String methodName,String testString) {
+    public StringErrorTest(String methodName, String testString) {
         super(methodName, testString, 0);
     }
 
@@ -43,11 +43,8 @@ public class IntErrorTest extends ALexerTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"mInt","0b2"},
-                    {"mBINARY","0b2"},
-                    {"mInt","0xG"},
-                    {"mHEXADECIMAL","0xG"},
-                    {"mOCTAL","09"},
-                });
+            {"mSTRING_DOUBLE_QUOTED", "\"$a\""},
+            {"mString", "\"$a\""}
+        });
     }
 }
