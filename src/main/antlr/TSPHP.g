@@ -889,7 +889,7 @@ castOrBitwiseNotOrAt
 	;
 	
 cloneOrNew
-	:	'clone'^ cloneOrNew
+	:	'clone'^ castOrBitwiseNotOrAt
 	|	newObject
 	|	unaryPrimary
 	;
