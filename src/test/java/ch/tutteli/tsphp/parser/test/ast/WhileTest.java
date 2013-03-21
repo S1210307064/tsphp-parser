@@ -54,9 +54,9 @@ public class WhileTest extends AAstTest
                         "while( true  ){$a=1;int $b=2;}",
                         "(while true (cBlock (expr (= $a 1)) (vars (type tMod int) ($b 2))))"
                     },
-                    {"do $a=1; while( true  );", "(do (cBlock (expr (= $a 1))) true)"},
-                    {"do {$a=1;} while( true  );", "(do (cBlock (expr (= $a 1))) true)"},
-                    {"do {$a=1;$b=2;}while( true  );", "(do (cBlock (expr (= $a 1)) (expr (= $b 2))) true)"}
+                    {"do $a=1; while( true  );", "(do (block (expr (= $a 1))) true)"},
+                    {"do {$a=1;} while( true  );", "(do (block (expr (= $a 1))) true)"},
+                    {"do {$a=1;$b=2;}while( true  );", "(do (block (expr (= $a 1)) (expr (= $b 2))) true)"}
                 }));
         List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
@@ -66,7 +66,7 @@ public class WhileTest extends AAstTest
                     });
             collection.add(new Object[]{
                         "do $a=1; while(" + expression[0] + ");",
-                        "(do (cBlock (expr (= $a 1))) " + expression[1] + ")"
+                        "(do (block (expr (= $a 1))) " + expression[1] + ")"
                     });
         }
         return collection;

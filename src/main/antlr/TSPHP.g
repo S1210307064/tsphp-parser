@@ -1232,7 +1232,7 @@ whileLoop
 	
 doWhileLoop
 	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';' 
-		-> ^('do' ^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue) expression)
+		-> ^('do' ^(BLOCK[$instructionInclBreakContinue.start,"block"] instructionInclBreakContinue) expression)
 	;
 
 tryCatch
