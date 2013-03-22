@@ -91,7 +91,9 @@ public class ParserFacade implements IParser, IErrorLogger
     }
 
     @Override
-    public ParserUnitDto parseInputStream(InputStream inputStream, int size, int readBufferSize, String encoding) throws IOException {
+    public ParserUnitDto parseInputStream(InputStream inputStream, int size, int readBufferSize, String encoding)
+            throws IOException {
+        
         return getAstOrErrorAst(new ANTLRNoCaseInputStream(inputStream, size, readBufferSize, encoding));
     }
 
@@ -134,10 +136,10 @@ public class ParserFacade implements IParser, IErrorLogger
             parser.addErrorLogger(logger);
         }
         parser.addErrorLogger(this);
-        
+
         parser.setTreeAdaptor(astAdaptor);
         ITSPHPAst ast = (ITSPHPAst) parser.compilationUnit().getTree();
-        
+
         return new ParserUnitDto("", ast, tokenStream);
     }
 
@@ -152,14 +154,14 @@ public class ParserFacade implements IParser, IErrorLogger
     }
 
     @Override
-    public void log(TSPHPException tsphpe) {
+    public void log(TSPHPException exception) {
         hasFoundError = true;
     }
 
-    private void informErrorLogger(Exception ex) {
+    private void informErrorLogger(Exception exception) {
         hasFoundError = true;
         for (IErrorLogger logger : errorLoggers) {
-            logger.log(new TSPHPException(ex));
+            logger.log(new TSPHPException(exception));
         }
     }
 }
