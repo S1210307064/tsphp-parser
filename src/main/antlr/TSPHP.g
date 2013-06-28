@@ -94,7 +94,6 @@ tokens{
 	Namespace = 'namespace';
 	New = 'new';
 	NotEqual = '!=';
-	NotEqualAlternative = '<>';
 	NotIdentical = '!==';
 	Null = 'null';
 	ObjectOperator = '->';
@@ -848,7 +847,6 @@ equalityOperator
 	|	'==='
 	|	'!='
 	|	'!=='
-	|	'<>'
 	;
 
 comparison

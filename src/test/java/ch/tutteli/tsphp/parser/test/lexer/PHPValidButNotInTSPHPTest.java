@@ -53,7 +53,7 @@ public class PHPValidButNotInTSPHPTest extends ALexerTest
                     // $0 cannot be a variable and is therefore allowed in PHP, but not in TSPHP
                     {"mSTRING_DOUBLE_QUOTED", "\" $0123456789 \""},
                     //Unix style comments #
-                    {"mComment","# comment"}
+                    {"mComment","# comment"},
                 });
     }
 }

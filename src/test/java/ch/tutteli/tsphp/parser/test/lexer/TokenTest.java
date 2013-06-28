@@ -120,7 +120,6 @@ public class TokenTest extends ALexerTest
                     {"mNamespace", "namespace", TSPHPLexer.Namespace},
                     {"mNew", "new", TSPHPLexer.New},
                     {"mNotEqual", "!=", TSPHPLexer.NotEqual},
-                    {"mNotEqualAlternative", "<>", TSPHPLexer.NotEqualAlternative},
                     {"mNotIdentical", "!==", TSPHPLexer.NotIdentical},
                     {"mNull","null",TSPHPLexer.Null},
                     {"mObjectOperator", "->", TSPHPLexer.ObjectOperator},
