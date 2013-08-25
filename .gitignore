@@ -1,11 +1,12 @@
 build/*
 nbproject/*
-/src/main/antlr/output
+.idea/*
+out/*
+*.iml
+antlr/output/*
 
-
-/src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHP.tokens
-/src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHPLexer.java
-/src/main/java/ch/tutteli/tsphp/parser/antlr/TSPHPParser.java
-
-
-/src/main/antlr/TSPHP__testrig.st
+TSPHP.tokens
+TSPHPLexer.java
+TSPHPParser.java
+TSPHP__testrig.st
+output
