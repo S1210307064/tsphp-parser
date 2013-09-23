@@ -45,12 +45,12 @@ public class TokenExceptionTest extends ALexerTest
         try {
             isErrorReportingOn = false;
             analyseToken();
-            Assert.fail(methodName + " - " + testString + " failed, no exception occured");
+            Assert.fail(methodName + " - " + testString + " failed, no exception occurred");
         } catch (InvocationTargetException ex) {
             if (!(ex.getTargetException() instanceof RecognitionException)) {
                 System.err.printf(methodName + " - " + testString + " failed");
                 ex.printStackTrace();
-                Assert.fail(methodName + " - " + testString + " failed, an unexpected exception occured - see output");
+                Assert.fail(methodName + " - " + testString + " failed, an unexpected exception occurred - see output");
             }
         }
     }

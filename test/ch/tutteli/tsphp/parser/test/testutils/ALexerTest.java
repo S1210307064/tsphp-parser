@@ -61,7 +61,7 @@ public abstract class ALexerTest extends ATest
         } catch (Exception ex) {
             System.err.printf(methodName + " - " + testString + " failed");
             ex.printStackTrace();
-            Assert.fail(methodName + " - " + testString + " failed, an exception occured - see output");
+            Assert.fail(methodName + " - " + testString + " failed, an exception occurred - see output");
         }
         RecognizerSharedState state = lexer.getState();
         Assert.assertFalse(methodName + " - " + testString + " failed, state.failed was true - see output",
@@ -78,7 +78,7 @@ public abstract class ALexerTest extends ATest
         try {
             isErrorReportingOn = false;
             analyseToken();
-            Assert.fail(methodName + " - " + testString + " failed, no exception occured");
+            Assert.fail(methodName + " - " + testString + " failed, no exception occurred");
         } catch (RecognitionException ex) {
             //that's fine, we expect a RecognitionException
         } catch (InvocationTargetException ex) {
@@ -87,7 +87,7 @@ public abstract class ALexerTest extends ATest
             if (!(ex.getTargetException() instanceof RecognitionException)) {
                 System.err.printf(methodName + " - " + testString + " failed");
                 ex.printStackTrace();
-                Assert.fail(methodName + " - " + testString + " failed, an unexpected exception occured - see output");
+                Assert.fail(methodName + " - " + testString + " failed, an unexpected exception occurred - see output");
             }
         }
     }

@@ -59,7 +59,7 @@ public class ErrorReportingTSPHPLexer extends TSPHPLexer implements IErrorReport
                 : "Unknown token";
         for (IErrorLogger logger : errorLoggers) {
             logger.log(new TSPHPException("Line " + exception.line + "|" + exception.charPositionInLine
-                    + " lexer exception occured. " + tokenText, exception));
+                    + " lexer exception occurred. " + tokenText, exception));
         }
     }
 

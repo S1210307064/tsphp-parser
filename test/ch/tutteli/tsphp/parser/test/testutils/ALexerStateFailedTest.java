@@ -49,7 +49,7 @@ public abstract class ALexerStateFailedTest extends ALexerTest
         } catch (Exception ex) {
             System.err.printf(methodName + " - " + testString + " failed");
             ex.printStackTrace();
-            Assert.fail(methodName + " - " + testString + " failed, an unexpected exception occured - see output");
+            Assert.fail(methodName + " - " + testString + " failed, an unexpected exception occurred - see output");
         }
     }
 

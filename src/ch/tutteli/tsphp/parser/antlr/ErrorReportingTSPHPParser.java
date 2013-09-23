@@ -57,7 +57,7 @@ public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorRepo
                 : "Unknown token";
         for (IErrorLogger logger : errorLoggers) {
             logger.log(new TSPHPException("Line " + exception.line + "|" + exception.charPositionInLine
-                    + " parser exception occured. " + tokenText, exception));
+                    + " parser exception occurred. " + tokenText, exception));
         }
     }
 
