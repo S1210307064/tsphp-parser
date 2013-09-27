@@ -44,7 +44,7 @@ public class ErrorReportingTSPHPLexer extends TSPHPLexer implements IErrorReport
     }
 
     @Override
-    public void addErrorLogger(IErrorLogger errorLogger) {
+    public void registerErrorLogger(IErrorLogger errorLogger) {
         errorLoggers.add(errorLogger);
     }
 
