@@ -42,7 +42,7 @@ public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorRepo
     }
 
     @Override
-    public void addErrorLogger(IErrorLogger errorLogger) {
+    public void registerErrorLogger(IErrorLogger errorLogger) {
         errorLoggers.add(errorLogger);
     }
 

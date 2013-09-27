@@ -106,16 +106,16 @@ public class ParserFacade implements IParser, IErrorLogger
     private ParserUnitDto getAst(CharStream input) throws RecognitionException {
         ErrorReportingTSPHPLexer lexer = new ErrorReportingTSPHPLexer(input);
         for (IErrorLogger logger : errorLoggers) {
-            lexer.addErrorLogger(logger);
+            lexer.registerErrorLogger(logger);
         }
-        lexer.addErrorLogger(this);
+        lexer.registerErrorLogger(this);
         TokenStream tokenStream = new CommonTokenStream(lexer);
 
         ErrorReportingTSPHPParser parser = new ErrorReportingTSPHPParser(tokenStream);
         for (IErrorLogger logger : errorLoggers) {
-            parser.addErrorLogger(logger);
+            parser.registerErrorLogger(logger);
         }
-        parser.addErrorLogger(this);
+        parser.registerErrorLogger(this);
 
         parser.setTreeAdaptor(astAdaptor);
         ITSPHPAst ast = parser.compilationUnit().getTree();
@@ -124,7 +124,7 @@ public class ParserFacade implements IParser, IErrorLogger
     }
 
     @Override
-    public void addErrorLogger(IErrorLogger errorLogger) {
+    public void registerErrorLogger(IErrorLogger errorLogger) {
         errorLoggers.add(errorLogger);
     }
 
