@@ -5,7 +5,8 @@ It is used to parse TSPHP code and generate a corresponding TSPHP-AST.
 
 You will find the grammar definition file of the parser written for [ANTLR v3.5](http://www.antlr3.org/) in /antlr/TSPHP.g
 
-Please visit the [project's homepage](http://tsphp.tutteli.ch/) for more information.
+Please visit the [project's website](http://tsphp.tutteli.ch/) for more information on the project.  
+Use the project's [issue tracking system](http://tsphp.tutteli.ch/jira) (JIRA) to report bugs or submit feature requests.
 
 <br/>
 
