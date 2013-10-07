@@ -12,7 +12,7 @@ public class VariationHelper
 
     public static List<Object[]> getUpperCaseVariations(String[] texts, String prefix, String appendix) {
         List<Object[]> collection = new ArrayList<>();
-        int prefixLenght = prefix.length();
+        int prefixLength = prefix.length();
         for (String text : texts) {
             int length = text.length();
             String tmp = text.toLowerCase();
@@ -26,7 +26,7 @@ public class VariationHelper
                 collection.add(new Object[]{
                             prefix + before + upper + after + appendix,
                             TSPHPParser.Identifier,
-                            prefixLenght
+                            prefixLength
                         });
             }
         }
@@ -34,13 +34,13 @@ public class VariationHelper
     }
 
     public static String[] getUppercaseCombinations(String token) {
-        int tokenLenght = token.length();
+        int tokenLength = token.length();
         String character = token.substring(0, 1);
         String characterUpperCase = character.toUpperCase();
 
         String[] combinations;
-        if (tokenLenght > 1) {
-            combinations = new String[(int) Math.pow(2, tokenLenght)];
+        if (tokenLength > 1) {
+            combinations = new String[(int) Math.pow(2, tokenLength)];
             String[] subCombinations = getUppercaseCombinations(token.substring(1));
             for (int i = 0; i < subCombinations.length; ++i) {
                 combinations[i * 2] = character + subCombinations[i];

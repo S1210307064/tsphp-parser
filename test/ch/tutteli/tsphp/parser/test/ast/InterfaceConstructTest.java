@@ -14,8 +14,6 @@ import org.junit.runners.Parameterized;
 public class InterfaceConstructTest extends AAstTest
 {
 
-    private static List<Object[]> collection;
-
     public InterfaceConstructTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
@@ -32,7 +30,7 @@ public class InterfaceConstructTest extends AAstTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        collection = new ArrayList<>();
+        List<Object[]> collection = new ArrayList<>();
 
         //parameters
         collection.addAll(ParameterListHelper.getTestStrings(
@@ -43,12 +41,12 @@ public class InterfaceConstructTest extends AAstTest
                 "(__construct() (mMod public abstract) (type tMod void) ", " block)"));
 
         collection.add(new Object[]{
-                    "function __construct(int $a,bool $b);",
-                    "(__construct() (mMod public abstract) (type tMod void) (params "
-                    + "(pDecl (type tMod int) $a) "
-                    + "(pDecl (type tMod bool) $b)"
-                    + ") block)"
-                });
+                "function __construct(int $a,bool $b);",
+                "(__construct() (mMod public abstract) (type tMod void) (params "
+                        + "(pDecl (type tMod int) $a) "
+                        + "(pDecl (type tMod bool) $b)"
+                        + ") block)"
+        });
         return collection;
 
     }

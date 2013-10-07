@@ -15,7 +15,7 @@ public class TestTSPHPParser extends ErrorReportingTSPHPParser
 {
 
     private boolean isErrorReportingOn = true;
-    protected List<Exception> exceptions = new ArrayList<>();
+    protected final List<Exception> exceptions = new ArrayList<>();
 
     public TestTSPHPParser(TokenStream input) {
         super(input);

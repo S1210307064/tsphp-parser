@@ -16,7 +16,7 @@ public class TestTSPHPLexer extends ErrorReportingTSPHPLexer
 {
 
     private boolean isErrorReportingOn = true;
-    protected List<Exception> exceptions = new ArrayList<>();
+    protected final List<Exception> exceptions = new ArrayList<>();
 
     public TestTSPHPLexer(CharStream input) {
         super(input);

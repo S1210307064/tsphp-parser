@@ -27,8 +27,8 @@ import org.antlr.runtime.TokenStream;
 public class ParserFacade implements IParser, IErrorLogger
 {
 
-    private ITSPHPAstAdaptor astAdaptor;
-    private Collection<IErrorLogger> errorLoggers = new ArrayDeque<>();
+    private final ITSPHPAstAdaptor astAdaptor;
+    private final Collection<IErrorLogger> errorLoggers = new ArrayDeque<>();
     private boolean hasFoundError;
 
     public ParserFacade() {

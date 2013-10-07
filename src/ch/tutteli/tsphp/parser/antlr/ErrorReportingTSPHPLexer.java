@@ -12,7 +12,7 @@ import org.antlr.runtime.RecognizerSharedState;
 public class ErrorReportingTSPHPLexer extends TSPHPLexer implements IErrorReporter
 {
 
-    private Collection<IErrorLogger> errorLoggers = new ArrayDeque<>();
+    private final Collection<IErrorLogger> errorLoggers = new ArrayDeque<>();
     private boolean hasFoundError = false;
 
     public ErrorReportingTSPHPLexer() {

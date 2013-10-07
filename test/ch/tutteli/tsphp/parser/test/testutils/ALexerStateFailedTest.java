@@ -1,8 +1,8 @@
 package ch.tutteli.tsphp.parser.test.testutils;
 
 import ch.tutteli.tsphp.parser.antlr.TSPHPLexer;
-import junit.framework.Assert;
 import org.antlr.runtime.RecognizerSharedState;
+import org.junit.Assert;
 import org.junit.Ignore;
 
 @Ignore
@@ -21,7 +21,8 @@ public abstract class ALexerStateFailedTest extends ALexerTest
         super(methodName, testString, type, channel);
     }
 
-    public void checkForStateFailed() throws Exception {
+    public void checkForStateFailed() {
+
         try {
             super.analyseToken();
             RecognizerSharedState state = lexer.getState();

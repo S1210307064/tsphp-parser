@@ -9,7 +9,7 @@ import org.junit.Ignore;
 public abstract class AAstTest extends AParserTest
 {
 
-    protected String expectedResult;
+    protected final String expectedResult;
 
     public AAstTest(String testString, String theExpectedResult) {
         super(testString);

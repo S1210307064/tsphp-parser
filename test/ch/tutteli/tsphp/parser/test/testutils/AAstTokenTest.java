@@ -10,7 +10,7 @@ import org.junit.Ignore;
 public abstract class AAstTokenTest extends AParserTest
 {
 
-    protected List<Integer> expectedTokens;
+    protected final List<Integer> expectedTokens;
 
     public AAstTokenTest(String testString, List<Integer> theExpectedTokens) {
         super(testString);

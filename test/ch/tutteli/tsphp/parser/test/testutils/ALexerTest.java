@@ -4,10 +4,10 @@ import ch.tutteli.tsphp.parser.antlr.ANTLRNoCaseStringStream;
 import ch.tutteli.tsphp.parser.antlr.TSPHPLexer;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import junit.framework.Assert;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
+import org.junit.Assert;
 import org.junit.Ignore;
 
 @Ignore
@@ -15,9 +15,9 @@ public abstract class ALexerTest extends ATest
 {
 
     protected TestTSPHPLexer lexer;
-    protected String methodName;
-    protected int type;
-    protected int channel;
+    protected final String methodName;
+    protected final int type;
+    protected final int channel;
 
     public ALexerTest(String methodName, String testString, int type) {
         this(methodName, testString, type, TSPHPLexer.DEFAULT_TOKEN_CHANNEL);
@@ -57,7 +57,7 @@ public abstract class ALexerTest extends ATest
         } catch (RecognitionException ex) {
             //that's fine, we expect a RecognitionException
         } catch (InvocationTargetException ex) {
-            //should contain a RecognitionException - the IncovatinoTargetException occurs due to the method call using 
+            //should contain a RecognitionException - the InvocationTargetException occurs due to the method call using
             //reflection
             if (!(ex.getTargetException() instanceof RecognitionException)) {
                 System.err.printf(methodName + " - " + testString + " failed");

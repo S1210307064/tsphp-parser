@@ -20,20 +20,19 @@
     <target name="antlr">
         <java classname="org.antlr.Tool" fork="true" failonerror="true">
             <arg value="-verbose"/>
-            <arg value="-lib"/>
-            <arg path="${antlr}"/>
             <arg value="-o"/>
             <arg path="${antlr.copyLocation}"/>
             <arg path="${antlr}/TSPHP.g"/>
             <classpath>
                 <fileset dir="${lib}">
-                    <include name="*.jar"/>
+                    <include name="antlr-3.5.1-complete.jar"/>
                 </fileset>
             </classpath>
         </java>
     </target>
 
-    <target name="copyAntlr" depends="clean" description="copy antlr generated classes to src/java folder">
+    <target name="copyAntlr" description="copy antlr generated classes to src/java folder">
+        <delete dir="{antlr.copyLocation}" includes="TSPHPLexer.java, TSPHPParser.java"/>
         <copy todir="${antlr.copyLocation}">
             <fileset dir="${antlr.output}" includes="TSPHPLexer.java, TSPHPParser.java"/>
         </copy>

@@ -26,18 +26,18 @@ public class VariableDeclarationWrongIdentifierParserTest extends AParserParserE
     @Parameterized.Parameters
     public static Collection<Object[]> vars() {
         return Arrays.asList(new Object[][]{
-                    {"int $1;", TSPHPParser.Dolar, 4},
-                    {"bool $2a;", TSPHPParser.Dolar, 5},
-                    {"bool $3_;", TSPHPParser.Dolar, 5},
-                    {"float $4£;", TSPHPParser.Dolar, 6},
-                    {"string $5ééé;", TSPHPParser.Dolar, 7},
-                    {"resource $6AAAA;", TSPHPParser.Dolar, 9},
-                    {"array $7aA;", TSPHPParser.Dolar, 6},
-                    {"int $8_A;", TSPHPParser.Dolar, 4},
-                    {"bool $9££;", TSPHPParser.Dolar, 5},
-                    {"bool $0a;", TSPHPParser.Dolar, 5},
-                    {"string $(;", TSPHPParser.Dolar, 7},
-                    {"int $);", TSPHPParser.Dolar, 4}
+                    {"int $1;", TSPHPParser.Dollar, 4},
+                    {"bool $2a;", TSPHPParser.Dollar, 5},
+                    {"bool $3_;", TSPHPParser.Dollar, 5},
+                    {"float $4£;", TSPHPParser.Dollar, 6},
+                    {"string $5ééé;", TSPHPParser.Dollar, 7},
+                    {"resource $6AAAA;", TSPHPParser.Dollar, 9},
+                    {"array $7aA;", TSPHPParser.Dollar, 6},
+                    {"int $8_A;", TSPHPParser.Dollar, 4},
+                    {"bool $9££;", TSPHPParser.Dollar, 5},
+                    {"bool $0a;", TSPHPParser.Dollar, 5},
+                    {"string $(;", TSPHPParser.Dollar, 7},
+                    {"int $);", TSPHPParser.Dollar, 4}
                 });
     }
 }

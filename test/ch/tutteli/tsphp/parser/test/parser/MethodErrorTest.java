@@ -29,7 +29,7 @@ public class MethodErrorTest extends AParserParserExceptionTest
                     //forgot to add type
                     {"class A{function void a(int $a=null,$b){}}", TSPHPParser.VariableId, 36},
                     //forgot to add return type
-                    {"class A{function a(){}}", TSPHPParser.LeftParanthesis, 18},
+                    {"class A{function a(){}}", TSPHPParser.LeftParenthesis, 18},
                     //forgot to add function
                     {"class A{public void a(){}}", TSPHPParser.Void, 15},
                     //Did not wrote the whole function - see TSPHP-322

@@ -37,7 +37,7 @@ tokens{
 	Divide = '/';
 	DivideAssign = '/=';
 	Do = 'do';
-	Dolar = '$';
+	Dollar = '$';
 	Dot = '.';
 	DotAssign = '.=';
 	DoubleColon = '::';
@@ -58,7 +58,7 @@ tokens{
 	Instanceof = 'instanceof';
 	Interface = 'interface';
 	LeftCurlyBrace = '{';
-	LeftParanthesis = '(';
+	LeftParenthesis = '(';
 	LeftSquareBrace = '[';
 	LessThan = '<';
 	LessEqualThan = '<=';
@@ -93,7 +93,7 @@ tokens{
 	QuestionMark = '?';
 	Return = 'return';
 	RightCurlyBrace = '}';
-	RightParanthesis =')';
+	RightParenthesis =')';
 	RightSquareBrace = ']';
 	ShiftLeft = '<<';
 	ShiftLeftAssign = '<<=';
@@ -229,7 +229,7 @@ namespaceIdOrEmpty
 	|	/* empty */ -> DEFAULT_NAMESPACE[$namespaceIdOrEmpty.start,backslash]
 	;
 
-//Must before Id otherwise Id match true and false
+//Must before Identifier otherwise Identifier matches true and false
 Bool	:	'true'|'false'
 	;
 
@@ -335,7 +335,7 @@ classMemberDeclaration
 @after{
 	classMemberModifiers=null;
 }
-	:	classMemberModifier {classMemberModifiers = (ITSPHPAst) $classMemberModifier.tree;}
+	:	classMemberModifier {classMemberModifiers = $classMemberModifier.tree;}
 		variableDeclarationList ';' 
 		
 		-> ^(CLASS_MEMBER[$classMemberDeclaration.start,"cMem"]
@@ -348,7 +348,7 @@ classMemberModifier
 	|	accessModifier 'static'
 	|	accessModifier
 	|	st='static' -> 'static' Public[$st,"public"]
-	|	/* etmpy */ -> Public[$classMemberModifier.start,"public"]
+	|	/* empty */ -> Public[$classMemberModifier.start,"public"]
 	;
 	
 accessModifier
@@ -539,7 +539,7 @@ allTypesWithModifier
 	
 scalarTypeWithModifier
 @after{
-	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
+	ITSPHPAst ast = retval.tree.getChild(0);
 	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast);	
 }
 	:	Cast? scalarTypes '?'?			
@@ -672,7 +672,7 @@ localVariableDeclaration
 	
 variableDeclarationList
 	:	variableDeclarationScalarList
-	|	variableDeclarationWihtoutScalarAndObjectList		
+	|	variableDeclarationWithoutScalarAndObjectList		
 	|	objectWithModifier  assign (','! assign)*
 	;
 	
@@ -701,7 +701,7 @@ assign
 		-> ^(VariableId expression?)
 	;
 	
-variableDeclarationWihtoutScalarAndObjectList
+variableDeclarationWithoutScalarAndObjectList
 	:	typesWithoutScalarAndObjectWithModifier castAssignOrAssignList[$typesWithoutScalarAndObjectWithModifier.tree]	
 	;
 	

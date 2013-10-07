@@ -29,7 +29,7 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
             //switch with multiple default blocks
             {"switch($a){case 1: default: $a=1; break; case 2: default: $a=2; break;}", TSPHPParser.Default, 49},
             //function with pseudo optional parameter
-            {"function a ($a,$b=1,$c){$a=1;}", TSPHPParser.LeftParanthesis, 11},
+            {"function a ($a,$b=1,$c){$a=1;}", TSPHPParser.LeftParenthesis, 11},
             //use outside of semicolon namespace
             {"use a\\a; namespace a;", TSPHPParser.Namespace, 9},
             {"$a <> $b", TSPHPParser.GreaterThan, 4}

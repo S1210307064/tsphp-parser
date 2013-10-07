@@ -6,9 +6,9 @@ import org.junit.Ignore;
 @Ignore
 public abstract class AParserExceptionTest extends AParserTest
 {
-    protected int position;
-    protected int token;
-    protected Class<? extends RecognitionException> exceptionType;
+    protected final int position;
+    protected final int token;
+    protected final Class<? extends RecognitionException> exceptionType;
 
     public AParserExceptionTest(String testString, Class<? extends RecognitionException> type, int aToken, int aPosition) {
         super(testString);

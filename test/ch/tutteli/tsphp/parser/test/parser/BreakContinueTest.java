@@ -25,10 +25,10 @@ public class BreakContinueTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("break"));
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("continue"));
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("break 3"));
-        collection.addAll(ReturnTest.getControllStructuresWithInstruction("continue 2"));
+        collection.addAll(ReturnTest.getControlStructuresWithInstruction("break"));
+        collection.addAll(ReturnTest.getControlStructuresWithInstruction("continue"));
+        collection.addAll(ReturnTest.getControlStructuresWithInstruction("break 3"));
+        collection.addAll(ReturnTest.getControlStructuresWithInstruction("continue 2"));
         return collection;
     }
 }

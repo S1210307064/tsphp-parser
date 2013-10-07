@@ -13,7 +13,7 @@ import java.util.Collection;
 public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorReporter
 {
 
-    private Collection<IErrorLogger> errorLoggers = new ArrayDeque<>();
+    private final Collection<IErrorLogger> errorLoggers = new ArrayDeque<>();
     private boolean hasFoundError = false;
 
     public ErrorReportingTSPHPParser(TokenStream input) {

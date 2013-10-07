@@ -6,7 +6,7 @@ import org.junit.Ignore;
 public abstract class ATest
 {
 
-    protected String testString;
+    protected final String testString;
     protected boolean isErrorReportingOn = true;
 
     public ATest(String aTestString) {

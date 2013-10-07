@@ -23,7 +23,7 @@ public abstract class AParserTest extends ATest
     protected TestTSPHPParser parser;
     protected TestTSPHPLexer lexer;
     protected ParserRuleReturnScope result;
-    private ITSPHPAstAdaptor adaptor;
+    private final ITSPHPAstAdaptor adaptor;
 
     public AParserTest(String testString) {
         super(testString);

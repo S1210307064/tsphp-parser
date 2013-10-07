@@ -13,6 +13,7 @@ public abstract class AParserParserExceptionTest extends AParserExceptionTest
         super(testString, type, character, position);
     }
 
+    @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
     public void parseExpectingException() throws RecognitionException {
         parse();
 

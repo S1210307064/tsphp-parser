@@ -32,10 +32,10 @@ public class ReturnTest extends AParserTest
         collection.add(new Object[]{instruction+";"});
         collection.add(new Object[]{"{"+instruction+";}"});
         collection.add(new Object[]{"function void setName(){"+instruction+";}"});
-        collection.addAll( getControllStructuresWithInstruction(instruction));
+        collection.addAll( getControlStructuresWithInstruction(instruction));
         return collection;
     }
-    public static List<Object[]> getControllStructuresWithInstruction(String instruction) {
+    public static List<Object[]> getControlStructuresWithInstruction(String instruction) {
         return Arrays.asList(new Object[][]{
                     {"for(;;) " + instruction + ";"},
                     {"for(;;){ " + instruction + ";}"},

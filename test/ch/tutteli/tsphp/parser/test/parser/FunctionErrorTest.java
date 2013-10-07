@@ -29,7 +29,7 @@ public class FunctionErrorTest extends AParserParserExceptionTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{"function void a();",TSPHPParser.Semicolon,17});
-        collection.add(new Object[]{"function void a(int $a=null, int $b){}", TSPHPParser.RightParanthesis, 35});
+        collection.add(new Object[]{"function void a(int $a=null, int $b){}", TSPHPParser.RightParenthesis, 35});
         //cast not allowed for object - see TSPHP-325
         collection.add(new Object[]{"function void a(cast object $a){}", TSPHPParser.TypeObject, 21});
 
@@ -48,16 +48,16 @@ public class FunctionErrorTest extends AParserParserExceptionTest
                     {fixture + "!true" + "){}", TSPHPParser.LogicNot, fixtureLength},
                     {fixture + "1 instanceof 2" + "){}", TSPHPParser.Instanceof, fixtureLength + 2},
                     {fixture + "~1" + "){}", TSPHPParser.BitwiseNot, fixtureLength},
-                    {fixture + "(bool) 1" + "){}", TSPHPParser.LeftParanthesis, fixtureLength},
-                    {fixture + "(int) 1" + "){}", TSPHPParser.LeftParanthesis, fixtureLength},
-                    {fixture + "(string) 1" + "){}", TSPHPParser.LeftParanthesis, fixtureLength},
-                    {fixture + "(array) 1" + "){}", TSPHPParser.LeftParanthesis, fixtureLength},
-                    {fixture + "(Foo) 1" + "){}", TSPHPParser.LeftParanthesis, fixtureLength},
+                    {fixture + "(bool) 1" + "){}", TSPHPParser.LeftParenthesis, fixtureLength},
+                    {fixture + "(int) 1" + "){}", TSPHPParser.LeftParenthesis, fixtureLength},
+                    {fixture + "(string) 1" + "){}", TSPHPParser.LeftParenthesis, fixtureLength},
+                    {fixture + "(array) 1" + "){}", TSPHPParser.LeftParenthesis, fixtureLength},
+                    {fixture + "(Foo) 1" + "){}", TSPHPParser.LeftParenthesis, fixtureLength},
                     {fixture + "@1" + "){}", TSPHPParser.At, fixtureLength},
                     {fixture + "new Foo()" + "){}", TSPHPParser.New, fixtureLength},
                     {fixture + "clone $a" + "){}", TSPHPParser.Clone, fixtureLength},
                     {fixture + "$a" + "){}", TSPHPParser.VariableId, fixtureLength},
-                    {fixture + "foo()" + "){}", TSPHPParser.LeftParanthesis, fixtureLength + 3},
+                    {fixture + "foo()" + "){}", TSPHPParser.LeftParenthesis, fixtureLength + 3},
                     {fixture + "$a[0]" + "){}", TSPHPParser.VariableId, fixtureLength},
                     {fixture + "$a->a" + "){}", TSPHPParser.VariableId, fixtureLength}
                 }));

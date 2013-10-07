@@ -33,8 +33,8 @@ public class IncrementDecrementErrorTest extends AParserParserExceptionTest
 
         return Arrays.asList(new Object[][]{
                     //increment or decrement from call
-                    {"++foo();", TSPHPParser.LeftParanthesis, 5},
-                    {"--foo();", TSPHPParser.LeftParanthesis, 5},
+                    {"++foo();", TSPHPParser.LeftParenthesis, 5},
+                    {"--foo();", TSPHPParser.LeftParenthesis, 5},
                     //semicolon is wrong since it expects a memAccess after a mCall
                     {"++$a->foo();", TSPHPParser.Semicolon, 11},
                     {"--$a->foo();", TSPHPParser.Semicolon, 11},
