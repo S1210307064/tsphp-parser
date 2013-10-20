@@ -1,4 +1,4 @@
-package ch.tutteli.tsphp.parser.antlr;
+package ch.tutteli.tsphp.parser.antlrmod;
 
 import java.io.IOException;
 import org.antlr.runtime.ANTLRFileStream;

@@ -1,10 +1,13 @@
-package ch.tutteli.tsphp.parser.antlr;
+package ch.tutteli.tsphp.parser.antlrmod;
 
+import ch.tutteli.tsphp.common.ErrorReporterHelper;
 import ch.tutteli.tsphp.common.IErrorLogger;
 import ch.tutteli.tsphp.common.IErrorReporter;
 import ch.tutteli.tsphp.common.exceptions.TSPHPException;
 import java.util.ArrayDeque;
 import java.util.Collection;
+
+import ch.tutteli.tsphp.parser.antlr.TSPHPLexer;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
@@ -34,13 +37,7 @@ public class ErrorReportingTSPHPLexer extends TSPHPLexer implements IErrorReport
     @Override
     public void reportError(RecognitionException exception) {
         hasFoundError = true;
-        String tokenText = exception.token != null
-                ? "Unexpected token: " + exception.token.getText()
-                : "Unknown token";
-        for (IErrorLogger logger : errorLoggers) {
-            logger.log(new TSPHPException("Line " + exception.line + "|" + exception.charPositionInLine
-                    + " lexer exception occurred. " + tokenText, exception));
-        }
+        ErrorReporterHelper.reportError(errorLoggers, exception, "parsing");
     }
 
     @Override

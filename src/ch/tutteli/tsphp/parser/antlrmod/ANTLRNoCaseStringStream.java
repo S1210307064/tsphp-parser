@@ -1,4 +1,4 @@
-package ch.tutteli.tsphp.parser.antlr;
+package ch.tutteli.tsphp.parser.antlrmod;
 
 import org.antlr.runtime.ANTLRStringStream;
 import org.antlr.runtime.CharStream;

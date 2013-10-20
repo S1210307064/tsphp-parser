@@ -1,6 +1,6 @@
 package ch.tutteli.tsphp.parser.test.testutils;
 
-import ch.tutteli.tsphp.parser.antlr.ErrorReportingTSPHPLexer;
+import ch.tutteli.tsphp.parser.antlrmod.ErrorReportingTSPHPLexer;
 import java.util.ArrayList;
 import java.util.List;
 import org.antlr.runtime.CharStream;
