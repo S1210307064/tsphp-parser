@@ -540,7 +540,7 @@ allTypesWithModifier
 scalarTypeWithModifier
 @after{
 	ITSPHPAst ast = retval.tree.getChild(0);
-	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast);	
+	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers, ast);	
 }
 	:	Cast? scalarTypes '?'?			
 		-> ^(TYPE[$scalarTypeWithModifier.start,"type"] 
