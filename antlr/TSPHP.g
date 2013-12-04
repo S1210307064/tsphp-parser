@@ -540,7 +540,7 @@ allTypesWithModifier
 scalarTypeWithModifier
 @after{
 	ITSPHPAst ast = retval.tree.getChild(0);
-	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers, ast);	
+	AstHelperRegistry.get().addAstToTargetChildren(classMemberModifiers, ast);	
 }
 	:	Cast? scalarTypes '?'?			
 		-> ^(TYPE[$scalarTypeWithModifier.start,"type"] 
@@ -552,7 +552,7 @@ scalarTypeWithModifier
 typesWithoutScalarAndObjectWithModifier
 @after{
 	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
-	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast);	
+	AstHelperRegistry.get().addAstToTargetChildren(classMemberModifiers,ast);	
 }
 	:	Cast? typesWithoutScalarAndObject		
 		-> ^(TYPE[$typesWithoutScalarAndObjectWithModifier.start,"type"] 
@@ -564,7 +564,7 @@ typesWithoutScalarAndObjectWithModifier
 objectWithModifier
 @after{
 	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
-	AstHelperRegistry.get().addChildrenFromTo(classMemberModifiers,ast);	
+	AstHelperRegistry.get().addAstToTargetChildren(classMemberModifiers,ast);	
 }
 	:	obj='object'
 		-> ^(TYPE[$objectWithModifier.start,"type"] 
