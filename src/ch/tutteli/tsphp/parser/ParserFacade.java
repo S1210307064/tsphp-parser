@@ -8,7 +8,7 @@ import ch.tutteli.tsphp.common.IParser;
 import ch.tutteli.tsphp.common.ITSPHPAst;
 import ch.tutteli.tsphp.common.ITSPHPAstAdaptor;
 import ch.tutteli.tsphp.common.TSPHPAstAdaptor;
-import ch.tutteli.tsphp.common.TSPHPErrorNode;
+import ch.tutteli.tsphp.common.TSPHPErrorAst;
 import ch.tutteli.tsphp.common.exceptions.TSPHPException;
 import ch.tutteli.tsphp.parser.antlrmod.ANTLRNoCaseFileStream;
 import ch.tutteli.tsphp.parser.antlrmod.ANTLRNoCaseInputStream;
@@ -96,10 +96,11 @@ public class ParserFacade implements IParser, IErrorLogger
         try {
             return getAst(input);
         } catch (RecognitionException ex) {
-            //should never happen, TSPHPParser catches it already. But just in case
+            // should never happen, ErrorReportingTSPHPLexer and ErrorReportingTSPHPParser should catch it already.
+            // but just in case and to be complete
             informErrorLogger(ex);
             TokenStream tokenStream = new CommonTokenStream();
-            return new ParserUnitDto("", new TSPHPErrorNode(tokenStream, ex.token, ex.token, ex), tokenStream);
+            return new ParserUnitDto("", new TSPHPErrorAst(tokenStream, ex.token, ex.token, ex), tokenStream);
         }
     }
 

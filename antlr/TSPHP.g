@@ -312,7 +312,7 @@ classBody
 	;
 
 constDeclarationList
-	:	 begin='const' scalarTypes constantAssignment (',' constantAssignment)* ';'
+	:	begin='const' scalarTypes constantAssignment (',' constantAssignment)* ';'
 		-> ^(CONSTANT_DECLARATION_LIST[$begin,"consts"] 
 			^(TYPE[$scalarTypes.start,"type"] 
 				^(TYPE_MODIFIER[$scalarTypes.start,"tMod"] 
@@ -506,8 +506,8 @@ interfaceConstruct
 
 
 
-/******* Procedural related - is also be used by OOP ************/
-//***************************************************************/
+/******* Procedural related - is also used by OOP ************/
+//************************************************************/
 functionDeclaration	
 	:	func='function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
 		-> ^($func 
@@ -934,7 +934,6 @@ call	:	'->'! methodIdentifier actualParameters
 atom	:	'(' expression ')' -> expression
 	|	incrementDecrement
 	|	postFixVariableInclCallAtTheEnd
-	|	array
 	|	primitiveAtomWithConstant
 	;
 
@@ -1143,7 +1142,7 @@ forLoop
 		)
 	;
 	
-forInit	
+forInit
 	:	init='(' 
 		(	variableDeclarationList -> ^(VARIABLE_DECLARATION_LIST[$init,"vars"] variableDeclarationList)
 		|	expressionList? -> ^(EXPRESSION_LIST[$init,"exprs"] expressionList?)
