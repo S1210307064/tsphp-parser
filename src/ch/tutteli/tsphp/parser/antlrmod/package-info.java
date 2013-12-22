@@ -1,5 +1,5 @@
 /**
- * Contains helper classes for the generated files from ANTLR v.3.5.
+ * Contains classes which modify or add behaviour to the ANTLR generated classes (in package antlr).
  */
 package ch.tutteli.tsphp.parser.antlrmod;
 

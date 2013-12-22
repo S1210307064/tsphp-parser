@@ -126,8 +126,8 @@ tokens{
 	ARRAY_ACCESS;
 	BLOCK;
 	BLOCK_CONDITIONAL;
-	CASTING;
-	CASTING_ASSIGN;
+	CAST;
+	CAST_ASSIGN;
 	
 	CLASS_BODY;
 	CLASS_MODIFIER;
@@ -680,7 +680,7 @@ castAssignOrAssignList[ITSPHPAst ast]
 	
 castAssign[ITSPHPAst typeAst]
 	:	VariableId cast='=''('')' expression 
-		-> ^(VariableId ^(CASTING[$cast,"casting"] {$typeAst} expression))
+		-> ^(VariableId ^(CAST[$cast,"casting"] {$typeAst} expression))
 	;
 
 assign	
@@ -728,7 +728,7 @@ assignmentSimple
 	
 assignOperator	
 	:	'='
-	|	cast='=''('')' -> CASTING_ASSIGN[$cast,"cAssign"]
+	|	cast='=''('')' -> CAST_ASSIGN[$cast,"cAssign"]
 	;	
 
 assignmentCompound
@@ -819,7 +819,7 @@ instanceOf
 	:	castOrBitwiseNotOrAt ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
 
 castOrBitwiseNotOrAt
-	:	cast = '(' allTypesWithoutObjectWithModifier ')' castOrBitwiseNotOrAt -> ^(CASTING[$cast,"casting"] allTypesWithoutObjectWithModifier castOrBitwiseNotOrAt)
+	:	cast = '(' allTypesWithoutObjectWithModifier ')' castOrBitwiseNotOrAt -> ^(CAST[$cast,"casting"] allTypesWithoutObjectWithModifier castOrBitwiseNotOrAt)
 	|	'~'^ castOrBitwiseNotOrAt
 	|	'@'^ castOrBitwiseNotOrAt
 	|	cloneOrNew
