@@ -253,7 +253,7 @@ withoutNamespace
 statement	
 	:	useDeclarationList
 	|	definition
-	|	instructionWithoutBreakContinue
+	|	instruction
 	;
 	
 useDeclarationList
@@ -280,9 +280,6 @@ definition
 	|	functionDeclaration
 	|	constDeclarationList
 	;
-
-/************* OOP related  - many definitions rely on procedural definitions *********************/
-//************************************************************************************************/
 
 classDeclaration
 	:	classModifier? 'class' Identifier (ex='extends' exId=classInterfaceTypeWithoutObject)? (impl='implements' implIds=identifierList)? block='{' classBody* '}'	
@@ -388,11 +385,11 @@ abstractMethodModifier
 	;
 
 methodDeclaration	
-	:	methodModifier 'function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
+	:	methodModifier 'function' functionSignatureInclReturnType block='{' instruction* '}' 
 		-> ^(METHOD_DECLARATION[$methodDeclaration.start,"mDecl"]  
 			^(METHOD_MODIFIER[$methodModifier.start,"mMod"] methodModifier)
 			functionSignatureInclReturnType 
-			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
+			^(BLOCK[$block,"block"] instruction*)
 		) 
 	;	
 	
@@ -441,21 +438,21 @@ abstractConstructDestructDeclaration
 
 constructDestructDeclaration
 	:	constructDestructModifier 'function'
-		(	ctor='__construct' formalParameters block='{' instructionWithoutBreakContinue* '}' 
+		(	ctor='__construct' formalParameters block='{' instruction* '}' 
 			-> ^(Construct[$ctor, $ctor.text+"()"] 
 				^(METHOD_MODIFIER[$constructDestructModifier.start,"mMod"] constructDestructModifier)
 				^(TYPE[$ctor,"type"] TYPE_MODIFIER[$ctor,"tMod"] Void["void"])
 				formalParameters 
-				^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
+				^(BLOCK[$block,"block"] instruction*)
 			)
 		
-		|	destr='__destruct' '('')' block='{' instructionWithoutBreakContinue* '}' 
+		|	destr='__destruct' '('')' block='{' instruction* '}' 
 			-> ^(METHOD_DECLARATION[$destr,"mDecl"]
 				^(METHOD_MODIFIER[$constructDestructModifier.start,"mMod"] constructDestructModifier)
 				^(TYPE[$destr,"type"] TYPE_MODIFIER[$destr,"tMod"] Void[$destr,"void"])
 				Identifier[$destr, $destr.text+"()"]
 				PARAMETER_LIST[$destr,"params"]
-				^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
+				^(BLOCK[$block,"block"] instruction*)
 			)	
 		)
 		
@@ -509,11 +506,11 @@ interfaceConstruct
 /******* Procedural related - is also used by OOP ************/
 //************************************************************/
 functionDeclaration	
-	:	func='function' functionSignatureInclReturnType block='{' instructionWithoutBreakContinue* '}' 
+	:	func='function' functionSignatureInclReturnType block='{' instruction* '}' 
 		-> ^($func 
 			FUNCTION_MODIFIER[$func,"fMod"] 
 			functionSignatureInclReturnType
-			^(BLOCK[$block,"block"] instructionWithoutBreakContinue*)
+			^(BLOCK[$block,"block"] instruction*)
 		)
 	;
 	
@@ -633,19 +630,6 @@ VariableId
 	:	'$' Identifier
 	;
 
-instructionWithoutBreakContinue	
-	:	block='{''}' -> EXPRESSION[$block,"expr"]
-	|	'{'! instructionWithoutBreakContinue+ '}'!
-	|	instruction
-	;
-
-instructionInclBreakContinue
-	:	block='{''}' -> EXPRESSION[$block,"expr"]
-	|	'{'! instructionInclBreakContinue*  '}'!
-	|	instruction
-	|	('break'|'continue')^ Int? ';'!
-	;	
-
 instruction
 	:	localVariableDeclaration ';'!
 	|	ifCondition
@@ -656,10 +640,13 @@ instruction
 	|	doWhileLoop
 	|	tryCatch
 	|	expression ';' -> ^(EXPRESSION[$expression.start,"expr"] expression)
+	|	expr=';' -> EXPRESSION[$expr,"expr"]
 	|	'return'^ expression? ';'!
 	|	'throw'^ expression ';'!
 	|	'echo'^ expressionList ';'!
-	|	expr=';' -> EXPRESSION[$expr,"expr"]
+	|	('break'|'continue')^ Int? ';'!
+	|	block='{''}' -> EXPRESSION[$block,"expr"]
+	|	'{'! instruction+ '}'!
 	;
 	
 expressionList
@@ -1084,7 +1071,7 @@ arrayKeyValue
 	;
 
 ifCondition
-	:	'if' '(' expression ')' instructionThen=instructionInclBreakContinue ( 'else' instructionElse =instructionInclBreakContinue )? 
+	:	'if' '(' expression ')' instructionThen=instruction ( 'else' instructionElse =instruction )? 
 		-> ^('if' 
 			expression 
 			^(BLOCK_CONDITIONAL[$instructionThen.start,"cBlock"] $instructionThen) 
@@ -1102,26 +1089,26 @@ switchContent
 	;
 	
 normalCaseInstructionMandatory
-	:	caseLabel+ instructionInclBreakContinue+
+	:	caseLabel+ instruction+
 		-> 	^(SWITCH_CASES[$normalCaseInstructionMandatory.start,"cases"] caseLabel+)
-		 	^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue+)
+		 	^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction+)
 	;
 	
 normalCaseInstructionOptional
-	:	caseLabel+ instructionInclBreakContinue*
+	:	caseLabel+ instruction*
 		-> 	^(SWITCH_CASES[$normalCaseInstructionOptional.start,"cases"] caseLabel+) 
-			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue*)
+			^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction*)
 		
 			;	
 defaultCaseInstructionMandatory
-	:	caseLabel* defaultLabel caseLabel* instructionInclBreakContinue+
+	:	caseLabel* defaultLabel caseLabel* instruction+
 		-> 	^(SWITCH_CASES[$defaultCaseInstructionMandatory.start,"cases"] caseLabel* defaultLabel) 
-			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue+)
+			^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction+)
 	;
 defaultCaseInstructionOptional
-	:	caseLabel* defaultLabel caseLabel* instructionInclBreakContinue*
+	:	caseLabel* defaultLabel caseLabel* instruction*
 		-> 	^(SWITCH_CASES[$defaultCaseInstructionOptional.start,"cases"] caseLabel* defaultLabel) 
-			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue*)
+			^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction*)
 	;
 	
 caseLabel	
@@ -1133,12 +1120,12 @@ defaultLabel
 	;
 	
 forLoop	
-	:	'for' forInit forCondition forUpdate instructionInclBreakContinue 
+	:	'for' forInit forCondition forUpdate instruction 
 		-> ^('for' 
 			forInit 
 			forCondition 
 			forUpdate 
-			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue)
+			^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction)
 		)
 	;
 	
@@ -1158,7 +1145,7 @@ forUpdate
 	;
 
 foreachLoop
-	:	'foreach' '(' expression 'as' (keyType=scalarTypes keyVarId=VariableId '=>')? valueType=allTypesWithModifier valueVarId=VariableId ')' instructionInclBreakContinue 
+	:	'foreach' '(' expression 'as' (keyType=scalarTypes keyVarId=VariableId '=>')? valueType=allTypesWithModifier valueVarId=VariableId ')' instruction 
 		-> ^('foreach' 
 			expression
 			
@@ -1170,33 +1157,33 @@ foreachLoop
 			)?
 				
 			^(VARIABLE_DECLARATION_LIST[$valueType.start,"vars"] $valueType $valueVarId) 
-			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue)
+			^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction)
 		)
 	;
 
 whileLoop
-	:	'while' '(' expression ')' instructionInclBreakContinue 
-		-> ^('while' expression ^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue))
+	:	'while' '(' expression ')' instruction 
+		-> ^('while' expression ^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction))
 	;
 	
 doWhileLoop
-	:	'do' instructionInclBreakContinue 'while' '(' expression ')' ';' 
-		-> ^('do' ^(BLOCK[$instructionInclBreakContinue.start,"block"] instructionInclBreakContinue) expression)
+	:	'do' instruction 'while' '(' expression ')' ';' 
+		-> ^('do' ^(BLOCK[$instruction.start,"block"] instruction) expression)
 	;
 
 tryCatch
-	:	'try' tryBegin='{' instructionInclBreakContinue* '}' catchBlock+
-		-> ^('try' ^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue*) catchBlock+)
+	:	'try' tryBegin='{' instruction* '}' catchBlock+
+		-> ^('try' ^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction*) catchBlock+)
 	;
 	
 catchBlock
-	:	catchBegin='catch' '(' classInterfaceTypeWithoutObject VariableId ')' block='{' instructionInclBreakContinue* '}'
+	:	catchBegin='catch' '(' classInterfaceTypeWithoutObject VariableId ')' block='{' instruction* '}'
 		-> ^($catchBegin 
 			^(VARIABLE_DECLARATION_LIST[$classInterfaceTypeWithoutObject.start,"vars"] 
 				^(TYPE[$classInterfaceTypeWithoutObject.start,"type"] TYPE_MODIFIER[$classInterfaceTypeWithoutObject.start,"tMod"] classInterfaceTypeWithoutObject)
 				VariableId
 			)
-			^(BLOCK_CONDITIONAL[$instructionInclBreakContinue.start,"cBlock"] instructionInclBreakContinue*)
+			^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction*)
 		)
 	;
 
