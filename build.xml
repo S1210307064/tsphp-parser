@@ -1,4 +1,4 @@
-<project name="parser" default="build" basedir="." >
+<project name="parser" default="common.build" basedir="." >
 
     <property environment="env" />
     <import file="${basedir}/ant/build-common.xml" as="common"/>

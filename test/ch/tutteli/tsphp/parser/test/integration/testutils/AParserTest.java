@@ -12,9 +12,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 
 /**
- *
  * @author Robert Stoll <rstoll@tutteli.ch>
- *
  */
 @Ignore
 public abstract class AParserTest extends ATest

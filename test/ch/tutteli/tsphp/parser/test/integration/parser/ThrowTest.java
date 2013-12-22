@@ -1,13 +1,15 @@
 package ch.tutteli.tsphp.parser.test.integration.parser;
 
 import ch.tutteli.tsphp.parser.test.integration.testutils.AParserTest;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import ch.tutteli.tsphp.parser.test.integration.testutils.InstructionHelper;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @RunWith(Parameterized.class)
 public class ThrowTest extends AParserTest
@@ -25,7 +27,7 @@ public class ThrowTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(ReturnTest.getPossiblePlacesForInstructionsWithInstruction("throw new \\Exception('bla')"));
+        collection.addAll(InstructionHelper.getTestStrings("throw new \\Exception('bla');"));
         return collection;
     }
 }

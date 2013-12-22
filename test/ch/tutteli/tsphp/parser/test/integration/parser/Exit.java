@@ -4,6 +4,8 @@ import ch.tutteli.tsphp.parser.test.integration.testutils.AParserTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import ch.tutteli.tsphp.parser.test.integration.testutils.InstructionHelper;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +27,8 @@ public class Exit extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(ReturnTest.getPossiblePlacesForInstructionsWithInstruction("exit"));
+        collection.addAll(InstructionHelper.getTestStrings("exit;"));
+        collection.addAll(InstructionHelper.getTestStrings("exit (1);"));
         return collection;
     }
 }

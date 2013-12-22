@@ -4,6 +4,8 @@ import ch.tutteli.tsphp.parser.test.integration.testutils.AParserTest;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+
+import ch.tutteli.tsphp.parser.test.integration.testutils.InstructionHelper;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,10 +27,10 @@ public class BreakContinueTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(ReturnTest.getControlStructuresWithInstruction("break"));
-        collection.addAll(ReturnTest.getControlStructuresWithInstruction("continue"));
-        collection.addAll(ReturnTest.getControlStructuresWithInstruction("break 3"));
-        collection.addAll(ReturnTest.getControlStructuresWithInstruction("continue 2"));
+        collection.addAll(InstructionHelper.getTestStrings("break;"));
+        collection.addAll(InstructionHelper.getTestStrings("continue;"));
+        collection.addAll(InstructionHelper.getTestStrings("break 3;"));
+        collection.addAll(InstructionHelper.getTestStrings("continue 2;"));
         return collection;
     }
 }
