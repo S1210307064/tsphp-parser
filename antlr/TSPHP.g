@@ -251,17 +251,17 @@ withoutNamespace
 	;
 
 statement	
-	:	useDeclarationList
+	:	useDefinitionList
 	|	definition
 	|	instruction
 	;
 	
-useDeclarationList
-	:	'use' firstUseDeclaration=useDeclaration (',' otherDeclaration=useDeclaration)* ';' 
-		-> ^('use' ^(USE_DECLARATION[$firstUseDeclaration.start,"uDecl"] useDeclaration) (^(USE_DECLARATION[$otherDeclaration.start,"uDecl"] useDeclaration))* )
+useDefinitionList
+	:	'use' firstUseDeclaration=useDefinition (',' otherDeclaration=useDefinition)* ';' 
+		-> ^('use' ^(USE_DECLARATION[$firstUseDeclaration.start,"uDecl"] useDefinition) (^(USE_DECLARATION[$otherDeclaration.start,"uDecl"] useDefinition))* )
 	;
 	
-useDeclaration
+useDefinition
 @init{ String backslash = "\\";}
 	:	usingType 'as' Identifier -> usingType Identifier
 	|	type=Identifier 'as' alias=Identifier -> TYPE_NAME[$type,$type.text] $alias
@@ -274,14 +274,15 @@ usingType
 	:	Identifier '\\' namespaceId -> TYPE_NAME[$usingType.start, $usingType.text]
 	|	'\\' namespaceId -> TYPE_NAME[$usingType.start, $usingType.text]		
 	;
+	
 definition
-	:	classDeclaration
-	|	interfaceDeclaration
-	|	functionDeclaration
-	|	constDeclarationList
+	:	classDefinition
+	|	interfaceDefinition
+	|	functionDefinition
+	|	constDefinitionList
 	;
 
-classDeclaration
+classDefinition
 	:	classModifier? 'class' Identifier (ex='extends' exId=classInterfaceTypeWithoutObject)? (impl='implements' implIds=identifierList)? block='{' classBody* '}'	
 		-> ^('class' 
 			^(CLASS_MODIFIER[$classModifier.start,"cMod"] classModifier?)
@@ -291,6 +292,7 @@ classDeclaration
 			^(CLASS_BODY[$block,"cBody"] classBody*)
 		)
 	;
+	
 classModifier
 	:	('abstract'|'final')
 	;
@@ -300,15 +302,15 @@ identifierList
 	;
 	
 classBody
-	:	constDeclarationList
-	|	classMemberDeclaration	
-	|	abstractConstructDestructDeclaration
-	|	constructDestructDeclaration
-	|	abstractMethodDeclaration
-	|	methodDeclaration
+	:	constDefinitionList
+	|	classMemberDefinition	
+	|	abstractConstructDestructDefinition
+	|	constructDestructDefinition
+	|	abstractMethodDefinition
+	|	methodDefinition
 	;
 
-constDeclarationList
+constDefinitionList
 	:	begin='const' scalarTypes constantAssignment (',' constantAssignment)* ';'
 		-> ^(CONSTANT_DECLARATION_LIST[$begin,"consts"] 
 			^(TYPE[$scalarTypes.start,"type"] 
@@ -328,14 +330,14 @@ constantAssignment
 		->^(Identifier[$id,$id.text+"#"] unaryPrimitiveAtom)
 	;
 
-classMemberDeclaration
+classMemberDefinition
 @after{
 	classMemberModifiers=null;
 }
 	:	classMemberModifier {classMemberModifiers = $classMemberModifier.tree;}
 		variableDeclarationList ';' 
 		
-		-> ^(CLASS_MEMBER[$classMemberDeclaration.start,"cMem"]
+		-> ^(CLASS_MEMBER[$classMemberDefinition.start,"cMem"]
 			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"vars"] variableDeclarationList)
 		)
 	;
@@ -369,7 +371,7 @@ accessModifierOrPublic
 	;
 
 
-abstractMethodDeclaration
+abstractMethodDefinition
 	:	abstractMethodModifier 'function' functionSignatureInclReturnType block=';'
 		-> ^(METHOD_DECLARATION[$abstractMethodModifier.start,"mDecl"]  
 			^(METHOD_MODIFIER[$abstractMethodModifier.start,"mMod"] abstractMethodModifier)
@@ -384,9 +386,9 @@ abstractMethodModifier
 	|	abstr='abstract' -> 'abstract' Public[$abstr,"public"]
 	;
 
-methodDeclaration	
+methodDefinition	
 	:	methodModifier 'function' functionSignatureInclReturnType block='{' instruction* '}' 
-		-> ^(METHOD_DECLARATION[$methodDeclaration.start,"mDecl"]  
+		-> ^(METHOD_DECLARATION[$methodDefinition.start,"mDecl"]  
 			^(METHOD_MODIFIER[$methodModifier.start,"mMod"] methodModifier)
 			functionSignatureInclReturnType 
 			^(BLOCK[$block,"block"] instruction*)
@@ -416,7 +418,7 @@ methodModifier
 	|	/* empty */ -> Public[$methodModifier.start,"public"]
 	;
 	
-abstractConstructDestructDeclaration
+abstractConstructDestructDefinition
 	:	abstractMethodModifier 'function' 
 		(	ctor='__construct' formalParameters block=';'
 			-> ^(Construct[$ctor, $ctor.text+"()"] 
@@ -436,7 +438,7 @@ abstractConstructDestructDeclaration
 		)
 	;
 
-constructDestructDeclaration
+constructDestructDefinition
 	:	constructDestructModifier 'function'
 		(	ctor='__construct' formalParameters block='{' instruction* '}' 
 			-> ^(Construct[$ctor, $ctor.text+"()"] 
@@ -466,7 +468,7 @@ constructDestructModifier
 	|	/* empty */ -> Public[$constructDestructModifier.start,"public"]
 	;
 
-interfaceDeclaration
+interfaceDefinition
 	:	inter='interface' Identifier (ext='extends' identifierList)? block='{' interfaceBody* '}'
 		-> ^('interface' 
 			^(CLASS_MODIFIER[$inter,"iMod"] Abstract[$inter,"abstract"])
@@ -477,24 +479,24 @@ interfaceDeclaration
 	;
 
 interfaceBody
-	:	constDeclarationList
-	|	interfaceMethodDeclaration
-	|	interfaceConstruct
+	:	constDefinitionList
+	|	interfaceMethodDefinition
+	|	interfaceConstructDefinition
 	;
 
-interfaceMethodDeclaration
+interfaceMethodDefinition
 	:	'public'? 'function' functionSignatureInclReturnType block=';'
-		-> ^(METHOD_DECLARATION[$interfaceMethodDeclaration.start,"mDecl"]   
-			^(METHOD_MODIFIER[$interfaceMethodDeclaration.start,"mMod"] Public[$interfaceMethodDeclaration.start,"public"] Abstract[$interfaceMethodDeclaration.start,"abstract"])
+		-> ^(METHOD_DECLARATION[$interfaceMethodDefinition.start,"mDecl"]   
+			^(METHOD_MODIFIER[$interfaceMethodDefinition.start,"mMod"] Public[$interfaceMethodDefinition.start,"public"] Abstract[$interfaceMethodDefinition.start,"abstract"])
 			functionSignatureInclReturnType 
 			BLOCK[$block,"block"]
 		) 
 	;
 
-interfaceConstruct
+interfaceConstructDefinition
 	:	'public'? 'function' ctor='__construct' formalParameters block=';' 
 		-> ^(Construct[$ctor, $ctor.text+"()"]
-			^(METHOD_MODIFIER[$interfaceConstruct.start,"mMod"] Public[$interfaceConstruct.start,"public"]  Abstract[$interfaceConstruct.start,"abstract"])
+			^(METHOD_MODIFIER[$interfaceConstructDefinition.start,"mMod"] Public[$interfaceConstructDefinition.start,"public"]  Abstract[$interfaceConstructDefinition.start,"abstract"])
 			^(TYPE[$ctor,"type"] TYPE_MODIFIER[$ctor,"tMod"] Void["void"])
 			formalParameters
 			BLOCK[$block,"block"]
@@ -505,7 +507,7 @@ interfaceConstruct
 
 /******* Procedural related - is also used by OOP ************/
 //************************************************************/
-functionDeclaration	
+functionDefinition	
 	:	func='function' functionSignatureInclReturnType block='{' instruction* '}' 
 		-> ^($func 
 			FUNCTION_MODIFIER[$func,"fMod"] 
@@ -631,7 +633,7 @@ VariableId
 	;
 
 instruction
-	:	localVariableDeclaration ';'!
+	:	localVariableDeclarationList ';'!
 	|	ifCondition
 	|	switchCondition
 	|	forLoop
@@ -653,7 +655,7 @@ expressionList
 	:	expression (','! expression)*
 	;
 		
-localVariableDeclaration
+localVariableDeclarationList
 	:	variableDeclarationList -> ^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"vars"] variableDeclarationList)
 	;
 	
@@ -907,7 +909,6 @@ methodCallSelfOrParent
 	:	selfOrParent methodIdentifier actualParameters
 		-> ^(METHOD_CALL[$selfOrParent.start,"mCall"] selfOrParent methodIdentifier actualParameters)	
 	;	
-
 	
 methodCallStatic
 	:	staticClassAccess methodIdentifier actualParameters
@@ -916,7 +917,6 @@ methodCallStatic
 
 call	:	'->'! methodIdentifier actualParameters
 	;
-
 
 atom	:	'(' expression ')' -> expression
 	|	incrementDecrement
@@ -964,9 +964,6 @@ postFixVariableInclCallAtTheEnd
 		|	call -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixVariableInclCallAtTheEnd call)
 		)*
 	;
-
-
-
 	
 unaryPrimitiveAtom
 	:	uplus = '+' primitiveAtomWithConstant -> ^(UNARY_PLUS[$uplus, "uPlus"] primitiveAtomWithConstant)
@@ -1017,12 +1014,10 @@ OCTAL
 	:	'0' ('0'..'7')+
 	;
 
-
 fragment
 BINARY	
 	:	'0b'('0'|'1')+
 	;
-
 
 Float
     	:	('0'..'9')+ '.' ('0'..'9')* EXPONENT?
@@ -1099,7 +1094,8 @@ normalCaseInstructionOptional
 		-> 	^(SWITCH_CASES[$normalCaseInstructionOptional.start,"cases"] caseLabel+) 
 			^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction*)
 		
-			;	
+	;
+		
 defaultCaseInstructionMandatory
 	:	caseLabel* defaultLabel caseLabel* instruction+
 		-> 	^(SWITCH_CASES[$defaultCaseInstructionMandatory.start,"cases"] caseLabel* defaultLabel) 
@@ -1202,6 +1198,3 @@ Whitespace
         	| '\n'
 	        ) {$channel=HIDDEN;}
 	;
-
-
-	
