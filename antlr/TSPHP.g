@@ -184,11 +184,11 @@ tokens{
 
 
 @header{
-package ch.tutteli.tsphp.parser.antlr;
+package ch.tsphp.parser.antlr;
 
 
-import ch.tutteli.tsphp.common.AstHelperRegistry;
-import ch.tutteli.tsphp.common.ITSPHPAst;
+import ch.tsphp.common.AstHelperRegistry;
+import ch.tsphp.common.ITSPHPAst;
 
 }
 
@@ -198,7 +198,7 @@ private ITSPHPAst classMemberModifiers;
 }
 
 @lexer::header{
-package ch.tutteli.tsphp.parser.antlr;
+package ch.tsphp.parser.antlr;
 }
 
 compilationUnit	
