@@ -28,10 +28,12 @@ public class VariableDeclarationTest extends AParserTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{"int $a =(int) $b;"});
-        List<String> types = TypeHelper.getAllTypes();
+        List<String> types = TypeHelper.getAllTypesWithoutObject();
         for (String type : types) {
             collection.add(new Object[]{type + " $d = 1;"});
+            collection.add(new Object[]{type + " $d =() 1;"});
         }
+        collection.add(new Object[]{"object $d = 1;"});
         return collection;
     }
 }

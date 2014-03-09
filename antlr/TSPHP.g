@@ -2,9 +2,9 @@ grammar TSPHP;
 
 options {
 	backtrack = true; 
-	memoize=true;
-	output=AST;
-	ASTLabelType=ITSPHPAst;
+	memoize = true;
+	output = AST;
+	ASTLabelType = ITSPHPAst;
 }
 
 tokens{
@@ -359,17 +359,6 @@ accessModifierWithoutPrivate
 	:	'protected'
 	|	'public'
 	;
-	
-accessModifierWithoutPrivateOrPublic
-	:	accessModifierWithoutPrivate 
-	|	/* empty */ -> Public[$accessModifierWithoutPrivateOrPublic.start,"public"]
-	;
-	
-accessModifierOrPublic
-	:	accessModifier 
-	|	/* empty */  -> Public[$accessModifierOrPublic.start,"public"]
-	;
-
 
 abstractMethodDefinition
 	:	abstractMethodModifier 'function' functionSignatureInclReturnType block=';'
@@ -571,23 +560,19 @@ objectWithModifier
 			$obj
 		)	
 	;
-
-allTypes:	allTypesWithoutObject
-	|	'object'
-	;
 	
 allTypesWithoutObject
 	:	scalarTypes
-	|	TypeArray
-	|	TypeResource
+	|	'array'
+	|	'resource'
 	| 	classInterfaceTypeWithoutObject
 	;
 
 scalarTypes
-	:	TypeBool
-	|	TypeInt
-	|	TypeFloat
-	|	TypeString
+	:	'bool'
+	|	'int'
+	|	'float'
+	|	'string'
 	;
 	
 	
@@ -660,16 +645,10 @@ localVariableDeclarationList
 	;
 	
 variableDeclarationList
-	:	variableDeclarationScalarList
-	|	variableDeclarationWithoutScalarAndObjectList		
+	:	allTypesWithoutObjectWithModifier castAssignOrAssignList[$allTypesWithoutObjectWithModifier.tree]
 	|	objectWithModifier  assign (','! assign)*
 	;
-	
-variableDeclarationScalarList
-	:	scalarTypeWithModifier castAssignOrAssignList[$scalarTypeWithModifier.tree]
-	;
-
-	
+		
 castAssignOrAssignList[ITSPHPAst ast]
 	:	(	castAssign[AstHelperRegistry.get().copyAst(ast)]
 		|	assign
@@ -690,12 +669,6 @@ assign
 		-> ^(VariableId expression?)
 	;
 	
-variableDeclarationWithoutScalarAndObjectList
-	:	typesWithoutScalarAndObjectWithModifier castAssignOrAssignList[$typesWithoutScalarAndObjectWithModifier.tree]	
-	;
-	
-
-	
 typesWithoutScalarAndObject
 	:	'array'
 	|	'resource'
@@ -705,7 +678,6 @@ typesWithoutScalarAndObject
 expression
 	:	logicOrWeak
 	;
-	
 
 logicOrWeak
 	:	logicXorWeak ('or'^ logicXorWeak)*
@@ -976,7 +948,7 @@ primitiveAtomWithConstant
 	|	Int
 	|	Float
 	|	String
-	|	Null
+	|	'null'
 	|	array
 	|	classConstant
 	|	globalConstant

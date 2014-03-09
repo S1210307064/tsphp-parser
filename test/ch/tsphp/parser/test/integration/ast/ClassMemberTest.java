@@ -33,8 +33,8 @@ public class ClassMemberTest extends AAstTest
         List<Object[]> collection = new ArrayList<>();
 
         String[][] variations = new String[][]{
-//            {"", "public"},
-//            {"private", "private"},
+            {"", "public"},
+            {"private", "private"},
             {"private static", "private static"},
             {"protected", "protected"},
             {"protected static", "protected static"},
