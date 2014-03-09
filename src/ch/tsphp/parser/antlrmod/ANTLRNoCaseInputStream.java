@@ -1,39 +1,42 @@
 package ch.tsphp.parser.antlrmod;
 
-import java.io.IOException;
-import java.io.InputStream;
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CharStream;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+//CHECKSTYLE:OFF:AbstractClassNameCheck
 public class ANTLRNoCaseInputStream extends ANTLRInputStream
-{
+{ //CHECKSTYLE:ON:AbstractClassNameCheck
 
-    public ANTLRNoCaseInputStream() {
-    }
-
-    public ANTLRNoCaseInputStream(InputStream input) throws IOException {
+    public ANTLRNoCaseInputStream(final InputStream input) throws IOException {
         super(input);
     }
 
-    public ANTLRNoCaseInputStream(InputStream input, int size) throws IOException {
+    public ANTLRNoCaseInputStream(final InputStream input, final int size) throws IOException {
         super(input, size);
     }
 
-    public ANTLRNoCaseInputStream(InputStream input, String encoding) throws IOException {
+    public ANTLRNoCaseInputStream(final InputStream input, final String encoding) throws IOException {
         super(input, encoding);
     }
 
-    public ANTLRNoCaseInputStream(InputStream input, int size, String encoding) throws IOException {
+    public ANTLRNoCaseInputStream(final InputStream input, final int size, final String encoding) throws IOException {
         super(input, size, encoding);
     }
 
-    public ANTLRNoCaseInputStream(InputStream input, int size, int readBufferSize, String encoding) throws IOException {
+    public ANTLRNoCaseInputStream(final InputStream input, final int size,
+            final int readBufferSize, final String encoding) throws IOException {
         super(input, size, readBufferSize, encoding);
     }
 
     @Override
-    public int LA(int i) {
-        int token = super.LA(i);
+    @SuppressWarnings({"PMD.MethodNamingConventions","PMD.ShortMethodName"})
+    //CHECKSTYLE:OFF:MethodNameCheck
+    public int LA(final int lookAhead) { //CHECKSTYLE:ON:MethodNameCheck
+
+        int token = super.LA(lookAhead);
         if (token != 0 && token != CharStream.EOF) {
             token = Character.toLowerCase(token);
         }
