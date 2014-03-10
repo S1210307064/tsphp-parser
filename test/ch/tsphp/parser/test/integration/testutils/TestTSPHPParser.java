@@ -7,10 +7,11 @@
 package ch.tsphp.parser.test.integration.testutils;
 
 import ch.tsphp.parser.antlrmod.ErrorReportingTSPHPParser;
-import java.util.ArrayList;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Overwrite reportError methods in order that unit tests with parser errors fails at the end.
@@ -34,7 +35,12 @@ public class TestTSPHPParser extends ErrorReportingTSPHPParser
         super.reportError(e);
         exceptions.add(e);
         if (isErrorReportingOn) {
-            System.out.println(e.getMessage());
+            String message = e.getMessage();
+            if (message != null) {
+                System.out.println(message);
+            }else{
+                System.out.println(e.token.toString());
+            }
         }
     }
 

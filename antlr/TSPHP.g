@@ -463,7 +463,6 @@ constructDestructDefinition
 				^(BLOCK[$block,"block"] instruction*)
 			)	
 		)
-		
 	;
 
 constructDestructModifier
@@ -709,25 +708,13 @@ logicAndWeak
 	;
 
 assignment
-	:	assignmentSimple
-	|	assignmentCompound
-	;
-	
-assignmentSimple
-	:	ternary assignOperator expression -> ^(assignOperator ternary expression)
-	;
-	
-assignOperator	
-	:	'='
-	|	cast='=''('')' -> CAST_ASSIGN[$cast,"cAssign"]
-	;	
-
-assignmentCompound
 @init{
     ITSPHPAst annexeOperator=null;
 }
 	:	(ternary -> ternary)
-		(	(	op='+=' {annexeOperator = (ITSPHPAst)adaptor.create(Plus, op, "+");}
+		(	as='=' a=assignment -> ^($as ternary $a)
+		|	cast='=''('')' a=assignment -> ^(CAST_ASSIGN[$cast,"cAssign"] ternary $a)
+		|	(	op='+=' {annexeOperator = (ITSPHPAst)adaptor.create(Plus, op, "+");}
 			|	op='-=' {annexeOperator = (ITSPHPAst)adaptor.create(Minus, op, "-");}
 			|	op='*=' {annexeOperator = (ITSPHPAst)adaptor.create(Multiply, op, "*");}
 			|	op='/=' {annexeOperator = (ITSPHPAst)adaptor.create(Divide, op, "/");}
@@ -739,13 +726,14 @@ assignmentCompound
 			|	op='<<=' {annexeOperator = (ITSPHPAst)adaptor.create(ShiftLeft, op, "<<");}
 			|	op='>>=' {annexeOperator = (ITSPHPAst)adaptor.create(ShiftRight, op, ">>");}
 			)
-			expression
-			 -> ^(Assign[$op,"="] $assignmentCompound ^({annexeOperator} {AstHelperRegistry.get().copyAst((ITSPHPAst)root_1.getChild(0))} expression))
+			a=assignment
+			-> ^(Assign[$op,"="] ternary ^({annexeOperator} {AstHelperRegistry.get().copyAst((ITSPHPAst)root_1.getChild(0))} $a))
 		)*
+		
 	;
-
+	
 ternary	
-	:	logicOr ('?'^ expression ':'! expression)?
+	:	logicOr ('?'^ expression ':'! ternary)?
 	;
 
 logicOr	

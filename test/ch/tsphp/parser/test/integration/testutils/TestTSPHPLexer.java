@@ -35,12 +35,13 @@ public class TestTSPHPLexer extends ErrorReportingTSPHPLexer
         super.reportError(e);
         exceptions.add(e);
         if (isErrorReportingOn) {
-            System.out.println(e.getMessage());
+            String message = e.getMessage();
+            if (message != null) {
+                System.out.println(message);
+            }else{
+                System.out.println(e.token.toString());
+            }
         }
-    }
-    
-    public List<Exception> getExceptions() {
-        return exceptions;
     }
 
     public RecognizerSharedState getState() {
