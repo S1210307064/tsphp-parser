@@ -1,3 +1,9 @@
+/*
+ * This file is part of the TSPHP project published under the Apache License 2.0
+ * For the full copyright and license information, please have a look at LICENSE in the
+ * root folder or visit the project's website http://tsphp.ch/wiki/display/TSPHP/License
+ */
+
 grammar TSPHP;
 
 options {
@@ -184,8 +190,13 @@ tokens{
 
 
 @header{
-package ch.tsphp.parser.antlr;
+/*
+ * This file is part of the TSPHP project published under the Apache License 2.0
+ * For the full copyright and license information, please have a look at LICENSE in the
+ * root folder or visit the project's website http://tsphp.ch/wiki/display/TSPHP/License
+ */
 
+package ch.tsphp.parser.antlr;
 
 import ch.tsphp.common.AstHelperRegistry;
 import ch.tsphp.common.ITSPHPAst;
@@ -198,6 +209,12 @@ private ITSPHPAst classMemberModifiers;
 }
 
 @lexer::header{
+/*
+ * This file is part of the TSPHP project published under the Apache License 2.0
+ * For the full copyright and license information, please have a look at LICENSE in the
+ * root folder or visit the project's website http://tsphp.ch/wiki/display/TSPHP/License
+ */
+
 package ch.tsphp.parser.antlr;
 }
 
@@ -229,7 +246,7 @@ namespaceIdOrEmpty
 	|	/* empty */ -> DEFAULT_NAMESPACE[$namespaceIdOrEmpty.start,backslash]
 	;
 
-//Must before Identifier otherwise Identifier matches true and false
+//Must be before Identifier otherwise Identifier matches true and false
 Bool	:	'true'|'false'
 	;
 

@@ -1,3 +1,9 @@
+/*
+ * This file is part of the TSPHP project published under the Apache License 2.0
+ * For the full copyright and license information, please have a look at LICENSE in the
+ * root folder or visit the project's website http://tsphp.ch/wiki/display/TSPHP/License
+ */
+
 package ch.tsphp.parser.antlrmod;
 
 import org.antlr.runtime.ANTLRInputStream;
@@ -32,7 +38,7 @@ public class ANTLRNoCaseInputStream extends ANTLRInputStream
     }
 
     @Override
-    @SuppressWarnings({"PMD.MethodNamingConventions","PMD.ShortMethodName"})
+    @SuppressWarnings({"PMD.MethodNamingConventions", "PMD.ShortMethodName"})
     //CHECKSTYLE:OFF:MethodNameCheck
     public int LA(final int lookAhead) { //CHECKSTYLE:ON:MethodNameCheck
 
