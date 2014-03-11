@@ -347,6 +347,13 @@ constantAssignment
 		->^(Identifier[$id,$id.text+"#"] unaryPrimitiveAtom)
 	;
 
+
+unaryPrimitiveAtom
+	:	uplus = '+' primitiveAtomWithConstant -> ^(UNARY_PLUS[$uplus, "uPlus"] primitiveAtomWithConstant)
+	|	uminus = '-' primitiveAtomWithConstant -> ^(UNARY_MINUS[$uminus,"uMinus"] primitiveAtomWithConstant)
+	|	primitiveAtomWithConstant
+	;
+
 classMemberDefinition
 @after{
 	classMemberModifiers=null;
@@ -729,7 +736,6 @@ assignment
 			a=assignment
 			-> ^(Assign[$op,"="] ternary ^({annexeOperator} {AstHelperRegistry.get().copyAst((ITSPHPAst)root_1.getChild(0))} $a))
 		)*
-		
 	;
 	
 ternary	
@@ -787,47 +793,29 @@ termOrStringConcatenation
 	;
 
 factor	
-	:	logicNot (('*'|'/'|'%')^ logicNot)*
-	;
-
-logicNot:	'!'^ logicNot
-	|	instanceOf
+	:	instanceOf (('*'|'/'|'%')^ instanceOf)*
 	;
 
 instanceOf
-	:	castOrBitwiseNotOrAt ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
+	:	unary ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
 
-castOrBitwiseNotOrAt
-	:	cast = '(' allTypesWithoutObjectWithModifier ')' castOrBitwiseNotOrAt -> ^(CAST[$cast,"casting"] allTypesWithoutObjectWithModifier castOrBitwiseNotOrAt)
-	|	'~'^ castOrBitwiseNotOrAt
-	|	'@'^ castOrBitwiseNotOrAt
+unary
+	:	cast = '(' allTypesWithoutObjectWithModifier ')' unary -> ^(CAST[$cast,"casting"] allTypesWithoutObjectWithModifier unary)
+	|	plus='++' postFixVariableWithoutCallAtTheEnd  -> ^(PRE_INCREMENT[$plus,"preIncr"] postFixVariableWithoutCallAtTheEnd)
+	|	minus='--' postFixVariableWithoutCallAtTheEnd -> ^(PRE_DECREMENT[$minus,"preDecr"] postFixVariableWithoutCallAtTheEnd)
+	|	'@'^ unary
+	|	'~'^ unary
+	|	'!'^ unary
+	|	uplus = '+' unary -> ^(UNARY_PLUS[uplus, "uPlus"] unary)
+	|	uminus = '-' unary -> ^(UNARY_MINUS[$uminus,"uMinus"] unary)
 	|	cloneOrNew
 	;
 	
 cloneOrNew
-	:	'clone'^ castOrBitwiseNotOrAt
+		//reference back to unary necessary, since clone unary $b; is valid e.g. clone @$b;
+	:	'clone'^ unary
 	|	newObject
-	|	unaryPrimary
-	;
-	
-variableOrMemberOrStaticMember
-	:	staticAccess varId=VariableId -> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess CLASS_STATIC_ACCESS_VARIABLE_ID[$varId])
-	|	'$this'
-	|	VariableId 
-	;
-
-staticAccess
-	:	selfOrParent
-	|	staticClassAccess	
-	;
-	
-selfOrParent
-	:	s='self::' -> Self[$s,"self"]
-	|	p='parent::' -> Parent[$p,"parent"]
-	;
-	
-staticClassAccess
-	:	classInterfaceTypeWithoutObject '::'!
+	|	primary
 	;
 
 newObject 
@@ -838,18 +826,18 @@ newObject
 actualParameters
 	:	list='(' expressionList? ')' -> ^(ACTUAL_PARAMETERS[$list,"args"] expressionList?)
 	;
-
-unaryPrimary
-	:	uplus = '+' primary -> ^(UNARY_PLUS[uplus, "uPlus"] primary)
-	|	uminus = '-' primary -> ^(UNARY_MINUS[$uminus,"uMinus"] primary)
-	|	primary
-	;
 	
 primary
 	:	postFixCall
+	|	postIncrementDecrement
+	|	postFixVariableInclCallAtTheEnd
 	|	atom
 	|	'exit' ('(' expression ')')? -> ^('exit' expression?)
 	;	
+	
+atom	:	'(' expression ')' -> expression
+	|	primitiveAtomWithConstant
+	;
 	
 postFixCall
 	:	(	functionCall -> functionCall
@@ -895,16 +883,7 @@ methodCallStatic
 call	:	'->'! methodIdentifier actualParameters
 	;
 
-atom	:	'(' expression ')' -> expression
-	|	incrementDecrement
-	|	postFixVariableInclCallAtTheEnd
-	|	primitiveAtomWithConstant
-	;
 
-incrementDecrement
-	:	postIncrementDecrement
-	|	preIncrementDecrement
-	;
 	
 postIncrementDecrement 
 	:	postFixVariableWithoutCallAtTheEnd '++' 
@@ -914,13 +893,6 @@ postIncrementDecrement
 		-> ^(POST_DECREMENT[$postFixVariableWithoutCallAtTheEnd.start, "postDecr"] postFixVariableWithoutCallAtTheEnd)
 	;
 	
-preIncrementDecrement
-	:	plus='++' postFixVariableWithoutCallAtTheEnd
-		-> ^(PRE_INCREMENT[$plus,"preIncr"] postFixVariableWithoutCallAtTheEnd)
-
-	|	minus='--' postFixVariableWithoutCallAtTheEnd
-		-> ^(PRE_DECREMENT[$minus,"preDecr"] postFixVariableWithoutCallAtTheEnd)
-	;
 
 postFixVariableWithoutCallAtTheEnd
 	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
@@ -941,12 +913,26 @@ postFixVariableInclCallAtTheEnd
 		|	call -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixVariableInclCallAtTheEnd call)
 		)*
 	;
-	
-unaryPrimitiveAtom
-	:	uplus = '+' primitiveAtomWithConstant -> ^(UNARY_PLUS[$uplus, "uPlus"] primitiveAtomWithConstant)
-	|	uminus = '-' primitiveAtomWithConstant -> ^(UNARY_MINUS[$uminus,"uMinus"] primitiveAtomWithConstant)
-	|	primitiveAtomWithConstant
+
+variableOrMemberOrStaticMember
+	:	staticAccess varId=VariableId -> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess CLASS_STATIC_ACCESS_VARIABLE_ID[$varId])
+	|	'$this'
+	|	VariableId 
 	;
+
+staticAccess
+	:	selfOrParent
+	|	staticClassAccess	
+	;
+	
+selfOrParent
+	:	s='self::' -> Self[$s,"self"]
+	|	p='parent::' -> Parent[$p,"parent"]
+	;
+	
+staticClassAccess
+	:	classInterfaceTypeWithoutObject '::'!
+	;	
 
 primitiveAtomWithConstant
 	:	Bool

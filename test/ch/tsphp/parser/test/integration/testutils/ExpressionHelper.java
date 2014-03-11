@@ -77,65 +77,131 @@ public class ExpressionHelper
                 {"$a && $b", "(&& $a $b)"},
                 {"$a && $b && $c", "(&& (&& $a $b) $c)"},
                 {"$a && $b || $c", "(|| (&& $a $b) $c)"},
+                //precedence tests
+                //($a || $b) ? 1 : 2
+                {"$a || $b ? 1 : 2","(? (|| $a $b) 1 2)"},
+                //$a || ($b && $c)
                 {"$a || $b && $c", "(|| $a (&& $b $c))"},
+                //($a || ($b && $c)) ? $d : $e
                 {"$a || $b && $c ? $d : $e", "(? (|| $a (&& $b $c)) $d $e)"},
+
                 {"$a | $b", "(| $a $b)"},
                 {"$a | $b | $c", "(| (| $a $b) $c)"},
                 {"$a ^ $b", "(^ $a $b)"},
                 {"$a ^ $b ^ $c", "(^ (^ $a $b) $c)"},
                 {"$a & $b", "(& $a $b)"},
                 {"$a & $b & $c", "(& (& $a $b) $c)"},
+                //precedence tests
+                //($a & $b) | ($c ^ $d)
                 {"$a & $b | $c ^ $d", "(| (& $a $b) (^ $c $d))"},
+                //$a | (($b & $c) ^ $d)
                 {"$a | $b & $c ^ $d", "(| $a (^ (& $b $c) $d))"},
+                //($a | $b) && $c
+                {"$a | $b && $c","(&& (| $a $b) $c)"},
+                //(($a | $b) && ($c ^ $d)) || ($e & $f)
+                {"$a | $b && $c ^ $d || $e & $f","(|| (&& (| $a $b) (^ $c $d)) (& $e $f))"},
+
                 {"$a == $b", "(== $a $b)"},
                 {"$a === $b", "(=== $a $b)"},
                 {"$a != $b", "(!= $a $b)"},
                 {"$a !== $b", "(!== $a $b)"},
+                //precedence tests
+                //($a == $b) & $c
+                {"$a == $b & $c","(& (== $a $b) $c)"},
 
                 {"$a < $b", "(< $a $b)"},
                 {"$a <= $b", "(<= $a $b)"},
                 {"$a > $b", "(> $a $b)"},
                 {"$a >= $b", "(>= $a $b)"},
+                //precedence test
                 {
+                        //(($a == $b) | (($c < $d) & $e)) ? ($f != $g) : ($h === $i)
                         "$a == $b | $c < $d & $e ? $f != $g : $h === $i",
                         "(? (| (== $a $b) (& (< $c $d) $e)) (!= $f $g) (=== $h $i))"
                 },
+
                 {"1 << 2", "(<< 1 2)"},
                 {"1 >> 2", "(>> 1 2)"},
+                //check that both have the same precedence
                 {"1 >> 2 << 3 >> 5", "(>> (<< (>> 1 2) 3) 5)"},
+                {"1 << 2 << 3 >> 5", "(>> (<< (<< 1 2) 3) 5)"},
+                //precedence test
+                //$a < ($b << $c)
+                {"$a < $b << $c","(< $a (<< $b $c))"},
+                //($a >> $b) >= ($c >> 2)
+                {"$a >> $b >= $c >> 2","(>= (>> $a $b) (>> $c 2))"},
+
                 {"1 + 2", "(+ 1 2)"},
+                {"1 + 2 + 3", "(+ (+ 1 2) 3)"},
                 {"1 - 2", "(- 1 2)"},
+                {"1 - 2 - 3", "(- (- 1 2) 3)"},
                 {"$a . $b", "(. $a $b)"},
+                {"$a . $b . $c", "(. (. $a $b) $c)"},
+                //check that all have the same precedence
                 {"$a + $b - $c . $d . $e + $f - $g", "(- (+ (. (. (- (+ $a $b) $c) $d) $e) $f) $g)"},
+                //precedence test
                 {"$a << $b >> $c + $d * $e - $f", "(>> (<< $a $b) (- (+ $c (* $d $e)) $f))"},
+
+                {"$a * $b", "(* $a $b)"},
+                {"$a * $b * $c", "(* (* $a $b) $c)"},
+                {"$a / $b ", "(/ $a $b)"},
+                {"$a / $b / $c", "(/ (/ $a $b) $c)"},
+                {"$a % $b ", "(% $a $b)"},
+                {"$a % $b % $c", "(% (% $a $b) $c)"},
+                //check that all have the same precedence
+                {"$a * $b / $c % $d * $e % $f / $g", "(/ (% (* (% (/ (* $a $b) $c) $d) $e) $f) $g)"},
+                //precedence test
+                //($a * $b) + $c
+                {"$a * $b + $c","(+ (* $a $b) $c)"},
+                //$a + ($b * $c) - ($d % $f).($g / 2)
+                {"$a + $b * $c - $d % $f.$g / 2","(. (- (+ $a (* $b $c)) (% $d $f)) (/ $g 2))"},
+
+                {"$a instanceof MyClass", "(instanceof $a MyClass)"},
+                {"$a instanceof $b", "(instanceof $a $b)"},
+                //precedence test
+                //$a * ($b instanceof $c)
+                {"$a * $b instanceof $c","(* $a (instanceof $b $c))"},
+
+                {"(Type) $a", "(casting (type tMod Type) $a)"},
+                {"(Type) (MyClass) $a", "(casting (type tMod Type) (casting (type tMod MyClass) $a))"},
+                {"++$a", "(preIncr $a)"},
+                {"--$a", "(preDecr $a)"},
+                {"@$a", "(@ $a)"},
+                {"@@$a", "(@ (@ $a))"},
+                {"~$a", "(~ $a)"},
+                {"~~$a", "(~ (~ $a))"},
                 {"!$a", "(! $a)"},
                 {"!!$a", "(! (! $a))"},
                 {"!!! $a", "(! (! (! $a)))"},
-                {"$a instanceof MyClass", "(instanceof $a MyClass)"},
-                {"$a instanceof $b", "(instanceof $a $b)"},
-                {"(Type) $a", "(casting (type tMod Type) $a)"},
-                {"~$a", "(~ $a)"},
-                {"@$a", "(@ $a)"},
-                {"(Type) (MyClass) $a", "(casting (type tMod Type) (casting (type tMod MyClass) $a))"},
-                {"~~$a", "(~ (~ $a))"},
-                {"@@$a", "(@ (@ $a))"},
-                {"@(Type) ~$a", "(@ (casting (type tMod Type) (~ $a)))"},
                 {"+$a", "(uPlus $a)"},
                 {"+1", "(uPlus 1)"},
                 {"-$a", "(uMinus $a)"},
                 {"-2", "(uMinus 2)"},
-                {"+$a + $b", "(+ (uPlus $a) $b)"},
-                {"-$a - $b", "(- (uMinus $a) $b)"},
+                //check that all have the same precedence
+                {"@(Type) ~$a", "(@ (casting (type tMod Type) (~ $a)))"},
+                //precedence test
+                {"(int) $a instanceof $b","(instanceof (casting (type tMod int) $a) $b)"},
+                {"++$a * $b ","(* (preIncr $a) $b)"},
+                {"--$a % $b ","(% (preDecr $a) $b)"},
+                {"-$a * $b","(* (uMinus $a) $b)"},
+                {"+$a instanceof $b","(instanceof (uPlus $a) $b)"},
+                {"@$a * $b","(* (@ $a) $b)"},
+                {"~$a / $b","(/ (~ $a) $b)"},
+                {"!$a % $b ","(% (! $a) $b)"},
+
                 {"clone $a", "(clone $a)"},
-                {"clone $a->a", "(clone (memAccess $a a))"},
+                {"clone clone $a", "(clone (clone $a))"},
                 {"new Type", "(new Type args)"},
-                {"exit", "exit"},
-                {"exit(1)", "(exit 1)"},
-                {"($a)", "$a"},
+                //precedence test
+                {"clone $a + $b","(+ (clone $a) $b)"},
+                {"new A + $b","(+ (new A args) $b)"},
+                //((int) (clone $a)) * $b
+                {"(int) clone $a * $b", "(* (casting (type tMod int) (clone $a)) $b)"},
+
                 {"$a++", "(postIncr $a)"},
                 {"$a--", "(postDecr $a)"},
-                {"++$a", "(preIncr $a)"},
-                {"--$a", "(preDecr $a)"},
+                {"exit", "exit"},
+                {"exit(1)", "(exit 1)"},
                 {"$a", "$a"},
                 {"$a->a", "(memAccess $a a)"},
                 {"\\foo(1,1+2,3)", "(fCall \\foo() (args 1 (+ 1 2) 3))"},
@@ -161,10 +227,7 @@ public class ExpressionHelper
                 {"'a'", "'a'"},
                 {"\"asdf\"", "\"asdf\""},
                 {"[1,2,a=>3]", "(array 1 2 (=> a# 3))"},
-                {"(int) clone $a + $b", "(+ (casting (type tMod int) (clone $a)) $b)"},
-                {"(-$a + $b) * $c", "(* (+ (uMinus $a) $b) $c)"},
-                {"!($a instanceof Type) || $a < $b+$c == ~(1 | 3 & 12)", "(|| (! (instanceof $a Type)) (== (< $a (+ " +
-                        "$b $c)) (~ (| 1 (& 3 12)))))"}
+                {"($a)", "$a"},
         });
     }
 
@@ -174,16 +237,6 @@ public class ExpressionHelper
                 "true xor false",
                 "true and false",
                 "true or false xor true and false",
-                "true ? 1:2",
-                "true ? $a<$b ? 1:2:2",
-                "true ? $a<$b ? 1:2:2+3-4",
-                "true || false",
-                "true && false",
-                "true || false && true ? true:false",
-                "14 | 2",
-                "14 ^ 2",
-                "14 & 2",
-                "9 | 9 ^ 12 & 3",
                 "$b = 1",
                 "$b += 1",
                 "$b -= 1",
@@ -197,6 +250,17 @@ public class ExpressionHelper
                 "$b <<= 1",
                 "$b >>= 1",
                 "$b >>= 1",
+                "$b =() 1",
+                "true ? 1:2",
+                "true ? $a<$b ? 1:2:2",
+                "true ? $a<$b ? 1:2:2+3-4",
+                "true || false",
+                "true && false",
+                "true || false && true ? true:false",
+                "14 | 2",
+                "14 ^ 2",
+                "14 & 2",
+                "9 | 9 ^ 12 & 3",
                 "$b==$c",
                 "$b!=$c",
                 "$b===$c",
@@ -212,19 +276,15 @@ public class ExpressionHelper
                 "$a << 2 >> 5",
                 "1+1",
                 "2-3",
+                "'b'.'a'",
+                "'hallo'.'welt'.\"blabla bla\".$a",
                 "4*5",
                 "6/7",
                 "6%7",
                 "6+7-5*5/(2+1)",
                 "6 % 3 + 7-5*5/(2+1)",
-                "'hallo'.'welt'",
-                "'hallo'.'welt'.\"blabla bla\".$a",
-                "!$a",
-                "!!$a",
                 "$a instanceof Foo",
                 "$a instanceof $a",
-                "~$a",
-                "~~$a",
                 "(bool) $a",
                 "(int) $a",
                 "(float) $a",
@@ -232,7 +292,13 @@ public class ExpressionHelper
                 "(array) $a",
                 "(Foo) $a",
                 "(int) ((bool) $a && $b) + 1",
+                "++$a",
+                "--$a",
                 "@$a",
+                "~$a",
+                "~~$a",
+                "!$a",
+                "!!$a",
                 "+1",
                 "-1",
                 "new a",
@@ -240,6 +306,8 @@ public class ExpressionHelper
                 "clone $a",
                 "clone $a->a",
                 "clone $a[0]",
+                "$a++",
+                "$a--",
                 "$a",
                 "$a->a",
                 "$a[0]",
@@ -254,10 +322,6 @@ public class ExpressionHelper
                 "+$a->foo()",
                 "-$a->foo()",
                 "(1+1)",
-                "$a++",
-                "++$a",
-                "--$a",
-                "$a--",
                 "foo()",
                 "a\\foo()",
                 "$a->foo()",

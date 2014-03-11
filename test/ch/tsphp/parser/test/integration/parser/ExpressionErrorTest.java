@@ -88,7 +88,7 @@ public class ExpressionErrorTest extends AParserParserExceptionTest
                     {"E_ALL--;", TSPHPParser.MinusMinus, 5},
                     //not allowed casts
                     {"(object) $a;", TSPHPParser.TypeObject, 1},
-                    //misuse instanceof operator - instanceof is wrong since ; is expected
+                    //misuse instanceof operator - does not work with primitive types
                     {"$a instanceof bool;", TSPHPParser.TypeBool, 14},
                     {"$a instanceof int;", TSPHPParser.TypeInt, 14},
                     {"$a instanceof float;", TSPHPParser.TypeFloat, 14},
