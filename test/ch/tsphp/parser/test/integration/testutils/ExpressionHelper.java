@@ -15,11 +15,8 @@ public class ExpressionHelper
     public static List<String[]> getAstExpressions() {
         return Arrays.asList(new String[][]{
                 {"$a or $b", "(or $a $b)"},
-                {"$a or $b or $c", "(or (or $a $b) $c)"},
                 {"$a xor $b", "(xor $a $b)"},
-                {"$a xor $b xor $c", "(xor (xor $a $b) $c)"},
                 {"$a and $b", "(and $a $b)"},
-                {"$a and $b and $c", "(and (and $a $b) $c)"},
                 //precedence test
                 //($a and $b) or ($c xor $d)
                 {"$a and $b or $c xor $d", "(or (and $a $b) (xor $c $d))"},
@@ -46,11 +43,6 @@ public class ExpressionHelper
                         "$i %= $j .= $k <<= $l >>= $m =() $n",
                         "(= $i (% $i (= $j (. $j (= $k (<< $k (= $l (>> $l (cAssign $m $n)))))))))"
                 },
-                //chaining up simple and compound assignments
-                {
-                        "$a = $b = $c += $d -= $e = $f *= $g",
-                        "(= $a (= $b (= $c (+ $c (= $d (- $d (= $e (= $f (* $f $g)))))))))"
-                },
                 //precedence test
                 //($a = $b) or $c
                 {"$a = $b or $c", "(or (= $a $b) $c)"},
@@ -58,9 +50,6 @@ public class ExpressionHelper
                 {"$a += $b and $c -= $d xor $e", "(xor (and (= $a (+ $a $b)) (= $c (- $c $d))) $e)"},
 
                 {"true ? $a : $b", "(? true $a $b)"},
-                //right associative different than PHP
-                {"true ? $a ? $b : $c : $d", "(? true (? $a $b $c) $d)"},
-                {"true ? $a : $b ? $c : $d", "(? true $a (? $b $c $d))"},
                 //precedence tests
                 //($a and ($b = (false ? 1 or 2 : 3)) or 4
                 {"$a and $b = false ? 1 or 2 : 3 or 4", "(or (and $a (= $b (? false (or 1 2) 3))) 4)"},
@@ -73,24 +62,20 @@ public class ExpressionHelper
                 },
 
                 {"$a || $b", "(|| $a $b)"},
-                {"$a || $b || $c", "(|| (|| $a $b) $c)"},
                 {"$a && $b", "(&& $a $b)"},
-                {"$a && $b && $c", "(&& (&& $a $b) $c)"},
-                {"$a && $b || $c", "(|| (&& $a $b) $c)"},
                 //precedence tests
-                //($a || $b) ? 1 : 2
-                {"$a || $b ? 1 : 2","(? (|| $a $b) 1 2)"},
+                //($a && $b) || $c
+                {"$a && $b || $c", "(|| (&& $a $b) $c)"},
                 //$a || ($b && $c)
                 {"$a || $b && $c", "(|| $a (&& $b $c))"},
+                //($a || $b) ? 1 : 2
+                {"$a || $b ? 1 : 2","(? (|| $a $b) 1 2)"},
                 //($a || ($b && $c)) ? $d : $e
                 {"$a || $b && $c ? $d : $e", "(? (|| $a (&& $b $c)) $d $e)"},
 
                 {"$a | $b", "(| $a $b)"},
-                {"$a | $b | $c", "(| (| $a $b) $c)"},
                 {"$a ^ $b", "(^ $a $b)"},
-                {"$a ^ $b ^ $c", "(^ (^ $a $b) $c)"},
                 {"$a & $b", "(& $a $b)"},
-                {"$a & $b & $c", "(& (& $a $b) $c)"},
                 //precedence tests
                 //($a & $b) | ($c ^ $d)
                 {"$a & $b | $c ^ $d", "(| (& $a $b) (^ $c $d))"},
@@ -132,22 +117,16 @@ public class ExpressionHelper
                 {"$a >> $b >= $c >> 2","(>= (>> $a $b) (>> $c 2))"},
 
                 {"1 + 2", "(+ 1 2)"},
-                {"1 + 2 + 3", "(+ (+ 1 2) 3)"},
                 {"1 - 2", "(- 1 2)"},
-                {"1 - 2 - 3", "(- (- 1 2) 3)"},
                 {"$a . $b", "(. $a $b)"},
-                {"$a . $b . $c", "(. (. $a $b) $c)"},
                 //check that all have the same precedence
                 {"$a + $b - $c . $d . $e + $f - $g", "(- (+ (. (. (- (+ $a $b) $c) $d) $e) $f) $g)"},
                 //precedence test
                 {"$a << $b >> $c + $d * $e - $f", "(>> (<< $a $b) (- (+ $c (* $d $e)) $f))"},
 
                 {"$a * $b", "(* $a $b)"},
-                {"$a * $b * $c", "(* (* $a $b) $c)"},
                 {"$a / $b ", "(/ $a $b)"},
-                {"$a / $b / $c", "(/ (/ $a $b) $c)"},
                 {"$a % $b ", "(% $a $b)"},
-                {"$a % $b % $c", "(% (% $a $b) $c)"},
                 //check that all have the same precedence
                 {"$a * $b / $c % $d * $e % $f / $g", "(/ (% (* (% (/ (* $a $b) $c) $d) $e) $f) $g)"},
                 //precedence test
@@ -163,22 +142,15 @@ public class ExpressionHelper
                 {"$a * $b instanceof $c","(* $a (instanceof $b $c))"},
 
                 {"(Type) $a", "(casting (type tMod Type) $a)"},
-                {"(Type) (MyClass) $a", "(casting (type tMod Type) (casting (type tMod MyClass) $a))"},
                 {"++$a", "(preIncr $a)"},
                 {"--$a", "(preDecr $a)"},
                 {"@$a", "(@ $a)"},
-                {"@@$a", "(@ (@ $a))"},
                 {"~$a", "(~ $a)"},
-                {"~~$a", "(~ (~ $a))"},
                 {"!$a", "(! $a)"},
-                {"!!$a", "(! (! $a))"},
-                {"!!! $a", "(! (! (! $a)))"},
                 {"+$a", "(uPlus $a)"},
                 {"+1", "(uPlus 1)"},
                 {"-$a", "(uMinus $a)"},
                 {"-2", "(uMinus 2)"},
-                //check that all have the same precedence
-                {"@(Type) ~$a", "(@ (casting (type tMod Type) (~ $a)))"},
                 //precedence test
                 {"(int) $a instanceof $b","(instanceof (casting (type tMod int) $a) $b)"},
                 {"++$a * $b ","(* (preIncr $a) $b)"},
@@ -190,10 +162,11 @@ public class ExpressionHelper
                 {"!$a % $b ","(% (! $a) $b)"},
 
                 {"clone $a", "(clone $a)"},
-                {"clone clone $a", "(clone (clone $a))"},
                 {"new Type", "(new Type args)"},
                 //precedence test
+                //(clone $a) + $b
                 {"clone $a + $b","(+ (clone $a) $b)"},
+                //(new A) + $b
                 {"new A + $b","(+ (new A args) $b)"},
                 //((int) (clone $a)) * $b
                 {"(int) clone $a * $b", "(* (casting (type tMod int) (clone $a)) $b)"},
@@ -203,6 +176,7 @@ public class ExpressionHelper
                 {"exit", "exit"},
                 {"exit(1)", "(exit 1)"},
                 {"$a", "$a"},
+                {"$a[0]", "(arrAccess $a 0)"},
                 {"$a->a", "(memAccess $a a)"},
                 {"\\foo(1,1+2,3)", "(fCall \\foo() (args 1 (+ 1 2) 3))"},
                 {"foo()", "(fCall foo() args)"},
