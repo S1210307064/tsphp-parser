@@ -12,9 +12,12 @@ import org.antlr.runtime.CharStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-//CHECKSTYLE:OFF:AbstractClassNameCheck
+/**
+ * An ANTLRInputStream which overrides the LA method in order to have case insensitive tokens.
+ */
+@SuppressWarnings("checkstyle:abstractclassname")
 public class ANTLRNoCaseInputStream extends ANTLRInputStream
-{ //CHECKSTYLE:ON:AbstractClassNameCheck
+{
 
     public ANTLRNoCaseInputStream(final InputStream input) throws IOException {
         super(input);
@@ -38,9 +41,8 @@ public class ANTLRNoCaseInputStream extends ANTLRInputStream
     }
 
     @Override
-    @SuppressWarnings({"PMD.MethodNamingConventions", "PMD.ShortMethodName"})
-    //CHECKSTYLE:OFF:MethodNameCheck
-    public int LA(final int lookAhead) { //CHECKSTYLE:ON:MethodNameCheck
+    @SuppressWarnings({ "PMD.MethodNamingConventions", "PMD.ShortMethodName", "checkstyle:methodname" })
+    public int LA(final int lookAhead) {
 
         int token = super.LA(lookAhead);
         if (token != 0 && token != CharStream.EOF) {

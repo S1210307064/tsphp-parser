@@ -17,6 +17,9 @@ import org.antlr.runtime.TokenStream;
 import java.util.ArrayDeque;
 import java.util.Collection;
 
+/**
+ * Extends the generated TSPHPParser by implementing IErrorReporter.
+ */
 public class ErrorReportingTSPHPParser extends TSPHPParser implements IErrorReporter
 {
 

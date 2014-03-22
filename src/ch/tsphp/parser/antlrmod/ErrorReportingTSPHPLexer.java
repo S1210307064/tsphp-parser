@@ -18,6 +18,9 @@ import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 
+/**
+ * Extends the generated TSPHPLexer by implementing IErrorReporter.
+ */
 public class ErrorReportingTSPHPLexer extends TSPHPLexer implements IErrorReporter
 {
 

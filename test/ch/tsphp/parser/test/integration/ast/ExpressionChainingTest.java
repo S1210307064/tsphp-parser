@@ -16,10 +16,10 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class OperatorChainingTest extends AAstTest
+public class ExpressionChainingTest extends AAstTest
 {
 
-    public OperatorChainingTest(String testString, String expectedResult) {
+    public ExpressionChainingTest(String testString, String expectedResult) {
         super(testString + ";", "(expr " + expectedResult + ")");
     }
 
