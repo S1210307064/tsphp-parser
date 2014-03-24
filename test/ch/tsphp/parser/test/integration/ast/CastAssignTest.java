@@ -18,10 +18,10 @@ import java.util.Collection;
 import java.util.List;
 
 @RunWith(Parameterized.class)
-public class CastTest extends AAstTest
+public class CastAssignTest extends AAstTest
 {
 
-    public CastTest(String testString, String expectedResult) {
+    public CastAssignTest(String testString, String expectedResult) {
         super(testString, expectedResult);
     }
 
@@ -33,13 +33,15 @@ public class CastTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(TypeHelper.getAllTypesWithoutObjectWithModifier(
-                "(", ") $a;", "(expr (casting ", " $a))", ""));
 
         List<String> allTypesWithoutObject = TypeHelper.getAllTypesWithoutObject();
         for (String type : allTypesWithoutObject) {
             collection.add(new Object[]{
-                    type + " $a = ( "+ type + ") 1;",
+                    "$a = () 1;",
+                    "(expr (cAssign $a 1))"
+            });
+            collection.add(new Object[]{
+                    type + " $a =() 1;",
                     "(vars (type tMod " + type + ") ($a (casting (type tMod " + type + ") 1)))"
             });
         }

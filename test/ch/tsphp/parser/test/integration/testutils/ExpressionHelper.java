@@ -43,11 +43,13 @@ public class ExpressionHelper
                         "$i %= $j .= $k <<= $l >>= $m =() $n",
                         "(= $i (% $i (= $j (. $j (= $k (<< $k (= $l (>> $l (cAssign $m $n)))))))))"
                 },
-                //precedence test
+                //precedence tests
                 //($a = $b) or $c
                 {"$a = $b or $c", "(or (= $a $b) $c)"},
                 //(($a += $b) and ($c -= $d)) xor $e
                 {"$a += $b and $c -= $d xor $e", "(xor (and (= $a (+ $a $b)) (= $c (- $c $d))) $e)"},
+                //($a =() $b) or (($c =() $d) and $e)
+                {"$a =() $b or $c =() $d and $e", "(or (cAssign $a $b) (and (cAssign $c $d) $e))"},
 
                 {"true ? $a : $b", "(? true $a $b)"},
                 //precedence tests
