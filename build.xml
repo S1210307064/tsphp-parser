@@ -29,7 +29,7 @@
             <arg path="${src.antlr}/TSPHP.g"/>
             <classpath>
                 <fileset dir="${lib}">
-                    <include name="antlr-3.5.1-complete.jar"/>
+                    <include name="*.jar"/>
                 </fileset>
             </classpath>
         </java>
