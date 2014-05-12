@@ -44,6 +44,10 @@ public class CastAssignTest extends AAstTest
                     type + " $a =() 1;",
                     "(vars (type tMod " + type + ") ($a (casting (type tMod " + type + ") 1)))"
             });
+            collection.add(new Object[]{
+                    type + "$b, $a =() 1;",
+                    "(vars (type tMod " + type + ") $b ($a (casting (type tMod " + type + ") 1)))"
+            });
         }
         return collection;
     }

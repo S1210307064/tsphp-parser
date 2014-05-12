@@ -203,7 +203,9 @@ public class ExpressionHelper
                 {"'a'", "'a'"},
                 {"\"asdf\"", "\"asdf\""},
                 {"[1,2,a=>3]", "(array 1 2 (=> a# 3))"},
+                {"array(1,2,a=>3)", "(array 1 2 (=> a# 3))"},
                 {"($a)", "$a"},
+                {"exit","exit"}
         });
     }
 
@@ -310,7 +312,22 @@ public class ExpressionHelper
                 "parent::$a->foo()",
                 "a",
                 "a\\a",
-                "A::a"
+                "A::a",
+                "\\A::a",
+                "a\\A::a",
+                "($a)",
+                "true",
+                "false",
+                "null",
+                "a\\b",
+                "1",
+                "2.123",
+                "'a'",
+                "\"asdf\"",
+                "[1,2,a=>3]",
+                "array(1,2,a=>3)",
+                "($a)",
+                "exit",
         };
     }
 }

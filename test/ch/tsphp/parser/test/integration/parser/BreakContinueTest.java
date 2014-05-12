@@ -34,10 +34,10 @@ public class BreakContinueTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(InstructionHelper.getTestStrings("break;"));
-        collection.addAll(InstructionHelper.getTestStrings("continue;"));
-        collection.addAll(InstructionHelper.getTestStrings("break 3;"));
-        collection.addAll(InstructionHelper.getTestStrings("continue 2;"));
+        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("break;"));
+        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("continue;"));
+        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("break 3;"));
+        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("continue 2;"));
         return collection;
     }
 }

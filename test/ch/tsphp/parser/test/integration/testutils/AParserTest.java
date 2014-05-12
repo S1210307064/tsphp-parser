@@ -41,16 +41,24 @@ public abstract class AParserTest extends ATest
         Assert.assertFalse(testString + " failed, parser threw exception(s) - see output", parser.hasFoundError());
     }
 
+    protected void modifyParser(){}
+
     protected void parse() throws RecognitionException {
         CharStream stream = new ANTLRNoCaseStringStream(testString);
         lexer = new TestTSPHPLexer(stream);
         lexer.setErrorReporting(isErrorReportingOn);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
 
-        parser = new TestTSPHPParser(tokens);
+        parser = createTestParser(tokens);
         parser.setTreeAdaptor(adaptor);
         parser.setErrorReporting(isErrorReportingOn);
+
+        modifyParser();
         run();
+    }
+
+    protected TestTSPHPParser createTestParser(CommonTokenStream tokens) {
+        return new TestTSPHPParser(tokens);
     }
 
     protected void run() throws RecognitionException {

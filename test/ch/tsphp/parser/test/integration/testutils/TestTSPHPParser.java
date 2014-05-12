@@ -8,6 +8,7 @@ package ch.tsphp.parser.test.integration.testutils;
 
 import ch.tsphp.parser.antlrmod.ErrorReportingTSPHPParser;
 import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.RecognizerSharedState;
 import org.antlr.runtime.TokenStream;
 
 import java.util.ArrayList;
@@ -42,6 +43,14 @@ public class TestTSPHPParser extends ErrorReportingTSPHPParser
                 System.out.println(e.token.toString());
             }
         }
+    }
+
+    public void setBacktracking(int backtracking){
+        state.backtracking = backtracking;
+    }
+
+    public RecognizerSharedState getState(){
+        return state;
     }
 
     public List<Exception> getExceptions() {

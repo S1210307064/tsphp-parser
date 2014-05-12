@@ -33,8 +33,8 @@ public class ReturnTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         Collection<Object[]> collection = new ArrayList<>();
-        collection.addAll(InstructionHelper.getTestStrings("return;"));
-        collection.addAll(InstructionHelper.getTestStrings("return 1;"));
+        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("return;"));
+        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("return 1;"));
         return collection;
     }
 

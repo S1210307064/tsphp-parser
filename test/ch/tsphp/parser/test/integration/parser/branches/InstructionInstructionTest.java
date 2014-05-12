@@ -4,7 +4,7 @@
  * root folder or visit the project's website http://tsphp.ch/wiki/display/TSPHP/License
  */
 
-package ch.tsphp.parser.test.integration.parser;
+package ch.tsphp.parser.test.integration.parser.branches;
 
 import ch.tsphp.parser.test.integration.testutils.AParserTest;
 import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
@@ -18,10 +18,10 @@ import java.util.Collection;
 import java.util.List;
 
 @RunWith(Parameterized.class)
-public class ThrowTest extends AParserTest
+public class InstructionInstructionTest extends AParserTest
 {
 
-    public ThrowTest(String testString) {
+    public InstructionInstructionTest(String testString) {
         super(testString);
     }
 
@@ -30,11 +30,15 @@ public class ThrowTest extends AParserTest
         parseAndCheckForException();
     }
 
+    protected void run() throws RecognitionException {
+        result = parser.instruction();
+    }
+
+
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("throw new \\Exception" +
-                "('bla');"));
+        collection.addAll(InstructionHelper.getInstructions("{", "}"));
         return collection;
     }
 }

@@ -654,7 +654,8 @@ instruction
 	|	'return'^ expression? ';'!
 	|	'throw'^ expression ';'!
 	|	'echo'^ expressionList ';'!
-	|	('break'|'continue')^ Int? ';'!
+	|	'break'^ Int? ';'!
+	|	'continue'^ Int? ';'!
 	|	block='{''}' -> EXPRESSION[$block,"expr"]
 	|	'{'! instruction+ '}'!
 	;

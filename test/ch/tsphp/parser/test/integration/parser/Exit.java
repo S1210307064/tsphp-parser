@@ -34,8 +34,8 @@ public class Exit extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(InstructionHelper.getTestStrings("exit;"));
-        collection.addAll(InstructionHelper.getTestStrings("exit (1);"));
+        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("exit;"));
+        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("exit (1);"));
         return collection;
     }
 }

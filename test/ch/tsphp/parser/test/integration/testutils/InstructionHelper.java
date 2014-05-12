@@ -15,15 +15,34 @@ public class InstructionHelper
     private InstructionHelper() {
     }
 
-    public static List<Object[]> getTestStrings(String instruction) {
+    public static List<Object[]> getInstructions(String prefix, String appendix) {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(getVariations("", instruction, ""));
-        collection.addAll(getVariations("function void foo(){", instruction, "}"));
-        collection.addAll(getVariations("class a{function void foo(){", instruction, "}}"));
+        collection.addAll(getControlStructures(prefix, "int $a;", appendix));
+        collection.addAll(Arrays.asList(new Object[][]{
+                {prefix + "int $a;" + appendix},
+                {prefix + ";" + appendix},
+                {prefix + "return;" + appendix},
+                {prefix + "throw new Exception();" + appendix},
+                {prefix + "break;" + appendix},
+                {prefix + "continue;" + appendix},
+                {prefix + "echo 'hello';" + appendix}
+        }));
+        String[] expressions = ExpressionHelper.getParserExpressions();
+        for (String expression : expressions) {
+            collection.add(new Object[]{prefix + expression + ";" + appendix});
+        }
         return collection;
     }
 
-    private static List<Object[]> getVariations(String prefix, String instruction, String appendix) {
+    public static List<Object[]> getControlStructuresInNamespaceFunctionAndMethod(String instruction) {
+        List<Object[]> collection = new ArrayList<>();
+        collection.addAll(getControlStructures("", instruction, ""));
+        collection.addAll(getControlStructures("function void foo(){", instruction, "}"));
+        collection.addAll(getControlStructures("class a{function void foo(){", instruction, "}}"));
+        return collection;
+    }
+
+    public static List<Object[]> getControlStructures(String prefix, String instruction, String appendix) {
         return Arrays.asList(new Object[][]{
                 {prefix + instruction + appendix},
                 {prefix + "{" + instruction + "}" + appendix},
