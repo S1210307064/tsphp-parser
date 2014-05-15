@@ -1039,12 +1039,15 @@ ifCondition
 	;
 
 switchCondition	
-	:	'switch' '(' expression ')' '{' switchContent? '}'  -> ^('switch' expression switchContent?)
+	:	'switch' '(' expression ')' '{' switchContent '}'  -> ^('switch' expression switchContent?)
 	;
 	
 switchContent
-	:	normalCaseInstructionMandatory* defaultCaseInstructionMandatory? normalCaseInstructionOptional*
-	|	normalCaseInstructionMandatory* defaultCaseInstructionOptional?
+	:	normalCaseInstructionMandatory* 
+		(	defaultCaseInstructionMandatory normalCaseInstructionOptional*
+		|	defaultCaseInstructionOptional?
+		|	normalCaseInstructionOptional*
+		)
 	;
 	
 normalCaseInstructionMandatory

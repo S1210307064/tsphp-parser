@@ -19,7 +19,6 @@ import java.util.Collection;
 public class AssignmentBadMatchingTest extends AParserBadMatchingTest
 {
 
-
     public AssignmentBadMatchingTest(String testString, int theNumberOfMatchesBeforeFail) {
         super(testString, theNumberOfMatchesBeforeFail);
     }

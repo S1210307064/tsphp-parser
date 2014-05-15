@@ -30,14 +30,19 @@ public class SwitchTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"switch($a){ case 1: int $a=1; }"},        
-                    {"switch($a){ case 1: int $a=1; case 2: $c=1;}"},        
-                    {"switch($a){ case 1: int $a=1; case 2: case 3: $a=1; }"},
-                    {"switch($a){ case 1: int $a=1; $b=2; }"},
-                    {"switch($a){ case 1: int $a=1; case 2: case 3: $a=2; default: $c=2; }"},
-                    {"switch($a){ case 1: int $a=1; case 2: $a=1; default: $c=2; case 3: $a=2; }"},
-                    {"switch($a){ case 1: {int $a=1; $b=2; } case 2: case 3: {$a=1;} }"},
-                    {"switch($a){ case 1: {int $a=1; $b=2; } {$a=1;} case 2: case 3: {$a=1;} }"},
-                });
+                {"switch($a){ case 1: int $a=1; }"},
+                {"switch($a){ case 1: int $a=1; case 2: $c=1;}"},
+                {"switch($a){ case 1: int $a=1; case 2: case 3: $a=1; }"},
+                {"switch($a){ case 1: int $a=1; $b=2; }"},
+                {"switch($a){ case 1: int $a=1; case 2: case 3: $a=2; default: $c=2; }"},
+                {"switch($a){ case 1: int $a=1; case 2: $a=1; default: $c=2; case 3: $a=2; }"},
+                {"switch($a){ case 1: {int $a=1; $b=2; } case 2: case 3: {$a=1;} }"},
+                {"switch($a){ case 1: {int $a=1; $b=2; } {$a=1;} case 2: case 3: {$a=1;} }"},
+                //case labels which do nothing more than the default label
+                {"switch($a){ case 1: default: $a=1;}"},
+                {"switch($a){ case 1: $a=1; case 1+1: default: case 2: $a=1;}"},
+                {"switch($a){ case 1: case 2: default: $a=1;}"},
+                {"switch($a){ case 0: $a=1; case 1: case 2: default: $a=1;}"}
+        });
     }
 }
