@@ -736,7 +736,7 @@ assignment
 			)
 			a=assignment
 			-> ^(Assign[$op,"="] ternary ^({annexeOperator} {AstHelperRegistry.get().copyAst((ITSPHPAst)root_1.getChild(0))} $a))
-		)*
+		)?
 	;
 	
 ternary	
