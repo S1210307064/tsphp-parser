@@ -6,11 +6,12 @@
 
 package ch.tsphp.parser.test.integration.testutils;
 
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.tree.CommonTree;
 import org.junit.Assert;
 import org.junit.Ignore;
+
+import java.util.List;
 
 @Ignore
 public abstract class AAstTokenTest extends AParserTest
@@ -23,8 +24,8 @@ public abstract class AAstTokenTest extends AParserTest
         expectedTokens = theExpectedTokens;
     }
 
-    public void compareAst() throws RecognitionException {
-        parseAndCheckForException();
+    public void compareAst() throws Exception {
+        parseAndCheckForExceptions();
         Assert.assertEquals(testString + " failed.", expectedTokens,
                 AstHelper.getTokenTypes((CommonTree) result.getTree()));
     }

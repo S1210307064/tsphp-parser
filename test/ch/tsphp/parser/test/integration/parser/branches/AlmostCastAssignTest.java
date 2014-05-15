@@ -29,14 +29,13 @@ public class AlmostCastAssignTest extends AParserTest
     }
 
     @Test
-    public void test() throws RecognitionException {
-        parseAndCheckForException();
+    public void test() throws Exception {
+        parseAndCheckForExceptions();
     }
 
     protected void run() throws RecognitionException {
         result = parser.castAssignOrAssignList(new TSPHPAst(new CommonToken(TSPHPParser.TypeInt)));
     }
-
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {

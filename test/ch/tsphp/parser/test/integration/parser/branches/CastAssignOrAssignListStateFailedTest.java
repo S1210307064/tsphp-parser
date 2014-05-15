@@ -26,7 +26,7 @@ public class CastAssignOrAssignListStateFailedTest extends AParserStateFailedTes
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         parseAndCheckStateFailed();
     }
 

@@ -25,7 +25,7 @@ public abstract class AParserParserExceptionTest extends AParserExceptionTest
     }
 
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")
-    public void parseExpectingException() throws RecognitionException {
+    public void parseExpectingException() throws Exception {
         parse();
 
         assertFalse(testString + " - lexer.exceptions is not empty ", lexer.hasFoundError());

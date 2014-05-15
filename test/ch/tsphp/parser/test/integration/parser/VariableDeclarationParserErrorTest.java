@@ -8,12 +8,13 @@ package ch.tsphp.parser.test.integration.parser;
 
 import ch.tsphp.parser.antlr.TSPHPParser;
 import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
-import java.util.Arrays;
-import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class VariableDeclarationParserErrorTest extends AParserParserExceptionTest
@@ -24,8 +25,8 @@ public class VariableDeclarationParserErrorTest extends AParserParserExceptionTe
     }
 
     @Test
-    public void test() throws RecognitionException {
-        super.parseExpectingException();
+    public void test() throws Exception {
+        parseExpectingException();
     }
 
     @Parameterized.Parameters

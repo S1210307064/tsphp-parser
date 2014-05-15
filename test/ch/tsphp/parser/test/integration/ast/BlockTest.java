@@ -6,16 +6,15 @@
 
 package ch.tsphp.parser.test.integration.ast;
 
-import ch.tsphp.parser.test.integration.testutils.AstHelper;
 import ch.tsphp.parser.test.integration.testutils.AAstTest;
+import ch.tsphp.parser.test.integration.testutils.AstHelper;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import org.antlr.runtime.RecognitionException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class BlockTest extends AAstTest
@@ -26,7 +25,7 @@ public class BlockTest extends AAstTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         compareAst();
     }
 

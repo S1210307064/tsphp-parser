@@ -6,40 +6,41 @@
 
 package ch.tsphp.parser.test.integration.parser.branches;
 
-import ch.tsphp.parser.test.integration.testutils.AParserTest;
-import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
+import ch.tsphp.parser.test.integration.testutils.AParserStateFailedTest;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.List;
 
 @RunWith(Parameterized.class)
-public class ConstructDestructDefinitionInstructionTest extends AParserTest
+public class AssignmentStateFailedTest extends AParserStateFailedTest
 {
 
-    public ConstructDestructDefinitionInstructionTest(String testString) {
+    @SuppressWarnings("UnusedParameters")
+    public AssignmentStateFailedTest(String testString, int character, int position) {
         super(testString);
     }
 
     @Test
     public void test() throws Exception {
-        parseAndCheckForExceptions();
+        parseAndCheckStateFailed();
     }
 
     protected void run() throws RecognitionException {
-        result = parser.constructDestructDefinition();
+        result = parser.assignment();
     }
-
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
-        collection.addAll(InstructionHelper.getInstructions("function __construct(){", "}"));
-        collection.addAll(InstructionHelper.getInstructions("function __destruct(){", "}"));
-        return collection;
+        return Arrays.asList(new Object[][]{
+                {"$a = $a +", 0, 0},
+                {"$a =() $a +", 0, 0},
+                {"$a =() $a +", 0, 0},
+                {"$a += $a +", 0, 0},
+        });
     }
 }
+

@@ -7,16 +7,14 @@
 package ch.tsphp.parser.test.integration.parser;
 
 import ch.tsphp.parser.test.integration.testutils.AParserTest;
+import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
-import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
-import org.antlr.runtime.RecognitionException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class Exit extends AParserTest
@@ -27,8 +25,8 @@ public class Exit extends AParserTest
     }
 
     @Test
-    public void test() throws RecognitionException {
-        parseAndCheckForException();
+    public void test() throws Exception {
+        parseAndCheckForExceptions();
     }
 
     @Parameterized.Parameters

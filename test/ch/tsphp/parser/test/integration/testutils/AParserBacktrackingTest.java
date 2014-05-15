@@ -6,7 +6,6 @@
 
 package ch.tsphp.parser.test.integration.testutils;
 
-import org.antlr.runtime.RecognitionException;
 import org.junit.Ignore;
 
 import static org.junit.Assert.assertEquals;
@@ -31,8 +30,8 @@ public abstract class AParserBacktrackingTest extends AParserTest
         parser.setBacktracking(1);
     }
 
-    public void parseAndCheckResultIsOnlyBacktracking() throws RecognitionException {
-        parseAndCheckForException();
+    public void parseAndCheckResultIsOnlyBacktracking() throws Exception {
+        parseAndCheckForExceptions();
         assertNull(testString + " - tree was not null", result.getTree());
         assertEquals(testString + " - start token type was different ", startTokenType, result.start.getType());
         assertEquals(testString + " - stop token type was different ", stopTokenType, result.stop.getType());

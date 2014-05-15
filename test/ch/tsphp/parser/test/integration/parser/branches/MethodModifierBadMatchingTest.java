@@ -25,7 +25,7 @@ public class MethodModifierBadMatchingTest extends AParserBadMatchingTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         parseAndCheckResultIsEmpty();
     }
 

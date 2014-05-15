@@ -6,17 +6,17 @@
 
 package ch.tsphp.parser.test.integration.parser;
 
+import ch.tsphp.parser.antlr.TSPHPParser;
 import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
 import ch.tsphp.parser.test.integration.testutils.VariationHelper;
-import ch.tsphp.parser.antlr.TSPHPParser;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @RunWith(Parameterized.class)
 public class KeywordErrorTest extends AParserParserExceptionTest
@@ -28,8 +28,8 @@ public class KeywordErrorTest extends AParserParserExceptionTest
     }
 
     @Test
-    public void test() throws RecognitionException {
-        super.parseExpectingException();
+    public void test() throws Exception {
+        parseExpectingException();
     }
 
     @Parameterized.Parameters

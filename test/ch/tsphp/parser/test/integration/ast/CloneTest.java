@@ -7,7 +7,6 @@
 package ch.tsphp.parser.test.integration.ast;
 
 import ch.tsphp.parser.test.integration.testutils.AAstTest;
-import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -24,7 +23,7 @@ public class CloneTest extends AAstTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         compareAst();
     }
 

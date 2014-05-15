@@ -7,12 +7,13 @@
 package ch.tsphp.parser.test.integration.ast;
 
 import ch.tsphp.parser.test.integration.testutils.AAstTest;
-import java.util.Arrays;
-import java.util.Collection;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class NamespaceTest extends AAstTest
@@ -23,7 +24,7 @@ public class NamespaceTest extends AAstTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         compareAst();
     }
 

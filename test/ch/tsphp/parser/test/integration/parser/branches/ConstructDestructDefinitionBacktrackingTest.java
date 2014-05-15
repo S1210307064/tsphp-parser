@@ -26,7 +26,7 @@ public class ConstructDestructDefinitionBacktrackingTest extends AParserBacktrac
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         parseAndCheckResultIsOnlyBacktracking();
     }
 

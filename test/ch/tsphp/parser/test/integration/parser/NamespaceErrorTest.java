@@ -6,15 +6,15 @@
 
 package ch.tsphp.parser.test.integration.parser;
 
-import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
 import ch.tsphp.parser.antlr.TSPHPParser;
-
-import java.util.Arrays;
-import java.util.Collection;
+import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class NamespaceErrorTest extends AParserParserExceptionTest
@@ -26,8 +26,8 @@ public class NamespaceErrorTest extends AParserParserExceptionTest
     }
 
     @Test
-    public void test() throws RecognitionException {
-        super.parseExpectingException();
+    public void test() throws Exception {
+        parseExpectingException();
     }
 
     @Parameterized.Parameters

@@ -27,7 +27,7 @@ public class ClassBodyStateFailedTest extends AParserStateFailedTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         parseAndCheckStateFailed();
     }
 

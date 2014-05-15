@@ -26,7 +26,7 @@ public class InstructionBacktrackingTest extends AParserBacktrackingTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         parseAndCheckResultIsOnlyBacktracking();
     }
 

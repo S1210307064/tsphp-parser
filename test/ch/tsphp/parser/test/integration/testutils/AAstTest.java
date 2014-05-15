@@ -22,8 +22,8 @@ public abstract class AAstTest extends AParserTest
         expectedResult = theExpectedResult;
     }
 
-    public void compareAst() throws RecognitionException {
-        parseAndCheckForException();
+    public void compareAst() throws Exception {
+        parseAndCheckForExceptions();
         CommonTree tree = (CommonTree) result.getTree();
         if (tree != null) {
             Assert.assertEquals(testString + " failed.", expectedResult, tree.toStringTree());

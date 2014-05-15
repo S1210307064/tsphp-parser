@@ -6,7 +6,6 @@
 
 package ch.tsphp.parser.test.integration.testutils;
 
-import org.antlr.runtime.RecognitionException;
 import org.junit.Ignore;
 
 import static org.junit.Assert.assertTrue;
@@ -25,8 +24,8 @@ public abstract class AParserStateFailedTest extends AParserTest
         parser.setBacktracking(1);
     }
 
-    public void parseAndCheckStateFailed() throws RecognitionException {
-        parseAndCheckForException();
+    public void parseAndCheckStateFailed() throws Exception {
+        parseAndCheckForExceptions();
         assertTrue(testString + " - state.failed was false ", parser.getState().failed);
     }
 

@@ -26,7 +26,7 @@ public class ConstructDestructDefinitionErrorTest extends AParserParserException
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         parseExpectingException();
     }
 

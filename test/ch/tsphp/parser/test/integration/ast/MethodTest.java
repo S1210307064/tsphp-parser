@@ -29,7 +29,7 @@ public class MethodTest extends AAstTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         compareAst();
     }
 

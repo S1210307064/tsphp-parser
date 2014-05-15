@@ -8,15 +8,14 @@ package ch.tsphp.parser.test.integration.ast;
 
 import ch.tsphp.parser.test.integration.testutils.AAstTest;
 import ch.tsphp.parser.test.integration.testutils.ExpressionHelper;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import org.antlr.runtime.RecognitionException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class FunctionCallTest extends AAstTest
@@ -27,7 +26,7 @@ public class FunctionCallTest extends AAstTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         compareAst();
     }
 

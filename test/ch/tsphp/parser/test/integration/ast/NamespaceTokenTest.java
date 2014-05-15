@@ -36,7 +36,7 @@ public class NamespaceTokenTest extends AAstTokenTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         compareAst();
     }
 

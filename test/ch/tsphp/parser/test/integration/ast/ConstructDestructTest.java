@@ -8,13 +8,14 @@ package ch.tsphp.parser.test.integration.ast;
 
 import ch.tsphp.parser.test.integration.testutils.AAstTest;
 import ch.tsphp.parser.test.integration.testutils.ParameterListHelper;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @RunWith(Parameterized.class)
 public class ConstructDestructTest extends AAstTest
@@ -27,7 +28,7 @@ public class ConstructDestructTest extends AAstTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         compareAst();
     }
 

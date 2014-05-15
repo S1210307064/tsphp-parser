@@ -26,8 +26,8 @@ public class InstructionInstructionTest extends AParserTest
     }
 
     @Test
-    public void test() throws RecognitionException {
-        parseAndCheckForException();
+    public void test() throws Exception {
+        parseAndCheckForExceptions();
     }
 
     protected void run() throws RecognitionException {

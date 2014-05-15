@@ -8,15 +8,14 @@ package ch.tsphp.parser.test.integration.ast;
 
 import ch.tsphp.parser.test.integration.testutils.AAstTest;
 import ch.tsphp.parser.test.integration.testutils.ExpressionHelper;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import org.antlr.runtime.RecognitionException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class SwitchTest extends AAstTest
@@ -27,7 +26,7 @@ public class SwitchTest extends AAstTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         compareAst();
     }
 
@@ -102,7 +101,7 @@ public class SwitchTest extends AAstTest
                         + "(cases (+ 1 1) 2 default) (cBlock (expr (= $b 2))) "
                         + "(cases 2 3) (cBlock (expr (= $a 1)))"
                         + ")"
-                    }
+                    },
                 }));
         return collection;
     }

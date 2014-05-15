@@ -7,13 +7,12 @@
 package ch.tsphp.parser.test.integration.parser;
 
 import ch.tsphp.parser.test.integration.testutils.AParserTest;
-
-import java.util.Arrays;
-import java.util.Collection;
-import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class ForTest extends AParserTest
@@ -24,8 +23,8 @@ public class ForTest extends AParserTest
     }
 
     @Test
-    public void test() throws RecognitionException {
-        parseAndCheckForException();
+    public void test() throws Exception {
+        parseAndCheckForExceptions();
     }
 
     @Parameterized.Parameters

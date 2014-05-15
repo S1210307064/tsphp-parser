@@ -6,17 +6,17 @@
 
 package ch.tsphp.parser.test.integration.parser;
 
-import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
 import ch.tsphp.parser.antlr.TSPHPParser;
+import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
+import org.antlr.runtime.RecognitionException;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import org.antlr.runtime.RecognitionException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class FunctionErrorTest extends AParserParserExceptionTest
@@ -28,7 +28,7 @@ public class FunctionErrorTest extends AParserParserExceptionTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         parseExpectingException();
     }
 

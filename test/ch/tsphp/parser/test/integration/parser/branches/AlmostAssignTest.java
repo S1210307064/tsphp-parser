@@ -7,7 +7,7 @@
 package ch.tsphp.parser.test.integration.parser.branches;
 
 import ch.tsphp.parser.test.integration.testutils.AParserTest;
-import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
+import ch.tsphp.parser.test.integration.testutils.ExpressionHelper;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,10 +18,10 @@ import java.util.Collection;
 import java.util.List;
 
 @RunWith(Parameterized.class)
-public class ConstructDestructDefinitionInstructionTest extends AParserTest
+public class AlmostAssignTest extends AParserTest
 {
 
-    public ConstructDestructDefinitionInstructionTest(String testString) {
+    public AlmostAssignTest(String testString) {
         super(testString);
     }
 
@@ -31,15 +31,17 @@ public class ConstructDestructDefinitionInstructionTest extends AParserTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.constructDestructDefinition();
+        result = parser.assignment();
     }
-
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(InstructionHelper.getInstructions("function __construct(){", "}"));
-        collection.addAll(InstructionHelper.getInstructions("function __destruct(){", "}"));
+        String[] expressions = ExpressionHelper.getParserExpressions();
+        for (String expression : expressions) {
+            collection.add(new Object[]{"$a =" + expression + ""});
+            collection.add(new Object[]{"$a =(" + expression + ")"});
+        }
         return collection;
     }
 }

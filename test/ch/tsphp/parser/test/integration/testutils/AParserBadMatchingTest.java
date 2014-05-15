@@ -7,7 +7,6 @@
 package ch.tsphp.parser.test.integration.testutils;
 
 import org.antlr.runtime.CommonTokenStream;
-import org.antlr.runtime.RecognitionException;
 import org.junit.Ignore;
 
 import static org.junit.Assert.assertEquals;
@@ -35,12 +34,12 @@ public abstract class AParserBadMatchingTest extends AParserTest
         parser.setBacktracking(1);
     }
 
-    public void parseAndCheckResultIsEmpty() throws RecognitionException {
-        parseAndCheckForException();
+    public void parseAndCheckResultIsEmpty() throws Exception {
+        parseAndCheckForExceptions();
         assertNull(testString + " - tree was not null ", result.getTree());
         assertNull(testString + " - stop was not null ", result.stop);
         BadMatchingTSPHPParser badMatchingParser = (BadMatchingTSPHPParser) parser;
-        assertEquals(testString + " - match was not called enough ",
+        assertEquals(testString + " - match was called more or less than expected ",
                 numberOfMatchesBeforeFail + 1, badMatchingParser.getCount());
     }
 

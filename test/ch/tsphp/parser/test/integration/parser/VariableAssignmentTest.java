@@ -9,13 +9,13 @@ package ch.tsphp.parser.test.integration.parser;
 import ch.tsphp.parser.test.integration.lexer.FragmentsTest;
 import ch.tsphp.parser.test.integration.lexer.TokenTest;
 import ch.tsphp.parser.test.integration.testutils.AParserTest;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @RunWith(Parameterized.class)
 public class VariableAssignmentTest extends AParserTest
@@ -26,8 +26,8 @@ public class VariableAssignmentTest extends AParserTest
     }
 
     @Test
-    public void test() throws RecognitionException {
-        parseAndCheckForException();
+    public void test() throws Exception {
+        parseAndCheckForExceptions();
     }
 
     @Parameterized.Parameters

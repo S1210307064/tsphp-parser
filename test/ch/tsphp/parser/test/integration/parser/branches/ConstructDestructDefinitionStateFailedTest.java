@@ -26,7 +26,7 @@ public class ConstructDestructDefinitionStateFailedTest extends AParserStateFail
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         parseAndCheckStateFailed();
     }
 

@@ -8,7 +8,6 @@ package ch.tsphp.parser.test.integration.parser;
 
 import ch.tsphp.parser.test.integration.testutils.AParserTest;
 import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
-import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -26,8 +25,8 @@ public class ThrowTest extends AParserTest
     }
 
     @Test
-    public void test() throws RecognitionException {
-        parseAndCheckForException();
+    public void test() throws Exception {
+        parseAndCheckForExceptions();
     }
 
     @Parameterized.Parameters

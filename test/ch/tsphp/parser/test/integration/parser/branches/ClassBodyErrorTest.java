@@ -26,7 +26,7 @@ public class ClassBodyErrorTest extends AParserParserExceptionTest
     }
 
     @Test
-    public void test() throws RecognitionException {
+    public void test() throws Exception {
         parseExpectingException();
     }
 
