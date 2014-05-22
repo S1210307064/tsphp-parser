@@ -205,7 +205,6 @@ public class ExpressionHelper
                 {"[1,2,a=>3]", "(array 1 2 (=> a# 3))"},
                 {"array(1,2,a=>3)", "(array 1 2 (=> a# 3))"},
                 {"($a)", "$a"},
-                {"exit","exit"}
         });
     }
 
@@ -286,6 +285,7 @@ public class ExpressionHelper
                 "clone $a[0]",
                 "$a++",
                 "$a--",
+                "exit",
                 "$a",
                 "$a->a",
                 "$a[0]",
@@ -327,7 +327,6 @@ public class ExpressionHelper
                 "[1,2,a=>3]",
                 "array(1,2,a=>3)",
                 "($a)",
-                "exit",
         };
     }
 }

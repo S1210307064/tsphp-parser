@@ -38,7 +38,8 @@ public class PostFixErrorTest extends AParserParserExceptionTest
                     {"Foo[0]", TSPHPParser.LeftSquareBrace, 3},
                     {"self::[0];", TSPHPParser.LeftSquareBrace, 6},
                     {"parent::[0]", TSPHPParser.LeftSquareBrace, 8},
-                    {"Foo::[0]", TSPHPParser.DoubleColon, 3}
+                    {"Foo::[0]", TSPHPParser.DoubleColon, 3},
+                    {"$a->[0]", TSPHPParser.ObjectOperator, 2}
                 });
     }
 }
