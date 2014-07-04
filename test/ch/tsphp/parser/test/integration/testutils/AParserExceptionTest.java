@@ -12,15 +12,15 @@ import org.junit.Ignore;
 @Ignore
 public abstract class AParserExceptionTest extends AParserTest
 {
-    protected final int position;
-    protected final int token;
     protected final Class<? extends RecognitionException> exceptionType;
+    protected final int token;
+    protected final int position;
 
     public AParserExceptionTest(String testString, Class<? extends RecognitionException> type, int aToken, int aPosition) {
         super(testString);
         noErrorsOnOutput();
-        position = aPosition;
-        token = aToken;
         exceptionType = type;
+        token = aToken;
+        position = aPosition;
     }
 }

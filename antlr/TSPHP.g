@@ -205,7 +205,7 @@ import ch.tsphp.common.ITSPHPAst;
 
 @members{
 private ITSPHPAst classMemberModifiers;
-
+private static final String BACKSLASH = "\\";
 }
 
 @lexer::header{
@@ -225,10 +225,9 @@ compilationUnit
 	;
 	
 namespaceSemicolon
-@init{ String backslash = "\\";}
 	:	'namespace' namespaceId namespaceBody=';' statement* 
 		-> ^('namespace' 
-			TYPE_NAME[$namespaceId.start,backslash+$namespaceId.text+backslash] 
+			TYPE_NAME[$namespaceId.start,BACKSLASH + $namespaceId.text +BACKSLASH] 
 			^(NAMESPACE_BODY[$namespaceBody,"nBody"] statement*)
 		)
 	;
@@ -241,9 +240,8 @@ namespaceBracket
 		)
 	;
 namespaceIdOrEmpty
-@init{ String backslash = "\\";}
-	:	namespaceId -> TYPE_NAME[$namespaceId.start,backslash+$namespaceId.text+backslash] 
-	|	/* empty */ -> DEFAULT_NAMESPACE[$namespaceIdOrEmpty.start,backslash]
+	:	namespaceId -> TYPE_NAME[$namespaceId.start, BACKSLASH + $namespaceId.text + BACKSLASH] 
+	|	/* empty */ -> DEFAULT_NAMESPACE[$namespaceIdOrEmpty.start, BACKSLASH]
 	;
 
 //Must be before Identifier otherwise Identifier matches true and false
@@ -259,10 +257,9 @@ Identifier
 	;
 
 withoutNamespace 
-@init{ String backslash = "\\";}
 	:	(statement*) 
 		-> ^(Namespace[$statement.start,"namespace"]
-			DEFAULT_NAMESPACE[$statement.start,backslash] 
+			DEFAULT_NAMESPACE[$statement.start, BACKSLASH] 
 			^(NAMESPACE_BODY[$statement.start,"nBody"] statement*)
 		) 
 	;
@@ -279,12 +276,11 @@ useDefinitionList
 	;
 	
 useDefinition
-@init{ String backslash = "\\";}
 	:	usingType 'as' Identifier -> usingType Identifier
 	|	type=Identifier 'as' alias=Identifier -> TYPE_NAME[$type,$type.text] $alias
 
 	|	usingType
-		-> usingType Identifier[$usingType.start, $usingType.text.substring($usingType.text.lastIndexOf(backslash)+1)]
+		-> usingType Identifier[$usingType.start, $usingType.text.substring($usingType.text.lastIndexOf(BACKSLASH)+1)]
 	;
 	
 usingType
@@ -600,7 +596,8 @@ scalarTypes
 	
 	
 classInterfaceTypeWithoutObject
-	:	root='\\'? namespaceId -> TYPE_NAME[$classInterfaceTypeWithoutObject.start, $classInterfaceTypeWithoutObject.text]
+	:	root='\\' namespaceId -> TYPE_NAME[$root, BACKSLASH + $namespaceId.text]
+	|	namespaceId -> TYPE_NAME[$namespaceId.start, $namespaceId.text]
 	;
 
 formalParameters

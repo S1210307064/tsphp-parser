@@ -28,15 +28,15 @@ public abstract class AParserParserExceptionTest extends AParserExceptionTest
     public void parseExpectingException() throws Exception {
         parse();
 
-        assertFalse(testString + " - lexer.exceptions is not empty ", lexer.hasFoundError());
+        assertFalse(testString + " failed - lexer.exceptions is not empty ", lexer.hasFoundError());
 
-        assertTrue(testString + " - exceptions is empty ", parser.hasFoundError());
+        assertTrue(testString + " failed - exceptions is empty ", parser.hasFoundError());
         List<Exception> exceptions = parser.getExceptions();
         RecognitionException ex = (RecognitionException) exceptions.get(0);
-        assertTrue(testString + " - wrong type, expected " + exceptionType.getName()
+        assertTrue(testString + " failed - wrong type, expected " + exceptionType.getName()
                 + " actual " + ex.getClass().getName(), exceptionType.isInstance(ex));
-        assertEquals(testString + " - token wrong", token, ex.c);
-        assertEquals(testString + " - position wrong", position, ex.charPositionInLine);
+        assertEquals(testString + " failed - token wrong", token, ex.c);
+        assertEquals(testString + " failed - position wrong", position, ex.charPositionInLine);
 
     }
 }
