@@ -5,7 +5,6 @@ out/*
 *.iml
 antlr/output/*
 
-TSPHP.tokens
 TSPHPLexer.java
 TSPHPParser.java
 TSPHP__testrig.st
@@ -14,3 +13,4 @@ output
 /lib/dev/pmd/cfg/pmd_tsphp.xml
 /lib/dev/QA.html
 /atlassian-ide-plugin.xml
+/src/ch/tsphp/parser/antlr/TSPHP.tokens

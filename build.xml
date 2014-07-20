@@ -22,6 +22,9 @@
     </target>
 
     <target name="antlr">
+        <copy todir="${antlr.copyLocation}" overwrite="true">
+            <fileset dir="${src.antlr}" includes="TSPHP.tokens"/>
+        </copy>
         <java classname="org.antlr.Tool" fork="true" failonerror="true">
             <arg value="-verbose"/>
             <arg value="-o"/>
