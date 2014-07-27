@@ -6,51 +6,39 @@
 
 package ch.tsphp.parser.test.integration.parser.branches;
 
-import ch.tsphp.parser.test.integration.testutils.AParserStateFailedTest;
+import ch.tsphp.parser.test.integration.testutils.AParserTest;
+import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @RunWith(Parameterized.class)
-public class InstructionStateFailedTest extends AParserStateFailedTest
+public class CatchBlockInstructionTest extends AParserTest
 {
 
-    @SuppressWarnings("UnusedParameters")
-    public InstructionStateFailedTest(String testString) {
+    public CatchBlockInstructionTest(String testString) {
         super(testString);
     }
 
     @Test
     public void test() throws Exception {
-        parseAndCheckStateFailed();
+        parseAndCheckForExceptions();
     }
 
     protected void run() throws RecognitionException {
-        result = parser.instruction();
+        result = parser.catchBlock();
     }
+
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                {"int $"},
-                {"if("},
-                {"switch("},
-                {"for("},
-                {"foreach("},
-                {"while("},
-                {"do{}while("},
-                {"try{"},
-                {"$a +"},
-                {"$a +"},
-                {"return $a +"},
-                {"throw new"},
-                {"echo $a +"},
-
-        });
+        List<Object[]> collection = new ArrayList<>();
+        collection.addAll(InstructionHelper.getInstructions("catch(Exception $e){", "}"));
+        return collection;
     }
 }
-

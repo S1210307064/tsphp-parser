@@ -17,11 +17,12 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class ConstructDestructDefinitionBacktrackingTest extends AParserBacktrackingTest
+public class ForeachLoopBacktrackingTest extends AParserBacktrackingTest
 {
 
 
-    public ConstructDestructDefinitionBacktrackingTest(String testString, int theStartTokenType, int theStopTokenType) {
+    public ForeachLoopBacktrackingTest(String testString, int theStartTokenType,
+            int theStopTokenType) {
         super(testString, theStartTokenType, theStopTokenType);
     }
 
@@ -31,19 +32,15 @@ public class ConstructDestructDefinitionBacktrackingTest extends AParserBacktrac
     }
 
     protected void run() throws RecognitionException {
-        result = parser.constructDestructDefinition();
+        result = parser.foreachLoop();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                {"function __construct(){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __construct(int $a){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __construct(){int $a;}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __destruct(){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __destruct(){int $a;}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
+                {"foreach([1,2] as object $v){}", TSPHPParser.Foreach, TSPHPParser.RightCurlyBrace},
+                {"foreach([1,2] as string $k => object $v){}", TSPHPParser.Foreach, TSPHPParser.RightCurlyBrace},
         });
-
     }
 }
 

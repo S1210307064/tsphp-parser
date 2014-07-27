@@ -71,7 +71,7 @@ public class ExpressionHelper
                 //$a || ($b && $c)
                 {"$a || $b && $c", "(|| $a (&& $b $c))"},
                 //($a || $b) ? 1 : 2
-                {"$a || $b ? 1 : 2","(? (|| $a $b) 1 2)"},
+                {"$a || $b ? 1 : 2", "(? (|| $a $b) 1 2)"},
                 //($a || ($b && $c)) ? $d : $e
                 {"$a || $b && $c ? $d : $e", "(? (|| $a (&& $b $c)) $d $e)"},
 
@@ -84,9 +84,9 @@ public class ExpressionHelper
                 //$a | (($b & $c) ^ $d)
                 {"$a | $b & $c ^ $d", "(| $a (^ (& $b $c) $d))"},
                 //($a | $b) && $c
-                {"$a | $b && $c","(&& (| $a $b) $c)"},
+                {"$a | $b && $c", "(&& (| $a $b) $c)"},
                 //(($a | $b) && ($c ^ $d)) || ($e & $f)
-                {"$a | $b && $c ^ $d || $e & $f","(|| (&& (| $a $b) (^ $c $d)) (& $e $f))"},
+                {"$a | $b && $c ^ $d || $e & $f", "(|| (&& (| $a $b) (^ $c $d)) (& $e $f))"},
 
                 {"$a == $b", "(== $a $b)"},
                 {"$a === $b", "(=== $a $b)"},
@@ -94,7 +94,7 @@ public class ExpressionHelper
                 {"$a !== $b", "(!== $a $b)"},
                 //precedence tests
                 //($a == $b) & $c
-                {"$a == $b & $c","(& (== $a $b) $c)"},
+                {"$a == $b & $c", "(& (== $a $b) $c)"},
 
                 {"$a < $b", "(< $a $b)"},
                 {"$a <= $b", "(<= $a $b)"},
@@ -114,9 +114,9 @@ public class ExpressionHelper
                 {"1 << 2 << 3 >> 5", "(>> (<< (<< 1 2) 3) 5)"},
                 //precedence test
                 //$a < ($b << $c)
-                {"$a < $b << $c","(< $a (<< $b $c))"},
+                {"$a < $b << $c", "(< $a (<< $b $c))"},
                 //($a >> $b) >= ($c >> 2)
-                {"$a >> $b >= $c >> 2","(>= (>> $a $b) (>> $c 2))"},
+                {"$a >> $b >= $c >> 2", "(>= (>> $a $b) (>> $c 2))"},
 
                 {"1 + 2", "(+ 1 2)"},
                 {"1 - 2", "(- 1 2)"},
@@ -133,17 +133,24 @@ public class ExpressionHelper
                 {"$a * $b / $c % $d * $e % $f / $g", "(/ (% (* (% (/ (* $a $b) $c) $d) $e) $f) $g)"},
                 //precedence test
                 //($a * $b) + $c
-                {"$a * $b + $c","(+ (* $a $b) $c)"},
+                {"$a * $b + $c", "(+ (* $a $b) $c)"},
                 //$a + ($b * $c) - ($d % $f).($g / 2)
-                {"$a + $b * $c - $d % $f.$g / 2","(. (- (+ $a (* $b $c)) (% $d $f)) (/ $g 2))"},
+                {"$a + $b * $c - $d % $f.$g / 2", "(. (- (+ $a (* $b $c)) (% $d $f)) (/ $g 2))"},
 
                 {"$a instanceof MyClass", "(instanceof $a MyClass)"},
                 {"$a instanceof $b", "(instanceof $a $b)"},
                 //precedence test
                 //$a * ($b instanceof $c)
-                {"$a * $b instanceof $c","(* $a (instanceof $b $c))"},
+                {"$a * $b instanceof $c", "(* $a (instanceof $b $c))"},
 
+                {"(bool) $a", "(casting (type tMod bool) $a)"},
+                {"(int) $a", "(casting (type tMod int) $a)"},
+                {"(float) $a", "(casting (type tMod float) $a)"},
+                {"(string) $a", "(casting (type tMod string) $a)"},
+                {"(array) $a", "(casting (type tMod array) $a)"},
+                {"(resource) $a", "(casting (type tMod resource) $a)"},
                 {"(Type) $a", "(casting (type tMod Type) $a)"},
+                {"(cast Type) $a", "(casting (type (tMod cast) Type) $a)"},
                 {"++$a", "(preIncr $a)"},
                 {"--$a", "(preDecr $a)"},
                 {"@$a", "(@ $a)"},
@@ -154,22 +161,22 @@ public class ExpressionHelper
                 {"-$a", "(uMinus $a)"},
                 {"-2", "(uMinus 2)"},
                 //precedence test
-                {"(int) $a instanceof $b","(instanceof (casting (type tMod int) $a) $b)"},
-                {"++$a * $b ","(* (preIncr $a) $b)"},
-                {"--$a % $b ","(% (preDecr $a) $b)"},
-                {"-$a * $b","(* (uMinus $a) $b)"},
-                {"+$a instanceof $b","(instanceof (uPlus $a) $b)"},
-                {"@$a * $b","(* (@ $a) $b)"},
-                {"~$a / $b","(/ (~ $a) $b)"},
-                {"!$a % $b ","(% (! $a) $b)"},
+                {"(int) $a instanceof $b", "(instanceof (casting (type tMod int) $a) $b)"},
+                {"++$a * $b ", "(* (preIncr $a) $b)"},
+                {"--$a % $b ", "(% (preDecr $a) $b)"},
+                {"-$a * $b", "(* (uMinus $a) $b)"},
+                {"+$a instanceof $b", "(instanceof (uPlus $a) $b)"},
+                {"@$a * $b", "(* (@ $a) $b)"},
+                {"~$a / $b", "(/ (~ $a) $b)"},
+                {"!$a % $b ", "(% (! $a) $b)"},
 
                 {"clone $a", "(clone $a)"},
                 {"new Type", "(new Type args)"},
                 //precedence test
                 //(clone $a) + $b
-                {"clone $a + $b","(+ (clone $a) $b)"},
+                {"clone $a + $b", "(+ (clone $a) $b)"},
                 //(new A) + $b
-                {"new A + $b","(+ (new A args) $b)"},
+                {"new A + $b", "(+ (new A args) $b)"},
                 //((int) (clone $a)) * $b
                 {"(int) clone $a * $b", "(* (casting (type tMod int) (clone $a)) $b)"},
 
@@ -179,6 +186,9 @@ public class ExpressionHelper
                 {"exit(1)", "(exit 1)"},
                 {"$a", "$a"},
                 {"$a[0]", "(arrAccess $a 0)"},
+                {"$this", "$this"},
+                {"$this->a","(memAccess $this a)"},
+                {"$this[0]","(arrAccess $this 0)"},
                 {"$a->a", "(memAccess $a a)"},
                 {"\\foo(1,1+2,3)", "(fCall \\foo() (args 1 (+ 1 2) 3))"},
                 {"foo()", "(fCall foo() args)"},
@@ -268,6 +278,7 @@ public class ExpressionHelper
                 "(string) $a",
                 "(array) $a",
                 "(Foo) $a",
+                "(cast Foo) $a",
                 "(int) ((bool) $a && $b) + 1",
                 "++$a",
                 "--$a",

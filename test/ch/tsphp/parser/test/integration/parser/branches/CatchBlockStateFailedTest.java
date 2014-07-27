@@ -12,15 +12,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class InstructionStateFailedTest extends AParserStateFailedTest
+public class CatchBlockStateFailedTest extends AParserStateFailedTest
 {
-
     @SuppressWarnings("UnusedParameters")
-    public InstructionStateFailedTest(String testString) {
+    public CatchBlockStateFailedTest(String testString, int character, int position) {
         super(testString);
     }
 
@@ -30,27 +29,15 @@ public class InstructionStateFailedTest extends AParserStateFailedTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.instruction();
+        result = parser.catchBlock();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                {"int $"},
-                {"if("},
-                {"switch("},
-                {"for("},
-                {"foreach("},
-                {"while("},
-                {"do{}while("},
-                {"try{"},
-                {"$a +"},
-                {"$a +"},
-                {"return $a +"},
-                {"throw new"},
-                {"echo $a +"},
-
-        });
+        Collection<Object[]> collection = new ArrayList<>();
+        collection.addAll(CatchBlockErrorTest.testStrings());
+        collection.add(new Object[]{"catch(Exception $e){$missingSemicolon}", 0, 0});
+        return collection;
     }
 }
 

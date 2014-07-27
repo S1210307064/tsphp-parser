@@ -16,11 +16,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class InstructionStateFailedTest extends AParserStateFailedTest
+public class NamespaceSemicolonStateFailedTest extends AParserStateFailedTest
 {
 
     @SuppressWarnings("UnusedParameters")
-    public InstructionStateFailedTest(String testString) {
+    public NamespaceSemicolonStateFailedTest(String testString) {
         super(testString);
     }
 
@@ -30,26 +30,13 @@ public class InstructionStateFailedTest extends AParserStateFailedTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.instruction();
+        result = parser.namespaceSemicolon();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                {"int $"},
-                {"if("},
-                {"switch("},
-                {"for("},
-                {"foreach("},
-                {"while("},
-                {"do{}while("},
-                {"try{"},
-                {"$a +"},
-                {"$a +"},
-                {"return $a +"},
-                {"throw new"},
-                {"echo $a +"},
-
+                {"namespace a; $missingSemicolon"},
         });
     }
 }

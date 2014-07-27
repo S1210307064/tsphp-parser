@@ -6,8 +6,10 @@
 
 package ch.tsphp.parser.test.integration.parser.branches;
 
+import ch.tsphp.common.TSPHPAst;
 import ch.tsphp.parser.antlr.TSPHPParser;
 import ch.tsphp.parser.test.integration.testutils.AParserBacktrackingTest;
+import org.antlr.runtime.CommonToken;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,11 +19,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class ConstructDestructDefinitionBacktrackingTest extends AParserBacktrackingTest
+public class CastAssignOrAssignListBacktrackingTest extends AParserBacktrackingTest
 {
 
 
-    public ConstructDestructDefinitionBacktrackingTest(String testString, int theStartTokenType, int theStopTokenType) {
+    public CastAssignOrAssignListBacktrackingTest(String testString, int theStartTokenType, int theStopTokenType) {
         super(testString, theStartTokenType, theStopTokenType);
     }
 
@@ -31,20 +33,21 @@ public class ConstructDestructDefinitionBacktrackingTest extends AParserBacktrac
     }
 
     protected void run() throws RecognitionException {
-        result = parser.constructDestructDefinition();
+        result = parser.castAssignOrAssignList(new TSPHPAst(new CommonToken(TSPHPParser.TypeInt)));
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                {"function __construct(){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __construct(int $a){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __construct(){int $a;}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __destruct(){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __destruct(){int $a;}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
+                {"$a =() 1", TSPHPParser.VariableId, TSPHPParser.Int},
+                {"$a =() 1, $b =() 2", TSPHPParser.VariableId, TSPHPParser.Int},
+                {"$a = 1", TSPHPParser.VariableId, TSPHPParser.Int},
+                {"$a = 1, $b = 2", TSPHPParser.VariableId, TSPHPParser.Int},
+                {"$a = 1, $b =() 2", TSPHPParser.VariableId, TSPHPParser.Int},
+                {"$a =() 1, $b =() 2", TSPHPParser.VariableId, TSPHPParser.Int},
         });
-
     }
 }
+
 
 

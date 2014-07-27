@@ -6,7 +6,7 @@
 
 package ch.tsphp.parser.test.integration.parser.branches;
 
-import ch.tsphp.parser.test.integration.testutils.AParserStateFailedTest;
+import ch.tsphp.parser.test.integration.testutils.AParserTest;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,41 +16,30 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class InstructionStateFailedTest extends AParserStateFailedTest
+public class PrimaryTest extends AParserTest
 {
 
-    @SuppressWarnings("UnusedParameters")
-    public InstructionStateFailedTest(String testString) {
+    public PrimaryTest(String testString) {
         super(testString);
     }
 
     @Test
     public void test() throws Exception {
-        parseAndCheckStateFailed();
+        parseAndCheckForExceptions();
     }
 
     protected void run() throws RecognitionException {
-        result = parser.instruction();
+        result = parser.primary();
     }
+
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                {"int $"},
-                {"if("},
-                {"switch("},
-                {"for("},
-                {"foreach("},
-                {"while("},
-                {"do{}while("},
-                {"try{"},
-                {"$a +"},
-                {"$a +"},
-                {"return $a +"},
-                {"throw new"},
-                {"echo $a +"},
-
+                {"\\A::$a++"},
+                {"\\A::$a--"},
+                {"A::$a++"},
+                {"A::$a--"},
         });
     }
 }
-

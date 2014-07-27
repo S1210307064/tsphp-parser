@@ -9,6 +9,7 @@ package ch.tsphp.parser.test.integration.testutils;
 import org.junit.Ignore;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
@@ -33,9 +34,10 @@ public abstract class AParserBacktrackingTest extends AParserTest
     public void parseAndCheckResultIsOnlyBacktracking() throws Exception {
         parseAndCheckForExceptions();
         assertNull(testString + " - tree was not null", result.getTree());
+        assertNotNull(testString + "- start token was null", result.start);
         assertEquals(testString + " - start token type was different ", startTokenType, result.start.getType());
+        assertNotNull(testString + "- stop token was null", result.stop);
         assertEquals(testString + " - stop token type was different ", stopTokenType, result.stop.getType());
         assertTrue(testString + " - memoize is empty ", parser.getState().ruleMemo.length > 0);
     }
-
 }

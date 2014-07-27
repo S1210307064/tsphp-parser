@@ -17,11 +17,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class ConstructDestructDefinitionBacktrackingTest extends AParserBacktrackingTest
+public class  ClassBodyBacktrackingTest extends AParserBacktrackingTest
 {
 
 
-    public ConstructDestructDefinitionBacktrackingTest(String testString, int theStartTokenType, int theStopTokenType) {
+    public ClassBodyBacktrackingTest(String testString, int theStartTokenType, int theStopTokenType) {
         super(testString, theStartTokenType, theStopTokenType);
     }
 
@@ -31,20 +31,21 @@ public class ConstructDestructDefinitionBacktrackingTest extends AParserBacktrac
     }
 
     protected void run() throws RecognitionException {
-        result = parser.constructDestructDefinition();
+        result = parser.classBody();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
+                {"const int a=1;", TSPHPParser.Const, TSPHPParser.Semicolon},
+                {"int $a=1;", TSPHPParser.TypeInt, TSPHPParser.Semicolon},
+                {"abstract function __construct();", TSPHPParser.Abstract, TSPHPParser.Semicolon},
                 {"function __construct(){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __construct(int $a){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __construct(){int $a;}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __destruct(){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __destruct(){int $a;}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
+                {"abstract function int foo();", TSPHPParser.Abstract, TSPHPParser.Semicolon},
+                {"function int foo(){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
         });
-
     }
 }
+
 
 

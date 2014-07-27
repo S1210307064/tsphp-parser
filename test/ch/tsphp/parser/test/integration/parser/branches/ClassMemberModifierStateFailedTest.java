@@ -12,15 +12,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class InstructionStateFailedTest extends AParserStateFailedTest
+public class ClassMemberModifierStateFailedTest extends AParserStateFailedTest
 {
-
     @SuppressWarnings("UnusedParameters")
-    public InstructionStateFailedTest(String testString) {
+    public ClassMemberModifierStateFailedTest(String testString, int character, int position) {
         super(testString);
     }
 
@@ -30,27 +28,12 @@ public class InstructionStateFailedTest extends AParserStateFailedTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.instruction();
+        result = parser.classMemberModifier();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                {"int $"},
-                {"if("},
-                {"switch("},
-                {"for("},
-                {"foreach("},
-                {"while("},
-                {"do{}while("},
-                {"try{"},
-                {"$a +"},
-                {"$a +"},
-                {"return $a +"},
-                {"throw new"},
-                {"echo $a +"},
-
-        });
+        return ClassMemberModifierErrorTest.testStrings();
     }
 }
 

@@ -16,11 +16,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class InstructionStateFailedTest extends AParserStateFailedTest
+public class ForeachLoopStateFailedTest extends AParserStateFailedTest
 {
 
     @SuppressWarnings("UnusedParameters")
-    public InstructionStateFailedTest(String testString) {
+    public ForeachLoopStateFailedTest(String testString) {
         super(testString);
     }
 
@@ -30,26 +30,16 @@ public class InstructionStateFailedTest extends AParserStateFailedTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.instruction();
+        result = parser.foreachLoop();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                {"int $"},
-                {"if("},
-                {"switch("},
-                {"for("},
-                {"foreach("},
-                {"while("},
-                {"do{}while("},
-                {"try{"},
-                {"$a +"},
-                {"$a +"},
-                {"return $a +"},
-                {"throw new"},
-                {"echo $a +"},
-
+                {"foreach([1,2] as $notAType"},
+                {"foreach([1,2] as string $k => $notAType"},
+                {"foreach([1,2] as string $k => object $v){$missingSemicolon"},
+                {"foreach([1,2] as string $k => object $v){$missingSemicolon"},
         });
     }
 }

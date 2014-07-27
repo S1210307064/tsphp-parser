@@ -20,7 +20,7 @@ public class AssignmentStateFailedTest extends AParserStateFailedTest
 {
 
     @SuppressWarnings("UnusedParameters")
-    public AssignmentStateFailedTest(String testString, int character, int position) {
+    public AssignmentStateFailedTest(String testString) {
         super(testString);
     }
 
@@ -36,10 +36,10 @@ public class AssignmentStateFailedTest extends AParserStateFailedTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                {"$a = $a +", 0, 0},
-                {"$a =() $a +", 0, 0},
-                {"$a =() $a +", 0, 0},
-                {"$a += $a +", 0, 0},
+                {"$a = $a +"},
+                {"$a =() $a +"},
+                {"$a =() $a +"},
+                {"$a += $a +"},
         });
     }
 }

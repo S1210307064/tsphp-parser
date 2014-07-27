@@ -17,11 +17,11 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class ConstructDestructDefinitionBacktrackingTest extends AParserBacktrackingTest
+public class ClassDefinitionBacktrackingTest extends AParserBacktrackingTest
 {
 
 
-    public ConstructDestructDefinitionBacktrackingTest(String testString, int theStartTokenType, int theStopTokenType) {
+    public ClassDefinitionBacktrackingTest(String testString, int theStartTokenType, int theStopTokenType) {
         super(testString, theStartTokenType, theStopTokenType);
     }
 
@@ -31,19 +31,17 @@ public class ConstructDestructDefinitionBacktrackingTest extends AParserBacktrac
     }
 
     protected void run() throws RecognitionException {
-        result = parser.constructDestructDefinition();
+        result = parser.classDefinition();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                {"function __construct(){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __construct(int $a){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __construct(){int $a;}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __destruct(){}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
-                {"function __destruct(){int $a;}", TSPHPParser.Function, TSPHPParser.RightCurlyBrace},
+                {"abstract class A{}", TSPHPParser.Abstract, TSPHPParser.RightCurlyBrace},
+                {"class A extends B{}", TSPHPParser.Class, TSPHPParser.RightCurlyBrace},
+                {"class A implements B{}", TSPHPParser.Class, TSPHPParser.RightCurlyBrace},
+                {"class A implements B{ public int $i;}", TSPHPParser.Class, TSPHPParser.RightCurlyBrace},
         });
-
     }
 }
 

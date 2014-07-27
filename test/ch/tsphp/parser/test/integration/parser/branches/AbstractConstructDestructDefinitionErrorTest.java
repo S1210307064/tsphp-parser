@@ -6,7 +6,9 @@
 
 package ch.tsphp.parser.test.integration.parser.branches;
 
-import ch.tsphp.parser.test.integration.testutils.AParserStateFailedTest;
+import ch.tsphp.parser.antlr.TSPHPParser;
+import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
+import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,40 +18,26 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class InstructionStateFailedTest extends AParserStateFailedTest
+public class AbstractConstructDestructDefinitionErrorTest extends AParserParserExceptionTest
 {
 
-    @SuppressWarnings("UnusedParameters")
-    public InstructionStateFailedTest(String testString) {
-        super(testString);
+    public AbstractConstructDestructDefinitionErrorTest(String testString, int character, int position) {
+        super(testString, NoViableAltException.class, character, position);
     }
 
     @Test
     public void test() throws Exception {
-        parseAndCheckStateFailed();
+        parseExpectingException();
     }
 
     protected void run() throws RecognitionException {
-        result = parser.instruction();
+        result = parser.abstractConstructDestructDefinition();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                {"int $"},
-                {"if("},
-                {"switch("},
-                {"for("},
-                {"foreach("},
-                {"while("},
-                {"do{}while("},
-                {"try{"},
-                {"$a +"},
-                {"$a +"},
-                {"return $a +"},
-                {"throw new"},
-                {"echo $a +"},
-
+                {"abstract function $notConstructOrDestruct", TSPHPParser.VariableId, 18},
         });
     }
 }

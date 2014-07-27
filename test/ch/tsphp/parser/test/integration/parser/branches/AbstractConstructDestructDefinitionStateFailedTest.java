@@ -12,15 +12,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @RunWith(Parameterized.class)
-public class InstructionStateFailedTest extends AParserStateFailedTest
+public class AbstractConstructDestructDefinitionStateFailedTest extends AParserStateFailedTest
 {
-
     @SuppressWarnings("UnusedParameters")
-    public InstructionStateFailedTest(String testString) {
+    public AbstractConstructDestructDefinitionStateFailedTest(String testString, int character, int position) {
         super(testString);
     }
 
@@ -30,27 +31,19 @@ public class InstructionStateFailedTest extends AParserStateFailedTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.instruction();
+        result = parser.abstractConstructDestructDefinition();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                {"int $"},
-                {"if("},
-                {"switch("},
-                {"for("},
-                {"foreach("},
-                {"while("},
-                {"do{}while("},
-                {"try{"},
-                {"$a +"},
-                {"$a +"},
-                {"return $a +"},
-                {"throw new"},
-                {"echo $a +"},
-
-        });
+        List<Object[]> collection = new ArrayList<>();
+        collection.addAll(AbstractConstructDestructDefinitionErrorTest.testStrings());
+        collection.addAll(Arrays.asList(new Object[][]{
+                //wrong instruction, missing ;
+                {"abstract function __construct(){int $a}", 0, 0},
+                {"abstract function __destruct(){int $a}", 0, 0}
+        }));
+        return collection;
     }
 }
 
