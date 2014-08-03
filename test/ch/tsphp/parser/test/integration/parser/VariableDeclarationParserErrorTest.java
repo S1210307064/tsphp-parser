@@ -21,7 +21,7 @@ public class VariableDeclarationParserErrorTest extends AParserParserExceptionTe
 {
 
     public VariableDeclarationParserErrorTest(String testString, int evilCharacter, int atPosition) {
-        super(testString, RecognitionException.class, evilCharacter, atPosition);
+        super(testString, evilCharacter, atPosition, RecognitionException.class);
     }
 
     @Test

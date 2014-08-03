@@ -21,7 +21,7 @@ public class ConstantErrorTest extends AParserParserExceptionTest
 {
 
     public ConstantErrorTest(String testString, int character, int position) {
-        super(testString, RecognitionException.class, character, position);
+        super(testString, character, position, RecognitionException.class);
 
     }
 

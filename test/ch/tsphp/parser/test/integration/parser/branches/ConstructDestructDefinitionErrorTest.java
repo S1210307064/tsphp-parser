@@ -22,7 +22,7 @@ public class ConstructDestructDefinitionErrorTest extends AParserParserException
 {
 
     public ConstructDestructDefinitionErrorTest(String testString, int character, int position) {
-        super(testString, NoViableAltException.class, character, position);
+        super(testString, character, position, NoViableAltException.class);
     }
 
     @Test

@@ -6,39 +6,39 @@
 
 package ch.tsphp.parser.test.integration.parser.branches;
 
-import ch.tsphp.parser.antlr.TSPHPParser;
-import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
-import org.antlr.runtime.NoViableAltException;
+import ch.tsphp.parser.test.integration.testutils.AParserTest;
+import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @RunWith(Parameterized.class)
-public class CatchBlockErrorTest extends AParserParserExceptionTest
+public class DefaultCaseInstructionOptionalInstructionTest extends AParserTest
 {
 
-    public CatchBlockErrorTest(String testString, int character, int position) {
-        super(testString, character, position, NoViableAltException.class);
+    public DefaultCaseInstructionOptionalInstructionTest(String testString) {
+        super(testString);
     }
 
     @Test
     public void test() throws Exception {
-        parseExpectingException();
+        parseAndCheckForExceptions();
     }
 
     protected void run() throws RecognitionException {
-        result = parser.catchBlock();
+        result = parser.defaultCaseInstructionOptional();
     }
+
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                {"catch($notAType", TSPHPParser.VariableId, 6},
-        });
+        List<Object[]> collection = new ArrayList<>();
+        collection.addAll(InstructionHelper.getInstructions("default:", "}"));
+        return collection;
     }
 }
-

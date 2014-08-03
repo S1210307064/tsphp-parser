@@ -21,7 +21,7 @@ public class ConstructDestructErrorTest extends AParserParserExceptionTest
 {
 
     public ConstructDestructErrorTest(String testString, int character, int position) {
-        super(testString, RecognitionException.class, character, position);
+        super(testString, character, position, RecognitionException.class);
 
     }
 

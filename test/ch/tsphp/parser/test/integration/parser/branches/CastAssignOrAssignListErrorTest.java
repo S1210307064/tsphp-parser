@@ -24,7 +24,7 @@ public class CastAssignOrAssignListErrorTest extends AParserParserExceptionTest
 {
 
     public CastAssignOrAssignListErrorTest(String testString, int character, int position) {
-        super(testString, NoViableAltException.class, character, position);
+        super(testString, character, position, NoViableAltException.class);
     }
 
     @Test

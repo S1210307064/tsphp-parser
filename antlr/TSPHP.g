@@ -11,7 +11,7 @@ options {
 	memoize = true;
 	output = AST;
 	ASTLabelType = ITSPHPAst;
-    	//tokenVocab = TSPHP;
+    tokenVocab = TSPHP;
 }
 
 tokens{

@@ -21,7 +21,7 @@ public class ForeachErrorTest extends AParserParserExceptionTest
 {
 
     public ForeachErrorTest(String testString, int character, int position) {
-        super(testString, RecognitionException.class, character, position);
+        super(testString, character, position, RecognitionException.class);
 
     }
 

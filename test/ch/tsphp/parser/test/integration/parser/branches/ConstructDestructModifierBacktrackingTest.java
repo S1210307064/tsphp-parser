@@ -7,8 +7,7 @@
 package ch.tsphp.parser.test.integration.parser.branches;
 
 import ch.tsphp.parser.antlr.TSPHPParser;
-import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
-import org.antlr.runtime.NoViableAltException;
+import ch.tsphp.parser.test.integration.testutils.AParserBacktrackingTest;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,27 +17,34 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class CatchBlockErrorTest extends AParserParserExceptionTest
+public class ConstructDestructModifierBacktrackingTest extends AParserBacktrackingTest
 {
 
-    public CatchBlockErrorTest(String testString, int character, int position) {
-        super(testString, character, position, NoViableAltException.class);
+
+    public ConstructDestructModifierBacktrackingTest(String testString, int theStartTokenType, int theStopTokenType) {
+        super(testString, theStartTokenType, theStopTokenType);
     }
 
     @Test
     public void test() throws Exception {
-        parseExpectingException();
+        parseAndCheckResultIsOnlyBacktracking();
     }
 
     protected void run() throws RecognitionException {
-        result = parser.catchBlock();
+        result = parser.constructDestructModifier();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
+        String foo = " function foo(){}";
         return Arrays.asList(new Object[][]{
-                {"catch($notAType", TSPHPParser.VariableId, 6},
+                {"final protected" + foo, TSPHPParser.Final, TSPHPParser.Protected},
+                {"final" + foo, TSPHPParser.Final, TSPHPParser.Final},
+                {"protected final" + foo, TSPHPParser.Protected, TSPHPParser.Final},
+                {"protected" + foo, TSPHPParser.Protected, TSPHPParser.Protected},
         });
+
     }
 }
+
 

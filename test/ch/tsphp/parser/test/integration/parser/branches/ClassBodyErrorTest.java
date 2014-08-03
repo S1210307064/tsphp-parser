@@ -22,7 +22,7 @@ public class ClassBodyErrorTest extends AParserParserExceptionTest
 {
 
     public ClassBodyErrorTest(String testString, int character, int position) {
-        super(testString, NoViableAltException.class, character, position);
+        super(testString, character, position, NoViableAltException.class);
     }
 
     @Test

@@ -23,7 +23,7 @@ public class KeywordErrorTest extends AParserParserExceptionTest
 {
 
     public KeywordErrorTest(String testString, int token, int position) {
-        super(testString, RecognitionException.class, token, position);
+        super(testString, token, position, RecognitionException.class);
 
     }
 

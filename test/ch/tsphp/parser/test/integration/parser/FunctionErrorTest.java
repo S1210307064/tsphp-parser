@@ -23,7 +23,7 @@ public class FunctionErrorTest extends AParserParserExceptionTest
 {
 
     public FunctionErrorTest(String testString, int character, int position) {
-        super(testString, RecognitionException.class, character, position);
+        super(testString, character, position, RecognitionException.class);
 
     }
 

@@ -6,39 +6,35 @@
 
 package ch.tsphp.parser.test.integration.parser.branches;
 
-import ch.tsphp.parser.antlr.TSPHPParser;
-import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
-import org.antlr.runtime.NoViableAltException;
+import ch.tsphp.parser.test.integration.testutils.AParserStateFailedTest;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class CatchBlockErrorTest extends AParserParserExceptionTest
+public class AllTypesWithoutObjectStateFailedTest extends AParserStateFailedTest
 {
 
-    public CatchBlockErrorTest(String testString, int character, int position) {
-        super(testString, character, position, NoViableAltException.class);
+    @SuppressWarnings("UnusedParameters")
+    public AllTypesWithoutObjectStateFailedTest(String testString, int character, int position) {
+        super(testString);
     }
 
     @Test
     public void test() throws Exception {
-        parseExpectingException();
+        parseAndCheckStateFailed();
     }
 
     protected void run() throws RecognitionException {
-        result = parser.catchBlock();
+        result = parser.allTypesWithoutObject();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                {"catch($notAType", TSPHPParser.VariableId, 6},
-        });
+        return AllTypesWithoutObjectErrorTest.testStrings();
     }
 }
 

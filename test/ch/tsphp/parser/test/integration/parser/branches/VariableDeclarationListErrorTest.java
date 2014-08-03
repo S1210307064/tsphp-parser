@@ -8,6 +8,7 @@ package ch.tsphp.parser.test.integration.parser.branches;
 
 import ch.tsphp.parser.antlr.TSPHPParser;
 import ch.tsphp.parser.test.integration.testutils.AParserParserExceptionTest;
+import org.antlr.runtime.MismatchedTokenException;
 import org.antlr.runtime.NoViableAltException;
 import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
@@ -18,11 +19,12 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class PrimaryErrorTest extends AParserParserExceptionTest
+public class VariableDeclarationListErrorTest extends AParserParserExceptionTest
 {
 
-    public PrimaryErrorTest(String testString, int character, int position) {
-        super(testString, character, position, NoViableAltException.class);
+    public VariableDeclarationListErrorTest(String testString, int character, int position,
+            Class<? extends RecognitionException> type) {
+        super(testString, character, position, type);
     }
 
     @Test
@@ -31,21 +33,16 @@ public class PrimaryErrorTest extends AParserParserExceptionTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.primary();
+        result = parser.variableDeclarationList();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                {"\\$a", TSPHPParser.VariableId, 1},
-                {"A$a ", TSPHPParser.VariableId, 1},
-                //$this as such is valid for primary ->$a would cause a parser error in parent rule
-                //{"$this->$a ", TSPHPParser.VariableId, 7},
-                //$a as such is valid for primary ->$a would cause a parser error in parent rule
-                //{"$a->$a", TSPHPParser.VariableId, 4},
-                {"self::\\", TSPHPParser.Backslash, 6},
-                {"parent::\\", TSPHPParser.Backslash, 8},
-                {"return", TSPHPParser.Return, 0},
+                {"$notAType", TSPHPParser.VariableId, 0, NoViableAltException.class},
+                {"array notAModifier", TSPHPParser.Identifier, 6, NoViableAltException.class},
+                {"object notAModifier", TSPHPParser.Identifier, 7, MismatchedTokenException.class},
+                {"object $a, notAModifier", TSPHPParser.Identifier, 11, MismatchedTokenException.class,}
         });
     }
 }

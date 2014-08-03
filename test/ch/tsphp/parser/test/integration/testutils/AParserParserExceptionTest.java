@@ -19,9 +19,9 @@ import static org.junit.Assert.assertTrue;
 public abstract class AParserParserExceptionTest extends AParserExceptionTest
 {
 
-    public AParserParserExceptionTest(String testString, Class<? extends RecognitionException> type, int character,
-            int position) {
-        super(testString, type, character, position);
+    public AParserParserExceptionTest(String testString, int character, int position,
+            Class<? extends RecognitionException> type) {
+        super(testString, character, position, type);
     }
 
     @SuppressWarnings("ThrowableResultOfMethodCallIgnored")

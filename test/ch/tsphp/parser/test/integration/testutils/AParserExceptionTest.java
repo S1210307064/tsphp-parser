@@ -16,7 +16,8 @@ public abstract class AParserExceptionTest extends AParserTest
     protected final int token;
     protected final int position;
 
-    public AParserExceptionTest(String testString, Class<? extends RecognitionException> type, int aToken, int aPosition) {
+    public AParserExceptionTest(String testString, int aToken, int aPosition,
+            Class<? extends RecognitionException> type) {
         super(testString);
         noErrorsOnOutput();
         exceptionType = type;

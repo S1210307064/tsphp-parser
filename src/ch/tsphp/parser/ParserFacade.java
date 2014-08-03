@@ -6,31 +6,34 @@
 
 package ch.tsphp.parser;
 
+import ch.tsphp.common.AstHelper;
+import ch.tsphp.common.AstHelperRegistry;
+import ch.tsphp.common.IErrorLogger;
+import ch.tsphp.common.IParser;
+import ch.tsphp.common.ITSPHPAst;
+import ch.tsphp.common.ITSPHPAstAdaptor;
+import ch.tsphp.common.ParserUnitDto;
+import ch.tsphp.common.TSPHPAstAdaptor;
+import ch.tsphp.common.TSPHPErrorAst;
+import ch.tsphp.common.exceptions.TSPHPException;
 import ch.tsphp.parser.antlrmod.ANTLRNoCaseFileStream;
 import ch.tsphp.parser.antlrmod.ANTLRNoCaseInputStream;
 import ch.tsphp.parser.antlrmod.ANTLRNoCaseStringStream;
 import ch.tsphp.parser.antlrmod.ErrorReportingTSPHPLexer;
 import ch.tsphp.parser.antlrmod.ErrorReportingTSPHPParser;
-import ch.tsphp.common.AstHelper;
-import ch.tsphp.common.AstHelperRegistry;
-import ch.tsphp.common.ParserUnitDto;
-import ch.tsphp.common.IErrorLogger;
-import ch.tsphp.common.IParser;
-import ch.tsphp.common.ITSPHPAst;
-import ch.tsphp.common.ITSPHPAstAdaptor;
-import ch.tsphp.common.TSPHPAstAdaptor;
-import ch.tsphp.common.TSPHPErrorAst;
-import ch.tsphp.common.exceptions.TSPHPException;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayDeque;
-import java.util.Collection;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.TokenStream;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayDeque;
+import java.util.Collection;
+
+/**
+ * Represents the TSPHP Parser providing different methods to parse some input and generating a ParserUnitDto.
+ */
 public class ParserFacade implements IParser, IErrorLogger
 {
 

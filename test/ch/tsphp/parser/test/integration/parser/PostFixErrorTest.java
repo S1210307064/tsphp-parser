@@ -21,7 +21,7 @@ public class PostFixErrorTest extends AParserParserExceptionTest
 {
 
     public PostFixErrorTest(String testString, int character, int position) {
-        super(testString, RecognitionException.class, character, position);
+        super(testString, character, position, RecognitionException.class);
 
     }
 

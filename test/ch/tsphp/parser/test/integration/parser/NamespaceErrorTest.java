@@ -21,7 +21,7 @@ public class NamespaceErrorTest extends AParserParserExceptionTest
 {
 
     public NamespaceErrorTest(String testString, int token, int position) {
-        super(testString, RecognitionException.class, token, position);
+        super(testString, token, position, RecognitionException.class);
 
     }
 
