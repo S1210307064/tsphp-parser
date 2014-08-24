@@ -76,13 +76,14 @@ public class ParserFacade implements IParser, IErrorLogger
     }
 
     @Override
-    public ParserUnitDto parseInputStream(InputStream inputStream, int initialBufferSize, String encoding) throws IOException {
+    public ParserUnitDto parseInputStream(InputStream inputStream, int initialBufferSize, String encoding)
+            throws IOException {
         return getAstOrErrorAst(new ANTLRNoCaseInputStream(inputStream, initialBufferSize, encoding));
     }
 
     @Override
-    public ParserUnitDto parseInputStream(InputStream inputStream, int initialBufferSize, int readBufferSize, String encoding)
-            throws IOException {
+    public ParserUnitDto parseInputStream(
+            InputStream inputStream, int initialBufferSize, int readBufferSize, String encoding) throws IOException {
         
         return getAstOrErrorAst(new ANTLRNoCaseInputStream(inputStream, initialBufferSize, readBufferSize, encoding));
     }
