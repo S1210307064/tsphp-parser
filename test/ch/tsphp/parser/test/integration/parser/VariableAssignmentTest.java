@@ -36,7 +36,7 @@ public class VariableAssignmentTest extends AParserTest
         
         collection.add(new Object[]{"$bool = true;"});
         collection.add(new Object[]{"$bool = false;"});
-        collection.add(new Object[]{"$object = null;"});
+        collection.add(new Object[]{"$mixed = null;"});
         
         String[] arrayTestStrings = ArrayDeclarationTest.getArrayTestStrings();
         for (String string : arrayTestStrings) {

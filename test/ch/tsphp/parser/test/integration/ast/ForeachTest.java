@@ -36,8 +36,8 @@ public class ForeachTest extends AAstTest
         List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
-                        "foreach(" + expression[0] + " as object $v);",
-                        "(foreach "+expression[1]+" (vars (type tMod object) $v) (cBlock expr))"
+                        "foreach(" + expression[0] + " as mixed $v);",
+                        "(foreach "+expression[1]+" (vars (type tMod mixed) $v) (cBlock expr))"
                     });
         }
         collection.addAll(Arrays.asList(new Object[][]{

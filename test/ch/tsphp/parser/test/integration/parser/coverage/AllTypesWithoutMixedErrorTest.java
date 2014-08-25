@@ -18,10 +18,10 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class AllTypesWithoutObjectErrorTest extends AParserParserExceptionTest
+public class AllTypesWithoutMixedErrorTest extends AParserParserExceptionTest
 {
 
-    public AllTypesWithoutObjectErrorTest(String testString, int character, int position) {
+    public AllTypesWithoutMixedErrorTest(String testString, int character, int position) {
         super(testString, character, position, NoViableAltException.class);
     }
 
@@ -31,7 +31,7 @@ public class AllTypesWithoutObjectErrorTest extends AParserParserExceptionTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.allTypesWithoutObject();
+        result = parser.allTypesWithoutMixed();
     }
 
     @Parameterized.Parameters

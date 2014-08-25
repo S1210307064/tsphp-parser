@@ -32,11 +32,11 @@ public class CastTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(TypeHelper.getAllTypesWithoutObjectWithModifier(
+        collection.addAll(TypeHelper.getAllTypesWithoutMixedWithModifier(
                 "(", ") $a;", "(expr (casting ", " $a))", ""));
 
-        List<String> allTypesWithoutObject = TypeHelper.getAllTypesWithoutObject();
-        for (String type : allTypesWithoutObject) {
+        List<String> allTypesWithoutMixed = TypeHelper.getAllTypesWithoutMixed();
+        for (String type : allTypesWithoutMixed) {
             collection.add(new Object[]{
                     type + " $a = ( "+ type + ") 1;",
                     "(vars (type tMod " + type + ") ($a (casting (type tMod " + type + ") 1)))"

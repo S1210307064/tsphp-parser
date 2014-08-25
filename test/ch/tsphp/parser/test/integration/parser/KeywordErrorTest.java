@@ -83,7 +83,7 @@ public class KeywordErrorTest extends AParserParserExceptionTest
                     {"interface", TSPHPParser.Interface},
                     {"namespace", TSPHPParser.Namespace},
                     {"new", TSPHPParser.New},
-                    {"object", TSPHPParser.TypeObject},
+                    {"mixed", TSPHPParser.TypeMixed},
                     {"parent", TSPHPParser.Parent},
                     {"private", TSPHPParser.Private},
                     {"protected", TSPHPParser.Protected},

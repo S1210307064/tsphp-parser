@@ -120,6 +120,7 @@ tokens{
 	TypeArray = 'array';
 	TypeResource = 'resource';
 	TypeObject = 'object';
+	TypeMixed = 'mixed';
 	Self = 'self';
 	SelfColonColon = 'self::';
 	Semicolon = ';';
@@ -297,7 +298,7 @@ definition
 	;
 
 classDefinition
-	:	classModifier? 'class' Identifier (ex='extends' exId=classInterfaceTypeWithoutObject)? (impl='implements' implIds=identifierList)? block='{' classBody* '}'	
+	:	classModifier? 'class' Identifier (ex='extends' exId=classInterfaceTypeWithoutMixed)? (impl='implements' implIds=identifierList)? block='{' classBody* '}'	
 		-> ^('class' 
 			^(CLASS_MODIFIER[$classModifier.start,"cMod"] classModifier?)
 			Identifier 
@@ -312,7 +313,7 @@ classModifier
 	;
 
 identifierList
-	:	classInterfaceTypeWithoutObject (','! classInterfaceTypeWithoutObject)*
+	:	classInterfaceTypeWithoutMixed (','! classInterfaceTypeWithoutMixed)*
 	;
 	
 classBody
@@ -534,14 +535,14 @@ returnType
 	| 	v='void' -> ^(TYPE[$v,"type"] TYPE_MODIFIER[$v,"tMod"] $v)
 	;
 	
-allTypesWithoutObjectWithModifier
+allTypesWithoutMixedWithModifier
 	:	scalarTypeWithModifier
-	|	typesWithoutScalarAndObjectWithModifier
+	|	typesWithoutScalarAndMixedWithModifier
 	;
 	
 allTypesWithModifier
-	:	allTypesWithoutObjectWithModifier
-	|	objectWithModifier
+	:	allTypesWithoutMixedWithModifier
+	|	mixedWithModifier
 	;	
 
 	
@@ -557,35 +558,35 @@ scalarTypeWithModifier
 		)
 	;
 
-typesWithoutScalarAndObjectWithModifier
+typesWithoutScalarAndMixedWithModifier
 @after{
 	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
 	AstHelperRegistry.get().addAstToTargetChildren(classMemberModifiers,ast);	
 }
-	:	Cast? typesWithoutScalarAndObject		
-		-> ^(TYPE[$typesWithoutScalarAndObjectWithModifier.start,"type"] 
-			^(TYPE_MODIFIER[$typesWithoutScalarAndObjectWithModifier.start,"tMod"] Cast? ) 
-			typesWithoutScalarAndObject
+	:	Cast? typesWithoutScalarAndMixed		
+		-> ^(TYPE[$typesWithoutScalarAndMixedWithModifier.start,"type"] 
+			^(TYPE_MODIFIER[$typesWithoutScalarAndMixedWithModifier.start,"tMod"] Cast? ) 
+			typesWithoutScalarAndMixed
 		)
 	;
 
-objectWithModifier
+mixedWithModifier
 @after{
 	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
 	AstHelperRegistry.get().addAstToTargetChildren(classMemberModifiers,ast);	
 }
-	:	obj='object'
-		-> ^(TYPE[$objectWithModifier.start,"type"] 
-			TYPE_MODIFIER[$objectWithModifier.start,"tMod"]
+	:	obj='mixed'
+		-> ^(TYPE[$mixedWithModifier.start,"type"] 
+			TYPE_MODIFIER[$mixedWithModifier.start,"tMod"]
 			$obj
 		)	
 	;
 	
-allTypesWithoutObject
+allTypesWithoutMixed
 	:	scalarTypes
 	|	'array'
 	|	'resource'
-	| 	classInterfaceTypeWithoutObject
+	| 	classInterfaceTypeWithoutMixed
 	;
 
 scalarTypes
@@ -596,7 +597,7 @@ scalarTypes
 	;
 	
 	
-classInterfaceTypeWithoutObject
+classInterfaceTypeWithoutMixed
 	:	root='\\' namespaceId -> TYPE_NAME[$root, BACKSLASH + $namespaceId.text]
 	|	namespaceId -> TYPE_NAME[$namespaceId.start, $namespaceId.text]
 	;
@@ -622,12 +623,12 @@ paramDeclarationOptional
 
 
 allTypesInclModifierForParameter
-	:	Cast? allTypesWithoutObject '?'?
+	:	Cast? allTypesWithoutMixed '?'?
 		-> ^(TYPE[$allTypesInclModifierForParameter.start,"type"] 
 			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] Cast? '?'?) 
-			allTypesWithoutObject
+			allTypesWithoutMixed
 		)
-	|	obj='object' '?'?
+	|	obj='mixed' '?'?
 		-> ^(TYPE[$allTypesInclModifierForParameter.start,"type"] 
 			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] '?'?)
 			$obj
@@ -667,8 +668,8 @@ localVariableDeclarationList
 	;
 	
 variableDeclarationList
-	:	allTypesWithoutObjectWithModifier castAssignOrAssignList[$allTypesWithoutObjectWithModifier.tree]
-	|	objectWithModifier  assign (','! assign)*
+	:	allTypesWithoutMixedWithModifier castAssignOrAssignList[$allTypesWithoutMixedWithModifier.tree]
+	|	mixedWithModifier  assign (','! assign)*
 	;
 		
 castAssignOrAssignList[ITSPHPAst ast]
@@ -691,10 +692,10 @@ assign
 		-> ^(VariableId expression?)
 	;
 	
-typesWithoutScalarAndObject
+typesWithoutScalarAndMixed
 	:	'array'
 	|	'resource'
-	|	classInterfaceTypeWithoutObject
+	|	classInterfaceTypeWithoutMixed
 	;	
 
 expression
@@ -796,10 +797,10 @@ factor
 	;
 
 instanceOf
-	:	unary ('instanceof'^ (classInterfaceTypeWithoutObject|VariableId))?;
+	:	unary ('instanceof'^ (classInterfaceTypeWithoutMixed|VariableId))?;
 
 unary
-	:	cast = '(' allTypesWithoutObjectWithModifier ')' unary -> ^(CAST[$cast,"casting"] allTypesWithoutObjectWithModifier unary)
+	:	cast = '(' allTypesWithoutMixedWithModifier ')' unary -> ^(CAST[$cast,"casting"] allTypesWithoutMixedWithModifier unary)
 	|	plus='++' postFixVariableWithoutCallAtTheEnd  -> ^(PRE_INCREMENT[$plus,"preIncr"] postFixVariableWithoutCallAtTheEnd)
 	|	minus='--' postFixVariableWithoutCallAtTheEnd -> ^(PRE_DECREMENT[$minus,"preDecr"] postFixVariableWithoutCallAtTheEnd)
 	|	'@'^ unary
@@ -818,8 +819,8 @@ cloneOrNew
 	;
 
 newObject 
-	:	'new' classInterfaceTypeWithoutObject actualParameters -> ^('new' classInterfaceTypeWithoutObject actualParameters)
-	|	'new' classInterfaceTypeWithoutObject -> ^('new' classInterfaceTypeWithoutObject ACTUAL_PARAMETERS[$classInterfaceTypeWithoutObject.stop,"args"])
+	:	'new' classInterfaceTypeWithoutMixed actualParameters -> ^('new' classInterfaceTypeWithoutMixed actualParameters)
+	|	'new' classInterfaceTypeWithoutMixed -> ^('new' classInterfaceTypeWithoutMixed ACTUAL_PARAMETERS[$classInterfaceTypeWithoutMixed.stop,"args"])
 	;
 
 actualParameters
@@ -856,7 +857,7 @@ functionCall
 	;
 
 functionIdentifier
-	:	classInterfaceTypeWithoutObject -> TYPE_NAME[$classInterfaceTypeWithoutObject.start,$classInterfaceTypeWithoutObject.text+"()"]
+	:	classInterfaceTypeWithoutMixed -> TYPE_NAME[$classInterfaceTypeWithoutMixed.start,$classInterfaceTypeWithoutMixed.text+"()"]
 	;
 
 methodCall
@@ -930,7 +931,7 @@ selfOrParent
 	;
 	
 staticClassAccess
-	:	classInterfaceTypeWithoutObject '::'!
+	:	classInterfaceTypeWithoutMixed '::'!
 	;	
 
 primitiveAtomWithConstant
@@ -950,7 +951,7 @@ classConstant
 	;
 
 globalConstant
-	:	identifier=classInterfaceTypeWithoutObject -> CONSTANT[$identifier.start,$identifier.text+"#"]	
+	:	identifier=classInterfaceTypeWithoutMixed -> CONSTANT[$identifier.start,$identifier.text+"#"]	
 	;
 		
 
@@ -1138,10 +1139,10 @@ tryCatch
 	;
 	
 catchBlock
-	:	catchBegin='catch' '(' classInterfaceTypeWithoutObject VariableId ')' block='{' instruction* '}'
+	:	catchBegin='catch' '(' classInterfaceTypeWithoutMixed VariableId ')' block='{' instruction* '}'
 		-> ^($catchBegin 
-			^(VARIABLE_DECLARATION_LIST[$classInterfaceTypeWithoutObject.start,"vars"] 
-				^(TYPE[$classInterfaceTypeWithoutObject.start,"type"] TYPE_MODIFIER[$classInterfaceTypeWithoutObject.start,"tMod"] classInterfaceTypeWithoutObject)
+			^(VARIABLE_DECLARATION_LIST[$classInterfaceTypeWithoutMixed.start,"vars"] 
+				^(TYPE[$classInterfaceTypeWithoutMixed.start,"type"] TYPE_MODIFIER[$classInterfaceTypeWithoutMixed.start,"tMod"] classInterfaceTypeWithoutMixed)
 				VariableId
 			)
 			^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction*)

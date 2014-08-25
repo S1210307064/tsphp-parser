@@ -32,15 +32,15 @@ public class CloneTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(MethodCallTest.getCalls("object $a = clone $this->"));
-        collection.addAll(MethodCallTest.getCalls("object $a = clone $a->"));
-        collection.addAll(MethodCallTest.getCalls("object $a = clone self::"));
-        collection.addAll(MethodCallTest.getCalls("object $a = clone parent::"));
-        collection.addAll(MethodCallTest.getCalls("object $a = clone Foo::"));
-        collection.addAll(MethodCallTest.getCalls("object $a = clone $this->a->"));
-        collection.addAll(MethodCallTest.getCalls("object $a = clone self::$a->"));
-        collection.addAll(MethodCallTest.getCalls("object $a = clone parent::$a->"));
-        collection.addAll(MethodCallTest.getCalls("object $a = clone Bar::$a->"));
+        collection.addAll(MethodCallTest.getCalls("mixed $a = clone $this->"));
+        collection.addAll(MethodCallTest.getCalls("mixed $a = clone $a->"));
+        collection.addAll(MethodCallTest.getCalls("mixed $a = clone self::"));
+        collection.addAll(MethodCallTest.getCalls("mixed $a = clone parent::"));
+        collection.addAll(MethodCallTest.getCalls("mixed $a = clone Foo::"));
+        collection.addAll(MethodCallTest.getCalls("mixed $a = clone $this->a->"));
+        collection.addAll(MethodCallTest.getCalls("mixed $a = clone self::$a->"));
+        collection.addAll(MethodCallTest.getCalls("mixed $a = clone parent::$a->"));
+        collection.addAll(MethodCallTest.getCalls("mixed $a = clone Bar::$a->"));
         collection.addAll(Arrays.asList(new Object[][]{
                     {"$a = clone $b;"},
                     {"$a = clone $b->a;"},

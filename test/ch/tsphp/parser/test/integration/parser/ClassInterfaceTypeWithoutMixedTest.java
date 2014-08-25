@@ -18,10 +18,10 @@ import java.util.Collection;
 import java.util.List;
 
 @RunWith(Parameterized.class)
-public class ClassInterfaceTypeWithoutObjectTest extends AParserTest
+public class ClassInterfaceTypeWithoutMixedTest extends AParserTest
 {
 
-    public ClassInterfaceTypeWithoutObjectTest(String testString) {
+    public ClassInterfaceTypeWithoutMixedTest(String testString) {
         super(testString);
     }
 
@@ -31,7 +31,7 @@ public class ClassInterfaceTypeWithoutObjectTest extends AParserTest
     }
 
      protected void run() throws RecognitionException {
-        result = parser.classInterfaceTypeWithoutObject();
+        result = parser.classInterfaceTypeWithoutMixed();
     }
     
     @Parameterized.Parameters

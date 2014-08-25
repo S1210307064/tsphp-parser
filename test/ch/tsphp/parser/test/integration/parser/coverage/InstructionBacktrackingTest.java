@@ -41,7 +41,7 @@ public class InstructionBacktrackingTest extends AParserBacktrackingTest
                 {"if(true){}", TSPHPParser.If, TSPHPParser.RightCurlyBrace},
                 {"switch(true){}", TSPHPParser.Switch, TSPHPParser.RightCurlyBrace},
                 {"for(int $i=0;$i<10;++$i){}", TSPHPParser.For, TSPHPParser.RightCurlyBrace},
-                {"foreach([1] as object $v){}", TSPHPParser.Foreach, TSPHPParser.RightCurlyBrace},
+                {"foreach([1] as mixed $v){}", TSPHPParser.Foreach, TSPHPParser.RightCurlyBrace},
                 {"while(true){}", TSPHPParser.While, TSPHPParser.RightCurlyBrace},
                 {"do{}while(true);", TSPHPParser.Do, TSPHPParser.Semicolon},
                 {"try{}catch(Exception $e){}", TSPHPParser.Try, TSPHPParser.RightCurlyBrace},

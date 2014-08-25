@@ -33,12 +33,12 @@ public class VariableDeclarationTest extends AParserTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{"int $a =(int) $b;"});
-        List<String> types = TypeHelper.getAllTypesWithoutObject();
+        List<String> types = TypeHelper.getAllTypesWithoutMixed();
         for (String type : types) {
             collection.add(new Object[]{type + " $d = 1;"});
             collection.add(new Object[]{type + " $d =() 1;"});
         }
-        collection.add(new Object[]{"object $d = 1;"});
+        collection.add(new Object[]{"mixed $d = 1;"});
         return collection;
     }
 }

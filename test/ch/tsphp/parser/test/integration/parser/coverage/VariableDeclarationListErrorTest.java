@@ -41,8 +41,8 @@ public class VariableDeclarationListErrorTest extends AParserParserExceptionTest
         return Arrays.asList(new Object[][]{
                 {"$notAType", TSPHPParser.VariableId, 0, NoViableAltException.class},
                 {"array notAModifier", TSPHPParser.Identifier, 6, NoViableAltException.class},
-                {"object notAModifier", TSPHPParser.Identifier, 7, MismatchedTokenException.class},
-                {"object $a, notAModifier", TSPHPParser.Identifier, 11, MismatchedTokenException.class,}
+                {"mixed notAModifier", TSPHPParser.Identifier, 6, MismatchedTokenException.class},
+                {"mixed $a, notAModifier", TSPHPParser.Identifier, 10, MismatchedTokenException.class,}
         });
     }
 }

@@ -6,18 +6,18 @@
 
 package ch.tsphp.parser.test.integration.lexer;
 
-import ch.tsphp.parser.test.integration.testutils.ALexerTest;
 import ch.tsphp.parser.antlr.TSPHPLexer;
+import ch.tsphp.parser.test.integration.testutils.ALexerTest;
 import ch.tsphp.parser.test.integration.testutils.IdentifierHelper;
 import ch.tsphp.parser.test.integration.testutils.VariationHelper;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 
 @RunWith(Parameterized.class)
 public class TokenTest extends ALexerTest
@@ -143,7 +143,7 @@ public class TokenTest extends ALexerTest
                     {"mTypeFloat", "float", TSPHPLexer.TypeFloat},
                     {"mTypeInt", "int", TSPHPLexer.TypeInt},
                     {"mTypeAliasInt", "integer", TSPHPLexer.TypeAliasInt},
-                    {"mTypeObject", "object", TSPHPLexer.TypeObject},
+                    {"mTypeMixed", "mixed", TSPHPLexer.TypeMixed},
                     {"mTypeResource", "resource", TSPHPLexer.TypeResource},
                     {"mTypeString", "string", TSPHPLexer.TypeString},
                     {"mUse", "use", TSPHPLexer.Use},

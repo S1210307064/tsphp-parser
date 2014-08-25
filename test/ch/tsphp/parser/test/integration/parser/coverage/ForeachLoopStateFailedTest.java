@@ -38,8 +38,8 @@ public class ForeachLoopStateFailedTest extends AParserStateFailedTest
         return Arrays.asList(new Object[][]{
                 {"foreach([1,2] as $notAType"},
                 {"foreach([1,2] as string $k => $notAType"},
-                {"foreach([1,2] as string $k => object $v){$missingSemicolon"},
-                {"foreach([1,2] as string $k => object $v){$missingSemicolon"},
+                {"foreach([1,2] as string $k => mixed $v){$missingSemicolon"},
+                {"foreach([1,2] as string $k => mixed $v){$missingSemicolon"},
         });
     }
 }

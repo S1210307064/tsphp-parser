@@ -31,7 +31,7 @@ public class VariableDeclarationListHelper
         String tMod = classMemberModifier.isEmpty() ? "tMod" : "(tMod " + classMemberModifier + ")";
 
         collection.addAll(getVariations(prefix + "int", "=", appendix, prefixExpected + "(type " + tMod + " int)", "1", appendixExpected));
-        collection.addAll(getVariations(prefix + "object", "=", appendix, prefixExpected + "(type " + tMod + " object)", "1", appendixExpected));
+        collection.addAll(getVariations(prefix + "mixed", "=", appendix, prefixExpected + "(type " + tMod + " mixed)", "1", appendixExpected));
         collection.addAll(getVariations(prefix + "float", "=()", appendix, prefixExpected + "(type " + tMod + " float)", "(casting (type " + tMod + " float) 1)", appendixExpected));
         collection.addAll(Arrays.asList(new Object[][]{
                     {prefix + "int $a                    " + appendix, prefixExpected + "(type " + tMod + " int) $a" + appendixExpected},

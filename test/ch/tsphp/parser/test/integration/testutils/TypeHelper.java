@@ -31,7 +31,7 @@ public class TypeHelper
         };
     }
 
-    public static List<String> getAllTypesWithoutObject() {
+    public static List<String> getAllTypesWithoutMixed() {
         List<String> collection = new ArrayList<>();
         collection.addAll(Arrays.asList(getScalarTypes()));
         collection.add("array");
@@ -45,7 +45,7 @@ public class TypeHelper
         collection.addAll(Arrays.asList(getClassInterfaceTypes()));
         collection.add("array");
         collection.add("resource");
-        collection.add("object");
+        collection.add("mixed");
         return collection;
     }
 
@@ -54,7 +54,7 @@ public class TypeHelper
         collection.addAll(Arrays.asList(getScalarTypes()));
         collection.add("array");
         collection.add("resource");
-        collection.add("object");
+        collection.add("mixed");
         return collection;
     }
 
@@ -72,13 +72,13 @@ public class TypeHelper
         return getAllTypesWithModifier(prefix, appendix, prefixExpect, appendixExpect, cmMod, true);
     }
 
-    public static List<Object[]> getAllTypesWithoutObjectWithModifier(String prefix, String appendix,
+    public static List<Object[]> getAllTypesWithoutMixedWithModifier(String prefix, String appendix,
             String prefixExpect, String appendixExpect, String cmMod) {
         return getAllTypesWithModifier(prefix, appendix, prefixExpect, appendixExpect, cmMod, false);
     }
 
     private static List<Object[]> getAllTypesWithModifier(String prefix, String appendix,
-            String prefixExpect, String appendixExpect, String cmMod, boolean withObject) {
+            String prefixExpect, String appendixExpect, String cmMod, boolean withMixed) {
         String tMod = cmMod.isEmpty() ? "tMod" : "(tMod " + cmMod + ")";
         String tModInclCast = cmMod.isEmpty() ? "(tMod cast)" : "(tMod cast " + cmMod + ")";
         String tModInclNullable = cmMod.isEmpty() ? "(tMod ?)" : "(tMod ? " + cmMod + ")";
@@ -132,10 +132,10 @@ public class TypeHelper
             prefix + "cast resource" + appendix,
             prefixExpect + "(type " + tModInclCast + " resource)" + appendixExpect
         });
-        if (withObject) {
+        if (withMixed) {
             collection.add(new String[]{
-                prefix + "object" + appendix,
-                prefixExpect + "(type " + tMod + " object)" + appendixExpect
+                prefix + "mixed" + appendix,
+                prefixExpect + "(type " + tMod + " mixed)" + appendixExpect
             });
         }
         return collection;

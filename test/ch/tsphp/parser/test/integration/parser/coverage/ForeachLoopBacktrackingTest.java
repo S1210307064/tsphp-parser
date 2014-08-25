@@ -38,8 +38,8 @@ public class ForeachLoopBacktrackingTest extends AParserBacktrackingTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                {"foreach([1,2] as object $v){}", TSPHPParser.Foreach, TSPHPParser.RightCurlyBrace},
-                {"foreach([1,2] as string $k => object $v){}", TSPHPParser.Foreach, TSPHPParser.RightCurlyBrace},
+                {"foreach([1,2] as mixed $v){}", TSPHPParser.Foreach, TSPHPParser.RightCurlyBrace},
+                {"foreach([1,2] as string $k => mixed $v){}", TSPHPParser.Foreach, TSPHPParser.RightCurlyBrace},
         });
     }
 }

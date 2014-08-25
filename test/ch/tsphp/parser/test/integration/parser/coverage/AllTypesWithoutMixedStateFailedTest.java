@@ -15,11 +15,11 @@ import org.junit.runners.Parameterized;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class AllTypesWithoutObjectStateFailedTest extends AParserStateFailedTest
+public class AllTypesWithoutMixedStateFailedTest extends AParserStateFailedTest
 {
 
     @SuppressWarnings("UnusedParameters")
-    public AllTypesWithoutObjectStateFailedTest(String testString, int character, int position) {
+    public AllTypesWithoutMixedStateFailedTest(String testString, int character, int position) {
         super(testString);
     }
 
@@ -29,12 +29,12 @@ public class AllTypesWithoutObjectStateFailedTest extends AParserStateFailedTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.allTypesWithoutObject();
+        result = parser.allTypesWithoutMixed();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return AllTypesWithoutObjectErrorTest.testStrings();
+        return AllTypesWithoutMixedErrorTest.testStrings();
     }
 }
 

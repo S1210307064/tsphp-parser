@@ -37,8 +37,8 @@ public class FunctionErrorTest extends AParserParserExceptionTest
         List<Object[]> collection = new ArrayList<>();
         collection.add(new Object[]{"function void a();",TSPHPParser.Semicolon,17});
         collection.add(new Object[]{"function void a(int $a=null, int $b){}", TSPHPParser.RightParenthesis, 35});
-        //cast not allowed for object - see TSPHP-325
-        collection.add(new Object[]{"function void a(cast object $a){}", TSPHPParser.TypeObject, 21});
+        //cast not allowed for mixed - see TSPHP-325
+        collection.add(new Object[]{"function void a(cast mixed $a){}", TSPHPParser.TypeMixed, 21});
 
         String fixture = "function void a (int $a, int $b=";
         int fixtureLength = fixture.length();

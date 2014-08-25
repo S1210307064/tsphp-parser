@@ -33,8 +33,8 @@ public class CastAssignTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
 
-        List<String> allTypesWithoutObject = TypeHelper.getAllTypesWithoutObject();
-        for (String type : allTypesWithoutObject) {
+        List<String> allTypesWithoutMixed = TypeHelper.getAllTypesWithoutMixed();
+        for (String type : allTypesWithoutMixed) {
             collection.add(new Object[]{
                     "$a = () 1;",
                     "(expr (cAssign $a 1))"
