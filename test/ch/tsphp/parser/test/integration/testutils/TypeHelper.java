@@ -22,12 +22,12 @@ public class TypeHelper
 
     public static String[] getClassInterfaceTypes() {
         return new String[]{
-            "B",
-            "a\\C",
-            "a\\b\\A",
-            "\\e",
-            "\\f\\D",
-            "\\g\\b\\A"
+                "B",
+                "a\\C",
+                "a\\b\\A",
+                "\\e",
+                "\\f\\D",
+                "\\g\\b\\A"
         };
     }
 
@@ -60,10 +60,10 @@ public class TypeHelper
 
     public static String[] getScalarTypes() {
         return new String[]{
-            "bool",
-            "int",
-            "float",
-            "string"
+                "bool",
+                "int",
+                "float",
+                "string"
         };
     }
 
@@ -82,60 +82,100 @@ public class TypeHelper
         String tMod = cmMod.isEmpty() ? "tMod" : "(tMod " + cmMod + ")";
         String tModInclCast = cmMod.isEmpty() ? "(tMod cast)" : "(tMod cast " + cmMod + ")";
         String tModInclNullable = cmMod.isEmpty() ? "(tMod ?)" : "(tMod ? " + cmMod + ")";
+        String tModInclFalseable = cmMod.isEmpty() ? "(tMod !)" : "(tMod ! " + cmMod + ")";
         String tModInclCastNullable = cmMod.isEmpty() ? "(tMod cast ?)" : "(tMod cast ? " + cmMod + ")";
+        String tModInclCastFalseable = cmMod.isEmpty() ? "(tMod cast !)" : "(tMod cast ! " + cmMod + ")";
+        String tModInclNullableFalseable = cmMod.isEmpty() ? "(tMod ? !)" : "(tMod ? ! " + cmMod + ")";
+        String tModInclCastNullableFalseable = cmMod.isEmpty() ? "(tMod cast ? !)" : "(tMod cast ? ! " + cmMod + ")";
 
         List<Object[]> collection = new ArrayList<>();
         String[] types = getScalarTypes();
         for (String type : types) {
-            collection.add(new String[]{
-                prefix + type + appendix, prefixExpect + "(type " + tMod + " " + type + ")" + appendixExpect
-            });
-            collection.add(new String[]{
-                prefix + "cast " + type + appendix,
-                prefixExpect + "(type " + tModInclCast + " " + type + ")" + appendixExpect
-            });
-            collection.add(new String[]{
-                prefix + type + "?" + appendix,
-                prefixExpect + "(type " + tModInclNullable + " " + type + ")" + appendixExpect
-            });
-            collection.add(new String[]{
-                prefix + "cast " + type + "?" + appendix,
-                prefixExpect + "(type " + tModInclCastNullable + " " + type + ")" + appendixExpect
-            });
+            collection.addAll(Arrays.asList(new String[][]{
+                    {prefix + type + appendix, prefixExpect + "(type " + tMod + " " + type + ")" + appendixExpect},
+                    {
+                            prefix + "cast " + type + appendix,
+                            prefixExpect + "(type " + tModInclCast + " " + type + ")" + appendixExpect
+                    },
+                    {
+                            prefix + type + "?" + appendix,
+                            prefixExpect + "(type " + tModInclNullable + " " + type + ")" + appendixExpect
+                    },
+                    {
+                            prefix + type + "!" + appendix,
+                            prefixExpect + "(type " + tModInclFalseable + " " + type + ")" + appendixExpect
+                    },
+                    {
+                            prefix + "cast " + type + "?" + appendix,
+                            prefixExpect + "(type " + tModInclCastNullable + " " + type + ")" + appendixExpect
+                    },
+
+                    {
+                            prefix + "cast " + type + "!" + appendix,
+                            prefixExpect + "(type " + tModInclCastFalseable + " " + type + ")" + appendixExpect
+                    },
+                    {
+                            prefix + type + "?!" + appendix,
+                            prefixExpect + "(type " + tModInclNullableFalseable + " " + type + ")" + appendixExpect
+                    },
+                    {
+                            prefix + "cast " + type + "?!" + appendix,
+                            prefixExpect + "(type " + tModInclCastNullableFalseable + " " + type + ")" + appendixExpect
+                    }
+            }));
         }
 
-        collection.add(new String[]{
-            prefix + "array" + appendix,
-            prefixExpect + "(type " + tMod + " array)" + appendixExpect
-        });
-        collection.add(new String[]{
-            prefix + "cast array" + appendix,
-            prefixExpect + "(type " + tModInclCast + " array)" + appendixExpect
-        });
+        collection.addAll(Arrays.asList(new String[][]{
+                {
+                        prefix + "array" + appendix,
+                        prefixExpect + "(type " + tMod + " array)" + appendixExpect
+                },
+                {
+                        prefix + "cast array" + appendix,
+                        prefixExpect + "(type " + tModInclCast + " array)" + appendixExpect
+                },
+                {
+                        prefix + "cast array!" + appendix,
+                        prefixExpect + "(type " + tModInclCastFalseable + " array)" + appendixExpect
+                }
+        }));
 
         types = getClassInterfaceTypes();
         for (String type : types) {
-            collection.add(new String[]{
-                prefix + type + appendix,
-                prefixExpect + "(type " + tMod + " " + type + ")" + appendixExpect
-            });
-            collection.add(new String[]{
-                prefix + "cast " + type + appendix,
-                prefixExpect + "(type " + tModInclCast + " " + type + ")" + appendixExpect
-            });
+            collection.addAll(Arrays.asList(new String[][]{
+                    {
+                            prefix + type + appendix,
+                            prefixExpect + "(type " + tMod + " " + type + ")" + appendixExpect
+                    },
+                    {
+                            prefix + "cast " + type + appendix,
+                            prefixExpect + "(type " + tModInclCast + " " + type + ")" + appendixExpect
+                    },
+                    {
+                            prefix + "cast " + type + "!" + appendix,
+                            prefixExpect + "(type " + tModInclCastFalseable + " " + type + ")" + appendixExpect
+                    }
+            }));
         }
-        collection.add(new String[]{
-            prefix + "resource" + appendix,
-            prefixExpect + "(type " + tMod + " resource)" + appendixExpect
-        });
-          collection.add(new String[]{
-            prefix + "cast resource" + appendix,
-            prefixExpect + "(type " + tModInclCast + " resource)" + appendixExpect
-        });
+        collection.addAll(Arrays.asList(new String[][]{
+                {
+                        prefix + "resource" + appendix,
+                        prefixExpect + "(type " + tMod + " resource)" + appendixExpect
+                },
+                {
+                        prefix + "cast resource" + appendix,
+                        prefixExpect + "(type " + tModInclCast + " resource)" + appendixExpect
+                },
+                {
+                        prefix + "cast resource!" + appendix,
+                        prefixExpect + "(type " + tModInclCastFalseable + " resource)" + appendixExpect
+                }
+        }));
+
         if (withMixed) {
             collection.add(new String[]{
-                prefix + "mixed" + appendix,
-                prefixExpect + "(type " + tMod + " mixed)" + appendixExpect
+                    prefix + "mixed" + appendix,
+                    prefixExpect + "(type " + tMod + " mixed)" + appendixExpect
             });
         }
         return collection;
