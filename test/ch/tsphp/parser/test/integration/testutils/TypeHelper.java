@@ -135,6 +135,10 @@ public class TypeHelper
                         prefixExpect + "(type " + tModInclCast + " array)" + appendixExpect
                 },
                 {
+                        prefix + "array!" + appendix,
+                        prefixExpect + "(type " + tModInclFalseable + " array)" + appendixExpect
+                },
+                {
                         prefix + "cast array!" + appendix,
                         prefixExpect + "(type " + tModInclCastFalseable + " array)" + appendixExpect
                 }
@@ -152,6 +156,10 @@ public class TypeHelper
                             prefixExpect + "(type " + tModInclCast + " " + type + ")" + appendixExpect
                     },
                     {
+                            prefix + type + "!" + appendix,
+                            prefixExpect + "(type " + tModInclFalseable + " " + type + ")" + appendixExpect
+                    },
+                    {
                             prefix + "cast " + type + "!" + appendix,
                             prefixExpect + "(type " + tModInclCastFalseable + " " + type + ")" + appendixExpect
                     }
@@ -165,6 +173,10 @@ public class TypeHelper
                 {
                         prefix + "cast resource" + appendix,
                         prefixExpect + "(type " + tModInclCast + " resource)" + appendixExpect
+                },
+                {
+                        prefix + "resource!" + appendix,
+                        prefixExpect + "(type " + tModInclFalseable + " resource)" + appendixExpect
                 },
                 {
                         prefix + "cast resource!" + appendix,

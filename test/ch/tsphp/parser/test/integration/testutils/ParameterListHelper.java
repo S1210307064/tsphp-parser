@@ -25,25 +25,30 @@ public class ParameterListHelper
                 prefix, " $a" + appendix,
                 prefixExpect + "(params (pDecl ", " $a))" + appendixExpect, "");
 
-        //class / interfaceTypes, array, resource and mixed can also have the ? modifier if used as parameter
-        List<String> types = TypeHelper.getAllTypesWithoutScalar();
-        for (String type : types) {
-            collection.add(new Object[]{
-                    prefix + type + "? $a" + appendix,
-                    prefixExpect + "(params (pDecl (type (tMod ?) " + type + ") $a))" + appendixExpect
-            });
-        }
-
-        //class / interfaceTypes, array and resource can have a combination of the ?! modifiers if used as parameter
-        types = new ArrayList<>();
-        types.addAll(Arrays.asList(TypeHelper.getClassInterfaceTypes()));
-        types.add("array");
+        //resource, array and class-/interface-types can have the ? modifier if used as parameter
+        List<String> types = new ArrayList<>();
         types.add("resource");
+        types.add("array");
+        types.addAll(Arrays.asList(TypeHelper.getClassInterfaceTypes()));
         for (String type : types) {
-            collection.add(new Object[]{
-                    prefix + type + "?! $a" + appendix,
-                    prefixExpect + "(params (pDecl (type (tMod ? !) " + type + ") $a))" + appendixExpect
-            });
+            collection.addAll(Arrays.asList(new Object[][]{
+                    {
+                            prefix + type + "? $a" + appendix,
+                            prefixExpect + "(params (pDecl (type (tMod ?) " + type + ") $a))" + appendixExpect
+                    },
+                    {
+                            prefix + "cast " + type + "? $a" + appendix,
+                            prefixExpect + "(params (pDecl (type (tMod cast ?) " + type + ") $a))" + appendixExpect
+                    },
+                    {
+                            prefix + type + "?! $a" + appendix,
+                            prefixExpect + "(params (pDecl (type (tMod ? !) " + type + ") $a))" + appendixExpect
+                    },
+                    {
+                            prefix + "cast " + type + "?! $a" + appendix,
+                            prefixExpect + "(params (pDecl (type (tMod cast ? !) " + type + ") $a))" + appendixExpect
+                    },
+            }));
         }
 
         //normal
