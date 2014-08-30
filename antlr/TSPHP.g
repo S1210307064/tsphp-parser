@@ -551,9 +551,9 @@ scalarTypeWithModifier
 	ITSPHPAst ast = retval.tree.getChild(0);
 	AstHelperRegistry.get().addAstToTargetChildren(classMemberModifiers, ast);	
 }
-	:	Cast? scalarTypes '?'? '!'?
+	:	Cast? scalarTypes '!'? '?'?
 		-> ^(TYPE[$scalarTypeWithModifier.start,"type"] 
-			^(TYPE_MODIFIER[$scalarTypeWithModifier.start,"tMod"] Cast? '?'? '!'? ) 
+			^(TYPE_MODIFIER[$scalarTypeWithModifier.start,"tMod"] Cast? '!'? '?'?) 
 			scalarTypes
 		)
 	;
@@ -565,7 +565,7 @@ typesWithoutScalarAndMixedWithModifier
 }
 	:	Cast? typesWithoutScalarAndMixed '!'?
 		-> ^(TYPE[$typesWithoutScalarAndMixedWithModifier.start,"type"] 
-			^(TYPE_MODIFIER[$typesWithoutScalarAndMixedWithModifier.start,"tMod"] Cast? '!'? ) 
+			^(TYPE_MODIFIER[$typesWithoutScalarAndMixedWithModifier.start,"tMod"] Cast? '!'?) 
 			typesWithoutScalarAndMixed
 		)
 	;
@@ -623,9 +623,9 @@ paramDeclarationOptional
 
 
 allTypesInclModifierForParameter
-	:	Cast? allTypesWithoutMixed '?'? '!'?
+	:	Cast? allTypesWithoutMixed '!'? '?'? 
 		-> ^(TYPE[$allTypesInclModifierForParameter.start,"type"] 
-			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] Cast? '?'? '!'?) 
+			^(TYPE_MODIFIER[$allTypesInclModifierForParameter.start,"tMod"] Cast? '!'? '?'?) 
 			allTypesWithoutMixed
 		)
 	|	obj='mixed' '?'?

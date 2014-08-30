@@ -85,8 +85,8 @@ public class TypeHelper
         String tModInclFalseable = cmMod.isEmpty() ? "(tMod !)" : "(tMod ! " + cmMod + ")";
         String tModInclCastNullable = cmMod.isEmpty() ? "(tMod cast ?)" : "(tMod cast ? " + cmMod + ")";
         String tModInclCastFalseable = cmMod.isEmpty() ? "(tMod cast !)" : "(tMod cast ! " + cmMod + ")";
-        String tModInclNullableFalseable = cmMod.isEmpty() ? "(tMod ? !)" : "(tMod ? ! " + cmMod + ")";
-        String tModInclCastNullableFalseable = cmMod.isEmpty() ? "(tMod cast ? !)" : "(tMod cast ? ! " + cmMod + ")";
+        String tModInclNullableFalseable = cmMod.isEmpty() ? "(tMod ! ?)" : "(tMod ! ? " + cmMod + ")";
+        String tModInclCastNullableFalseable = cmMod.isEmpty() ? "(tMod cast ! ?)" : "(tMod cast ! ? " + cmMod + ")";
 
         List<Object[]> collection = new ArrayList<>();
         String[] types = getScalarTypes();
@@ -115,11 +115,11 @@ public class TypeHelper
                             prefixExpect + "(type " + tModInclCastFalseable + " " + type + ")" + appendixExpect
                     },
                     {
-                            prefix + type + "?!" + appendix,
+                            prefix + type + "!?" + appendix,
                             prefixExpect + "(type " + tModInclNullableFalseable + " " + type + ")" + appendixExpect
                     },
                     {
-                            prefix + "cast " + type + "?!" + appendix,
+                            prefix + "cast " + type + "!?" + appendix,
                             prefixExpect + "(type " + tModInclCastNullableFalseable + " " + type + ")" + appendixExpect
                     }
             }));

@@ -41,12 +41,12 @@ public class ParameterListHelper
                             prefixExpect + "(params (pDecl (type (tMod cast ?) " + type + ") $a))" + appendixExpect
                     },
                     {
-                            prefix + type + "?! $a" + appendix,
-                            prefixExpect + "(params (pDecl (type (tMod ? !) " + type + ") $a))" + appendixExpect
+                            prefix + type + "!? $a" + appendix,
+                            prefixExpect + "(params (pDecl (type (tMod ! ?) " + type + ") $a))" + appendixExpect
                     },
                     {
-                            prefix + "cast " + type + "?! $a" + appendix,
-                            prefixExpect + "(params (pDecl (type (tMod cast ? !) " + type + ") $a))" + appendixExpect
+                            prefix + "cast " + type + "!? $a" + appendix,
+                            prefixExpect + "(params (pDecl (type (tMod cast ! ?) " + type + ") $a))" + appendixExpect
                     },
             }));
         }
@@ -77,13 +77,13 @@ public class ParameterListHelper
                 prefixExpect, "(type (tMod cast !) int) $a", appendixExpect));
         //? and !
         collection.addAll(getVariations(
-                prefix, "int?! $a", appendix,
-                prefixExpect, "(type (tMod ? !) int) $a", appendixExpect));
+                prefix, "int!? $a", appendix,
+                prefixExpect, "(type (tMod ! ?) int) $a", appendixExpect));
 
         //cast and ? and !
         collection.addAll(getVariations(
-                prefix, "cast int?! $a", appendix,
-                prefixExpect, "(type (tMod cast ? !) int) $a", appendixExpect));
+                prefix, "cast int!? $a", appendix,
+                prefixExpect, "(type (tMod cast ! ?) int) $a", appendixExpect));
 
         collection.addAll(getVariationsForOptional(prefix, appendix, prefixExpect, appendixExpect));
 
