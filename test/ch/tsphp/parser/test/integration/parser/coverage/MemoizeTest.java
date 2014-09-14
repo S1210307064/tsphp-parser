@@ -68,10 +68,10 @@ public class MemoizeTest extends AParserTest
             if (ParserRuleReturnScope.class.isAssignableFrom(method.getReturnType())
                     && method.getParameterTypes().length == 0) {
                 String methodName = method.getName();
-                if (!methodName.equals("classMemberModifier")) {
+                if (!methodName.equals("fieldModifier")) {
                     collection.add(new Object[]{methodName, methodName});
                 } else {
-                    collection.add(new Object[]{"public classMemberDefinition", methodName});
+                    collection.add(new Object[]{"public fieldDefinition", methodName});
                 }
             }
         }

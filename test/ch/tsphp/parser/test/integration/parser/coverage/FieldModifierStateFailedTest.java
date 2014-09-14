@@ -15,10 +15,10 @@ import org.junit.runners.Parameterized;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class ClassMemberModifierStateFailedTest extends AParserStateFailedTest
+public class FieldModifierStateFailedTest extends AParserStateFailedTest
 {
     @SuppressWarnings("UnusedParameters")
-    public ClassMemberModifierStateFailedTest(String testString, int character, int position) {
+    public FieldModifierStateFailedTest(String testString, int character, int position) {
         super(testString);
     }
 
@@ -28,12 +28,12 @@ public class ClassMemberModifierStateFailedTest extends AParserStateFailedTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.classMemberModifier();
+        result = parser.fieldModifier();
     }
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return ClassMemberModifierErrorTest.testStrings();
+        return FieldModifierErrorTest.testStrings();
     }
 }
 

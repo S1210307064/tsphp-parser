@@ -17,18 +17,18 @@ public class VariableDeclarationListHelper
     }
 
     public static Collection<Object[]> testStrings(String prefix, String appendix,
-            String prefixExpected, String appendixExpected, String classMemberModifier) {
+            String prefixExpected, String appendixExpected, String fieldModifier) {
 
         prefixExpected += "(vars ";
         appendixExpected = ")" + appendixExpected;
 
         List<Object[]> collection = TypeHelper.getAllTypesWithModifier(
-                prefix, " $a=1" + appendix, prefixExpected, " ($a 1)" + appendixExpected, classMemberModifier);
+                prefix, " $a=1" + appendix, prefixExpected, " ($a 1)" + appendixExpected, fieldModifier);
         
         collection.addAll(TypeHelper.getAllTypesWithModifier(
-                prefix, " $a" + appendix, prefixExpected, " $a" + appendixExpected, classMemberModifier));
+                prefix, " $a" + appendix, prefixExpected, " $a" + appendixExpected, fieldModifier));
 
-        String tMod = classMemberModifier.isEmpty() ? "tMod" : "(tMod " + classMemberModifier + ")";
+        String tMod = fieldModifier.isEmpty() ? "tMod" : "(tMod " + fieldModifier + ")";
 
         collection.addAll(getVariations(prefix + "int", "=", appendix, prefixExpected + "(type " + tMod + " int)", "1", appendixExpected));
         collection.addAll(getVariations(prefix + "mixed", "=", appendix, prefixExpected + "(type " + tMod + " mixed)", "1", appendixExpected));

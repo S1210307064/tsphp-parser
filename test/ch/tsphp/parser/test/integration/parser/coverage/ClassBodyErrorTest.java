@@ -89,8 +89,8 @@ public class ClassBodyErrorTest extends AParserParserExceptionTest
                 {"final function $notReturnType", TSPHPParser.VariableId, 15},
                 {"final $notFunctionKeyword", TSPHPParser.VariableId, 6},
 
-                {"function $notAClassMember", TSPHPParser.VariableId, 9},
-                {"$notAClassMember", TSPHPParser.VariableId, 0},
+                {"function $notAField", TSPHPParser.VariableId, 9},
+                {"$notAField", TSPHPParser.VariableId, 0},
         });
     }
 }

@@ -18,10 +18,10 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class ClassMemberModifierErrorTest extends AParserParserExceptionTest
+public class FieldModifierErrorTest extends AParserParserExceptionTest
 {
 
-    public ClassMemberModifierErrorTest(String testString, int character, int position) {
+    public FieldModifierErrorTest(String testString, int character, int position) {
         super(testString, character, position, NoViableAltException.class);
     }
 
@@ -31,7 +31,7 @@ public class ClassMemberModifierErrorTest extends AParserParserExceptionTest
     }
 
     protected void run() throws RecognitionException {
-        result = parser.classMemberModifier();
+        result = parser.fieldModifier();
     }
 
     @Parameterized.Parameters

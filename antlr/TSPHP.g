@@ -140,9 +140,9 @@ tokens{
 	CLASS_BODY;
 	CLASS_MODIFIER;
 	
-	CLASS_MEMBER;
-	CLASS_MEMBER_MODIFIER;
-	CLASS_MEMBER_ACCESS;
+	FIELD;
+	FIELD_MODIFIER;
+	FIELD_ACCESS;
 	CLASS_STATIC_ACCESS;
 	CLASS_STATIC_ACCESS_VARIABLE_ID;
 	
@@ -206,7 +206,7 @@ import ch.tsphp.common.ITSPHPAst;
 }
 
 @members{
-private ITSPHPAst classMemberModifiers;
+private ITSPHPAst fieldModifiers;
 private static final String BACKSLASH = "\\";
 }
 
@@ -318,7 +318,7 @@ identifierList
 	
 classBody
 	:	constDefinitionList
-	|	classMemberDefinition	
+	|	fieldDefinition	
 	|	abstractConstructDestructDefinition
 	|	constructDestructDefinition
 	|	abstractMethodDefinition
@@ -352,24 +352,24 @@ unaryPrimitiveAtom
 	|	primitiveAtomWithConstant
 	;
 
-classMemberDefinition
+fieldDefinition
 @after{
-	classMemberModifiers=null;
+	fieldModifiers=null;
 }
-	:	classMemberModifier {classMemberModifiers = $classMemberModifier.tree;}
+	:	fieldModifier {fieldModifiers = $fieldModifier.tree;}
 		variableDeclarationList ';' 
 		
-		-> ^(CLASS_MEMBER[$classMemberDefinition.start,"cMem"]
+		-> ^(FIELD[$fieldDefinition.start,"cMem"]
 			^(VARIABLE_DECLARATION_LIST[$variableDeclarationList.start,"vars"] variableDeclarationList)
 		)
 	;
 	
-classMemberModifier
+fieldModifier
 	:	'static' accessModifier 
 	|	accessModifier 'static'
 	|	accessModifier
 	|	st='static' -> 'static' Public[$st,"public"]
-	|	/* empty */ -> Public[$classMemberModifier.start,"public"]
+	|	/* empty */ -> Public[$fieldModifier.start,"public"]
 	;
 	
 accessModifier
@@ -549,7 +549,7 @@ allTypesWithModifier
 scalarTypeWithModifier
 @after{
 	ITSPHPAst ast = retval.tree.getChild(0);
-	AstHelperRegistry.get().addAstToTargetChildren(classMemberModifiers, ast);	
+	AstHelperRegistry.get().addAstToTargetChildren(fieldModifiers, ast);	
 }
 	:	Cast? scalarTypes '!'? '?'?
 		-> ^(TYPE[$scalarTypeWithModifier.start,"type"] 
@@ -561,7 +561,7 @@ scalarTypeWithModifier
 typesWithoutScalarAndMixedWithModifier
 @after{
 	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
-	AstHelperRegistry.get().addAstToTargetChildren(classMemberModifiers,ast);	
+	AstHelperRegistry.get().addAstToTargetChildren(fieldModifiers,ast);	
 }
 	:	Cast? typesWithoutScalarAndMixed '!'?
 		-> ^(TYPE[$typesWithoutScalarAndMixedWithModifier.start,"type"] 
@@ -573,7 +573,7 @@ typesWithoutScalarAndMixedWithModifier
 mixedWithModifier
 @after{
 	ITSPHPAst ast = (ITSPHPAst) retval.tree.getChild(0);
-	AstHelperRegistry.get().addAstToTargetChildren(classMemberModifiers,ast);	
+	AstHelperRegistry.get().addAstToTargetChildren(fieldModifiers,ast);	
 }
 	:	obj='mixed'
 		-> ^(TYPE[$mixedWithModifier.start,"type"] 
@@ -845,7 +845,7 @@ postFixCall
 		|	methodCallSelfOrParent -> methodCallSelfOrParent
 		|	methodCallStatic -> methodCallStatic 
 		)
-		(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixCall Identifier)
+		(	fieldAccess = '->' Identifier -> ^(FIELD_ACCESS[$fieldAccess,"memAccess"] $postFixCall Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixCall expression)
 		|	call -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixCall call)
 		)*
@@ -895,11 +895,11 @@ postIncrementDecrement
 	
 
 postFixVariableWithoutCallAtTheEnd
-	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
+	:	(variableOrFieldOrStaticField -> variableOrFieldOrStaticField)
 		(
 			(call* -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixVariableWithoutCallAtTheEnd call*) )
 			
-			(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixVariableWithoutCallAtTheEnd Identifier)
+			(	fieldAccess = '->' Identifier -> ^(FIELD_ACCESS[$fieldAccess,"memAccess"] $postFixVariableWithoutCallAtTheEnd Identifier)
 			|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableWithoutCallAtTheEnd expression)
 			)
 			
@@ -907,14 +907,14 @@ postFixVariableWithoutCallAtTheEnd
 	;
 	
 postFixVariableInclCallAtTheEnd
-	:	(variableOrMemberOrStaticMember -> variableOrMemberOrStaticMember)
-		(	memberAccess = '->' Identifier -> ^(CLASS_MEMBER_ACCESS[$memberAccess,"memAccess"] $postFixVariableInclCallAtTheEnd Identifier)
+	:	(variableOrFieldOrStaticField -> variableOrFieldOrStaticField)
+		(	fieldAccess = '->' Identifier -> ^(FIELD_ACCESS[$fieldAccess,"memAccess"] $postFixVariableInclCallAtTheEnd Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableInclCallAtTheEnd expression)
 		|	call -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixVariableInclCallAtTheEnd call)
 		)*
 	;
 
-variableOrMemberOrStaticMember
+variableOrFieldOrStaticField
 	:	staticAccess varId=VariableId -> ^(CLASS_STATIC_ACCESS[$staticAccess.start,"sMemAccess"] staticAccess CLASS_STATIC_ACCESS_VARIABLE_ID[$varId])
 	|	'$this'
 	|	VariableId 

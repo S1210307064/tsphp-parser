@@ -33,17 +33,19 @@ public class InterfaceErrorTest extends AParserParserExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    //members in interfaces
-                    {"interface A{ public int $a;}",TSPHPParser.TypeInt,20},
-                    //wrong modifier for method
-                    {"interface A{ private function void a);}",TSPHPParser.Private,13},
-                    {"interface A{ protected function void a);}",TSPHPParser.Protected,13},
-                     //method body
-                    {"interface A{function void a(){}}",TSPHPParser.LeftCurlyBrace,29},
-                    //interface methods are already abstract
-                    {"interface A{ abstract function void a();}",TSPHPParser.Abstract,13},
-                    //Destruct in interface
-                    {"interface A{ function __destruct();}",TSPHPParser.Destruct,22},
-                });
+                //fields in interfaces
+                {"interface A{ public int $a;}", TSPHPParser.TypeInt, 20},
+                //static fields in interfaces
+                {"interface A{ public static int $a;}", TSPHPParser.Static, 20},
+                //wrong modifier for method
+                {"interface A{ private function void a);}", TSPHPParser.Private, 13},
+                {"interface A{ protected function void a);}", TSPHPParser.Protected, 13},
+                //method body
+                {"interface A{function void a(){}}", TSPHPParser.LeftCurlyBrace, 29},
+                //interface methods are already abstract
+                {"interface A{ abstract function void a();}", TSPHPParser.Abstract, 13},
+                //Destruct in interface
+                {"interface A{ function __destruct();}", TSPHPParser.Destruct, 22},
+        });
     }
 }

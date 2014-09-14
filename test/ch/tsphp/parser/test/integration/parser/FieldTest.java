@@ -18,10 +18,10 @@ import java.util.Collection;
 import java.util.List;
 
 @RunWith(Parameterized.class)
-public class ClassMemberTest extends AParserTest
+public class FieldTest extends AParserTest
 {
 
-    public ClassMemberTest(String testString) {
+    public FieldTest(String testString) {
         super(testString);
     }
 
