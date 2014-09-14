@@ -845,7 +845,7 @@ postFixCall
 		|	methodCallSelfOrParent -> methodCallSelfOrParent
 		|	methodCallStatic -> methodCallStatic 
 		)
-		(	fieldAccess = '->' Identifier -> ^(FIELD_ACCESS[$fieldAccess,"memAccess"] $postFixCall Identifier)
+		(	fieldAccess = '->' Identifier -> ^(FIELD_ACCESS[$fieldAccess,"fieAccess"] $postFixCall Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixCall expression)
 		|	call -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixCall call)
 		)*
@@ -899,7 +899,7 @@ postFixVariableWithoutCallAtTheEnd
 		(
 			(call* -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixVariableWithoutCallAtTheEnd call*) )
 			
-			(	fieldAccess = '->' Identifier -> ^(FIELD_ACCESS[$fieldAccess,"memAccess"] $postFixVariableWithoutCallAtTheEnd Identifier)
+			(	fieldAccess = '->' Identifier -> ^(FIELD_ACCESS[$fieldAccess,"fieAccess"] $postFixVariableWithoutCallAtTheEnd Identifier)
 			|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableWithoutCallAtTheEnd expression)
 			)
 			
@@ -908,7 +908,7 @@ postFixVariableWithoutCallAtTheEnd
 	
 postFixVariableInclCallAtTheEnd
 	:	(variableOrFieldOrStaticField -> variableOrFieldOrStaticField)
-		(	fieldAccess = '->' Identifier -> ^(FIELD_ACCESS[$fieldAccess,"memAccess"] $postFixVariableInclCallAtTheEnd Identifier)
+		(	fieldAccess = '->' Identifier -> ^(FIELD_ACCESS[$fieldAccess,"fieAccess"] $postFixVariableInclCallAtTheEnd Identifier)
 		|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableInclCallAtTheEnd expression)
 		|	call -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixVariableInclCallAtTheEnd call)
 		)*

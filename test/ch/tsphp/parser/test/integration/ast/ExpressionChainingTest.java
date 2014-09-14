@@ -144,8 +144,8 @@ public class ExpressionChainingTest extends AAstTest
                 {"clone clone clone $a", "(clone (clone (clone $a)))"},
 
 
-                {"$a->a->b", "(memAccess (memAccess $a a) b)"},
-                {"$a->a->b->c", "(memAccess (memAccess (memAccess $a a) b) c)"},
+                {"$a->a->b", "(fieAccess (fieAccess $a a) b)"},
+                {"$a->a->b->c", "(fieAccess (fieAccess (fieAccess $a a) b) c)"},
                 {"$a->a()->b()", "(mpCall (mCall $a a() args) b() args)"},
                 {"$a->a()->b()->c()", "(mpCall (mpCall (mCall $a a() args) b() args) c() args)"},
                 {"$a[0][1]", "(arrAccess (arrAccess $a 0) 1)"},

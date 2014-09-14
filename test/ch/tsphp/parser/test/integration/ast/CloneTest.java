@@ -31,8 +31,8 @@ public class CloneTest extends AAstTest
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
                 {"$a = clone $b;", "(expr (= $a (clone $b)))"},
-                {"$a = clone $b->a;", "(expr (= $a (clone (memAccess $b a))))"},
-                {"$a = clone $b->a[0];", "(expr (= $a (clone (arrAccess (memAccess $b a) 0))))"},
+                {"$a = clone $b->a;", "(expr (= $a (clone (fieAccess $b a))))"},
+                {"$a = clone $b->a[0];", "(expr (= $a (clone (arrAccess (fieAccess $b a) 0))))"},
                 {"$a = clone self::$a;", "(expr (= $a (clone (sMemAccess self $a))))"},
                 {"$a = clone self::$a[0];", "(expr (= $a (clone (arrAccess (sMemAccess self $a) 0))))"},
                 {"$a = clone parent::$a;", "(expr (= $a (clone (sMemAccess parent $a))))"},

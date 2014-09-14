@@ -57,7 +57,7 @@ public class CompleteClassTest extends AAstTest
                             +"(__construct() (mMod public) (type tMod void) (params (pDecl (type tMod int) $number))"
                                 + " (block "
                                     +"(expr (or (!= $number null) (exit '$number is null'))) "
-                                    +"(expr (= (memAccess $this number) $number))"
+                                    +"(expr (= (fieAccess $this number) $number))"
                                 + ")"
                             + ") "
                             +"(cMem "

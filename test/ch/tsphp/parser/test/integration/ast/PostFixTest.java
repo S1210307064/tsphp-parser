@@ -42,7 +42,7 @@ public class PostFixTest extends AAstTest
                 {"$a[0]", "(arrAccess $a 0)"},
                 {"$this[0]", "(arrAccess $this 0)"},
 
-                {"$this->a", "(memAccess $this a)"},
+                {"$this->a", "(fieAccess $this a)"},
                 {"self::$a", "(sMemAccess self $a)"},
                 {"parent::$a", "(sMemAccess parent $a)"},
                 {"Foo::$a", "(sMemAccess Foo $a)"},
