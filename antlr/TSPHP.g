@@ -1024,9 +1024,11 @@ arrayContent
 	;
 	
 arrayKeyValue
-	:	key=expression '=>' value=expression -> ^('=>' $key $value)
-	|	value=expression
-	;
+    :   key=expression 
+    	( /* empty */ -> $key
+    	| ('=>' value=expression) -> ^('=>' $key $value)
+    	)
+    ;
 
 ifCondition
 	:	'if' '(' expression ')' instructionThen=instruction ( 'else' instructionElse =instruction )? 
