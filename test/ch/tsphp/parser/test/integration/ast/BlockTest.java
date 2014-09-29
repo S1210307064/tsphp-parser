@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -51,6 +52,10 @@ public class BlockTest extends AAstTest
         addToCollection(collection, TryCatchTest.testStrings());
         addToCollection(collection, VariableDeclarationTest.testStrings());
         addToCollection(collection, WhileTest.testStrings());
+        collection.addAll(Arrays.asList(new Object[][]{
+                {"{; { ; { ;}}}", "expr expr expr"},
+                {"{; { ; {;} ;}}", "expr expr expr expr"},
+        }));
         return collection;
     }
 

@@ -36,7 +36,7 @@ public class ArrayDeclarationTest extends AParserTest
             collection.add(new Object[]{"array $a = " + string + ";"});
         }
 
-        //Expressions are covered in ch.tsphp.grammar.test.ast.ArrayDeclarationTest
+        //Expressions are covered in ch.tsphp.parser.test.integration.ast.ArrayDeclarationTest
 
         return collection;
     }

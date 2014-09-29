@@ -59,28 +59,28 @@ public class ParameterListHelper
         collection.addAll(getVariations(
                 prefix, "cast int $a", appendix,
                 prefixExpect, "(type (tMod cast) int) $a", appendixExpect));
-        //?
-        collection.addAll(getVariations(
-                prefix, "int? $a", appendix,
-                prefixExpect, "(type (tMod ?) int) $a", appendixExpect));
         //!
         collection.addAll(getVariations(
                 prefix, "int! $a", appendix,
                 prefixExpect, "(type (tMod !) int) $a", appendixExpect));
-        //cast and ?
+        //?
         collection.addAll(getVariations(
-                prefix, "cast int? $a", appendix,
-                prefixExpect, "(type (tMod cast ?) int) $a", appendixExpect));
+                prefix, "int? $a", appendix,
+                prefixExpect, "(type (tMod ?) int) $a", appendixExpect));
         //cast and !
         collection.addAll(getVariations(
                 prefix, "cast int! $a", appendix,
                 prefixExpect, "(type (tMod cast !) int) $a", appendixExpect));
-        //? and !
+        //cast and ?
+        collection.addAll(getVariations(
+                prefix, "cast int? $a", appendix,
+                prefixExpect, "(type (tMod cast ?) int) $a", appendixExpect));
+        //! and ?
         collection.addAll(getVariations(
                 prefix, "int!? $a", appendix,
                 prefixExpect, "(type (tMod ! ?) int) $a", appendixExpect));
 
-        //cast and ? and !
+        //cast and ! and ?
         collection.addAll(getVariations(
                 prefix, "cast int!? $a", appendix,
                 prefixExpect, "(type (tMod cast ! ?) int) $a", appendixExpect));

@@ -34,7 +34,7 @@ public class KeywordErrorTest extends AParserParserExceptionTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> vars() {
-        List<Object[]> collection = new ArrayList<>(6200);
+        List<Object[]> collection = new ArrayList<>(9600);
         Object[][] keywords = getKeywords();
         for (Object[] keyword : keywords) {
             String[] keywordVariants = VariationHelper.getUppercaseCombinations((String) keyword[0]);
@@ -49,6 +49,7 @@ public class KeywordErrorTest extends AParserParserExceptionTest
     public static Object[][] getKeywords() {
         return new Object[][]{
                     {"abstract", TSPHPParser.Abstract},
+                    {"and", TSPHPParser.LogicAndWeak},
                     {"array", TSPHPParser.TypeArray},
                     {"as", TSPHPParser.As},
                     {"bool", TSPHPParser.TypeBool},
@@ -83,7 +84,10 @@ public class KeywordErrorTest extends AParserParserExceptionTest
                     {"interface", TSPHPParser.Interface},
                     {"namespace", TSPHPParser.Namespace},
                     {"new", TSPHPParser.New},
+                    {"null", TSPHPParser.Null},
                     {"mixed", TSPHPParser.TypeMixed},
+                    {"or", TSPHPParser.LogicOrWeak},
+                    {"object", TSPHPParser.TypeObject},
                     {"parent", TSPHPParser.Parent},
                     {"private", TSPHPParser.Private},
                     {"protected", TSPHPParser.Protected},
@@ -92,13 +96,15 @@ public class KeywordErrorTest extends AParserParserExceptionTest
                     {"return", TSPHPParser.Return},
                     {"static", TSPHPParser.Static},
                     {"self", TSPHPParser.Self},
+                    {"string",TSPHPParser.TypeString},
                     {"switch", TSPHPParser.Switch},
                     {"this", TSPHPParser.ProtectThis},
                     {"throw", TSPHPParser.Throw},
                     {"try", TSPHPParser.Try},
                     {"use", TSPHPParser.Use},
                     {"void", TSPHPParser.Void},
-                    {"while", TSPHPParser.While}
+                    {"while", TSPHPParser.While},
+                    {"xor", TSPHPParser.LogicXorWeak},
                 };
     }
 }

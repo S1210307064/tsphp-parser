@@ -17,10 +17,10 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class ConstantErrorTest extends AParserParserExceptionTest
+public class ClassConstantErrorTest extends AParserParserExceptionTest
 {
 
-    public ConstantErrorTest(String testString, int character, int position) {
+    public ClassConstantErrorTest(String testString, int character, int position) {
         super(testString, character, position, RecognitionException.class);
 
     }

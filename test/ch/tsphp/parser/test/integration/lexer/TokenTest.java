@@ -34,7 +34,7 @@ public class TokenTest extends ALexerTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>();
+        List<Object[]> collection = new ArrayList<>(1700);
         collection.addAll(Arrays.asList(new Object[][]{
                     {"mAbstract", "abstract", TSPHPLexer.Abstract},
                     {"mArrow", "=>", TSPHPLexer.Arrow},
@@ -68,6 +68,7 @@ public class TokenTest extends ALexerTest
                     {"mDivideAssign", "/=", TSPHPLexer.DivideAssign},
                     {"mDo", "do", TSPHPLexer.Do},
                     {"mDollar", "$", TSPHPLexer.Dollar},
+                    {"mDot",".", TSPHPLexer.Dot},
                     {"mDotAssign", ".=", TSPHPLexer.DotAssign},
                     {"mDoubleColon", "::", TSPHPLexer.DoubleColon},
                     {"mEcho", "echo", TSPHPLexer.Echo},
@@ -193,6 +194,12 @@ public class TokenTest extends ALexerTest
         String[] falseCombinations = VariationHelper.getUppercaseCombinations("false");
         for (String combination : falseCombinations) {
             collection.add(new Object[]{"mBool", combination, TSPHPLexer.Bool});
+        }
+
+        //add all tokens again this time with mTokens as method
+        List<Object[]> argumentsArray = new ArrayList<>(collection);
+        for (Object[] arguments : argumentsArray) {
+            collection.add(new Object[]{"mTokens", arguments[1], arguments[2]});
         }
 
         return collection;
