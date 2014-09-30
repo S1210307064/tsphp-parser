@@ -37,7 +37,6 @@ public class UsingTypeStateFailedTest extends AParserStateFailedTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         Collection<Object[]> collection = new ArrayList<>();
-        collection.addAll(UsingTypeErrorTest.testStrings());
         collection.addAll(Arrays.asList(new Object[][]{
                 {"Identifier $notABackslash", 0, 0},
                 {"Identifier \\ $notANamespaceIdentifier", 0, 0},
