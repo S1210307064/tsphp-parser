@@ -60,6 +60,8 @@ public class ExpressionChainingTest extends AAstTest
                 {"$a %= $b %= $c %= $d", "(= $a (% $a (= $b (% $b (= $c (% $c $d))))))"},
                 {"$a .= $b .= $c .= $d", "(= $a (. $a (= $b (. $b (= $c (. $c $d))))))"},
                 {"$a |= $b |= $c |= $d", "(= $a (| $a (= $b (| $b (= $c (| $c $d))))))"},
+                {"$a <<= $b <<= $c <<= $d", "(= $a (<< $a (= $b (<< $b (= $c (<< $c $d))))))"},
+                {"$a >>= $b >>= $c >>= $d", "(= $a (>> $a (= $b (>> $b (= $c (>> $c $d))))))"},
                 {"$a =() $b =() $c =() $d", "(cAssign $a (cAssign $b (cAssign $c $d)))"},
                 //chaining up simple and compound assignments
                 {
@@ -96,6 +98,8 @@ public class ExpressionChainingTest extends AAstTest
                 {"$a | $b | $c | $d", "(| (| (| $a $b) $c) $d)"},
                 {"$a ^ $b ^ $c ^ $d", "(^ (^ (^ $a $b) $c) $d)"},
                 {"$a & $b & $c & $d", "(& (& (& $a $b) $c) $d)"},
+
+                //cannot chain equality and comparison operators, hence there are missing here
 
                 {"1 << 2 << 3", "(<< (<< 1 2) 3)"},
                 {"1 >> 2 >> 3", "(>> (>> 1 2) 3)"},

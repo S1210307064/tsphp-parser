@@ -763,26 +763,12 @@ bitwiseAnd
 	;
 
 equality
-	:	comparison (equalityOperator^ comparison)?
-	;
-
-equalityOperator
-	:	'=='
-	|	'==='
-	|	'!='
-	|	'!=='
-	;
-
+    :    comparison (('=='|'==='|'!='|'!==')^ comparison)?
+    ;
+    
 comparison
-	:	bitwiseShift (comparisonOperator^ bitwiseShift)?
-	;
-
-comparisonOperator
-	:	'<'
-	|	'<='
-	|	'>'
-	|	'>='
-	;
+    :    bitwiseShift (('<'|'<='|'>'|'>=')^ bitwiseShift)?
+    ;
 
 bitwiseShift	
 	:	termOrStringConcatenation (('<<'|'>>')^ termOrStringConcatenation)*
