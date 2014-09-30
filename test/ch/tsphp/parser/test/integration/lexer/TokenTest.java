@@ -34,7 +34,7 @@ public class TokenTest extends ALexerTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        List<Object[]> collection = new ArrayList<>(1700);
+        List<Object[]> collection = new ArrayList<>(2750);
         collection.addAll(Arrays.asList(new Object[][]{
                     {"mAbstract", "abstract", TSPHPLexer.Abstract},
                     {"mArrow", "=>", TSPHPLexer.Arrow},
@@ -152,14 +152,15 @@ public class TokenTest extends ALexerTest
                     {"mWhile", "while", TSPHPLexer.While}
                 }));
 
-        String[] floatStrings = getFloatTestStrings();
-        for (String floatString : floatStrings) {
-            collection.add(new Object[]{"mFloat", floatString, TSPHPLexer.Float});
-        }
 
         Collection<Object[]> intCollection = FragmentsTest.getIntFragments();
         for (Object[] obj : intCollection) {
             collection.add(new Object[]{"mInt", obj[1], TSPHPLexer.Int});
+        }
+
+        String[] floatStrings = getFloatTestStrings();
+        for (String floatString : floatStrings) {
+            collection.add(new Object[]{"mFloat", floatString, TSPHPLexer.Float});
         }
 
         Collection<Object[]> stringCollection = FragmentsTest.getStringFragments();
@@ -171,14 +172,87 @@ public class TokenTest extends ALexerTest
         
         for (Object[] obj : ids) {
             collection.add(new Object[]{"mVariableId", "$" + obj[1], TSPHPLexer.VariableId});
+            collection.add(new Object[]{"mVariableId", "$" + obj[1]+""+obj[1], TSPHPLexer.VariableId});
+            collection.add(new Object[]{"mVariableId", "$" + obj[1]+""+obj[1]+""+obj[1], TSPHPLexer.VariableId});
+            collection.add(new Object[]{obj[0], obj[1], TSPHPLexer.Identifier});
             collection.add(new Object[]{obj[0], obj[1]+""+obj[1], TSPHPLexer.Identifier});
             collection.add(new Object[]{obj[0], obj[1]+""+obj[1]+""+obj[1], TSPHPLexer.Identifier});
         }
         collection.addAll(Arrays.asList(new Object[][]{
-                    {"mIdentifier", IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllDigits() + IdentifierHelper.getAllSpecialCharacters() + "_", TSPHPLexer.Identifier},
-                    {"mIdentifier", IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits() + IdentifierHelper.getAllSpecialCharacters() + "_", TSPHPLexer.Identifier},
-                    {"mIdentifier", IdentifierHelper.getAllSpecialCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits() + "_", TSPHPLexer.Identifier},
-                    {"mIdentifier", "_" + IdentifierHelper.getAllSpecialCharacters() + IdentifierHelper.getAllUpperCaseCharacters() + IdentifierHelper.getAllLowerCaseCharacters() + IdentifierHelper.getAllDigits(), TSPHPLexer.Identifier}
+                    {
+                            "mVariableId",
+                            "$" + IdentifierHelper.getAllLowerCaseCharacters()
+                                    + IdentifierHelper.getAllUpperCaseCharacters()
+                                    + IdentifierHelper.getAllDigits()
+                                    + IdentifierHelper.getAllSpecialCharacters()
+                                    + "_",
+                            TSPHPLexer.VariableId
+                    },
+                    {
+                            "mVariableId",
+                            "$" + IdentifierHelper.getAllUpperCaseCharacters()
+                                    + IdentifierHelper.getAllLowerCaseCharacters()
+                                    + IdentifierHelper.getAllDigits()
+                                    + IdentifierHelper.getAllSpecialCharacters()
+                                    + "_",
+                            TSPHPLexer.VariableId
+                    },
+                    {
+                            "mVariableId",
+                            "$" + IdentifierHelper.getAllSpecialCharacters()
+                                    + IdentifierHelper.getAllUpperCaseCharacters()
+                                    + IdentifierHelper.getAllLowerCaseCharacters()
+                                    + IdentifierHelper.getAllDigits()
+                                    + "_",
+                            TSPHPLexer.VariableId
+                    },
+                    {
+                            "mVariableId",
+                            "$_" + IdentifierHelper.getAllSpecialCharacters()
+                            + IdentifierHelper.getAllUpperCaseCharacters()
+                            + IdentifierHelper.getAllLowerCaseCharacters()
+                            + IdentifierHelper.getAllDigits(),
+                            TSPHPLexer.VariableId
+                    },
+                    {"mVariableId","$_______________________________", TSPHPLexer.VariableId},
+                    {"mVariableId","$___________________0123456789__", TSPHPLexer.VariableId},
+                    {
+                            "mIdentifier",
+                            IdentifierHelper.getAllLowerCaseCharacters()
+                                    + IdentifierHelper.getAllUpperCaseCharacters()
+                                    + IdentifierHelper.getAllDigits()
+                                    + IdentifierHelper.getAllSpecialCharacters()
+                                    + "_",
+                            TSPHPLexer.Identifier
+                    },
+                    {
+                            "mIdentifier",
+                            IdentifierHelper.getAllUpperCaseCharacters()
+                                    + IdentifierHelper.getAllLowerCaseCharacters()
+                                    + IdentifierHelper.getAllDigits()
+                                    + IdentifierHelper.getAllSpecialCharacters()
+                                    + "_",
+                            TSPHPLexer.Identifier
+                    },
+                    {
+                            "mIdentifier",
+                            IdentifierHelper.getAllSpecialCharacters()
+                                    + IdentifierHelper.getAllUpperCaseCharacters()
+                                    + IdentifierHelper.getAllLowerCaseCharacters()
+                                    + IdentifierHelper.getAllDigits()
+                                    + "_",
+                            TSPHPLexer.Identifier
+                    },
+                    {
+                            "mIdentifier", "_"
+                            + IdentifierHelper.getAllSpecialCharacters()
+                            + IdentifierHelper.getAllUpperCaseCharacters()
+                            + IdentifierHelper.getAllLowerCaseCharacters()
+                            + IdentifierHelper.getAllDigits(),
+                            TSPHPLexer.Identifier
+                    },
+                    {"mIdentifier","_______________________________", TSPHPLexer.Identifier},
+                    {"mIdentifier","___________________0123456789__", TSPHPLexer.Identifier},
                 }));
         
         String[] nullCombinations = VariationHelper.getUppercaseCombinations("null");
