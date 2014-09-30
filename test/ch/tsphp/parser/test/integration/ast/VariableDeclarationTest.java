@@ -8,7 +8,6 @@ package ch.tsphp.parser.test.integration.ast;
 
 import ch.tsphp.parser.test.integration.testutils.AAstTest;
 import ch.tsphp.parser.test.integration.testutils.ExpressionHelper;
-import ch.tsphp.parser.test.integration.testutils.TypeHelper;
 import ch.tsphp.parser.test.integration.testutils.VariableDeclarationListHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +41,6 @@ public class VariableDeclarationTest extends AAstTest
                     });
         }
 
-        collection.addAll(TypeHelper.getAllTypesWithModifier(""," $a;","(vars "," $a)",""));
         return collection;
     }
 }

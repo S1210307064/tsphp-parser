@@ -4,10 +4,17 @@
  * root folder or visit the project's website http://tsphp.ch/wiki/display/TSPHP/License
  */
 
+/*
+ * This class is based on the class NamespaceIdTest from the TinsPHP project.
+ * TinsPHP is also published under the Apache License 2.0
+ * For more information see http://tsphp.ch/wiki/display/TINS/License
+ */
+
 package ch.tsphp.parser.test.integration.parser;
 
+import ch.tsphp.parser.test.integration.lexer.TokenTest;
 import ch.tsphp.parser.test.integration.testutils.AParserTest;
-import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
+import org.antlr.runtime.RecognitionException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -17,10 +24,10 @@ import java.util.Collection;
 import java.util.List;
 
 @RunWith(Parameterized.class)
-public class Exit extends AParserTest
+public class NamespaceIdTest extends AParserTest
 {
 
-    public Exit(String testString) {
+    public NamespaceIdTest(String testString) {
         super(testString);
     }
 
@@ -29,11 +36,20 @@ public class Exit extends AParserTest
         parseAndCheckForExceptions();
     }
 
+    @Override
+    protected void run() throws RecognitionException {
+        result = parser.namespaceId();
+    }
+
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("exit;"));
-        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("exit (1);"));
+        Collection<Object[]> idTestStrings = TokenTest.getIDTestStrings();
+        for (Object[] obj : idTestStrings) {
+            collection.add(new String[]{obj[1] + ""});
+            collection.add(new String[]{obj[1] + "\\" + obj[1]});
+            collection.add(new String[]{obj[1] + "\\" + obj[1] + "\\" + obj[1]});
+        }
         return collection;
     }
 }

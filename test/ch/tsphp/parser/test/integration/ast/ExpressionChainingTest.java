@@ -120,6 +120,8 @@ public class ExpressionChainingTest extends AAstTest
                 {"$a / $b / $c / $d", "(/ (/ (/ $a $b) $c) $d)"},
                 {"$a % $b % $c % $d", "(% (% (% $a $b) $c) $d)"},
 
+                //cannot chain up instanceof operator, thus it is missing here
+
                 {"(Type) (MyClass) $a", "(casting (type tMod Type) (casting (type tMod MyClass) $a))"},
                 {
                         "(int) (Type) (MyClass) $a",

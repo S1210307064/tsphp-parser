@@ -85,6 +85,7 @@ tokens{
 	Namespace = 'namespace';
 	New = 'new';
 	NotEqual = '!=';
+	NotEqualAlternative = '<>';
 	NotIdentical = '!==';
 	Null = 'null';
 	ObjectOperator = '->';
@@ -814,8 +815,8 @@ actualParameters
 	;
 	
 primary
-	:	postFixCall
-	|	postIncrementDecrement
+	:	postIncrementDecrement
+	|	postFixCall
 	|	postFixVariableInclCallAtTheEnd
 	|	atom
 	|	'exit' ('(' expression ')')? -> ^('exit' expression?)
@@ -883,7 +884,7 @@ postIncrementDecrement
 postFixVariableWithoutCallAtTheEnd
 	:	(variableOrFieldOrStaticField -> variableOrFieldOrStaticField)
 		(
-			(call* -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixVariableWithoutCallAtTheEnd call*) )
+			(call -> ^(METHOD_CALL_POSTFIX[$call.start,"mpCall"] $postFixVariableWithoutCallAtTheEnd call))*
 			
 			(	fieldAccess = '->' Identifier -> ^(FIELD_ACCESS[$fieldAccess,"fieAccess"] $postFixVariableWithoutCallAtTheEnd Identifier)
 			|	arrayAccess = '[' expression ']' -> ^(ARRAY_ACCESS[$arrayAccess,"arrAccess"] $postFixVariableWithoutCallAtTheEnd expression)

@@ -3,6 +3,7 @@ nbproject/*
 .idea/*
 out/*
 *.iml
+*__testrig.st
 antlr/output/*
 /src/ch/tsphp/parser/antlr/*
 

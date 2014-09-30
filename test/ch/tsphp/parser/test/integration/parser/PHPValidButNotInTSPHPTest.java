@@ -39,7 +39,7 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
             {"function a ($a,$b=1,$c){$a=1;}", TSPHPParser.LeftParenthesis, 11},
             //use outside of semicolon namespace
             {"use a\\a; namespace a;", TSPHPParser.Namespace, 9},
-            {"$a <> $b", TSPHPParser.GreaterThan, 4}
+            {"$a <> $b", TSPHPParser.NotEqualAlternative, 4}
         });
         //See TokenExceptionTest for misuse of keywords
     }
