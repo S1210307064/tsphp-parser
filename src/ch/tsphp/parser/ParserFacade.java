@@ -16,11 +16,11 @@ import ch.tsphp.common.ParserUnitDto;
 import ch.tsphp.common.TSPHPAstAdaptor;
 import ch.tsphp.common.TSPHPErrorAst;
 import ch.tsphp.common.exceptions.TSPHPException;
-import ch.tsphp.parser.antlrmod.ANTLRNoCaseFileStream;
-import ch.tsphp.parser.antlrmod.ANTLRNoCaseInputStream;
-import ch.tsphp.parser.antlrmod.ANTLRNoCaseStringStream;
 import ch.tsphp.parser.antlrmod.ErrorReportingTSPHPLexer;
 import ch.tsphp.parser.antlrmod.ErrorReportingTSPHPParser;
+import ch.tsphp.parser.common.ANTLRNoCaseFileStream;
+import ch.tsphp.parser.common.ANTLRNoCaseInputStream;
+import ch.tsphp.parser.common.ANTLRNoCaseStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.RecognitionException;
@@ -84,7 +84,7 @@ public class ParserFacade implements IParser, IErrorLogger
     @Override
     public ParserUnitDto parseInputStream(
             InputStream inputStream, int initialBufferSize, int readBufferSize, String encoding) throws IOException {
-        
+
         return getAstOrErrorAst(new ANTLRNoCaseInputStream(inputStream, initialBufferSize, readBufferSize, encoding));
     }
 

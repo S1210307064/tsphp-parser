@@ -6,15 +6,16 @@
 
 package ch.tsphp.parser.test.integration.testutils;
 
-import ch.tsphp.parser.antlrmod.ANTLRNoCaseStringStream;
 import ch.tsphp.parser.antlr.TSPHPLexer;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import ch.tsphp.parser.common.ANTLRNoCaseStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.RecognitionException;
 import org.antlr.runtime.RecognizerSharedState;
 import org.junit.Assert;
 import org.junit.Ignore;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 @Ignore
 public abstract class ALexerTest extends ATest

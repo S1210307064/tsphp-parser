@@ -9,15 +9,12 @@ package ch.tsphp.parser.test.integration.testutils;
 import ch.tsphp.common.AstHelperRegistry;
 import ch.tsphp.common.ITSPHPAstAdaptor;
 import ch.tsphp.common.TSPHPAstAdaptor;
-import ch.tsphp.parser.antlrmod.ANTLRNoCaseStringStream;
+import ch.tsphp.parser.common.ANTLRNoCaseStringStream;
 import org.antlr.runtime.CharStream;
 import org.antlr.runtime.CommonTokenStream;
 import org.antlr.runtime.ParserRuleReturnScope;
 import org.junit.Assert;
 import org.junit.Ignore;
-
-
-
 
 @Ignore
 public abstract class AParserTest extends ATest
@@ -38,12 +35,14 @@ public abstract class AParserTest extends ATest
         parse();
         checkForExceptions();
     }
-    protected void checkForExceptions(){
+
+    protected void checkForExceptions() {
         Assert.assertFalse(testString + " failed, lexer threw exception(s) - see output", lexer.hasFoundError());
         Assert.assertFalse(testString + " failed, parser threw exception(s) - see output", parser.hasFoundError());
     }
 
-    protected void modifyParser(){}
+    protected void modifyParser() {
+    }
 
     protected void parse() throws Exception {
         CharStream stream = new ANTLRNoCaseStringStream(testString);
