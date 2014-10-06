@@ -33,13 +33,18 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-            //switch with multiple default blocks
-            {"switch($a){case 1: default: $a=1; break; case 2: default: $a=2; break;}", TSPHPParser.Default, 49},
-            //function with pseudo optional parameter
-            {"function a ($a,$b=1,$c){$a=1;}", TSPHPParser.LeftParenthesis, 11},
-            //use outside of semicolon namespace
-            {"use a\\a; namespace a;", TSPHPParser.Namespace, 9},
-            {"$a <> $b", TSPHPParser.NotEqualAlternative, 4}
+                //switch with multiple default blocks
+                {"switch($a){case 1: default: $a=1; break; case 2: default: $a=2; break;}", TSPHPParser.Default, 49},
+                //function with pseudo optional parameter
+                {"function a ($a,$b=1,$c){$a=1;}", TSPHPParser.LeftParenthesis, 11},
+                //use outside of semicolon namespace
+                {"use a\\a; namespace a;", TSPHPParser.Namespace, 9},
+                {"$a <> $b", TSPHPParser.NotEqualAlternative, 3},
+                //casts with alternative type names
+                {"(boolean) $a;",TSPHPParser.TypeAliasBool,1},
+                {"(integer) $a;",TSPHPParser.TypeAliasInt,1},
+                {"(double) $a;",TSPHPParser.TypeAliasFloat,1},
+                {"(real) $a;",TSPHPParser.TypeAliasFloat2,1},
         });
         //See TokenExceptionTest for misuse of keywords
     }

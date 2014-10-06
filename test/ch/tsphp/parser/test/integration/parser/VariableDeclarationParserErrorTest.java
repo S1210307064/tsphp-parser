@@ -32,15 +32,15 @@ public class VariableDeclarationParserErrorTest extends AParserParserExceptionTe
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"int $a int $b;", TSPHPParser.TypeInt, 7},
-                    {"int $a 1", TSPHPParser.Int, 7},
-                    {"int a;", TSPHPParser.Identifier, 4},
-                    {"int $a", -1, 6},
-                    //alias can not be used
-                    {"boolean $a;",TSPHPParser.TypeAliasBool,0},
-                    {"integer $a;",TSPHPParser.TypeAliasInt,0},
-                    {"double $a;",TSPHPParser.TypeAliasFloat,0},
-                
-                });
+                {"int $a int $b;", TSPHPParser.TypeInt, 7},
+                {"int $a 1", TSPHPParser.Int, 7},
+                {"int a;", TSPHPParser.Identifier, 4},
+                {"int $a", TSPHPParser.EOF, 6},
+                //alias can not be used
+                {"boolean $a;", TSPHPParser.TypeAliasBool, 0},
+                {"integer $a;", TSPHPParser.TypeAliasInt, 0},
+                {"double $a;", TSPHPParser.TypeAliasFloat, 0},
+                {"real $a;", TSPHPParser.TypeAliasFloat2, 0}
+        });
     }
 }

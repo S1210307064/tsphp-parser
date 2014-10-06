@@ -114,6 +114,7 @@ tokens{
 	TypeBool = 'bool';
 	TypeAliasBool = 'boolean';
 	TypeAliasFloat = 'double';
+	TypeAliasFloat2 = 'real';
 	TypeInt = 'int';
 	TypeAliasInt = 'integer';
 	TypeFloat = 'float';

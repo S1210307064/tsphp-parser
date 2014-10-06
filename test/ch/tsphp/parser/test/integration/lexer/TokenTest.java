@@ -141,6 +141,7 @@ public class TokenTest extends ALexerTest
                     {"mTypeBool", "bool", TSPHPLexer.TypeBool},
                     {"mTypeAliasBool", "boolean", TSPHPLexer.TypeAliasBool},
                     {"mTypeAliasFloat", "double", TSPHPLexer.TypeAliasFloat},
+                    {"mTypeAliasFloat2", "real", TSPHPLexer.TypeAliasFloat2},
                     {"mTypeFloat", "float", TSPHPLexer.TypeFloat},
                     {"mTypeInt", "int", TSPHPLexer.TypeInt},
                     {"mTypeAliasInt", "integer", TSPHPLexer.TypeAliasInt},
