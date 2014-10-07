@@ -30,10 +30,10 @@ public class BreakContinueTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"while( true  ) break;", "(while true (cBlock break))"},
-                    {"while( true  ) break 1;", "(while true (cBlock (break 1)))"},
-                    {"while( true  ) continue;", "(while true (cBlock continue))"},
-                    {"while( true  ) continue 1;", "(while true (cBlock (continue 1)))"}
-                });
+                {"break;", "break"},
+                {"break 1;", "(break 1)"},
+                {"continue;", "continue"},
+                {"continue 1;", "(continue 1)"}
+        });
     }
 }
