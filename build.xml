@@ -11,6 +11,7 @@
     <import file="${basedir}/ant/copyCommon.xml" as="cp"/>
     <import file="${basedir}/ant/copyParserCommon.xml" as="cp"/>
     <import file="${basedir}/ant/copyAntlr.xml" as="cp"/>
+    <import file="${basedir}/ant/copyQA.xml" as="cp"/>
 
     <property file="${basedir}/ant/antlr.properties"/>
 
@@ -39,6 +40,6 @@
         </java>
     </target>
 
-    <target name="cp.all" depends="cp.common, cp.parser-common"/>
+    <target name="cp.all" depends="cp.common, cp.parser-common, cp.QA"/>
 
 </project>
