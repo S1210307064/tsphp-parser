@@ -33,76 +33,254 @@ public class SwitchTest extends AAstTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-
         List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
-                        "switch(" + expression[0] + "){}",
-                        "(switch " + expression[1] + ")"
-                    });
+                    "switch(" + expression[0] + "){}",
+                    "(switch " + expression[1] + ")"
+            });
         }
-        collection.addAll(Arrays.asList(new Object[][]{
+
+        collection.add(new Object[]{"switch(true){}", "(switch true)"});
+
+        String[][] caseLabels = new String[][]{
+                {"case 1", "case 2", "case 3", "case 4"},
+                {"default", "case 2", "case 3", "case 4"},
+                {"case 1", "default", "case 3", "case 4"},
+                {"case 1", "case 2", "default", "case 4"},
+                {"case 1", "case 2", "case 3", "default"},
+        };
+        for (String[] labels : caseLabels) {
+            String label1 = labels[0];
+            String label2 = labels[1];
+            String label3 = labels[2];
+            String label4 = labels[3];
+
+            collection.addAll(Arrays.asList(new Object[][]{
                     {
-                        "switch($a){ case 1: $a=1; }",
-                        "(switch $a (cases 1) (cBlock (expr (= $a 1))))"
+                            "switch($a){ " + label1 + ": $a=1; }",
+                            "(switch $a (cases" + getCases(label1) + ") (cBlock (expr (= $a 1))))"
                     },
                     {
-                        "switch($a){ case 1: case 2: $a=1; break; }",
-                        "(switch $a (cases 1 2) (cBlock (expr (= $a 1)) break))"
+                            "switch($a){ " + label1 + ": $a=1; " + label2 + ": $b=1;}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2) + ") (cBlock (expr (= $b 1)))"
+                                    + ")"
                     },
                     {
-                        "switch($a){ case 1: $a=1; case 2: $c=1;}",
-                        "(switch $a (cases 1) (cBlock (expr (= $a 1))) (cases 2) (cBlock (expr (= $c 1))))"
+                            "switch($a){ " + label1 + ": $a=1; " + label2 + ": $b = 1; " + label3 + ": $c=1; }",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2) + ") (cBlock (expr (= $b 1)))"
+                                    + " (cases" + getCases(label3) + ") (cBlock (expr (= $c 1)))"
+                                    + ")"
                     },
                     {
-                        "switch($a){ case 1: $a=1; case 2: case 3: $a=1; }",
-                        "(switch $a (cases 1) (cBlock (expr (= $a 1))) (cases 2 3) (cBlock (expr (= $a 1))))"
+                            "switch($a){ "
+                                    + label1 + ": $a=1; "
+                                    + label2 + ": $b=1; "
+                                    + label3 + ": $c=1; "
+                                    + label4 + ": $d=1; "
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2) + ") (cBlock (expr (= $b 1)))"
+                                    + " (cases" + getCases(label3) + ") (cBlock (expr (= $c 1)))"
+                                    + " (cases" + getCases(label4) + ") (cBlock (expr (= $d 1)))"
+                                    + ")"
+                    },
+
+                    //first falls through
+                    {
+                            "switch($a){ " + label1 + ":" + label2 + ": $a=1;}",
+                            "(switch $a (cases" + getCases(label1, label2) + ") (cBlock (expr (= $a 1))))"
                     },
                     {
-                        "switch($a){ case 1: $a=1; $b=2; }",
-                        "(switch $a (cases 1) (cBlock (expr (= $a 1)) (expr (= $b 2))))"
+                            "switch($a){ " + label1 + ":" + label2 + ": $a=1; " + label3 + ": $b=1; }",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1, label2) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label3) + ") (cBlock (expr (= $b 1)))"
+                                    + ")",
                     },
                     {
-                        "switch($a){ case 1: $a=1; case 2: case 3: $a=2; default: $c=2; }",
-                        "(switch $a "
-                        + "(cases 1) (cBlock (expr (= $a 1))) "
-                        + "(cases 2 3) (cBlock (expr (= $a 2))) "
-                        + "(cases default) (cBlock (expr (= $c 2)))"
-                        + ")"
+                            "switch($a){"
+                                    + label1 + ":" + label2 + ": $a=1;"
+                                    + label3 + ": $b=1;"
+                                    + label4 + ": $c=1;"
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1, label2) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label3) + ") (cBlock (expr (= $b 1)))"
+                                    + " (cases" + getCases(label4) + ") (cBlock (expr (= $c 1)))"
+                                    + ")"
                     },
                     {
-                        "switch($a){ case 1: $a=1; case 2: $a=1; default: $c=2; case 3: $a=2; }",
-                        "(switch $a "
-                        + "(cases 1) (cBlock (expr (= $a 1))) "
-                        + "(cases 2) (cBlock (expr (= $a 1))) "
-                        + "(cases default) (cBlock (expr (= $c 2))) "
-                        + "(cases 3) (cBlock (expr (= $a 2)))"
-                        + ")"
+                            "switch($a){ " + label1 + ":" + label2 + ": " + label3 + ": $a=1; }",
+                            "(switch $a (cases" + getCases(label1, label2, label3) + ") (cBlock (expr (= $a 1))))"
                     },
                     {
-                        "switch($a){ case 1: {$a=1; $b=2; } case 2: case 3: {$a=1;} }",
-                        "(switch $a "
-                        + "(cases 1) (cBlock (expr (= $a 1)) (expr (= $b 2))) "
-                        + "(cases 2 3) (cBlock (expr (= $a 1)))"
-                        + ")"
+                            "switch($a){ "
+                                    + label1 + ":" + label2 + ": " + label3 + ": $a=1;"
+                                    + label4 + ": $b=1; "
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1, label2, label3) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label4) + ") (cBlock (expr (= $b 1)))"
+                                    + ")"
                     },
                     {
-                        "switch($a){ case 1: {$a=1; $b=2; } {$a=1;} case 2: case 3: {$a=1;} }",
-                        "(switch $a "
-                        + "(cases 1) (cBlock (expr (= $a 1)) (expr (= $b 2)) (expr (= $a 1))) "
-                        + "(cases 2 3) (cBlock (expr (= $a 1)))"
-                        + ")"
+                            "switch($a){ " + label1 + ": " + label2 + ": " + label3 + ":" + label4 + ": $a=1; }",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1, label2, label3, label4) + ")"
+                                    + " (cBlock (expr (= $a 1)))"
+                                    + ")"
                     },
-                    //due to the design decision that empty cases are allowed
+                    //second falls through
                     {
-                        "switch($a){ case 1: $a=1; case 1+1: default: case 2: $b=2; case 2: case 3: {$a=1;} }",
-                        "(switch $a "
-                        + "(cases 1) (cBlock (expr (= $a 1))) "
-                        + "(cases (+ 1 1) 2 default) (cBlock (expr (= $b 2))) "
-                        + "(cases 2 3) (cBlock (expr (= $a 1)))"
-                        + ")"
+                            "switch($a){ " + label1 + ": $a=1; " + label2 + ":" + label3 + ": $b=1; }",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2, label3) + ") (cBlock (expr (= $b 1)))"
+                                    + ")"
                     },
-                }));
+                    {
+                            "switch($a){ "
+                                    + label1 + ": $a=1; "
+                                    + label2 + ":" + label3 + ": $b=1; "
+                                    + label4 + ": $c=1; "
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2, label3) + ") (cBlock (expr (= $b 1)))"
+                                    + " (cases" + getCases(label4) + ") (cBlock (expr (= $c 1)))"
+                                    + ")"
+                    },
+                    {
+                            "switch($a){ "
+                                    + label1 + ": $a=1; "
+                                    + label2 + ":" + label3 + ": " + label4 + ": $b=1;"
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2, label3, label4) + ") (cBlock (expr (= $b 1)))"
+                                    + ")"
+                    },
+                    //third falls through
+                    {
+                            "switch($a){"
+                                    + label1 + ": $a=1; "
+                                    + label2 + ": $b=1; "
+                                    + label3 + ":" + label4 + ": $c=1; "
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2) + ") (cBlock (expr (= $b 1)))"
+                                    + " (cases" + getCases(label3, label4) + ") (cBlock (expr (= $c 1)))"
+                                    + ")"
+                    },
+                    //first and third fall through
+                    {
+                            "switch($a){"
+                                    + label1 + ":" + label2 + ": $a=1;"
+                                    + label3 + ":" + label4 + ": $b=1;"
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1, label2) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label3, label4) + ") (cBlock (expr (= $b 1)))"
+                                    + ")"
+                    },
+
+                    //switches which do nothing
+                    {
+                            "switch($a){ " + label1 + ": }",
+                            "(switch $a (cases" + getCases(label1) + ") cBlock)"
+                    },
+                    {
+                            "switch($a){ " + label1 + ":" + label2 + ": }",
+                            "(switch $a (cases" + getCases(label1, label2) + ") cBlock)"
+                    },
+                    {
+                            "switch($a){ " + label1 + ":" + label2 + ":" + label3 + ":}",
+                            "(switch $a (cases" + getCases(label1, label2, label3) + ") cBlock)"
+                    },
+                    {
+                            "switch($a){ " + label1 + ":" + label2 + ":" + label3 + ":" + label4 + ":}",
+                            "(switch $a (cases" + getCases(label1, label2, label3, label4) + ") cBlock)"
+                    },
+                    {
+                            "switch($a){ "
+                                    + label1 + ":$a=1;"
+                                    + label2 + ":"
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2) + ") cBlock"
+                                    + ")"
+                    },
+                    {
+                            "switch($a){ "
+                                    + label1 + ":$a=1;"
+                                    + label2 + ":" + label3 + ":"
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2, label3) + ") cBlock"
+                                    + ")"
+                    },
+                    {
+                            "switch($a){ "
+                                    + label1 + ":$a=1;"
+                                    + label2 + ":" + label3 + ":" + label4 + ":"
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2, label3, label4) + ") cBlock"
+                                    + ")"
+                    },
+                    {
+                            "switch($a){ "
+                                    + label1 + ":$a=1;"
+                                    + label2 + ":$b=2;"
+                                    + label3 + ":"
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2) + ") (cBlock (expr (= $b 2)))"
+                                    + " (cases" + getCases(label3) + ") cBlock"
+                                    + ")"
+                    },
+                    {
+                            "switch($a){ "
+                                    + label1 + ":$a=1;"
+                                    + label2 + ":$b=2;"
+                                    + label3 + ":" + label4 + ":"
+                                    + "}",
+                            "(switch $a"
+                                    + " (cases" + getCases(label1) + ") (cBlock (expr (= $a 1)))"
+                                    + " (cases" + getCases(label2) + ") (cBlock (expr (= $b 2)))"
+                                    + " (cases" + getCases(label3, label4) + ") cBlock"
+                                    + ")"
+                    },
+            }));
+        }
         return collection;
+    }
+
+    private static String getCases(String... labels) {
+        boolean hasDefault = false;
+        StringBuilder stringBuilder = new StringBuilder();
+        int caseLength = "case ".length();
+        for (String label : labels) {
+            if (!label.equals("default")) {
+                stringBuilder.append(" ").append(label.substring(caseLength));
+            } else {
+                hasDefault = true;
+            }
+        }
+        if (hasDefault) {
+            stringBuilder.append(" default");
+        }
+        return stringBuilder.toString();
     }
 }

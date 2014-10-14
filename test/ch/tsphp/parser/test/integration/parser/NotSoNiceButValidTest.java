@@ -58,29 +58,7 @@ public class NotSoNiceButValidTest extends AParserTest
                 {"if($a){$a=1;} else if($a){}"},
                 {"if($a){$a=1;} else if($a){$a=1;} else;"},
                 {"if($a){$a=1;} else if($a){$a=1;} else{}"},
-                //empty for block
-                {"for(;;){}"},
-                {"for(;;);"},
-                //empty foreach block
-                {"foreach($a as int $k);"},
-                {"foreach($a as int $k){}"},
-                {"foreach($a as int $k => int $v);"},
-                {"foreach($a as int $k => int $v){}"},
-                //empty while block
-                {"while(true){}"},
-                {"while(true);"},
-                //empty do while block
-                {"do ; while(true);"},
-                {"do{}while(true);"},
                 //empty switch block
-                {"switch($a){}"},
-                //empty try block
-                {"try{}catch(\\Exception $e){}"},
-                //empty namespace
-                {"namespace a;"},
-                {"namespace a{}"},
-                {"namespace {}"},
-                //empty switch
                 {"switch($a){}"},
                 //switch with case labels but without any instruction
                 {"switch($a){case 1:}"},
@@ -96,6 +74,27 @@ public class NotSoNiceButValidTest extends AParserTest
                 {"switch($a){case 1: $a=1; default:}"},
                 //switch only with default block
                 {"switch($a){default: $a=1;}"},
+                //empty for block
+                {"for(;;){}"},
+                {"for(;;);"},
+                //empty foreach block
+                {"foreach($a as int $k);"},
+                {"foreach($a as int $k){}"},
+                {"foreach($a as int $k => int $v);"},
+                {"foreach($a as int $k => int $v){}"},
+                //empty while block
+                {"while(true){}"},
+                {"while(true);"},
+                //empty do while block
+                {"do ; while(true);"},
+                {"do{}while(true);"},
+                //empty try block
+                {"try{}catch(\\Exception $e){}"},
+                //empty namespace
+                {"namespace a;"},
+                {"namespace a{}"},
+                {"namespace {}"},
+
         }));
 
         String[] expressions = ExpressionHelper.getParserExpressions();

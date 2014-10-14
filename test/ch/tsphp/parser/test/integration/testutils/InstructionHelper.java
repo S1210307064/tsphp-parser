@@ -47,6 +47,15 @@ public class InstructionHelper
                 {prefix + instruction + appendix},
                 {prefix + "{" + instruction + "}" + appendix},
                 {prefix + "{ {" + instruction + "} }" + appendix},
+                {prefix + "if($a)" + instruction + appendix},
+                {prefix + "if($a) $a=1; else " + instruction + appendix},
+                {prefix + "if($a){" + instruction + "}" + appendix},
+                {prefix + "if($a){$a=1;}else{" + instruction + "}" + appendix},
+                {prefix + "switch($a){case 1: " + instruction + "}" + appendix},
+                {prefix + "switch($a){case 1: $a=1; " + instruction + " default: $a=2; " + instruction + "}" +
+                        appendix},
+                {prefix + "switch($a){case 1:{ $a=1; " + instruction + "} default: $a=2; { " + instruction + "} }" +
+                        appendix},
                 {prefix + "for(;;) " + instruction + appendix},
                 {prefix + "for(;;){ " + instruction + "}" + appendix},
                 {prefix + "foreach([] as int $k)" + instruction + appendix},
@@ -55,15 +64,6 @@ public class InstructionHelper
                 {prefix + "while(true){" + instruction + "}" + appendix},
                 {prefix + "do " + instruction + " while(true);" + appendix},
                 {prefix + "do{ " + instruction + "}while(true);" + appendix},
-                {prefix + "switch($a){case 1: " + instruction + "}" + appendix},
-                {prefix + "switch($a){case 1: $a=1; " + instruction + " default: $a=2; " + instruction + "}" +
-                        appendix},
-                {prefix + "switch($a){case 1:{ $a=1; " + instruction + "} default: $a=2; { " + instruction + "} }" +
-                        appendix},
-                {prefix + "if($a)" + instruction + appendix},
-                {prefix + "if($a) $a=1; else " + instruction + appendix},
-                {prefix + "if($a){" + instruction + "}" + appendix},
-                {prefix + "if($a){$a=1;}else{" + instruction + "}" + appendix},
                 {prefix + "try{" + instruction + "}catch(\\Exception $e){}" + appendix},
                 {prefix + "try{$a=1;}catch(\\Exception $e){" + instruction + "}" + appendix}
         });

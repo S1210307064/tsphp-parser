@@ -41,10 +41,11 @@ public class PHPValidButNotInTSPHPTest extends AParserParserExceptionTest
                 {"use a\\a; namespace a;", TSPHPParser.Namespace, 9},
                 {"$a <> $b", TSPHPParser.NotEqualAlternative, 3},
                 //casts with alternative type names
-                {"(boolean) $a;",TSPHPParser.TypeAliasBool,1},
-                {"(integer) $a;",TSPHPParser.TypeAliasInt,1},
-                {"(double) $a;",TSPHPParser.TypeAliasFloat,1},
-                {"(real) $a;",TSPHPParser.TypeAliasFloat2,1},
+                {"(boolean) $a;", TSPHPParser.TypeAliasBool, 1},
+                {"(integer) $a;", TSPHPParser.TypeAliasInt, 1},
+                {"(double) $a;", TSPHPParser.TypeAliasFloat, 1},
+                {"(real) $a;", TSPHPParser.TypeAliasFloat2, 1},
+                //TODO TSPHP-612 alternative keywords
         });
         //See TokenExceptionTest for misuse of keywords
     }
