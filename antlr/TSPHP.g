@@ -7,7 +7,6 @@
 grammar TSPHP;
 
 options {
-    backtrack = true; 
     memoize = true;
     output = AST;
     ASTLabelType = ITSPHPAst;
@@ -791,6 +790,9 @@ instanceOf
     ;
 
 unary
+options{
+    backtrack = true;
+}
     :   cast = '(' allTypesWithoutMixedWithModifier ')' unary -> ^(CAST[$cast,"casting"] allTypesWithoutMixedWithModifier unary)
     |   plus='++' postFixVariableWithoutCallAtTheEnd  -> ^(PRE_INCREMENT[$plus,"preIncr"] postFixVariableWithoutCallAtTheEnd)
     |   minus='--' postFixVariableWithoutCallAtTheEnd -> ^(PRE_DECREMENT[$minus,"preDecr"] postFixVariableWithoutCallAtTheEnd)
@@ -819,6 +821,9 @@ actualParameters
     ;
 
 primary
+options{
+    backtrack = true;
+}
     :   postIncrementDecrement
     |   postFixCall
     |   postFixVariableInclCallAtTheEnd
@@ -877,6 +882,9 @@ call
     ;
 
 postIncrementDecrement
+options{
+    backtrack = true;
+}
     :   postFixVariableWithoutCallAtTheEnd '++'
         -> ^(POST_INCREMENT[$postFixVariableWithoutCallAtTheEnd.start, "postIncr"] postFixVariableWithoutCallAtTheEnd)
 
@@ -971,39 +979,46 @@ ifCondition
     ;
 
 switchCondition
-    :   'switch' '(' expression ')' '{' switchContent '}'  -> ^('switch' expression switchContent?)
+    :   'switch' '(' expression ')' '{' switchContent? '}'  -> ^('switch' expression switchContent?)
     ;
 
 switchContent
-    :   normalCaseInstructionMandatory*
-        (   defaultCaseInstructionMandatory normalCaseInstructionOptional*
-        |   defaultCaseInstructionOptional?
-        |   normalCaseInstructionOptional*
+    :
+    (    label=caseLabel+ 
+         (   defaultLabel 
+             (   caseLabel+
+                 (   instr=instruction+ content=switchContentWithoutDefault?
+                 |   /* empty */
+                 )
+             |   instr=instruction+ content=switchContentWithoutDefault?
+             |   /* empty */
+             )                 
+         |   instr=instruction+ content=switchContent?             
+         |   /* empty */
+         )
+         
+    |    label=defaultLabel 
+         (   caseLabel+
+             (   instr=instruction+ content=switchContentWithoutDefault?
+             |   /* empty */
+             )
+         |   instr=instruction+ content=switchContentWithoutDefault?
+         |    /* empty */
+         )
+    )
+    ->  ^(SWITCH_CASES[$label.start,"cases"] caseLabel* defaultLabel?)
+        ^(BLOCK_CONDITIONAL[$instr.start,"cBlock"] instruction*)
+        $content?
+    ;
+
+switchContentWithoutDefault
+    :   caseLabel+
+        (   instruction+ content=switchContentWithoutDefault?
+        |   /* empty */
         )
-    ;
-
-normalCaseInstructionMandatory
-    :   caseLabel+ instruction+
-        ->  ^(SWITCH_CASES[$normalCaseInstructionMandatory.start,"cases"] caseLabel+)
-            ^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction+)
-    ;
-
-normalCaseInstructionOptional
-    :   caseLabel+ instruction*
-        ->  ^(SWITCH_CASES[$normalCaseInstructionOptional.start,"cases"] caseLabel+)
+        ->  ^(SWITCH_CASES[$caseLabel.start,"cases"] caseLabel+)
             ^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction*)
-
-    ;
-
-defaultCaseInstructionMandatory
-    :   caseLabel* defaultLabel caseLabel* instruction+
-        ->  ^(SWITCH_CASES[$defaultCaseInstructionMandatory.start,"cases"] caseLabel* defaultLabel)
-            ^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction+)
-    ;
-defaultCaseInstructionOptional
-    :   caseLabel* defaultLabel caseLabel* instruction*
-        ->  ^(SWITCH_CASES[$defaultCaseInstructionOptional.start,"cases"] caseLabel* defaultLabel)
-            ^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction*)
+            $content?
     ;
 
 caseLabel
