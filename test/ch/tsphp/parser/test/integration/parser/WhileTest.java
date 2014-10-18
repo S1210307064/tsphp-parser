@@ -7,12 +7,15 @@
 package ch.tsphp.parser.test.integration.parser;
 
 import ch.tsphp.parser.test.integration.testutils.AParserTest;
+import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 @RunWith(Parameterized.class)
 public class WhileTest extends AParserTest
@@ -29,13 +32,19 @@ public class WhileTest extends AParserTest
 
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
-        return Arrays.asList(new Object[][]{
-                    {"while( true  ) $a=1;"},
-                    {"while( true  ){$a=1;}"},
-                    {"while( true  ){$a=1;int $b=2;}"},
-                    {"do $a=1; while( true  );"},
-                    {"do {$a=1;} while( true  );"},
-                    {"do {$a=1;$b=2;}while( true  );"}
-                });
+        List<Object[]> collection = new ArrayList<>();
+        collection.addAll(
+                InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("while(true) $a=1;"));
+
+        collection.addAll(Arrays.asList(new Object[][]{
+                {"while(true) $a=1;"},
+                {"while(true){$a=1;}"},
+                {"while(true){$a=1;int $b=2;}"},
+                {"do $a=1; while(true);"},
+                {"do {$a=1;} while(true);"},
+                {"do {$a=1;$b=2;} while( true  );"}
+        }));
+
+        return collection;
     }
 }

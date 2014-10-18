@@ -33,13 +33,14 @@ public class ForeachErrorTest extends AParserParserExceptionTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         return Arrays.asList(new Object[][]{
-                    {"foreach($a as $k=>$v)$a=1;", TSPHPParser.VariableId, 14},
-                    {"foreach($a as $v) $a=1;", TSPHPParser.VariableId, 14},
-                    {"foreach($a as $k=>$v){$a=1;}", TSPHPParser.VariableId, 14},
-                    {"foreach($a as $v) {$a=1;}", TSPHPParser.VariableId, 14},
-                    //
-                    {"foreach($a as int $k=>$v)$a=1;", TSPHPParser.VariableId, 22},
-                    {"foreach($a as int $k=>$v){$a=1;}", TSPHPParser.VariableId, 22}
-                });
+                //missing types
+                {"foreach($a as $k=>$v)$a=1;", TSPHPParser.VariableId, 14},
+                {"foreach($a as $v) $a=1;", TSPHPParser.VariableId, 14},
+                {"foreach($a as $k=>$v){$a=1;}", TSPHPParser.VariableId, 14},
+                {"foreach($a as $v) {$a=1;}", TSPHPParser.VariableId, 14},
+                //
+                {"foreach($a as int $k=>$v)$a=1;", TSPHPParser.VariableId, 22},
+                {"foreach($a as int $k=>$v){$a=1;}", TSPHPParser.VariableId, 22}
+        });
     }
 }

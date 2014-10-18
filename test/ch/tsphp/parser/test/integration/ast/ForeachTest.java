@@ -8,12 +8,12 @@ package ch.tsphp.parser.test.integration.ast;
 
 import ch.tsphp.parser.test.integration.testutils.AAstTest;
 import ch.tsphp.parser.test.integration.testutils.ExpressionHelper;
+import ch.tsphp.parser.test.integration.testutils.TypeHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -36,37 +36,20 @@ public class ForeachTest extends AAstTest
         List<String[]> expressions = ExpressionHelper.getAstExpressions();
         for (Object[] expression : expressions) {
             collection.add(new Object[]{
-                        "foreach(" + expression[0] + " as mixed $v);",
-                        "(foreach "+expression[1]+" (vars (type tMod mixed) $v) (cBlock expr))"
-                    });
+                    "foreach(" + expression[0] + " as mixed $v);",
+                    "(foreach " + expression[1] + " (vars (type tMod mixed) $v) (cBlock expr))"
+            });
         }
-        collection.addAll(Arrays.asList(new Object[][]{
-                    {
-                        "foreach($a as int $k => MyClass $v)$a=1;",
-                        "(foreach $a (vars (type tMod int) $k) (vars (type tMod MyClass) $v) (cBlock (expr (= $a 1))))"
-                    },
-                    {
-                        "foreach($a as float $v) $a=1;",
-                        "(foreach $a (vars (type tMod float) $v) (cBlock (expr (= $a 1))))"
-                    },
-                    {
-                        "foreach($a as string $k => string $v){$a=1;}",
-                        "(foreach $a (vars (type tMod string) $k) (vars (type tMod string) $v) (cBlock (expr (= $a 1))))"},
-                    {
-                        "foreach($a as bool $v) {$a=1;}",
-                        "(foreach $a (vars (type tMod bool) $v) (cBlock (expr (= $a 1))))"
-                    },
-                    {
-                        "foreach($a as bool $k=> array $v){$a=1; $b=2;}",
-                        "(foreach $a (vars (type tMod bool) $k) (vars (type tMod array) $v) "
-                        + "(cBlock (expr (= $a 1)) (expr (= $b 2))))"
-                    },
-                    {
-                        "foreach($a as int $v) {$a=1; $b=3;}",
-                        "(foreach $a (vars (type tMod int) $v) (cBlock (expr (= $a 1)) (expr (= $b 3))))"
-                    }
-                }));
 
+        collection.addAll(TypeHelper.getAllTypesWithModifier(
+                "foreach($a as ", " $v){}", "(foreach $a (vars ", " $v) (cBlock expr))", ""));
+        String[] types = TypeHelper.getScalarTypes();
+        for (String type : types) {
+            collection.add(new Object[]{
+                    "foreach($a as " + type + " $k => string $v){}",
+                    "(foreach $a (vars (type tMod " + type + ") $k) (vars (type tMod string) $v) (cBlock expr))"
+            });
+        }
 
         return collection;
     }

@@ -97,6 +97,7 @@ public class NotSoNiceButValidTest extends AParserTest
 
         }));
 
+        //expressions without assignment
         String[] expressions = ExpressionHelper.getParserExpressions();
         for (String expression : expressions) {
             collection.add(new Object[]{expression + ";"});

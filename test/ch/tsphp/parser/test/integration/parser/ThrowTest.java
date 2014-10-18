@@ -32,8 +32,7 @@ public class ThrowTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("throw new \\Exception" +
-                "('bla');"));
+        collection.addAll(InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("throw $a;"));
         return collection;
     }
 }

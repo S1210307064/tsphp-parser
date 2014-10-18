@@ -7,7 +7,7 @@
 package ch.tsphp.parser.test.integration.parser;
 
 import ch.tsphp.parser.test.integration.testutils.AParserTest;
-import ch.tsphp.parser.test.integration.testutils.TypeHelper;
+import ch.tsphp.parser.test.integration.testutils.InstructionHelper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -33,30 +33,21 @@ public class ForeachTest extends AParserTest
     @Parameterized.Parameters
     public static Collection<Object[]> testStrings() {
         List<Object[]> collection = new ArrayList<>();
-        
-        collection.addAll(Arrays.asList(new Object[][]{
-                    {"foreach($a as int $k => MyClass $v)$a=1;"},
-                    {"foreach($a as float $v) $a=1;"},
-                    {"foreach($a as string $k => string $v){$a=1;}"},
-                    {"foreach($a as bool $v) {$a=1;}"},
-                    {"foreach($a as bool $k=> array $v){$a=1; $b=1;}"},
-                    {"foreach($a as int $v) {$a=1; $b=3;}"},
-        }));
-        
-        List<String> types = TypeHelper.getAllTypes();
-        for(String type: types){
-             collection.add(new Object[]{"foreach($a as "+type+" $v) $a=1;"});
-        }
-        
+        collection.addAll(
+                InstructionHelper.getControlStructuresInNamespaceFunctionAndMethod("foreach($a as int $v){}"));
+
         String[] arrayTestStrings = ArrayDeclarationTest.getArrayTestStrings();
         for (String string : arrayTestStrings) {
             collection.add(new Object[]{"foreach(" + string + " as int $v) $a=1;"});
-            collection.add(new Object[]{"foreach(" + string + " as float $k => MyClass $v) $a=1;"});
-            collection.add(new Object[]{"foreach(" + string + " as bool $v) {$a=1;}"});
-            collection.add(new Object[]{"foreach(" + string + " as string $k => string $v) {$a=1;}"});
-            
         }
-        
+
+        collection.addAll(Arrays.asList(new Object[][]{
+                {"foreach($a as bool $v) $a = 1;"},
+                {"foreach($a as int $v){ $a = 1; }"},
+                {"foreach($a as float $k => mixed $v) $a = 1;"},
+                {"foreach($a as string $k => array $v){ $a = 1; }"},
+        }));
+
         return collection;
     }
 }

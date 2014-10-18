@@ -1091,16 +1091,18 @@ catchBlock
     :   catchBegin='catch' '(' classInterfaceTypeWithoutMixed VariableId ')' block='{' instruction* '}'
         -> ^($catchBegin
             ^(VARIABLE_DECLARATION_LIST[$classInterfaceTypeWithoutMixed.start,"vars"]
-                ^(TYPE[$classInterfaceTypeWithoutMixed.start,"type"] TYPE_MODIFIER[$classInterfaceTypeWithoutMixed.start,"tMod"] classInterfaceTypeWithoutMixed)
+                ^(TYPE[$classInterfaceTypeWithoutMixed.start,"type"] 
+                    TYPE_MODIFIER[$classInterfaceTypeWithoutMixed.start,"tMod"] 
+                    classInterfaceTypeWithoutMixed
+                )
                 VariableId
             )
             ^(BLOCK_CONDITIONAL[$instruction.start,"cBlock"] instruction*)
         )
     ;
 
-
 Int
-    :    DECIMAL
+    :   DECIMAL
     |   HEXADECIMAL
     |   OCTAL
     |   BINARY
